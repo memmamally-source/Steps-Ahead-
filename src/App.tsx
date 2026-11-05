@@ -43,10 +43,14 @@ export function App() {
 
   if (!onboarded && pathname !== '/welcome') return <Navigate to="/welcome" replace />;
   if (pathname === '/welcome') return <Onboarding />;
+  // Games are a focus mode: no tab bar, primary action pinned to the bottom.
+  const focus = pathname.startsWith('/play/');
 
   return (
     <div className="shell">
-      <a href="#main" className="sr-only">Skip to content</a>
+      <a href="#main" className="sr-only">
+        Skip to content
+      </a>
       <nav className="sidebar" aria-label="Main">
         <NavLink to="/" className="brand">
           <BrandMark /> {Brand.name}
@@ -64,12 +68,7 @@ export function App() {
           <Icon name="bookmark" /> Content & sources
         </NavLink>
       </nav>
-      <main id="main" className="main">
-        <div className="topbar">
-          <NavLink to="/" className="brand">
-            <BrandMark size={28} /> {Brand.name}
-          </NavLink>
-        </div>
+      <main id="main" className={`main${focus ? ' focus' : ''}`}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/arcade" element={<Arcade />} />
@@ -84,14 +83,16 @@ export function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
-      <nav className="tabbar" aria-label="Main">
-        {TABS.map((t) => (
-          <NavLink key={t.to} to={t.to} end={'end' in t} className="tab">
-            <Icon name={t.icon} size={22} />
-            {t.label}
-          </NavLink>
-        ))}
-      </nav>
+      {!focus && (
+        <nav className="tabbar" aria-label="Main">
+          {TABS.map((t) => (
+            <NavLink key={t.to} to={t.to} end={'end' in t} className="tab">
+              <Icon name={t.icon} size={22} />
+              {t.label}
+            </NavLink>
+          ))}
+        </nav>
+      )}
     </div>
   );
 }

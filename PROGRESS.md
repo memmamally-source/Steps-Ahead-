@@ -4,7 +4,12 @@
 
 **Product:** gamified USMLE learning companion. Step 1 first; Step 2 CK and Step 3 later in the same codebase.
 **Name:** "Steps Ahead" (owner's choice, Nov 2026). Change in `src/config/brand.ts`, `index.html`, `public/manifest.webmanifest`.
+**Live preview:** https://memmamally-source.github.io/Steps-Ahead-/ (manual deploys; reviewer preview).
 **Repository:** `memmamally-source/Steps-Ahead-` (created by the owner on 5 Nov 2026). The code first lived temporarily on branch `claude/steps-ahead-medical-arcade-a8in03` of the Oursome repo; that branch can be deleted.
+
+## Stage 2: UX redesign (5 Nov 2026)
+
+The owner asked for no new features; instead, a redesign for simplicity, speed and polish (about 70% consumer app, 30% medical dashboard). The engine and game logic are unchanged; every screen and the design system were rebuilt. Audit, principles and per-screen changes are in `docs/UX_AUDIT.md`. Verified by a 390 px screenshot audit and the 26-check end-to-end run; not on a physical phone. Onboarding no longer asks for stage, weak subjects or play style (unused by the engine; the profile fields remain).
 
 ## Status (5 Nov 2026)
 

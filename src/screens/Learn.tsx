@@ -1,6 +1,6 @@
 import { useParams } from 'react-router';
 import { LessonBody } from '@/components/learning';
-import { Empty, PageHeader, PreviewBanner } from '@/components/ui';
+import { Empty, PageTitle, PreviewPill } from '@/components/ui';
 import { content } from '@/content';
 import { useStudyContext } from '@/state/studyTimer';
 
@@ -11,9 +11,8 @@ export function Learn() {
   useStudyContext(concept ? { activity: 'lesson', conceptIds: [concept.id] } : null);
   if (!concept) return <Empty>That concept isn’t available.</Empty>;
   return (
-    <div className="stack" style={{ maxWidth: 720 }}>
-      <PageHeader title={concept.title} eyebrow="Teach me this" back={true} />
-      <PreviewBanner />
+    <div>
+      <PageTitle title={concept.title} back={true} action={<PreviewPill />} />
       <LessonBody key={concept.id} concept={concept} />
     </div>
   );

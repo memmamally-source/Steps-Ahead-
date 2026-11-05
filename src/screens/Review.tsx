@@ -1,16 +1,16 @@
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router';
 import { Icon } from '@/components/Icon';
-import { AnswerFeedback, QuestionCard, TeachSheet, expectedText, promptText } from '@/components/learning';
-import { Empty, PageHeader, Sheet, StatusBadge } from '@/components/ui';
+import { AnswerFeedback, QuestionCard, ReportButton, TeachSheet, expectedText, promptText } from '@/components/learning';
+import { Empty, PageTitle, Segmented, Sheet, StatusBadge, StatusDot } from '@/components/ui';
 import { content } from '@/content';
 import type { McqItem, TrueFalseItem } from '@/content/schema';
 import { DISCIPLINES, SYSTEMS } from '@/content/taxonomy';
 import { estimate } from '@/engine/mastery';
 import { mistakeResolved, type MistakeEntry } from '@/engine/progress';
 import { getGame } from '@/features/games/registry';
-import { useAnalysis } from '@/state/derived';
 import { useNow } from '@/state/clock';
+import { useAnalysis } from '@/state/derived';
 import { useProgress } from '@/state/progress';
 import { useStudyContext } from '@/state/studyTimer';
 
@@ -21,14 +21,16 @@ export function Review() {
   const mistakes = useProgress((s) => s.mistakes);
   const srs = useProgress((s) => s.srs);
   const saved = useProgress((s) => s.savedConcepts);
+  const records = useProgress((s) => s.concepts);
   const [sort, setSort] = useState<Sort>('date');
-  const [filter, setFilter] = useState<'open' | 'all'>('open');
-  const [retry, setRetry] = useState<MistakeEntry | null>(null);
-  const [teach, setTeach] = useState<{ conceptId: string; itemId?: string } | null>(null);
+  const [view, setView] = useState<'open' | 'corrected'>('open');
+  const [open, setOpen] = useState<MistakeEntry | null>(null);
   useStudyContext({ activity: 'mistakes' });
 
+  const all = Object.values(mistakes);
+  const openCount = all.filter((m) => !mistakeResolved(m)).length;
   const list = useMemo(() => {
-    const xs = Object.values(mistakes).filter((m) => filter === 'all' || !mistakeResolved(m));
+    const xs = Object.values(mistakes).filter((m) => (view === 'open' ? !mistakeResolved(m) : mistakeResolved(m)));
     const c0 = (m: MistakeEntry) => content.concept(m.conceptIds[0]!);
     const by: Record<Sort, (a: MistakeEntry, b: MistakeEntry) => number> = {
       date: (x, y) => y.lastAt - x.lastAt,
@@ -39,68 +41,100 @@ export function Review() {
       difficulty: (x, y) => y.difficulty - x.difficulty,
     };
     return xs.sort(by[sort]);
-  }, [mistakes, sort, filter]);
+  }, [mistakes, sort, view]);
 
   const nextDue = Object.values(srs).filter((c) => c.due > a.now).sort((x, y) => x.due - y.due)[0];
 
   return (
     <div className="stack-lg">
-      <PageHeader title="Review" eyebrow="Spaced repetition and mistakes" />
-      <section className="card card-accent stack">
-        <div className="row between" style={{ flexWrap: 'wrap', gap: 12 }}>
-          <div>
-            <h2>{a.due.length ? `${a.due.length} concept${a.due.length === 1 ? '' : 's'} due` : 'Nothing due right now'}</h2>
-            <p className="small muted">
-              {a.due.length
-                ? 'Each concept is asked a different way from last time, so you recall the idea, not the question.'
-                : nextDue
-                  ? `Next review ${new Date(nextDue.due).toLocaleDateString(undefined, { weekday: 'long', day: 'numeric', month: 'short' })}.`
-                  : 'Play any game and missed concepts will be scheduled here automatically.'}
-            </p>
-          </div>
-          {a.due.length > 0 && (
-            <Link to="/play/review" className="btn btn-primary">
-              Start review
+      <div>
+        <PageTitle title="Review" />
+        {a.due.length ? (
+          <section className="hero stack">
+            <div className="stack-xs">
+              <span className="small muted">Spaced repetition</span>
+              <h2 style={{ color: '#fff', fontSize: '1.45rem' }}>
+                {a.due.length} concept{a.due.length === 1 ? '' : 's'} due
+              </h2>
+              <span className="small muted">Each one asked a new way, so you recall the idea, not the question.</span>
+            </div>
+            <Link to="/play/review" className="btn btn-primary btn-lg btn-block">
+              <Icon name="play" size={18} /> Start review
             </Link>
-          )}
-        </div>
-      </section>
+          </section>
+        ) : (
+          <section className="card row">
+            <span className="game-icon sm dark">
+              <Icon name="check" size={18} />
+            </span>
+            <div className="grow">
+              <h3>All caught up</h3>
+              <p className="small muted">
+                {nextDue ? `Next review ${new Date(nextDue.due).toLocaleDateString(undefined, { weekday: 'long' })}.` : 'Concepts you play are scheduled here automatically.'}
+              </p>
+            </div>
+            {openCount > 0 && (
+              <Link to="/play/review" className="btn btn-dark btn-sm">
+                Practise mistakes
+              </Link>
+            )}
+          </section>
+        )}
+      </div>
 
       <section className="stack">
-        <div className="row between" style={{ flexWrap: 'wrap', gap: 8 }}>
+        <div className="section-head" style={{ marginBottom: 0 }}>
           <h2>My Mistakes</h2>
-          <div className="row-wrap">
-            <label className="row small" style={{ gap: 6 }}>
-              Sort
-              <select className="input" style={{ minHeight: 36, padding: '4px 8px' }} value={sort} onChange={(e) => setSort(e.target.value as Sort)}>
-                <option value="date">Most recent</option>
-                <option value="frequency">Most repeated</option>
-                <option value="subject">Subject</option>
-                <option value="system">Organ system</option>
-                <option value="game">Game</option>
-                <option value="difficulty">Difficulty</option>
-              </select>
-            </label>
-            <button className="chip" aria-pressed={filter === 'all'} onClick={() => setFilter(filter === 'all' ? 'open' : 'all')}>
-              Include corrected
-            </button>
-          </div>
+          <select className="input" aria-label="Sort mistakes" style={{ minHeight: 34, width: 'auto', padding: '4px 8px', fontSize: 14 }} value={sort} onChange={(e) => setSort(e.target.value as Sort)}>
+            <option value="date">Recent</option>
+            <option value="frequency">Most missed</option>
+            <option value="subject">Subject</option>
+            <option value="system">Organ system</option>
+            <option value="game">Game</option>
+            <option value="difficulty">Hardest</option>
+          </select>
         </div>
+        <Segmented
+          label="Mistake status"
+          value={view}
+          onChange={setView}
+          options={[
+            { id: 'open', label: `To fix · ${openCount}` },
+            { id: 'corrected', label: `Corrected · ${all.length - openCount}` },
+          ]}
+        />
         {!list.length ? (
-          <Empty>{Object.keys(mistakes).length ? 'Every mistake has been corrected since. Nice work.' : 'No mistakes yet. Every wrong answer will be saved here with its explanation.'}</Empty>
+          <Empty>{view === 'open' ? (all.length ? 'Nothing left to fix.' : 'Wrong answers will collect here, with their explanations.') : 'Retry a mistake and get it right to see it here.'}</Empty>
         ) : (
-          <div className="stack-sm">
-            {list.map((m) => (
-              <MistakeCard key={m.itemId} m={m} onRetry={() => setRetry(m)} onTeach={() => setTeach({ conceptId: m.conceptIds[0]!, itemId: m.itemId })} />
-            ))}
+          <div className="card" style={{ padding: 0 }}>
+            <ul className="list">
+              {list.map((m) => (
+                <li key={m.itemId}>
+                  <button className="list-row" onClick={() => setOpen(m)}>
+                    <StatusDot status={estimate(m.conceptIds.map((id) => records[id]), a.now).status} />
+                    <span className="grow stack-xs">
+                      <span className="small clamp-2" style={{ fontWeight: 550 }}>
+                        {m.prompt}
+                      </span>
+                      <span className="tiny muted" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                        Answer: <strong style={{ color: 'var(--text)' }}>{m.expected}</strong>
+                      </span>
+                    </span>
+                    {m.count > 1 && <span className="badge badge-bad">×{m.count}</span>}
+                    <Icon name="chevron" size={18} className="chev" />
+                  </button>
+                </li>
+              ))}
+            </ul>
           </div>
         )}
-        <p className="tiny muted">History is kept even after you improve; the status shows your current mastery of the concept.</p>
       </section>
 
       {saved.length > 0 && (
-        <section className="stack">
-          <h2>Saved concepts</h2>
+        <section>
+          <div className="section-head">
+            <h2>Saved</h2>
+          </div>
           <div className="row-wrap">
             {saved.map((id) => {
               const c = content.concept(id);
@@ -114,106 +148,98 @@ export function Review() {
         </section>
       )}
 
-      {retry && <RetrySheet m={retry} onClose={() => setRetry(null)} />}
-      {teach && <TeachSheet conceptId={teach.conceptId} excludeItemId={teach.itemId} onClose={() => setTeach(null)} />}
+      {open && <MistakeSheet m={open} onClose={() => setOpen(null)} />}
     </div>
   );
 }
 
-function MistakeCard({ m, onRetry, onTeach }: { m: MistakeEntry; onRetry: () => void; onTeach: () => void }) {
+function MistakeSheet({ m, onClose }: { m: MistakeEntry; onClose: () => void }) {
   const records = useProgress((s) => s.concepts);
   const favourites = useProgress((s) => s.favouriteItems);
-  const { toggleFavourite, scheduleReview } = useProgress();
-  const concept = content.concept(m.conceptIds[0]!);
+  const { toggleFavourite, scheduleReview, answer } = useProgress();
   const now = useNow();
-  const status = estimate(m.conceptIds.map((id) => records[id]), now).status;
+  const concept = content.concept(m.conceptIds[0]!);
   const item = content.item(m.itemId);
-  const retryable = item?.kind === 'mcq' || item?.kind === 'tf';
+  const quiz = item?.kind === 'mcq' || item?.kind === 'tf' ? (item as McqItem | TrueFalseItem) : null;
+  const status = estimate(m.conceptIds.map((id) => records[id]), now).status;
   const fav = favourites.includes(m.itemId);
-  const [scheduled, setScheduled] = useState(false);
-  return (
-    <article className="card stack-sm">
-      <div className="row between" style={{ alignItems: 'flex-start' }}>
-        <div className="row-wrap">
-          {concept && <span className="badge badge-red">{DISCIPLINES[concept.discipline].short}</span>}
-          {concept && <span className="badge">{SYSTEMS[concept.system].short}</span>}
-          <span className="badge">{getGame(m.gameId)?.title}</span>
-          {m.count > 1 && <span className="badge badge-bad">Missed {m.count}×</span>}
-          {mistakeResolved(m) && <span className="badge badge-ok">Corrected</span>}
-        </div>
-        <button className="btn btn-text btn-sm" aria-pressed={fav} aria-label={fav ? 'Remove from favourites' : 'Favourite explanation'} onClick={() => toggleFavourite(m.itemId)}>
-          <Icon name="star" size={18} className={fav ? 'red' : undefined} />
-        </button>
-      </div>
-      <p style={{ fontWeight: 500 }}>{m.prompt}</p>
-      <div className="small">
-        <div>
-          <span className="muted">Your answer: </span>
-          <span style={{ color: 'var(--bad)' }}>{m.response}</span>
-        </div>
-        <div>
-          <span className="muted">Correct: </span>
-          <strong>{m.expected}</strong>
-        </div>
-      </div>
-      {item && 'mini' in item && <p className="small muted">{item.mini}</p>}
-      <div className="row between small" style={{ flexWrap: 'wrap', gap: 8 }}>
-        <span className="muted">
-          {concept?.title} · {new Date(m.lastAt).toLocaleDateString()} · {m.history.length} attempt{m.history.length === 1 ? '' : 's'}
-        </span>
-        <StatusBadge status={status} />
-      </div>
-      <div className="row-wrap">
-        {retryable && (
-          <button className="btn btn-dark btn-sm" onClick={onRetry}>
-            Retry
-          </button>
-        )}
-        <button className="btn btn-ghost btn-sm" onClick={onTeach}>
-          <Icon name="bulb" size={16} /> Teach me this
-        </button>
-        {concept && (
-          <Link className="btn btn-ghost btn-sm" to={`/play/survival?concept=${concept.id}`}>
-            Related game
-          </Link>
-        )}
-        {concept && (
-          <button
-            className="btn btn-ghost btn-sm"
-            disabled={scheduled}
-            onClick={() => {
-              scheduleReview(concept.id, 1);
-              setScheduled(true);
-            }}
-          >
-            {scheduled ? 'Scheduled for tomorrow' : 'Review tomorrow'}
-          </button>
-        )}
-      </div>
-    </article>
-  );
-}
-
-function RetrySheet({ m, onClose }: { m: MistakeEntry; onClose: () => void }) {
-  const item = content.item(m.itemId) as McqItem | TrueFalseItem;
-  const answer = useProgress((s) => s.answer);
+  const [mode, setMode] = useState<'view' | 'retry'>('view');
   const [res, setRes] = useState<{ id: string; correct: boolean } | null>(null);
   const [teach, setTeach] = useState(false);
+  const [scheduled, setScheduled] = useState(false);
+
   return (
-    <Sheet title="Retry" onClose={onClose}>
-      <div className="stack">
-        <QuestionCard
-          item={item}
-          answered={res?.id ?? null}
-          onAnswer={(correct, response, id) => {
-            if (res) return;
-            setRes({ id, correct });
-            answer({ gameId: 'review', item, correct, prompt: promptText(item), response, expected: expectedText(item) });
-          }}
-        />
-        {res && <AnswerFeedback correct={res.correct} item={item} chosenId={res.id} onTeach={() => setTeach(true)} />}
-        {teach && <TeachSheet conceptId={item.conceptIds[0]!} excludeItemId={item.id} onClose={() => setTeach(false)} />}
-      </div>
+    <Sheet title={mode === 'retry' ? 'Retry' : 'Mistake'} onClose={onClose}>
+      {mode === 'retry' && quiz ? (
+        <div className="stack">
+          <QuestionCard
+            item={quiz}
+            answered={res?.id ?? null}
+            onAnswer={(correct, response, id) => {
+              if (res) return;
+              setRes({ id, correct });
+              answer({ gameId: 'review', item: quiz, correct, prompt: promptText(quiz), response, expected: expectedText(quiz) });
+            }}
+          />
+          {res && <AnswerFeedback correct={res.correct} item={quiz} chosenId={res.id} onTeach={() => setTeach(true)} />}
+        </div>
+      ) : (
+        <div className="stack">
+          <div className="row-wrap">
+            {concept && <span className="badge badge-red">{DISCIPLINES[concept.discipline].short}</span>}
+            {concept && <span className="badge">{SYSTEMS[concept.system].short}</span>}
+            <span className="badge">{getGame(m.gameId)?.title}</span>
+            <StatusBadge status={status} />
+          </div>
+          <p className="question">{m.prompt}</p>
+          <div className="card-flat" style={{ padding: '4px 14px' }}>
+            <div className="row between small" style={{ padding: '10px 0', borderBottom: '1px solid var(--line)' }}>
+              <span className="muted">You said</span>
+              <span style={{ color: 'var(--bad)', fontWeight: 650, textAlign: 'right' }}>{m.response}</span>
+            </div>
+            <div className="row between small" style={{ padding: '10px 0' }}>
+              <span className="muted">Answer</span>
+              <strong style={{ textAlign: 'right' }}>{m.expected}</strong>
+            </div>
+          </div>
+          {item && 'mini' in item && <p className="small">{item.mini}</p>}
+          <p className="tiny muted">
+            Missed {m.count}× · last {new Date(m.lastAt).toLocaleDateString()} · {m.history.length} attempt{m.history.length === 1 ? '' : 's'}
+          </p>
+          {quiz && (
+            <button className="btn btn-primary btn-lg btn-block" onClick={() => setMode('retry')}>
+              Retry question
+            </button>
+          )}
+          <div className="grid-2">
+            <button className="btn btn-soft" onClick={() => setTeach(true)}>
+              <Icon name="bulb" size={16} /> Teach me
+            </button>
+            {concept && (
+              <button
+                className="btn btn-soft"
+                disabled={scheduled}
+                onClick={() => {
+                  scheduleReview(concept.id, 1);
+                  setScheduled(true);
+                }}
+              >
+                {scheduled ? 'Tomorrow ✓' : 'Review tomorrow'}
+              </button>
+            )}
+            {concept && (
+              <Link className="btn btn-soft" to={`/play/survival?concept=${concept.id}`}>
+                Related game
+              </Link>
+            )}
+            <button className="btn btn-soft" aria-pressed={fav} onClick={() => toggleFavourite(m.itemId)}>
+              <Icon name="star" size={16} className={fav ? 'red' : undefined} /> {fav ? 'Favourited' : 'Favourite'}
+            </button>
+          </div>
+          <ReportButton itemId={m.itemId} conceptId={concept?.id} />
+        </div>
+      )}
+      {teach && concept && <TeachSheet conceptId={concept.id} excludeItemId={m.itemId} onClose={() => setTeach(false)} />}
     </Sheet>
   );
 }

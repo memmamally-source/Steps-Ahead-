@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router';
 import { Icon } from '@/components/Icon';
 import { TeachSheet } from '@/components/learning';
-import { Empty } from '@/components/ui';
+import { ActionBar, Empty } from '@/components/ui';
 import { content } from '@/content';
 import type { ItemQuery } from '@/content/repo';
 import { dateKey } from '@/engine/random';
@@ -30,20 +30,41 @@ export function CrosswordGame({ daily, query, focusLabel }: { daily: boolean; qu
   if (!kind) {
     return (
       <GameFrame gameId="crossword" title="Medical Crossword" pausable={false}>
-        <div className="grid">
-          {(['mini', 'standard', 'advanced'] as const).map((k) => (
-            <button key={k} className="card card-link stack-sm" style={{ textAlign: 'left', cursor: 'pointer' }} onClick={() => setKind(k)}>
-              <h3>{CROSSWORD_SIZES[k].label}</h3>
-              <span className="small muted">
-                {k === 'mini' ? 'About 6 words · 3 minutes · same for everyone today' : k === 'standard' ? 'About 12 words · same for everyone today' : 'Harder clues · new grid each time'}
-              </span>
-            </button>
-          ))}
+        <section className="hero stack" style={{ padding: '24px 20px' }}>
+          <span className="game-icon">
+            <Icon name="grid" />
+          </span>
+          <div className="stack-xs">
+            <h1 style={{ color: '#fff', fontSize: '1.6rem' }}>Daily Medical Mini</h1>
+            <p className="small muted">About six words · three minutes · the same grid for everyone today</p>
+          </div>
+        </section>
+        <div className="card" style={{ padding: 0 }}>
+          <ul className="list">
+            {(['standard', 'advanced'] as const).map((k) => (
+              <li key={k}>
+                <button className="list-row" onClick={() => setKind(k)}>
+                  <span className="grow">
+                    <span className="strong small" style={{ display: 'block' }}>{CROSSWORD_SIZES[k].label}</span>
+                    <span className="tiny muted">{k === 'standard' ? 'About 12 words · daily' : 'Harder clues · new grid each time'}</span>
+                  </span>
+                  <Icon name="chevron" size={18} className="chev" />
+                </button>
+              </li>
+            ))}
+            <li>
+              <label className="list-row">
+                <span className="grow small">Show the clock</span>
+                <input type="checkbox" checked={timed} onChange={(e) => setTimed(e.target.checked)} style={{ width: 20, height: 20, accentColor: 'var(--red)' }} />
+              </label>
+            </li>
+          </ul>
         </div>
-        <label className="row small">
-          <input type="checkbox" checked={!timed} onChange={(e) => setTimed(!e.target.checked)} /> Untimed (hide the clock)
-        </label>
-        <p className="small muted">Subject crosswords: open a subject from the Subjects tab and choose Medical Crossword.</p>
+        <ActionBar>
+          <button className="btn btn-primary btn-lg" onClick={() => setKind('mini')}>
+            Play today’s Mini
+          </button>
+        </ActionBar>
       </GameFrame>
     );
   }
@@ -201,7 +222,8 @@ function Board({ puzzle, timed, daily, title, onAgain }: { puzzle: Puzzle; timed
   const secs = String(Math.floor((elapsed % 60000) / 1000)).padStart(2, '0');
 
   return (
-    <GameFrame gameId="crossword" title={title} status={timed && !done ? <span className="num small" style={{ fontWeight: 700 }}><Icon name="clock" size={16} /> {mins}:{secs}</span> : undefined}>
+    <GameFrame gameId="crossword" title={title} status={timed && !done ? <span className="num small strong">{mins}:{secs}</span> : undefined}>
+      {!done && (
       <div className="cw-wrap">
         <div className="stack-sm">
           <div className="cw-clue-bar" aria-live="polite">
@@ -242,29 +264,28 @@ function Board({ puzzle, timed, daily, title, onAgain }: { puzzle: Puzzle; timed
             }}
             onKeyDown={onKey}
           />
-          {!done && (
-            <div className="row-wrap" style={{ justifyContent: 'center' }}>
-              <button className="btn btn-ghost btn-sm" onClick={checkWord}>Check word</button>
-              <button className="btn btn-ghost btn-sm" onClick={revealLetter}>
-                <Icon name="bulb" size={16} /> Reveal letter
-              </button>
-              <button className="btn btn-dark btn-sm" onClick={() => finish(fill)}>Finish</button>
-            </div>
-          )}
-          <p className="tiny muted" style={{ textAlign: 'center' }}>
-            Tap a square twice to switch direction. Keyboard: arrows, Tab, Space, Backspace.
-          </p>
+          <ActionBar>
+            <button className="btn btn-soft btn-lg" onClick={checkWord}>
+              Check
+            </button>
+            <button className="btn btn-soft btn-lg" onClick={revealLetter}>
+              <Icon name="bulb" size={18} /> Hint
+            </button>
+            <button className="btn btn-dark btn-lg" onClick={() => finish(fill)}>
+              Finish
+            </button>
+          </ActionBar>
         </div>
         <div className="stack">
           {(['across', 'down'] as const).map((d) => (
-            <div key={d} className="card card-tight">
-              <h3 style={{ textTransform: 'capitalize', marginBottom: 6 }}>{d}</h3>
+            <div key={d} className="card" style={{ padding: '12px 8px' }}>
+              <span className="label" style={{ padding: '0 10px' }}>{d}</span>
               <ul className="list cw-clues">
                 {grid.entries
                   .filter((e) => e.dir === d)
                   .map((e) => (
-                    <li key={e.id} aria-current={e === current} className={entryCorrect(e, fill) ? 'done' : ''} onClick={() => goEntry(e)} style={{ borderBottom: 'none', padding: '6px 8px' }}>
-                      <strong className="num">{e.number}</strong> <span className="small">{e.clue}</span>
+                    <li key={e.id} aria-current={e === current} className={entryCorrect(e, fill) ? 'done' : ''} onClick={() => goEntry(e)} style={{ border: 'none' }}>
+                      <strong className="num">{e.number}</strong> <span>{e.clue}</span>
                     </li>
                   ))}
               </ul>
@@ -272,25 +293,31 @@ function Board({ puzzle, timed, daily, title, onAgain }: { puzzle: Puzzle; timed
           ))}
         </div>
       </div>
+      )}
       {done && (
         <div className="stack">
           <ScoreCard
             score={done.score}
             best={finalBest}
-            lines={[`${[...done.perEntry.values()].filter((x) => x.correct).length} of ${grid.entries.length} words solved`, revealed.size ? `${revealed.size} letter${revealed.size === 1 ? '' : 's'} revealed` : 'No hints used', timed ? `Time ${mins}:${secs}` : 'Untimed']}
-          >
-            <div className="row-wrap">
-              {onAgain && <button className="btn btn-primary" onClick={onAgain}>New crossword</button>}
-              <Link to="/" className="btn btn-ghost" style={{ color: '#fff', borderColor: '#555' }}>Home</Link>
-            </div>
-          </ScoreCard>
+            lines={[`${[...done.perEntry.values()].filter((x) => x.correct).length}/${grid.entries.length} words`, revealed.size ? `${revealed.size} hint${revealed.size === 1 ? '' : 's'}` : 'no hints', timed ? `${mins}:${secs}` : '']}
+          />
+          <ActionBar>
+            <Link to="/" className="btn btn-soft btn-lg">
+              Done
+            </Link>
+            {onAgain && (
+              <button className="btn btn-primary btn-lg" onClick={onAgain}>
+                New crossword
+              </button>
+            )}
+          </ActionBar>
           <section className="stack-sm">
-            <h2>Answers explained</h2>
+            <div className="section-head" style={{ marginBottom: 0 }}><h2>Answers explained</h2></div>
             {grid.entries.map((e) => {
               const r = done.perEntry.get(e.id)!;
               const it = puzzle.items.get(e.id);
               return (
-                <div key={e.id} className="card card-tight stack-sm">
+                <div key={e.id} className="card stack-xs" style={{ padding: 14 }}>
                   <div className="row between">
                     <strong>
                       {e.number} {e.dir}: {e.answer}

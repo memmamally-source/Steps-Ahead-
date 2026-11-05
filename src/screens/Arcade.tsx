@@ -1,90 +1,86 @@
 import { useState } from 'react';
 import { Link } from 'react-router';
 import { GAME_ICONS, Icon } from '@/components/Icon';
-import { PageHeader } from '@/components/ui';
-import { GAMES, type GameMeta } from '@/features/games/registry';
+import { PageTitle, PreviewPill, Segmented } from '@/components/ui';
+import { GAMES } from '@/features/games/registry';
 import { useProgress } from '@/state/progress';
 
 type Mode = 'all' | 'relax' | 'learn' | 'challenge';
-const MODES: { id: Mode; label: string; blurb: string }[] = [
-  { id: 'all', label: 'All', blurb: 'Every game in the library.' },
-  { id: 'relax', label: 'Relax', blurb: 'Short games, optional timers, no pressure. Progress is still tracked.' },
-  { id: 'learn', label: 'Learn', blurb: 'Structured practice with detailed explanations and spaced review.' },
-  { id: 'challenge', label: 'Challenge', blurb: 'Survival runs and personal records. Accuracy beats speed.' },
-];
+
+const SHORT: Record<string, string> = {
+  crossword: 'Clues from every subject',
+  connections: 'Find four groups of four',
+  mystery: 'Solve the case, name the mechanism',
+  survival: 'Three lives, rising difficulty',
+  'fact-fiction': 'Ten quick true-or-false calls',
+  review: 'Concepts due today',
+};
 
 export function Arcade() {
   const [mode, setMode] = useState<Mode>('all');
   const games = useProgress((s) => s.games);
-  const list = GAMES.filter((g) => mode === 'all' || g.modes.includes(mode));
-  const playable = list.filter((g) => g.status === 'playable');
-  const planned = list.filter((g) => g.status === 'planned');
+  const playable = GAMES.filter((g) => g.status === 'playable' && (mode === 'all' || g.modes.includes(mode)));
+  const planned = GAMES.filter((g) => g.status === 'planned');
   return (
     <div className="stack-lg">
-      <PageHeader title="Arcade" eyebrow="Play to learn">
-        <div className="row-wrap" role="radiogroup" aria-label="Experience">
-          {MODES.map((m) => (
-            <button key={m.id} className="chip" role="radio" aria-checked={mode === m.id} onClick={() => setMode(m.id)}>
-              {m.label}
-            </button>
+      <div>
+        <PageTitle title="Arcade" action={<PreviewPill />} />
+        <Segmented
+          label="Experience"
+          value={mode}
+          onChange={setMode}
+          options={[
+            { id: 'all', label: 'All' },
+            { id: 'relax', label: 'Relax' },
+            { id: 'learn', label: 'Learn' },
+            { id: 'challenge', label: 'Challenge' },
+          ]}
+        />
+      </div>
+      <div className="grid-2">
+        {playable.map((g) => {
+          const st = games[g.id];
+          const q = mode === 'all' ? '' : `?mode=${mode}`;
+          return (
+            <Link key={g.id} to={`/play/${g.id}${q}`} className="card tap tile">
+              <span className="game-icon">
+                <Icon name={GAME_ICONS[g.id]!} />
+              </span>
+              <div className="stack-xs">
+                <h3>{g.title.replace('Medical ', '')}</h3>
+                <span className="tiny muted clamp-2">{SHORT[g.id]}</span>
+              </div>
+              <span className="tiny muted num" style={{ marginTop: 'auto' }}>
+                {g.minutes} min{st?.best ? ` · best ${st.best}` : ''}
+              </span>
+            </Link>
+          );
+        })}
+      </div>
+      <details className="card-flat pad">
+        <summary className="row between" style={{ listStyle: 'none', cursor: 'pointer' }}>
+          <span className="row" style={{ gap: 12 }}>
+            <span className="game-icon sm" style={{ background: 'var(--surface-2)', color: 'var(--muted)' }}>
+              <Icon name="lock" size={18} />
+            </span>
+            <span>
+              <span className="strong small" style={{ display: 'block' }}>
+                {planned.length} more games in development
+              </span>
+              <span className="tiny muted">Not playable yet</span>
+            </span>
+          </span>
+          <Icon name="chevron" size={18} />
+        </summary>
+        <ul className="list" style={{ marginTop: 8 }}>
+          {planned.map((g) => (
+            <li key={g.id} className="row" style={{ padding: '10px 0' }} aria-disabled="true">
+              <Icon name={GAME_ICONS[g.id]!} size={18} className="muted" />
+              <span className="grow small">{g.title}</span>
+            </li>
           ))}
-        </div>
-        <p className="muted small">{MODES.find((m) => m.id === mode)!.blurb}</p>
-      </PageHeader>
-      <div className="grid">
-        {playable.map((g) => (
-          <GameTile key={g.id} g={g} best={games[g.id]?.best} played={games[g.id]?.completed ?? 0} mode={mode} />
-        ))}
-      </div>
-      {planned.length > 0 && (
-        <section className="stack">
-          <div>
-            <h2>In development</h2>
-            <p className="small muted">Designed and on the roadmap; not playable yet.</p>
-          </div>
-          <div className="grid">
-            {planned.map((g) => (
-              <GameTile key={g.id} g={g} />
-            ))}
-          </div>
-        </section>
-      )}
+        </ul>
+      </details>
     </div>
-  );
-}
-
-function GameTile({ g, best, played, mode }: { g: GameMeta; best?: number; played?: number; mode?: Mode }) {
-  const inner = (
-    <>
-      <div className="row between">
-        <span className={`game-icon${g.status === 'planned' ? ' planned' : ''}`}>
-          <Icon name={g.status === 'planned' ? 'lock' : GAME_ICONS[g.id]!} />
-        </span>
-        {g.status === 'planned' ? <span className="badge">In development</span> : <span className="small muted">{g.minutes} min</span>}
-      </div>
-      <div className="stack-sm" style={{ gap: 4 }}>
-        <h3>{g.title}</h3>
-        <p className="small muted">{g.blurb}</p>
-      </div>
-      {g.status === 'playable' && (
-        <div className="row small muted" style={{ marginTop: 'auto' }}>
-          {played ? <span>Played {played}×</span> : <span>New</span>}
-          {best ? <span>· Best {best}</span> : null}
-        </div>
-      )}
-    </>
-  );
-  if (g.status === 'planned') {
-    return (
-      <div className="card game-tile" aria-disabled="true" style={{ opacity: 0.7 }}>
-        {inner}
-      </div>
-    );
-  }
-  const q = mode === 'relax' || mode === 'challenge' || mode === 'learn' ? `?mode=${mode}` : '';
-  return (
-    <Link to={`/play/${g.id}${q}`} className="card card-link game-tile">
-      {inner}
-    </Link>
   );
 }

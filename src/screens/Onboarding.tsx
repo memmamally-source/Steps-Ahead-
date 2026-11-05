@@ -1,156 +1,108 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { Brand } from '@/config/brand';
-import { PACKAGES, type PackageId } from '@/config/packages';
+import { PACKAGES } from '@/config/packages';
 import { BrandMark, Icon } from '@/components/Icon';
-import { DISCIPLINES } from '@/content/taxonomy';
-import type { DisciplineId } from '@/content/schema';
-import type { PlayStyle, PrepStage } from '@/engine/progress';
+import { ActionBar } from '@/components/ui';
 import { useProgress } from '@/state/progress';
 
 const GOALS = [5, 10, 15, 30, 60];
-const WEAK_OPTIONS: DisciplineId[] = ['pathology', 'physiology', 'pharmacology', 'biochemistry', 'microbiology', 'immunology', 'genetics', 'anatomy', 'biostatistics', 'behavioral'];
 
+/** Two short steps: package, then a daily goal (exam date optional). Everything else lives in Profile. */
 export function Onboarding() {
   const nav = useNavigate();
   const setProfile = useProgress((s) => s.setProfile);
-  const [step, setStep] = useState<'package' | 'details'>('package');
-  const [pkg, setPkg] = useState<PackageId>('step1');
-  const [examDate, setExamDate] = useState('');
-  const [stage, setStage] = useState<PrepStage | undefined>();
-  const [weak, setWeak] = useState<string[]>([]);
+  const [step, setStep] = useState<'package' | 'goal'>('package');
   const [goal, setGoal] = useState(15);
-  const [custom, setCustom] = useState('');
-  const [style, setStyle] = useState<PlayStyle>('both');
+  const [examDate, setExamDate] = useState('');
+  const step1 = PACKAGES.find((p) => p.available)!;
+  const later = PACKAGES.filter((p) => !p.available);
 
-  const finish = (withDetails: boolean) => {
-    const g = custom ? Math.max(1, Math.min(600, Number(custom) || 15)) : goal;
-    setProfile({
-      packageId: pkg,
-      onboarded: true,
-      ...(withDetails ? { examDate: examDate || undefined, stage, weakSubjects: weak, dailyGoalMin: g, style } : {}),
-    });
+  const finish = () => {
+    setProfile({ packageId: step1.id, onboarded: true, dailyGoalMin: goal, examDate: examDate || undefined });
     nav('/', { replace: true });
   };
 
   return (
-    <main className="main" style={{ maxWidth: 640, paddingBottom: 48 }}>
-      <div className="brand" style={{ marginBottom: 32 }}>
-        <BrandMark /> {Brand.name}
+    <main className="main focus" style={{ maxWidth: 560 }}>
+      <div className="appbar">
+        <span className="brand">
+          <BrandMark size={30} /> {Brand.name}
+        </span>
+        {step === 'goal' && (
+          <button className="btn btn-text" onClick={finish}>
+            Skip
+          </button>
+        )}
       </div>
+
       {step === 'package' ? (
-        <div className="stack-lg fade-in">
+        <div className="stack-lg fade-in" style={{ marginTop: 24 }}>
           <div className="stack-sm">
-            <span className="eyebrow">Welcome</span>
-            <h1>Choose your package</h1>
-            <p className="muted">{Brand.description}</p>
+            <h1 style={{ fontSize: '2.2rem' }}>Learn Step 1 by playing.</h1>
+            <p className="muted">Quick daily games that track your study time and find your weak spots.</p>
           </div>
-          <div className="stack" role="radiogroup" aria-label="Exam package">
-            {PACKAGES.map((p) => (
+          <div className="card" style={{ boxShadow: 'var(--shadow), inset 0 0 0 2px var(--red)' }}>
+            <div className="row between">
+              <div>
+                <h2>{step1.title}</h2>
+                <p className="muted small">{step1.strap}</p>
+              </div>
+              <span className="game-icon sm">
+                <Icon name="check" size={18} />
+              </span>
+            </div>
+          </div>
+          <div className="stack-sm">
+            <span className="label">Coming later</span>
+            <div className="card-flat">
+              <ul className="list">
+                {later.map((p) => (
+                  <li key={p.id} className="list-row" style={{ cursor: 'default', color: 'var(--muted)' }}>
+                    <span className="grow">{p.title}</span>
+                    <span className="small">{p.strap}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <ActionBar>
+            <button className="btn btn-primary btn-lg" onClick={() => setStep('goal')}>
+              Continue
+            </button>
+          </ActionBar>
+        </div>
+      ) : (
+        <div className="stack-lg fade-in" style={{ marginTop: 24 }}>
+          <div className="stack-sm">
+            <h1>How long a day?</h1>
+            <p className="muted">Pick a goal you can keep on a busy day. You can change it any time.</p>
+          </div>
+          <div className="grid-3" role="radiogroup" aria-label="Daily goal">
+            {GOALS.map((g) => (
               <button
-                key={p.id}
+                key={g}
                 role="radio"
-                aria-checked={pkg === p.id}
-                disabled={!p.available}
-                onClick={() => setPkg(p.id)}
-                className="card card-link"
-                style={{
-                  textAlign: 'left',
-                  cursor: p.available ? 'pointer' : 'not-allowed',
-                  borderColor: pkg === p.id ? 'var(--red)' : undefined,
-                  boxShadow: pkg === p.id ? 'inset 0 0 0 1px var(--red)' : undefined,
-                  opacity: p.available ? 1 : 0.6,
-                }}
+                aria-checked={goal === g}
+                className="card tap"
+                onClick={() => setGoal(g)}
+                style={{ textAlign: 'center', padding: '18px 8px', boxShadow: goal === g ? 'inset 0 0 0 2px var(--text)' : undefined }}
               >
-                <div className="row between">
-                  <div className="stack-sm" style={{ gap: 2 }}>
-                    <h2>{p.title}</h2>
-                    <span className="muted">{p.strap}</span>
-                  </div>
-                  {p.available ? (
-                    pkg === p.id && <Icon name="check" size={24} className="red" />
-                  ) : (
-                    <span className="badge">Coming soon</span>
-                  )}
-                </div>
+                <div className="stat-value">{g}</div>
+                <div className="tiny muted">min</div>
               </button>
             ))}
           </div>
-          <button className="btn btn-primary btn-block" onClick={() => setStep('details')}>
-            Continue with Step 1
-          </button>
-          <p className="tiny muted" style={{ textAlign: 'center' }}>
-            You can play as a guest. Progress is saved on this device; accounts with sync across devices come later.
-          </p>
-        </div>
-      ) : (
-        <div className="stack-lg fade-in">
-          <div className="stack-sm">
-            <span className="eyebrow">Optional · 30 seconds</span>
-            <h1>Tailor your plan</h1>
-            <p className="muted">Everything here can be changed later in Profile.</p>
-          </div>
           <label className="field">
-            When are you taking Step 1?
+            Exam date <span className="muted" style={{ fontWeight: 400 }}>(optional)</span>
             <input className="input" type="date" value={examDate} onChange={(e) => setExamDate(e.target.value)} />
           </label>
-          <fieldset className="field" style={{ border: 0, padding: 0, margin: 0 }}>
-            <legend style={{ marginBottom: 6 }}>Where are you in your preparation?</legend>
-            <div className="row-wrap">
-              {(['beginning', 'midway', 'revising'] as const).map((s) => (
-                <button key={s} className="chip" aria-pressed={stage === s} onClick={() => setStage(stage === s ? undefined : s)}>
-                  {s === 'beginning' ? 'Just starting' : s === 'midway' ? 'Midway' : 'Final revision'}
-                </button>
-              ))}
-            </div>
-          </fieldset>
-          <fieldset className="field" style={{ border: 0, padding: 0, margin: 0 }}>
-            <legend style={{ marginBottom: 6 }}>Which subjects feel weakest?</legend>
-            <div className="row-wrap">
-              {WEAK_OPTIONS.map((d) => (
-                <button key={d} className="chip" aria-pressed={weak.includes(d)} onClick={() => setWeak(weak.includes(d) ? weak.filter((x) => x !== d) : [...weak, d])}>
-                  {DISCIPLINES[d].title}
-                </button>
-              ))}
-            </div>
-          </fieldset>
-          <fieldset className="field" style={{ border: 0, padding: 0, margin: 0 }}>
-            <legend style={{ marginBottom: 6 }}>Daily study goal</legend>
-            <div className="row-wrap">
-              {GOALS.map((g) => (
-                <button
-                  key={g}
-                  className="chip"
-                  aria-pressed={!custom && goal === g}
-                  onClick={() => {
-                    setGoal(g);
-                    setCustom('');
-                  }}
-                >
-                  {g} min
-                </button>
-              ))}
-              <input className="input" style={{ width: 110, minHeight: 36 }} inputMode="numeric" placeholder="Custom" aria-label="Custom goal in minutes" value={custom} onChange={(e) => setCustom(e.target.value.replace(/\D/g, ''))} />
-            </div>
-          </fieldset>
-          <fieldset className="field" style={{ border: 0, padding: 0, margin: 0 }}>
-            <legend style={{ marginBottom: 6 }}>How do you like to study?</legend>
-            <div className="row-wrap">
-              {(['casual', 'focused', 'both'] as const).map((s) => (
-                <button key={s} className="chip" aria-pressed={style === s} onClick={() => setStyle(s)}>
-                  {s === 'casual' ? 'Casual games' : s === 'focused' ? 'Focused revision' : 'Both'}
-                </button>
-              ))}
-            </div>
-          </fieldset>
-          <div className="stack-sm">
-            <button className="btn btn-primary btn-block" onClick={() => finish(true)}>
+          <p className="tiny muted">No account needed. Progress is saved on this device.</p>
+          <ActionBar>
+            <button className="btn btn-primary btn-lg" onClick={finish}>
               Start playing
             </button>
-            <button className="btn btn-ghost btn-block" onClick={() => finish(false)}>
-              Skip for now
-            </button>
-          </div>
+          </ActionBar>
         </div>
       )}
     </main>

@@ -5,7 +5,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router';
 import { Icon } from '@/components/Icon';
 import { AnswerFeedback, QuestionCard, TeachSheet, expectedText, promptText } from '@/components/learning';
-import { Empty } from '@/components/ui';
+import { ActionBar, Empty, Segmented } from '@/components/ui';
 import { content } from '@/content';
 import type { ItemQuery } from '@/content/repo';
 import { dueConcepts } from '@/engine/plan';
@@ -33,40 +33,32 @@ export function SurvivalGame({ query, focusLabel, mode }: { query: ItemQuery; fo
   if (!pool.length) return <Empty>No questions for this subject yet.</Empty>;
   if (!run) {
     return (
-      <GameFrame gameId="survival" title="Medical Survival" subtitle={focusLabel ?? 'Mixed subjects'} pausable={false}>
+      <GameFrame gameId="survival" title="Medical Survival" pausable={false}>
+        <section className="hero stack" style={{ textAlign: 'center', alignItems: 'center', padding: '28px 20px' }}>
+          <span className="lives" style={{ color: '#ff5a5f' }} aria-hidden>
+            {Array.from({ length: START_LIVES }, (_, i) => (
+              <Icon key={i} name="heart" size={28} />
+            ))}
+          </span>
+          <h1 style={{ color: '#fff', fontSize: '1.6rem' }}>{focusLabel ?? 'Mixed subjects'}</h1>
+          <p className="small muted">Three lives. It gets harder every three correct answers. Accuracy beats speed.</p>
+          {best > 0 && <span className="badge" style={{ background: 'rgb(255 255 255 / 0.1)', color: '#fff' }}>Best {best}</span>}
+        </section>
         <div className="card stack">
-          <p>
-            You have <strong>{START_LIVES} lives</strong>. Each wrong answer costs one. Questions get harder every three correct answers. Accuracy matters more than speed.
-          </p>
-          <fieldset className="field" style={{ border: 0, padding: 0, margin: 0 }}>
-            <legend style={{ marginBottom: 6 }}>Explanations</legend>
-            <div className="row-wrap">
-              <button className="chip" aria-pressed={feedbackPref === 'immediate'} onClick={() => setFeedbackPref('immediate')}>
-                After each answer
-              </button>
-              <button className="chip" aria-pressed={feedbackPref === 'end'} onClick={() => setFeedbackPref('end')}>
-                At the end (faster)
-              </button>
-            </div>
-          </fieldset>
-          <fieldset className="field" style={{ border: 0, padding: 0, margin: 0 }}>
-            <legend style={{ marginBottom: 6 }}>Timer</legend>
-            <div className="row-wrap">
-              <button className="chip" aria-pressed={!timedPref} onClick={() => setTimedPref(false)}>
-                Untimed
-              </button>
-              <button className="chip" aria-pressed={timedPref} onClick={() => setTimedPref(true)}>
-                30 s per question (bonus only)
-              </button>
-            </div>
-          </fieldset>
-          <p className="small muted">
-            {pool.length} questions available · Personal best {best}
-          </p>
-          <button className="btn btn-primary" onClick={() => setRun({ feedback: feedbackPref, timed: timedPref, n: 1 })}>
-            <Icon name="play" size={16} /> Start run
-          </button>
+          <div className="stack-xs">
+            <span className="label">Explanations</span>
+            <Segmented label="Explanations" value={feedbackPref} onChange={setFeedbackPref} options={[{ id: 'immediate', label: 'After each answer' }, { id: 'end', label: 'At the end' }]} />
+          </div>
+          <div className="stack-xs">
+            <span className="label">Timer</span>
+            <Segmented label="Timer" value={timedPref ? 'on' : 'off'} onChange={(v) => setTimedPref(v === 'on')} options={[{ id: 'off', label: 'Off' }, { id: 'on', label: '30 s · bonus only' }]} />
+          </div>
         </div>
+        <ActionBar>
+          <button className="btn btn-primary btn-lg" onClick={() => setRun({ feedback: feedbackPref, timed: timedPref, n: 1 })}>
+            Start run
+          </button>
+        </ActionBar>
       </GameFrame>
     );
   }
@@ -135,22 +127,21 @@ function SurvivalRun({ pool, feedback, timed, focusLabel, onRestart }: { pool: S
 
   if (done || !current) {
     return (
-      <GameFrame gameId="survival" title="Medical Survival" subtitle={focusLabel} pausable={false}>
+      <GameFrame gameId="survival" title="Medical Survival" pausable={false}>
         <ScoreCard
           score={state.score}
           best={finalBest}
-          lines={[`${state.correct} of ${state.answered} correct`, `Longest streak ${state.bestStreak}`, `Reached level ${state.level}`, state.lives > 0 ? 'You answered every available question.' : 'Out of lives.']}
-        >
-          <div className="row-wrap">
-            <button className="btn btn-primary" onClick={onRestart}>
-              Play again
-            </button>
-            <Link to="/review" className="btn btn-ghost" style={{ color: '#fff', borderColor: '#555' }}>
-              My Mistakes
-            </Link>
-          </div>
-        </ScoreCard>
+          lines={[`${state.correct}/${state.answered} correct`, `level ${state.level}`, `best streak ${state.bestStreak}`]}
+        />
         <RoundReview results={results} />
+        <ActionBar>
+          <Link to="/arcade" className="btn btn-soft btn-lg">
+            Done
+          </Link>
+          <button className="btn btn-primary btn-lg" onClick={onRestart}>
+            Play again
+          </button>
+        </ActionBar>
       </GameFrame>
     );
   }
@@ -158,47 +149,41 @@ function SurvivalRun({ pool, feedback, timed, focusLabel, onRestart }: { pool: S
   return (
     <GameFrame
       gameId="survival"
-      title="Medical Survival"
-      subtitle={focusLabel}
+      title={focusLabel ?? 'Medical Survival'}
       status={
-        <>
-          <span className="lives" aria-label={`${state.lives} lives left`}>
-            {Array.from({ length: START_LIVES }, (_, i) => (
-              <span key={i} className={i < state.lives ? '' : 'lost'}>
-                <Icon name="heart" size={20} />
-              </span>
-            ))}
-          </span>
-          <span className="num small" style={{ fontWeight: 700 }}>
-            {state.score}
-          </span>
-        </>
+        <span className="lives" aria-label={`${state.lives} lives left`}>
+          {Array.from({ length: START_LIVES }, (_, i) => (
+            <span key={i} className={i < state.lives ? '' : 'lost'}>
+              <Icon name="heart" size={18} />
+            </span>
+          ))}
+        </span>
       }
     >
-      <div className="card stack" key={current.id}>
-        <div className="row between small muted">
-          <span>
-            Question {state.answered + (chosen ? 0 : 1)} · Level {state.level}
-          </span>
-          {timed && !chosen && <span className="num">{Math.max(0, Math.ceil(left / 1000))} s</span>}
-          {state.streak > 1 && <span className="badge badge-red">Streak {state.streak}</span>}
-        </div>
+      <div className="row between small muted num" style={{ marginTop: -4 }}>
+        <span>
+          Level {state.level} · {state.score} pts
+        </span>
+        {timed && !chosen && <span className="strong" style={{ color: left < 8000 ? 'var(--red-ink)' : undefined }}>{Math.max(0, Math.ceil(left / 1000))} s</span>}
+        {state.streak > 1 && <span className="badge badge-red">Streak {state.streak}</span>}
+      </div>
+      <div key={current.id} className="stack fade-in">
         <QuestionCard item={current} answered={chosen?.id ?? null} onAnswer={onAnswer} />
-        {chosen && feedback === 'immediate' && (
-          <>
-            <AnswerFeedback correct={chosen.correct} item={current} chosenId={chosen.id} onTeach={() => setTeach(true)} />
-            <button className="btn btn-primary" onClick={() => advance(state)} autoFocus>
-              {isOver(state, pool) ? 'See results' : 'Next question'}
-            </button>
-          </>
-        )}
+        {chosen && feedback === 'immediate' && <AnswerFeedback correct={chosen.correct} item={current} chosenId={chosen.id} onTeach={() => setTeach(true)} />}
         {chosen && feedback === 'end' && (
-          <p className="small" style={{ fontWeight: 700, color: chosen.correct ? 'var(--ok)' : 'var(--bad)' }} aria-live="polite">
-            {chosen.correct ? '✓ Correct' : '✗ Incorrect: explained at the end'}
+          <p className="small strong" style={{ color: chosen.correct ? 'var(--ok)' : 'var(--bad)' }} aria-live="polite">
+            {chosen.correct ? '✓ Correct' : '✗ Incorrect · explained at the end'}
           </p>
         )}
-        {teach && <TeachSheet conceptId={current.conceptIds[0]!} excludeItemId={current.id} onClose={() => setTeach(false)} />}
       </div>
+      {chosen && feedback === 'immediate' && (
+        <ActionBar>
+          <button className="btn btn-primary btn-lg" onClick={() => advance(state)} autoFocus>
+            {isOver(state, pool) ? 'See results' : 'Next question'}
+          </button>
+        </ActionBar>
+      )}
+      {teach && <TeachSheet conceptId={current.conceptIds[0]!} excludeItemId={current.id} onClose={() => setTeach(false)} />}
     </GameFrame>
   );
 }
@@ -284,35 +269,25 @@ function FixedRound({ gameId, title, subtitle, items, onAgain, activity }: { gam
   if (done) {
     return (
       <GameFrame gameId={gameId} title={title} pausable={false}>
-        <ScoreCard score={score} best={finalBest} lines={[`${correctCount} of ${items.length} correct`]}>
-          <div className="row-wrap">
-            {onAgain && (
-              <button className="btn btn-primary" onClick={onAgain}>
-                New round
-              </button>
-            )}
-            <Link to="/" className="btn btn-ghost" style={{ color: '#fff', borderColor: '#555' }}>
-              Home
-            </Link>
-          </div>
-        </ScoreCard>
+        <ScoreCard score={score} best={finalBest} lines={[`${correctCount} of ${items.length} correct`]} />
         <RoundReview results={results} />
+        <ActionBar>
+          <Link to="/" className="btn btn-soft btn-lg">
+            Done
+          </Link>
+          {onAgain && (
+            <button className="btn btn-primary btn-lg" onClick={onAgain}>
+              New round
+            </button>
+          )}
+        </ActionBar>
       </GameFrame>
     );
   }
 
   return (
-    <GameFrame
-      gameId={gameId}
-      title={title}
-      subtitle={subtitle}
-      status={
-        <span className="num small" style={{ fontWeight: 700 }}>
-          {i + 1}/{items.length}
-        </span>
-      }
-    >
-      <div className="card stack" key={item.id}>
+    <GameFrame gameId={gameId} title={title} subtitle={subtitle} progress={(i + (chosen ? 1 : 0)) / items.length} status={<span className="small strong num">{i + 1}/{items.length}</span>}>
+      <div key={item.id} className="stack fade-in">
         <QuestionCard
           item={item}
           answered={chosen?.id ?? null}
@@ -323,16 +298,16 @@ function FixedRound({ gameId, title, subtitle, items, onAgain, activity }: { gam
             answer({ gameId, sessionId, item, correct, prompt: promptText(item), response, expected: expectedText(item), latencyMs: Date.now() - shownAt });
           }}
         />
-        {chosen && (
-          <>
-            <AnswerFeedback correct={chosen.correct} item={item} chosenId={chosen.id} onTeach={() => setTeach(true)} />
-            <button className="btn btn-primary" onClick={next} autoFocus>
-              {i + 1 >= items.length ? 'See results' : 'Next'}
-            </button>
-          </>
-        )}
-        {teach && <TeachSheet conceptId={item.conceptIds[0]!} excludeItemId={item.id} onClose={() => setTeach(false)} />}
+        {chosen && <AnswerFeedback correct={chosen.correct} item={item} chosenId={chosen.id} onTeach={() => setTeach(true)} />}
       </div>
+      {chosen && (
+        <ActionBar>
+          <button className="btn btn-primary btn-lg" onClick={next} autoFocus>
+            {i + 1 >= items.length ? 'See results' : 'Next'}
+          </button>
+        </ActionBar>
+      )}
+      {teach && <TeachSheet conceptId={item.conceptIds[0]!} excludeItemId={item.id} onClose={() => setTeach(false)} />}
     </GameFrame>
   );
 }

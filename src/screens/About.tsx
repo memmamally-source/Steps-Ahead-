@@ -1,5 +1,4 @@
-import { PageHeader } from '@/components/ui';
-import { Brand } from '@/config/brand';
+import { PageTitle } from '@/components/ui';
 import { ALL_CONCEPTS, ALL_ITEMS, content } from '@/content';
 import { SOURCES } from '@/content/sources';
 import { BLUEPRINT_VERIFIED, DISCIPLINES } from '@/content/taxonomy';
@@ -9,7 +8,7 @@ export function About() {
   const statuses = ALL_ITEMS.reduce<Record<string, number>>((m, i) => ((m[i.review.status] = (m[i.review.status] ?? 0) + 1), m), {});
   return (
     <div className="stack-lg" style={{ maxWidth: 820 }}>
-      <PageHeader title="Content & sources" eyebrow={Brand.name} back={true} />
+      <PageTitle title="Content & sources" back={true} />
       <section className="card stack-sm">
         <h2>Medical review status</h2>
         <p>
@@ -41,7 +40,7 @@ export function About() {
       <section className="stack">
         <h2>Source register</h2>
         {SOURCES.map((s) => (
-          <article key={s.id} className="card card-tight stack-sm" style={{ gap: 4 }}>
+          <article key={s.id} className="card stack-sm" style={{ gap: 4 }}>
             <div className="row between" style={{ flexWrap: 'wrap', gap: 6 }}>
               <a href={s.url} target="_blank" rel="noreferrer">
                 <strong>{s.name}</strong>

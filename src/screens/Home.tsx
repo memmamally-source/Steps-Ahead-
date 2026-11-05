@@ -1,173 +1,184 @@
 import { useState } from 'react';
 import { Link } from 'react-router';
-import { Icon, GAME_ICONS } from '@/components/Icon';
-import { PreviewBanner, Stat, pct } from '@/components/ui';
-import { getPackage } from '@/config/packages';
-import { content } from '@/content';
+import { BrandMark, GAME_ICONS, Icon } from '@/components/Icon';
+import { PreviewPill, Ring, pct } from '@/components/ui';
+import { Brand } from '@/config/brand';
 import { formatDuration } from '@/engine/studyTime';
-import { GAMES, getGame } from '@/features/games/registry';
+import { getGame } from '@/features/games/registry';
 import { useProgress } from '@/state/progress';
 import { playHref, todayKey, useAnalysis, useDailyDone, useTimeSummary } from '@/state/derived';
 
-const PLAN_LENGTHS = [5, 10, 15, 30, 60];
+const DAILIES = [
+  { id: 'crossword', label: 'Mini' },
+  { id: 'connections', label: 'Connections' },
+  { id: 'mystery', label: 'Patient' },
+] as const;
+
+const LENGTHS = [5, 15, 30, 60];
+
+function greeting(now: number) {
+  const h = new Date(now).getHours();
+  return h < 5 ? 'Late session' : h < 12 ? 'Good morning' : h < 18 ? 'Good afternoon' : 'Good evening';
+}
 
 export function Home() {
   const profile = useProgress((s) => s.profile);
   const counts = useProgress((s) => s.counts);
-  const mistakes = useProgress((s) => s.mistakes);
   const time = useTimeSummary();
   const a = useAnalysis();
   const dailyDone = useDailyDone();
-  const [planMin, setPlanMin] = useState(profile.dailyGoalMin <= 60 ? closest(profile.dailyGoalMin) : 15);
-  const plan = a.plan(planMin);
-  const next = a.plan(5)[0];
   const today = todayKey();
-  const c = counts[today] ?? { answered: 0, correct: 0 };
   const goalMs = profile.dailyGoalMin * 60_000;
-  const returning = Object.keys(counts).length > 0;
-  const startOfDay = new Date(a.now).setHours(0, 0, 0, 0);
-  const addedToday = Object.values(mistakes).filter((m) => m.firstAt >= startOfDay).length;
+  const [length, setLength] = useState<number | null>(null);
+  const planMin = length ?? Math.max(5, Math.min(60, profile.dailyGoalMin));
+  const plan = a.plan(planMin);
+  const next = plan[0];
+  const c = counts[today] ?? { answered: 0, correct: 0 };
+  const goalMet = time.today >= goalMs;
   const weakest = a.weak[0];
-  const examDays = profile.examDate ? Math.ceil((new Date(profile.examDate + 'T00:00').getTime() - startOfDay) / 86_400_000) : null;
+  const examDays = profile.examDate ? Math.ceil((new Date(profile.examDate + 'T00:00').getTime() - new Date(a.now).setHours(0, 0, 0, 0)) / 86_400_000) : null;
 
   return (
     <div className="stack-lg">
-      <section className="hero stack">
-        <div className="stack-sm" style={{ gap: 4 }}>
-          <span className="eyebrow" style={{ color: '#ff8a8e' }}>{getPackage(profile.packageId).title} preparation</span>
-          <h1 style={{ color: '#fff' }}>{returning ? 'Welcome back' : 'Welcome'}</h1>
-          {examDays !== null && examDays >= 0 && <span className="muted small">{examDays} days until your exam</span>}
+      <div className="appbar">
+        <span className="brand mobile-only">
+          <BrandMark size={30} /> {Brand.name}
+        </span>
+        <div className="row" style={{ gap: 8 }}>
+          <PreviewPill />
+          <span className="badge" style={{ fontSize: '0.8rem', padding: '5px 10px' }} aria-label={`${time.streak} day streak`}>
+            <Icon name="flame" size={15} /> {time.streak}
+          </span>
         </div>
-        <div className="stack-sm">
-          <div className="row between small">
-            <span>
-              Today: <strong className="num">{formatDuration(time.today)}</strong> of {profile.dailyGoalMin} min
+      </div>
+
+      <section className="hero stack" style={{ marginTop: -14 }}>
+        <div className="row between" style={{ alignItems: 'flex-start' }}>
+          <div className="stack-xs grow">
+            <span className="small muted">
+              {greeting(a.now)}
+              {examDays !== null && examDays >= 0 ? ` · ${examDays} days to Step 1` : ''}
             </span>
-            <span className="row" style={{ gap: 6 }}>
-              <Icon name="flame" size={18} /> <strong className="num">{time.streak}</strong> day streak
+            <h1 style={{ color: '#fff', fontSize: '1.65rem' }}>{goalMet ? 'Goal reached' : 'Today’s session'}</h1>
+            <span className="small muted">
+              {formatDuration(time.today)} of {profile.dailyGoalMin} min
             </span>
           </div>
-          <div className="bar" style={{ background: '#333', borderColor: '#333' }} role="progressbar" aria-label="Daily goal" aria-valuenow={Math.round(Math.min(1, time.today / goalMs) * 100)}>
-            <span style={{ width: `${Math.min(100, (time.today / goalMs) * 100)}%` }} />
-          </div>
+          <Ring value={time.today / goalMs} size={72} label={`${Math.round(Math.min(1, time.today / goalMs) * 100)}% of daily goal`}>
+            <span className="strong num" style={{ fontSize: '0.95rem' }}>
+              {Math.round(Math.min(1, time.today / goalMs) * 100)}%
+            </span>
+          </Ring>
         </div>
         {next && (
-          <Link to={playHref(next)} className="btn btn-primary btn-wrap" style={{ alignSelf: 'flex-start', maxWidth: '100%', justifyContent: 'flex-start' }}>
-            <Icon name="play" size={16} />
-            <span className="stack-sm" style={{ gap: 0 }}>
-              <span>Up next: {getGame(next.gameId)?.title}</span>
-              <span className="small" style={{ fontWeight: 500, opacity: 0.9 }}>{next.reason}</span>
+          <Link to={playHref(next)} className="btn btn-primary btn-lg btn-block" style={{ justifyContent: 'space-between' }}>
+            <span className="row" style={{ gap: 10 }}>
+              <Icon name="play" size={18} /> {getGame(next.gameId)?.title}
+            </span>
+            <span className="small" style={{ fontWeight: 600, opacity: 0.85 }}>
+              {next.minutes} min
             </span>
           </Link>
         )}
+        {next && <span className="tiny muted" style={{ marginTop: -6 }}>{next.reason}</span>}
       </section>
 
-      <PreviewBanner />
-
-      <section className="stack">
-        <div className="row between">
-          <h2>Today’s dailies</h2>
-          <span className="small muted">Same puzzles for everyone today</span>
+      <section>
+        <div className="section-head">
+          <h2>Daily</h2>
+          <span className="tiny muted">Same for everyone today</span>
         </div>
-        <div className="grid">
-          {GAMES.filter((g) => g.daily).map((g) => {
-            const done = dailyDone.has(`${today}:${g.id}`);
+        <div className="grid-3">
+          {DAILIES.map((d) => {
+            const done = dailyDone.has(`${today}:${d.id}`);
             return (
-              <Link key={g.id} to={`/play/${g.id}?daily=1`} className="card card-link row" style={{ gap: 14 }}>
-                <span className="game-icon">
-                  <Icon name={GAME_ICONS[g.id]!} />
+              <Link key={d.id} to={`/play/${d.id}?daily=1`} className="card tap daily" aria-label={`Daily ${getGame(d.id)?.title}${done ? ', done' : ''}`}>
+                <span className={`game-icon sm${done ? ' dark' : ''}`}>
+                  <Icon name={GAME_ICONS[d.id]!} size={18} />
                 </span>
-                <div style={{ flex: 1 }}>
-                  <h3>{g.id === 'crossword' ? 'Daily Medical Mini' : `Daily ${g.title.replace('Medical ', '')}`}</h3>
-                  <span className="small muted">{g.minutes} min</span>
-                </div>
-                {done ? <span className="badge badge-ok"><Icon name="check" size={14} /> Done</span> : <Icon name="chevron" />}
+                <span className="strong small">{d.label}</span>
+                {done && (
+                  <span className="check">
+                    <Icon name="check" size={14} />
+                  </span>
+                )}
               </Link>
             );
           })}
         </div>
       </section>
 
-      <section className="stack">
-        <h2>Today’s progress</h2>
-        <div className="grid-4">
-          <Stat label="Study time" value={formatDuration(time.today)} sub={time.externalToday ? `+ ${formatDuration(time.externalToday)} logged elsewhere` : 'tracked automatically'} />
-          <Stat label="Questions answered" value={c.answered} />
-          <Stat label="Accuracy" value={c.answered ? pct(c.correct / c.answered) : '—'} />
-          <Stat label="Due for review" value={a.due.length} sub={addedToday ? `${addedToday} added to revision today` : undefined} />
-        </div>
-        <div className="grid-2">
-          <div className="card stack-sm">
-            <span className="stat-label">Weakest area</span>
-            {weakest ? (
-              <>
-                <h3>{weakest.title}</h3>
-                <span className="small muted">
-                  {pct(weakest.estimate.accuracy)} accuracy over {weakest.estimate.attempts} answers
-                </span>
-                <Link className="btn btn-dark btn-sm" style={{ alignSelf: 'flex-start' }} to={playHref({ gameId: 'survival', focus: weakest.level === 'concept' ? { concept: weakest.id } : { topic: weakest.id } })}>
-                  Practise it
-                </Link>
-              </>
-            ) : (
-              <p className="small muted">Answer a few more questions and we’ll pinpoint your weakest topic. One answer is never enough to judge.</p>
-            )}
+      <section className="card" style={{ padding: 0 }}>
+        <div className="stat-strip">
+          <div>
+            <div className="stat-value">{c.answered}</div>
+            <div className="stat-label">answered today</div>
           </div>
-          <div className="card stack-sm">
-            <span className="stat-label">Strongest area</span>
-            {a.strongestDiscipline ? (
-              <>
-                <h3>{a.strongestDiscipline.title}</h3>
-                <span className="small muted">{pct(a.strongestDiscipline.estimate.accuracy)} accuracy</span>
-              </>
-            ) : (
-              <p className="small muted">Not enough data yet.</p>
-            )}
+          <div>
+            <div className="stat-value">{c.answered ? pct(c.correct / c.answered) : '—'}</div>
+            <div className="stat-label">accuracy</div>
           </div>
+          <Link to="/review" style={{ textDecoration: 'none' }}>
+            <div className="stat-value" style={{ color: a.due.length ? 'var(--red-ink)' : undefined }}>
+              {a.due.length}
+            </div>
+            <div className="stat-label">due for review</div>
+          </Link>
         </div>
+        {weakest && (
+          <Link to={playHref({ gameId: 'survival', focus: weakest.level === 'concept' ? { concept: weakest.id } : { topic: weakest.id } })} className="list-row" style={{ borderTop: '1px solid var(--line)' }}>
+            <span className="dot dot-bad" />
+            <span className="grow small">
+              <span className="muted">Focus area: </span>
+              <strong>{weakest.title}</strong>
+              <span className="muted"> · {pct(weakest.estimate.accuracy)}</span>
+            </span>
+            <Icon name="chevron" size={18} className="chev" />
+          </Link>
+        )}
       </section>
 
-      <section className="stack">
-        <div className="row between" style={{ flexWrap: 'wrap', gap: 8 }}>
-          <h2>Your study plan</h2>
-          <div className="row-wrap" role="radiogroup" aria-label="Plan length">
-            {PLAN_LENGTHS.map((m) => (
-              <button key={m} className="chip" role="radio" aria-checked={planMin === m} onClick={() => setPlanMin(m)}>
-                {m} min
-              </button>
-            ))}
-          </div>
+      <section>
+        <div className="section-head">
+          <h2>Up next</h2>
+          <label className="row small" style={{ gap: 6 }}>
+            <span className="muted">Session</span>
+            <select className="input" style={{ minHeight: 34, width: 'auto', padding: '4px 8px', fontSize: 14 }} value={planMin} onChange={(e) => setLength(Number(e.target.value))}>
+              {[...new Set([...LENGTHS, planMin])].sort((x, y) => x - y).map((m) => (
+                <option key={m} value={m}>
+                  {m} min
+                </option>
+              ))}
+            </select>
+          </label>
         </div>
-        <ol className="card list" style={{ padding: '4px 18px' }}>
-          {plan.map((b, i) => (
-            <li key={i} className="row" style={{ gap: 14 }}>
-              <span className="num" style={{ fontWeight: 800, width: 52, flex: 'none' }}>{b.minutes} min</span>
-              <div style={{ flex: 1, minWidth: 0 }}>
-                <strong>{getGame(b.gameId)?.title}</strong>
-                <div className="small muted">{b.reason}</div>
-              </div>
-              <Link className="btn btn-ghost btn-sm" to={playHref(b)} aria-label={`Start ${getGame(b.gameId)?.title}`}>
-                Start
+        <div className="card-flat" style={{ background: 'var(--surface)' }}>
+          <ul className="list">
+            {plan.slice(1, 4).map((b, i) => (
+              <li key={i}>
+                <Link to={playHref(b)} className="list-row">
+                  <span className="game-icon sm dark">
+                    <Icon name={GAME_ICONS[b.gameId]!} size={18} />
+                  </span>
+                  <span className="grow">
+                    <span className="strong small" style={{ display: 'block' }}>
+                      {getGame(b.gameId)?.title}
+                    </span>
+                    <span className="tiny muted clamp-2">{b.reason}</span>
+                  </span>
+                  <span className="small muted num">{b.minutes}m</span>
+                </Link>
+              </li>
+            ))}
+            <li>
+              <Link to="/progress" className="list-row">
+                <span className="grow small strong">Your dashboard</span>
+                <Icon name="chevron" size={18} className="chev" />
               </Link>
             </li>
-          ))}
-        </ol>
-        <p className="tiny muted">Built from your due reviews, weak areas, unfinished dailies and untouched topics. Play anything you like instead.</p>
+          </ul>
+        </div>
       </section>
-
-      <section className="row-wrap">
-        <Link to="/progress" className="btn btn-ghost">
-          <Icon name="chart" size={18} /> Full dashboard
-        </Link>
-        <Link to="/arcade" className="btn btn-ghost">
-          <Icon name="arcade" size={18} /> All games
-        </Link>
-      </section>
-      <p className="tiny muted">{content.concepts.length} concepts available in this build.</p>
     </div>
   );
-}
-
-function closest(n: number) {
-  return PLAN_LENGTHS.reduce((a, b) => (Math.abs(b - n) < Math.abs(a - n) ? b : a));
 }

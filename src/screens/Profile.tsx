@@ -1,8 +1,7 @@
-import { useState } from 'react';
+import { useState, type ReactNode } from 'react';
 import { Link } from 'react-router';
 import { Icon } from '@/components/Icon';
-import { PageHeader, Sheet } from '@/components/ui';
-import { PACKAGES } from '@/config/packages';
+import { PageTitle, Segmented, Sheet } from '@/components/ui';
 import { PLANS } from '@/config/plans';
 import { DISCIPLINES } from '@/content/taxonomy';
 import { dateKey } from '@/engine/random';
@@ -14,13 +13,36 @@ import { useTimeSummary } from '@/state/derived';
 const RESOURCES = ['UWorld', 'AMBOSS', 'First Aid', 'Pathoma', 'Sketchy', 'Boards & Beyond', 'Anki', 'NBME / practice exam', 'Lectures', 'Other'];
 const GOALS = [5, 10, 15, 30, 60];
 
+function Group({ title, children }: { title: string; children: ReactNode }) {
+  return (
+    <section className="stack-sm">
+      <span className="label" style={{ paddingLeft: 4 }}>
+        {title}
+      </span>
+      <div className="card" style={{ padding: 0 }}>
+        <ul className="list">{children}</ul>
+      </div>
+    </section>
+  );
+}
+
+function Toggle({ checked, onChange, label }: { checked: boolean; onChange: (v: boolean) => void; label: string }) {
+  return (
+    <li>
+      <label className="list-row">
+        <span className="grow small">{label}</span>
+        <input type="checkbox" checked={checked} onChange={(e) => onChange(e.target.checked)} style={{ width: 20, height: 20, accentColor: 'var(--red)' }} />
+      </label>
+    </li>
+  );
+}
+
 export function Profile() {
   const profile = useProgress((s) => s.profile);
   const external = useProgress((s) => s.external);
-  const { setProfile, addExternal, removeExternal, resetAll } = useProgress();
+  const { setProfile, resetAll } = useProgress();
   const time = useTimeSummary();
-  const [confirmDelete, setConfirmDelete] = useState(false);
-  const [form, setForm] = useState({ resource: 'UWorld', minutes: '', subject: '', date: dateKey(), notes: '' });
+  const [sheet, setSheet] = useState<null | 'goal' | 'log' | 'plans' | 'delete'>(null);
 
   const download = () => {
     const blob = new Blob([exportProgress()], { type: 'application/json' });
@@ -32,91 +54,174 @@ export function Profile() {
   };
 
   return (
-    <div className="stack-lg" style={{ maxWidth: 760 }}>
-      <PageHeader title="Profile" eyebrow="Settings and study log" />
-
-      <section className="card stack-sm">
-        <div className="row between">
-          <div>
-            <h2>Guest</h2>
-            <p className="small muted">Progress is saved on this device.</p>
-          </div>
-          <Icon name="profile" size={28} />
+    <div className="stack-lg">
+      <PageTitle title="Profile" />
+      <section className="card row" style={{ marginTop: -14 }}>
+        <span className="game-icon dark" style={{ borderRadius: '50%' }}>
+          <Icon name="profile" />
+        </span>
+        <div className="grow">
+          <h3>Guest</h3>
+          <p className="tiny muted">{cloudConfigured ? 'Accounts are configured but not switched on yet.' : 'Saved on this device. Accounts and sync are coming.'}</p>
         </div>
-        <p className="small muted">
-          {cloudConfigured
-            ? 'Cloud accounts are configured for this build but sign-in is not switched on yet.'
-            : 'Accounts with sync across devices arrive once the Steps Ahead cloud project is connected. Until then, export your data to keep a copy.'}
-        </p>
       </section>
 
-      <section className="card stack">
-        <h2>Study settings</h2>
-        <label className="field">
-          Package
-          <select className="input" value={profile.packageId} onChange={(e) => setProfile({ packageId: e.target.value as typeof profile.packageId })}>
-            {PACKAGES.map((p) => (
-              <option key={p.id} value={p.id} disabled={!p.available}>
-                {p.title}
-                {p.available ? '' : ' (coming soon)'}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label className="field">
-          Exam date
-          <input className="input" type="date" value={profile.examDate ?? ''} onChange={(e) => setProfile({ examDate: e.target.value || undefined })} />
-        </label>
-        <fieldset className="field" style={{ border: 0, padding: 0, margin: 0 }}>
-          <legend style={{ marginBottom: 6 }}>Daily goal</legend>
-          <div className="row-wrap">
-            {GOALS.map((g) => (
-              <button key={g} className="chip" aria-pressed={profile.dailyGoalMin === g} onClick={() => setProfile({ dailyGoalMin: g })}>
-                {g} min
-              </button>
-            ))}
-            <input
-              className="input"
-              style={{ width: 120, minHeight: 36 }}
-              inputMode="numeric"
-              aria-label="Custom daily goal in minutes"
-              placeholder="Custom"
-              defaultValue={GOALS.includes(profile.dailyGoalMin) ? '' : profile.dailyGoalMin}
-              onBlur={(e) => {
-                const n = Number(e.target.value);
-                if (n >= 1 && n <= 600) setProfile({ dailyGoalMin: Math.round(n) });
-              }}
-            />
+      <Group title="Study">
+        <li>
+          <button className="list-row" onClick={() => setSheet('goal')}>
+            <span className="grow small">Daily goal</span>
+            <span className="small muted">{profile.dailyGoalMin} min</span>
+            <Icon name="chevron" size={18} className="chev" />
+          </button>
+        </li>
+        <li>
+          <label className="list-row">
+            <span className="grow small">Exam date</span>
+            <input type="date" className="input" style={{ width: 'auto', minHeight: 36, padding: '4px 8px', boxShadow: 'none', textAlign: 'right', background: 'transparent' }} value={profile.examDate ?? ''} onChange={(e) => setProfile({ examDate: e.target.value || undefined })} />
+          </label>
+        </li>
+        <li>
+          <button className="list-row" onClick={() => setSheet('log')}>
+            <span className="grow small">Study logged elsewhere</span>
+            <span className="small muted">{formatDuration(time.externalWeek)} this week</span>
+            <Icon name="chevron" size={18} className="chev" />
+          </button>
+        </li>
+        <li>
+          <div className="list-row" style={{ cursor: 'default' }}>
+            <span className="grow small">Package</span>
+            <span className="small muted">USMLE Step 1</span>
           </div>
-        </fieldset>
-      </section>
+        </li>
+      </Group>
 
-      <section className="card stack">
-        <h2>Appearance and accessibility</h2>
-        <div className="row-wrap" role="radiogroup" aria-label="Theme">
-          {(['system', 'light', 'dark'] as const).map((t) => (
-            <button key={t} className="chip" role="radio" aria-checked={profile.theme === t} onClick={() => setProfile({ theme: t })}>
-              {t === 'system' ? 'Match device' : t === 'light' ? 'Light' : 'Dark'}
+      <Group title="Appearance">
+        <li style={{ padding: '12px 16px' }}>
+          <Segmented
+            label="Theme"
+            value={profile.theme}
+            onChange={(t) => setProfile({ theme: t })}
+            options={[
+              { id: 'system', label: 'Auto' },
+              { id: 'light', label: 'Light' },
+              { id: 'dark', label: 'Dark' },
+            ]}
+          />
+        </li>
+        <Toggle label="Reduce motion" checked={profile.reduceMotion} onChange={(v) => setProfile({ reduceMotion: v })} />
+        <Toggle label="Appear on public leaderboards (when they launch)" checked={profile.leaderboardOptIn} onChange={(v) => setProfile({ leaderboardOptIn: v })} />
+      </Group>
+
+      <Group title="Data and app">
+        <li>
+          <Link to="/progress" className="list-row">
+            <span className="grow small">Dashboard</span>
+            <Icon name="chevron" size={18} className="chev" />
+          </Link>
+        </li>
+        <li>
+          <button className="list-row" onClick={download}>
+            <span className="grow small">Export study history</span>
+            <Icon name="download" size={18} className="chev" />
+          </button>
+        </li>
+        <li>
+          <Link to="/about" className="list-row">
+            <span className="grow small">Content, sources and review status</span>
+            <Icon name="chevron" size={18} className="chev" />
+          </Link>
+        </li>
+        <li>
+          <button className="list-row" onClick={() => setSheet('plans')}>
+            <span className="grow small">Plans</span>
+            <span className="small muted">Free during development</span>
+            <Icon name="chevron" size={18} className="chev" />
+          </button>
+        </li>
+        <li>
+          <button className="list-row" onClick={() => setSheet('delete')} style={{ color: 'var(--bad)' }}>
+            <span className="grow small strong">Delete all data</span>
+          </button>
+        </li>
+      </Group>
+
+      {sheet === 'goal' && (
+        <Sheet title="Daily goal" onClose={() => setSheet(null)}>
+          <div className="stack">
+            <div className="grid-3">
+              {GOALS.map((g) => (
+                <button key={g} className="chip" aria-pressed={profile.dailyGoalMin === g} onClick={() => setProfile({ dailyGoalMin: g })} style={{ minHeight: 48 }}>
+                  {g} min
+                </button>
+              ))}
+              <input
+                className="input"
+                inputMode="numeric"
+                aria-label="Custom goal in minutes"
+                placeholder="Custom"
+                defaultValue={GOALS.includes(profile.dailyGoalMin) ? '' : profile.dailyGoalMin}
+                onBlur={(e) => {
+                  const n = Number(e.target.value);
+                  if (n >= 1 && n <= 600) setProfile({ dailyGoalMin: Math.round(n) });
+                }}
+              />
+            </div>
+            <button className="btn btn-dark btn-block" onClick={() => setSheet(null)}>
+              Done
             </button>
-          ))}
-        </div>
-        <label className="row">
-          <input type="checkbox" checked={profile.reduceMotion} onChange={(e) => setProfile({ reduceMotion: e.target.checked })} />
-          Reduce motion (also follows your device setting)
-        </label>
-        <label className="row">
-          <input type="checkbox" checked={profile.leaderboardOptIn} onChange={(e) => setProfile({ leaderboardOptIn: e.target.checked })} />
-          Show me on public leaderboards when they launch (off by default)
-        </label>
-      </section>
+          </div>
+        </Sheet>
+      )}
+      {sheet === 'log' && <LogSheet onClose={() => setSheet(null)} entries={external} weekInApp={time.week} weekExternal={time.externalWeek} />}
+      {sheet === 'plans' && (
+        <Sheet title="Plans" onClose={() => setSheet(null)}>
+          <div className="stack">
+            <p className="small muted">Everything is free while Steps Ahead is in development. Explanations will always stay free.</p>
+            {PLANS.map((p) => (
+              <div key={p.id} className="card-flat pad">
+                <h3>{p.title}</h3>
+                <ul className="small" style={{ margin: '6px 0 0', paddingLeft: 18 }}>
+                  {p.includes.map((x) => (
+                    <li key={x}>{x}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </Sheet>
+      )}
+      {sheet === 'delete' && (
+        <Sheet title="Delete all data?" onClose={() => setSheet(null)}>
+          <div className="stack">
+            <p>This erases your study time, answers, mistakes, review schedule, external log and settings from this device. It can’t be undone.</p>
+            <button
+              className="btn btn-primary btn-lg btn-block"
+              onClick={() => {
+                resetAll();
+                setSheet(null);
+              }}
+            >
+              Delete everything
+            </button>
+            <button className="btn btn-soft btn-block" onClick={() => setSheet(null)}>
+              Cancel
+            </button>
+          </div>
+        </Sheet>
+      )}
+    </div>
+  );
+}
 
-      <section className="card stack">
-        <div>
-          <h2>Log study elsewhere</h2>
-          <p className="small muted">
-            Kept separate from time tracked in {''}the app. This week: {formatDuration(time.externalWeek)} logged, {formatDuration(time.week)} in-app, {formatDuration(time.week + time.externalWeek)} combined.
-          </p>
-        </div>
+function LogSheet({ onClose, entries, weekInApp, weekExternal }: { onClose: () => void; entries: ReturnType<typeof useProgress.getState>['external']; weekInApp: number; weekExternal: number }) {
+  const { addExternal, removeExternal } = useProgress();
+  const [form, setForm] = useState({ resource: 'UWorld', minutes: '', subject: '', date: dateKey(), notes: '' });
+  return (
+    <Sheet title="Log study elsewhere" onClose={onClose}>
+      <div className="stack">
+        <p className="small muted">
+          Kept separate from in-app time. This week: {formatDuration(weekInApp)} in-app + {formatDuration(weekExternal)} logged = {formatDuration(weekInApp + weekExternal)}.
+        </p>
         <form
           className="stack-sm"
           onSubmit={(e) => {
@@ -141,7 +246,7 @@ export function Profile() {
               <input className="input" inputMode="numeric" required value={form.minutes} onChange={(e) => setForm({ ...form, minutes: e.target.value.replace(/\D/g, '') })} />
             </label>
             <label className="field">
-              Subject (optional)
+              Subject
               <select className="input" value={form.subject} onChange={(e) => setForm({ ...form, subject: e.target.value })}>
                 <option value="">Mixed</option>
                 {Object.entries(DISCIPLINES).map(([k, d]) => (
@@ -156,22 +261,19 @@ export function Profile() {
               <input className="input" type="date" max={dateKey()} value={form.date} onChange={(e) => setForm({ ...form, date: e.target.value })} />
             </label>
           </div>
-          <label className="field">
-            Notes (optional)
-            <input className="input" value={form.notes} onChange={(e) => setForm({ ...form, notes: e.target.value })} />
-          </label>
-          <button className="btn btn-primary" type="submit" disabled={!Number(form.minutes)}>
-            <Icon name="plus" size={18} /> Add to log
+          <input className="input" aria-label="Notes (optional)" placeholder="Notes (optional)" value={form.notes} onChange={(e) => setForm({ ...form, notes: e.target.value })} />
+          <button className="btn btn-primary btn-block" type="submit" disabled={!Number(form.minutes)}>
+            Add to log
           </button>
         </form>
-        {external.length > 0 && (
+        {entries.length > 0 && (
           <ul className="list">
-            {[...external]
+            {[...entries]
               .sort((a, b) => b.date.localeCompare(a.date))
               .slice(0, 20)
               .map((e) => (
-                <li key={e.id} className="row between">
-                  <div>
+                <li key={e.id} className="row between" style={{ padding: '10px 0' }}>
+                  <div className="small">
                     <strong>{e.resource}</strong> · {e.minutes} min
                     <div className="tiny muted">
                       {e.date}
@@ -186,62 +288,7 @@ export function Profile() {
               ))}
           </ul>
         )}
-      </section>
-
-      <section className="card stack-sm">
-        <h2>Plans</h2>
-        <p className="small muted">Everything is free while the app is in development. Explanations will always stay free.</p>
-        {PLANS.map((p) => (
-          <div key={p.id}>
-            <strong>{p.title}</strong>
-            <ul className="small" style={{ margin: '4px 0 8px', paddingLeft: 20 }}>
-              {p.includes.map((x) => (
-                <li key={x}>{x}</li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </section>
-
-      <section className="card stack-sm">
-        <h2>Your data</h2>
-        <div className="row-wrap">
-          <Link to="/progress" className="btn btn-ghost">
-            <Icon name="chart" size={18} /> View dashboard
-          </Link>
-          <button className="btn btn-ghost" onClick={download}>
-            <Icon name="download" size={18} /> Export study history
-          </button>
-          <Link to="/about" className="btn btn-ghost">
-            Content & sources
-          </Link>
-          <button className="btn btn-ghost" style={{ color: 'var(--bad)' }} onClick={() => setConfirmDelete(true)}>
-            <Icon name="trash" size={18} /> Delete all data
-          </button>
-        </div>
-      </section>
-
-      {confirmDelete && (
-        <Sheet title="Delete all data?" onClose={() => setConfirmDelete(false)}>
-          <div className="stack">
-            <p>This permanently erases your study time, answers, mistakes, review schedule, external log and settings from this device. It cannot be undone.</p>
-            <div className="row-wrap">
-              <button
-                className="btn btn-primary"
-                onClick={() => {
-                  resetAll();
-                  setConfirmDelete(false);
-                }}
-              >
-                Delete everything
-              </button>
-              <button className="btn btn-ghost" onClick={() => setConfirmDelete(false)}>
-                Cancel
-              </button>
-            </div>
-          </div>
-        </Sheet>
-      )}
-    </div>
+      </div>
+    </Sheet>
   );
 }

@@ -1,58 +1,91 @@
-import { useEffect, useRef, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { content } from '@/content';
 import { STATUS_LABEL, type MasteryStatus } from '@/engine/mastery';
 import { Icon } from './Icon';
 
-export function PageHeader({ title, eyebrow, back, actions, children }: { title: string; eyebrow?: string; back?: string | true; actions?: ReactNode; children?: ReactNode }) {
+/** Large page title with an optional trailing action. Tabs use it instead of an app bar. */
+export function PageTitle({ title, back, action, sub }: { title: string; back?: string | true; action?: ReactNode; sub?: ReactNode }) {
   const nav = useNavigate();
   return (
-    <header className="stack-sm" style={{ marginBottom: 20 }}>
+    <header style={{ marginBottom: 18 }}>
       {back && (
-        <div>
+        <div className="appbar" style={{ marginBottom: 0 }}>
           {back === true ? (
-            <button className="btn btn-text" style={{ paddingLeft: 0 }} onClick={() => nav(-1)}>
-              <Icon name="back" size={18} /> Back
+            <button className="icon-btn" aria-label="Back" onClick={() => nav(-1)}>
+              <Icon name="back" size={20} />
             </button>
           ) : (
-            <Link className="btn btn-text" style={{ paddingLeft: 0 }} to={back}>
-              <Icon name="back" size={18} /> Back
+            <Link className="icon-btn" aria-label="Back" to={back}>
+              <Icon name="back" size={20} />
             </Link>
           )}
         </div>
       )}
-      <div className="row between" style={{ alignItems: 'flex-end', flexWrap: 'wrap' }}>
-        <div className="stack-sm" style={{ gap: 4 }}>
-          {eyebrow && <span className="eyebrow">{eyebrow}</span>}
-          <h1>{title}</h1>
-        </div>
-        {actions}
+      <div className="page-title" style={{ marginBottom: sub ? 4 : 0 }}>
+        <h1>{title}</h1>
+        {action}
       </div>
-      {children}
+      {sub && <p className="muted small">{sub}</p>}
     </header>
   );
 }
 
-export function Stat({ label, value, sub }: { label: string; value: ReactNode; sub?: ReactNode }) {
+export function SectionHead({ title, action }: { title: string; action?: ReactNode }) {
   return (
-    <div className="card card-tight stack-sm" style={{ gap: 2 }}>
-      <span className="stat-label">{label}</span>
-      <span className="stat-value">{value}</span>
-      {sub && <span className="tiny muted">{sub}</span>}
+    <div className="section-head">
+      <h2>{title}</h2>
+      {action}
+    </div>
+  );
+}
+
+export function Segmented<T extends string>({ value, options, onChange, label }: { value: T; options: { id: T; label: string }[]; onChange: (v: T) => void; label: string }) {
+  return (
+    <div className="segmented" role="radiogroup" aria-label={label}>
+      {options.map((o) => (
+        <button key={o.id} role="radio" aria-checked={value === o.id} onClick={() => onChange(o.id)}>
+          {o.label}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+/** Circular progress (0–1). */
+export function Ring({ value, size = 64, stroke = 7, children, track = 'rgb(255 255 255 / 0.14)', color = 'var(--red)', label }: { value: number; size?: number; stroke?: number; children?: ReactNode; track?: string; color?: string; label: string }) {
+  const r = (size - stroke) / 2;
+  const c = 2 * Math.PI * r;
+  const v = Math.max(0, Math.min(1, value));
+  return (
+    <div style={{ position: 'relative', width: size, height: size, flex: 'none' }} role="img" aria-label={label}>
+      <svg width={size} height={size} style={{ transform: 'rotate(-90deg)' }} aria-hidden>
+        <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke={track} strokeWidth={stroke} />
+        <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke={color} strokeWidth={stroke} strokeLinecap="round" strokeDasharray={c} strokeDashoffset={c * (1 - v)} style={{ transition: 'stroke-dashoffset 0.6s var(--ease)' }} />
+      </svg>
+      <div className="ring-label">{children}</div>
     </div>
   );
 }
 
 export function Bar({ value, label, dark }: { value: number; label: string; dark?: boolean }) {
-  const pct = Math.round(Math.max(0, Math.min(1, value)) * 100);
+  const p = Math.round(Math.max(0, Math.min(1, value)) * 100);
   return (
-    <div className={`bar${dark ? ' bar-dark' : ''}`} role="progressbar" aria-label={label} aria-valuemin={0} aria-valuemax={100} aria-valuenow={pct}>
-      <span style={{ width: `${pct}%` }} />
+    <div className={`bar${dark ? ' bar-dark' : ''}`} role="progressbar" aria-label={label} aria-valuemin={0} aria-valuemax={100} aria-valuenow={p}>
+      <span style={{ width: `${p}%` }} />
     </div>
   );
 }
 
-const STATUS_CLASS: Record<MasteryStatus, string> = {
+const STATUS_DOT: Record<MasteryStatus, string> = {
+  strong: 'dot-ok',
+  improving: 'dot-ok',
+  developing: 'dot-mid',
+  needs_revision: 'dot-bad',
+  insufficient: 'dot-warn',
+  not_studied: '',
+};
+const STATUS_BADGE: Record<MasteryStatus, string> = {
   strong: 'badge-ok',
   improving: 'badge-ok',
   developing: '',
@@ -62,7 +95,11 @@ const STATUS_CLASS: Record<MasteryStatus, string> = {
 };
 
 export function StatusBadge({ status }: { status: MasteryStatus }) {
-  return <span className={`badge ${STATUS_CLASS[status]}`}>{STATUS_LABEL[status]}</span>;
+  return <span className={`badge ${STATUS_BADGE[status]}`}>{STATUS_LABEL[status]}</span>;
+}
+
+export function StatusDot({ status }: { status: MasteryStatus }) {
+  return <span className={`dot ${STATUS_DOT[status]}`} title={STATUS_LABEL[status]} aria-label={STATUS_LABEL[status]} role="img" />;
 }
 
 export function pct(x: number | null | undefined): string {
@@ -84,9 +121,10 @@ export function Sheet({ title, onClose, children }: { title: string; onClose: ()
   return (
     <div className="scrim" onClick={(e) => e.target === e.currentTarget && onClose()}>
       <div className="sheet" role="dialog" aria-modal="true" aria-label={title} tabIndex={-1} ref={ref}>
-        <div className="row between" style={{ marginBottom: 12 }}>
+        <div className="grabber" aria-hidden />
+        <div className="row between" style={{ marginBottom: 14 }}>
           <h2>{title}</h2>
-          <button className="btn btn-ghost btn-sm" onClick={onClose} aria-label="Close">
+          <button className="icon-btn" style={{ boxShadow: 'none', background: 'var(--surface-2)' }} onClick={onClose} aria-label="Close">
             <Icon name="x" size={18} />
           </button>
         </div>
@@ -96,13 +134,36 @@ export function Sheet({ title, onClose, children }: { title: string; onClose: ()
   );
 }
 
-/** Shown on every screen with medical content while it is unreviewed. */
-export function PreviewBanner() {
+/** Small, honest label for unreviewed content. Tap explains; replaces the old full-width banner. */
+export function PreviewPill() {
+  const [open, setOpen] = useState(false);
   if (!content.isPreview) return null;
   return (
-    <p className="banner" role="note">
-      Reviewer preview: this medical content is an AI-drafted original awaiting medical review. Don’t rely on it for patient care.
-    </p>
+    <>
+      <button className="pill-preview" onClick={() => setOpen(true)} aria-label="Preview content: tap for details">
+        Preview
+      </button>
+      {open && (
+        <Sheet title="Preview content" onClose={() => setOpen(false)}>
+          <div className="stack">
+            <p>The medical content in this build is original but AI-drafted, and it has not yet been reviewed by a doctor.</p>
+            <p className="muted small">Use it to explore the app, not for patient care. Spot an error? Use “Report an error” under any explanation.</p>
+            <button className="btn btn-dark btn-block" onClick={() => setOpen(false)}>
+              Got it
+            </button>
+          </div>
+        </Sheet>
+      )}
+    </>
+  );
+}
+
+/** Fixed bottom bar holding the screen's primary action, always visible without scrolling. */
+export function ActionBar({ children }: { children: ReactNode }) {
+  return (
+    <div className="action-bar">
+      <div className="inner">{children}</div>
+    </div>
   );
 }
 
