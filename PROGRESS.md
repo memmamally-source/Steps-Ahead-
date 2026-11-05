@@ -4,7 +4,7 @@
 
 **Product:** gamified USMLE learning companion. Step 1 first; Step 2 CK and Step 3 later in the same codebase.
 **Name:** "Steps Ahead" (owner's choice, Nov 2026). Change in `src/config/brand.ts`, `index.html`, `public/manifest.webmanifest`.
-**Repository:** intended home is a new repo, e.g. `memmamally-source/steps-ahead`. **It does not exist yet**: the first session could not create repositories. The code was pushed, with its own independent history, to branch `claude/steps-ahead-medical-arcade-a8in03` of the Oursome repo purely as transport. It shares no files or history with Oursome. See "Moving to its own repository" below.
+**Repository:** `memmamally-source/Steps-Ahead-` (created by the owner on 5 Nov 2026). The code first lived temporarily on branch `claude/steps-ahead-medical-arcade-a8in03` of the Oursome repo; that branch can be deleted.
 
 ## Status (5 Nov 2026)
 
@@ -39,12 +39,9 @@
 - **Daily puzzles** are seeded by `package:date:game`, so everyone gets the same one.
 - **Feedback colours** (green ok / deep red bad) always carry an icon and a word; selection uses black/white, so the primary red never means "wrong".
 
-## Moving to its own repository (owner action)
+## Publishing on GitHub Pages (owner action)
 
-1. On GitHub create an empty repo, e.g. `steps-ahead` (public if you want free GitHub Pages).
-2. Locally: `git clone --single-branch -b claude/steps-ahead-medical-arcade-a8in03 https://github.com/memmamally-source/Oursome steps-ahead && cd steps-ahead && git remote set-url origin https://github.com/memmamally-source/steps-ahead.git && git push -u origin HEAD:main`
-3. Delete the transport branch from Oursome afterwards. (Or add the new repo to a Claude session and ask Claude to do steps 2–3.)
-4. Pages: Settings → Pages → Source "GitHub Actions", then run "Deploy to GitHub Pages" manually. It deploys a labelled reviewer preview until the repo variable `ALLOW_UNREVIEWED=false` is set.
+In the repo: Settings → Pages → Source "GitHub Actions", then run the "Deploy to GitHub Pages" workflow manually. The site will be at `https://memmamally-source.github.io/Steps-Ahead-/` (the base path comes from `actions/configure-pages`, so a rename or custom domain needs no code change). It deploys a labelled reviewer preview until the repository variable `ALLOW_UNREVIEWED=false` is set. GitHub Pages needs a public repo on the free plan.
 
 ## Firebase (owner action, free Spark plan is enough to start)
 
@@ -52,7 +49,7 @@ Create a new Firebase project (e.g. `steps-ahead-prod`, plus `steps-ahead-dev`),
 
 ## Next stage (suggested order)
 
-1. Owner: create the repo and the Firebase project; review a first batch of concepts (the app's Content & sources page and `docs/MEDICAL_QA.md` describe the checklist).
+1. Owner: create the Firebase project; review a first batch of concepts (the app's Content & sources page and `docs/MEDICAL_QA.md` describe the checklist).
 2. Admin/review console (editor role, status transitions with audit trail, JSON export/import) so review happens in the app, not in code.
 3. Firebase auth + event sync + emulator rules tests.
 4. Pharmacology Match and Mechanism Lab (highest learning value of the remaining games), then Biostatistics Blitz.

@@ -3,7 +3,7 @@
 Status key: ✅ done · 🟡 partial · ⬜ not started. Matches the owner's eight phases.
 
 ## Phase 1 — Repository and foundation
-- 🟡 New GitHub repository: code ready with independent history; repo creation needs the owner (PROGRESS.md).
+- ✅ New GitHub repository: `memmamally-source/Steps-Ahead-`.
 - ✅ Project structure, build, lint, tests, CI workflow, manual Pages workflow.
 - ✅ Red/white/black design system, light/dark (`DESIGN_SYSTEM.md`).
 - 🟡 Firebase: config surface and draft rules; no project yet.
