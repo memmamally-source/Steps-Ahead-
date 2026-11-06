@@ -12,11 +12,11 @@ export const microPharmEndoStats = defineConcepts([
     difficulty: 2,
     objectives: ['Identify S. aureus by laboratory features', 'Link virulence factors to disease'],
     facts: [
-      'Gram-positive cocci in clusters; catalase-positive, coagulase-positive; golden colonies with β-haemolysis.',
-      'Protein A binds the Fc region of IgG, blocking opsonisation.',
+      'Gram-positive cocci in clusters; catalase-positive, coagulase-positive; golden colonies with β-hemolysis.',
+      'Protein A binds the Fc region of IgG, blocking opsonization.',
       'TSST-1 is a superantigen (cross-links MHC II and TCR), causing toxic shock syndrome.',
       'Preformed enterotoxins cause rapid-onset food poisoning (vomiting within hours).',
-      'Exfoliative toxins cause scalded skin syndrome; Panton–Valentine leukocidin is linked to necrotising infections.',
+      'Exfoliative toxins cause scalded skin syndrome; Panton–Valentine leukocidin is linked to necrotizing infections.',
       'MRSA: mecA encodes altered penicillin-binding protein PBP2a.',
     ],
     mechanism:
@@ -24,7 +24,7 @@ export const microPharmEndoStats = defineConcepts([
     associations: ['Abscesses', 'Osteomyelitis', 'Acute endocarditis', 'Toxic shock', 'Food poisoning'],
     misconception: 'Food poisoning comes from preformed heat-stable toxin, so reheating food does not prevent it.',
     quick:
-      'Gram+ clusters, catalase+, coagulase+. Protein A blocks opsonisation; TSST-1 superantigen; preformed enterotoxin. MRSA via mecA (PBP2a).',
+      'Gram+ clusters, catalase+, coagulase+. Protein A blocks opsonization; TSST-1 superantigen; preformed enterotoxin. MRSA via mecA (PBP2a).',
     detailed: [
       'Catalase separates staphylococci (positive) from streptococci (negative); coagulase separates S. aureus from coagulase-negative species such as S. epidermidis and S. saprophyticus.',
       'Superantigens bind outside the peptide groove of MHC class II and to the Vβ region of the TCR, activating up to 20% of T cells; massive IL-2, IFN-γ and TNF cause fever, rash and shock.',
@@ -61,7 +61,7 @@ export const microPharmEndoStats = defineConcepts([
     difficulty: 2,
     objectives: ['Identify S. pneumoniae in the laboratory', 'Relate its capsule to disease and vaccination'],
     facts: [
-      'Gram-positive, lancet-shaped diplococci; α-haemolytic; catalase-negative.',
+      'Gram-positive, lancet-shaped diplococci; α-hemolytic; catalase-negative.',
       'Optochin-sensitive and bile-soluble (distinguishing it from viridans streptococci).',
       'Polysaccharide capsule is the main virulence factor; quellung reaction identifies it.',
       'IgA protease cleaves mucosal IgA.',
@@ -69,24 +69,24 @@ export const microPharmEndoStats = defineConcepts([
       'Asplenic patients and those with sickle cell disease are at high risk; vaccines are conjugate or polysaccharide.',
     ],
     mechanism:
-      'The capsule blocks complement-mediated phagocytosis. Clearance needs opsonising antibody and splenic macrophages, so antibody deficiency or asplenia predisposes to invasive disease.',
+      'The capsule blocks complement-mediated phagocytosis. Clearance needs opsonizing antibody and splenic macrophages, so antibody deficiency or asplenia predisposes to invasive disease.',
     associations: ['Rusty sputum', 'Lobar pneumonia', 'Asplenia', 'Optochin', 'Quellung'],
-    misconception: 'Viridans streptococci are also α-haemolytic; they are optochin-resistant and bile-insoluble.',
+    misconception: 'Viridans streptococci are also α-hemolytic; they are optochin-resistant and bile-insoluble.',
     quick:
-      'Lancet-shaped gram+ diplococci, α-haemolytic, optochin-sensitive, bile-soluble. Capsule = main virulence factor; IgA protease. Pneumonia, meningitis, otitis; danger in asplenia.',
+      'Lancet-shaped gram+ diplococci, α-hemolytic, optochin-sensitive, bile-soluble. Capsule = main virulence factor; IgA protease. Pneumonia, meningitis, otitis; danger in asplenia.',
     detailed: [
-      'In the lab, α-haemolytic streptococci are split by optochin: S. pneumoniae is inhibited (and dissolves in bile), viridans group streptococci are not.',
-      'The spleen filters opsonised encapsulated organisms. After splenectomy, overwhelming sepsis from encapsulated bacteria can occur, so vaccination is recommended.',
+      'In the lab, α-hemolytic streptococci are split by optochin: S. pneumoniae is inhibited (and dissolves in bile), viridans group streptococci are not.',
+      'The spleen filters opsonized encapsulated organisms. After splenectomy, overwhelming sepsis from encapsulated bacteria can occur, so vaccination is recommended.',
     ],
     takeaway: 'S. pneumoniae: optochin-S, bile-soluble, capsule, IgA protease; asplenia risk.',
     related: ['staph-aureus', 'bruton'],
     mcq: [
       {
-        stem: 'A 68-year-old with lobar pneumonia has gram-positive lancet-shaped diplococci in sputum. The organism is α-haemolytic. Which test result distinguishes it from viridans streptococci?',
+        stem: 'A 68-year-old with lobar pneumonia has gram-positive lancet-shaped diplococci in sputum. The organism is α-hemolytic. Which test result distinguishes it from viridans streptococci?',
         options: [
           ['a', 'Sensitivity to optochin'],
           ['b', 'Catalase positivity', 'All streptococci are catalase-negative.'],
-          ['c', 'Bacitracin sensitivity', 'Bacitracin separates group A from group B streptococci (β-haemolytic).'],
+          ['c', 'Bacitracin sensitivity', 'Bacitracin separates group A from group B streptococci (β-hemolytic).'],
           ['d', 'Growth in 6.5% NaCl', 'Salt tolerance identifies enterococci.'],
           ['e', 'CAMP test positivity', 'CAMP positivity identifies group B streptococci.'],
         ],
@@ -130,7 +130,7 @@ export const microPharmEndoStats = defineConcepts([
         stem: 'A bacterial isolate is resistant to oxacillin and to amoxicillin–clavulanate. Sequencing shows an acquired gene for a penicillin-binding protein with low β-lactam affinity. Which organism and mechanism fit best?',
         options: [
           ['a', 'MRSA, through PBP2a encoded by mecA'],
-          ['b', 'E. coli with an extended-spectrum β-lactamase', 'An ESBL is an enzyme that hydrolyses the drug, not a new PBP.'],
+          ['b', 'E. coli with an extended-spectrum β-lactamase', 'An ESBL is an enzyme that hydrolyzes the drug, not a new PBP.'],
           ['c', 'Enterococcus with D-Ala-D-Lac', 'This change confers vancomycin resistance.'],
           ['d', 'Pseudomonas with an efflux pump', 'Efflux is a different mechanism from target alteration.'],
         ],
@@ -152,7 +152,7 @@ export const microPharmEndoStats = defineConcepts([
     objectives: ['Identify Pseudomonas from laboratory and clinical clues', 'Link exotoxin A to its mechanism'],
     facts: [
       'Gram-negative rod; aerobic; oxidase-positive; non-lactose fermenter.',
-      'Pigments: pyocyanin (blue-green) and pyoverdine; fruity, grape-like odour.',
+      'Pigments: pyocyanin (blue-green) and pyoverdine; fruity, grape-like odor.',
       'Exotoxin A ADP-ribosylates elongation factor 2, stopping protein synthesis.',
       'Biofilm and alginate production, especially in cystic fibrosis airways.',
       'Infections: CF pneumonia, ventilator-associated pneumonia, burn wound infection, otitis externa, hot tub folliculitis, ecthyma gangrenosum in neutropenia.',
@@ -163,7 +163,7 @@ export const microPharmEndoStats = defineConcepts([
     associations: ['Blue-green pus', 'Cystic fibrosis', 'Burns', 'Hot tub folliculitis', 'Ecthyma gangrenosum'],
     misconception: 'Diphtheria toxin shares the same EF-2 mechanism; the organisms are distinguished by Gram stain and clinical setting.',
     quick:
-      'Gram− rod, oxidase+, non-lactose fermenter, blue-green pigment, grape odour. Exotoxin A inactivates EF-2. CF, burns, ventilators, hot tubs.',
+      'Gram− rod, oxidase+, non-lactose fermenter, blue-green pigment, grape odor. Exotoxin A inactivates EF-2. CF, burns, ventilators, hot tubs.',
     detailed: [
       'Pseudomonas thrives in moist environments and is a major hospital pathogen. Its outer membrane has low permeability and efflux pumps, so resistance develops easily.',
       'In cystic fibrosis, mucoid strains producing alginate form biofilms in thick secretions and cause chronic infection.',
@@ -172,7 +172,7 @@ export const microPharmEndoStats = defineConcepts([
     related: ['beta-lactams'],
     mcq: [
       {
-        stem: 'A teenager with cystic fibrosis has worsening cough with green sputum. Culture grows an oxidase-positive, non-lactose-fermenting gram-negative rod with a sweet odour. Its exotoxin acts most like which toxin?',
+        stem: 'A teenager with cystic fibrosis has worsening cough with green sputum. Culture grows an oxidase-positive, non-lactose-fermenting gram-negative rod with a sweet odor. Its exotoxin acts most like which toxin?',
         options: [
           ['a', 'Diphtheria toxin'],
           ['b', 'Cholera toxin', 'Cholera toxin raises cAMP by activating Gs.'],
@@ -198,7 +198,7 @@ export const microPharmEndoStats = defineConcepts([
     objectives: ['Explain cholinergic toxicity from acetylcholinesterase inhibition', 'Choose the antidotes and explain each'],
     facts: [
       'Organophosphates irreversibly inhibit acetylcholinesterase.',
-      'Muscarinic excess: diarrhoea, urination, miosis, bronchorrhoea and bronchospasm, bradycardia, emesis, lacrimation, salivation and sweating.',
+      'Muscarinic excess: diarrhea, urination, miosis, bronchorrhoea and bronchospasm, bradycardia, emesis, lacrimation, salivation and sweating.',
       'Nicotinic effects: muscle fasciculations then paralysis (including respiratory muscles).',
       'Atropine blocks muscarinic receptors (titrated to dry secretions); it does not reverse nicotinic paralysis.',
       'Pralidoxime regenerates acetylcholinesterase if given before "ageing" of the enzyme–phosphate bond.',
@@ -246,7 +246,7 @@ export const microPharmEndoStats = defineConcepts([
     difficulty: 2,
     objectives: ['Explain how acetaminophen overdose injures the liver', 'Explain the action of N-acetylcysteine'],
     facts: [
-      'Mostly conjugated (glucuronidation, sulfation); a small fraction is oxidised by CYP2E1 to NAPQI.',
+      'Mostly conjugated (glucuronidation, sulfation); a small fraction is oxidized by CYP2E1 to NAPQI.',
       'NAPQI is detoxified by glutathione.',
       'In overdose, conjugation saturates, more NAPQI forms and glutathione is depleted, causing centrilobular (zone 3) necrosis.',
       'N-acetylcysteine replenishes glutathione; most effective within 8 hours of ingestion.',
@@ -259,7 +259,7 @@ export const microPharmEndoStats = defineConcepts([
     quick:
       'Overdose saturates conjugation → CYP2E1 makes NAPQI → glutathione depleted → zone 3 necrosis. N-acetylcysteine restores glutathione.',
     detailed: [
-      'At therapeutic doses the toxic metabolite is fully neutralised by glutathione. In overdose the glucuronidation and sulfation pathways saturate and more drug goes through CYP2E1.',
+      'At therapeutic doses the toxic metabolite is fully neutralized by glutathione. In overdose the glucuronidation and sulfation pathways saturate and more drug goes through CYP2E1.',
       'N-acetylcysteine provides cysteine for glutathione synthesis and may directly bind NAPQI; started early it largely prevents hepatotoxicity.',
     ],
     takeaway: 'Acetaminophen: NAPQI + glutathione depletion → zone 3 necrosis; antidote N-acetylcysteine.',
@@ -278,7 +278,7 @@ export const microPharmEndoStats = defineConcepts([
       },
     ],
     tf: [{ statement: 'N-acetylcysteine works by replenishing hepatic glutathione.', isTrue: true, correction: 'Correct.' }],
-    clues: [{ answer: 'NAPQI', clue: 'Toxic acetaminophen metabolite neutralised by glutathione' }],
+    clues: [{ answer: 'NAPQI', clue: 'Toxic acetaminophen metabolite neutralized by glutathione' }],
   },
   {
     id: 'thyroid-synthesis',
@@ -291,8 +291,8 @@ export const microPharmEndoStats = defineConcepts([
     objectives: ['Order the steps of thyroid hormone synthesis', 'Identify where thionamides act'],
     facts: [
       'Iodide enters follicular cells via the Na⁺/I⁻ symporter (blocked by perchlorate and pertechnetate).',
-      'Thyroid peroxidase oxidises iodide, iodinates tyrosines on thyroglobulin (organification) and couples MIT and DIT to form T3 and T4.',
-      'Thyroglobulin is endocytosed and proteolysed to release T4 (mostly) and T3.',
+      'Thyroid peroxidase oxidizes iodide, iodinates tyrosines on thyroglobulin (organification) and couples MIT and DIT to form T3 and T4.',
+      'Thyroglobulin is endocytosed and proteolyzed to release T4 (mostly) and T3.',
       'Peripheral 5′-deiodinase converts T4 to the more active T3.',
       'Methimazole and propylthiouracil inhibit thyroid peroxidase; PTU also inhibits peripheral deiodination.',
       'PTU is preferred in the first trimester (methimazole teratogenicity); methimazole otherwise (PTU hepatotoxicity). Both can cause agranulocytosis.',
@@ -302,7 +302,7 @@ export const microPharmEndoStats = defineConcepts([
     associations: ['Wolff–Chaikoff effect', 'Agranulocytosis', 'PTU in early pregnancy', 'Deiodinase'],
     misconception: 'Thionamides do not stop release of preformed hormone; β-blockers and iodine are used for rapid control in thyroid storm.',
     quick:
-      'Iodide in (NIS) → TPO oxidises, organifies and couples → T4/T3 stored on thyroglobulin → released → T4→T3 peripherally. Methimazole and PTU block TPO; PTU also blocks peripheral conversion.',
+      'Iodide in (NIS) → TPO oxidizes, organifies and couples → T4/T3 stored on thyroglobulin → released → T4→T3 peripherally. Methimazole and PTU block TPO; PTU also blocks peripheral conversion.',
     detailed: [
       'TSH acts through Gs-coupled receptors to increase every step: iodide uptake, TPO activity, thyroglobulin synthesis and hormone release.',
       'A large iodide load transiently suppresses organification (Wolff–Chaikoff effect), a principle used before thyroid surgery and in thyroid storm (given after a thionamide).',
@@ -344,24 +344,24 @@ export const microPharmEndoStats = defineConcepts([
       '21-hydroxylase converts progesterone to 11-deoxycorticosterone and 17-hydroxyprogesterone to 11-deoxycortisol.',
       'Deficiency lowers cortisol and aldosterone; precursors shunt to androgens.',
       'High ACTH (no cortisol feedback) causes adrenal hyperplasia.',
-      'Salt-wasting form: hyponatraemia, hyperkalaemia, hypovolaemia, high renin in infancy.',
-      'Raised 17-hydroxyprogesterone; ambiguous genitalia in 46,XX infants; early virilisation in boys.',
+      'Salt-wasting form: hyponatremia, hyperkalemia, hypovolemia, high renin in infancy.',
+      'Raised 17-hydroxyprogesterone; ambiguous genitalia in 46,XX infants; early virilization in boys.',
     ],
     mechanism:
       'Blocking the shared 21-hydroxylation step prevents both glucocorticoid and mineralocorticoid synthesis, while the androgen branch (which does not need 21-hydroxylase) receives the backed-up precursors.',
-    associations: ['Ambiguous genitalia', 'Salt-wasting crisis', '↑ 17-OH progesterone', 'Hyperkalaemia'],
-    misconception: '11β-hydroxylase deficiency also virilises but causes hypertension (11-deoxycorticosterone is a mineralocorticoid); 21-hydroxylase deficiency causes salt wasting.',
+    associations: ['Ambiguous genitalia', 'Salt-wasting crisis', '↑ 17-OH progesterone', 'Hyperkalemia'],
+    misconception: '11β-hydroxylase deficiency also virilizes but causes hypertension (11-deoxycorticosterone is a mineralocorticoid); 21-hydroxylase deficiency causes salt wasting.',
     quick:
-      '21-hydroxylase deficiency: ↓ cortisol, ↓ aldosterone, ↑ androgens, ↑ 17-OH progesterone, ↑ ACTH. Salt-wasting (↓Na⁺, ↑K⁺) and virilisation.',
+      '21-hydroxylase deficiency: ↓ cortisol, ↓ aldosterone, ↑ androgens, ↑ 17-OH progesterone, ↑ ACTH. Salt-wasting (↓Na⁺, ↑K⁺) and virilization.',
     detailed: [
       'Cortisol and aldosterone both require 21-hydroxylation; sex steroids do not. Low cortisol removes negative feedback on ACTH, so precursor production rises and floods the androgen pathway.',
       'Newborn screening measures 17-hydroxyprogesterone. Treatment is glucocorticoid (which also suppresses ACTH and androgen excess) plus mineralocorticoid in salt-wasters.',
     ],
-    takeaway: '21-OH deficiency: ↓cortisol & aldosterone, ↑androgens and 17-OHP, salt wasting, virilisation.',
+    takeaway: '21-OH deficiency: ↓cortisol & aldosterone, ↑androgens and 17-OHP, salt wasting, virilization.',
     related: ['thyroid-synthesis', 'raas-cascade'],
     mcq: [
       {
-        stem: 'A 2-week-old girl with clitoromegaly is brought in vomiting and dehydrated. Na⁺ is 126 and K⁺ 6.8 mmol/L. Which serum finding is expected?',
+        stem: 'A 2-week-old girl with clitoromegaly is brought in vomiting and dehydrated. Na⁺ is 126 and K⁺ 6.8 mEq/L. Which serum finding is expected?',
         options: [
           ['a', 'Raised 17-hydroxyprogesterone'],
           ['b', 'Raised 11-deoxycorticosterone', 'Raised 11-DOC with hypertension suggests 11β-hydroxylase deficiency.'],
@@ -370,7 +370,7 @@ export const microPharmEndoStats = defineConcepts([
           ['e', 'Low androstenedione', 'Androgens are increased.'],
         ],
         answer: 'a',
-        mini: 'Virilisation plus salt-wasting (↓Na⁺, ↑K⁺) points to 21-hydroxylase deficiency; its substrate 17-hydroxyprogesterone builds up.',
+        mini: 'Virilization plus salt-wasting (↓Na⁺, ↑K⁺) points to 21-hydroxylase deficiency; its substrate 17-hydroxyprogesterone builds up.',
       },
     ],
     tf: [{ statement: '21-hydroxylase deficiency typically causes hypertension.', isTrue: false, correction: 'It causes salt wasting and hypotension; 11β-hydroxylase deficiency causes hypertension.' }],
@@ -383,38 +383,38 @@ export const microPharmEndoStats = defineConcepts([
     system: 'endocrine',
     topic: 'endo-diabetes',
     difficulty: 2,
-    objectives: ['Explain how metformin lowers glucose', 'Recognise its main risks'],
+    objectives: ['Explain how metformin lowers glucose', 'Recognize its main risks'],
     facts: [
       'A biguanide; first-line oral drug for type 2 diabetes.',
       'Main effect: reduced hepatic gluconeogenesis; it also increases peripheral glucose uptake. AMPK activation is one proposed mechanism.',
-      'Does not stimulate insulin secretion, so hypoglycaemia is rare on its own.',
+      'Does not stimulate insulin secretion, so hypoglycemia is rare on its own.',
       'Weight neutral or modest loss.',
       'Adverse effects: GI upset (common), vitamin B12 deficiency, lactic acidosis (rare; risk with severe renal impairment, hypoxia, iodinated contrast).',
     ],
     mechanism:
       'Metformin reduces hepatic glucose output, partly by inhibiting mitochondrial respiratory complex I and lowering hepatic energy charge (activating AMPK). Lactate from peripheral tissues is less used for gluconeogenesis, which underlies the lactic acidosis risk.',
-    associations: ['No hypoglycaemia alone', 'Lactic acidosis', 'B12 deficiency', 'Hold around iodinated contrast in renal impairment'],
-    misconception: 'Metformin is not an insulin secretagogue; sulfonylureas are, and they cause hypoglycaemia and weight gain.',
+    associations: ['No hypoglycemia alone', 'Lactic acidosis', 'B12 deficiency', 'Hold around iodinated contrast in renal impairment'],
+    misconception: 'Metformin is not an insulin secretagogue; sulfonylureas are, and they cause hypoglycemia and weight gain.',
     quick:
-      'Metformin ↓ hepatic gluconeogenesis (AMPK proposed), ↑ insulin sensitivity. No hypoglycaemia alone, weight neutral. Watch GI upset, B12 deficiency and rare lactic acidosis in renal failure.',
+      'Metformin ↓ hepatic gluconeogenesis (AMPK proposed), ↑ insulin sensitivity. No hypoglycemia alone, weight neutral. Watch GI upset, B12 deficiency and rare lactic acidosis in renal failure.',
     detailed: [
       'Reducing gluconeogenesis also reduces conversion of lactate to glucose, so lactate can accumulate when clearance falls (renal failure) or production rises (hypoxia, sepsis).',
       'Long-term use reduces B12 absorption in the terminal ileum; periodic monitoring is advised.',
     ],
-    takeaway: 'Metformin: ↓ gluconeogenesis, no hypoglycaemia alone; lactic acidosis risk in renal failure.',
+    takeaway: 'Metformin: ↓ gluconeogenesis, no hypoglycemia alone; lactic acidosis risk in renal failure.',
     related: ['pfk1'],
     mcq: [
       {
         stem: 'A patient with type 2 diabetes asks why his new tablet will not cause low blood sugar on its own, unlike his previous glipizide. What is the main mechanism of the new drug?',
         options: [
           ['a', 'Decreased hepatic gluconeogenesis'],
-          ['b', 'Closing K-ATP channels in β cells', 'This is how sulfonylureas such as glipizide work, and why they cause hypoglycaemia.'],
+          ['b', 'Closing K-ATP channels in β cells', 'This is how sulfonylureas such as glipizide work, and why they cause hypoglycemia.'],
           ['c', 'Inhibiting SGLT2 in the proximal tubule', 'SGLT2 inhibitors cause glycosuria; the question describes metformin.'],
           ['d', 'Inhibiting intestinal α-glucosidase', 'Acarbose slows carbohydrate absorption.'],
           ['e', 'Activating PPAR-γ', 'Thiazolidinediones increase insulin sensitivity via PPAR-γ and cause fluid retention.'],
         ],
         answer: 'a',
-        mini: 'Metformin lowers hepatic glucose output without increasing insulin secretion, so on its own it rarely causes hypoglycaemia.',
+        mini: 'Metformin lowers hepatic glucose output without increasing insulin secretion, so on its own it rarely causes hypoglycemia.',
       },
     ],
     tf: [{ statement: 'Metformin commonly causes weight gain.', isTrue: false, correction: 'Metformin is weight neutral or causes modest weight loss.' }],

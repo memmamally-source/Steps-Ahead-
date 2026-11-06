@@ -12,28 +12,28 @@ export const cardioRenal = defineConcepts([
     topic: 'cv-antihypertensives',
     difficulty: 2,
     objectives: [
-      'Explain why ACE inhibitors cause cough and angioedema',
+      'Explain why ACE inhibitors cause cough and angiedema',
       'Contrast ACE inhibitors with angiotensin II receptor blockers',
     ],
     facts: [
       'ACE (kininase II) converts angiotensin I to angiotensin II and also degrades bradykinin.',
       'ACE inhibitors lower angiotensin II and aldosterone and raise bradykinin.',
-      'Dry cough and angioedema are linked to bradykinin accumulation.',
+      'Dry cough and angiedema are linked to bradykinin accumulation.',
       'ARBs block the AT1 receptor and do not directly inhibit bradykinin breakdown.',
-      'ACE inhibitors are contraindicated in pregnancy and in hereditary angioedema (C1-esterase inhibitor deficiency).',
+      'ACE inhibitors are contraindicated in pregnancy and in hereditary angiedema (C1-esterase inhibitor deficiency).',
     ],
     mechanism:
-      'Angiotensin-converting enzyme has two jobs: it activates angiotensin I and it inactivates bradykinin. Blocking it therefore lowers angiotensin II but lets bradykinin accumulate, causing vasodilation, cough and, rarely, angioedema.',
-    associations: ['Dry cough', 'Angioedema', 'Hyperkalaemia', 'Rise in creatinine with bilateral renal artery stenosis', 'Teratogenicity'],
+      'Angiotensin-converting enzyme has two jobs: it activates angiotensin I and it inactivates bradykinin. Blocking it therefore lowers angiotensin II but lets bradykinin accumulate, causing vasodilation, cough and, rarely, angiedema.',
+    associations: ['Dry cough', 'Angiedema', 'Hyperkalemia', 'Rise in creatinine with bilateral renal artery stenosis', 'Teratogenicity'],
     misconception: 'The cough is not caused by falling angiotensin II; switching to an ARB usually stops it because ARBs leave bradykinin metabolism alone.',
     quick:
-      'ACE breaks down bradykinin. Inhibit ACE and bradykinin builds up, causing a dry cough and sometimes angioedema. ARBs block AT1 receptors instead, so cough is uncommon.',
+      'ACE breaks down bradykinin. Inhibit ACE and bradykinin builds up, causing a dry cough and sometimes angiedema. ARBs block AT1 receptors instead, so cough is uncommon.',
     detailed: [
       'Angiotensin-converting enzyme is a membrane-bound peptidase, abundant on pulmonary endothelium. It removes a dipeptide from angiotensin I to form angiotensin II, and it removes dipeptides from bradykinin, inactivating it. The same enzyme is therefore called kininase II.',
-      'ACE inhibitors (the "-prils") reduce angiotensin II, so arteriolar tone and aldosterone fall: blood pressure drops and potassium rises. Bradykinin persists, which adds to vasodilation but also sensitises airway sensory nerves (cough) and increases vascular permeability (angioedema).',
-      'Angiotensin II receptor blockers (the "-sartans") act downstream at the AT1 receptor. They give similar haemodynamic and renal effects without directly preventing bradykinin breakdown, so they are the usual switch for ACE-inhibitor cough.',
+      'ACE inhibitors (the "-prils") reduce angiotensin II, so arteriolar tone and aldosterone fall: blood pressure drops and potassium rises. Bradykinin persists, which adds to vasodilation but also sensitizes airway sensory nerves (cough) and increases vascular permeability (angiedema).',
+      'Angiotensin II receptor blockers (the "-sartans") act downstream at the AT1 receptor. They give similar hemodynamic and renal effects without directly preventing bradykinin breakdown, so they are the usual switch for ACE-inhibitor cough.',
     ],
-    takeaway: 'ACE inhibitors ↑ bradykinin → cough and angioedema. ARBs block AT1 and do not directly raise bradykinin.',
+    takeaway: 'ACE inhibitors ↑ bradykinin → cough and angiedema. ARBs block AT1 and do not directly raise bradykinin.',
     related: ['raas-cascade', 'loop-diuretics'],
     citations: [{ sourceId: 'openstax-ap', locator: 'Ch. 25, Regulation of renal blood flow' }],
     mcq: [
@@ -64,7 +64,7 @@ export const cardioRenal = defineConcepts([
     ],
     tf: [
       { statement: 'ARBs cause cough as often as ACE inhibitors because both lower angiotensin II.', isTrue: false, correction: 'ARBs rarely cause cough; the cough is a bradykinin effect of ACE inhibition.' },
-      { statement: 'ACE inhibitors can cause hyperkalaemia.', isTrue: true, correction: 'Lower angiotensin II → less aldosterone → less K⁺ secretion.' },
+      { statement: 'ACE inhibitors can cause hyperkalemia.', isTrue: true, correction: 'Lower angiotensin II → less aldosterone → less K⁺ secretion.' },
     ],
     clues: [
       { answer: 'BRADYKININ', clue: 'Peptide that builds up when ACE is inhibited, causing dry cough' },
@@ -79,26 +79,26 @@ export const cardioRenal = defineConcepts([
     difficulty: 3,
     objectives: [
       'Identify the channel blocked by class III antiarrhythmics',
-      'Link delayed repolarisation to QT prolongation and torsades de pointes',
+      'Link delayed repolarization to QT prolongation and torsades de pointes',
     ],
     facts: [
-      'Class III drugs block potassium channels (mainly IKr) and prolong phase 3 repolarisation.',
+      'Class III drugs block potassium channels (mainly IKr) and prolong phase 3 repolarization.',
       'Examples: amiodarone, sotalol, dofetilide, ibutilide, dronedarone.',
       'Longer action potential → longer effective refractory period and QT interval.',
-      'Prolonged QT predisposes to early afterdepolarisations and torsades de pointes.',
+      'Prolonged QT predisposes to early afterdepolarizations and torsades de pointes.',
       'Amiodarone also has class I, II and IV actions; its toxicities include pulmonary fibrosis, thyroid dysfunction, hepatotoxicity and corneal deposits.',
       'Torsades is treated with intravenous magnesium sulfate.',
     ],
     mechanism:
-      'Blocking outward K⁺ current delays phase 3 repolarisation of the ventricular action potential. The refractory period lengthens (antiarrhythmic) but so does the QT interval, and early afterdepolarisations can trigger torsades de pointes.',
-    associations: ['QT prolongation', 'Torsades de pointes', 'Magnesium sulfate', 'Amiodarone: pulmonary fibrosis, hypo/hyperthyroidism, blue-grey skin'],
+      'Blocking outward K⁺ current delays phase 3 repolarization of the ventricular action potential. The refractory period lengthens (antiarrhythmic) but so does the QT interval, and early afterdepolarizations can trigger torsades de pointes.',
+    associations: ['QT prolongation', 'Torsades de pointes', 'Magnesium sulfate', 'Amiodarone: pulmonary fibrosis, hypo/hyperthyroidism, blue-gray skin'],
     misconception: 'Amiodarone prolongs QT yet has a relatively low torsades rate; sotalol and dofetilide carry a higher risk, which is why they are started with monitoring.',
     quick:
-      'Class III drugs block K⁺ channels, slowing repolarisation. Refractoriness and QT both lengthen, so torsades de pointes is the key risk (treat with IV magnesium).',
+      'Class III drugs block K⁺ channels, slowing repolarization. Refractoriness and QT both lengthen, so torsades de pointes is the key risk (treat with IV magnesium).',
     detailed: [
-      'Phase 3 of the ventricular action potential is driven by outward potassium currents, especially the rapid delayed rectifier (IKr, encoded by hERG/KCNH2). Class III drugs inhibit these currents, so the cell stays depolarised longer.',
+      'Phase 3 of the ventricular action potential is driven by outward potassium currents, especially the rapid delayed rectifier (IKr, encoded by hERG/KCNH2). Class III drugs inhibit these currents, so the cell stays depolarized longer.',
       'A longer action potential means a longer effective refractory period, which interrupts re-entrant circuits. On the ECG, the same change appears as a longer QT interval.',
-      'If repolarisation is delayed enough, L-type calcium channels can reactivate during phase 2–3 and produce early afterdepolarisations. These can trigger polymorphic ventricular tachycardia with a twisting axis: torsades de pointes. Hypokalaemia and hypomagnesaemia increase the risk.',
+      'If repolarization is delayed enough, L-type calcium channels can reactivate during phase 2–3 and produce early afterdepolarizations. These can trigger polymorphic ventricular tachycardia with a twisting axis: torsades de pointes. Hypokalemia and hypomagnesemia increase the risk.',
     ],
     takeaway: 'Class III = K⁺ channel blockade → ↑ AP duration, ↑ ERP, ↑ QT → torsades risk.',
     related: ['cardiac-ap', 'class1c-flecainide'],
@@ -114,11 +114,11 @@ export const cardioRenal = defineConcepts([
           ['e', 'β1-adrenergic signalling', 'β-blockade (class II) slows nodal conduction; it does not cause torsades.'],
         ],
         answer: 'b',
-        mini: 'Dofetilide blocks IKr, delaying repolarisation. QT lengthens and early afterdepolarisations can trigger torsades de pointes.',
+        mini: 'Dofetilide blocks IKr, delaying repolarization. QT lengthens and early afterdepolarizations can trigger torsades de pointes.',
         difficulty: 3,
       },
       {
-        stem: 'A 66-year-old on long-term therapy for recurrent ventricular tachycardia develops progressive dyspnoea with reticular opacities on chest imaging and a raised TSH. Which drug is most likely responsible?',
+        stem: 'A 66-year-old on long-term therapy for recurrent ventricular tachycardia develops progressive dyspnea with reticular opacities on chest imaging and a raised TSH. Which drug is most likely responsible?',
         options: [
           ['a', 'Amiodarone'],
           ['b', 'Metoprolol', 'β-blockers can worsen bronchospasm but do not cause pulmonary fibrosis or thyroid dysfunction.'],
@@ -133,7 +133,7 @@ export const cardioRenal = defineConcepts([
     ],
     tf: [
       { statement: 'Class III antiarrhythmics shorten the effective refractory period.', isTrue: false, correction: 'They lengthen action potential duration and the effective refractory period.' },
-      { statement: 'Intravenous magnesium sulfate is used to treat torsades de pointes.', isTrue: true, correction: 'Magnesium suppresses early afterdepolarisations even when serum Mg²⁺ is normal.' },
+      { statement: 'Intravenous magnesium sulfate is used to treat torsades de pointes.', isTrue: true, correction: 'Magnesium suppresses early afterdepolarizations even when serum Mg²⁺ is normal.' },
     ],
     clues: [
       { answer: 'AMIODARONE', clue: 'Iodine-rich class III antiarrhythmic linked to pulmonary fibrosis' },
@@ -169,7 +169,7 @@ export const cardioRenal = defineConcepts([
     related: ['class3-qt', 'cardiac-ap'],
     mcq: [
       {
-        stem: 'A drug strongly slows phase 0 depolarisation of ventricular myocytes, widens the QRS at faster heart rates and leaves action potential duration nearly unchanged. Why should it be avoided in a patient with a prior myocardial infarction?',
+        stem: 'A drug strongly slows phase 0 depolarization of ventricular myocytes, widens the QRS at faster heart rates and leaves action potential duration nearly unchanged. Why should it be avoided in a patient with a prior myocardial infarction?',
         options: [
           ['a', 'It increases the risk of re-entrant ventricular arrhythmias in scarred myocardium'],
           ['b', 'It causes severe sinus bradycardia by blocking the funny current', 'Funny-current block is ivabradine, not a Na⁺-channel effect.'],
@@ -194,35 +194,35 @@ export const cardioRenal = defineConcepts([
     system: 'cardiovascular',
     topic: 'cv-antihypertensives',
     difficulty: 3,
-    objectives: ['Explain how Na⁺/K⁺-ATPase inhibition increases contractility', 'Recognise digoxin toxicity and its modifiers'],
+    objectives: ['Explain how Na⁺/K⁺-ATPase inhibition increases contractility', 'Recognize digoxin toxicity and its modifiers'],
     facts: [
       'Digoxin inhibits the Na⁺/K⁺-ATPase.',
       'Higher intracellular Na⁺ reduces Na⁺/Ca²⁺ exchanger activity, so intracellular Ca²⁺ rises and contractility increases.',
       'It also increases vagal tone, slowing AV nodal conduction.',
-      'Hypokalaemia increases toxicity, because digoxin and K⁺ compete for the same binding site on the pump.',
+      'Hypokalemia increases toxicity, because digoxin and K⁺ compete for the same binding site on the pump.',
       'Toxicity: nausea, vomiting, blurred or yellow vision, arrhythmias (e.g. atrial tachycardia with block, bidirectional VT).',
-      'Acute toxicity causes hyperkalaemia; the antidote is digoxin-specific antibody fragments (Fab).',
+      'Acute toxicity causes hyperkalemia; the antidote is digoxin-specific antibody fragments (Fab).',
     ],
     mechanism:
       'Blocking Na⁺/K⁺-ATPase raises intracellular Na⁺. The Na⁺/Ca²⁺ exchanger then extrudes less Ca²⁺, so more Ca²⁺ is stored in the sarcoplasmic reticulum and released each beat, increasing contractility.',
-    associations: ['Yellow-green vision', 'Hypokalaemia potentiates toxicity', 'Hyperkalaemia in acute overdose', 'Renal clearance', 'Digoxin immune Fab'],
+    associations: ['Yellow-green vision', 'Hypokalemia potentiates toxicity', 'Hyperkalemia in acute overdose', 'Renal clearance', 'Digoxin immune Fab'],
     misconception: 'Low potassium makes digoxin toxicity more likely, but acute poisoning itself causes high potassium because the pump is blocked everywhere.',
     quick:
-      'Digoxin blocks Na⁺/K⁺-ATPase → ↑ intracellular Na⁺ → less Ca²⁺ exported → ↑ contractility. Hypokalaemia worsens toxicity; acute overdose causes hyperkalaemia; antidote is Fab.',
+      'Digoxin blocks Na⁺/K⁺-ATPase → ↑ intracellular Na⁺ → less Ca²⁺ exported → ↑ contractility. Hypokalemia worsens toxicity; acute overdose causes hyperkalemia; antidote is Fab.',
     detailed: [
       'Inhibiting the pump in cardiomyocytes reduces the Na⁺ gradient that powers the Na⁺/Ca²⁺ exchanger, so intracellular Ca²⁺ increases and the heart contracts more forcefully. Digoxin also enhances parasympathetic tone, which is why it is used for rate control in atrial fibrillation.',
-      'Digoxin binds the pump at a site where K⁺ also binds. When K⁺ is low, digoxin binds more, so hypokalaemia (often from loop or thiazide diuretics) predisposes to toxicity. Renal impairment and drugs like verapamil, amiodarone and quinidine raise digoxin levels.',
+      'Digoxin binds the pump at a site where K⁺ also binds. When K⁺ is low, digoxin binds more, so hypokalemia (often from loop or thiazide diuretics) predisposes to toxicity. Renal impairment and drugs like verapamil, amiodarone and quinidine raise digoxin levels.',
     ],
-    takeaway: 'Digoxin: Na⁺/K⁺-ATPase block → ↑ Ca²⁺ → ↑ inotropy; ↑ vagal tone. Hypokalaemia → toxicity; overdose → hyperkalaemia; treat with Fab.',
+    takeaway: 'Digoxin: Na⁺/K⁺-ATPase block → ↑ Ca²⁺ → ↑ inotropy; ↑ vagal tone. Hypokalemia → toxicity; overdose → hyperkalemia; treat with Fab.',
     related: ['loop-diuretics', 'frank-starling'],
     mcq: [
       {
-        stem: 'An 80-year-old taking digoxin and furosemide presents with nausea and yellow-tinged vision. Her serum potassium is 2.9 mmol/L. Why does the potassium level matter?',
+        stem: 'An 80-year-old taking digoxin and furosemide presents with nausea and yellow-tinged vision. Her serum potassium is 2.9 mEq/L. Why does the potassium level matter?',
         options: [
           ['a', 'Low K⁺ increases digoxin binding to the Na⁺/K⁺-ATPase'],
-          ['b', 'Low K⁺ increases renal clearance of digoxin', 'Hypokalaemia does not speed digoxin clearance; renal function does.'],
+          ['b', 'Low K⁺ increases renal clearance of digoxin', 'Hypokalemia does not speed digoxin clearance; renal function does.'],
           ['c', 'Low K⁺ blocks the Na⁺/Ca²⁺ exchanger directly', 'The exchanger is affected indirectly via the Na⁺ gradient, not by K⁺.'],
-          ['d', 'Low K⁺ reduces vagal tone', 'Hypokalaemia does not explain toxicity through vagal tone.'],
+          ['d', 'Low K⁺ reduces vagal tone', 'Hypokalemia does not explain toxicity through vagal tone.'],
         ],
         answer: 'a',
         mini: 'Digoxin and K⁺ compete for the pump. With less K⁺, digoxin binds more, so toxicity occurs at normal drug levels.',
@@ -230,7 +230,7 @@ export const cardioRenal = defineConcepts([
       },
     ],
     tf: [
-      { statement: 'Acute digoxin overdose typically causes hypokalaemia.', isTrue: false, correction: 'Acute overdose blocks the pump in all cells, so K⁺ stays outside: hyperkalaemia.' },
+      { statement: 'Acute digoxin overdose typically causes hypokalemia.', isTrue: false, correction: 'Acute overdose blocks the pump in all cells, so K⁺ stays outside: hyperkalemia.' },
     ],
     clues: [{ answer: 'DIGOXIN', clue: 'Cardiac glycoside that inhibits the sodium–potassium pump' }],
   },
@@ -286,21 +286,21 @@ export const cardioRenal = defineConcepts([
     system: 'cardiovascular',
     topic: 'cv-physiology',
     difficulty: 3,
-    objectives: ['Assign ion currents to each phase of the ventricular action potential', 'Contrast nodal and ventricular depolarisation'],
+    objectives: ['Assign ion currents to each phase of the ventricular action potential', 'Contrast nodal and ventricular depolarization'],
     facts: [
       'Ventricular phase 0: fast Na⁺ influx. Phase 1: transient K⁺ efflux. Phase 2 plateau: Ca²⁺ influx balanced by K⁺ efflux. Phase 3: K⁺ efflux. Phase 4: resting potential maintained by K⁺ (IK1).',
       'Nodal (SA/AV) phase 0 is due to L-type Ca²⁺ influx, so it is slower.',
-      'Nodal phase 4 has spontaneous depolarisation from the funny current (If, HCN channels), setting automaticity.',
+      'Nodal phase 4 has spontaneous depolarization from the funny current (If, HCN channels), setting automaticity.',
       'Sympathetic stimulation increases the slope of nodal phase 4; vagal stimulation decreases it.',
     ],
     mechanism:
-      'Different channel sets produce different shapes: fast Na⁺ channels give ventricular cells a rapid upstroke for fast conduction, while nodal cells rely on Ca²⁺ for depolarisation and If for pacemaking.',
+      'Different channel sets produce different shapes: fast Na⁺ channels give ventricular cells a rapid upstroke for fast conduction, while nodal cells rely on Ca²⁺ for depolarization and If for pacemaking.',
     associations: ['Class I drugs act on phase 0 (ventricular)', 'Class IV drugs act on nodal phase 0', 'Ivabradine blocks If'],
-    misconception: 'SA node depolarisation is not driven by fast Na⁺ channels; those are largely inactivated at the nodal resting potential.',
+    misconception: 'SA node depolarization is not driven by fast Na⁺ channels; those are largely inactivated at the nodal resting potential.',
     quick:
-      'Ventricles: Na⁺ upstroke, Ca²⁺ plateau, K⁺ repolarisation. Nodes: Ca²⁺ upstroke and a funny-current (If) slope in phase 4 that sets heart rate.',
+      'Ventricles: Na⁺ upstroke, Ca²⁺ plateau, K⁺ repolarization. Nodes: Ca²⁺ upstroke and a funny-current (If) slope in phase 4 that sets heart rate.',
     detailed: [
-      'In ventricular myocytes the resting potential is about −90 mV. Fast Na⁺ channels open at threshold to give phase 0; the plateau (phase 2) reflects L-type Ca²⁺ entry that triggers Ca²⁺-induced Ca²⁺ release for contraction; delayed rectifier K⁺ currents repolarise in phase 3.',
+      'In ventricular myocytes the resting potential is about −90 mV. Fast Na⁺ channels open at threshold to give phase 0; the plateau (phase 2) reflects L-type Ca²⁺ entry that triggers Ca²⁺-induced Ca²⁺ release for contraction; delayed rectifier K⁺ currents repolarize in phase 3.',
       'Nodal cells sit at a less negative potential, so fast Na⁺ channels are inactivated. Their upstroke uses L-type Ca²⁺ channels, which is why calcium channel blockers slow AV conduction. Phase 4 drifts upward through HCN channels (If), the basis of automaticity.',
     ],
     takeaway: 'Ventricle: 0 = Na⁺, 2 = Ca²⁺ plateau, 3 = K⁺. Node: 0 = Ca²⁺, 4 = If.',
@@ -318,13 +318,13 @@ export const cardioRenal = defineConcepts([
     system: 'renal',
     topic: 'renal-glomerular',
     difficulty: 2,
-    objectives: ['Recognise the commonest cause of nephrotic syndrome in children', 'Describe its microscopic findings'],
+    objectives: ['Recognize the commonest cause of nephrotic syndrome in children', 'Describe its microscopic findings'],
     facts: [
       'Most common cause of nephrotic syndrome in children.',
       'Light microscopy is normal; electron microscopy shows effacement of podocyte foot processes.',
       'Immunofluorescence is negative (no immune complexes).',
       'Loss of glomerular negative charge causes selective albuminuria.',
-      'Usually responds well to corticosteroids. Can follow infection or immunisation, and is associated with NSAIDs and Hodgkin lymphoma.',
+      'Usually responds well to corticosteroids. Can follow infection or immunization, and is associated with NSAIDs and Hodgkin lymphoma.',
     ],
     mechanism:
       'A circulating factor, thought to be T-cell derived, injures podocytes. Their foot processes efface and the filtration barrier loses charge selectivity, so albumin leaks out while larger proteins are largely retained.',
@@ -333,20 +333,20 @@ export const cardioRenal = defineConcepts([
     quick:
       'Child with nephrotic syndrome, normal light microscopy, foot-process effacement on EM, no immune deposits, and an excellent steroid response: minimal change disease.',
     detailed: [
-      'Nephrotic syndrome means heavy proteinuria (> 3.5 g/day in adults), hypoalbuminaemia, oedema and hyperlipidaemia, with a tendency to thrombosis and infection.',
+      'Nephrotic syndrome means heavy proteinuria (> 3.5 g/day in adults), hypoalbuminemia, edema and hyperlipidemia, with a tendency to thrombosis and infection.',
       'In minimal change disease the podocyte is the target. Effacement and loss of the anionic charge on the barrier allow albumin, a small negatively charged protein, to pass: a selective proteinuria. Because no immune complexes are deposited, immunofluorescence is negative and complement levels are normal.',
     ],
     takeaway: 'Minimal change: normal LM, effaced foot processes on EM, negative IF, steroid-responsive; commonest nephrotic syndrome in children.',
     related: ['psgn'],
     mcq: [
       {
-        stem: 'A 4-year-old boy has periorbital oedema two weeks after an upper respiratory infection. Urine shows 4+ protein without red cells. Light microscopy of a renal biopsy is normal. What would electron microscopy most likely show?',
+        stem: 'A 4-year-old boy has periorbital edema two weeks after an upper respiratory infection. Urine shows 4+ protein without red cells. Light microscopy of a renal biopsy is normal. What would electron microscopy most likely show?',
         options: [
           ['a', 'Effacement of podocyte foot processes'],
-          ['b', 'Subepithelial "humps"', 'Humps are immune-complex deposits of post-streptococcal glomerulonephritis, a nephritic disease with haematuria.'],
+          ['b', 'Subepithelial "humps"', 'Humps are immune-complex deposits of post-streptococcal glomerulonephritis, a nephritic disease with hematuria.'],
           ['c', '"Spike and dome" subepithelial deposits', 'Spike and dome is membranous nephropathy, mostly in adults, with positive immunofluorescence.'],
           ['d', 'Splitting of the glomerular basement membrane', 'Basket-weave GBM splitting is Alport syndrome (type IV collagen).'],
-          ['e', 'Mesangial IgA deposits', 'IgA nephropathy causes haematuria; deposits are mesangial.'],
+          ['e', 'Mesangial IgA deposits', 'IgA nephropathy causes hematuria; deposits are mesangial.'],
         ],
         answer: 'a',
         mini: 'A child with nephrotic syndrome and normal light microscopy has minimal change disease; EM shows foot-process effacement only.',
@@ -365,23 +365,23 @@ export const cardioRenal = defineConcepts([
     system: 'renal',
     topic: 'renal-glomerular',
     difficulty: 2,
-    objectives: ['Recognise nephritic syndrome after streptococcal infection', 'Relate immune complexes to low complement'],
+    objectives: ['Recognize nephritic syndrome after streptococcal infection', 'Relate immune complexes to low complement'],
     facts: [
       'Occurs about 1–3 weeks after group A streptococcal pharyngitis or 2–6 weeks after skin infection.',
-      'Nephritic syndrome: haematuria (cola-coloured urine), red cell casts, hypertension, oedema, oliguria.',
+      'Nephritic syndrome: hematuria (cola-colored urine), red cell casts, hypertension, edema, oliguria.',
       'Type III hypersensitivity: immune complexes deposit in the glomerulus.',
       'Light microscopy: enlarged, hypercellular glomeruli. EM: subepithelial immune-complex humps. IF: granular ("lumpy-bumpy") IgG, IgM, C3.',
       'Serum C3 is low; ASO or anti-DNase B titres are raised.',
       'Children usually recover; adults more often have persistent disease.',
     ],
     mechanism:
-      'Antibodies against nephritogenic streptococcal antigens form immune complexes that deposit in the glomerulus, activate complement (consuming C3) and recruit neutrophils, causing inflammation and haematuria.',
+      'Antibodies against nephritogenic streptococcal antigens form immune complexes that deposit in the glomerulus, activate complement (consuming C3) and recruit neutrophils, causing inflammation and hematuria.',
     associations: ['Low C3', 'Subepithelial humps', 'Type III hypersensitivity', 'Recent pharyngitis or impetigo'],
-    misconception: 'PSGN follows the infection by weeks; haematuria during or within days of a sore throat points to IgA nephropathy.',
+    misconception: 'PSGN follows the infection by weeks; hematuria during or within days of a sore throat points to IgA nephropathy.',
     quick:
       'Cola urine and hypertension 2 weeks after strep throat, low C3, subepithelial humps on EM: post-streptococcal GN, a type III hypersensitivity.',
     detailed: [
-      'Nephritic syndromes are driven by glomerular inflammation, which damages capillaries and lets red cells through. The result is haematuria with red cell casts, a reduced GFR with salt and water retention, hypertension and modest proteinuria.',
+      'Nephritic syndromes are driven by glomerular inflammation, which damages capillaries and lets red cells through. The result is hematuria with red cell casts, a reduced GFR with salt and water retention, hypertension and modest proteinuria.',
       'In PSGN, immune complexes lodge on the epithelial side of the basement membrane. Complement activation consumes C3, so serum C3 is low and recovers over about 6–8 weeks.',
     ],
     takeaway: 'PSGN = nephritic, weeks after GAS infection, low C3, subepithelial humps, type III hypersensitivity.',
@@ -391,7 +391,7 @@ export const cardioRenal = defineConcepts([
         stem: 'An 8-year-old girl has dark urine and periorbital swelling three weeks after impetigo. Blood pressure is raised and urinalysis shows red cell casts. Which laboratory finding is most expected?',
         options: [
           ['a', 'Low serum C3'],
-          ['b', 'Positive anti-GBM antibody', 'Anti-GBM disease gives linear IF and often lung haemorrhage; it does not follow skin infection.'],
+          ['b', 'Positive anti-GBM antibody', 'Anti-GBM disease gives linear IF and often lung hemorrhage; it does not follow skin infection.'],
           ['c', 'Positive c-ANCA (PR3)', 'PR3-ANCA suggests granulomatosis with polyangiitis.'],
           ['d', 'Selective albuminuria > 3.5 g/day', 'Heavy selective proteinuria is nephrotic, not nephritic.'],
           ['e', 'Raised serum IgA with normal complement', 'IgA nephropathy presents within days of infection, with normal C3.'],
@@ -452,9 +452,9 @@ export const cardioRenal = defineConcepts([
     facts: [
       'Furosemide, bumetanide, torsemide (sulfonamides) and ethacrynic acid (non-sulfonamide) inhibit NKCC2 in the thick ascending limb.',
       'This abolishes the lumen-positive potential that drives paracellular Mg²⁺ and Ca²⁺ reabsorption.',
-      'Electrolyte effects: hypokalaemia, metabolic alkalosis, hypomagnesaemia and increased urinary calcium.',
-      'Adverse effects: ototoxicity, hypovolaemia, hyperuricaemia, sulfa allergy.',
-      'Used for oedema (heart failure, nephrotic syndrome) and hypercalcaemia (after volume repletion).',
+      'Electrolyte effects: hypokalemia, metabolic alkalosis, hypomagnesemia and increased urinary calcium.',
+      'Adverse effects: ototoxicity, hypovolemia, hyperuricemia, sulfa allergy.',
+      'Used for edema (heart failure, nephrotic syndrome) and hypercalcemia (after volume repletion).',
     ],
     mechanism:
       'NKCC2 blockade stops Na⁺, K⁺ and 2Cl⁻ uptake in the thick ascending limb, wasting salt and water. Without K⁺ recycling there is no lumen-positive voltage, so Ca²⁺ and Mg²⁺ are also lost.',
@@ -464,7 +464,7 @@ export const cardioRenal = defineConcepts([
       'Loops block NKCC2 in the thick ascending limb: big diuresis, ↓K⁺, alkalosis, and ↑ urinary Ca²⁺ (unlike thiazides). Watch for ototoxicity.',
     detailed: [
       'The thick ascending limb reabsorbs about 25% of filtered sodium via NKCC2. K⁺ leaks back into the lumen through ROMK, creating a lumen-positive potential that pushes Ca²⁺ and Mg²⁺ between cells.',
-      'Loop diuretics remove this driving force, so Ca²⁺ and Mg²⁺ are excreted. More Na⁺ reaches the collecting duct, where aldosterone-driven Na⁺ uptake promotes K⁺ and H⁺ secretion, causing hypokalaemic metabolic alkalosis.',
+      'Loop diuretics remove this driving force, so Ca²⁺ and Mg²⁺ are excreted. More Na⁺ reaches the collecting duct, where aldosterone-driven Na⁺ uptake promotes K⁺ and H⁺ secretion, causing hypokalemic metabolic alkalosis.',
     ],
     takeaway: 'Loops: NKCC2 (TAL), ↑ Ca²⁺ excretion, ↓K⁺, alkalosis, ototoxic. Thiazides: ↓ Ca²⁺ excretion.',
     related: ['digoxin', 'raas-cascade'],
@@ -496,31 +496,31 @@ export const cardioRenal = defineConcepts([
     difficulty: 3,
     objectives: ['Calculate the anion gap', 'List causes of a high anion gap metabolic acidosis', 'Check respiratory compensation with Winter’s formula'],
     facts: [
-      'Anion gap = Na⁺ − (Cl⁻ + HCO₃⁻); normal roughly 8–12 mmol/L (laboratory-dependent).',
-      'High gap: an unmeasured acid is added (lactate, ketoacids, toxic alcohol metabolites, salicylate, uraemic acids).',
-      'Normal gap (hyperchloraemic): HCO₃⁻ loss (diarrhoea, renal tubular acidosis).',
+      'Anion gap = Na⁺ − (Cl⁻ + HCO₃⁻); normal roughly 8–12 mEq/L (laboratory-dependent).',
+      'High gap: an unmeasured acid is added (lactate, ketoacids, toxic alcohol metabolites, salicylate, uremic acids).',
+      'Normal gap (hyperchloremic): HCO₃⁻ loss (diarrhea, renal tubular acidosis).',
       'Expected PaCO₂ = 1.5 × HCO₃⁻ + 8 ± 2 (Winter’s formula).',
     ],
     mechanism:
       'Each added acid releases H⁺, consumed by bicarbonate. The acid’s anion is not measured, so HCO₃⁻ falls without a matching rise in Cl⁻ and the gap widens.',
-    associations: ['Lactic acidosis', 'Diabetic ketoacidosis', 'Methanol and ethylene glycol', 'Salicylates (mixed picture)', 'Uraemia'],
-    misconception: 'Diarrhoea causes a metabolic acidosis with a NORMAL anion gap, because bicarbonate is lost and chloride rises.',
+    associations: ['Lactic acidosis', 'Diabetic ketoacidosis', 'Methanol and ethylene glycol', 'Salicylates (mixed picture)', 'Uremia'],
+    misconception: 'Diarrhea causes a metabolic acidosis with a NORMAL anion gap, because bicarbonate is lost and chloride rises.',
     quick:
-      'AG = Na⁺ − (Cl⁻ + HCO₃⁻). High gap means an unmeasured acid (lactate, ketones, toxic alcohols, uraemia, salicylate). Check compensation: PaCO₂ ≈ 1.5×HCO₃⁻ + 8 ± 2.',
+      'AG = Na⁺ − (Cl⁻ + HCO₃⁻). High gap means an unmeasured acid (lactate, ketones, toxic alcohols, uremia, salicylate). Check compensation: PaCO₂ ≈ 1.5×HCO₃⁻ + 8 ± 2.',
     detailed: [
-      'Acidaemia with low HCO₃⁻ is a metabolic acidosis. Calculate the gap to split causes: high-gap acidoses add an acid; normal-gap acidoses lose bicarbonate.',
+      'Acidemia with low HCO₃⁻ is a metabolic acidosis. Calculate the gap to split causes: high-gap acidoses add an acid; normal-gap acidoses lose bicarbonate.',
       'Winter’s formula predicts the PaCO₂ if respiratory compensation is appropriate. A PaCO₂ higher than predicted means a coexisting respiratory acidosis; lower means a coexisting respiratory alkalosis (as in early salicylate poisoning).',
     ],
     takeaway: 'High AG = added acid; normal AG = lost HCO₃⁻. Use Winter’s formula to spot mixed disorders.',
     related: ['raas-cascade'],
     mcq: [
       {
-        stem: 'A patient has Na⁺ 140, Cl⁻ 100 and HCO₃⁻ 12 mmol/L with pH 7.20. PaCO₂ is 26 mmHg. Which statement is correct?',
+        stem: 'A patient has Na⁺ 140, Cl⁻ 100 and HCO₃⁻ 12 mEq/L with pH 7.20. PaCO₂ is 26 mm Hg. Which statement is correct?',
         options: [
           ['a', 'High anion gap metabolic acidosis with appropriate respiratory compensation'],
           ['b', 'Normal anion gap metabolic acidosis', 'AG = 140 − (100 + 12) = 28, which is high.'],
           ['c', 'High anion gap acidosis with a coexisting respiratory acidosis', 'Expected PaCO₂ = 1.5×12 + 8 = 26 ± 2; measured 26 fits, so no extra respiratory acidosis.'],
-          ['d', 'Primary respiratory alkalosis', 'The pH is acidaemic and HCO₃⁻ is low: the primary process is metabolic acidosis.'],
+          ['d', 'Primary respiratory alkalosis', 'The pH is acidemic and HCO₃⁻ is low: the primary process is metabolic acidosis.'],
         ],
         answer: 'a',
         mini: 'AG = 140 − 112 = 28 (high). Winter’s: 1.5 × 12 + 8 = 26 ± 2, matching the measured 26, so compensation is appropriate.',
@@ -529,7 +529,7 @@ export const cardioRenal = defineConcepts([
       },
     ],
     tf: [
-      { statement: 'Severe diarrhoea causes a high anion gap metabolic acidosis.', isTrue: false, correction: 'Diarrhoea loses HCO₃⁻ and causes a normal anion gap (hyperchloraemic) acidosis.' },
+      { statement: 'Severe diarrhea causes a high anion gap metabolic acidosis.', isTrue: false, correction: 'Diarrhea loses HCO₃⁻ and causes a normal anion gap (hyperchloremic) acidosis.' },
     ],
     clues: [{ answer: 'LACTATE', clue: 'Anion raising the gap in shock and tissue hypoperfusion' }],
   },

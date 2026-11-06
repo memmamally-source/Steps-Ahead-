@@ -38,7 +38,7 @@ export const CONNECTION_GROUPS: ConnectionGroup[] = [
     label: 'X-linked recessive disorders',
     tier: 3,
     conceptIds: ['x-linked-recessive', 'g6pd', 'bruton', 'fabry'],
-    members: ['G6PD deficiency', 'Haemophilia A', 'Duchenne', 'Fabry', 'Bruton agammaglobulinaemia', 'Lesch–Nyhan', 'OTC deficiency'],
+    members: ['G6PD deficiency', 'Hemophilia A', 'Duchenne', 'Fabry', 'Bruton agammaglobulinemia', 'Lesch–Nyhan', 'OTC deficiency'],
     explanation: 'All are X-linked recessive: mostly males affected, carrier mothers, no male-to-male transmission.',
   }),
   g({
@@ -46,7 +46,7 @@ export const CONNECTION_GROUPS: ConnectionGroup[] = [
     label: 'Type II hypersensitivity',
     tier: 3,
     conceptIds: ['hypersensitivity'],
-    members: ['Goodpasture', 'Graves disease', 'Myasthenia gravis', 'Pemphigus vulgaris', 'Acute rheumatic fever', 'Autoimmune haemolytic anaemia'],
+    members: ['Goodpasture', 'Graves disease', 'Myasthenia gravis', 'Pemphigus vulgaris', 'Acute rheumatic fever', 'Autoimmune hemolytic anemia'],
     explanation: 'Antibodies bind fixed cell-surface or matrix antigens: type IV collagen, TSH receptor, ACh receptor, desmoglein 3, cross-reacting M protein, red cell antigens.',
   }),
   g({
@@ -63,7 +63,7 @@ export const CONNECTION_GROUPS: ConnectionGroup[] = [
     tier: 3,
     conceptIds: ['hypersensitivity'],
     members: ['Contact dermatitis', 'Tuberculin skin test', 'Graft-versus-host disease', 'Multiple sclerosis'],
-    explanation: 'Delayed reactions mediated by sensitised T cells, without antibody.',
+    explanation: 'Delayed reactions mediated by sensitized T cells, without antibody.',
   }),
   g({
     id: 'grp:cell-wall',
@@ -110,7 +110,7 @@ export const CONNECTION_GROUPS: ConnectionGroup[] = [
     label: 'Causes of high anion gap acidosis',
     tier: 3,
     conceptIds: ['anion-gap'],
-    members: ['Methanol', 'Ethylene glycol', 'Diabetic ketoacidosis', 'Uraemia', 'Lactic acidosis', 'Salicylate poisoning'],
+    members: ['Methanol', 'Ethylene glycol', 'Diabetic ketoacidosis', 'Uremia', 'Lactic acidosis', 'Salicylate poisoning'],
     explanation: 'Each adds an unmeasured acid anion (formate, glycolate/oxalate, ketoacids, retained organic acids, lactate, salicylate and organic acids).',
   }),
   g({
@@ -135,7 +135,7 @@ export const CONNECTION_GROUPS: ConnectionGroup[] = [
     tier: 2,
     conceptIds: ['minimal-change'],
     members: ['Minimal change disease', 'Membranous nephropathy', 'FSGS', 'Renal amyloidosis', 'Diabetic nephropathy'],
-    explanation: 'All present mainly with heavy proteinuria, hypoalbuminaemia and oedema.',
+    explanation: 'All present mainly with heavy proteinuria, hypoalbuminemia and edema.',
   }),
   g({
     id: 'grp:nephritic',
@@ -143,7 +143,7 @@ export const CONNECTION_GROUPS: ConnectionGroup[] = [
     tier: 2,
     conceptIds: ['psgn'],
     members: ['Post-streptococcal GN', 'IgA nephropathy', 'Alport syndrome', 'Goodpasture', 'Granulomatosis with polyangiitis'],
-    explanation: 'All present mainly with haematuria, red cell casts, hypertension and reduced GFR.',
+    explanation: 'All present mainly with hematuria, red cell casts, hypertension and reduced GFR.',
   }),
   g({
     id: 'grp:tpp',

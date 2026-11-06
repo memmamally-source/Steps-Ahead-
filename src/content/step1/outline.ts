@@ -58,6 +58,9 @@ export const STEP1_OUTLINE: Record<string, OutlineRef> = {
   'micro-rna-viruses': L('Multisystem Processes & Disorders', 'Infectious, immunologic, and inflammatory disorders'),
   'gn-nephrotic': L('Renal & Urinary System', 'Infectious, immunologic, and inflammatory disorders'),
   'gn-nephritic': L('Renal & Urinary System', 'Infectious, immunologic, and inflammatory disorders'),
+  'biostats-lr': L('Biostatistics, Epidemiology/Population Health, & Interpretation of the Medical Literature', 'Principles of testing and screening'),
+  'biostats-or-rr': L('Biostatistics, Epidemiology/Population Health, & Interpretation of the Medical Literature', 'Measures of association'),
+  'biostats-normal': L('Biostatistics, Epidemiology/Population Health, & Interpretation of the Medical Literature', 'Distributions of data'),
   // Endocrine
   'thyroid-synthesis': L('Endocrine System', 'Thyroid disorders'),
   'cah-21': L('Endocrine System', 'Congenital disorders'),

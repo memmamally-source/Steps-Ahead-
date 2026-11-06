@@ -125,10 +125,10 @@ export const BACTERIA: Bacterium[] = [
     traits: { gram: 'positive', catalase: false, hemolysis: 'beta', bacitracin: 'resistant' },
     idClues: ['hemolysis', 'bacitracin'],
     hallmarks: ['a positive CAMP test', 'routine rectovaginal screening of pregnant patients at 36–37 weeks'],
-    summary: 'Beta-hemolytic, bacitracin-resistant, CAMP-positive (group B). Colonises the vagina; neonatal sepsis, pneumonia and meningitis.',
+    summary: 'Beta-hemolytic, bacitracin-resistant, CAMP-positive (group B). Colonizes the vagina; neonatal sepsis, pneumonia and meningitis.',
   }),
   B({
-    id: 'enterococcus', name: 'Enterococcus faecalis', group: 'gp-cocci', concept: 'micro-staph-strep', morphology: 'cocci in pairs and short chains',
+    id: 'enterococcus', name: 'Enterococcus fecalis', group: 'gp-cocci', concept: 'micro-staph-strep', morphology: 'cocci in pairs and short chains',
     traits: { gram: 'positive', catalase: false, hemolysis: 'gamma', nacl: true },
     idClues: ['catalase', 'nacl'],
     hallmarks: ['vancomycin resistance via D-Ala-D-Lac', 'urinary and biliary infections after instrumentation'],
@@ -196,7 +196,7 @@ export const BACTERIA: Bacterium[] = [
     id: 'listeria', name: 'Listeria monocytogenes', group: 'gp-rods', concept: 'micro-gp-rods', morphology: 'short rods',
     traits: { gram: 'positive', spore: false, catalase: true, hemolysis: 'beta' },
     idClues: ['spore', 'hemolysis'],
-    hallmarks: ['tumbling motility and actin-rocket cell-to-cell spread', 'growth at refrigerator temperatures (deli meats, unpasteurised soft cheese)'],
+    hallmarks: ['tumbling motility and actin-rocket cell-to-cell spread', 'growth at refrigerator temperatures (deli meats, unpasteurized soft cheese)'],
     summary: 'Non-spore-forming, beta-hemolytic facultative intracellular rod; actin rockets, cold growth; neonatal and elderly meningitis.',
   }),
 
@@ -319,7 +319,7 @@ export const BACTERIA: Bacterium[] = [
     traits: { gram: 'negative' },
     idClues: [],
     hallmarks: ['silver stain and growth on charcoal yeast extract agar with iron and cysteine', 'pneumonia with hyponatremia and diarrhea after exposure to contaminated water systems'],
-    summary: 'Intracellular gram-negative rod seen with silver stain; buffered charcoal yeast extract agar (iron, cysteine); urine antigen; aerosolised water.',
+    summary: 'Intracellular gram-negative rod seen with silver stain; buffered charcoal yeast extract agar (iron, cysteine); urine antigen; aerosolized water.',
   }),
   B({
     id: 'bacteroides', name: 'Bacteroides fragilis', group: 'gn-other', concept: 'micro-gram-negative', morphology: 'rods',
@@ -358,7 +358,7 @@ export const BACTERIA: Bacterium[] = [
     traits: { gram: 'acid-fast', oxygen: 'obligate aerobe' },
     idClues: ['oxygen'],
     hallmarks: ['cord factor inhibiting macrophage maturation', 'caseating granulomas with a Ghon complex'],
-    summary: 'Obligate aerobic acid-fast rod with mycolic acids; cord factor; caseating granulomas; reactivation favours the apices.',
+    summary: 'Obligate aerobic acid-fast rod with mycolic acids; cord factor; caseating granulomas; reactivation favors the apices.',
   }),
   B({
     id: 'm-leprae', name: 'Mycobacterium leprae', group: 'acid-fast', concept: 'micro-atypical', morphology: 'acid-fast rods that cannot be grown in culture',

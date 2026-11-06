@@ -9,11 +9,17 @@
 
 ## Knowledge tables (6 Nov 2026, in progress)
 
-Owner's direction: strictly Step 1, comprehensive, every fact double- and triple-checked. Approach: each fact is stored once in a verified table (`src/content/kb/`), and questions are generated from it with one best answer proven by code (`generate.ts`, tested in `kb/__tests__`). Checks found and fixed: ambiguous identification clues, hallmarks shared by two organisms (EF-2 toxins, Shiga toxin, neonatal meningitis, reactive arthritis, mecA), near-equivalent biopsy findings (effacement, negative IF), a PSGN timing inconsistency, a duplicate statement, and outdated taxonomy (rotavirus, RSV, GBS screening weeks).
+Owner's direction: strictly Step 1, comprehensive, every fact double- and triple-checked. Approach: each fact is stored once in a verified table (`src/content/kb/`), and questions are generated from it with one best answer proven by code (`generate.ts`; tests in `kb/__tests__`). Biostatistics items are generated from numbers and every answer is recomputed independently in tests.
 
-Built: bacteria (40 organisms → 178 items), viruses (34 → 213), glomerular diseases (13 → 93), plus 8 group concepts mapped to the outline. Library now: 48 concepts, 649 items (356 MCQ, 214 true/false, 55 clues, 19 Connections groups, 5 cases). All AI-drafted and unreviewed.
+Built: bacteria (40 organisms → 178 items), viruses (34 → 213), glomerular diseases (13 → 93), biostatistics (93 calculation items: sensitivity, specificity, PPV, NPV, LR+, ARR, RRR, NNT, RR, OR, expected false positives, normal distribution), plus 11 group concepts mapped to the outline.
 
-Not done yet: pharmacology table (an attempt was interrupted and discarded), biostatistics calculation generator, fungi/parasites, conversion of hand-written content to US spelling and US conventional units (Step 1 uses mEq/L and mg/dL), and the large outline gaps (neuro/psych, MSK/skin, reproductive/endocrine, social sciences, nutrition, GI, anatomy).
+Exam conventions applied to all medical content: US conventional units as in the official USMLE lab table (mEq/L, mg/dL, /mm³, mm Hg; unlisted labs carry "N=" ranges like the official samples) and American spelling (genus names such as Haemophilus kept).
+
+Checks found and fixed: ambiguous identification clues; hallmarks shared by two organisms (EF-2 toxins, Shiga toxin, neonatal meningitis, reactive arthritis, mecA, struvite stones and Klebsiella); near-equivalent biopsy findings (effacement, negative IF); a PSGN timing inconsistency; a duplicate statement; outdated taxonomy (rotavirus, RSV) and GBS screening weeks; biostatistics distractors that equalled the answer.
+
+Library now: 51 concepts, 742 items (449 MCQ, 214 true/false, 55 clues, 19 Connections groups, 5 cases). All AI-drafted and unreviewed.
+
+Not done: pharmacology table (a generation attempt was interrupted and must not be redone in the same form; pharmacology is covered for now by hand-written concepts), fungi and parasites, and the outline gaps (neuro/psych, MSK/skin, reproductive/endocrine, social sciences, nutrition, GI, anatomy/embryology).
 
 ## Blueprint alignment (6 Nov 2026)
 

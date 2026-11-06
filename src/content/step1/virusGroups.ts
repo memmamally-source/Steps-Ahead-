@@ -24,7 +24,7 @@ export const virusGroups = defineConcepts([
     quick: 'DNA viruses: all ds (except parvo), all nuclear (except pox), all linear (except papilloma, polyoma, hepadna). Enveloped: herpes, hepadna, pox.',
     detailed: [
       'Step 1 tests the structural rules and their exceptions, then pairs each virus with a classic disease: latent herpesviruses with reactivation, parvovirus with aplastic crisis and slapped cheek, JC virus with PML, HPV with cervical cancer via E6/E7.',
-      'Oncogenic DNA viruses act by inactivating tumour suppressors (HPV E6–p53, E7–Rb) or by chronic inflammation and integration (HBV).',
+      'Oncogenic DNA viruses act by inactivating tumor suppressors (HPV E6–p53, E7–Rb) or by chronic inflammation and integration (HBV).',
     ],
     takeaway: 'Exceptions to learn: parvo (ss), pox (cytoplasm, complex), papilloma/polyoma/hepadna (circular), hepadna (partial ds, RT).',
     related: ['micro-rna-viruses'],
@@ -76,7 +76,7 @@ export const gnGroups = defineConcepts([
       'Minimal change, FSGS and membranous nephropathy are primary podocytopathies; diabetes and amyloidosis are systemic causes.',
     ],
     mechanism:
-      'Damage to podocytes or the glomerular basement membrane lets protein escape. Low oncotic pressure causes edema, and the liver responds to hypoalbuminemia by making more lipoproteins. Urinary loss of antithrombin III favours thrombosis.',
+      'Damage to podocytes or the glomerular basement membrane lets protein escape. Low oncotic pressure causes edema, and the liver responds to hypoalbuminemia by making more lipoproteins. Urinary loss of antithrombin III favors thrombosis.',
     associations: ['Renal vein thrombosis', 'Hyperlipidemia', 'Oval fat bodies', 'Spike and dome', 'Kimmelstiel–Wilson nodules'],
     misconception: 'Hematuria with red cell casts points to nephritic, not nephrotic, disease; nephrotic diseases cause heavy proteinuria with a bland sediment apart from fat.',
     quick: 'Nephrotic = > 3.5 g/day protein, low albumin, edema, high lipids. Biopsy: MCD normal LM; FSGS segmental sclerosis; membranous spike and dome; diabetes K–W nodules; amyloid Congo red.',
@@ -109,7 +109,7 @@ export const gnGroups = defineConcepts([
     quick: 'Nephritic = hematuria + RBC casts + hypertension. IF: linear = anti-GBM; granular = immune complex (PSGN, lupus, MPGN; low C3); mesangial IgA = IgA nephropathy; none = ANCA vasculitis.',
     detailed: [
       'Immunofluorescence is the fastest discriminator on Step 1. Combine it with timing (IgA within days of infection, PSGN weeks after), serology (ANCA, anti-GBM, anti-dsDNA) and complement.',
-      'Electron microscopy then localises deposits: subepithelial humps (PSGN), subendothelial (lupus, MPGN), mesangial (IgA), none (anti-GBM, ANCA), and basket-weave GBM splitting (Alport).',
+      'Electron microscopy then localizes deposits: subepithelial humps (PSGN), subendothelial (lupus, MPGN), mesangial (IgA), none (anti-GBM, ANCA), and basket-weave GBM splitting (Alport).',
     ],
     takeaway: 'Nephritic: sort by IF (linear / granular / IgA / none), then complement and serology.',
     related: ['psgn', 'gn-nephrotic', 'hypersensitivity'],

@@ -6,6 +6,7 @@ import { BACTERIA, BACTERIA_GROUP_TITLE, BACTERIA_TRAITS } from './bacteria';
 import { generateFromTable, type GenIssue, type TableSpec } from './generate';
 import { VIRUSES, VIRUS_GROUP_TITLE, VIRUS_TRAITS, type Virus } from './viruses';
 import { GLOMERULAR, GN_GROUP_TITLE, GN_TRAITS, type GnRow, type GnTrait } from './glomerular';
+import { biostatItems } from './biostats';
 
 export const BACTERIA_SPEC: TableSpec<(typeof BACTERIA)[number]> = {
   table: 'bact',
@@ -156,5 +157,6 @@ const structures = virusStructureItems();
 const gn = generateFromTable(GN_SPEC);
 const gnFindings = gnFindingItems();
 
-export const KB_ITEMS: (McqItem | TrueFalseItem)[] = [...bacteria.items, ...viruses.items, ...structures.items, ...gn.items, ...gnFindings.items];
+export const STAT_ITEMS = biostatItems();
+export const KB_ITEMS: (McqItem | TrueFalseItem)[] = [...bacteria.items, ...viruses.items, ...structures.items, ...gn.items, ...gnFindings.items, ...STAT_ITEMS.map((s) => s.item)];
 export const KB_ISSUES: GenIssue[] = [...bacteria.issues, ...viruses.issues, ...structures.issues, ...gn.issues, ...gnFindings.issues];

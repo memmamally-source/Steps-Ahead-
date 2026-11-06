@@ -1,7 +1,7 @@
 /**
  * Glomerular disease table: light microscopy (LM), electron microscopy (EM), immunofluorescence
  * (IF), serology and associations, as tested on Step 1. One row per disease; each finding phrase
- * is used verbatim in stems, so wording is standardised.
+ * is used verbatim in stems, so wording is standardized.
  */
 import type { Hallmark } from './generate';
 import type { TraitDef, TraitValue } from './traits';
@@ -51,12 +51,12 @@ export const GLOMERULAR: GnRow[] = [
     id: 'membranous', name: 'Membranous nephropathy', group: 'nephrotic', concept: 'gn-nephrotic',
     traits: { syndrome: 'nephrotic', lm: 'diffuse capillary wall and basement membrane thickening', em: 'subepithelial immune complex deposits with a "spike and dome" appearance', if: 'granular IgG and C3 along capillary walls', complement: 'normal' },
     idClues: ['em'],
-    hallmarks: ['antibodies to the phospholipase A2 receptor (PLA2R) on podocytes', 'secondary causes including hepatitis B, SLE (class V), solid tumours and drugs such as NSAIDs'],
+    hallmarks: ['antibodies to the phospholipase A2 receptor (PLA2R) on podocytes', 'secondary causes including hepatitis B, SLE (class V), solid tumors and drugs such as NSAIDs'],
     summary: 'Nephrotic; thick GBM, subepithelial "spike and dome" deposits, granular IF; anti-PLA2R in primary disease; commonest primary nephrotic syndrome in White adults; renal vein thrombosis risk.',
   }),
   G({
     id: 'amyloid', name: 'Renal amyloidosis', group: 'nephrotic', concept: 'gn-nephrotic',
-    traits: { syndrome: 'nephrotic', lm: 'mesangial deposits with apple-green birefringence on Congo red under polarised light', complement: 'normal' },
+    traits: { syndrome: 'nephrotic', lm: 'mesangial deposits with apple-green birefringence on Congo red under polarized light', complement: 'normal' },
     idClues: ['lm'],
     hallmarks: ['nephrotic syndrome with Congo red–positive deposits in a patient with multiple myeloma or chronic inflammatory disease'],
     summary: 'Nephrotic; Congo red–positive mesangial deposits with apple-green birefringence; AL (plasma cell dyscrasia) or AA (chronic inflammation) amyloid.',

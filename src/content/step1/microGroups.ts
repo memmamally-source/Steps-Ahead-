@@ -48,13 +48,13 @@ export const microGroups = defineConcepts([
       'Clostridial toxins: tetanospasmin (spastic paralysis), botulinum toxin (flaccid paralysis), alpha toxin (gas gangrene), toxins A and B (pseudomembranous colitis).',
     ],
     mechanism:
-      'Spores are dormant, heat-resistant forms with a dipicolinic acid core; they survive cooking and disinfection and germinate in favourable conditions, which explains reheated-rice food poisoning and wound tetanus.',
+      'Spores are dormant, heat-resistant forms with a dipicolinic acid core; they survive cooking and disinfection and germinate in favorable conditions, which explains reheated-rice food poisoning and wound tetanus.',
     associations: ['Spores', 'Exotoxins', 'Branching filaments', 'Sulfur granules', 'Tumbling motility'],
     misconception: 'Nocardia and Actinomyces look alike but differ: Nocardia is aerobic and weakly acid-fast (treat with sulfonamides); Actinomyces is anaerobic and not acid-fast (treat with penicillin). "SNAP".',
     quick: 'Spores = Bacillus and Clostridium. No spores = Corynebacterium and Listeria. Branching = Nocardia (aerobic, acid-fast, sulfonamides) vs Actinomyces (anaerobic, penicillin).',
     detailed: [
       'Questions usually give a clinical toxin effect and ask for the organism or the toxin mechanism: spastic paralysis after a puncture wound (tetanus), descending flaccid paralysis after home-canned food or honey (botulism), crepitant myonecrosis (C. perfringens), diarrhea after antibiotics (C. difficile).',
-      'Listeria is unusual among gram-positive rods: it is facultative intracellular, spreads by actin polymerisation, grows in the cold and causes meningitis at the extremes of age and in pregnancy.',
+      'Listeria is unusual among gram-positive rods: it is facultative intracellular, spreads by actin polymerization, grows in the cold and causes meningitis at the extremes of age and in pregnancy.',
     ],
     takeaway: 'Spores: Bacillus/Clostridium. No spores: Corynebacterium/Listeria. SNAP: Sulfonamides–Nocardia; Actinomyces–Penicillin.',
     related: ['micro-staph-strep'],
@@ -66,7 +66,7 @@ export const microGroups = defineConcepts([
     system: 'multisystem',
     topic: 'micro-gram-negative',
     difficulty: 3,
-    objectives: ['Use lactose fermentation, oxidase, H₂S and urease to identify gram-negative organisms', 'Recognise the classic diseases and toxins'],
+    objectives: ['Use lactose fermentation, oxidase, H₂S and urease to identify gram-negative organisms', 'Recognize the classic diseases and toxins'],
     facts: [
       'Neisseria: N. meningitidis ferments maltose and glucose and is encapsulated; N. gonorrhoeae ferments glucose only.',
       'Lactose fermenters grow pink on MacConkey agar: E. coli, Klebsiella (also Enterobacter, Citrobacter, Serratia).',
@@ -77,7 +77,7 @@ export const microGroups = defineConcepts([
     mechanism:
       'Lipid A of lipopolysaccharide is the endotoxin of gram-negative bacteria: it activates macrophages via TLR4, releasing IL-1, IL-6 and TNF-α, which drive fever and septic shock.',
     associations: ['MacConkey agar', 'Oxidase', 'H₂S', 'Urease', 'Endotoxin (LPS)'],
-    misconception: 'Gram-negative organisms stain pink because the thin peptidoglycan layer loses the crystal violet–iodine complex during alcohol decolourisation, not because they lack peptidoglycan.',
+    misconception: 'Gram-negative organisms stain pink because the thin peptidoglycan layer loses the crystal violet–iodine complex during alcohol decolorization, not because they lack peptidoglycan.',
     quick: 'Lactose fermenters (pink on MacConkey): E. coli, Klebsiella. Non-fermenters: oxidase+ Pseudomonas; oxidase− Salmonella (H₂S+), Shigella (H₂S−), Proteus (H₂S+, urease+).',
     detailed: [
       'Identification questions build on a few tests: Gram stain and shape, lactose fermentation on MacConkey agar, oxidase, then H₂S, urease and motility. Curved rods are separated by growth conditions and urease.',
@@ -93,7 +93,7 @@ export const microGroups = defineConcepts([
     system: 'multisystem',
     topic: 'micro-atypical',
     difficulty: 3,
-    objectives: ['Recognise organisms that are not seen on Gram stain and why', 'Link each organism to its vector or exposure and disease'],
+    objectives: ['Recognize organisms that are not seen on Gram stain and why', 'Link each organism to its vector or exposure and disease'],
     facts: [
       'Spirochetes are too thin for routine light microscopy: Treponema is seen by dark-field microscopy.',
       'Mycobacteria have mycolic acid–rich walls and stain with acid-fast (Ziehl–Neelsen) stains.',
@@ -107,7 +107,7 @@ export const microGroups = defineConcepts([
     quick: 'Not seen on Gram stain: spirochetes (too thin), mycobacteria (acid-fast), Mycoplasma (no wall), Chlamydia and Rickettsia (intracellular).',
     detailed: [
       'Questions combine an exposure with a classic finding: a painless chancre (Treponema), erythema migrans after an Ixodes bite (Borrelia), conjunctival suffusion after freshwater exposure (Leptospira), a rash moving from wrists and ankles inward (Rickettsia rickettsii).',
-      'Mycobacterium tuberculosis is an obligate aerobe, which is why reactivation favours the well-ventilated lung apices; cord factor and sulfatides help it survive in macrophages.',
+      'Mycobacterium tuberculosis is an obligate aerobe, which is why reactivation favors the well-ventilated lung apices; cord factor and sulfatides help it survive in macrophages.',
     ],
     takeaway: 'Know why each one is invisible on Gram stain, and pair each with its vector or exposure.',
     related: ['micro-gram-negative'],

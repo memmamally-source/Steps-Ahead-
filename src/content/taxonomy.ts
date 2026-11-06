@@ -82,7 +82,7 @@ export const TOPICS: Topic[] = [
   { id: 'resp-physiology', title: 'Respiratory physiology', system: 'respiratory', discipline: 'physiology' },
   { id: 'resp-pathology', title: 'Respiratory pathology', system: 'respiratory', discipline: 'pathology' },
   // Blood & immune
-  { id: 'heme-anemias', title: 'Anaemias & haemolysis', system: 'blood-immune', discipline: 'pathology' },
+  { id: 'heme-anemias', title: 'Anemias & hemolysis', system: 'blood-immune', discipline: 'pathology' },
   { id: 'heme-coagulation', title: 'Coagulation & anticoagulants', system: 'blood-immune', discipline: 'pharmacology' },
   { id: 'immuno-hypersensitivity', title: 'Hypersensitivity reactions', system: 'blood-immune', discipline: 'immunology' },
   { id: 'immuno-immunodeficiency', title: 'Immunodeficiencies', system: 'blood-immune', discipline: 'immunology' },
