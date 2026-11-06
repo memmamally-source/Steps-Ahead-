@@ -11,9 +11,10 @@ import { fpGroups, microGroups } from './step1/microGroups';
 import { gnGroups, virusGroups } from './step1/virusGroups';
 import { biostatGroups } from './step1/biostatGroups';
 import { neuroBehavior } from './step1/neuroBehavior';
+import { mskSkin } from './step1/mskSkin';
 import { KB_ITEMS } from './kb';
 
-const bundles = [cardioRenal, hemeImmuneResp, biochemGenetics, microPharmEndoStats, microGroups, virusGroups, gnGroups, biostatGroups, fpGroups, neuroBehavior];
+const bundles = [cardioRenal, hemeImmuneResp, biochemGenetics, microPharmEndoStats, microGroups, virusGroups, gnGroups, biostatGroups, fpGroups, neuroBehavior, mskSkin];
 
 export const ALL_CONCEPTS: Concept[] = bundles.flatMap((b) => b.concepts).map((c) => ({ ...c, outline: STEP1_OUTLINE[c.id] }));
 export const ALL_ITEMS: GameItem[] = [...bundles.flatMap((b) => b.items), ...CONNECTION_GROUPS, ...CASES, ...KB_ITEMS];

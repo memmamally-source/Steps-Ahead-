@@ -108,6 +108,9 @@ export const TOPICS: Topic[] = [
   { id: 'endo-adrenal', title: 'Adrenal & steroid synthesis', system: 'endocrine', discipline: 'biochemistry' },
   { id: 'endo-diabetes', title: 'Diabetes & its drugs', system: 'endocrine', discipline: 'pharmacology' },
   // Neuro / GI / MSK
+  { id: 'msk-anatomy', title: 'Upper limb and shoulder anatomy', system: 'musculoskeletal-skin', discipline: 'anatomy' },
+  { id: 'skin-pathology', title: 'Skin pathology', system: 'musculoskeletal-skin', discipline: 'pathology' },
+  { id: 'immuno-autoimmune', title: 'Autoimmune disease', system: 'multisystem', discipline: 'immunology' },
   { id: 'neuro-anatomy', title: 'Neuroanatomy and lesions', system: 'nervous-behavioral', discipline: 'anatomy' },
   { id: 'psych-pharm', title: 'Psychiatric and neurologic drugs', system: 'nervous-behavioral', discipline: 'pharmacology' },
   { id: 'behavioral-science', title: 'Behavioral science and sleep', system: 'nervous-behavioral', discipline: 'behavioral' },
