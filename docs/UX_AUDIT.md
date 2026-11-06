@@ -33,5 +33,10 @@ Goal set by the owner: no new features. Make Steps Ahead simpler, faster and mor
 - **Dashboard ("Progress"):** this week's time plus a 14-day chart first, then four metrics (accuracy, retention, coverage, improvement), focus areas, mastery by discipline / system / topic, then collapsible time breakdown and games.
 - **Games:** set-up screens use a dark hero and two segmented options. In play, the question comes first. Feedback shows the verdict, the answer, why, why yours was wrong, and the takeaway; mechanism and detail sit behind a disclosure; "Teach me this" stays visible. Results show a centred score, a compact answer list and Done / Play again. Mystery Patient keeps the clues on screen, with "Next clue" and "Answer" pinned below (options open in a sheet).
 
+## Second pass
+- Mystery Patient results: verdict, answer and explanation now come first; the full case is folded under "The case and your answer".
+- Dashboard: a friendly empty state replaces a flat chart until there is at least a minute of study.
+- Content & sources: a three-number summary (concepts, items, medically reviewed), the blueprint collapsed, and sources as expandable rows.
+
 ## Verification
 The same Playwright audit was re-run after the redesign (screenshots outside the repo), plus the end-to-end suite (26 checks: every game to completion, feedback, Teach Me This, mistakes and retry, study time, deep links, desktop, no horizontal overflow, no console errors). Not tested on a physical phone.

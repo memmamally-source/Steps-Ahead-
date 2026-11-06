@@ -74,26 +74,8 @@ function Case({ kase, daily, focusLabel, onAgain }: { kase: CaseItem; daily?: st
       status={!done ? <span className="small strong num">{mysteryScore(true, revealed)}</span> : undefined}
     >
       {done && <ScoreCard score={score} best={finalBest} lines={[correct ? `solved with ${revealed} of ${kase.stages.length} clues` : 'not solved']} />}
-      <section className="card">
-        <span className="label">{kase.title}{focusLabel ? ` · ${focusLabel}` : ''}</span>
-        {shown.map((s, i) => (
-          <div key={s.label + i} className={`stage${i === shown.length - 1 && !done ? ' latest' : ''}`}>
-            <span className="label">{s.label}</span>
-            <p style={{ marginTop: 2 }}>{s.text}</p>
-          </div>
-        ))}
-      </section>
-      {!done && (
-        <p className="question" style={{ textAlign: 'center', padding: '0 8px' }}>
-          {kase.question}
-        </p>
-      )}
-      {done && (
+      {done ? (
         <>
-          <section className="card stack-sm">
-            <p className="question">{kase.question}</p>
-            {options}
-          </section>
           <section className="card">
             <div className="row between">
               <span className={`verdict ${correct ? 'ok' : 'bad'}`}>
@@ -101,6 +83,12 @@ function Case({ kase, daily, focusLabel, onAgain }: { kase: CaseItem; daily?: st
                 {correct ? 'Correct' : 'Not quite'}
               </span>
             </div>
+            {!correct && (
+              <p style={{ marginTop: 10 }}>
+                <span className="muted">Answer: </span>
+                <strong>{right.text}</strong>
+              </p>
+            )}
             {!correct && chosen?.whyWrong && (
               <p className="small" style={{ marginTop: 10, color: 'var(--text-2)' }}>
                 <strong>Why not “{chosen.text}”: </strong>
@@ -134,6 +122,44 @@ function Case({ kase, daily, focusLabel, onAgain }: { kase: CaseItem; daily?: st
               <Icon name="bulb" size={16} /> Teach me this
             </button>
           </section>
+          <details className="card">
+            <summary className="row between" style={{ listStyle: 'none', cursor: 'pointer' }}>
+              <span className="strong small">The case and your answer</span>
+              <Icon name="chevron" size={18} />
+            </summary>
+            <div className="stack" style={{ marginTop: 8 }}>
+            <div>
+              <span className="label">{kase.title}{focusLabel ? ` · ${focusLabel}` : ''}</span>
+              {shown.map((s, i) => (
+                <div key={s.label + i} className={`stage${i === shown.length - 1 && !done ? ' latest' : ''}`}>
+                  <span className="label">{s.label}</span>
+                  <p style={{ marginTop: 2 }}>{s.text}</p>
+                </div>
+              ))}
+            </div>
+              <div className="stack-sm">
+                <p className="question">{kase.question}</p>
+                {options}
+              </div>
+            </div>
+          </details>
+        </>
+      ) : (
+        <>
+      <section className="card">
+        <span className="label">{kase.title}{focusLabel ? ` · ${focusLabel}` : ''}</span>
+        {shown.map((s, i) => (
+          <div key={s.label + i} className={`stage${i === shown.length - 1 && !done ? ' latest' : ''}`}>
+            <span className="label">{s.label}</span>
+            <p style={{ marginTop: 2 }}>{s.text}</p>
+          </div>
+        ))}
+      </section>
+      {!done && (
+        <p className="question" style={{ textAlign: 'center', padding: '0 8px' }}>
+          {kase.question}
+        </p>
+      )}
         </>
       )}
       <ActionBar>

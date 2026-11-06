@@ -48,6 +48,13 @@ export function Dashboard() {
             <div className="tiny muted">{time.externalWeek ? `+ ${formatDuration(time.externalWeek)} logged elsewhere` : `Goal ${s.profile.dailyGoalMin} min a day`}</div>
           </div>
         </div>
+        {time.week < 60_000 && days.every((d) => d.ms < 60_000) ? (
+          <div className="empty" style={{ padding: '18px 8px', background: 'var(--surface-2)', borderRadius: 12 }}>
+            <p className="small">Your chart fills in as you play.</p>
+            <p className="tiny muted">Only active time counts: idle or background time never does.</p>
+          </div>
+        ) : (
+          <>
         <div className="chart-bars" aria-hidden>
           {days.map((d, i) => (
             <div key={d.key} className={`b${i === days.length - 1 ? ' today' : d.ms >= goalMs ? ' goal-met' : ''}`} style={{ height: `${(d.ms / max) * 100}%` }} title={`${d.key}: ${formatDuration(d.ms)}`} />
@@ -70,6 +77,8 @@ export function Dashboard() {
           </tbody>
         </table>
         <p className="tiny muted">Black bars met your goal; red is today. Only active time counts.</p>
+          </>
+        )}
       </section>
 
       <section className="grid-2">

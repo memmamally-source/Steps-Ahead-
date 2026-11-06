@@ -1,60 +1,93 @@
+import { Icon } from '@/components/Icon';
 import { PageTitle } from '@/components/ui';
 import { ALL_CONCEPTS, ALL_ITEMS, content } from '@/content';
 import { SOURCES } from '@/content/sources';
 import { BLUEPRINT_VERIFIED, DISCIPLINES } from '@/content/taxonomy';
 
-/** Transparency page: review status, source register and what the app does not claim. */
+/** Transparency page: review status, blueprint alignment and the source register. */
 export function About() {
-  const statuses = ALL_ITEMS.reduce<Record<string, number>>((m, i) => ((m[i.review.status] = (m[i.review.status] ?? 0) + 1), m), {});
+  const reviewed = ALL_ITEMS.filter((i) => i.review.status === 'approved' || i.review.status === 'published').length;
   return (
-    <div className="stack-lg" style={{ maxWidth: 820 }}>
+    <div className="stack-lg">
       <PageTitle title="Content & sources" back={true} />
-      <section className="card stack-sm">
-        <h2>Medical review status</h2>
-        <p>
-          {ALL_CONCEPTS.length} concepts and {ALL_ITEMS.length} game items exist in this build. Every one is an original, AI-drafted record marked
-          <strong> draft</strong>: none has yet been approved by a medical reviewer.
-          {content.isPreview ? ' You are viewing a reviewer preview that includes drafts.' : ' Learners only see published content.'}
-        </p>
-        <p className="small muted">By status: {Object.entries(statuses).map(([k, v]) => `${k} ${v}`).join(' · ')}</p>
-        <p className="small muted">
-          Questions are written from general medical knowledge and checked against open references. Nothing is copied from commercial question banks, review books or recalled exam items.
+      <section className="card" style={{ padding: 0, marginTop: -14 }}>
+        <div className="stat-strip">
+          <div>
+            <div className="stat-value">{ALL_CONCEPTS.length}</div>
+            <div className="stat-label">concepts</div>
+          </div>
+          <div>
+            <div className="stat-value">{ALL_ITEMS.length}</div>
+            <div className="stat-label">game items</div>
+          </div>
+          <div>
+            <div className="stat-value" style={{ color: reviewed ? undefined : 'var(--warn)' }}>{reviewed}</div>
+            <div className="stat-label">medically reviewed</div>
+          </div>
+        </div>
+        <p className="small" style={{ padding: '12px 16px 16px', borderTop: '1px solid var(--line)' }}>
+          All content is original and AI-drafted. {content.isPreview ? 'This is a reviewer preview, so drafts are shown.' : 'Only reviewed content is shown.'} Nothing is copied from question banks, review books or exam recalls.
         </p>
       </section>
-      <section className="card stack-sm">
-        <h2>Step 1 blueprint alignment</h2>
-        <p className="small">
-          Discipline weightings used for coverage are {BLUEPRINT_VERIFIED ? 'verified against' : 'provisional pending verification against'} the official USMLE content outline.
-        </p>
-        <ul className="small" style={{ margin: 0, paddingLeft: 20 }}>
+
+      <details className="card">
+        <summary className="row between" style={{ listStyle: 'none', cursor: 'pointer' }}>
+          <span>
+            <h3>Step 1 blueprint</h3>
+            <span className="tiny muted">{BLUEPRINT_VERIFIED ? 'Verified against usmle.org' : 'Provisional: to be verified against usmle.org'}</span>
+          </span>
+          <Icon name="chevron" size={18} />
+        </summary>
+        <ul className="list" style={{ marginTop: 8 }}>
           {Object.values(DISCIPLINES)
             .filter((d) => d.range)
             .map((d) => (
-              <li key={d.title}>
-                {d.title}: {d.range![0]}–{d.range![1]}%
+              <li key={d.title} className="row between small" style={{ padding: '8px 0' }}>
+                <span>{d.title}</span>
+                <span className="num muted">
+                  {d.range![0]}–{d.range![1]}%
+                </span>
               </li>
             ))}
         </ul>
-        <p className="tiny muted">The app never predicts pass/fail or exam scores.</p>
-      </section>
-      <section className="stack">
-        <h2>Source register</h2>
-        {SOURCES.map((s) => (
-          <article key={s.id} className="card stack-sm" style={{ gap: 4 }}>
-            <div className="row between" style={{ flexWrap: 'wrap', gap: 6 }}>
-              <a href={s.url} target="_blank" rel="noreferrer">
-                <strong>{s.name}</strong>
-              </a>
-              <span className={`badge ${s.reuse === 'cite-only' ? 'badge-warn' : s.reuse === 'per-item' ? '' : 'badge-ok'}`}>{s.reuse.replace(/-/g, ' ')}</span>
-            </div>
-            <span className="small">{s.type} · {s.licence}</span>
-            <span className="tiny muted">
-              Access: {s.access}. Attribution: {s.attribution}. Reviewed {s.lastReviewed}
-              {s.verifiedLive ? '' : ' (licence page not re-opened in this review)'}.
-            </span>
-            {s.notes && <span className="tiny muted">{s.notes}</span>}
-          </article>
-        ))}
+        <p className="tiny muted" style={{ marginTop: 8 }}>
+          Used only to weight coverage. The app never predicts pass/fail or scores.
+        </p>
+      </details>
+
+      <section>
+        <div className="section-head">
+          <h2>Sources</h2>
+          <span className="tiny muted">Licence checked per source</span>
+        </div>
+        <div className="card" style={{ padding: 0 }}>
+          <ul className="list">
+            {SOURCES.map((s) => (
+              <li key={s.id}>
+                <details style={{ padding: '12px 16px' }}>
+                  <summary className="row between" style={{ listStyle: 'none', cursor: 'pointer', gap: 10 }}>
+                    <span className="small strong grow">{s.name}</span>
+                    <span className={`badge ${s.reuse === 'cite-only' ? 'badge-warn' : s.reuse === 'per-item' ? '' : 'badge-ok'}`}>{s.reuse.replace(/-/g, ' ')}</span>
+                  </summary>
+                  <div className="stack-xs tiny muted" style={{ marginTop: 8 }}>
+                    <span>
+                      {s.type} · {s.licence}
+                    </span>
+                    <span>Attribution: {s.attribution}</span>
+                    <span>
+                      Reviewed {s.lastReviewed}
+                      {s.verifiedLive ? '' : ' (licence page not re-opened)'}
+                    </span>
+                    {s.notes && <span>{s.notes}</span>}
+                    <a href={s.url} target="_blank" rel="noreferrer" className="red">
+                      Open source
+                    </a>
+                  </div>
+                </details>
+              </li>
+            ))}
+          </ul>
+        </div>
       </section>
     </div>
   );

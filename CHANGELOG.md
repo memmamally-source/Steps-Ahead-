@@ -9,6 +9,7 @@ No new features; every screen redesigned for simplicity, speed and polish.
 - Home leads with one "next activity" button, daily tiles, a stat strip and a short "Up next" list.
 - Onboarding is two short steps. Arcade is a two-column grid. Subjects use a Disciplines / Systems toggle. Mistakes open in a sheet. Profile is a settings list. The dashboard leads with this week's time.
 - The full-width preview banner is replaced by a "Preview" pill that explains itself on tap.
+- Second pass: Mystery Patient results lead with the explanation, the dashboard has an empty state, and Content & sources is condensed.
 
 ## 0.1.0 — 2026-11-05 (unreleased)
 
