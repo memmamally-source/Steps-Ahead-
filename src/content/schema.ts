@@ -25,7 +25,7 @@ export type DisciplineId =
   | 'nutrition';
 
 export type SystemId =
-  | 'general'
+  | 'human-development'
   | 'blood-immune'
   | 'nervous-behavioral'
   | 'musculoskeletal-skin'
@@ -69,6 +69,40 @@ export interface Citation {
   locator?: string;
 }
 
+/** The 18 major areas of the official USMLE Content Outline (2026). */
+export const OUTLINE_AREAS = [
+  'Human Development',
+  'Immune System',
+  'Blood & Lymphoreticular System',
+  'Behavioral Health',
+  'Nervous System & Special Senses',
+  'Skin & Subcutaneous Tissue',
+  'Musculoskeletal System',
+  'Cardiovascular System',
+  'Respiratory System',
+  'Gastrointestinal System',
+  'Renal & Urinary System',
+  'Pregnancy, Childbirth, & the Puerperium',
+  'Female and Transgender Reproductive System & Breast',
+  'Male and Transgender Reproductive System',
+  'Endocrine System',
+  'Multisystem Processes & Disorders',
+  'Biostatistics, Epidemiology/Population Health, & Interpretation of the Medical Literature',
+  'Social Sciences',
+] as const;
+export type OutlineArea = (typeof OUTLINE_AREAS)[number];
+
+/**
+ * Where a concept sits in the official USMLE Content Outline. `listed` is true when the outline names
+ * the topic (or its example group) explicitly, false when it is foundational science the outline
+ * distributes across organ systems (e.g. normal physiology, drug mechanisms).
+ */
+export interface OutlineRef {
+  area: OutlineArea;
+  section: string;
+  listed: boolean;
+}
+
 export interface Concept {
   id: string;
   title: string;
@@ -91,6 +125,8 @@ export interface Concept {
   detailed: string[];
   takeaway: string;
   related: string[]; // Concept ids
+  /** Mapping to the official USMLE Content Outline (required for every Step 1 concept). */
+  outline?: OutlineRef;
   citations: Citation[];
   review: ReviewInfo;
   version: number;

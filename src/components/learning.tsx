@@ -208,6 +208,12 @@ export function LessonBody({ concept, excludeItemId }: { concept: Concept; exclu
       <p className="small muted">
         {DISCIPLINES[concept.discipline].title} · {SYSTEMS[concept.system].short} · {content.topicTitle(concept.topic)}
       </p>
+      {concept.outline && (
+        <p className="tiny muted" style={{ marginTop: -8 }}>
+          USMLE outline: {concept.outline.area} › {concept.outline.section}
+          {concept.outline.listed ? '' : ' (foundational)'}
+        </p>
+      )}
       <Segmented
         label="Explanation depth"
         value={depth}

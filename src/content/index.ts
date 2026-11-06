@@ -6,10 +6,11 @@ import { CASES } from './step1/cases';
 import { CONNECTION_GROUPS } from './step1/connections';
 import { hemeImmuneResp } from './step1/hemeImmuneResp';
 import { microPharmEndoStats } from './step1/microPharmEndoStats';
+import { STEP1_OUTLINE } from './step1/outline';
 
 const bundles = [cardioRenal, hemeImmuneResp, biochemGenetics, microPharmEndoStats];
 
-export const ALL_CONCEPTS: Concept[] = bundles.flatMap((b) => b.concepts);
+export const ALL_CONCEPTS: Concept[] = bundles.flatMap((b) => b.concepts).map((c) => ({ ...c, outline: STEP1_OUTLINE[c.id] }));
 export const ALL_ITEMS: GameItem[] = [...bundles.flatMap((b) => b.items), ...CONNECTION_GROUPS, ...CASES];
 
 const allowUnreviewed = import.meta.env.DEV || import.meta.env.VITE_ALLOW_UNREVIEWED === 'true';

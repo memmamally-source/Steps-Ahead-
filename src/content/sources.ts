@@ -31,9 +31,9 @@ export const SOURCES: Source[] = [
     licence: '© FSMB and NBME',
     reuse: 'cite-only',
     attribution: 'Link to the official page',
-    lastReviewed: '2026-11-05',
-    verifiedLive: false,
-    notes: 'Not reachable from the build sandbox; ranges taken from a search summary. Re-check before launch.',
+    lastReviewed: '2026-11-06',
+    verifiedLive: true,
+    notes: 'Read directly on 6 Nov 2026 (page and 2026 Content Outline PDF). Ranges and section headings recorded; no outline text reproduced.',
   },
   {
     id: 'openstax-ap',

@@ -2,7 +2,7 @@
  * Automated content QA. Catches structural and consistency errors before medical review; it does
  * NOT establish medical accuracy (that is the reviewer's job, see MEDICAL_QA.md).
  */
-import type { Concept, GameItem, McqOption } from './schema';
+import { OUTLINE_AREAS, type Concept, type GameItem, type McqOption } from './schema';
 import { getSource } from './sources';
 import { getTopic } from './taxonomy';
 
@@ -47,6 +47,10 @@ export function validateContent(concepts: Concept[], items: GameItem[]): Issue[]
   }
   for (const c of concepts) {
     if (!getTopic(c.topic)) out.push({ id: c.id, problem: `unknown topic ${c.topic}` });
+    if (c.packages.includes('step1')) {
+      if (!c.outline) out.push({ id: c.id, problem: 'not mapped to the USMLE Content Outline' });
+      else if (!OUTLINE_AREAS.includes(c.outline.area)) out.push({ id: c.id, problem: `unknown outline area ${c.outline.area}` });
+    }
     for (const r of c.related) if (!conceptIds.has(r)) out.push({ id: c.id, problem: `related concept ${r} missing` });
     for (const cit of c.citations) if (!getSource(cit.sourceId)) out.push({ id: c.id, problem: `unknown source ${cit.sourceId}` });
     if (c.facts.length < 3) out.push({ id: c.id, problem: 'fewer than 3 facts' });

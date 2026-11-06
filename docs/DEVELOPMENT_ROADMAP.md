@@ -8,7 +8,7 @@ Status key: ✅ done · 🟡 partial · ⬜ not started. Matches the owner's eig
 - ✅ Red/white/black design system, light/dark (`DESIGN_SYSTEM.md`).
 - 🟡 Firebase: config surface and draft rules; no project yet.
 - ✅ Medical schema, learning-event model, taxonomy.
-- 🟡 Step 1 blueprint research (official site unreachable from the build sandbox; see `STEP1_BLUEPRINT.md`).
+- ✅ Step 1 blueprint verified against usmle.org (6 Nov 2026); every concept mapped to the 2026 Content Outline (`STEP1_BLUEPRINT.md`).
 - ✅ Source and licence register.
 
 ## Phase 2 — Core application

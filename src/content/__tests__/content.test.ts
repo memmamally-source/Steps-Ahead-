@@ -10,6 +10,14 @@ describe('content bank', () => {
     expect(validateContent(ALL_CONCEPTS, ALL_ITEMS)).toEqual([]);
   });
 
+  it('maps every Step 1 concept to the official outline', () => {
+    const unmapped = ALL_CONCEPTS.filter((c) => !c.outline).map((c) => c.id);
+    expect(unmapped).toEqual([]);
+    // Most concepts should be topics the outline names, not only foundational background.
+    const listed = ALL_CONCEPTS.filter((c) => c.outline?.listed).length;
+    expect(listed / ALL_CONCEPTS.length).toBeGreaterThanOrEqual(0.75);
+  });
+
   it('has a meaningful starter library', () => {
     expect(ALL_CONCEPTS.length).toBeGreaterThanOrEqual(40);
     const kinds = (k: string) => ALL_ITEMS.filter((i) => i.kind === k).length;

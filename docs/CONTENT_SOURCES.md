@@ -4,7 +4,7 @@ The register is code (`src/content/sources.ts`) and is shown in the app (Content
 
 | Source | Reuse rule | Notes |
 | --- | --- | --- |
-| USMLE content outline | cite only | Official blueprint; © FSMB/NBME |
+| USMLE content outline | cite only | Official blueprint; © FSMB/NBME. Read 6 Nov 2026; headings and ranges only |
 | OpenStax Anatomy & Physiology 2e, Microbiology | commercial with attribution (CC BY 4.0) | Note changes when adapting |
 | NCBI Bookshelf (incl. StatPearls) | per item | StatPearls is CC BY-NC-ND: cite only, never adapt for a commercial product |
 | PubMed | cite only | Abstracts belong to publishers |
@@ -19,4 +19,4 @@ The register is code (`src/content/sources.ts`) and is shown in the app (Content
 - Never ingest protected text, images or questions from commercial resources (UWorld, AMBOSS, First Aid, Pathoma, Sketchy, NBME, Kaplan …) into authoring or generation.
 - No recalled exam content, ever.
 - Citations support facts. They don't license copying: our wording is always original.
-- `verifiedLive` is `false` for every entry in the first review because licence pages could not be opened from the build sandbox. Re-check before launch.
+- `verifiedLive` is `true` only for the USMLE outline (read on 6 Nov 2026). Every other licence page still needs re-opening before launch.

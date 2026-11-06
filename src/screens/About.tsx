@@ -2,10 +2,26 @@ import { Icon } from '@/components/Icon';
 import { PageTitle } from '@/components/ui';
 import { ALL_CONCEPTS, ALL_ITEMS, content } from '@/content';
 import { SOURCES } from '@/content/sources';
-import { BLUEPRINT_VERIFIED, DISCIPLINES } from '@/content/taxonomy';
+import { BLUEPRINT_SOURCE, BLUEPRINT_VERIFIED, DISCIPLINES, SYSTEMS } from '@/content/taxonomy';
 
 /** Transparency page: review status, blueprint alignment and the source register. */
 export function About() {
+  const mapped = ALL_CONCEPTS.filter((c) => c.outline).length;
+  // Official Step 1 system groups with the number of our concepts in each (primary system).
+  const groupMap = new Map<string, { title: string; range: [number, number]; count: number }>();
+  for (const [id, w] of Object.entries(SYSTEMS)) {
+    if (!w.range) continue;
+    const key = w.group ?? w.title;
+    const g = groupMap.get(key) ?? { title: key, range: w.range, count: 0 };
+    g.count += ALL_CONCEPTS.filter((c) => c.system === id).length;
+    groupMap.set(key, g);
+  }
+  const groups = [...groupMap.values()];
+  const seenD = new Set<string>();
+  const disciplineRows = Object.values(DISCIPLINES)
+    .filter((d) => d.range)
+    .map((d) => ({ title: d.group ?? d.title, range: d.range! }))
+    .filter((d) => (seenD.has(d.title) ? false : (seenD.add(d.title), true)));
   const reviewed = ALL_ITEMS.filter((i) => i.review.status === 'approved' || i.review.status === 'published').length;
   return (
     <div className="stack-lg">
@@ -34,24 +50,42 @@ export function About() {
         <summary className="row between" style={{ listStyle: 'none', cursor: 'pointer' }}>
           <span>
             <h3>Step 1 blueprint</h3>
-            <span className="tiny muted">{BLUEPRINT_VERIFIED ? 'Verified against usmle.org' : 'Provisional: to be verified against usmle.org'}</span>
+            <span className="tiny muted">
+              {BLUEPRINT_VERIFIED ? `Checked against usmle.org on ${BLUEPRINT_SOURCE.checked}` : 'Provisional'} · {mapped}/{ALL_CONCEPTS.length} concepts mapped to the official outline
+            </span>
           </span>
           <Icon name="chevron" size={18} />
         </summary>
-        <ul className="list" style={{ marginTop: 8 }}>
-          {Object.values(DISCIPLINES)
-            .filter((d) => d.range)
-            .map((d) => (
-              <li key={d.title} className="row between small" style={{ padding: '8px 0' }}>
-                <span>{d.title}</span>
-                <span className="num muted">
-                  {d.range![0]}–{d.range![1]}%
-                </span>
-              </li>
-            ))}
+        <span className="label" style={{ display: 'block', marginTop: 14 }}>
+          Systems: exam share vs our concepts
+        </span>
+        <ul className="list">
+          {groups.map((g) => (
+            <li key={g.title} className="row between small" style={{ padding: '8px 0', gap: 10 }}>
+              <span className="grow">{g.title}</span>
+              <span className="num muted">{g.range[0]}–{g.range[1]}%</span>
+              <span className="num strong" style={{ width: 28, textAlign: 'right', color: g.count ? undefined : 'var(--bad)' }}>{g.count}</span>
+            </li>
+          ))}
+        </ul>
+        <span className="label" style={{ display: 'block', marginTop: 14 }}>
+          Disciplines
+        </span>
+        <ul className="list">
+          {disciplineRows.map((d) => (
+            <li key={d.title} className="row between small" style={{ padding: '8px 0' }}>
+              <span>{d.title}</span>
+              <span className="num muted">
+                {d.range[0]}–{d.range[1]}%
+              </span>
+            </li>
+          ))}
         </ul>
         <p className="tiny muted" style={{ marginTop: 8 }}>
-          Used only to weight coverage. The app never predicts pass/fail or scores.
+          Used only to prioritise new content. The app never predicts pass/fail or scores.{' '}
+          <a href={BLUEPRINT_SOURCE.page} target="_blank" rel="noreferrer" className="red">
+            Official page
+          </a>
         </p>
       </details>
 
