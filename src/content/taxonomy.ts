@@ -104,6 +104,12 @@ export const TOPICS: Topic[] = [
   { id: 'pharm-autonomic', title: 'Autonomic pharmacology', system: 'multisystem', discipline: 'pharmacology' },
   { id: 'pharm-toxicology', title: 'Toxicology & antidotes', system: 'multisystem', discipline: 'pharmacology' },
   // Endocrine
+  { id: 'endo-calcium', title: 'Calcium and parathyroid', system: 'endocrine', discipline: 'physiology' },
+  { id: 'endo-pituitary', title: 'Pituitary, ADH and MEN', system: 'endocrine', discipline: 'physiology' },
+  // Reproductive
+  { id: 'repro-physiology', title: 'Reproductive physiology', system: 'reproductive', discipline: 'physiology' },
+  { id: 'repro-genetics', title: 'Sex chromosomes and sex development', system: 'reproductive', discipline: 'genetics' },
+  { id: 'repro-pathology', title: 'Reproductive pathology', system: 'reproductive', discipline: 'pathology' },
   { id: 'endo-thyroid', title: 'Thyroid', system: 'endocrine', discipline: 'physiology' },
   { id: 'endo-adrenal', title: 'Adrenal & steroid synthesis', system: 'endocrine', discipline: 'biochemistry' },
   { id: 'endo-diabetes', title: 'Diabetes & its drugs', system: 'endocrine', discipline: 'pharmacology' },
