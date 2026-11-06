@@ -7,12 +7,12 @@ import { CONNECTION_GROUPS } from './step1/connections';
 import { hemeImmuneResp } from './step1/hemeImmuneResp';
 import { microPharmEndoStats } from './step1/microPharmEndoStats';
 import { STEP1_OUTLINE } from './step1/outline';
-import { microGroups } from './step1/microGroups';
+import { fpGroups, microGroups } from './step1/microGroups';
 import { gnGroups, virusGroups } from './step1/virusGroups';
 import { biostatGroups } from './step1/biostatGroups';
 import { KB_ITEMS } from './kb';
 
-const bundles = [cardioRenal, hemeImmuneResp, biochemGenetics, microPharmEndoStats, microGroups, virusGroups, gnGroups, biostatGroups];
+const bundles = [cardioRenal, hemeImmuneResp, biochemGenetics, microPharmEndoStats, microGroups, virusGroups, gnGroups, biostatGroups, fpGroups];
 
 export const ALL_CONCEPTS: Concept[] = bundles.flatMap((b) => b.concepts).map((c) => ({ ...c, outline: STEP1_OUTLINE[c.id] }));
 export const ALL_ITEMS: GameItem[] = [...bundles.flatMap((b) => b.items), ...CONNECTION_GROUPS, ...CASES, ...KB_ITEMS];

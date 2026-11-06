@@ -4,6 +4,7 @@ import { BACTERIA, BACTERIA_TRAITS } from '@/content/kb/bacteria';
 import { matches } from '@/content/kb/traits';
 import { VIRUSES } from '@/content/kb/viruses';
 import { GLOMERULAR } from '@/content/kb/glomerular';
+import { FUNGI_PARASITES } from '@/content/kb/fungiParasites';
 import { virusStructure } from '@/content/kb';
 
 describe('knowledge tables', () => {
@@ -13,7 +14,10 @@ describe('knowledge tables', () => {
 
   it('link every row to an existing concept', () => {
     const ids = new Set(ALL_CONCEPTS.map((c) => c.id));
-    for (const b of [...BACTERIA, ...VIRUSES, ...GLOMERULAR]) expect(ids.has(b.concept)).toBe(true);
+    for (const b of [...BACTERIA, ...VIRUSES, ...GLOMERULAR, ...FUNGI_PARASITES]) expect(ids.has(b.concept)).toBe(true);
+    // Identifying findings must be unique so identification has one best answer.
+    const findings = FUNGI_PARASITES.map((r) => String(r.traits.finding));
+    expect(new Set(findings).size).toBe(findings.length);
   });
 
   it('only use defined traits with known phrasing', () => {

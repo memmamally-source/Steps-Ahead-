@@ -61,6 +61,8 @@ export const STEP1_OUTLINE: Record<string, OutlineRef> = {
   'biostats-lr': L('Biostatistics, Epidemiology/Population Health, & Interpretation of the Medical Literature', 'Principles of testing and screening'),
   'biostats-or-rr': L('Biostatistics, Epidemiology/Population Health, & Interpretation of the Medical Literature', 'Measures of association'),
   'biostats-normal': L('Biostatistics, Epidemiology/Population Health, & Interpretation of the Medical Literature', 'Distributions of data'),
+  'micro-fungi': L('Respiratory System', 'Infectious, immunologic, and inflammatory disorders'),
+  'micro-parasites': L('Gastrointestinal System', 'Infectious, immunologic, and inflammatory disorders'),
   // Endocrine
   'thyroid-synthesis': L('Endocrine System', 'Thyroid disorders'),
   'cah-21': L('Endocrine System', 'Congenital disorders'),

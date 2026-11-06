@@ -113,3 +113,62 @@ export const microGroups = defineConcepts([
     related: ['micro-gram-negative'],
   },
 ]);
+
+/** Group concepts for the fungi and parasites table. */
+export const fpGroups = defineConcepts([
+  {
+    id: 'micro-fungi',
+    title: 'Fungi',
+    discipline: 'microbiology',
+    system: 'respiratory',
+    alsoSystems: ['multisystem'],
+    topic: 'micro-fungi-parasites',
+    difficulty: 3,
+    objectives: ['Identify fungi by their appearance in tissue', 'Link endemic fungi to geography and exposure, and opportunistic fungi to the host defect'],
+    facts: [
+      'Dimorphic fungi are molds in the cold (environment) and yeasts in the heat (body): Histoplasma, Blastomyces, Coccidioides (spherules, not yeast), Paracoccidioides, Sporothrix.',
+      'Fungal cell membranes contain ergosterol rather than cholesterol, the target of polyenes and azoles.',
+      'Aspergillus: acute-angle septate hyphae; Mucor and Rhizopus: wide-angle, broad, nonseptate hyphae.',
+      'Cryptococcus is the encapsulated yeast (India ink, mucicarmine, capsular antigen).',
+      'Pneumocystis causes interstitial pneumonia when CD4⁺ count is below 200/mm³.',
+    ],
+    mechanism:
+      'Endemic fungi are inhaled as spores from soil in specific regions and convert to the tissue form at body temperature; opportunistic fungi cause disease when neutrophils (Aspergillus, Mucor, Candida) or T cells (Cryptococcus, Pneumocystis, mucocutaneous Candida) are deficient.',
+    associations: ['Geography', 'Bird and bat droppings', 'DKA', 'Neutropenia', 'AIDS'],
+    misconception: 'Coccidioides does not form yeast in tissue: it forms large spherules filled with endospores.',
+    quick: 'Histo: tiny yeast in macrophages (Ohio/Mississippi). Blasto: broad-based budding. Cocci: spherules (Southwest). Aspergillus: 45° septate. Mucor: 90° nonseptate (DKA). Crypto: capsule.',
+    detailed: [
+      'Step 1 gives either a tissue description or an exposure and region and asks for the organism. Learn the tissue form and the geography together.',
+      'Host defects predict opportunists: neutropenia → invasive Aspergillus and Mucor; DKA → Mucor; low CD4⁺ → Pneumocystis, Cryptococcus, disseminated Histoplasma; broad-spectrum antibiotics or catheters → Candida.',
+    ],
+    takeaway: 'Pair each fungus with its tissue form, its region or exposure, and the host it targets.',
+    related: ['micro-parasites'],
+  },
+  {
+    id: 'micro-parasites',
+    title: 'Parasites',
+    discipline: 'microbiology',
+    system: 'gastrointestinal',
+    alsoSystems: ['blood-immune', 'multisystem'],
+    topic: 'micro-fungi-parasites',
+    difficulty: 3,
+    objectives: ['Identify protozoa and helminths by diagnostic finding and exposure', 'Recognise the complications that Step 1 links to each parasite'],
+    facts: [
+      'Protozoa are single-celled (Giardia, Entamoeba, Cryptosporidium, Toxoplasma, Plasmodium, Babesia, Trypanosoma, Leishmania, Trichomonas, Naegleria).',
+      'Helminths are worms: nematodes (roundworms), cestodes (tapeworms) and trematodes (flukes).',
+      'Helminth infections that invade tissue typically cause eosinophilia.',
+      'Malaria species that form liver hypnozoites (P. vivax, P. ovale) need primaquine to prevent relapse.',
+    ],
+    mechanism:
+      'The route of entry predicts the disease: ingested cysts or eggs (Giardia, Entamoeba, Taenia eggs), skin penetration by larvae (Strongyloides, hookworm, Schistosoma), and insect vectors (mosquitoes, sandflies, reduviid bugs, ticks, black flies).',
+    associations: ['Eosinophilia', 'Vectors', 'Undercooked meat or fish', 'Fresh water', 'Immunosuppression'],
+    misconception: 'Eating Taenia solium larvae in pork gives an intestinal tapeworm; neurocysticercosis comes from ingesting its eggs (fecal–oral).',
+    quick: 'Ingested: Giardia, Entamoeba, Cryptosporidium, Ascaris, Enterobius, Trichinella, tapeworms. Skin: hookworm, Strongyloides, Schistosoma. Vectors: Plasmodium, Leishmania, T. cruzi, Babesia, filariae.',
+    detailed: [
+      'Classic pairings: Schistosoma haematobium and bladder squamous cell carcinoma; Clonorchis and cholangiocarcinoma; Diphyllobothrium and vitamin B12 deficiency; hookworm and iron deficiency; Strongyloides hyperinfection with corticosteroids.',
+      'Protozoan clues: ingested RBCs (Entamoeba), acid-fast oocysts in AIDS (Cryptosporidium), banana-shaped gametocytes (P. falciparum), Maltese cross (Babesia), ring-enhancing lesions in AIDS (Toxoplasma).',
+    ],
+    takeaway: 'Learn each parasite by route of entry, diagnostic finding and its signature complication.',
+    related: ['micro-fungi'],
+  },
+]);

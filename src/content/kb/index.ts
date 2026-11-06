@@ -7,6 +7,7 @@ import { generateFromTable, type GenIssue, type TableSpec } from './generate';
 import { VIRUSES, VIRUS_GROUP_TITLE, VIRUS_TRAITS, type Virus } from './viruses';
 import { GLOMERULAR, GN_GROUP_TITLE, GN_TRAITS, type GnRow, type GnTrait } from './glomerular';
 import { biostatItems } from './biostats';
+import { FP_GROUP_TITLE, FP_TRAITS, FUNGI_PARASITES, type FpRow } from './fungiParasites';
 
 export const BACTERIA_SPEC: TableSpec<(typeof BACTERIA)[number]> = {
   table: 'bact',
@@ -151,12 +152,24 @@ function gnFindingItems(): { items: (McqItem | TrueFalseItem)[]; issues: GenIssu
   return { items, issues };
 }
 
+export const FP_SPEC: TableSpec<FpRow> = {
+  table: 'fp',
+  rows: FUNGI_PARASITES,
+  traits: FP_TRAITS,
+  noun: 'organism',
+  nounPlural: 'organisms',
+  linkVerb: () => 'shows',
+  groupTitle: (g) => FP_GROUP_TITLE[g as keyof typeof FP_GROUP_TITLE],
+  idStem: (row, clues) => `Testing in a patient infected with one of the ${FP_GROUP_TITLE[row.group]} shows ${clues}. Which of the following organisms is most likely?`,
+};
+
 const bacteria = generateFromTable(BACTERIA_SPEC);
 const viruses = generateFromTable(VIRUS_SPEC);
 const structures = virusStructureItems();
 const gn = generateFromTable(GN_SPEC);
 const gnFindings = gnFindingItems();
+const fp = generateFromTable(FP_SPEC);
 
 export const STAT_ITEMS = biostatItems();
-export const KB_ITEMS: (McqItem | TrueFalseItem)[] = [...bacteria.items, ...viruses.items, ...structures.items, ...gn.items, ...gnFindings.items, ...STAT_ITEMS.map((s) => s.item)];
-export const KB_ISSUES: GenIssue[] = [...bacteria.issues, ...viruses.issues, ...structures.issues, ...gn.issues, ...gnFindings.issues];
+export const KB_ITEMS: (McqItem | TrueFalseItem)[] = [...bacteria.items, ...viruses.items, ...structures.items, ...gn.items, ...gnFindings.items, ...fp.items, ...STAT_ITEMS.map((s) => s.item)];
+export const KB_ISSUES: GenIssue[] = [...bacteria.issues, ...viruses.issues, ...structures.issues, ...gn.issues, ...gnFindings.issues, ...fp.issues];
