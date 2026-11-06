@@ -7,6 +7,14 @@
 **Live preview:** https://memmamally-source.github.io/Steps-Ahead-/ (manual deploys; reviewer preview).
 **Repository:** `memmamally-source/Steps-Ahead-` (created by the owner on 5 Nov 2026). The code first lived temporarily on branch `claude/steps-ahead-medical-arcade-a8in03` of the Oursome repo; that branch can be deleted.
 
+## Content strategy: one subject at a time (6 Nov 2026)
+
+Large unstructured batches have stopped. Content is now developed subject by subject in the owner's order (Biochemistry first, then Cardiovascular, Endocrine, Gastrointestinal, Hematology and Oncology, Musculoskeletal/Skin, Neurology, Psychiatry, Renal, Reproductive, Respiratory, Immunology, Microbiology, Pathology, Pharmacology, Public Health Sciences, Rapid Review). Each subject moves on only after the owner approves its coverage.
+
+- **Biochemistry — architecture stage, awaiting owner review.** Checklist in `src/content/curriculum/` (6 subdivisions, 18 topics, 71 checklist concepts, 235 must-know points), each linked to the 2026 USMLE Content Outline with depth, elements and priority. Audit of existing content: 5 covered, 24 partial, 42 missing; 28 existing concepts mapped. Report: `docs/subjects/BIOCHEMISTRY_COVERAGE.md` (regenerate with `npm run report:biochem`). Tests check outline links, unique ids and that every mapped concept exists.
+- No new Biochemistry content will be written until the owner approves the checklist; then in batches of about 25–50 concepts, each through the QA checklist and medical review before publication.
+- Existing content (including the neuro/behavioral, MSK/skin and reproductive/endocrine batches drafted before the change) is preserved unchanged for its own subject audit.
+
 ## Knowledge tables (6 Nov 2026, in progress)
 
 Owner's direction: strictly Step 1, comprehensive, every fact double- and triple-checked. Approach: each fact is stored once in a verified table (`src/content/kb/`), and questions are generated from it with one best answer proven by code (`generate.ts`; tests in `kb/__tests__`). Biostatistics items are generated from numbers and every answer is recomputed independently in tests.
