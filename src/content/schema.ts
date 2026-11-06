@@ -127,15 +127,27 @@ export interface Concept {
   related: string[]; // Concept ids
   /** Mapping to the official USMLE Content Outline (required for every Step 1 concept). */
   outline?: OutlineRef;
+  /**
+   * Curriculum objective ids (src/content/curriculum) this concept teaches in full. Content written
+   * after the subject-by-subject strategy must declare them so coverage is computed, not judged.
+   */
+  curriculum?: string[];
   citations: Citation[];
   review: ReviewInfo;
   version: number;
   updatedAt: string;
 }
 
+/** Depth of reasoning an item assesses (matches the curriculum depth levels). */
+export type AssessedDepth = 'recognition' | 'mechanism' | 'application';
+
 interface ItemBase {
   id: string;
   conceptIds: string[];
+  /** Curriculum objective ids this item assesses (required for curriculum-linked content). */
+  objectiveIds?: string[];
+  /** Depth of reasoning the item assesses. */
+  depth?: AssessedDepth;
   difficulty: Difficulty;
   review: ReviewInfo;
   version: number;

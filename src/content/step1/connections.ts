@@ -35,11 +35,11 @@ export const CONNECTION_GROUPS: ConnectionGroup[] = [
   }),
   g({
     id: 'grp:x-linked',
-    label: 'X-linked recessive disorders',
+    label: 'X-linked disorders',
     tier: 3,
     conceptIds: ['x-linked-recessive', 'g6pd', 'bruton', 'fabry'],
     members: ['G6PD deficiency', 'Hemophilia A', 'Duchenne', 'Fabry', 'Bruton agammaglobulinemia', 'Lesch–Nyhan', 'OTC deficiency'],
-    explanation: 'All are X-linked recessive: mostly males affected, carrier mothers, no male-to-male transmission.',
+    explanation: 'All are X-linked: hemizygous males are mainly affected and there is no male-to-male transmission. In Fabry disease (and some OTC carriers) heterozygous females are also often affected.',
   }),
   g({
     id: 'grp:type2',

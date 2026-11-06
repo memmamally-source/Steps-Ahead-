@@ -46,7 +46,7 @@ export const molecular: Subdivision = {
               ['orange urate crystals in the diaper', 'gout and urate nephrolithiasis', 'intellectual disability, dystonia, choreoathetosis', 'compulsive self-mutilation']),
             { existing: ['gout'], coverage: 'partial', outline: [OL.gout], note: 'Gout gives HGPRT, gout, intellectual disability and self-mutilation; PRPP-driven overproduction, movement disorder and urate crystals are missing.' }),
           d('ada-scid', 'Explain why adenosine deaminase deficiency causes severe combined immunodeficiency.', RMA,
-            ix('adenosine deaminase (autosomal recessive)', ['deoxyadenosine and dATP'], ['deoxynucleotides (dATP inhibits ribonucleotide reductase)'],
+            ix('adenosine deaminase (autosomal recessive)', ['deoxyadenosine and dATP'], ['balanced deoxynucleotide pools (dATP inhibits ribonucleotide reductase; deoxyadenosine also inhibits S-adenosylhomocysteine hydrolase)'],
               ['lymphocyte precursors die from toxic metabolites and failed DNA synthesis'],
               ['recurrent bacterial, viral and fungal infections from early infancy', 'failure to thrive', 'absent T and B cells, absent thymic shadow']),
             { home: 'immunology', outline: [OL.ada, OL.scid] }),
@@ -155,7 +155,7 @@ export const molecular: Subdivision = {
           o('menkes', 'Explain Menkes disease: X-linked ATP7A defect impairs copper absorption and transport → reduced lysyl oxidase and other copper enzymes → brittle kinky hair, growth failure, hypotonia, seizures, vascular fragility.', RMA, {
             mentions: ['collagen-disorders'], note: 'Menkes is named in one sentence; no mechanism or findings.',
           }),
-          o('marfan', 'Explain Marfan syndrome: autosomal dominant FBN1 (fibrillin-1) defect, increased TGF-β signaling → tall stature, arachnodactyly, joint hypermobility, pectus deformity, upward-temporal lens subluxation, mitral valve prolapse, aortic root dilation and dissection (cystic medial degeneration).', RMA, {
+          o('marfan', 'Explain Marfan syndrome: autosomal dominant FBN1 (fibrillin-1) defect; dysregulated (increased) TGF-β signaling contributes → tall stature, arachnodactyly, joint hypermobility, pectus deformity, upward-temporal lens subluxation, mitral valve prolapse, aortic root dilation and dissection (cystic medial degeneration).', RMA, {
             existing: ['collagen-disorders'], coverage: 'partial', note: 'Gene, inheritance, lens, aorta and TGF-β are present; arachnodactyly, pectus and mitral valve prolapse are missing.', outline: [OL.marfan] }),
           o('elastin', 'Describe elastin (glycine, proline, lysine-rich; desmosine cross-links by lysyl oxidase), its protection by α1-antitrypsin and its deletion in Williams syndrome.', RM),
         ]),

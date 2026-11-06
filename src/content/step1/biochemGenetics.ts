@@ -237,7 +237,7 @@ export const biochemGenetics = defineConcepts([
     difficulty: 3,
     objectives: ['Recognize the only X-linked recessive sphingolipidosis', 'Link substrate accumulation to organ involvement'],
     facts: [
-      'X-linked recessive deficiency of α-galactosidase A.',
+      'X-linked deficiency of α-galactosidase A; heterozygous females are frequently affected (often later and more variably), so it is not a purely recessive disorder.',
       'Ceramide trihexoside (globotriaosylceramide, Gb3) accumulates in endothelium, kidney, heart and nerves.',
       'Early: episodic neuropathic pain in hands and feet, angiokeratomas, hypohidrosis, corneal whorls.',
       'Late: proteinuria and renal failure, left ventricular hypertrophy and arrhythmias, stroke.',
@@ -250,11 +250,11 @@ export const biochemGenetics = defineConcepts([
       'Fabry: α-galactosidase A deficiency (X-linked) → Gb3 build-up. Burning hand/foot pain, angiokeratomas, hypohidrosis, then kidney, heart and stroke.',
     detailed: [
       'Boys often present in childhood with burning pain triggered by heat or exercise and reduced sweating. Clusters of dark red papules (angiokeratomas) appear between the umbilicus and knees.',
-      'Gb3 deposits in glomerular podocytes and vessels cause proteinuria and kidney failure; cardiac deposits cause hypertrophy. Carrier females can also be affected because of X-inactivation.',
+      'Gb3 deposits in glomerular podocytes and vessels cause proteinuria and kidney failure; cardiac deposits cause hypertrophy. Heterozygous females are often affected because of random X-inactivation, and their enzyme activity can be normal, so genetic testing is used to diagnose them.',
     ],
     takeaway: 'Fabry: ↓ α-galactosidase A, ceramide trihexoside, X-linked; pain, angiokeratomas, renal/cardiac disease.',
     related: ['gaucher', 'tay-sachs', 'x-linked-recessive'],
-    tf: [{ statement: 'Fabry disease is inherited in an autosomal recessive pattern.', isTrue: false, correction: 'Fabry disease is X-linked recessive.' }],
+    tf: [{ statement: 'Fabry disease is inherited in an autosomal recessive pattern.', isTrue: false, correction: 'Fabry disease is X-linked; hemizygous males are most severely affected, but many heterozygous females also develop disease.' }],
     clues: [{ answer: 'FABRY', clue: 'X-linked sphingolipidosis with angiokeratomas and neuropathic pain' }],
   },
   {
@@ -370,7 +370,7 @@ export const biochemGenetics = defineConcepts([
       'All daughters of an affected male are obligate carriers.',
       'Sons of a carrier female have a 50% chance of being affected.',
       'Females can be affected by skewed X-inactivation, Turner syndrome or an affected father with a carrier mother.',
-      'Examples: G6PD deficiency, Bruton agammaglobulinemia, hemophilia A and B, Duchenne and Becker muscular dystrophy, Fabry, OTC deficiency, Lesch–Nyhan.',
+      'Examples: G6PD deficiency, Bruton agammaglobulinemia, hemophilia A and B, Duchenne and Becker muscular dystrophy, OTC deficiency, Lesch–Nyhan. (Fabry disease is X-linked, but heterozygous females are often affected.)',
     ],
     mechanism:
       'Males are hemizygous for X-linked genes, so a single recessive allele is expressed; females usually need two copies.',

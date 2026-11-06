@@ -103,7 +103,7 @@ export const genetics: Subdivision = {
         st('bc-ar-diseases', 'Autosomal recessive disorders: genetic basis', 3, ['disease', 'genetics'], [OL.genF], [
           x('hematology-oncology', 'hemoglobinopathies'), x('gastrointestinal', 'hemochromatosis and Wilson disease'), x('renal', 'ARPKD'), x('neurology', 'spinal muscular atrophy'),
         ], [
-          o('map', 'Recognize that most inborn errors of metabolism, storage diseases (except Fabry and Hunter) and hemoglobinopathies are autosomal recessive, and spot exceptions (OTC deficiency, X-linked).', RA, {
+          o('map', 'Recognize that most inborn errors of metabolism, storage diseases (except X-linked Fabry and Hunter) and hemoglobinopathies are autosomal recessive, and spot exceptions (OTC deficiency, X-linked).', RA, {
             existing: ['otc-deficiency', 'gaucher', 'tay-sachs', 'pku'], coverage: 'partial', note: 'Individual examples state their inheritance; no grouping or exceptions.',
           }),
           o('sickle', 'Explain the genetics of sickle cell disease: β-globin point mutation (glutamate → valine at position 6), heterozygote advantage against falciparum malaria.', RMA, { home: 'hematology-oncology', outline: [OL.sickle] }),
@@ -122,7 +122,7 @@ export const genetics: Subdivision = {
           o('diagnosis', 'Interpret newborn screening (immunoreactive trypsinogen), sweat chloride testing and genetic testing, and recognize CFTR modulators (ivacaftor potentiator; lumacaftor, tezacaftor, elexacaftor correctors).', RA, { outline: [OL.newbornScreen] }),
         ]),
         st('bc-x-linked-diseases', 'X-linked disorders: genetic basis', 3, ['disease', 'genetics'], [OL.genF], [x('immunology', 'immunodeficiencies'), x('hematology-oncology', 'hemophilia')], [
-          o('map', 'Recognize the high-yield X-linked recessive disorders: Bruton agammaglobulinemia, Wiskott–Aldrich, Fabry, G6PD deficiency, ocular albinism, Lesch–Nyhan, Duchenne and Becker, Hunter, hemophilia A and B, OTC deficiency.', RA, {
+          o('map', 'Recognize the high-yield X-linked recessive disorders: Bruton agammaglobulinemia, Wiskott–Aldrich, G6PD deficiency, ocular albinism, Lesch–Nyhan, Duchenne and Becker, Hunter, hemophilia A and B, OTC deficiency; recognize Fabry disease as X-linked with frequently affected heterozygous females.', RA, {
             existing: ['x-linked-recessive'], coverage: 'partial', note: 'The list omits Wiskott–Aldrich, Hunter and ocular albinism.',
           }),
           o('bruton', 'Explain X-linked agammaglobulinemia (BTK): B cells arrested at the pre-B stage, absent immunoglobulins, recurrent bacterial and enteroviral infections after 6 months.', RMA, {

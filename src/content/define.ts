@@ -4,6 +4,7 @@
  * Never reorder an existing concept's items: ids are how learner history links to content.
  */
 import type {
+  AssessedDepth,
   ClueItem,
   Concept,
   Difficulty,
@@ -27,6 +28,10 @@ export interface McqDraft {
   takeaway?: string;
   difficulty?: Difficulty;
   estSeconds?: number;
+  /** Curriculum objectives assessed; defaults to all of the concept's curriculum objectives. */
+  objectives?: string[];
+  /** Required for curriculum-linked concepts. */
+  depth?: AssessedDepth;
 }
 
 export interface TfDraft {
@@ -34,12 +39,18 @@ export interface TfDraft {
   isTrue: boolean;
   correction: string;
   difficulty?: Difficulty;
+  objectives?: string[];
+  /** Defaults to recognition. */
+  depth?: AssessedDepth;
 }
 
 export interface ClueDraft {
   answer: string;
   clue: string;
   difficulty?: Difficulty;
+  objectives?: string[];
+  /** Defaults to recognition. */
+  depth?: AssessedDepth;
 }
 
 export type ConceptDraft = Omit<Concept, 'packages' | 'review' | 'version' | 'updatedAt' | 'citations'> & {
@@ -59,6 +70,8 @@ export function defineConcepts(drafts: ConceptDraft[]): Bundle {
   const items: GameItem[] = [];
   for (const d of drafts) {
     const { mcq = [], tf = [], clues = [], citations = [], ...rest } = d;
+    const link = (objectives: string[] | undefined, depth: AssessedDepth | undefined) =>
+      d.curriculum ? { objectiveIds: objectives ?? d.curriculum, depth } : {};
     concepts.push({
       ...rest,
       citations,
@@ -72,6 +85,7 @@ export function defineConcepts(drafts: ConceptDraft[]): Bundle {
         kind: 'mcq',
         id: `${d.id}:mcq${i + 1}`,
         conceptIds: [d.id],
+        ...link(m.objectives, m.depth),
         difficulty: m.difficulty ?? d.difficulty,
         review: AI_DRAFT,
         version: 1,
@@ -90,6 +104,7 @@ export function defineConcepts(drafts: ConceptDraft[]): Bundle {
         kind: 'tf',
         id: `${d.id}:tf${i + 1}`,
         conceptIds: [d.id],
+        ...link(t.objectives, t.depth ?? 'recognition'),
         difficulty: t.difficulty ?? d.difficulty,
         review: AI_DRAFT,
         version: 1,
@@ -105,6 +120,7 @@ export function defineConcepts(drafts: ConceptDraft[]): Bundle {
         kind: 'clue',
         id: `${d.id}:clue${i + 1}`,
         conceptIds: [d.id],
+        ...link(c.objectives, c.depth ?? 'recognition'),
         difficulty: c.difficulty ?? d.difficulty,
         review: AI_DRAFT,
         version: 1,

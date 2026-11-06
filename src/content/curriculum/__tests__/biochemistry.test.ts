@@ -1,13 +1,15 @@
 import { describe, expect, it } from 'vitest';
-import { ALL_CONCEPTS } from '../../index';
+import { ALL_CONCEPTS, ALL_ITEMS } from '../../index';
 import { OUTLINE_AREAS } from '../../schema';
 import { BIOCHEMISTRY, BIOCHEMISTRY_V1_IDS } from '../biochemistry';
-import { objectivesOf, rollUp, subtopicsOf } from '../audit';
-import type { Objective } from '../types';
+import { auditObjective, objectivesOf, rollUp, subtopicsOf } from '../audit';
+import { NUTRITION_CROSS_CUTTING } from '../crossCutting';
 
 const subtopics = subtopicsOf(BIOCHEMISTRY).map((s) => s.item);
 const objectives = objectivesOf(BIOCHEMISTRY).map((o) => o.item);
+const objectiveIds = new Set(objectives.map((o) => o.id));
 const contentIds = new Set(ALL_CONCEPTS.map((c) => c.id));
+const content = { concepts: ALL_CONCEPTS, items: ALL_ITEMS };
 
 describe('Biochemistry coverage checklist', () => {
   it('keeps the six subdivisions in the agreed order', () => {
@@ -62,12 +64,48 @@ describe('Biochemistry coverage checklist', () => {
     }
   });
 
-  it('marks a subtopic covered only when every objective is covered', () => {
-    const base = objectives[0]!;
-    const covered: Objective = { ...base, coverage: 'covered' };
-    const missing: Objective = { ...base, coverage: 'missing' };
-    expect(rollUp([covered, covered])).toBe('covered');
-    expect(rollUp([covered, missing])).toBe('partial');
-    expect(rollUp([missing, missing])).toBe('missing');
+  it('rolls coverage up strictly', () => {
+    expect(rollUp(['covered', 'covered'])).toBe('covered');
+    expect(rollUp(['covered', 'missing'])).toBe('partial');
+    expect(rollUp(['missing', 'missing'])).toBe('missing');
+  });
+
+  it('keeps nutrition cross-cutting links valid', () => {
+    for (const [subject, ids] of Object.entries(NUTRITION_CROSS_CUTTING)) {
+      for (const id of ids) expect(objectiveIds.has(id), `${subject} → ${id}`).toBe(true);
+    }
+  });
+});
+
+describe('Curriculum-linked content', () => {
+  const linkedConcepts = ALL_CONCEPTS.filter((c) => c.curriculum?.length);
+  const linkedItems = ALL_ITEMS.filter((i) => i.objectiveIds?.length);
+
+  it('links only to real objectives', () => {
+    for (const c of linkedConcepts) for (const id of c.curriculum!) expect(objectiveIds.has(id), `${c.id} → ${id}`).toBe(true);
+    for (const i of linkedItems) for (const id of i.objectiveIds!) expect(objectiveIds.has(id), `${i.id} → ${id}`).toBe(true);
+  });
+
+  it('tags every linked item with a depth and keeps it within its concepts’ objectives', () => {
+    for (const i of linkedItems) {
+      expect(i.depth, i.id).toBeTruthy();
+      const allowed = new Set(ALL_CONCEPTS.filter((c) => i.conceptIds.includes(c.id)).flatMap((c) => c.curriculum ?? []));
+      for (const id of i.objectiveIds!) expect(allowed.has(id), `${i.id}: ${id} not taught by its concepts`).toBe(true);
+    }
+  });
+
+  it('assesses every linked objective at every depth the checklist requires', () => {
+    for (const c of linkedConcepts) {
+      for (const id of c.curriculum!) {
+        const o = objectives.find((x) => x.id === id)!;
+        const audit = auditObjective(o, content);
+        expect(audit.missingDepths, `${id} (${c.id})`).toEqual([]);
+      }
+    }
+  });
+
+  it('keeps all new content in draft until medical review', () => {
+    for (const c of linkedConcepts) expect(c.review.status, c.id).toBe('draft');
+    for (const i of linkedItems) expect(i.review.status, i.id).toBe('draft');
   });
 });

@@ -75,7 +75,7 @@ export const nutrition: Subdivision = {
           o('enzymes', 'Identify the TPP-dependent enzymes: pyruvate dehydrogenase, α-ketoglutarate dehydrogenase, branched-chain α-ketoacid dehydrogenase, transketolase.', RM, { existing: ['thiamine'], coverage: 'covered' }),
           d('deficiency', 'Explain how thiamine deficiency produces Wernicke–Korsakoff syndrome and beriberi.', RMA,
             ix('thiamine deficiency (alcohol use disorder, malnutrition, bariatric surgery, hyperemesis)', ['pyruvate and lactate'], ['aerobic ATP production (PDH, α-KGDH)', 'transketolase activity'],
-              ['energy failure in high-demand tissues (mammillary bodies, medial thalamus, periaqueductal gray; heart; peripheral nerves)', 'glucose loading increases flux into the blocked step'],
+              ['energy failure in high-demand tissues (mammillary bodies, medial thalamus, periaqueductal gray; heart; peripheral nerves)', 'a glucose load raises thiamine demand and can precipitate Wernicke encephalopathy in depleted patients'],
               ['Wernicke: confusion, ophthalmoplegia/nystagmus, ataxia', 'Korsakoff: amnesia, confabulation', 'dry beriberi: symmetric polyneuropathy', 'wet beriberi: high-output heart failure', 'low RBC transketolase activity that rises with added thiamine']),
             { existing: ['thiamine'], coverage: 'covered' }),
           o('glucose', 'Apply the rule to give thiamine before glucose in at-risk patients and explain why.', MA, { existing: ['thiamine'], coverage: 'covered' }),
@@ -186,8 +186,8 @@ export const nutrition: Subdivision = {
       subtopics: [
         st('bc-malnutrition', 'Protein-energy malnutrition and refeeding', 3, ['mechanism', 'disease', 'presentation'], [OL.pem], [], [
           d('kwashiorkor', 'Explain kwashiorkor from protein deficiency with relatively preserved calories.', RMA,
-            ix('inadequate protein intake', ['hepatic triglyceride (fatty liver)'], ['albumin (oncotic pressure)', 'apolipoproteins for VLDL export'],
-              ['fluid leaves the vascular space', 'triglycerides cannot leave the liver'],
+            ix('inadequate protein relative to energy, often with infection and micronutrient deficiency', ['hepatic triglyceride (fatty liver)'], ['albumin', 'apolipoproteins for VLDL export', 'antioxidant defenses (glutathione)'],
+              ['edema classically attributed to low oncotic pressure, but its pathogenesis is multifactorial (oxidative stress, sodium retention, capillary leak); hypoalbuminemia alone does not explain it', 'triglycerides cannot leave the liver'],
               ['edema and ascites with a protuberant abdomen', 'hepatomegaly from fatty liver', 'skin lesions, depigmentation, hair changes', 'anemia, irritability'])),
           d('marasmus', 'Explain marasmus from total energy deficiency.', RA,
             ix('inadequate total calories', [], ['adipose and muscle mass'],

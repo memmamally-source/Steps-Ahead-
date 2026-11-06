@@ -1,5 +1,5 @@
-import type { Coverage, Objective, Subject, Subtopic } from './types';
-import type { ReviewStatus } from '../schema';
+import type { Coverage, Depth, Objective, Subject, Subtopic } from './types';
+import type { Concept, GameItem, ReviewStatus } from '../schema';
 
 export interface Located<T> {
   subdivision: string;
@@ -21,19 +21,61 @@ export function objectivesOf(subject: Subject): Located<Objective>[] {
  * Coverage of a group of objectives. Strict rule: "covered" only when EVERY objective is covered;
  * "missing" only when none has any coverage; anything else is "partial".
  */
-export function rollUp(objectives: Objective[]): Coverage {
-  if (objectives.length && objectives.every((o) => o.coverage === 'covered')) return 'covered';
-  if (objectives.every((o) => o.coverage === 'missing')) return 'missing';
+export function rollUp(coverages: Coverage[]): Coverage {
+  if (coverages.length && coverages.every((c) => c === 'covered')) return 'covered';
+  if (coverages.every((c) => c === 'missing')) return 'missing';
   return 'partial';
 }
 
 export type ObjectiveReview = 'no content' | ReviewStatus;
-
 const ORDER: ReviewStatus[] = ['draft', 'in_review', 'approved', 'published', 'retired'];
 
-/** Medical review status of the content mapped to an objective: the least advanced status wins. */
-export function reviewOf(o: Objective, statusOf: (conceptId: string) => ReviewStatus | undefined): ObjectiveReview {
-  const statuses = o.existing.map(statusOf).filter((s): s is ReviewStatus => !!s);
-  if (!statuses.length) return 'no content';
-  return statuses.reduce((a, b) => (ORDER.indexOf(a) <= ORDER.indexOf(b) ? a : b));
+/** The audit result for one objective, combining curriculum-linked content with legacy judgements. */
+export interface ObjectiveAudit {
+  coverage: Coverage;
+  /** How coverage was determined. */
+  basis: 'linked content' | 'legacy judgement';
+  /** Concepts teaching the objective: linked concepts plus legacy mappings. */
+  concepts: string[];
+  /** Concepts linked through `curriculum` (new content). */
+  linked: string[];
+  /** Items assessing the objective (linked items, plus items of legacy-mapped concepts). */
+  items: GameItem[];
+  depthsAssessed: Depth[];
+  missingDepths: Depth[];
+  review: ObjectiveReview;
+  note?: string;
+}
+
+export interface ContentIndex {
+  concepts: Concept[];
+  items: GameItem[];
+}
+
+/**
+ * Coverage is computed when curriculum-linked content exists: the objective is covered only if a
+ * linked concept teaches it AND linked items assess every depth the checklist requires. Otherwise
+ * the manual legacy judgement in the checklist applies.
+ */
+export function auditObjective(o: Objective, content: ContentIndex): ObjectiveAudit {
+  const linked = content.concepts.filter((c) => c.curriculum?.includes(o.id)).map((c) => c.id);
+  const linkedItems = content.items.filter((i) => i.objectiveIds?.includes(o.id));
+  const legacyItems = content.items.filter((i) => !i.objectiveIds && i.conceptIds.some((id) => o.existing.includes(id)));
+  const items = [...new Set([...linkedItems, ...legacyItems])];
+  const concepts = [...new Set([...linked, ...o.existing])];
+  const depthsAssessed = [...new Set(linkedItems.map((i) => i.depth).filter((d): d is Depth => !!d))];
+  const missingDepths = o.depth.filter((d) => !depthsAssessed.includes(d));
+  const statuses = concepts
+    .map((id) => content.concepts.find((c) => c.id === id)?.review.status)
+    .filter((s): s is ReviewStatus => !!s);
+  const review: ObjectiveReview = statuses.length ? statuses.reduce((a, b) => (ORDER.indexOf(a) <= ORDER.indexOf(b) ? a : b)) : 'no content';
+
+  if (linked.length) {
+    const coverage: Coverage = missingDepths.length ? 'partial' : 'covered';
+    return {
+      coverage, basis: 'linked content', concepts, linked, items, depthsAssessed, missingDepths, review,
+      note: missingDepths.length ? `Linked content does not yet assess: ${missingDepths.join(', ')}.` : undefined,
+    };
+  }
+  return { coverage: o.coverage, basis: 'legacy judgement', concepts, linked, items, depthsAssessed, missingDepths, review, note: o.note };
 }

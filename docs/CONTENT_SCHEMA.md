@@ -21,12 +21,13 @@ Types live in `src/content/schema.ts`. Content is data, separate from game logic
 | `detailed` | ≥2 paragraphs |
 | `takeaway` | One-line Step 1 takeaway |
 | `related` | Related concept ids (validated) |
+| `curriculum` | Curriculum objective ids (`src/content/curriculum`) the concept teaches in full. Required for all content written under the subject-by-subject strategy |
 | `citations` | `{ sourceId, locator }` into the source register |
 | `review` | `{ status, provenance, reviewedBy?, reviewedAt?, notes? }` |
 | `version`, `updatedAt` | Versioning |
 
 ## Items (`GameItem` union)
-Shared fields: `id`, `conceptIds`, `difficulty`, `review`, `version`.
+Shared fields: `id`, `conceptIds`, `difficulty`, `review`, `version`, and for curriculum-linked content `objectiveIds` (objectives assessed) and `depth` (`recognition`, `mechanism` or `application`). True/false and crossword items default to recognition; every MCQ in linked content states its depth.
 
 | Kind | Used by | Specific fields |
 | --- | --- | --- |
@@ -43,5 +44,8 @@ Subject, organ system and topic for an item come from its first concept (`Conten
 ## Review lifecycle
 `draft → in_review → approved → published → retired`. Only `published` is visible in production builds; a concept's items are hidden if any linked concept is not visible. Provenance is `ai-drafted`, `human-authored` or `imported`.
 
+## Curriculum linking and computed coverage
+An objective linked by `curriculum` is reported as covered only when its linked items assess every depth the checklist requires (`auditObjective` in `src/content/curriculum/audit.ts`). Tests reject links to unknown objectives, items that assess objectives their concepts do not teach, missing depths, and linked content that is not `draft` before review. Run `npm run report:biochem` to regenerate the coverage report.
+
 ## Authoring
-Write concepts with `defineConcepts([...])` (`src/content/define.ts`) in a file under `src/content/step1/`, add it to `src/content/index.ts`, and run `npm test`. `validateContent` must report no issues.
+Write concepts with `defineConcepts([...])` (`src/content/define.ts`) in a file under `src/content/step1/` (legacy) or `src/content/<subject>/` (curriculum batches), add it to `src/content/index.ts`, and run `npm test`. `validateContent` must report no issues.
