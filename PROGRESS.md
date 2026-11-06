@@ -7,6 +7,14 @@
 **Live preview:** https://memmamally-source.github.io/Steps-Ahead-/ (manual deploys; reviewer preview).
 **Repository:** `memmamally-source/Steps-Ahead-` (created by the owner on 5 Nov 2026). The code first lived temporarily on branch `claude/steps-ahead-medical-arcade-a8in03` of the Oursome repo; that branch can be deleted.
 
+## Knowledge tables (6 Nov 2026, in progress)
+
+Owner's direction: strictly Step 1, comprehensive, every fact double- and triple-checked. Approach: each fact is stored once in a verified table (`src/content/kb/`), and questions are generated from it with one best answer proven by code (`generate.ts`, tested in `kb/__tests__`). Checks found and fixed: ambiguous identification clues, hallmarks shared by two organisms (EF-2 toxins, Shiga toxin, neonatal meningitis, reactive arthritis, mecA), near-equivalent biopsy findings (effacement, negative IF), a PSGN timing inconsistency, a duplicate statement, and outdated taxonomy (rotavirus, RSV, GBS screening weeks).
+
+Built: bacteria (40 organisms → 178 items), viruses (34 → 213), glomerular diseases (13 → 93), plus 8 group concepts mapped to the outline. Library now: 48 concepts, 649 items (356 MCQ, 214 true/false, 55 clues, 19 Connections groups, 5 cases). All AI-drafted and unreviewed.
+
+Not done yet: pharmacology table (an attempt was interrupted and discarded), biostatistics calculation generator, fungi/parasites, conversion of hand-written content to US spelling and US conventional units (Step 1 uses mEq/L and mg/dL), and the large outline gaps (neuro/psych, MSK/skin, reproductive/endocrine, social sciences, nutrition, GI, anatomy).
+
 ## Blueprint alignment (6 Nov 2026)
 
 usmle.org was allowed in a new personal environment ("Steps Ahead (USMLE research)", approved by the owner), so the official Step 1 page and the 2026 Content Outline were read directly. Findings: General Principles was retired and redistributed into systems; Human Development is new (1–3%); Nutrition is 15–20%. Taxonomy now uses the official ranges (`BLUEPRINT_VERIFIED = true`), the `general` system is gone, and every concept is mapped to an outline area and section (31/40 named topics, 9 foundational, 0 outside the outline). The build fails if a concept is unmapped. Coverage gaps and content priorities are in `docs/STEP1_BLUEPRINT.md`: behavioural health and nervous system, MSK and skin, reproductive and endocrine, social sciences, nutrition, GI, anatomy.

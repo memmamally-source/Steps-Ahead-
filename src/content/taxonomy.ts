@@ -98,6 +98,7 @@ export const TOPICS: Topic[] = [
   { id: 'micro-gram-negative', title: 'Gram-negative bacteria', system: 'multisystem', discipline: 'microbiology' },
   { id: 'micro-antibiotics', title: 'Antibiotic mechanisms', system: 'multisystem', discipline: 'pharmacology' },
   { id: 'micro-viruses', title: 'Viruses', system: 'multisystem', discipline: 'microbiology' },
+  { id: 'micro-atypical', title: 'Spirochetes, mycobacteria and atypicals', system: 'multisystem', discipline: 'microbiology' },
   // Pharmacology – autonomic, general
   { id: 'pharm-autonomic', title: 'Autonomic pharmacology', system: 'multisystem', discipline: 'pharmacology' },
   { id: 'pharm-toxicology', title: 'Toxicology & antidotes', system: 'multisystem', discipline: 'pharmacology' },

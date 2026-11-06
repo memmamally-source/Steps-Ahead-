@@ -184,7 +184,7 @@ export const microPharmEndoStats = defineConcepts([
         mini: 'Pseudomonas exotoxin A and diphtheria toxin both ADP-ribosylate elongation factor 2, halting protein synthesis.',
       },
     ],
-    tf: [{ statement: 'Pseudomonas aeruginosa is a lactose fermenter.', isTrue: false, correction: 'It is a non-lactose fermenter and oxidase-positive.' }],
+    tf: [{ statement: 'Pseudomonas exotoxin A inhibits protein synthesis by ADP-ribosylating elongation factor 2.', isTrue: true, correction: 'Correct: the same mechanism as diphtheria toxin.' }],
     clues: [{ answer: 'PYOCYANIN', clue: 'Blue-green pigment of Pseudomonas aeruginosa' }],
   },
   {

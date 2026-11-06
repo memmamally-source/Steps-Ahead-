@@ -7,11 +7,14 @@ import { CONNECTION_GROUPS } from './step1/connections';
 import { hemeImmuneResp } from './step1/hemeImmuneResp';
 import { microPharmEndoStats } from './step1/microPharmEndoStats';
 import { STEP1_OUTLINE } from './step1/outline';
+import { microGroups } from './step1/microGroups';
+import { gnGroups, virusGroups } from './step1/virusGroups';
+import { KB_ITEMS } from './kb';
 
-const bundles = [cardioRenal, hemeImmuneResp, biochemGenetics, microPharmEndoStats];
+const bundles = [cardioRenal, hemeImmuneResp, biochemGenetics, microPharmEndoStats, microGroups, virusGroups, gnGroups];
 
 export const ALL_CONCEPTS: Concept[] = bundles.flatMap((b) => b.concepts).map((c) => ({ ...c, outline: STEP1_OUTLINE[c.id] }));
-export const ALL_ITEMS: GameItem[] = [...bundles.flatMap((b) => b.items), ...CONNECTION_GROUPS, ...CASES];
+export const ALL_ITEMS: GameItem[] = [...bundles.flatMap((b) => b.items), ...CONNECTION_GROUPS, ...CASES, ...KB_ITEMS];
 
 const allowUnreviewed = import.meta.env.DEV || import.meta.env.VITE_ALLOW_UNREVIEWED === 'true';
 

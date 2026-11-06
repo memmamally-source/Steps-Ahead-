@@ -49,6 +49,15 @@ export const STEP1_OUTLINE: Record<string, OutlineRef> = {
   'beta-lactams': F('Multisystem Processes & Disorders', 'Infectious, immunologic, and inflammatory disorders'),
   organophosphate: L('Multisystem Processes & Disorders', 'Toxins and environmental extremes'),
   acetaminophen: L('Multisystem Processes & Disorders', 'Toxins and environmental extremes'),
+  // Microbiology group concepts (bacteria knowledge table)
+  'micro-staph-strep': L('Nervous System & Special Senses', 'Infectious, immunologic, and inflammatory disorders'),
+  'micro-gp-rods': L('Nervous System & Special Senses', 'Infectious, immunologic, and inflammatory disorders'),
+  'micro-gram-negative': L('Gastrointestinal System', 'Infectious, immunologic, and inflammatory disorders'),
+  'micro-atypical': L('Nervous System & Special Senses', 'Infectious, immunologic, and inflammatory disorders'),
+  'micro-dna-viruses': L('Multisystem Processes & Disorders', 'Infectious, immunologic, and inflammatory disorders'),
+  'micro-rna-viruses': L('Multisystem Processes & Disorders', 'Infectious, immunologic, and inflammatory disorders'),
+  'gn-nephrotic': L('Renal & Urinary System', 'Infectious, immunologic, and inflammatory disorders'),
+  'gn-nephritic': L('Renal & Urinary System', 'Infectious, immunologic, and inflammatory disorders'),
   // Endocrine
   'thyroid-synthesis': L('Endocrine System', 'Thyroid disorders'),
   'cah-21': L('Endocrine System', 'Congenital disorders'),

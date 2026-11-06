@@ -102,6 +102,7 @@ export function validateContent(concepts: Concept[], items: GameItem[]): Issue[]
   // Near-duplicate detection (possible repeated or recycled items).
   for (let a = 0; a < mcqs.length; a++) {
     for (let b = a + 1; b < mcqs.length; b++) {
+      if (mcqs[a]!.id.startsWith('kb:') && mcqs[b]!.id.startsWith('kb:')) continue; // shared templates, different answers
       if (jaccard(mcqs[a]!.stem, mcqs[b]!.stem) > 0.7) out.push({ id: mcqs[b]!.id, problem: `near-duplicate stem of ${mcqs[a]!.id}` });
     }
   }
