@@ -143,6 +143,12 @@ export interface Concept {
   curriculum?: string[];
   /** For each fact (same index), the indices of `citations` that support it. */
   factRefs?: number[][];
+  /**
+   * Indices of facts that are reasoned from pathway logic or otherwise still need direct source
+   * confirmation. A fact is also pending when every supporting citation was checked only for
+   * existence. Pending facts block medical approval (see `factEvidence`, validator).
+   */
+  factPending?: number[];
   citations: Citation[];
   review: ReviewInfo;
   version: number;
@@ -174,6 +180,15 @@ export const REASONING_DEPTH: Record<Reasoning, AssessedDepth> = {
   multistep: 'application',
 };
 
+/** Per-fact evidence status: verified directly in a read source, or awaiting confirmation. */
+export function factEvidence(c: Pick<Concept, 'facts' | 'factRefs' | 'factPending' | 'citations'>): ('verified' | 'pending')[] {
+  return c.facts.map((_, i) => {
+    if (c.factPending?.includes(i)) return 'pending';
+    const refs = c.factRefs?.[i] ?? [];
+    return refs.some((r) => c.citations[r]?.checked === 'full-text' || c.citations[r]?.checked === 'summary') ? 'verified' : 'pending';
+  });
+}
+
 interface ItemBase {
   id: string;
   conceptIds: string[];
@@ -183,6 +198,8 @@ interface ItemBase {
   depth?: AssessedDepth;
   /** The reasoning task (determines depth for curriculum-linked content). */
   reasoning?: Reasoning;
+  /** For application MCQs: the inferential steps the learner must make (≥ 2). Sequence items use `steps` for their ordered steps. */
+  steps?: string[];
   difficulty: Difficulty;
   review: ReviewInfo;
   version: number;
@@ -284,4 +301,24 @@ export interface ConnectionsPuzzleItem extends ItemBase {
   decoys: { label: string; accepts: string[] }[];
 }
 
-export type GameItem = McqItem | TrueFalseItem | ClueItem | ConnectionGroup | CaseItem | ConnectionsPuzzleItem;
+/** Mechanism Lab: rebuild a pathway or cascade by putting its steps in order. */
+export interface SequenceItem extends ItemBase {
+  kind: 'sequence';
+  title: string;
+  prompt: string;
+  /** Steps in the correct order (4–8). */
+  steps: string[];
+  explanation: string;
+}
+
+/** Match Up: pair each term with its partner (drug → target, enzyme → product, toxin → target). */
+export interface MatchItem extends ItemBase {
+  kind: 'match';
+  title: string;
+  prompt: string;
+  /** 4–6 pairs; every left and every right is unique, so each pairing has one correct answer. */
+  pairs: { left: string; right: string }[];
+  explanation: string;
+}
+
+export type GameItem = McqItem | TrueFalseItem | ClueItem | ConnectionGroup | CaseItem | ConnectionsPuzzleItem | SequenceItem | MatchItem;

@@ -3,6 +3,7 @@
  * exactly one of the four chosen categories' FULL member lists, so there is one valid solution.
  */
 import type { ConnectionGroup, ConnectionsPuzzleItem } from '@/content/schema';
+import { solutions } from '@/content/connectionsVerify';
 import { shuffle } from '@/engine/random';
 
 export interface PuzzleGroup {
@@ -38,7 +39,18 @@ export function fromCurated(item: ConnectionsPuzzleItem, rnd: () => number): Con
 
 const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '');
 
-export function buildConnections(bank: ConnectionGroup[], rnd: () => number, preferred: ConnectionGroup[] = []): ConnectionsPuzzle | null {
+/**
+ * Builds a 16-tile board from category groups. A board is accepted only if it passes complete puzzle
+ * validation: 4 groups of 4, each tile in exactly one chosen category, and exactly one solution when
+ * checked against every category in `catalog` (all bank categories plus medically plausible
+ * alternatives), so no unintended grouping can also solve it.
+ */
+export function buildConnections(
+  bank: ConnectionGroup[],
+  rnd: () => number,
+  preferred: ConnectionGroup[] = [],
+  catalog: { label: string; members: string[] }[] = bank,
+): ConnectionsPuzzle | null {
   for (let tries = 0; tries < 200; tries++) {
     // Start from preferred (subject) groups, then fill from the whole bank.
     const order = [...shuffle(preferred, rnd), ...shuffle(bank.filter((g) => !preferred.includes(g)), rnd)];
@@ -60,7 +72,7 @@ export function buildConnections(bank: ConnectionGroup[], rnd: () => number, pre
       difficulty: g.difficulty,
     }));
     const puzzle = { groups, tiles: shuffle(groups.flatMap((g) => g.members), rnd) };
-    if (!validateConnections(puzzle, chosen).length) return puzzle;
+    if (!validateConnections(puzzle, chosen).length && uniqueSolution(puzzle, chosen, catalog)) return puzzle;
     if (tries > 150) break;
   }
   return null;
@@ -72,6 +84,11 @@ function eligibleMembers(groups: ConnectionGroup[]): string[][] {
     const others = new Set(groups.filter((_, j) => j !== i).flatMap((o) => o.members.map(norm)));
     return g.members.filter((m) => !others.has(norm(m)));
   });
+}
+
+/** True when the board has exactly one solution across the chosen categories plus the catalog. */
+export function uniqueSolution(p: ConnectionsPuzzle, chosen: ConnectionGroup[], catalog: { members: string[] }[]): boolean {
+  return solutions(p.tiles, [...chosen.map((g) => g.members), ...catalog.map((c) => c.members)]).length === 1;
 }
 
 export function validateConnections(p: ConnectionsPuzzle, source: ConnectionGroup[]): string[] {

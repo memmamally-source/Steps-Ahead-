@@ -2,9 +2,10 @@
  * Automated content QA. Catches structural and consistency errors before medical review; it does
  * NOT establish medical accuracy (that is the reviewer's job, see MEDICAL_QA.md).
  */
-import { OUTLINE_AREAS, type Concept, type GameItem, type McqOption } from './schema';
+import { OUTLINE_AREAS, factEvidence, type Concept, type GameItem, type McqOption } from './schema';
 import { getSource } from './sources';
 import { verifyPuzzle } from './connectionsVerify';
+import { globalCategories } from './connectionsCatalog';
 import { getTopic } from './taxonomy';
 
 export interface Issue {
@@ -57,11 +58,17 @@ export function validateContent(concepts: Concept[], items: GameItem[]): Issue[]
     if (c.facts.length < 3) out.push({ id: c.id, problem: 'fewer than 3 facts' });
     if (!c.quick || c.quick.split(/\s+/).length > 60) out.push({ id: c.id, problem: 'quick explanation missing or longer than ~20 s read (60 words)' });
     if (c.detailed.length < 2) out.push({ id: c.id, problem: 'detailed explanation needs at least 2 paragraphs' });
+    // A citation is not approval: content cannot be approved or published while any fact still
+    // awaits direct source confirmation.
+    if ((c.review.status === 'approved' || c.review.status === 'published') && c.factRefs && factEvidence(c).includes('pending')) {
+      out.push({ id: c.id, problem: 'approved/published with facts awaiting direct source confirmation' });
+    }
     for (const field of ['mechanism', 'misconception', 'takeaway'] as const) {
       if (!c[field]?.trim()) out.push({ id: c.id, problem: `missing ${field}` });
     }
   }
 
+  const categories = globalCategories(items);
   const itemIds = new Set<string>();
   const mcqs: { id: string; stem: string }[] = [];
   const tfs: { id: string; s: string }[] = [];
@@ -92,8 +99,19 @@ export function validateContent(concepts: Concept[], items: GameItem[]): Issue[]
         if (!i.explanation.trim()) out.push({ id: i.id, problem: 'missing explanation' });
         break;
       }
+      case 'sequence':
+        if (i.steps.length < 4 || i.steps.length > 8) out.push({ id: i.id, problem: 'sequence needs 4–8 steps' });
+        if (new Set(i.steps.map(norm)).size !== i.steps.length) out.push({ id: i.id, problem: 'duplicate sequence step' });
+        if (!i.explanation.trim()) out.push({ id: i.id, problem: 'missing explanation' });
+        break;
+      case 'match':
+        if (i.pairs.length < 4 || i.pairs.length > 6) out.push({ id: i.id, problem: 'match needs 4–6 pairs' });
+        if (new Set(i.pairs.map((p) => norm(p.left))).size !== i.pairs.length) out.push({ id: i.id, problem: 'duplicate left term' });
+        if (new Set(i.pairs.map((p) => norm(p.right))).size !== i.pairs.length) out.push({ id: i.id, problem: 'duplicate right term (ambiguous pairing)' });
+        if (!i.explanation.trim()) out.push({ id: i.id, problem: 'missing explanation' });
+        break;
       case 'connections':
-        for (const problem of verifyPuzzle(i)) out.push({ id: i.id, problem });
+        for (const problem of verifyPuzzle(i, categories)) out.push({ id: i.id, problem });
         break;
       case 'case':
         if (i.stages.length < 3) out.push({ id: i.id, problem: 'case needs at least 3 stages' });

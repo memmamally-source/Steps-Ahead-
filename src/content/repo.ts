@@ -10,6 +10,8 @@ import type {
   Concept,
   ConnectionGroup,
   ConnectionsPuzzleItem,
+  MatchItem,
+  SequenceItem,
   DisciplineId,
   GameItem,
   McqItem,
@@ -33,7 +35,7 @@ export interface Classification {
   topic: string;
 }
 
-type KindMap = { mcq: McqItem; tf: TrueFalseItem; clue: ClueItem; group: ConnectionGroup; case: CaseItem; connections: ConnectionsPuzzleItem };
+type KindMap = { mcq: McqItem; tf: TrueFalseItem; clue: ClueItem; group: ConnectionGroup; case: CaseItem; connections: ConnectionsPuzzleItem; sequence: SequenceItem; match: MatchItem };
 
 export interface ItemQuery {
   conceptIds?: string[];

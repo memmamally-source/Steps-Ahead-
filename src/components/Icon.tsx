@@ -70,6 +70,7 @@ export const GAME_ICONS: Record<string, IconName> = {
   mechanism: 'flask',
   'micro-hunt': 'microbe',
   'pharm-match': 'pill',
+  'match-up': 'layers',
   biostats: 'chart',
   genetics: 'dna',
   pathology: 'eye',

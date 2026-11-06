@@ -78,3 +78,50 @@ Totals: **17 new items, 90 revised items, 0 removed** (computed by diffing every
 5. **Connections uniqueness** is proven only against the categories declared in each puzzle (its four groups plus decoys). Reviewers should check for other plausible groupings, e.g. whether “Skin” (types I and III) or other overlapping terms should be excluded from future boards.
 6. **Mastery weights and difficulty labels** are design choices, not empirically calibrated; they should be recalibrated once real response data exist.
 7. **Reference access:** MedlinePlus and NCBI E-utilities were added to the session’s network allowlist with owner approval; NCBI Bookshelf full text remained inaccessible.
+
+---
+
+# Biochemistry batch 1 — revision 3 (final quality-control corrections)
+
+Scope: the six quality-control requirements from the owner’s provisional acceptance of revision 2. Targeted corrections only; the batch was not regenerated. Curriculum structure, objective links, review statuses (all `draft`) and item ids are unchanged. **1 new item, 21 revised items, 0 removed.** The review packet (`BIOCHEM_BATCH1_REVIEW.md`) was re-run from source so it reflects these corrections. It now also separates verified facts from facts awaiting confirmation.
+
+## 1. ATM vs the MRN complex (`mol-ataxia-telangiectasia`)
+- Facts rewritten to separate **detection** from **signalling**: the MRN complex (MRE11–RAD50–NBS1) is the main sensor that binds double-strand break ends and recruits and activates ATM. ATM is the downstream kinase that phosphorylates checkpoint and repair proteins (p53, CHK2, and MRN itself).
+- New fact: MRE11 and NBS1 defects cause the related disorders ataxia–telangiectasia-like disorder and Nijmegen breakage syndrome.
+- New citations, verified from abstracts: PMID 18066087 (MRN is the primary sensor that recruits and activates ATM), PMID 26512707 and PMID 15279810 (ATLD/NBS).
+- Mechanism, quick explanation, misconception and associations updated to match.
+- `mol-ataxia-telangiectasia:mcq1` revised. The stem now states that MRN still assembles at breaks; the answer is “phosphorylation of checkpoint and repair proteins”. Initial MRN binding is now a distractor with its rationale.
+- `mol-ataxia-telangiectasia:mcq2` reclassified from multistep (difficulty 4) to **identification (difficulty 3)**: it is a classic picture followed by naming the gene.
+- **New** `mol-ataxia-telangiectasia:mcq3` (interpretation, difficulty 5). Two patient cell lines are compared: one has MRN foci but no CHK2/p53 phosphorylation (ATM), the other has no MRN foci and reduced ATM activation (NBS1). The learner must place each defect in the sensor → kinase sequence.
+
+## 2. Verified vs pending evidence
+- New schema field `factPending` and the function `factEvidence()`. A fact counts as **verified** only if at least one supporting citation was read as full text or a published summary. It is **pending** if it is listed in `factPending` (reasoned from pathway logic) or if every supporting citation was checked only for existence.
+- The validator now **rejects `approved` or `published` status while any fact is pending**. A citation by itself never makes content approvable.
+- Citations upgraded after direct verification from PubMed abstracts:
+  - `mol-nucleotides`: PMID 26677574 (thymidylate synthase produces DHF) replaces the existence-only Longley citation; PMID 26374178 added (10-formyl-THF transformylases).
+  - `mol-antimetabolites`: PMID 21374032 (FdUMP inhibits TS; 5-FU is incorporated into RNA) replaces Longley. PMIDs 12084461 and 3049954 added, with a new fact: the FdUMP–TS–methylene-THF ternary complex is stabilized by leucovorin.
+  - `mol-orotic-aciduria`: PMID 33489760 added, with a fact on ~20 reported patients (immunodeficiency, pancytopenia, failure to thrive, developmental delay, epilepsy). “Normal ammonia” is marked **pending** because it is inferred.
+  - `mol-purine-salvage`: PMID 33457651 upgraded to summary; PMID 30001695 added (xanthine stones on allopurinol). The PRPP-driven overproduction mechanism in HGPRT deficiency is marked **pending**.
+  - `mol-mutation-types`: PMID 32439726 checked as summary (aberrant β-globin splicing).
+- Result for batch 1: 88 facts verified, 3 awaiting direct confirmation (listed per concept in the packet).
+
+## 3. Connections: complete validation against plausible alternative groupings
+- New global category catalog (`src/content/connectionsCatalog.ts`). It holds about 30 medically plausible groupings (inheritance patterns, cancer predisposition, kidney and autoimmune disease, drug classes, Gram stain, toxin sources, hypersensitivity types, chemotherapy, plant-derived compounds and others). Every bank category, every curated category and every declared decoy is added to it.
+- Every curated puzzle is now solved against the **whole catalog**, not only its own decoys; the validator fails a puzzle with more than one solution. All three batch 1 puzzles still have exactly one solution. The packet lists the plausible groupings each board contains that cannot complete an alternative board.
+- **The daily category builder** now accepts a board only if it has exactly one solution against the same catalog. Test: of 150 seeded daily boards, more than 140 are built and every one has a unique solution.
+
+## 4. Genuine application, honest difficulty
+- `mol-fanconi-anemia:mcq2` reclassified from multistep (difficulty 4) to **identification (difficulty 3)**: a classic vignette followed by a direct association.
+- `mol-menkes:mcq3` rewritten as true **interpretation**. The learner reads a tissue copper pattern (high in enterocytes and kidney, low in liver and brain) and infers a failure of copper export from cells (ATP7A), rather than naming the disease from a picture. A medically inaccurate zinc distractor was replaced with “excess dietary copper intake”.
+- Every application-level MCQ now lists its inferential **steps** (≥2; 17 batch 1 items). A test enforces this for all application MCQs.
+
+## 5. More playable formats (infrastructure used from batch 2 onward)
+- New item kinds: **Mechanism Lab** (`sequence`: rebuild a pathway in order) and **Match Up** (`match`: pair drugs, enzymes and toxins with targets). Both have validator rules: 4–8 unique steps; 4–6 pairs with unique left and right terms.
+- Mechanism Lab is now playable (it was “coming soon”), and Match Up is a new playable game. Both record answers through `applyEvent` and offer the teach sheet. Pure logic is tested in `src/features/games/{mechanism,match}/logic.ts`.
+
+## 6. Preservation
+- No item ids changed and nothing was deleted. Curriculum structure and objective links are unchanged.
+
+## Updates to the unresolved list above
+- Item 1 is now **partly resolved**: the 5-FU, leucovorin, thymidylate synthase and 10-formyl-THF claims were verified from PubMed abstracts. Existence-only StatPearls chapters (methotrexate, fluorouracil, folic acid, Lesch–Nyhan, Menkes, mutation, DNA repair, Marfan) and Med Lett PMID 27027693 remain. Any fact relying only on them is shown as pending.
+- Item 5 is **resolved for the checking method**: uniqueness is now proven against the global catalog. Reviewers should still suggest groupings the catalog lacks.

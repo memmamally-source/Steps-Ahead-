@@ -36,6 +36,8 @@ export interface McqDraft {
   depth?: AssessedDepth;
   /** Reasoning task; when given, it determines the depth. */
   reasoning?: Reasoning;
+  /** Required for application-level reasoning: the inferential steps (≥ 2). */
+  steps?: string[];
 }
 
 export interface TfDraft {
@@ -94,6 +96,7 @@ export function defineConcepts(drafts: ConceptDraft[]): Bundle {
         id: `${d.id}:mcq${i + 1}`,
         conceptIds: [d.id],
         ...link(m.objectives, m.depth, m.reasoning),
+        ...(m.steps ? { steps: m.steps } : {}),
         difficulty: m.difficulty ?? d.difficulty,
         review: AI_DRAFT,
         version: 1,

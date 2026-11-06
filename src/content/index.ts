@@ -16,8 +16,9 @@ import { reproEndo } from './step1/reproEndo';
 import { KB_ITEMS } from './kb';
 import { stabilizeOptions } from './options';
 import { molecularBatch1 } from './biochem/molecular1';
+import { molecularBatch2 } from './biochem/molecular2';
 
-const bundles = [cardioRenal, hemeImmuneResp, biochemGenetics, microPharmEndoStats, microGroups, virusGroups, gnGroups, biostatGroups, fpGroups, neuroBehavior, mskSkin, reproEndo, molecularBatch1];
+const bundles = [cardioRenal, hemeImmuneResp, biochemGenetics, microPharmEndoStats, microGroups, virusGroups, gnGroups, biostatGroups, fpGroups, neuroBehavior, mskSkin, reproEndo, molecularBatch1, molecularBatch2];
 
 export const ALL_CONCEPTS: Concept[] = bundles.flatMap((b) => b.concepts).map((c) => ({ ...c, outline: STEP1_OUTLINE[c.id] ?? c.outline }));
 export const ALL_ITEMS: GameItem[] = [...bundles.flatMap((b) => b.items), ...CONNECTION_GROUPS, ...CASES, ...KB_ITEMS].map((i) =>

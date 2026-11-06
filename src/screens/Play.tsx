@@ -8,6 +8,8 @@ import { DISCIPLINES, SYSTEMS } from '@/content/taxonomy';
 import { ConnectionsGame } from '@/features/games/connections/ConnectionsGame';
 import { CrosswordGame } from '@/features/games/crossword/CrosswordGame';
 import { MysteryGame } from '@/features/games/mystery/MysteryGame';
+import { MechanismGame } from '@/features/games/mechanism/MechanismGame';
+import { MatchGame } from '@/features/games/match/MatchGame';
 import { FactFictionGame, ReviewGame, SurvivalGame } from '@/features/games/quiz/QuizGames';
 import { getGame } from '@/features/games/registry';
 
@@ -67,6 +69,10 @@ export function Play() {
       return <CrosswordGame key={key} daily={daily} query={query} focusLabel={label} />;
     case 'mystery':
       return <MysteryGame key={key} daily={daily} query={query} focusLabel={label} />;
+    case 'mechanism':
+      return <MechanismGame key={key} query={query} focusLabel={label} />;
+    case 'match-up':
+      return <MatchGame key={key} query={query} focusLabel={label} />;
     default:
       return <Empty>Unknown game.</Empty>;
   }

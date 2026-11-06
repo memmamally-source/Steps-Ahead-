@@ -1,66 +1,94 @@
 /**
  * Writes a medical-review packet for curriculum-linked content.
- * Usage: npx vite-node scripts/review-packet.ts -- <conceptIdPrefix> <output.md> "<title>"
+ * Usage: npx vite-node scripts/review-packet.ts -- <batch1|batch2|conceptIdPrefix> <output.md> "<title>"
  */
 import { writeFileSync } from 'node:fs';
 import { ALL_CONCEPTS, ALL_ITEMS } from '../src/content/index';
-import type { GameItem } from '../src/content/schema';
+import { molecularBatch1 } from '../src/content/biochem/molecular1';
+import { molecularBatch2 } from '../src/content/biochem/molecular2';
+import { globalCategories } from '../src/content/connectionsCatalog';
+import { redHerrings, solutions } from '../src/content/connectionsVerify';
+import { factEvidence, type GameItem } from '../src/content/schema';
 
-const [prefix = 'mol-', out = 'docs/subjects/review/packet.md', title = 'Review packet'] = process.argv.slice(2).filter((a) => a !== '--');
-const concepts = ALL_CONCEPTS.filter((c) => c.id.startsWith(prefix) && c.curriculum);
+const BATCHES = { batch1: molecularBatch1, batch2: molecularBatch2 } as const;
+const [sel = 'batch1', out = 'docs/subjects/review/packet.md', title = 'Review packet'] = process.argv.slice(2).filter((a) => a !== '--');
+const batch = BATCHES[sel as keyof typeof BATCHES];
+const conceptIdsOfBatch = batch ? new Set(batch.concepts.map((c) => c.id)) : undefined;
+const concepts = ALL_CONCEPTS.filter((c) => c.curriculum && (conceptIdsOfBatch ? conceptIdsOfBatch.has(c.id) : c.id.startsWith(sel)));
 const ids = new Set(concepts.map((c) => c.id));
 const items = ALL_ITEMS.filter((i) => i.conceptIds.some((c) => ids.has(c)));
+const catalog = globalCategories(ALL_ITEMS);
 const lines: string[] = [];
 const L = (...s: string[]) => lines.push(...s);
 const letter = (n: number) => String.fromCharCode(65 + n);
 const tag = (i: GameItem) =>
   `\`${i.id}\` · ${i.reasoning ?? '—'} → **${i.depth ?? '—'}** · difficulty ${i.difficulty} · ${(i.objectiveIds ?? []).map((o) => `\`${o}\``).join(', ')}`;
 const count = (f: (i: GameItem) => boolean) => items.filter(f).length;
+const evidence = concepts.flatMap((c) => factEvidence(c));
 
 L(`# ${title}`, '');
-L('Status: **draft, AI-drafted, not medically reviewed.** Reviewer: mark each concept approved, needs changes or rejected, with notes.', '');
+L('Status: **draft, AI-drafted, not medically reviewed.** Reviewer: mark each concept approved, needs changes or rejected, with notes. A citation alone is not approval.', '');
 L('## How to read this packet', '');
 L('- Options are listed in their **stored** order (deterministically shuffled per item, with opaque ids). Learners see a fresh random order on every presentation; answers are checked by option id, never by position. ✅ marks the correct option.');
-L('- Each item shows its **reasoning task** and the **depth** that follows from it: recall/identification → recognition; mechanism → mechanism; interpretation/prediction/comparison/multistep → application. A vignette that only asks for the classic diagnosis is identification (recognition), not application.');
-L('- Each fact lists the numbers of the citations that support it. “Checked”: **full-text** (page read), **summary** (published abstract or summary read), **existence** (record confirmed but full text not accessible; reviewer should confirm the claim).');
-L('- Mastery: true/false and crossword answers count as weaker recognition evidence; repeating an item within 7 days adds little; “strong” needs at least 3 distinct items, including a mechanism or application item.', '');
+L('- Each item shows its **reasoning task** and the **depth** that follows from it: recall/identification → recognition; mechanism → mechanism; interpretation/prediction/comparison/multistep → application. A vignette that only asks for the classic diagnosis is identification (recognition), not application. Application items list the inferential steps they require.');
+L('- Facts are split into **verified** (a supporting source was read in full text or as a published abstract/summary and states the claim) and **awaiting direct confirmation** (reasoned from pathway logic, or supported only by sources checked for existence). Awaiting facts block approval in the validator until a reviewer confirms them against a source.');
+L('- Citation “checked”: **full-text** (page read), **summary** (published abstract or summary read), **existence** (record confirmed but full text not accessible).');
+L('- Mastery: true/false and crossword answers count as weaker recognition evidence; repeating an item within 7 days adds little; “strong” needs at least 3 distinct items, including a mechanism or application item.');
+L('- Connections puzzles are checked for a single solution against the **global category catalog** (every bank category, every curated category and decoy, and a catalog of medically plausible groupings such as inheritance patterns, drug classes and toxin sources), not only against their own decoys. The daily builder applies the same check to every board it generates.', '');
 L('## Summary', '');
 L('| Measure | Value |', '|---|---|');
 L(`| Concepts | ${concepts.length} |`, `| Objectives taught | ${new Set(concepts.flatMap((c) => c.curriculum!)).size} |`);
+L(`| Facts verified / awaiting direct confirmation | ${evidence.filter((e) => e === 'verified').length} / ${evidence.filter((e) => e === 'pending').length} |`);
 L(`| MCQs / true-false / crossword clues | ${count((i) => i.kind === 'mcq')} / ${count((i) => i.kind === 'tf')} / ${count((i) => i.kind === 'clue')} |`);
+L(`| Mechanism Lab sequences / Match Up sets | ${count((i) => i.kind === 'sequence')} / ${count((i) => i.kind === 'match')} |`);
 L(`| Complete Connections puzzles / category groups / Mystery Patient cases | ${count((i) => i.kind === 'connections')} / ${count((i) => i.kind === 'group')} / ${count((i) => i.kind === 'case')} |`);
 for (const r of ['recall', 'identification', 'mechanism', 'interpretation', 'prediction', 'comparison', 'multistep'] as const) L(`| Items: ${r} | ${count((i) => i.reasoning === r)} |`);
 L('');
 
+const opts = (i: { options: { id: string; text: string; whyWrong?: string }[]; answerId: string }) =>
+  i.options.map((o, n) => `  - ${o.id === i.answerId ? '✅' : '◻️'} ${letter(n)}. ${o.text}${o.whyWrong ? ` — _${o.whyWrong}_` : ''}`);
+const stepLines = (i: GameItem) => (i.kind === 'mcq' && i.steps?.length ? [`  - Steps: ${i.steps.map((s, n) => `(${n + 1}) ${s}`).join(' ')}`] : []);
+
 for (const c of concepts) {
+  const ev = factEvidence(c);
   L(`## ${c.title} (\`${c.id}\`)`, '', `Objectives: ${c.curriculum!.map((o) => `\`${o}\``).join(', ')}`, '');
   L('**Citations**', '');
   c.citations.forEach((x, n) => L(`${n + 1}. ${x.locator}${x.ref ? ` — ${x.ref}` : ''} — <${x.url}> — checked: ${x.checked}`));
-  L('', '**Facts** [supporting citations]', '');
-  c.facts.forEach((f, n) => L(`- ${f} [${(c.factRefs?.[n] ?? []).map((r) => r + 1).join(', ')}]`));
+  const fact = (n: number) => `- ${c.facts[n]} [${(c.factRefs?.[n] ?? []).map((r) => r + 1).join(', ')}]`;
+  const verified = c.facts.map((_, n) => n).filter((n) => ev[n] === 'verified');
+  const pending = c.facts.map((_, n) => n).filter((n) => ev[n] === 'pending');
+  L('', '**Verified facts** [supporting citations]', '', ...verified.map(fact));
+  if (pending.length) L('', '**Awaiting direct source confirmation** (reasoned or existence-only; must be confirmed before approval)', '', ...pending.map(fact));
   L('', `**Mechanism.** ${c.mechanism}`, '', `**Quick.** ${c.quick}`, '', '**Detailed**', '', ...c.detailed.map((d) => `> ${d}\n`));
   L(`**Misconception.** ${c.misconception}`, '', `**Takeaway.** ${c.takeaway}`, '');
-  for (const i of items.filter((x) => x.conceptIds[0] === c.id && x.kind !== 'connections' && x.kind !== 'group')) {
+  for (const i of items.filter((x) => x.conceptIds[0] === c.id)) {
     if (i.kind === 'mcq') {
-      L(`- **MCQ** ${tag(i)}`, `  - ${i.stem}`, ...i.options.map((o, n) => `  - ${o.id === i.answerId ? '✅' : '◻️'} ${letter(n)}. ${o.text}${o.whyWrong ? ` — _${o.whyWrong}_` : ''}`), `  - Explanation: ${i.mini}`);
+      L(`- **MCQ** ${tag(i)}`, `  - ${i.stem}`, ...opts(i), ...stepLines(i), `  - Explanation: ${i.mini}`);
     } else if (i.kind === 'tf') {
       L(`- **True/false** ${tag(i)}: ${i.statement} → **${i.isTrue ? 'True' : 'False'}**. ${i.correction}`);
     } else if (i.kind === 'clue') {
       L(`- **Crossword** ${tag(i)}: ${i.clue} → **${i.answer}**`);
     } else if (i.kind === 'case') {
-      L(`- **Mystery Patient** ${tag(i)}: ${i.title}`, ...i.stages.map((s) => `  - ${s.label}: ${s.text}`), `  - Q: ${i.question}`,
-        ...i.options.map((o, n) => `  - ${o.id === i.answerId ? '✅' : '◻️'} ${letter(n)}. ${o.text}${o.whyWrong ? ` — _${o.whyWrong}_` : ''}`), `  - ${i.explanation}`);
+      L(`- **Mystery Patient** ${tag(i)}: ${i.title}`, ...i.stages.map((s) => `  - ${s.label}: ${s.text}`), `  - Q: ${i.question}`, ...opts(i), `  - ${i.explanation}`,
+        `  - Differentials: ${i.differentials.map((d) => `${d.name} (${d.why})`).join('; ')}`);
+    } else if (i.kind === 'sequence') {
+      L(`- **Mechanism Lab** ${tag(i)}: ${i.title}. ${i.prompt}`, ...i.steps.map((s, n) => `  ${n + 1}. ${s}`), `  - ${i.explanation}`);
+    } else if (i.kind === 'match') {
+      L(`- **Match Up** ${tag(i)}: ${i.title}. ${i.prompt}`, ...i.pairs.map((p) => `  - ${p.left} ↔ ${p.right}`), `  - ${i.explanation}`);
     }
   }
   L('', '---', '');
 }
 
-L('## Medical Connections: complete puzzles (16 tiles, verified single solution)', '');
+L('## Medical Connections: complete puzzles (16 tiles, verified single solution against the global catalog)', '');
 for (const p of items) {
   if (p.kind !== 'connections') continue;
+  const tiles = p.groups.flatMap((g) => g.members);
+  const n = solutions(tiles, [...p.groups.map((g) => g.accepts), ...p.decoys.map((d) => d.accepts), ...catalog.map((c) => c.members)]).length;
   L(`### ${p.title} · ${tag(p)}`, '');
   for (const g of p.groups) L(`- **${g.label}** (tier ${g.tier}): ${g.members.join(', ')} — ${g.explanation}`);
-  L('', `Red herrings checked by the solver (no alternative full solution): ${p.decoys.map((d) => `“${d.label}”`).join('; ')}.`, '');
+  L('', `Solutions found against ${catalog.length} catalog categories plus this puzzle's groups and decoys: **${n}**.`);
+  L(`Plausible alternative groupings present on the board (red herrings that cannot complete an alternative board): ${redHerrings(tiles, p.groups.map((g) => g.members), catalog).join('; ') || 'none'}.`, '');
 }
 L('## Connections category bank (builder input, not complete games)', '');
 for (const g of items) if (g.kind === 'group') L(`- \`${g.id}\` **${g.label}**: ${g.members.join(', ')}. ${g.explanation}`);

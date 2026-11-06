@@ -4,6 +4,7 @@ import { TeachSheet } from '@/components/learning';
 import { Icon } from '@/components/Icon';
 import { ActionBar, Empty } from '@/components/ui';
 import { content } from '@/content';
+import { globalCategories } from '@/content/connectionsCatalog';
 import type { ItemQuery } from '@/content/repo';
 import { dateKey, seeded, shuffle } from '@/engine/random';
 import { useSeed } from '@/state/clock';
@@ -27,7 +28,7 @@ export function ConnectionsGame({ daily, query, focusLabel }: { daily: boolean; 
     }
     const bank = content.itemsOf('group');
     const preferred = Object.keys(query).length ? content.itemsOf('group', query) : [];
-    return buildConnections(bank, seeded(seed), preferred);
+    return buildConnections(bank, seeded(seed), preferred, globalCategories(content.items));
   }, [daily, query, round, today, seedBase]);
   if (!puzzle) return <Empty>Not enough categories to build a puzzle yet.</Empty>;
   return <Board key={`${round}-${daily}`} puzzle={puzzle} daily={daily ? `${today}:connections` : undefined} focusLabel={focusLabel} onAgain={daily ? undefined : () => setRound((r) => r + 1)} />;

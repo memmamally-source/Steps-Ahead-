@@ -53,7 +53,27 @@ export function solutions(tiles: string[], categories: string[][]): string[][][]
   return [...found.values()];
 }
 
-export function verifyPuzzle(p: ConnectionsPuzzleItem): string[] {
+/**
+ * Plausible 4-tile groupings other than the intended ones (red herrings). Allowed, but reported to
+ * reviewers so traps are deliberate.
+ */
+export function redHerrings(tiles: string[], intended: string[][], categories: { label: string; members: string[] }[]): string[] {
+  const T = new Set(tiles.map(normTile));
+  const key = (xs: string[]) => xs.map(normTile).sort().join('|');
+  const intendedKeys = new Set(intended.map(key));
+  const out = new Set<string>();
+  for (const c of categories) {
+    const onBoard = c.members.filter((m) => T.has(normTile(m)));
+    if (onBoard.length >= 4 && !(onBoard.length === 4 && intendedKeys.has(key(onBoard)))) out.add(`${c.label} (${onBoard.length} tiles)`);
+  }
+  return [...out];
+}
+
+/**
+ * `extra`: additional categories (all bank categories and the plausible-category catalog) that must
+ * not produce an alternative full solution.
+ */
+export function verifyPuzzle(p: ConnectionsPuzzleItem, extra: { label: string; members: string[] }[] = []): string[] {
   const issues: string[] = [];
   const tiles = p.groups.flatMap((g) => g.members);
   if (p.groups.length !== 4) issues.push('needs exactly 4 groups');
@@ -67,7 +87,7 @@ export function verifyPuzzle(p: ConnectionsPuzzleItem): string[] {
     const homes = p.groups.filter((g) => g.accepts.some((a) => normTile(a) === normTile(t)));
     if (homes.length !== 1) issues.push(`"${t}" fits ${homes.length} of the puzzle's categories`);
   }
-  const sols = solutions(tiles, [...p.groups.map((g) => g.accepts), ...p.decoys.map((d) => d.accepts)]);
+  const sols = solutions(tiles, [...p.groups.map((g) => g.accepts), ...p.decoys.map((d) => d.accepts), ...extra.map((c) => c.members)]);
   if (sols.length !== 1) issues.push(`has ${sols.length} valid solutions (must be exactly 1)`);
   return issues;
 }

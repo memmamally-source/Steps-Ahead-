@@ -39,3 +39,23 @@ describe('Medical Connections', () => {
     expect(scoreConnections(0, 4)).toBe(0);
   });
 });
+
+describe('Complete validation of every Connections board', () => {
+  it('every builder board (daily and practice) has exactly one solution against all plausible categories', async () => {
+    const { ALL_ITEMS } = await import('@/content/index');
+    const { globalCategories } = await import('@/content/connectionsCatalog');
+    const { uniqueSolution } = await import('@/features/games/connections/logic');
+    const bank = ALL_ITEMS.filter((i) => i.kind === 'group');
+    const catalog = globalCategories(ALL_ITEMS);
+    let built = 0;
+    for (let i = 0; i < 150; i++) {
+      const p = buildConnections(bank, seeded(`step1:2026-01-${i}:connections`), [], catalog);
+      if (!p) continue;
+      built++;
+      const chosen = p.groups.map((g) => bank.find((b) => b.id === g.id)!);
+      expect(validateConnections(p, chosen)).toEqual([]);
+      expect(uniqueSolution(p, chosen, catalog), p.tiles.join(', ')).toBe(true);
+    }
+    expect(built).toBeGreaterThan(140);
+  });
+});

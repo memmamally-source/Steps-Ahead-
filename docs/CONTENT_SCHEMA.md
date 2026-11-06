@@ -24,6 +24,7 @@ Types live in `src/content/schema.ts`. Content is data, separate from game logic
 | `curriculum` | Curriculum objective ids (`src/content/curriculum`) the concept teaches in full. Required for all content written under the subject-by-subject strategy |
 | `citations` | `{ sourceId, locator, url, ref, checked }` into the source register. Curriculum-linked content must give an exact URL, an identifier (PMID/NBK) where one exists, and how it was checked (`full-text`, `summary`, `existence`) |
 | `factRefs` | For each fact, the indices of the citations supporting it (required for curriculum-linked content) |
+| `factPending` | Indices of facts reasoned from pathway logic that still need direct source confirmation. `factEvidence()` also marks a fact pending when every supporting citation was checked only for `existence`. The validator rejects `approved`/`published` status while any fact is pending: a citation alone never makes content approvable |
 | `review` | `{ status, provenance, reviewedBy?, reviewedAt?, notes? }` |
 | `version`, `updatedAt` | Versioning |
 
@@ -36,12 +37,16 @@ Shared fields: `id`, `conceptIds`, `difficulty`, `review`, `version`, and for cu
 | `tf` | Fact or Fiction, Survival, Review | `statement`, `isTrue`, `correction`, `mini` |
 | `clue` | Crossword | `answer` (A–Z, 3–15 letters), `clue` (must not contain the answer), `mini` |
 | `group` | Connections | `label`, `members` (≥4, complete for the terms used), `explanation`, `tier` 1–4 |
-| `connections` | Medical Connections (curated) | `title`, `groups[4]` each with 4 `members` and the full `accepts` list, `decoys[]`; verified to have exactly one solution (`connectionsVerify.ts`) |
+| `connections` | Medical Connections (curated) | `title`, `groups[4]` each with 4 `members` and the full `accepts` list, `decoys[]`; verified to have exactly one solution against the global category catalog (`connectionsCatalog.ts`: plausible groupings plus every bank, curated and decoy category). The daily builder applies the same check to every generated board |
+| `sequence` | Mechanism Lab | `title`, `prompt`, `steps` (4–8 unique, in the correct order), `explanation` |
+| `match` | Match Up | `title`, `prompt`, `pairs[{left,right}]` (4–6; lefts unique and rights unique, so each pairing has one answer), `explanation` |
 | `case` | Mystery Patient | `title`, `stages[]`, `question`, `options`, `answerId`, `explanation`, `mechanism`, `takeaway`, `differentials[]` |
+
+Application-depth MCQs list the inferential `steps` the learner must make (≥2, tested).
 
 Answer options are stored with opaque stable ids and shuffled for every presentation (`src/content/options.ts`); answers are always checked by id.
 
-Item ids are `<conceptId>:<kind><n>` for concept-authored items, `grp:*` and `case:*` otherwise. **Never reorder** an existing concept's items: learner history references these ids.
+Item ids are `<conceptId>:<kind><n>` for concept-authored items, `grp:*`, `cx:*`, `case:*`, `seq:*` and `match:*` otherwise. **Never reorder** an existing concept's items: learner history references these ids.
 
 Subject, organ system and topic for an item come from its first concept (`ContentRepo.classify`).
 

@@ -133,3 +133,9 @@ describe('Opaque option ids', () => {
     expect(suffixes.size).toBeGreaterThan(mcqs.length * 0.9);
   });
 });
+
+describe('Genuine application items', () => {
+  it('state at least two inferential steps for every application-level MCQ', () => {
+    for (const i of ALL_ITEMS) if (i.kind === 'mcq' && i.depth === 'application') expect(i.steps?.length ?? 0, i.id).toBeGreaterThanOrEqual(2);
+  });
+});

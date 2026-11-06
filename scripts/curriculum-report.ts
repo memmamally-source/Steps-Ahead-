@@ -99,7 +99,7 @@ p('- Fabry disease described as X-linked with frequently affected heterozygous f
 p('- Sorbitol pathway reframed as one contributor to diabetic complications alongside glycation, PKC activation, hexosamine flux and oxidative stress; sorbitol is most important in the lens.');
 p('- Mechanism review: hyperammonemia (α-ketoglutarate depletion marked as debated), kwashiorkor edema (multifactorial), von Gierke and hereditary fructose intolerance hyperuricemia, alcoholic ketoacidosis, homocystinuria lens mechanism, familial chylomicronemia atherosclerosis risk, ADA toxicity, Marfan TGF-β wording, thiamine–glucose rationale.');
 p('- Nutrition kept as a cross-cutting area for later subjects (see the section below).');
-p('- Batch 1 content added for 25 Molecular biochemistry objectives; coverage for them is computed from the content.', '');
+p('- Batch 1 content added for 25 Molecular biochemistry objectives and Batch 2 for the remaining 26, so all 51 Molecular objectives now have linked content; coverage for them is computed from the content. All of it is draft and not medically reviewed.', '');
 
 p('## Changes from version 1', '');
 const added = subtopics.filter((s) => s.origin.length === 0);
