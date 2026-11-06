@@ -158,7 +158,7 @@ export function applyEvent(state: ProgressState, ev: LearningEvent, classify: Cl
       const srs = { ...s.srs };
       const rating = ratingFor(ev.correct, ev.hintsUsed);
       for (const cid of ev.conceptIds) {
-        concepts[cid] = recordOutcome(concepts[cid], { at: ev.at, correct: ev.correct, difficulty: ev.difficulty });
+        concepts[cid] = recordOutcome(concepts[cid], { at: ev.at, correct: ev.correct, difficulty: ev.difficulty, itemId: ev.itemId, kind: ev.itemKind, depth: ev.depth });
         srs[cid] = applyAttempt(srs[cid], rating, ev.at);
       }
       const c = s.counts[day] ?? { answered: 0, correct: 0 };

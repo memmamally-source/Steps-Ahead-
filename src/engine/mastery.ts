@@ -6,13 +6,40 @@
  * evidence of mastery; a wrong easy answer stronger evidence of a gap) and decays with a 45-day
  * half-life so old performance matters less. Statuses need a minimum amount of evidence: one
  * correct answer never makes a concept "strong".
+ *
+ * Independent evidence (no inflation by repetition):
+ * - Evidence type is weighted: true/false and crossword answers (recognition repetitions) count for
+ *   less than a multiple-choice recognition item, which counts for less than a mechanism or
+ *   application item.
+ * - A correct answer to an item already answered correctly within the last 7 days is practice, not
+ *   new evidence, and contributes only a quarter of its weight. Errors always count in full.
+ * - "Strong" also requires correct answers on at least 3 distinct items, at least one of them a
+ *   mechanism or application item (or a legacy item without a depth tag).
  */
 
 export interface Outcome {
   at: number;
   correct: boolean;
   difficulty: number; // 1–5
+  /** Item answered (for repetition control). Absent in legacy records: treated as distinct. */
+  itemId?: string;
+  /** Item kind and assessed depth (for evidence weighting). Absent = legacy, weight 1. */
+  kind?: string;
+  depth?: 'recognition' | 'mechanism' | 'application';
 }
+
+const REPEAT_WINDOW = 7 * 86_400_000;
+
+/** Weight of one outcome by what it demonstrates. */
+export function evidenceWeight(o: Outcome): number {
+  if (o.kind === 'tf' || o.kind === 'clue') return 0.5;
+  if (o.depth === 'recognition') return 0.75;
+  if (o.depth === 'application') return 1.15;
+  return 1;
+}
+
+/** True when the outcome independently demonstrates more than recognition. */
+const beyondRecognition = (o: Outcome) => o.kind !== 'tf' && o.kind !== 'clue' && o.depth !== 'recognition';
 
 export interface ConceptRecord {
   attempts: number;
@@ -50,6 +77,10 @@ export interface Estimate {
   alpha: number;
   beta: number;
   status: MasteryStatus;
+  /** Distinct items answered correctly (repetitions of one item count once). */
+  distinctCorrect: number;
+  /** Whether any correct answer demonstrated mechanism or application. */
+  beyondRecognition: boolean;
 }
 
 export function recordOutcome(rec: ConceptRecord | undefined, o: Outcome): ConceptRecord {
@@ -65,23 +96,24 @@ export function recordOutcome(rec: ConceptRecord | undefined, o: Outcome): Conce
 }
 
 /** Evidence contributed by one outcome. */
-export function evidenceOf(o: Outcome, now: number): { a: number; b: number } {
+export function evidenceOf(o: Outcome, now: number, repeat = false): { a: number; b: number } {
   const age = Math.max(0, (now - o.at) / DAY);
   const decay = Math.pow(0.5, age / HALF_LIFE_DAYS);
   const d = Math.min(5, Math.max(1, o.difficulty));
-  return o.correct ? { a: (0.6 + 0.1 * d) * decay, b: 0 } : { a: 0, b: (0.6 + 0.1 * (6 - d)) * decay };
+  const w = evidenceWeight(o);
+  return o.correct ? { a: (0.6 + 0.1 * d) * decay * w * (repeat ? 0.25 : 1), b: 0 } : { a: 0, b: (0.6 + 0.1 * (6 - d)) * decay * w };
 }
 
 const MIN_EVIDENCE = 2.5;
 const MIN_ATTEMPTS = 3;
 
-export function statusFrom(alpha: number, beta: number, attempts: number, trend: number | null): MasteryStatus {
+export function statusFrom(alpha: number, beta: number, attempts: number, trend: number | null, independent = true): MasteryStatus {
   if (attempts === 0) return 'not_studied';
   const evidence = alpha + beta - 2;
   if (attempts < MIN_ATTEMPTS || evidence < MIN_EVIDENCE) return 'insufficient';
   const mean = alpha / (alpha + beta);
   const sd = Math.sqrt((alpha * beta) / ((alpha + beta) ** 2 * (alpha + beta + 1)));
-  if (mean - 0.84 * sd >= 0.7 && mean >= 0.8) return 'strong';
+  if (mean - 0.84 * sd >= 0.7 && mean >= 0.8) return independent ? 'strong' : 'developing';
   if (trend !== null && trend >= 0.25) return 'improving';
   if (mean < 0.6) return 'needs_revision';
   return 'developing';
@@ -105,15 +137,27 @@ export function estimate(recs: (ConceptRecord | undefined)[], now: number): Esti
     if (!r) continue;
     attempts += r.attempts;
     correct += r.correct;
-    for (const o of r.recent) {
-      const e = evidenceOf(o, now);
-      alpha += e.a;
-      beta += e.b;
-      recent.push(o);
-    }
+    recent.push(...r.recent);
   }
   recent.sort((x, y) => x.at - y.at);
-  const status = statusFrom(alpha, beta, attempts, trendOf(recent.slice(-RECENT_CAP)));
+  const lastCorrect = new Map<string, number>();
+  const distinct = new Set<string>();
+  let deeper = false;
+  recent.forEach((o, i) => {
+    const key = o.itemId ?? `legacy:${i}`;
+    const prev = o.itemId ? lastCorrect.get(o.itemId) : undefined;
+    const repeat = o.correct && prev !== undefined && o.at - prev < REPEAT_WINDOW;
+    const e = evidenceOf(o, now, repeat);
+    alpha += e.a;
+    beta += e.b;
+    if (o.correct) {
+      if (o.itemId) lastCorrect.set(o.itemId, o.at);
+      distinct.add(key);
+      if (beyondRecognition(o)) deeper = true;
+    }
+  });
+  const independent = distinct.size >= 3 && deeper;
+  const status = statusFrom(alpha, beta, attempts, trendOf(recent.slice(-RECENT_CAP)), independent);
   return {
     attempts,
     correct,
@@ -123,6 +167,8 @@ export function estimate(recs: (ConceptRecord | undefined)[], now: number): Esti
     alpha,
     beta,
     status,
+    distinctCorrect: distinct.size,
+    beyondRecognition: deeper,
   };
 }
 

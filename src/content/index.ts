@@ -14,12 +14,15 @@ import { neuroBehavior } from './step1/neuroBehavior';
 import { mskSkin } from './step1/mskSkin';
 import { reproEndo } from './step1/reproEndo';
 import { KB_ITEMS } from './kb';
+import { stabilizeOptions } from './options';
 import { molecularBatch1 } from './biochem/molecular1';
 
 const bundles = [cardioRenal, hemeImmuneResp, biochemGenetics, microPharmEndoStats, microGroups, virusGroups, gnGroups, biostatGroups, fpGroups, neuroBehavior, mskSkin, reproEndo, molecularBatch1];
 
 export const ALL_CONCEPTS: Concept[] = bundles.flatMap((b) => b.concepts).map((c) => ({ ...c, outline: STEP1_OUTLINE[c.id] ?? c.outline }));
-export const ALL_ITEMS: GameItem[] = [...bundles.flatMap((b) => b.items), ...CONNECTION_GROUPS, ...CASES, ...KB_ITEMS];
+export const ALL_ITEMS: GameItem[] = [...bundles.flatMap((b) => b.items), ...CONNECTION_GROUPS, ...CASES, ...KB_ITEMS].map((i) =>
+  i.kind === 'mcq' || i.kind === 'case' ? stabilizeOptions(i) : i,
+);
 
 const allowUnreviewed = import.meta.env.DEV || import.meta.env.VITE_ALLOW_UNREVIEWED === 'true';
 

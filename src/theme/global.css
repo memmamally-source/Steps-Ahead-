@@ -268,9 +268,11 @@ details.more[open] > summary .chev-down { transform: rotate(180deg); }
 
 /* Connections */
 .cx-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 7px; }
-.cx-tile { min-height: 76px; border-radius: 12px; border: 0; background: var(--surface); box-shadow: var(--shadow), inset 0 0 0 1px var(--line); font-weight: 700; font-size: clamp(0.66rem, 2.7vw, 0.88rem); line-height: 1.15; padding: 6px; cursor: pointer; overflow-wrap: anywhere; hyphens: auto; transition: background 0.12s, transform 0.12s; }
+.cx-tile { min-height: 76px; border-radius: 12px; border: 0; background: var(--surface); box-shadow: var(--shadow), inset 0 0 0 1px var(--line); font-weight: 700; font-size: clamp(0.66rem, 2.7vw, 0.88rem); line-height: 1.15; padding: 6px; cursor: pointer; overflow-wrap: break-word; hyphens: auto; transition: background 0.12s, transform 0.12s; }
 .cx-tile[aria-pressed='true'] { background: var(--select-bg); color: var(--select-fg); box-shadow: none; transform: scale(0.97); }
 .cx-tile.shake { animation: shake 0.3s; }
+/* Long single words (e.g. Mycophenolate) shrink instead of breaking mid-word. */
+.cx-tile.cx-long { font-size: clamp(0.58rem, 2.3vw, 0.8rem); }
 .cx-solved { grid-column: 1 / -1; border-radius: 12px; padding: 12px; text-align: center; animation: pop 0.3s; }
 .tier-1 { background: #111; color: #fff; }
 .tier-2 { background: #d71920; color: #fff; }

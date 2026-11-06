@@ -3,8 +3,10 @@
  * normalised Concept and GameItem records with stable ids (`<conceptId>:mcq1`, `:tf1`, `:clue1`).
  * Never reorder an existing concept's items: ids are how learner history links to content.
  */
+import { REASONING_DEPTH } from './schema';
 import type {
   AssessedDepth,
+  Reasoning,
   ClueItem,
   Concept,
   Difficulty,
@@ -32,6 +34,8 @@ export interface McqDraft {
   objectives?: string[];
   /** Required for curriculum-linked concepts. */
   depth?: AssessedDepth;
+  /** Reasoning task; when given, it determines the depth. */
+  reasoning?: Reasoning;
 }
 
 export interface TfDraft {
@@ -42,6 +46,7 @@ export interface TfDraft {
   objectives?: string[];
   /** Defaults to recognition. */
   depth?: AssessedDepth;
+  reasoning?: Reasoning;
 }
 
 export interface ClueDraft {
@@ -51,6 +56,7 @@ export interface ClueDraft {
   objectives?: string[];
   /** Defaults to recognition. */
   depth?: AssessedDepth;
+  reasoning?: Reasoning;
 }
 
 export type ConceptDraft = Omit<Concept, 'packages' | 'review' | 'version' | 'updatedAt' | 'citations'> & {
@@ -70,8 +76,10 @@ export function defineConcepts(drafts: ConceptDraft[]): Bundle {
   const items: GameItem[] = [];
   for (const d of drafts) {
     const { mcq = [], tf = [], clues = [], citations = [], ...rest } = d;
-    const link = (objectives: string[] | undefined, depth: AssessedDepth | undefined) =>
-      d.curriculum ? { objectiveIds: objectives ?? d.curriculum, depth } : {};
+    const link = (objectives: string[] | undefined, depth: AssessedDepth | undefined, reasoning: Reasoning | undefined) =>
+      d.curriculum
+        ? { objectiveIds: objectives ?? d.curriculum, depth: reasoning ? REASONING_DEPTH[reasoning] : depth, ...(reasoning ? { reasoning } : {}) }
+        : {};
     concepts.push({
       ...rest,
       citations,
@@ -85,7 +93,7 @@ export function defineConcepts(drafts: ConceptDraft[]): Bundle {
         kind: 'mcq',
         id: `${d.id}:mcq${i + 1}`,
         conceptIds: [d.id],
-        ...link(m.objectives, m.depth),
+        ...link(m.objectives, m.depth, m.reasoning),
         difficulty: m.difficulty ?? d.difficulty,
         review: AI_DRAFT,
         version: 1,
@@ -104,7 +112,7 @@ export function defineConcepts(drafts: ConceptDraft[]): Bundle {
         kind: 'tf',
         id: `${d.id}:tf${i + 1}`,
         conceptIds: [d.id],
-        ...link(t.objectives, t.depth ?? 'recognition'),
+        ...link(t.objectives, t.depth ?? 'recognition', t.reasoning ?? (d.curriculum ? 'recall' : undefined)),
         difficulty: t.difficulty ?? d.difficulty,
         review: AI_DRAFT,
         version: 1,
@@ -120,7 +128,7 @@ export function defineConcepts(drafts: ConceptDraft[]): Bundle {
         kind: 'clue',
         id: `${d.id}:clue${i + 1}`,
         conceptIds: [d.id],
-        ...link(c.objectives, c.depth ?? 'recognition'),
+        ...link(c.objectives, c.depth ?? 'recognition', c.reasoning ?? (d.curriculum ? 'recall' : undefined)),
         difficulty: c.difficulty ?? d.difficulty,
         review: AI_DRAFT,
         version: 1,

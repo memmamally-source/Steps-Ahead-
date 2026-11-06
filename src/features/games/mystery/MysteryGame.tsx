@@ -8,6 +8,7 @@ import type { ItemQuery } from '@/content/repo';
 import type { CaseItem } from '@/content/schema';
 import { dateKey, seeded, shuffle } from '@/engine/random';
 import { useSeed } from '@/state/clock';
+import { presentOptions } from '@/content/options';
 import { useProgress } from '@/state/progress';
 import { useStudyContext } from '@/state/studyTimer';
 import { GameFrame, ScoreCard, useGameSession } from '../GameFrame';
@@ -52,9 +53,10 @@ function Case({ kase, daily, focusLabel, onAgain }: { kase: CaseItem; daily?: st
   };
 
   const shown = done ? kase.stages : kase.stages.slice(0, revealed);
+  const shownOptions = presentOptions(kase.options, `${kase.id}:${sessionId}`);
   const options = (
     <div className="stack-sm">
-      {kase.options.map((o, i) => {
+      {shownOptions.map((o, i) => {
         const state = done ? (o.id === kase.answerId ? ' is-correct' : o.id === choice ? ' is-wrong' : ' dim') : '';
         return (
           <button key={o.id} className={`option${state}`} disabled={done} onClick={() => submit(o.id)}>

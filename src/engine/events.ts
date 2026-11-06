@@ -38,6 +38,9 @@ export type LearningEvent = Base &
         hintsUsed: number;
         latencyMs: number;
         difficulty: number;
+        /** Item kind and assessed depth, used to weight mastery evidence. */
+        itemKind?: string;
+        depth?: 'recognition' | 'mechanism' | 'application';
       }
     | { type: 'hint_used'; gameId: GameId; itemId: string }
     | { type: 'explanation_opened'; conceptId: string; depth: 'quick' | 'detailed' | 'lesson'; itemId?: string }

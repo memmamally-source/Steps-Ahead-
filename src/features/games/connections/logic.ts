@@ -2,7 +2,7 @@
  * Medical Connections puzzle builder and rules. Fairness guarantee: every displayed term belongs to
  * exactly one of the four chosen categories' FULL member lists, so there is one valid solution.
  */
-import type { ConnectionGroup } from '@/content/schema';
+import type { ConnectionGroup, ConnectionsPuzzleItem } from '@/content/schema';
 import { shuffle } from '@/engine/random';
 
 export interface PuzzleGroup {
@@ -18,6 +18,22 @@ export interface PuzzleGroup {
 export interface ConnectionsPuzzle {
   groups: PuzzleGroup[];
   tiles: string[];
+  /** Curated puzzle id when the board is a verified curated puzzle. */
+  curatedId?: string;
+}
+
+/** A verified curated puzzle (see content/connectionsVerify.ts) laid out for play. */
+export function fromCurated(item: ConnectionsPuzzleItem, rnd: () => number): ConnectionsPuzzle {
+  const groups: PuzzleGroup[] = item.groups.map((g) => ({
+    id: `${item.id}:${g.id}`,
+    label: g.label,
+    tier: g.tier,
+    members: [...g.members],
+    explanation: g.explanation,
+    conceptIds: g.conceptIds,
+    difficulty: item.difficulty,
+  }));
+  return { groups, tiles: shuffle(groups.flatMap((g) => g.members), rnd), curatedId: item.id };
 }
 
 const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '');

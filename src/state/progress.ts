@@ -24,7 +24,7 @@ type EventInput = LearningEvent extends infer E ? (E extends LearningEvent ? Omi
 
 export interface AnswerInput {
   gameId: GameId;
-  item: Pick<GameItem, 'id' | 'conceptIds' | 'difficulty'>;
+  item: Pick<GameItem, 'id' | 'conceptIds' | 'difficulty'> & { kind?: string; depth?: 'recognition' | 'mechanism' | 'application' };
   correct: boolean;
   prompt: string;
   response: string;
@@ -78,6 +78,8 @@ export const useProgress = create<Store>()(
           itemId: a.item.id,
           conceptIds: a.item.conceptIds,
           difficulty: a.item.difficulty,
+          itemKind: a.item.kind,
+          depth: a.item.depth,
           correct: a.correct,
           prompt: a.prompt,
           response: a.response,

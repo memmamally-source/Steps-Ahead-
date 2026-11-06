@@ -67,6 +67,15 @@ export interface Topic {
 export interface Citation {
   sourceId: string;
   locator?: string;
+  /** Exact, resolvable URL of the cited page or record. Required for curriculum-linked content. */
+  url?: string;
+  /** Stable identifier, e.g. "PMID 20301575; NBK1401". */
+  ref?: string;
+  /**
+   * How the claim support was checked: full text read, published summary/abstract read, or the
+   * record's existence and scope only (full text not accessible; reviewer should confirm).
+   */
+  checked?: 'full-text' | 'summary' | 'existence';
 }
 
 /** The 18 major areas of the official USMLE Content Outline (2026). */
@@ -132,6 +141,8 @@ export interface Concept {
    * after the subject-by-subject strategy must declare them so coverage is computed, not judged.
    */
   curriculum?: string[];
+  /** For each fact (same index), the indices of `citations` that support it. */
+  factRefs?: number[][];
   citations: Citation[];
   review: ReviewInfo;
   version: number;
@@ -141,6 +152,28 @@ export interface Concept {
 /** Depth of reasoning an item assesses (matches the curriculum depth levels). */
 export type AssessedDepth = 'recognition' | 'mechanism' | 'application';
 
+/**
+ * What the learner actually has to do. A vignette is not automatically "application":
+ * - recall: retrieve a fact; identification: name a diagnosis/enzyme/gene from a classic picture
+ *   (both count as recognition)
+ * - mechanism: explain why or how (counts as mechanism)
+ * - interpretation: read data (labs, pedigree, tumor testing, graphs); prediction: predict the
+ *   biochemical or clinical consequence of a change or intervention; comparison: discriminate
+ *   between mechanisms or look-alike disorders; multistep: chain two or more inferences
+ *   (these count as application)
+ */
+export type Reasoning = 'recall' | 'identification' | 'mechanism' | 'interpretation' | 'prediction' | 'comparison' | 'multistep';
+
+export const REASONING_DEPTH: Record<Reasoning, AssessedDepth> = {
+  recall: 'recognition',
+  identification: 'recognition',
+  mechanism: 'mechanism',
+  interpretation: 'application',
+  prediction: 'application',
+  comparison: 'application',
+  multistep: 'application',
+};
+
 interface ItemBase {
   id: string;
   conceptIds: string[];
@@ -148,6 +181,8 @@ interface ItemBase {
   objectiveIds?: string[];
   /** Depth of reasoning the item assesses. */
   depth?: AssessedDepth;
+  /** The reasoning task (determines depth for curriculum-linked content). */
+  reasoning?: Reasoning;
   difficulty: Difficulty;
   review: ReviewInfo;
   version: number;
@@ -220,4 +255,33 @@ export interface CaseItem extends ItemBase {
   differentials: { name: string; why: string }[];
 }
 
-export type GameItem = McqItem | TrueFalseItem | ClueItem | ConnectionGroup | CaseItem;
+/** One group inside a curated Connections puzzle. */
+export interface PuzzleGroupDef {
+  id: string;
+  label: string;
+  /** Exactly 4 tiles. */
+  members: string[];
+  explanation: string;
+  tier: 1 | 2 | 3 | 4;
+  conceptIds: string[];
+  objectiveIds?: string[];
+  /**
+   * Every term (on or off the board) that genuinely belongs to this category. Used to prove that
+   * each tile has exactly one home and that the puzzle has a single solution.
+   */
+  accepts: string[];
+}
+
+/**
+ * A complete, curated Medical Connections puzzle: 16 tiles in four groups of four. `decoys` are
+ * other categories a learner could plausibly see on the board (red herrings); the verifier proves no
+ * alternative partition of the 16 tiles exists using the four groups plus these decoys.
+ */
+export interface ConnectionsPuzzleItem extends ItemBase {
+  kind: 'connections';
+  title: string;
+  groups: PuzzleGroupDef[];
+  decoys: { label: string; accepts: string[] }[];
+}
+
+export type GameItem = McqItem | TrueFalseItem | ClueItem | ConnectionGroup | CaseItem | ConnectionsPuzzleItem;

@@ -7,6 +7,8 @@ import { Link } from 'react-router';
 import { content } from '@/content';
 import type { Concept, McqItem, TrueFalseItem } from '@/content/schema';
 import { getSource } from '@/content/sources';
+import { presentOptions } from '@/content/options';
+import { useSeed } from '@/state/clock';
 import { DISCIPLINES, SYSTEMS } from '@/content/taxonomy';
 import { useProgress } from '@/state/progress';
 import { Icon } from './Icon';
@@ -24,9 +26,14 @@ export function promptText(item: QItem): string {
 
 /** Multiple-choice or Fact/Fiction question. Keyboard: 1–5 / A–E, or T / F. */
 export function QuestionCard({ item, onAnswer, answered }: { item: QItem; onAnswer: (correct: boolean, response: string, choiceId: string) => void; answered: string | null }) {
+  const seed = useSeed();
+  // Options are shuffled for every presentation; correctness is checked by option id, never position.
   const choices = useMemo(
-    () => (item.kind === 'mcq' ? item.options.map((o) => ({ id: o.id, text: o.text })) : [{ id: 'true', text: 'Fact' }, { id: 'false', text: 'Fiction' }]),
-    [item],
+    () =>
+      item.kind === 'mcq'
+        ? presentOptions(item.options, `${item.id}:${seed}`).map((o) => ({ id: o.id, text: o.text }))
+        : [{ id: 'true', text: 'Fact' }, { id: 'false', text: 'Fiction' }],
+    [item, seed],
   );
   const correctId = item.kind === 'mcq' ? item.answerId : item.isTrue ? 'true' : 'false';
   useEffect(() => {

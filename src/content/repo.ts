@@ -9,6 +9,7 @@ import type {
   ClueItem,
   Concept,
   ConnectionGroup,
+  ConnectionsPuzzleItem,
   DisciplineId,
   GameItem,
   McqItem,
@@ -32,7 +33,7 @@ export interface Classification {
   topic: string;
 }
 
-type KindMap = { mcq: McqItem; tf: TrueFalseItem; clue: ClueItem; group: ConnectionGroup; case: CaseItem };
+type KindMap = { mcq: McqItem; tf: TrueFalseItem; clue: ClueItem; group: ConnectionGroup; case: CaseItem; connections: ConnectionsPuzzleItem };
 
 export interface ItemQuery {
   conceptIds?: string[];

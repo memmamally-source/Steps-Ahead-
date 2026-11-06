@@ -22,12 +22,13 @@ Types live in `src/content/schema.ts`. Content is data, separate from game logic
 | `takeaway` | One-line Step 1 takeaway |
 | `related` | Related concept ids (validated) |
 | `curriculum` | Curriculum objective ids (`src/content/curriculum`) the concept teaches in full. Required for all content written under the subject-by-subject strategy |
-| `citations` | `{ sourceId, locator }` into the source register |
+| `citations` | `{ sourceId, locator, url, ref, checked }` into the source register. Curriculum-linked content must give an exact URL, an identifier (PMID/NBK) where one exists, and how it was checked (`full-text`, `summary`, `existence`) |
+| `factRefs` | For each fact, the indices of the citations supporting it (required for curriculum-linked content) |
 | `review` | `{ status, provenance, reviewedBy?, reviewedAt?, notes? }` |
 | `version`, `updatedAt` | Versioning |
 
 ## Items (`GameItem` union)
-Shared fields: `id`, `conceptIds`, `difficulty`, `review`, `version`, and for curriculum-linked content `objectiveIds` (objectives assessed) and `depth` (`recognition`, `mechanism` or `application`). True/false and crossword items default to recognition; every MCQ in linked content states its depth.
+Shared fields: `id`, `conceptIds`, `difficulty`, `review`, `version`, and for curriculum-linked content `objectiveIds` (objectives assessed) and `depth` (`recognition`, `mechanism` or `application`). Linked items also declare `reasoning` (`recall`, `identification`, `mechanism`, `interpretation`, `prediction`, `comparison`, `multistep`), from which depth is derived; a vignette that only asks for the classic diagnosis is identification (recognition). Difficulty must match the reasoning (tested).
 
 | Kind | Used by | Specific fields |
 | --- | --- | --- |
@@ -35,7 +36,10 @@ Shared fields: `id`, `conceptIds`, `difficulty`, `review`, `version`, and for cu
 | `tf` | Fact or Fiction, Survival, Review | `statement`, `isTrue`, `correction`, `mini` |
 | `clue` | Crossword | `answer` (A–Z, 3–15 letters), `clue` (must not contain the answer), `mini` |
 | `group` | Connections | `label`, `members` (≥4, complete for the terms used), `explanation`, `tier` 1–4 |
+| `connections` | Medical Connections (curated) | `title`, `groups[4]` each with 4 `members` and the full `accepts` list, `decoys[]`; verified to have exactly one solution (`connectionsVerify.ts`) |
 | `case` | Mystery Patient | `title`, `stages[]`, `question`, `options`, `answerId`, `explanation`, `mechanism`, `takeaway`, `differentials[]` |
+
+Answer options are stored with opaque stable ids and shuffled for every presentation (`src/content/options.ts`); answers are always checked by id.
 
 Item ids are `<conceptId>:<kind><n>` for concept-authored items, `grp:*` and `case:*` otherwise. **Never reorder** an existing concept's items: learner history references these ids.
 

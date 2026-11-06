@@ -4,6 +4,7 @@
  */
 import { OUTLINE_AREAS, type Concept, type GameItem, type McqOption } from './schema';
 import { getSource } from './sources';
+import { verifyPuzzle } from './connectionsVerify';
 import { getTopic } from './taxonomy';
 
 export interface Issue {
@@ -91,6 +92,9 @@ export function validateContent(concepts: Concept[], items: GameItem[]): Issue[]
         if (!i.explanation.trim()) out.push({ id: i.id, problem: 'missing explanation' });
         break;
       }
+      case 'connections':
+        for (const problem of verifyPuzzle(i)) out.push({ id: i.id, problem });
+        break;
       case 'case':
         if (i.stages.length < 3) out.push({ id: i.id, problem: 'case needs at least 3 stages' });
         checkOptions(i.id, i.options, i.answerId, out);

@@ -10,16 +10,23 @@ import { useSeed } from '@/state/clock';
 import { useProgress } from '@/state/progress';
 import { useStudyContext } from '@/state/studyTimer';
 import { GameFrame, ScoreCard, useGameSession } from '../GameFrame';
-import { MAX_MISTAKES, buildConnections, checkGuess, scoreConnections, type ConnectionsPuzzle, type PuzzleGroup } from './logic';
+import { MAX_MISTAKES, buildConnections, checkGuess, fromCurated, scoreConnections, type ConnectionsPuzzle, type PuzzleGroup } from './logic';
 
 export function ConnectionsGame({ daily, query, focusLabel }: { daily: boolean; query: ItemQuery; focusLabel?: string }) {
   const [round, setRound] = useState(0);
   const seedBase = useSeed();
   const today = dateKey();
   const puzzle = useMemo(() => {
+    const seed = daily ? `step1:${today}:connections` : `${seedBase}:${round}`;
+    // Practice prefers verified curated puzzles (subject-filtered when a subject is chosen); the
+    // daily game and subjects without curated puzzles use the category builder.
+    const curated = Object.keys(query).length ? content.itemsOf('connections', query) : content.itemsOf('connections');
+    if (!daily && curated.length) {
+      const pick = shuffle(curated, seeded(seedBase))[round % curated.length]!;
+      return fromCurated(pick, seeded(seed));
+    }
     const bank = content.itemsOf('group');
     const preferred = Object.keys(query).length ? content.itemsOf('group', query) : [];
-    const seed = daily ? `step1:${today}:connections` : `${seedBase}:${round}`;
     return buildConnections(bank, seeded(seed), preferred);
   }, [daily, query, round, today, seedBase]);
   if (!puzzle) return <Empty>Not enough categories to build a puzzle yet.</Empty>;
@@ -52,7 +59,7 @@ function Board({ puzzle, daily, focusLabel, onAgain }: { puzzle: ConnectionsPuzz
       answer({
         gameId: 'connections',
         sessionId,
-        item: { id: g.id, conceptIds: g.conceptIds, difficulty: g.difficulty as 1 | 2 | 3 | 4 | 5 },
+        item: { id: g.id, conceptIds: g.conceptIds, difficulty: g.difficulty as 1 | 2 | 3 | 4 | 5, kind: 'group', depth: 'recognition' },
         correct: ok,
         prompt: `Connections: which terms make "${g.label}"?`,
         response: ok ? g.members.join(', ') : 'Group not found',
@@ -151,7 +158,7 @@ function Board({ puzzle, daily, focusLabel, onAgain }: { puzzle: ConnectionsPuzz
             {remaining.map((t) => (
               <button
                 key={t}
-                className={`cx-tile${shake && selected.includes(t) ? ' shake' : ''}`}
+                className={`cx-tile${t.split(/\s+/).some((w) => w.length > 10) ? ' cx-long' : ''}${shake && selected.includes(t) ? ' shake' : ''}`}
                 aria-pressed={selected.includes(t)}
                 onClick={() => {
                   setMessage('');
