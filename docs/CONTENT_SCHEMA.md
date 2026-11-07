@@ -42,6 +42,8 @@ Shared fields: `id`, `conceptIds`, `difficulty`, `review`, `version`, and for cu
 | `match` | Match Up | `title`, `prompt`, `pairs[{left,right}]` (4–6; lefts unique and rights unique, so each pairing has one answer), `explanation` |
 | `case` | Mystery Patient | `title`, `stages[]`, `question`, `options`, `answerId`, `explanation`, `mechanism`, `takeaway`, `differentials[]` |
 
+**Step 1 relevance (`priority`).** Every item is CORE, APPLICATION or SPECIALIST (`itemPriority`): explicit `priority` wins; otherwise application-depth items are APPLICATION and the rest CORE. SPECIALIST items (beyond expected Step 1 depth) need a `priorityNote`, are never served by `ContentRepo` to games and do not count as coverage evidence. Target mix for standard content ≈ 80% core / 20% application (design target). Objectives can also carry `priority` (`objectivePriority`). Research verifies facts; it does not decide what is taught.
+
 Application-depth MCQs list the inferential `steps` the learner must make (≥2, tested).
 
 Answer options are stored with opaque stable ids and shuffled for every presentation (`src/content/options.ts`); answers are always checked by id.

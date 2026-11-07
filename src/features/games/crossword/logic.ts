@@ -22,9 +22,11 @@ export function buildCrossword(repo: ContentRepo, kind: CrosswordKind, seed: str
   let clues = repo.itemsOf('clue', q);
   if (kind === 'advanced') clues = clues.filter((c) => c.difficulty >= 3);
   if (kind === 'mini') clues = clues.filter((c) => c.answer.length <= 9);
+  const size = CROSSWORD_SIZES[kind];
+  // A word longer than the grid can never be placed (and would break a grid seeded with it).
+  clues = clues.filter((c) => c.answer.length <= size.maxSize);
   const rnd = seeded(seed);
   const pool = shuffle(clues, rnd);
-  const size = CROSSWORD_SIZES[kind];
   const grid = generateCrossword(
     pool.map((c) => ({ id: c.id, answer: c.answer, clue: c.clue })),
     rnd,

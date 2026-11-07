@@ -52,6 +52,16 @@ export const MANUAL_AUDIT: Record<string, AuditCategory[]> = {
     { label: 'Enzymes whose deficiency causes disease', members: ['HGPRT', 'Xanthine oxidase', 'Adenosine deaminase', 'Purine nucleoside phosphorylase'], note: 'Coincides with the intended enzyme group.' },
     { label: 'Drugs that raise MCV (macrocytosis)', members: ['Methotrexate', 'Hydroxyurea'], note: 'Only 2 tiles.' },
   ],
+  'cx:cell-machinery': [
+    { label: 'Proteins (any)', members: ['Vimentin', 'Desmin', 'GFAP', 'Lamin', 'Catalase', 'GLUT1', 'GLUT3', 'GLUT4', 'SGLT2'], note: 'Theme-level category (9 tiles).' },
+    { label: 'Expressed in the brain', members: ['GFAP', 'GLUT1', 'GLUT3', 'Plasmalogen synthesis'], note: 'Exactly 4 tiles if plasmalogens (myelin) are counted; leftover {Vimentin, Desmin, Lamin, GLUT4, SGLT2, ...} cannot then form a glucose-transport group, so no second solution.' },
+    { label: 'Muscle-related', members: ['Desmin', 'GLUT4'], note: 'Only 2 tiles.' },
+    { label: 'Natural products (plant or fungal)', members: ['Colchicine', 'Vincristine', 'Paclitaxel', 'Griseofulvin'], note: 'Coincides with the intended microtubule-drug group.' },
+    { label: 'Anticancer drugs', members: ['Vincristine', 'Paclitaxel'], note: 'Only 2 tiles.' },
+    { label: 'Insulin-related', members: ['GLUT4'], note: 'Only 1 tile.' },
+    { label: 'Lipid metabolism', members: ['Plasmalogen synthesis', 'VLCFA β-oxidation', 'Phytanic acid α-oxidation'], note: '3 tiles; catalase completes the peroxisome group only.' },
+    { label: 'Enzymes', members: ['Catalase'], note: 'Only catalase is an enzyme tile; the others are processes or structural proteins.' },
+  ],
   'cx:collagen-types': [
     { label: 'Contain type I collagen (in addition to other types)', members: ['Bone', 'Tendon', 'Sclera', 'Blood vessel wall', 'Intestinal wall'], note: '5 tiles; the leftover type III tiles then lack a group.' },
     { label: 'Tissues or structures (any)', members: ['Bone', 'Tendon', 'Sclera', 'Vitreous humor', 'Nucleus pulposus', 'Growth plate', 'Blood vessel wall', 'Intestinal wall', 'Glomerular basement membrane', 'Lens capsule'], note: 'Superordinate (10 tiles).' },

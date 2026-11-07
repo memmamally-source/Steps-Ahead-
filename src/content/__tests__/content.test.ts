@@ -13,9 +13,12 @@ describe('content bank', () => {
   it('maps every Step 1 concept to the official outline', () => {
     const unmapped = ALL_CONCEPTS.filter((c) => !c.outline).map((c) => c.id);
     expect(unmapped).toEqual([]);
-    // Most concepts should be topics the outline names, not only foundational background.
-    const listed = ALL_CONCEPTS.filter((c) => c.outline?.listed).length;
-    expect(listed / ALL_CONCEPTS.length).toBeGreaterThanOrEqual(0.75);
+    // Most legacy concepts should be topics the outline names. Curriculum-linked concepts follow the
+    // subject checklist, which deliberately includes the outline's foundational science (cell biology,
+    // biochemistry); their outline mapping is audited in the coverage report instead.
+    const legacy = ALL_CONCEPTS.filter((c) => !c.curriculum?.length);
+    const listed = legacy.filter((c) => c.outline?.listed).length;
+    expect(listed / legacy.length).toBeGreaterThanOrEqual(0.75);
   });
 
   it('has a meaningful starter library', () => {

@@ -31,6 +31,13 @@ Large unstructured batches have stopped. Content is now developed subject by sub
   - Category-bank entries are excluded from item counts and coverage (`isPlayable`).
 
   **Cellular Biochemistry not started; awaiting the owner's request.**
+- **Step 1 relevance standard + Cellular batch 1 (7 Nov 2026, draft):** owner directive: high-yield Step 1 relevance takes priority over exhaustive detail.
+  - Items are labelled CORE / APPLICATION / SPECIALIST; SPECIALIST items are excluded from gameplay and coverage pending editorial review.
+  - Retrospective audit of Molecular batches 1–2: 20 items flagged SPECIALIST (nothing deleted), 7 CORE/APPLICATION replacements appended.
+  - Cellular batch 1 = `src/content/biochem/cellular1.ts`: 13 concepts, 21 objectives (cell cycle, organelles and trafficking, peroxisomes and proteasome, cytoskeleton, intermediate filaments, membranes and transport); 83 playable items (74 CORE, 9 APPLICATION) + 2 bank entries; 65 verified facts. Gameplay check 325/325.
+  - Change log `BIOCHEM_CELLULAR1_CHANGELOG.md`, packet `BIOCHEM_CELLULAR1_REVIEW.md`.
+
+  **Next: Cellular batch 2 (cell signaling, 20 objectives), only after review.**
 - Existing content (including the neuro/behavioral, MSK/skin and reproductive/endocrine batches drafted before the change) is preserved unchanged for its own subject audit.
 
 ## Knowledge tables (6 Nov 2026, in progress)

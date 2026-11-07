@@ -1,4 +1,4 @@
-# Biochemistry Batch 1 — Molecular biochemistry: medical review packet (revision 4)
+# Biochemistry Batch 1 — Molecular biochemistry: medical review packet (revision 5)
 
 Status: **draft, AI-drafted, not medically reviewed.** Reviewer: mark each concept approved, needs changes or rejected, with notes. A citation alone is not approval.
 
@@ -11,6 +11,8 @@ Status: **draft, AI-drafted, not medically reviewed.** Reviewer: mark each conce
 - Mastery: true/false and crossword answers count as weaker recognition evidence; repeating an item within 7 days adds little; “strong” needs at least 3 distinct items, including a mechanism or application item.
 - Connections puzzles are checked for a single solution against the **global category catalog** (every bank category, every curated category and decoy, and a catalog of medically plausible groupings such as inheritance patterns, drug classes and toxin sources), not only against their own decoys. The daily builder applies the same check to every board it generates.
 
+- **Step 1 relevance.** Every item is labelled **CORE** (classic high-yield knowledge), **APPLICATION** (high-yield concepts used in interpretation or multistep reasoning) or **SPECIALIST** (beyond expected Step 1 depth). Specialist items are kept for editorial review but are never served in games and do not count toward coverage. Target mix for standard content: about 80% core / 20% application (a design target, not an exam weight).
+
 ## Summary
 
 | Measure | Value |
@@ -18,16 +20,18 @@ Status: **draft, AI-drafted, not medically reviewed.** Reviewer: mark each conce
 | Concepts | 15 |
 | Objectives taught | 25 |
 | Facts verified / awaiting direct confirmation | 88 / 3 |
-| **Playable learning items (total)** | **105** |
-| — MCQs / true-false / crossword clues | 49 / 29 / 22 |
+| **Playable learning items (total)** | **101** |
+| — MCQs / true-false / crossword clues | 55 / 29 / 22 |
 | — Mechanism Lab sequences / Match Up sets | 0 / 0 |
 | — Complete Connections puzzles / Mystery Patient cases | 3 / 2 |
 | Connections category-bank entries (builder input, **not** playable alone; excluded from item counts and coverage) | 3 |
-| Playable items: recall | 52 |
+| Step 1 relevance of items: CORE / APPLICATION / SPECIALIST | 82 / 19 / 10 |
+| Objectives: CORE / APPLICATION / SPECIALIST | 10 / 15 / 0 |
+| Playable items: recall | 49 |
 | Playable items: identification | 15 |
 | Playable items: mechanism | 18 |
-| Playable items: interpretation | 9 |
-| Playable items: prediction | 4 |
+| Playable items: interpretation | 6 |
+| Playable items: prediction | 6 |
 | Playable items: comparison | 4 |
 | Playable items: multistep | 3 |
 
@@ -69,7 +73,7 @@ Objectives: `bc-nucleotide-synthesis.structure`, `bc-nucleotide-synthesis.pathwa
 
 **Takeaway.** DNA synthesis bottlenecks: ribonucleotide reductase (deoxy sugar) and thymidylate synthase + dihydrofolate reductase (thymine).
 
-- **MCQ** `mol-nucleotides:mcq1` · mechanism → **mechanism** · difficulty 3 · `bc-nucleotide-synthesis.pathways`
+- **MCQ** **CORE** · `mol-nucleotides:mcq1` · mechanism → **mechanism** · difficulty 3 · `bc-nucleotide-synthesis.pathways`
   - In proliferating cells, which reaction converts tetrahydrofolate to dihydrofolate and therefore depends most directly on dihydrofolate reductase to keep running?
   - ◻️ A. Conversion of serine to glycine — _This reaction loads a carbon onto tetrahydrofolate (forming methylene-THF); it does not oxidize it._
   - ◻️ B. Transfer of a formyl group during de novo purine ring assembly — _This uses 10-formyl-THF but releases tetrahydrofolate, not dihydrofolate; it is a common confusion because purine synthesis is folate-dependent too._
@@ -77,10 +81,10 @@ Objectives: `bc-nucleotide-synthesis.structure`, `bc-nucleotide-synthesis.pathwa
   - ◻️ D. Reduction of CDP to dCDP by ribonucleotide reductase — _Ribonucleotide reductase uses thioredoxin, not folate._
   - ✅ E. Methylation of dUMP to dTMP by thymidylate synthase
   - Explanation: Thymidylate synthase both donates a carbon and two electrons from methylene-THF, leaving dihydrofolate that must be reduced again by DHFR.
-- **True/false** `mol-nucleotides:tf1` · recall → **recognition** · difficulty 1 · `bc-nucleotide-synthesis.structure`: Thymine is a purine base found in DNA but not RNA. → **False**. Thymine is a pyrimidine (single ring); the purines are adenine and guanine.
-- **True/false** `mol-nucleotides:tf2` · recall → **recognition** · difficulty 2 · `bc-nucleotide-synthesis.pathways`: In pyrimidine synthesis the ring is completed (as orotate) before it is attached to PRPP. → **True**. Correct: purines are built on PRPP-derived ribose phosphate; pyrimidines are attached to PRPP after the ring is made.
-- **Crossword** `mol-nucleotides:clue1` · recall → **recognition** · difficulty 2 · `bc-nucleotide-synthesis.pathways`: Pyrimidine ring intermediate attached to PRPP by UMP synthase → **OROTATE**
-- **Crossword** `mol-nucleotides:clue2` · recall → **recognition** · difficulty 1 · `bc-nucleotide-synthesis.structure`: Two-ring base that pairs with cytosine → **GUANINE**
+- **True/false** **CORE** · `mol-nucleotides:tf1` · recall → **recognition** · difficulty 1 · `bc-nucleotide-synthesis.structure`: Thymine is a purine base found in DNA but not RNA. → **False**. Thymine is a pyrimidine (single ring); the purines are adenine and guanine.
+- **True/false** **CORE** · `mol-nucleotides:tf2` · recall → **recognition** · difficulty 2 · `bc-nucleotide-synthesis.pathways`: In pyrimidine synthesis the ring is completed (as orotate) before it is attached to PRPP. → **True**. Correct: purines are built on PRPP-derived ribose phosphate; pyrimidines are attached to PRPP after the ring is made.
+- **Crossword** **CORE** · `mol-nucleotides:clue1` · recall → **recognition** · difficulty 2 · `bc-nucleotide-synthesis.pathways`: Pyrimidine ring intermediate attached to PRPP by UMP synthase → **OROTATE**
+- **Crossword** **CORE** · `mol-nucleotides:clue2` · recall → **recognition** · difficulty 1 · `bc-nucleotide-synthesis.structure`: Two-ring base that pairs with cytosine → **GUANINE**
 
 ---
 
@@ -124,7 +128,7 @@ Objectives: `bc-nucleotide-synthesis.drug-targets`
 
 **Takeaway.** Name the enzyme, predict what accumulates behind it, then predict the toxicity: rapidly dividing cells suffer first.
 
-- **MCQ** `mol-antimetabolites:mcq1` · identification → **recognition** · difficulty 2 · `bc-nucleotide-synthesis.drug-targets`
+- **MCQ** **CORE** · `mol-antimetabolites:mcq1` · identification → **recognition** · difficulty 2 · `bc-nucleotide-synthesis.drug-targets`
   - A 24-year-old man with sickle cell disease starts a daily oral drug after repeated pain crises. Over months his fetal hemoglobin rises and his crises become less frequent; his MCV also rises. Which enzyme does the drug inhibit?
   - ◻️ A. Dihydrofolate reductase — _Methotrexate also raises MCV, but it is not used to increase fetal hemoglobin._
   - ◻️ B. DNA methyltransferase — _Hypomethylating agents can raise HbF experimentally, but the standard oral therapy for sickle cell disease is hydroxyurea._
@@ -132,7 +136,7 @@ Objectives: `bc-nucleotide-synthesis.drug-targets`
   - ◻️ D. Thymidylate synthase — _5-Fluorouracil inhibits thymidylate synthase; it is a chemotherapy drug, not sickle cell therapy._
   - ◻️ E. IMP dehydrogenase — _Mycophenolate inhibits IMP dehydrogenase and is an immunosuppressant._
   - Explanation: Hydroxyurea inhibits ribonucleotide reductase and raises HbF, reducing sickling; macrocytosis is expected.
-- **MCQ** `mol-antimetabolites:mcq2` · mechanism → **mechanism** · difficulty 3 · `bc-nucleotide-synthesis.drug-targets`
+- **MCQ** **CORE** · `mol-antimetabolites:mcq2` · mechanism → **mechanism** · difficulty 3 · `bc-nucleotide-synthesis.drug-targets`
   - A kidney transplant recipient takes a drug that inhibits the conversion of IMP to xanthosine monophosphate. Why are lymphocytes affected more than most other cells?
   - ◻️ A. They rely on de novo pyrimidine nucleotide synthesis — _That is the basis of leflunomide’s selectivity; this drug blocks guanine nucleotide synthesis._
   - ◻️ B. The drug is activated only by lymphocyte-specific kinases — _Kinase activation explains nucleoside analog prodrugs, not mycophenolic acid._
@@ -140,7 +144,7 @@ Objectives: `bc-nucleotide-synthesis.drug-targets`
   - ◻️ D. The drug depletes dTMP in lymphocytes — _dTMP depletion is the effect of thymidylate synthase or DHFR inhibitors._
   - ✅ E. They rely on de novo guanine nucleotide synthesis
   - Explanation: Mycophenolic acid inhibits IMP dehydrogenase; T and B lymphocytes rely on de novo GMP synthesis and are selectively starved of guanine nucleotides.
-- **MCQ** `mol-antimetabolites:mcq3` · prediction → **application** · difficulty 4 · `bc-nucleotide-synthesis.drug-targets`
+- **MCQ** **APPLICATION** · `mol-antimetabolites:mcq3` · prediction → **application** · difficulty 4 · `bc-nucleotide-synthesis.drug-targets`
   - Colon cancer cells are treated with 5-fluorouracil. Which intracellular change is expected within hours?
   - ◻️ A. dUMP falls and dTMP rises — _Blocking thymidylate synthase causes the substrate (dUMP) to accumulate and the product (dTMP) to fall._
   - ◻️ B. Dihydrofolate accumulates and tetrahydrofolate is depleted from cells — _This is the pattern of DHFR inhibition by methotrexate._
@@ -149,7 +153,7 @@ Objectives: `bc-nucleotide-synthesis.drug-targets`
   - ✅ E. dUMP rises and dTMP falls; folate is not trapped as DHF
   - Steps: (1) 5-FU → FdUMP inhibits thymidylate synthase (2) Substrate behind the block (dUMP) rises; product (dTMP) falls (3) No DHFR block, so folate is not trapped as DHF (unlike methotrexate)
   - Explanation: FdUMP blocks thymidylate synthase: substrate dUMP builds up behind the block and dTMP falls. Unlike methotrexate, it does not convert the folate pool to dihydrofolate.
-- **MCQ** `mol-antimetabolites:mcq4` · comparison → **application** · difficulty 5 · `bc-nucleotide-synthesis.drug-targets`
+- **MCQ** **SPECIALIST** · `mol-antimetabolites:mcq4` · comparison → **application** · difficulty 5 · `bc-nucleotide-synthesis.drug-targets`
   - Leucovorin is given after high-dose methotrexate, yet it is deliberately combined with 5-fluorouracil in colorectal cancer regimens. Which explanation accounts for both uses?
   - ◻️ A. It inhibits DHFR in normal cells but activates DHFR in tumor cells, protecting only normal tissue — _Leucovorin is a folate, not a DHFR modulator._
   - ◻️ B. Leucovorin increases renal excretion of both drugs — _It does not act by enhancing excretion._
@@ -158,9 +162,9 @@ Objectives: `bc-nucleotide-synthesis.drug-targets`
   - ✅ E. It is a reduced folate: it bypasses DHFR, and it stabilizes FdUMP binding to thymidylate synthase
   - Steps: (1) Leucovorin is a reduced folate (2) After methotrexate it bypasses the DHFR block and restores THF (3) With 5-FU it raises methylene-THF, stabilizing the FdUMP–TS–folate complex
   - Explanation: Same molecule, opposite effects: reduced folate restores THF beyond the DHFR block, but with 5-FU it completes the FdUMP–thymidylate synthase–folate inhibitory complex.
-- **True/false** `mol-antimetabolites:tf1` · recall → **recognition** · difficulty 2 · `bc-nucleotide-synthesis.drug-targets`: Leflunomide inhibits dihydroorotate dehydrogenase, an enzyme of pyrimidine synthesis. → **True**. Correct: it reduces pyrimidine supply to proliferating lymphocytes.
-- **True/false** `mol-antimetabolites:tf2` · recall → **recognition** · difficulty 2 · `bc-nucleotide-synthesis.drug-targets`: Trimethoprim inhibits bacterial thymidylate synthase. → **False**. Trimethoprim inhibits bacterial dihydrofolate reductase.
-- **Crossword** `mol-antimetabolites:clue1` · recall → **recognition** · difficulty 2 · `bc-nucleotide-synthesis.drug-targets`: Ribonucleotide reductase inhibitor that raises fetal hemoglobin → **HYDROXYUREA**
+- **True/false** **CORE** · `mol-antimetabolites:tf1` · recall → **recognition** · difficulty 2 · `bc-nucleotide-synthesis.drug-targets`: Leflunomide inhibits dihydroorotate dehydrogenase, an enzyme of pyrimidine synthesis. → **True**. Correct: it reduces pyrimidine supply to proliferating lymphocytes.
+- **True/false** **CORE** · `mol-antimetabolites:tf2` · recall → **recognition** · difficulty 2 · `bc-nucleotide-synthesis.drug-targets`: Trimethoprim inhibits bacterial thymidylate synthase. → **False**. Trimethoprim inhibits bacterial dihydrofolate reductase.
+- **Crossword** **CORE** · `mol-antimetabolites:clue1` · recall → **recognition** · difficulty 2 · `bc-nucleotide-synthesis.drug-targets`: Ribonucleotide reductase inhibitor that raises fetal hemoglobin → **HYDROXYUREA**
 
 ---
 
@@ -200,7 +204,7 @@ Objectives: `bc-nucleotide-synthesis.orotic-aciduria`
 
 **Takeaway.** Orotic aciduria + B12/folate-refractory megaloblastic anemia + normal ammonia = UMP synthase deficiency; give uridine.
 
-- **MCQ** `mol-orotic-aciduria:mcq1` · identification → **recognition** · difficulty 3 · `bc-nucleotide-synthesis.orotic-aciduria`
+- **MCQ** **CORE** · `mol-orotic-aciduria:mcq1` · identification → **recognition** · difficulty 3 · `bc-nucleotide-synthesis.orotic-aciduria`
   - An 8-month-old has poor growth and pallor. Hemoglobin is 7.9 g/dL with MCV 112 fL and hypersegmented neutrophils. Serum B12 and folate are normal, and the anemia does not improve after supplementation. Plasma ammonia is normal. Urine organic acid analysis shows a large orotic acid peak, and crystalluria is noted. Which enzyme is most likely deficient?
   - ◻️ A. Dihydroorotate dehydrogenase — _A block before orotate would not cause orotic acid to accumulate._
   - ✅ B. UMP synthase
@@ -208,7 +212,7 @@ Objectives: `bc-nucleotide-synthesis.orotic-aciduria`
   - ◻️ D. Ornithine transcarbamylase — _OTC deficiency causes orotic aciduria, but with hyperammonemia and without megaloblastic anemia._
   - ◻️ E. Carbamoyl phosphate synthetase I — _CPS I deficiency causes hyperammonemia with low, not high, orotic acid._
   - Explanation: Orotic aciduria + refractory megaloblastic anemia + normal ammonia points to a block between orotate and UMP: UMP synthase.
-- **MCQ** `mol-orotic-aciduria:mcq2` · mechanism → **mechanism** · difficulty 3 · `bc-nucleotide-synthesis.orotic-aciduria`
+- **MCQ** **CORE** · `mol-orotic-aciduria:mcq2` · mechanism → **mechanism** · difficulty 3 · `bc-nucleotide-synthesis.orotic-aciduria`
   - Why does uridine correct the anemia in hereditary orotic aciduria?
   - ◻️ A. It provides substrate that restarts carbamoyl phosphate synthetase II — _Adding substrate upstream cannot get past the UMP synthase block._
   - ✅ B. It is converted to UMP without passing through UMP synthase
@@ -216,7 +220,7 @@ Objectives: `bc-nucleotide-synthesis.orotic-aciduria`
   - ◻️ D. It supplies the methyl group for thymidylate synthase — _The methyl group comes from methylene-THF, not uridine._
   - ◻️ E. It inhibits ribonucleotide reductase — _Inhibiting ribonucleotide reductase would worsen DNA synthesis._
   - Explanation: Uridine is phosphorylated directly to UMP, supplying pyrimidine nucleotides beyond the block.
-- **MCQ** `mol-orotic-aciduria:mcq3` · interpretation → **application** · difficulty 4 · `bc-nucleotide-synthesis.orotic-aciduria`
+- **MCQ** **APPLICATION** · `mol-orotic-aciduria:mcq3` · interpretation → **application** · difficulty 4 · `bc-nucleotide-synthesis.orotic-aciduria`
   - Four infants are evaluated. Which laboratory pattern fits hereditary orotic aciduria?
   - ◻️ A. Urinary orotic acid normal; ammonia normal; MCV high; homocysteine high, methylmalonic acid normal — _This is folate deficiency: homocysteine rises but methylmalonic acid stays normal._
   - ◻️ B. Urinary orotic acid low; plasma ammonia high; MCV normal — _Hyperammonemia with low orotic acid suggests CPS I or N-acetylglutamate synthase deficiency._
@@ -225,8 +229,8 @@ Objectives: `bc-nucleotide-synthesis.orotic-aciduria`
   - ✅ E. Urinary orotic acid high; plasma ammonia normal; MCV high and unresponsive to B12 and folate
   - Steps: (1) Ammonia separates urea-cycle defects from pyrimidine defects (2) Orotic acid separates UMPS/OTC from CPS I/NAGS and vitamin deficiencies (3) MCV and MMA/homocysteine separate B12 from folate deficiency
   - Explanation: Read two axes: ammonia separates urea-cycle defects from pyrimidine defects; orotic acid and MCV separate UMP synthase deficiency from vitamin deficiencies.
-- **True/false** `mol-orotic-aciduria:tf1` · recall → **recognition** · difficulty 2 · `bc-nucleotide-synthesis.orotic-aciduria`: Hereditary orotic aciduria causes hyperammonemia because the urea cycle is blocked. → **False**. The block is in pyrimidine synthesis (UMP synthase); hyperammonemia is not a feature.
-- **Crossword** `mol-orotic-aciduria:clue1` · recall → **recognition** · difficulty 2 · `bc-nucleotide-synthesis.orotic-aciduria`: Nucleoside given to bypass UMP synthase deficiency → **URIDINE**
+- **True/false** **CORE** · `mol-orotic-aciduria:tf1` · recall → **recognition** · difficulty 2 · `bc-nucleotide-synthesis.orotic-aciduria`: Hereditary orotic aciduria causes hyperammonemia because the urea cycle is blocked. → **False**. The block is in pyrimidine synthesis (UMP synthase); hyperammonemia is not a feature.
+- **Crossword** **CORE** · `mol-orotic-aciduria:clue1` · recall → **recognition** · difficulty 2 · `bc-nucleotide-synthesis.orotic-aciduria`: Nucleoside given to bypass UMP synthase deficiency → **URIDINE**
 
 ---
 
@@ -271,7 +275,7 @@ Objectives: `bc-purine-salvage.pathway`, `bc-purine-salvage.lesch-nyhan`
 
 **Takeaway.** No HGPRT → purines are overproduced and degraded → hyperuricemia + dystonia + self-injury in boys; allopurinol shifts the load to xanthine.
 
-- **MCQ** `mol-purine-salvage:mcq1` · mechanism → **mechanism** · difficulty 4 · `bc-purine-salvage.pathway`, `bc-purine-salvage.lesch-nyhan`
+- **MCQ** **CORE** · `mol-purine-salvage:mcq1` · mechanism → **mechanism** · difficulty 4 · `bc-purine-salvage.pathway`, `bc-purine-salvage.lesch-nyhan`
   - In complete HGPRT deficiency, which change most directly increases de novo purine synthesis?
   - ◻️ A. Adenosine deaminase is inhibited by accumulating guanine — _ADA activity is normal in Lesch–Nyhan syndrome._
   - ◻️ B. Accumulated uric acid no longer feedback-inhibits xanthine oxidase — _Uric acid is not a feedback regulator of purine synthesis; this confuses degradation with synthesis._
@@ -279,7 +283,7 @@ Objectives: `bc-purine-salvage.pathway`, `bc-purine-salvage.lesch-nyhan`
   - ◻️ D. Ribonucleotide reductase becomes overactive — _Ribonucleotide reductase makes deoxyribonucleotides; it does not control purine ring synthesis._
   - ◻️ E. Xanthine oxidase is induced and consumes IMP — _Xanthine oxidase acts on hypoxanthine and xanthine, not IMP, and is not the driver._
   - Explanation: PRPP is the substrate of both salvage and the committed step of de novo synthesis; without HGPRT it is spared for de novo synthesis, which increases purine production and urate.
-- **MCQ** `mol-purine-salvage:mcq2` · identification → **recognition** · difficulty 2 · `bc-purine-salvage.lesch-nyhan`
+- **MCQ** **CORE** · `mol-purine-salvage:mcq2` · identification → **recognition** · difficulty 2 · `bc-purine-salvage.lesch-nyhan`
   - A 2-year-old boy has developmental delay, generalized dystonia and repeated biting of his lips and fingers. His parents noticed orange grains in his diapers in infancy. Serum uric acid is high. His mother’s brother had a similar illness. Which enzyme is deficient?
   - ◻️ A. Xanthine oxidase — _Xanthine oxidase deficiency lowers uric acid and causes xanthine stones._
   - ◻️ B. Adenosine deaminase — _ADA deficiency causes severe combined immunodeficiency, not hyperuricemia with self-injury._
@@ -287,7 +291,7 @@ Objectives: `bc-purine-salvage.pathway`, `bc-purine-salvage.lesch-nyhan`
   - ◻️ D. Glucose-6-phosphatase — _Von Gierke disease raises uric acid but presents with fasting hypoglycemia and hepatomegaly._
   - ✅ E. Hypoxanthine-guanine phosphoribosyltransferase
   - Explanation: Hyperuricemia with dystonia, intellectual disability and self-injury in a boy with an affected maternal uncle = Lesch–Nyhan syndrome (HGPRT, X-linked).
-- **MCQ** `mol-purine-salvage:mcq3` · prediction → **application** · difficulty 4 · `bc-purine-salvage.lesch-nyhan`, `bc-purine-salvage.pathway`
+- **MCQ** **APPLICATION** · `mol-purine-salvage:mcq3` · prediction → **application** · difficulty 4 · `bc-purine-salvage.lesch-nyhan`, `bc-purine-salvage.pathway`
   - A boy with Lesch–Nyhan syndrome is started on allopurinol. Which change in his laboratory results is expected over the following weeks?
   - ◻️ A. PRPP levels normalize and de novo synthesis stops — _Allopurinol acts on degradation; it does not restore salvage._
   - ✅ B. Serum uric acid falls while urinary hypoxanthine and xanthine rise
@@ -296,11 +300,11 @@ Objectives: `bc-purine-salvage.pathway`, `bc-purine-salvage.lesch-nyhan`
   - ◻️ E. Serum uric acid is unchanged because the problem is overproduction — _Blocking the last step of degradation lowers urate regardless of why purines are overproduced._
   - Steps: (1) Allopurinol blocks xanthine oxidase, the last steps of degradation (2) Urate falls (3) Substrates hypoxanthine and xanthine rise because they cannot be salvaged without HGPRT
   - Explanation: Xanthine oxidase inhibition moves the purine load upstream: urate falls, hypoxanthine and xanthine rise (xanthine stones are a recognized risk).
-- **True/false** `mol-purine-salvage:tf1` · recall → **recognition** · difficulty 1 · `bc-purine-salvage.pathway`: Xanthine oxidase catalyzes the final steps of purine breakdown to uric acid. → **True**. Correct: it is the target of allopurinol and febuxostat.
-- **True/false** `mol-purine-salvage:tf2` · recall → **recognition** · difficulty 1 · `bc-purine-salvage.lesch-nyhan`: Lesch–Nyhan syndrome is inherited in an autosomal dominant pattern. → **False**. It is X-linked (HPRT1); affected individuals are almost always male.
-- **Crossword** `mol-purine-salvage:clue1` · recall → **recognition** · difficulty 2 · `bc-purine-salvage.pathway`: Purine base recycled to IMP by HGPRT → **HYPOXANTHINE**
-- **Crossword** `mol-purine-salvage:clue2` · recall → **recognition** · difficulty 2 · `bc-purine-salvage.lesch-nyhan`: Sustained abnormal posturing typical of Lesch–Nyhan syndrome → **DYSTONIA**
-- **Mystery Patient** `case:lesch-nyhan` · multistep → **application** · difficulty 4 · `bc-purine-salvage.lesch-nyhan`, `bc-purine-salvage.pathway`: The orange diaper
+- **True/false** **CORE** · `mol-purine-salvage:tf1` · recall → **recognition** · difficulty 1 · `bc-purine-salvage.pathway`: Xanthine oxidase catalyzes the final steps of purine breakdown to uric acid. → **True**. Correct: it is the target of allopurinol and febuxostat.
+- **True/false** **CORE** · `mol-purine-salvage:tf2` · recall → **recognition** · difficulty 1 · `bc-purine-salvage.lesch-nyhan`: Lesch–Nyhan syndrome is inherited in an autosomal dominant pattern. → **False**. It is X-linked (HPRT1); affected individuals are almost always male.
+- **Crossword** **CORE** · `mol-purine-salvage:clue1` · recall → **recognition** · difficulty 2 · `bc-purine-salvage.pathway`: Purine base recycled to IMP by HGPRT → **HYPOXANTHINE**
+- **Crossword** **CORE** · `mol-purine-salvage:clue2` · recall → **recognition** · difficulty 2 · `bc-purine-salvage.lesch-nyhan`: Sustained abnormal posturing typical of Lesch–Nyhan syndrome → **DYSTONIA**
+- **Mystery Patient** **APPLICATION** · `case:lesch-nyhan` · multistep → **application** · difficulty 4 · `bc-purine-salvage.lesch-nyhan`, `bc-purine-salvage.pathway`: The orange diaper
   - Presentation: An 18-month-old boy is referred because he cannot sit unsupported and has abnormal twisting postures of his arms.
   - History: Development seemed normal until about 4 months. His parents saw orange-brown grains in his diapers as a baby. A maternal uncle had a similar movement disorder and kidney stones.
   - Examination: Hypotonia with superimposed dystonic posturing. Healing bite wounds on the lower lip and fingertips.
@@ -353,7 +357,7 @@ Objectives: `bc-purine-salvage.ada-scid`
 
 **Takeaway.** ADA → dATP piles up → ribonucleotide reductase blocked → no lymphocytes; low TRECs plus raised deoxyadenosine on screening.
 
-- **MCQ** `mol-ada-deficiency:mcq1` · mechanism → **mechanism** · difficulty 3 · `bc-purine-salvage.ada-scid`
+- **MCQ** **CORE** · `mol-ada-deficiency:mcq1` · mechanism → **mechanism** · difficulty 3 · `bc-purine-salvage.ada-scid`
   - Which metabolite most directly causes lymphocyte death in adenosine deaminase deficiency, and how?
   - ◻️ A. dGTP, by inhibiting ribonucleotide reductase — _dGTP accumulation is the mechanism proposed in purine nucleoside phosphorylase deficiency, a related purine immunodeficiency._
   - ◻️ B. Inosine, by inhibiting HGPRT — _Inosine is the product ADA cannot make; it is decreased, not increased._
@@ -361,7 +365,7 @@ Objectives: `bc-purine-salvage.ada-scid`
   - ◻️ D. Uric acid, by forming crystals in lymphoid tissue — _Urate production does not rise when ADA is absent._
   - ◻️ E. Orotic acid, by blocking pyrimidine synthesis — _Orotic acid accumulates in UMP synthase or OTC deficiency._
   - Explanation: Deoxyadenosine is phosphorylated to dATP, which inhibits ribonucleotide reductase and starves lymphocytes of the other deoxynucleotides.
-- **MCQ** `mol-ada-deficiency:mcq2` · identification → **recognition** · difficulty 3 · `bc-purine-salvage.ada-scid`
+- **MCQ** **CORE** · `mol-ada-deficiency:mcq2` · identification → **recognition** · difficulty 3 · `bc-purine-salvage.ada-scid`
   - A 4-month-old girl has persistent thrush, chronic diarrhea, weight below the 3rd percentile and Pneumocystis pneumonia. Her parents are first cousins. Chest radiograph shows no thymic shadow and flared, cupped anterior rib ends. T and B lymphocytes are very low. Which enzyme or protein is most likely deficient?
   - ◻️ A. Bruton tyrosine kinase — _BTK deficiency is X-linked and removes B cells only._
   - ◻️ B. RAG1 — _RAG deficiency also removes T and B cells, but it does not cause the skeletal changes that point to a systemic metabolic cause._
@@ -369,7 +373,7 @@ Objectives: `bc-purine-salvage.ada-scid`
   - ◻️ D. Common γ chain (IL2RG) — _IL2RG SCID is X-linked, so a girl with consanguineous parents is unlikely, and B cells are typically present._
   - ✅ E. Adenosine deaminase
   - Explanation: T⁻B⁻ SCID in a girl of consanguineous parents with rib abnormalities suggests a systemic toxic metabolite: ADA deficiency.
-- **MCQ** `mol-ada-deficiency:mcq3` · interpretation → **application** · difficulty 4 · `bc-purine-salvage.ada-scid`
+- **MCQ** **SPECIALIST** · `mol-ada-deficiency:mcq3` · interpretation → **application** · difficulty 4 · `bc-purine-salvage.ada-scid`
   - A newborn screening panel reports very low T-cell receptor excision circles (TRECs). A second-tier tandem mass spectrometry test on the same blood spot shows markedly raised adenosine and deoxyadenosine. How should these results be interpreted?
   - ✅ A. SCID caused by adenosine deaminase deficiency
   - ◻️ B. 22q11.2 deletion with thymic hypoplasia — _Low TRECs can occur, but purine metabolites are normal._
@@ -378,8 +382,17 @@ Objectives: `bc-purine-salvage.ada-scid`
   - ◻️ E. Normal results in a preterm infant — _Prematurity can lower TRECs, but it does not raise deoxyadenosine._
   - Steps: (1) Low TRECs = few naive T cells (SCID-range lymphopenia) (2) Raised adenosine/deoxyadenosine = failed purine catabolism (3) Together: ADA deficiency rather than other causes of low TRECs
   - Explanation: Low TRECs flag absent naive T cells; raised (deoxy)adenosine identifies the metabolic cause as ADA deficiency.
-- **True/false** `mol-ada-deficiency:tf1` · recall → **recognition** · difficulty 2 · `bc-purine-salvage.ada-scid`: Adenosine deaminase deficiency can present after infancy as a milder combined immunodeficiency. → **True**. Correct: about 15–20% have delayed or late-onset disease, reflecting residual enzyme activity.
-- **Crossword** `mol-ada-deficiency:clue1` · recall → **recognition** · difficulty 2 · `bc-purine-salvage.ada-scid`: Nucleoside that accumulates in ADA deficiency and is phosphorylated to dATP → **DEOXYADENOSINE**
+- **MCQ** **APPLICATION** · `mol-ada-deficiency:mcq4` · interpretation → **application** · difficulty 3 · `bc-purine-salvage.ada-scid`
+  - A 5-month-old girl with first-cousin parents has thrush, chronic diarrhea and Pneumocystis pneumonia. Lymphocytes are almost absent, and red cell dATP is markedly raised. Why are her lymphocytes depleted?
+  - ✅ A. dATP inhibits ribonucleotide reductase, so DNA synthesis fails
+  - ◻️ B. A common γ-chain defect blocks cytokine signaling — _IL2RG SCID is X-linked and does not raise dATP; this is a girl with raised dATP._
+  - ◻️ C. The thymus fails to form because of a 22q11 deletion — _DiGeorge syndrome affects T cells but spares B cells and does not raise dATP._
+  - ◻️ D. Autoantibodies destroy lymphocytes in the thymus — _SCID is not autoimmune; the raised dATP points to a purine metabolic defect._
+  - ◻️ E. Uric acid crystals damage lymphoid tissue — _Uric acid is not raised in ADA deficiency and does not cause SCID._
+  - Steps: (1) Raised dATP points to adenosine deaminase deficiency (autosomal recessive, fits a girl with consanguineous parents). (2) dATP inhibits ribonucleotide reductase. (3) Deoxynucleotide starvation kills dividing lymphocyte precursors → SCID.
+  - Explanation: Without adenosine deaminase, deoxyadenosine builds up and is converted to dATP, which inhibits ribonucleotide reductase; lymphocytes cannot make DNA and die.
+- **True/false** **CORE** · `mol-ada-deficiency:tf1` · recall → **recognition** · difficulty 2 · `bc-purine-salvage.ada-scid`: Adenosine deaminase deficiency can present after infancy as a milder combined immunodeficiency. → **True**. Correct: about 15–20% have delayed or late-onset disease, reflecting residual enzyme activity.
+- **Crossword** **CORE** · `mol-ada-deficiency:clue1` · recall → **recognition** · difficulty 2 · `bc-purine-salvage.ada-scid`: Nucleoside that accumulates in ADA deficiency and is phosphorylated to dATP → **DEOXYADENOSINE**
 
 ---
 
@@ -421,7 +434,7 @@ Objectives: `bc-mutation-types.classes`, `bc-mutation-types.examples`, `bc-mutat
 
 **Takeaway.** Predict the protein: same amino acid (silent), new amino acid (missense), stop (nonsense), shifted frame (frameshift), mis-splicing (splice-site).
 
-- **MCQ** `mol-mutation-types:mcq1` · interpretation → **application** · difficulty 3 · `bc-mutation-types.classes`
+- **MCQ** **APPLICATION** · `mol-mutation-types:mcq1` · interpretation → **application** · difficulty 3 · `bc-mutation-types.classes`
   - In an early exon, a single base substitution changes the mRNA codon UAC (tyrosine) to UAG. What is the most likely consequence?
   - ◻️ A. A shift of the reading frame downstream — _A substitution does not change the number of bases, so the frame is preserved._
   - ✅ B. A truncated protein from premature termination
@@ -430,7 +443,7 @@ Objectives: `bc-mutation-types.classes`, `bc-mutation-types.examples`, `bc-mutat
   - ◻️ E. Replacement of tyrosine by a different amino acid — _That would be missense; UAG encodes no amino acid._
   - Steps: (1) Read the new codon: UAG (2) UAG is a stop codon (3) Premature stop → nonsense mutation → truncated protein
   - Explanation: UAC → UAG converts tyrosine to a stop codon: a nonsense mutation.
-- **MCQ** `mol-mutation-types:mcq2` · mechanism → **mechanism** · difficulty 2 · `bc-mutation-types.classes`
+- **MCQ** **CORE** · `mol-mutation-types:mcq2` · mechanism → **mechanism** · difficulty 2 · `bc-mutation-types.classes`
   - Why does deleting a single base near the start of a coding sequence usually abolish protein function, whereas deleting three consecutive bases may not?
   - ◻️ A. Three-base deletions occur only in introns — _Small deletions can occur in exons as well as introns; location is not the explanation._
   - ◻️ B. A one-base deletion is usually silent — _Silent changes do not abolish function._
@@ -438,7 +451,7 @@ Objectives: `bc-mutation-types.classes`, `bc-mutation-types.examples`, `bc-mutat
   - ◻️ D. One-base deletions prevent transcription of the gene — _Transcription proceeds; the mRNA is read in the wrong frame._
   - ◻️ E. Three-base deletions are always corrected by mismatch repair before replication — _Repair is not the reason; preservation of the reading frame is._
   - Explanation: Codons are read in triplets: losing one base changes the frame; losing three removes one codon (in-frame).
-- **MCQ** `mol-mutation-types:mcq3` · interpretation → **application** · difficulty 3 · `bc-mutation-types.examples`, `bc-mutation-types.transition`
+- **MCQ** **APPLICATION** · `mol-mutation-types:mcq3` · interpretation → **application** · difficulty 3 · `bc-mutation-types.examples`, `bc-mutation-types.transition`
   - A child with chronic hemolysis and painful vaso-occlusive episodes has an A→T substitution in codon 6 of the β-globin gene that replaces glutamic acid with valine. How is this mutation classified?
   - ◻️ A. Missense (conservative) and a transition — _Glutamic acid (charged) to valine (hydrophobic) is nonconservative, and A→T is purine → pyrimidine._
   - ◻️ B. In-frame deletion — _No bases are lost: one base is substituted for another, so the frame and length are unchanged._
@@ -447,7 +460,7 @@ Objectives: `bc-mutation-types.classes`, `bc-mutation-types.examples`, `bc-mutat
   - ✅ E. Missense (nonconservative) and a transversion
   - Steps: (1) Glu → Val changes the amino acid (missense), charged to hydrophobic (nonconservative) (2) A (purine) → T (pyrimidine) is a transversion
   - Explanation: Glu → Val is a nonconservative missense change; A (purine) → T (pyrimidine) is a transversion.
-- **MCQ** `mol-mutation-types:mcq4` · prediction → **application** · difficulty 4 · `bc-mutation-types.examples`
+- **MCQ** **APPLICATION** · `mol-mutation-types:mcq4` · prediction → **application** · difficulty 4 · `bc-mutation-types.examples`
   - An HBB intron variant creates a new splice acceptor site, so most β-globin pre-mRNA is spliced abnormally and a small amount is spliced normally. Which consequence is expected?
   - ◻️ A. A structurally abnormal β-globin that polymerizes when deoxygenated — _Polymerization describes HbS from a missense change, not a quantitative splicing defect._
   - ◻️ B. Complete absence of α-globin — _The variant is in HBB; α-globin production is unaffected._
@@ -456,11 +469,11 @@ Objectives: `bc-mutation-types.classes`, `bc-mutation-types.examples`, `bc-mutat
   - ✅ E. Less normal β-globin (β⁺), with excess unpaired α chains
   - Steps: (1) New splice site → most transcripts abnormal, some normal (2) Less normal β-globin (β⁺), not absent (3) Unmatched α chains accumulate
   - Explanation: Splice-site variants reduce correctly spliced mRNA: less β-globin (β⁺), and the unmatched α chains cause the thalassemic picture.
-- **True/false** `mol-mutation-types:tf1` · recall → **recognition** · difficulty 1 · `bc-mutation-types.classes`: A silent mutation changes the codon but not the encoded amino acid. → **True**. Correct: redundancy of the code (often at the third base) makes it silent.
-- **True/false** `mol-mutation-types:tf2` · recall → **recognition** · difficulty 2 · `bc-mutation-types.transition`: A cytosine-to-thymine change is a transversion. → **False**. C → T is pyrimidine → pyrimidine, a transition.
-- **True/false** `mol-mutation-types:tf3` · recall → **recognition** · difficulty 2 · `bc-mutation-types.examples`: Some β-thalassemia alleles are splice-site variants that reduce β-globin production. → **True**. Correct: β-thalassemia arises from many HBB variants, including splicing variants.
-- **Crossword** `mol-mutation-types:clue1` · recall → **recognition** · difficulty 1 · `bc-mutation-types.classes`: Point mutation that creates a premature stop codon → **NONSENSE**
-- **Crossword** `mol-mutation-types:clue2` · recall → **recognition** · difficulty 2 · `bc-mutation-types.transition`: Point mutation exchanging a purine for a pyrimidine → **TRANSVERSION**
+- **True/false** **CORE** · `mol-mutation-types:tf1` · recall → **recognition** · difficulty 1 · `bc-mutation-types.classes`: A silent mutation changes the codon but not the encoded amino acid. → **True**. Correct: redundancy of the code (often at the third base) makes it silent.
+- **True/false** **CORE** · `mol-mutation-types:tf2` · recall → **recognition** · difficulty 2 · `bc-mutation-types.transition`: A cytosine-to-thymine change is a transversion. → **False**. C → T is pyrimidine → pyrimidine, a transition.
+- **True/false** **CORE** · `mol-mutation-types:tf3` · recall → **recognition** · difficulty 2 · `bc-mutation-types.examples`: Some β-thalassemia alleles are splice-site variants that reduce β-globin production. → **True**. Correct: β-thalassemia arises from many HBB variants, including splicing variants.
+- **Crossword** **CORE** · `mol-mutation-types:clue1` · recall → **recognition** · difficulty 1 · `bc-mutation-types.classes`: Point mutation that creates a premature stop codon → **NONSENSE**
+- **Crossword** **CORE** · `mol-mutation-types:clue2` · recall → **recognition** · difficulty 2 · `bc-mutation-types.transition`: Point mutation exchanging a purine for a pyrimidine → **TRANSVERSION**
 
 ---
 
@@ -502,7 +515,7 @@ Objectives: `bc-dna-repair.ssb-pathways`, `bc-dna-repair.xp`, `bc-dna-repair.mut
 
 **Takeaway.** Bulky UV damage → NER (XP); single damaged base → BER (MUTYH polyposis); replication mismatch → MMR (Lynch).
 
-- **MCQ** `mol-single-strand-repair:mcq1` · mechanism → **mechanism** · difficulty 3 · `bc-dna-repair.ssb-pathways`
+- **MCQ** **CORE** · `mol-single-strand-repair:mcq1` · mechanism → **mechanism** · difficulty 3 · `bc-dna-repair.ssb-pathways`
   - Spontaneous deamination converts a cytosine in DNA to uracil, creating a U·G pair. Which repair pathway normally initiates correction of this lesion?
   - ◻️ A. Nucleotide excision repair — _NER targets bulky helix-distorting lesions such as UV dimers._
   - ◻️ B. Direct reversal by photolyase — _Humans do not use photolyase; this is a bacterial and plant mechanism._
@@ -510,7 +523,7 @@ Objectives: `bc-dna-repair.ssb-pathways`, `bc-dna-repair.xp`, `bc-dna-repair.mut
   - ◻️ D. Nonhomologous end joining — _NHEJ repairs double-strand breaks._
   - ✅ E. Base excision repair (uracil-DNA glycosylase)
   - Explanation: A glycosylase removes uracil (a damaged base), starting base excision repair.
-- **MCQ** `mol-single-strand-repair:mcq2` · identification → **recognition** · difficulty 3 · `bc-dna-repair.xp`
+- **MCQ** **CORE** · `mol-single-strand-repair:mcq2` · identification → **recognition** · difficulty 3 · `bc-dna-repair.xp`
   - A 9-year-old girl has had blistering sunburns after brief sun exposure since infancy, freckle-like pigmentation on her face that began before age 2, photophobia with keratitis, and two basal cell carcinomas. She has no jaw cysts or palmar pits. Her parents are unaffected. Which process is defective?
   - ◻️ A. Mismatch repair — _Mismatch repair defects cause Lynch syndrome cancers in adults._
   - ◻️ B. Prevention of excess sister chromatid exchange by BLM helicase — _Bloom syndrome causes a sun-sensitive facial rash, but with severe growth deficiency rather than early skin cancers and freckling._
@@ -518,7 +531,7 @@ Objectives: `bc-dna-repair.ssb-pathways`, `bc-dna-repair.xp`, `bc-dna-repair.mut
   - ◻️ D. Melanin synthesis by tyrosinase — _Albinism reduces pigment and raises skin cancer risk, but does not cause blistering after minimal sun or early freckling._
   - ✅ E. Removal of UV-induced dimers by nucleotide excision repair
   - Explanation: Extreme UV sensitivity, early freckling, ocular damage and childhood skin cancers in a child of unaffected parents = xeroderma pigmentosum (NER).
-- **MCQ** `mol-single-strand-repair:mcq3` · mechanism → **mechanism** · difficulty 3 · `bc-dna-repair.xp`
+- **MCQ** **CORE** · `mol-single-strand-repair:mcq3` · mechanism → **mechanism** · difficulty 3 · `bc-dna-repair.xp`
   - Why do patients with xeroderma pigmentosum develop skin cancers decades earlier than the general population?
   - ◻️ A. Immune surveillance of the skin is absent — _XP is not primarily an immunodeficiency._
   - ◻️ B. Skin cells have shortened telomeres — _Telomere length is not the defect in XP._
@@ -526,7 +539,7 @@ Objectives: `bc-dna-repair.ssb-pathways`, `bc-dna-repair.xp`, `bc-dna-repair.mut
   - ✅ D. Unrepaired UV dimers cause mutations at replication
   - ◻️ E. Melanocytes fail to produce protective melanin — _Pigment production is normal; repair is defective._
   - Explanation: Without NER, UV lesions remain; replication past them introduces mutations in sun-exposed cells.
-- **MCQ** `mol-single-strand-repair:mcq4` · mechanism → **mechanism** · difficulty 4 · `bc-dna-repair.mutyh`
+- **MCQ** **CORE** · `mol-single-strand-repair:mcq4` · mechanism → **mechanism** · difficulty 4 · `bc-dna-repair.mutyh`
   - A 48-year-old man has 60 colorectal adenomas. Testing shows biallelic variants in the gene for the glycosylase that removes adenine paired with 8-oxoguanine. His parents had no polyps. Which mutation signature is expected in his adenomas?
   - ◻️ A. Germline truncating APC variant inherited from a parent — _That would be dominant FAP; his parents are unaffected and the defect is biallelic MUTYH._
   - ◻️ B. Microsatellite instability — _MSI results from mismatch repair defects._
@@ -534,7 +547,7 @@ Objectives: `bc-dna-repair.ssb-pathways`, `bc-dna-repair.xp`, `bc-dna-repair.mut
   - ◻️ D. Expansion of CGG repeats — _Repeat expansions cause disorders such as fragile X._
   - ◻️ E. C→T transitions at adjacent pyrimidines — _That is the UV signature when NER fails._
   - Explanation: Without MUTYH, adenine stays opposite 8-oxoguanine and replication fixes G:C→T:A transversions in growth-control genes.
-- **MCQ** `mol-single-strand-repair:mcq5` · interpretation → **application** · difficulty 5 · `bc-dna-repair.xp`
+- **MCQ** **SPECIALIST** · `mol-single-strand-repair:mcq5` · interpretation → **application** · difficulty 5 · `bc-dna-repair.xp`
   - A child has the clinical features of xeroderma pigmentosum. Her cultured skin cells remove UV-induced damage at a normal rate but cannot efficiently copy DNA that still contains unrepaired lesions. Which gene product is most likely defective?
   - ✅ A. DNA polymerase η (POLH), the XP variant
   - ◻️ B. ATM kinase — _ATM signals double-strand breaks; defects cause ataxia–telangiectasia._
@@ -543,11 +556,20 @@ Objectives: `bc-dna-repair.ssb-pathways`, `bc-dna-repair.xp`, `bc-dna-repair.mut
   - ◻️ E. MUTYH glycosylase — _MUTYH acts on oxidative damage in base excision repair._
   - Steps: (1) Removal of UV damage is normal → core NER factors work (2) Copying past lesions fails → translesion polymerase defect (3) XP variant: DNA polymerase η (POLH)
   - Explanation: Normal removal + defective replication past damage = XP variant (polymerase η), distinct from classic NER defects.
-- **True/false** `mol-single-strand-repair:tf1` · recall → **recognition** · difficulty 1 · `bc-dna-repair.ssb-pathways`: Nucleotide excision repair removes UV-induced thymine dimers. → **True**. Correct: the damaged stretch is excised and replaced.
-- **True/false** `mol-single-strand-repair:tf2` · recall → **recognition** · difficulty 1 · `bc-dna-repair.xp`: Xeroderma pigmentosum is inherited in an autosomal dominant pattern. → **False**. It is autosomal recessive.
-- **True/false** `mol-single-strand-repair:tf3` · recall → **recognition** · difficulty 2 · `bc-dna-repair.mutyh`: MUTYH polyposis is autosomal recessive, unlike familial adenomatous polyposis. → **True**. Correct: biallelic MUTYH variants are needed; FAP (APC) is autosomal dominant.
-- **Crossword** `mol-single-strand-repair:clue1` · recall → **recognition** · difficulty 2 · `bc-dna-repair.ssb-pathways`: Enzyme that starts base excision repair by removing a damaged base → **GLYCOSYLASE**
-- **Crossword** `mol-single-strand-repair:clue2` · recall → **recognition** · difficulty 2 · `bc-dna-repair.xp`: Pigment change on sun-exposed skin that appears early in xeroderma pigmentosum → **FRECKLING**
+- **MCQ** **APPLICATION** · `mol-single-strand-repair:mcq6` · prediction → **application** · difficulty 3 · `bc-dna-repair.xp`
+  - A couple’s first child has xeroderma pigmentosum. Neither parent has the disease. What is the chance that their next child will be affected, and why?
+  - ◻️ A. Only sons, because the gene is X-linked — _XP genes are autosomal; daughters and sons are equally at risk._
+  - ✅ B. 25%, because both parents are carriers of a recessive allele
+  - ◻️ C. 100%, because the repair defect is in every sibling — _Each pregnancy independently has a 1 in 4 chance of two mutant alleles._
+  - ◻️ D. Nearly 0%, because XP results from sun exposure alone — _XP is inherited; sun exposure triggers the damage that cannot be repaired._
+  - ◻️ E. 50%, because one parent carries a dominant allele — _XP is autosomal recessive; an affected dominant carrier would usually show the disease._
+  - Steps: (1) XP is an autosomal recessive nucleotide excision repair defect. (2) Unaffected parents of an affected child must both be carriers. (3) Carrier × carrier → 1 in 4 risk per pregnancy.
+  - Explanation: XP is autosomal recessive: unaffected parents of an affected child are both carriers, so each pregnancy has a 25% risk.
+- **True/false** **CORE** · `mol-single-strand-repair:tf1` · recall → **recognition** · difficulty 1 · `bc-dna-repair.ssb-pathways`: Nucleotide excision repair removes UV-induced thymine dimers. → **True**. Correct: the damaged stretch is excised and replaced.
+- **True/false** **CORE** · `mol-single-strand-repair:tf2` · recall → **recognition** · difficulty 1 · `bc-dna-repair.xp`: Xeroderma pigmentosum is inherited in an autosomal dominant pattern. → **False**. It is autosomal recessive.
+- **True/false** **CORE** · `mol-single-strand-repair:tf3` · recall → **recognition** · difficulty 2 · `bc-dna-repair.mutyh`: MUTYH polyposis is autosomal recessive, unlike familial adenomatous polyposis. → **True**. Correct: biallelic MUTYH variants are needed; FAP (APC) is autosomal dominant.
+- **Crossword** **CORE** · `mol-single-strand-repair:clue1` · recall → **recognition** · difficulty 2 · `bc-dna-repair.ssb-pathways`: Enzyme that starts base excision repair by removing a damaged base → **GLYCOSYLASE**
+- **Crossword** **CORE** · `mol-single-strand-repair:clue2` · recall → **recognition** · difficulty 2 · `bc-dna-repair.xp`: Pigment change on sun-exposed skin that appears early in xeroderma pigmentosum → **FRECKLING**
 
 ---
 
@@ -585,7 +607,7 @@ Objectives: `bc-dna-repair.lynch`
 
 **Takeaway.** Dominant pedigree, early colorectal + endometrial cancer, few polyps, MSI-high tumor without MLH1 methylation = Lynch syndrome.
 
-- **MCQ** `mol-lynch:mcq1` · mechanism → **mechanism** · difficulty 3 · `bc-dna-repair.lynch`
+- **MCQ** **CORE** · `mol-lynch:mcq1` · mechanism → **mechanism** · difficulty 3 · `bc-dna-repair.lynch`
   - A colon adenocarcinoma shows variable lengths of short tandem repeats compared with the patient’s normal tissue. Loss of which normal process best explains this finding?
   - ✅ A. Correction of errors on the newly made strand
   - ◻️ B. Removal of adenine opposite 8-oxoguanine — _MUTYH defects cause G:C→T:A transversions._
@@ -593,7 +615,7 @@ Objectives: `bc-dna-repair.lynch`
   - ◻️ D. Excision of UV-induced pyrimidine dimers — _NER defects cause UV-induced skin cancers, not repeat-length instability._
   - ◻️ E. Maintenance of telomere length — _Telomere loss does not cause microsatellite length changes._
   - Explanation: Microsatellite instability = failed mismatch repair.
-- **MCQ** `mol-lynch:mcq2` · identification → **recognition** · difficulty 2 · `bc-dna-repair.lynch`
+- **MCQ** **CORE** · `mol-lynch:mcq2` · identification → **recognition** · difficulty 2 · `bc-dna-repair.lynch`
   - A 44-year-old woman is diagnosed with adenocarcinoma of the cecum; colonoscopy shows only two other adenomas. Her mother had endometrial cancer at 50 and her maternal grandfather had colon cancer at 48. Germline variants in which gene group are most likely?
   - ◻️ A. STK11 — _Peutz–Jeghers syndrome causes hamartomatous polyps and mucocutaneous pigmentation._
   - ◻️ B. BRCA1 — _BRCA1 mainly raises breast and ovarian cancer risk._
@@ -601,7 +623,7 @@ Objectives: `bc-dna-repair.lynch`
   - ◻️ D. MUTYH (base excision repair) — _MUTYH polyposis is recessive and usually involves many adenomas._
   - ✅ E. MLH1, MSH2, MSH6 or PMS2
   - Explanation: Early colon cancer with few polyps and endometrial cancer across generations = Lynch syndrome.
-- **MCQ** `mol-lynch:mcq3` · interpretation → **application** · difficulty 5 · `bc-dna-repair.lynch`
+- **MCQ** **SPECIALIST** · `mol-lynch:mcq3` · interpretation → **application** · difficulty 5 · `bc-dna-repair.lynch`
   - A 78-year-old woman with no family history of cancer has a right-sided colon cancer. Immunohistochemistry shows loss of MLH1, the MLH1 promoter is hypermethylated in the tumor, and the tumor carries a BRAF V600E mutation. What is the best interpretation?
   - ◻️ A. The pattern indicates a germline MSH2 variant — _MSH2 defects cause loss of MSH2 (and MSH6) staining, not MLH1._
   - ✅ B. Probably a sporadic MSI cancer, not Lynch syndrome
@@ -610,8 +632,17 @@ Objectives: `bc-dna-repair.lynch`
   - ◻️ E. The pattern indicates MUTYH polyposis — _MUTYH tumors show G:C→T:A transversions, not MLH1 loss._
   - Steps: (1) MLH1 loss = mismatch repair–deficient tumor (2) MLH1 promoter hypermethylation + BRAF V600E point to somatic silencing (3) Age and absent family history fit a sporadic MSI cancer rather than Lynch syndrome
   - Explanation: MLH1 loss + promoter hypermethylation + BRAF V600E in an older patient without family history = sporadic MSI cancer.
-- **True/false** `mol-lynch:tf1` · recall → **recognition** · difficulty 1 · `bc-dna-repair.lynch`: Lynch syndrome is inherited in an autosomal recessive pattern. → **False**. Lynch syndrome is autosomal dominant with incomplete penetrance.
-- **Crossword** `mol-lynch:clue1` · recall → **recognition** · difficulty 2 · `bc-dna-repair.lynch`: Short tandem repeat that becomes unstable when mismatch repair fails → **MICROSATELLITE**
+- **MCQ** **APPLICATION** · `mol-lynch:mcq4` · interpretation → **application** · difficulty 3 · `bc-dna-repair.lynch`
+  - A 41-year-old woman has a colon cancer with high microsatellite instability. Her mother had endometrial cancer at 48 and her maternal grandfather colon cancer at 50. Germline testing finds an MSH2 variant. What is the chance that her brother carries the same variant?
+  - ✅ A. 50%, because Lynch syndrome is autosomal dominant
+  - ◻️ B. 100%, because all relatives of a carrier are carriers — _Each child of a carrier has a 1 in 2 chance of inheriting the variant._
+  - ◻️ C. 25%, because both parents must be carriers — _That is the recessive pattern; Lynch syndrome is autosomal dominant._
+  - ◻️ D. Only if he is affected, because males cannot carry it — _MSH2 is autosomal; men and women inherit it equally._
+  - ◻️ E. Nearly 0%, because the variant arose in her tumor — _A germline variant is in every cell and was inherited, not acquired in the tumor._
+  - Steps: (1) MSI-high tumor + early colorectal and endometrial cancers across generations → Lynch syndrome. (2) Lynch syndrome is autosomal dominant (here inherited from her mother). (3) Each child of a heterozygous parent has a 50% chance of inheriting the variant.
+  - Explanation: Early colorectal and endometrial cancers over generations with MSI point to Lynch syndrome, an autosomal dominant mismatch-repair defect: each sibling of a carrier has a 50% chance (penetrance is incomplete).
+- **True/false** **CORE** · `mol-lynch:tf1` · recall → **recognition** · difficulty 1 · `bc-dna-repair.lynch`: Lynch syndrome is inherited in an autosomal recessive pattern. → **False**. Lynch syndrome is autosomal dominant with incomplete penetrance.
+- **Crossword** **CORE** · `mol-lynch:clue1` · recall → **recognition** · difficulty 2 · `bc-dna-repair.lynch`: Short tandem repeat that becomes unstable when mismatch repair fails → **MICROSATELLITE**
 
 ---
 
@@ -653,7 +684,7 @@ Objectives: `bc-dna-repair.dsb-pathways`, `bc-dna-repair.brca`, `bc-dna-repair.n
 
 **Takeaway.** Accurate DSB repair = HR (RAD51, BRCA); fast end joining = NHEJ (also V(D)J, so defects → radiosensitive SCID).
 
-- **MCQ** `mol-double-strand-repair:mcq1` · mechanism → **mechanism** · difficulty 3 · `bc-dna-repair.dsb-pathways`
+- **MCQ** **CORE** · `mol-double-strand-repair:mcq1` · mechanism → **mechanism** · difficulty 3 · `bc-dna-repair.dsb-pathways`
   - Why is repair of a double-strand break by nonhomologous end joining more likely to leave a sequence change than repair by homologous recombination?
   - ◻️ A. HR excises the entire chromosome arm — _HR copies a limited region from the template._
   - ✅ B. NHEJ joins ends without a template, so bases can be lost
@@ -661,7 +692,7 @@ Objectives: `bc-dna-repair.dsb-pathways`, `bc-dna-repair.brca`, `bc-dna-repair.n
   - ◻️ D. NHEJ uses RNA as a template — _Neither pathway uses an RNA template._
   - ◻️ E. NHEJ copies the homologous chromosome from the other parent, causing loss of heterozygosity — _NHEJ uses no template; copying the parental homolog describes a form of recombination._
   - Explanation: HR copies a homologous template (accurate); NHEJ processes and joins ends directly (can alter the sequence at the junction).
-- **MCQ** `mol-double-strand-repair:mcq2` · multistep → **application** · difficulty 4 · `bc-dna-repair.brca`, `bc-dna-repair.dsb-pathways`
+- **MCQ** **APPLICATION** · `mol-double-strand-repair:mcq2` · multistep → **application** · difficulty 4 · `bc-dna-repair.brca`, `bc-dna-repair.dsb-pathways`
   - A 38-year-old woman with ovarian cancer carries a germline pathogenic BRCA1 variant. Her tumor has lost the remaining BRCA1 allele; her normal cells have not. A PARP inhibitor is added. Why is the tumor expected to be more sensitive than her normal tissues?
   - ◻️ A. Her normal cells also lack all BRCA1 function and die too — _Normal cells keep one working allele; only the tumor has lost both._
   - ◻️ B. PARP inhibitors block BRCA1 transcription — _They inhibit PARP enzymes; BRCA1 is already lost in the tumor._
@@ -670,7 +701,7 @@ Objectives: `bc-dna-repair.dsb-pathways`, `bc-dna-repair.brca`, `bc-dna-repair.n
   - ✅ E. Only the tumor lacks HR, so it cannot fix breaks left when PARP is blocked
   - Steps: (1) Germline BRCA1 variant; second allele lost only in the tumor (2) Tumor lacks homologous recombination; normal cells keep it (3) Blocking PARP-dependent repair adds breaks the tumor cannot repair (synthetic lethality)
   - Explanation: Germline variant → second hit only in the tumor → tumor lacks HR → added loss of PARP-dependent repair is lethal to the tumor but tolerated by normal cells.
-- **MCQ** `mol-double-strand-repair:mcq3` · comparison → **application** · difficulty 4 · `bc-dna-repair.nhej-scid`
+- **MCQ** **APPLICATION** · `mol-double-strand-repair:mcq3` · comparison → **application** · difficulty 4 · `bc-dna-repair.nhej-scid`
   - An infant with recurrent infections has absent T and B cells but normal NK cells. Cultured fibroblasts are unusually sensitive to ionizing radiation. Which defect best explains both findings?
   - ◻️ A. Adenosine deaminase deficiency — _ADA deficiency is a metabolic SCID without radiosensitivity, and NK cells are usually affected too._
   - ◻️ B. Common γ-chain cytokine-receptor defect — _γ-chain SCID removes T and NK cells, typically spares B cells, and is not radiosensitive._
@@ -679,7 +710,7 @@ Objectives: `bc-dna-repair.dsb-pathways`, `bc-dna-repair.brca`, `bc-dna-repair.n
   - ✅ E. Loss of an NHEJ factor such as Artemis
   - Steps: (1) T⁻B⁻ with NK present points to failed V(D)J recombination (2) Radiosensitivity adds a general double-strand break repair defect (3) Only NHEJ factors explain both (RAG and ADA do not cause radiosensitivity)
   - Explanation: Absent T and B cells + radiosensitivity point to NHEJ, which joins both V(D)J breaks and radiation-induced breaks.
-- **MCQ** `mol-double-strand-repair:mcq4` · mechanism → **mechanism** · difficulty 3 · `bc-dna-repair.nhej-scid`
+- **MCQ** **CORE** · `mol-double-strand-repair:mcq4` · mechanism → **mechanism** · difficulty 3 · `bc-dna-repair.nhej-scid`
   - Why does complete loss of the NHEJ factor Artemis prevent the development of both T cells and B cells?
   - ◻️ A. Artemis transmits cytokine signals needed for lymphocyte survival — _Cytokine signaling defects (IL2RG, JAK3) spare B-cell numbers._
   - ◻️ B. Artemis deficiency causes toxic deoxynucleotides to accumulate — _Toxic dATP is the mechanism of adenosine deaminase deficiency._
@@ -687,13 +718,13 @@ Objectives: `bc-dna-repair.dsb-pathways`, `bc-dna-repair.brca`, `bc-dna-repair.n
   - ✅ D. RAG-made V(D)J breaks cannot be rejoined
   - ◻️ E. Artemis is needed for thymus development from the pharyngeal pouches — _Thymic aplasia is the mechanism in 22q11.2 deletion syndrome._
   - Explanation: T- and B-cell receptor genes are assembled by cutting (RAG) and rejoining (NHEJ); without rejoining, neither lineage can complete development.
-- **True/false** `mol-double-strand-repair:tf1` · recall → **recognition** · difficulty 2 · `bc-dna-repair.dsb-pathways`: Homologous recombination uses RAD51-directed strand exchange with a homologous template. → **True**. Correct: that is the defining step of HR.
-- **True/false** `mol-double-strand-repair:tf2` · recall → **recognition** · difficulty 2 · `bc-dna-repair.brca`: BRCA2 variants increase the risk of male breast cancer. → **True**. Correct: male breast, prostate and pancreatic cancer risks are mainly associated with BRCA2.
-- **True/false** `mol-double-strand-repair:tf3` · recall → **recognition** · difficulty 2 · `bc-dna-repair.nhej-scid`: V(D)J recombination depends on nonhomologous end joining. → **True**. Correct: RAG cuts the DNA and NHEJ factors rejoin the segments.
-- **True/false** `mol-double-strand-repair:tf4` · recall → **recognition** · difficulty 2 · `bc-dna-repair.bloom`: Bloom syndrome is caused by a defective nucleotide excision repair protein. → **False**. Bloom syndrome is caused by BLM, a RecQ helicase that limits sister chromatid exchange.
-- **Crossword** `mol-double-strand-repair:clue1` · recall → **recognition** · difficulty 2 · `bc-dna-repair.dsb-pathways`: Kind of recombination that repairs double-strand breaks with RAD51 → **HOMOLOGOUS**
-- **Crossword** `mol-double-strand-repair:clue2` · recall → **recognition** · difficulty 2 · `bc-dna-repair.nhej-scid`: NHEJ factor whose loss causes radiosensitive SCID → **ARTEMIS**
-- **Crossword** `mol-double-strand-repair:clue3` · recall → **recognition** · difficulty 2 · `bc-dna-repair.bloom`: Syndrome of BLM helicase deficiency with facial rash and short stature → **BLOOM**
+- **True/false** **SPECIALIST** · `mol-double-strand-repair:tf1` · recall → **recognition** · difficulty 2 · `bc-dna-repair.dsb-pathways`: Homologous recombination uses RAD51-directed strand exchange with a homologous template. → **True**. Correct: that is the defining step of HR.
+- **True/false** **CORE** · `mol-double-strand-repair:tf2` · recall → **recognition** · difficulty 2 · `bc-dna-repair.brca`: BRCA2 variants increase the risk of male breast cancer. → **True**. Correct: male breast, prostate and pancreatic cancer risks are mainly associated with BRCA2.
+- **True/false** **CORE** · `mol-double-strand-repair:tf3` · recall → **recognition** · difficulty 2 · `bc-dna-repair.nhej-scid`: V(D)J recombination depends on nonhomologous end joining. → **True**. Correct: RAG cuts the DNA and NHEJ factors rejoin the segments.
+- **True/false** **CORE** · `mol-double-strand-repair:tf4` · recall → **recognition** · difficulty 2 · `bc-dna-repair.bloom`: Bloom syndrome is caused by a defective nucleotide excision repair protein. → **False**. Bloom syndrome is caused by BLM, a RecQ helicase that limits sister chromatid exchange.
+- **Crossword** **CORE** · `mol-double-strand-repair:clue1` · recall → **recognition** · difficulty 2 · `bc-dna-repair.dsb-pathways`: Kind of recombination that repairs double-strand breaks with RAD51 → **HOMOLOGOUS**
+- **Crossword** **SPECIALIST** · `mol-double-strand-repair:clue2` · recall → **recognition** · difficulty 2 · `bc-dna-repair.nhej-scid`: NHEJ factor whose loss causes radiosensitive SCID → **ARTEMIS**
+- **Crossword** **CORE** · `mol-double-strand-repair:clue3` · recall → **recognition** · difficulty 2 · `bc-dna-repair.bloom`: Syndrome of BLM helicase deficiency with facial rash and short stature → **BLOOM**
 
 ---
 
@@ -735,7 +766,7 @@ Objectives: `bc-dna-repair.atm`
 
 **Takeaway.** Ataxia + telangiectasias + lung infections + high AFP + radiosensitivity = ATM loss; watch for lymphoid cancer.
 
-- **MCQ** `mol-ataxia-telangiectasia:mcq1` · mechanism → **mechanism** · difficulty 3 · `bc-dna-repair.atm`
+- **MCQ** **SPECIALIST** · `mol-ataxia-telangiectasia:mcq1` · mechanism → **mechanism** · difficulty 3 · `bc-dna-repair.atm`
   - Cells lacking ATM are exposed to ionizing radiation, and the MRN complex still assembles at the breaks. Which step is most impaired?
   - ◻️ A. Initial binding of MRN to the broken DNA ends — _MRN detection is upstream of ATM and still occurs; ATM loss blocks the signal that follows._
   - ◻️ B. Removal of crosslinks between the two DNA strands — _Interstrand crosslink repair is the Fanconi anemia pathway._
@@ -743,7 +774,7 @@ Objectives: `bc-dna-repair.atm`
   - ◻️ D. Unwinding DNA to limit sister chromatid exchange — _That is BLM helicase (Bloom syndrome)._
   - ◻️ E. Rejoining of broken ends by DNA ligase IV — _Ligation is a core NHEJ step; ATM signals rather than ligates._
   - Explanation: MRN detects the break and activates ATM; ATM is the kinase that phosphorylates checkpoint and repair proteins. Without ATM, detection occurs but the signal is not transmitted.
-- **MCQ** `mol-ataxia-telangiectasia:mcq2` · identification → **recognition** · difficulty 3 · `bc-dna-repair.atm`
+- **MCQ** **CORE** · `mol-ataxia-telangiectasia:mcq2` · identification → **recognition** · difficulty 3 · `bc-dna-repair.atm`
   - A 6-year-old boy has a wide-based gait that began when he started walking and has worsened, difficulty initiating eye movements, three episodes of pneumonia, and small dilated vessels on the conjunctivae. Serum α-fetoprotein is raised. Which long-term risk is most characteristic of his condition?
   - ◻️ A. Basal cell carcinomas in childhood — _Childhood skin cancers suggest xeroderma pigmentosum._
   - ✅ B. Lymphoid malignancy such as lymphoma or leukemia
@@ -751,7 +782,7 @@ Objectives: `bc-dna-repair.atm`
   - ◻️ D. Colorectal cancer without polyposis — _This suggests Lynch syndrome._
   - ◻️ E. Hypertrophic cardiomyopathy — _This fits Friedreich ataxia, which lacks telangiectasias and raised AFP._
   - Explanation: A classic A-T picture with a direct association: its cancers are mostly lymphoid.
-- **MCQ** `mol-ataxia-telangiectasia:mcq3` · interpretation → **application** · difficulty 5 · `bc-dna-repair.atm`
+- **MCQ** **SPECIALIST** · `mol-ataxia-telangiectasia:mcq3` · interpretation → **application** · difficulty 5 · `bc-dna-repair.atm`
   - Two patient cell lines are irradiated. In line 1, MRN forms foci at the breaks but checkpoint proteins are not phosphorylated and the cells do not arrest. In line 2, MRN does not form foci and ATM activation is weak. Which interpretation is correct?
   - ✅ A. Line 1: ATM loss (A-T); line 2: sensor defect, e.g. NBS1
   - ◻️ B. Both lines: Fanconi anemia pathway defects — _Fanconi anemia affects interstrand crosslink repair, not break detection or ATM signaling._
@@ -760,9 +791,26 @@ Objectives: `bc-dna-repair.atm`
   - ◻️ E. Line 1 is normal because MRN still assembles — _Absent checkpoint phosphorylation and arrest after radiation is abnormal._
   - Steps: (1) Place MRN upstream (detection) and ATM downstream (kinase signaling) (2) Line 1: detection intact, signaling absent → ATM (3) Line 2: detection absent → MRN component such as NBS1
   - Explanation: Order of events: MRN detects the break → activates ATM → ATM phosphorylates checkpoint proteins. A defect is located at the first step that fails.
-- **True/false** `mol-ataxia-telangiectasia:tf1` · recall → **recognition** · difficulty 2 · `bc-dna-repair.atm`: Patients with ataxia–telangiectasia are unusually sensitive to ionizing radiation. → **True**. Correct: cells cannot respond normally to double-strand breaks.
-- **True/false** `mol-ataxia-telangiectasia:tf2` · recall → **recognition** · difficulty 2 · `bc-dna-repair.atm`: ATM is the DNA ligase that joins broken ends in nonhomologous end joining. → **False**. ATM is a kinase that senses double-strand breaks and signals; DNA ligase IV joins ends in NHEJ.
-- **Crossword** `mol-ataxia-telangiectasia:clue1` · recall → **recognition** · difficulty 2 · `bc-dna-repair.atm`: Small dilated vessel seen on the conjunctivae in ATM deficiency → **TELANGIECTASIA**
+- **MCQ** **CORE** · `mol-ataxia-telangiectasia:mcq4` · mechanism → **mechanism** · difficulty 2 · `bc-dna-repair.atm`
+  - Why are cells from patients with ataxia–telangiectasia unusually easily killed by ionizing radiation?
+  - ◻️ A. Interstrand crosslinks cannot be repaired — _Crosslink repair fails in Fanconi anemia._
+  - ✅ B. DNA double-strand breaks do not trigger checkpoint and repair signaling
+  - ◻️ C. Thymine dimers cannot be excised from the damaged strand — _That is the nucleotide excision repair defect of xeroderma pigmentosum, caused by UV light._
+  - ◻️ D. Telomeres cannot be extended in dividing cells — _Telomerase is not the defect in ataxia–telangiectasia._
+  - ◻️ E. Mismatched bases are left on the newly made strand — _Mismatch repair defects cause Lynch syndrome, not radiosensitivity._
+  - Explanation: ATM is the kinase that signals DNA double-strand breaks to checkpoint and repair proteins; without it, radiation-induced breaks go unanswered and cells die.
+- **MCQ** **APPLICATION** · `mol-ataxia-telangiectasia:mcq5` · prediction → **application** · difficulty 4 · `bc-dna-repair.atm`
+  - A 9-year-old boy with progressive ataxia since he began walking, conjunctival telangiectasias and recurrent pneumonia is diagnosed with lymphoma. What should be anticipated when his treatment is planned?
+  - ◻️ A. Resistance of the lymphoma to all chemotherapy — _The defect makes cells more, not less, sensitive to DNA damage._
+  - ◻️ B. Severe sunburn reactions to UV light during treatment — _UV hypersensitivity is the hallmark of xeroderma pigmentosum, not ATM deficiency._
+  - ✅ C. Severe toxicity from standard doses of radiotherapy
+  - ◻️ D. Spontaneous remission because ATM loss slows tumor growth — _ATM loss predisposes to lymphoid cancers; it does not cause remission._
+  - ◻️ E. Hyperammonemia after high-protein meals — _Hyperammonemia suggests a urea cycle disorder and is unrelated to ATM._
+  - Steps: (1) Ataxia + telangiectasias + sinopulmonary infections → ataxia–telangiectasia (ATM). (2) ATM loss leaves double-strand breaks unsignaled → hypersensitivity to ionizing radiation. (3) Radiotherapy causes double-strand breaks → expect severe toxicity at standard doses.
+  - Explanation: The picture is ataxia–telangiectasia, whose lymphoid cancers arise on a background of hypersensitivity to ionizing radiation: standard radiotherapy doses can cause severe toxicity.
+- **True/false** **CORE** · `mol-ataxia-telangiectasia:tf1` · recall → **recognition** · difficulty 2 · `bc-dna-repair.atm`: Patients with ataxia–telangiectasia are unusually sensitive to ionizing radiation. → **True**. Correct: cells cannot respond normally to double-strand breaks.
+- **True/false** **CORE** · `mol-ataxia-telangiectasia:tf2` · recall → **recognition** · difficulty 2 · `bc-dna-repair.atm`: ATM is the DNA ligase that joins broken ends in nonhomologous end joining. → **False**. ATM is a kinase that senses double-strand breaks and signals; DNA ligase IV joins ends in NHEJ.
+- **Crossword** **CORE** · `mol-ataxia-telangiectasia:clue1` · recall → **recognition** · difficulty 2 · `bc-dna-repair.atm`: Small dilated vessel seen on the conjunctivae in ATM deficiency → **TELANGIECTASIA**
 
 ---
 
@@ -799,7 +847,7 @@ Objectives: `bc-dna-repair.fanconi`
 
 **Takeaway.** Marrow failure + growth deficiency + limb malformations + abnormal pigmentation + breakage with crosslinkers = Fanconi anemia.
 
-- **MCQ** `mol-fanconi-anemia:mcq1` · interpretation → **application** · difficulty 3 · `bc-dna-repair.fanconi`
+- **MCQ** **APPLICATION** · `mol-fanconi-anemia:mcq1` · interpretation → **application** · difficulty 3 · `bc-dna-repair.fanconi`
   - Lymphocytes from a child with pancytopenia are cultured with diepoxybutane, and an abnormally high number of chromosome breaks and radial figures is seen. How should this result be interpreted?
   - ◻️ A. The result reflects telomere shortening — _Telomere disorders are diagnosed by telomere length testing._
   - ✅ B. Defective crosslink repair, supporting Fanconi anemia
@@ -808,7 +856,7 @@ Objectives: `bc-dna-repair.fanconi`
   - ◻️ E. Acquired aplastic anemia from immune destruction of marrow — _Acquired aplastic anemia has normal chromosome breakage with crosslinkers._
   - Steps: (1) Diepoxybutane creates interstrand crosslinks (2) Excess breaks and radial figures = crosslinks not repaired (3) Supports Fanconi anemia rather than acquired aplastic anemia
   - Explanation: Diepoxybutane creates interstrand crosslinks; excess breakage shows the FA repair pathway is defective.
-- **MCQ** `mol-fanconi-anemia:mcq2` · identification → **recognition** · difficulty 3 · `bc-dna-repair.fanconi`
+- **MCQ** **CORE** · `mol-fanconi-anemia:mcq2` · identification → **recognition** · difficulty 3 · `bc-dna-repair.fanconi`
   - A 7-year-old girl has bruising and fatigue. She is below the 3rd percentile for height, has an abnormally formed right thumb and several café-au-lait macules. Blood count shows pancytopenia, and the marrow is hypocellular. For which complications is she at increased lifetime risk?
   - ◻️ A. Colorectal and endometrial carcinoma in early adulthood — _These suggest Lynch syndrome._
   - ✅ B. MDS/AML and head and neck squamous cell cancer
@@ -816,7 +864,7 @@ Objectives: `bc-dna-repair.fanconi`
   - ◻️ D. Retinoblastoma and osteosarcoma — _These suggest a germline RB1 variant._
   - ◻️ E. Basal cell carcinoma and melanoma in childhood — _Childhood skin cancers point to xeroderma pigmentosum._
   - Explanation: A classic Fanconi anemia picture with a direct association: MDS/AML and head and neck squamous cancers.
-- **MCQ** `mol-fanconi-anemia:mcq3` · mechanism → **mechanism** · difficulty 3 · `bc-dna-repair.fanconi`
+- **MCQ** **CORE** · `mol-fanconi-anemia:mcq3` · mechanism → **mechanism** · difficulty 3 · `bc-dna-repair.fanconi`
   - Why does failure of the Fanconi anemia pathway lead to marrow failure and chromosomal instability?
   - ◻️ A. Autoantibodies destroy hematopoietic stem cells — _That describes immune-mediated aplastic anemia._
   - ✅ B. Unrepaired crosslinks stall forks, which break and kill stem cells
@@ -824,9 +872,9 @@ Objectives: `bc-dna-repair.fanconi`
   - ◻️ D. The FA pathway removes UV dimers from marrow cells — _Marrow cells are not exposed to UV; NER handles UV damage._
   - ◻️ E. Mismatch repair fails, causing microsatellite instability in stem cells — _FA is not a mismatch repair defect._
   - Explanation: Unrepaired crosslinks stall replication; forks break, stem cells die and surviving cells accumulate chromosomal damage.
-- **True/false** `mol-fanconi-anemia:tf1` · recall → **recognition** · difficulty 2 · `bc-dna-repair.fanconi`: Most Fanconi anemia is autosomal recessive, although rare X-linked and dominant forms exist. → **True**. Correct: FANCB is X-linked and RAD51-related FA is autosomal dominant.
-- **Crossword** `mol-fanconi-anemia:clue1` · recall → **recognition** · difficulty 2 · `bc-dna-repair.fanconi`: Type of interstrand DNA lesion the Fanconi pathway repairs → **CROSSLINK**
-- **Mystery Patient** `case:fanconi-anemia` · multistep → **application** · difficulty 4 · `bc-dna-repair.fanconi`: Small thumbs, falling counts
+- **True/false** **CORE** · `mol-fanconi-anemia:tf1` · recall → **recognition** · difficulty 2 · `bc-dna-repair.fanconi`: Most Fanconi anemia is autosomal recessive, although rare X-linked and dominant forms exist. → **True**. Correct: FANCB is X-linked and RAD51-related FA is autosomal dominant.
+- **Crossword** **CORE** · `mol-fanconi-anemia:clue1` · recall → **recognition** · difficulty 2 · `bc-dna-repair.fanconi`: Type of interstrand DNA lesion the Fanconi pathway repairs → **CROSSLINK**
+- **Mystery Patient** **APPLICATION** · `case:fanconi-anemia` · multistep → **application** · difficulty 4 · `bc-dna-repair.fanconi`: Small thumbs, falling counts
   - Presentation: A 6-year-old boy has nosebleeds and tiredness for two months.
   - History: Born small for gestational age. Surgery as a baby for an abnormally formed left thumb. Parents are healthy and related as second cousins.
   - Examination: Height below the 3rd percentile. Three café-au-lait macules and patchy hypopigmentation. Petechiae on the legs. No lymphadenopathy or splenomegaly.
@@ -881,7 +929,7 @@ Objectives: `bc-collagen.types`
 
 **Takeaway.** Think tissue: bone and sclera (I), cartilage and vitreous (II), vessels and gut (III), basement membranes (IV).
 
-- **MCQ** `mol-collagen-types:mcq1` · identification → **recognition** · difficulty 2 · `bc-collagen.types`
+- **MCQ** **CORE** · `mol-collagen-types:mcq1` · identification → **recognition** · difficulty 2 · `bc-collagen.types`
   - A 16-year-old boy has microscopic hematuria since childhood, progressive bilateral sensorineural hearing loss and anterior lenticonus. His maternal uncle needed dialysis at 30. A defect in which collagen type is most likely?
   - ◻️ A. Type II — _Type II defects (Stickler) also cause hearing loss, but with myopia, retinal detachment and joint disease rather than hematuria._
   - ◻️ B. Type III — _Type III defects cause vascular Ehlers–Danlos syndrome._
@@ -889,7 +937,7 @@ Objectives: `bc-collagen.types`
   - ◻️ D. Type I — _Type I defects cause osteogenesis imperfecta._
   - ◻️ E. Type V — _Type V defects cause classic Ehlers–Danlos syndrome._
   - Explanation: Hematuria + hearing loss + anterior lenticonus in an X-linked pattern = Alport syndrome (type IV collagen of basement membranes).
-- **MCQ** `mol-collagen-types:mcq2` · recall → **recognition** · difficulty 2 · `bc-collagen.types`
+- **MCQ** **CORE** · `mol-collagen-types:mcq2` · recall → **recognition** · difficulty 2 · `bc-collagen.types`
   - Which collagen type is a major structural component of blood vessel walls and the intestinal wall, so that its defects cause arterial and bowel rupture?
   - ◻️ A. Type IV — _Type IV forms basement membranes; its defects cause Alport syndrome._
   - ◻️ B. Type II — _Type II is the collagen of cartilage and vitreous._
@@ -897,7 +945,7 @@ Objectives: `bc-collagen.types`
   - ✅ D. Type III
   - ◻️ E. Type V — _Type V defects cause classic EDS with skin and joint features._
   - Explanation: Type III collagen (COL3A1) is prominent in vessel and intestinal walls; its defects cause vascular EDS.
-- **MCQ** `mol-collagen-types:mcq3` · prediction → **application** · difficulty 4 · `bc-collagen.types`
+- **MCQ** **APPLICATION** · `mol-collagen-types:mcq3` · prediction → **application** · difficulty 4 · `bc-collagen.types`
   - A family carries a dominant COL2A1 variant that reduces functional type II collagen. Which combination of problems is most expected in affected members?
   - ◻️ A. Recurrent fractures with blue-grey sclerae — _This reflects type I collagen (osteogenesis imperfecta)._
   - ◻️ B. Hyperextensible skin with atrophic scars — _This reflects type V collagen (classic EDS)._
@@ -906,9 +954,9 @@ Objectives: `bc-collagen.types`
   - ✅ E. Myopia, retinal detachment, hearing loss, early arthritis
   - Steps: (1) COL2A1 encodes type II collagen (2) Type II collagen is in vitreous, cartilage and inner ear (3) Predict myopia/retinal detachment, early arthritis and hearing loss (Stickler syndrome)
   - Explanation: Type II collagen is in vitreous, cartilage and inner ear: predict eye, joint and hearing problems (Stickler syndrome).
-- **True/false** `mol-collagen-types:tf1` · recall → **recognition** · difficulty 1 · `bc-collagen.types`: Type II collagen is found in cartilage, the vitreous and the nucleus pulposus. → **True**. Correct.
-- **True/false** `mol-collagen-types:tf2` · recall → **recognition** · difficulty 1 · `bc-collagen.types`: Alport syndrome is caused by defects in type I collagen. → **False**. Alport syndrome is caused by defects in type IV collagen (COL4A3, COL4A4 or COL4A5).
-- **Crossword** `mol-collagen-types:clue1` · recall → **recognition** · difficulty 1 · `bc-collagen.types`: Tissue whose main collagen is type II → **CARTILAGE**
+- **True/false** **CORE** · `mol-collagen-types:tf1` · recall → **recognition** · difficulty 1 · `bc-collagen.types`: Type II collagen is found in cartilage, the vitreous and the nucleus pulposus. → **True**. Correct.
+- **True/false** **CORE** · `mol-collagen-types:tf2` · recall → **recognition** · difficulty 1 · `bc-collagen.types`: Alport syndrome is caused by defects in type I collagen. → **False**. Alport syndrome is caused by defects in type IV collagen (COL4A3, COL4A4 or COL4A5).
+- **Crossword** **CORE** · `mol-collagen-types:clue1` · recall → **recognition** · difficulty 1 · `bc-collagen.types`: Tissue whose main collagen is type II → **CARTILAGE**
 
 ---
 
@@ -945,7 +993,7 @@ Objectives: `bc-collagen.eds`
 
 **Takeaway.** Stretchy, fragile skin + atrophic scars = classic EDS (type V); thin skin + arterial or bowel rupture = vascular EDS (type III).
 
-- **MCQ** `mol-ehlers-danlos:mcq1` · mechanism → **mechanism** · difficulty 3 · `bc-collagen.eds`
+- **MCQ** **CORE** · `mol-ehlers-danlos:mcq1` · mechanism → **mechanism** · difficulty 3 · `bc-collagen.eds`
   - Why do patients with vascular Ehlers–Danlos syndrome suffer arterial and bowel rupture while those with classic EDS mainly have skin and joint problems?
   - ✅ A. It affects type III collagen of vessel and gut walls
   - ◻️ B. Classic EDS affects type II collagen in cartilage — _Classic EDS usually involves type V collagen._
@@ -953,7 +1001,7 @@ Objectives: `bc-collagen.eds`
   - ◻️ D. Vascular EDS is caused by fibrillin-1 deficiency — _Fibrillin-1 defects cause Marfan syndrome._
   - ◻️ E. It affects type IV collagen of vascular basement membranes — _Type IV defects cause Alport syndrome._
   - Explanation: COL3A1 (type III collagen) is a major structural collagen of arteries and intestine, so these organs rupture.
-- **MCQ** `mol-ehlers-danlos:mcq2` · identification → **recognition** · difficulty 3 · `bc-collagen.eds`
+- **MCQ** **CORE** · `mol-ehlers-danlos:mcq2` · identification → **recognition** · difficulty 3 · `bc-collagen.eds`
   - A 26-year-old man has a spontaneous sigmoid colon perforation. He bruises easily, and his skin is thin and translucent with visible veins over the chest. His father died at 35 of a ruptured splenic artery. Platelet count and coagulation studies are normal. A variant in which gene is most likely?
   - ◻️ A. COL5A1 — _COL5A1 causes classic EDS with hyperextensible skin and atrophic scars, not arterial or bowel rupture._
   - ✅ B. COL3A1
@@ -961,7 +1009,7 @@ Objectives: `bc-collagen.eds`
   - ◻️ D. COL4A5 — _COL4A5 causes X-linked Alport syndrome._
   - ◻️ E. COL1A1 — _COL1A1 defects mainly cause osteogenesis imperfecta._
   - Explanation: Thin translucent skin, bruising and bowel and arterial rupture in a dominant family = vascular EDS (COL3A1).
-- **MCQ** `mol-ehlers-danlos:mcq3` · comparison → **application** · difficulty 4 · `bc-collagen.eds`
+- **MCQ** **APPLICATION** · `mol-ehlers-danlos:mcq3` · comparison → **application** · difficulty 4 · `bc-collagen.eds`
   - Two young adults both bruise easily and have hypermobile fingers. Which additional finding most strongly indicates vascular rather than classic Ehlers–Danlos syndrome?
   - ◻️ A. Skin that stretches markedly and snaps back — _Marked skin hyperextensibility is the hallmark of classic EDS._
   - ◻️ B. Easy bruising — _Bruising occurs in both types, so it does not discriminate._
@@ -970,9 +1018,9 @@ Objectives: `bc-collagen.eds`
   - ◻️ E. Generalized joint hypermobility — _Generalized hypermobility is typical of classic and hypermobile EDS; vascular EDS usually shows only distal hypermobility._
   - Steps: (1) Bruising and hypermobility occur in both types, so they do not discriminate (2) Stretchy skin and atrophic scars favor classic EDS (3) Thin translucent skin and arterial fragility favor vascular EDS
   - Explanation: Discriminating features: thin translucent skin and arterial, bowel or uterine fragility (vascular) vs stretchy skin and atrophic scars (classic).
-- **True/false** `mol-ehlers-danlos:tf1` · recall → **recognition** · difficulty 2 · `bc-collagen.eds`: Classic Ehlers–Danlos syndrome is most often caused by type V collagen variants. → **True**. Correct: usually COL5A1 or COL5A2.
-- **True/false** `mol-ehlers-danlos:tf2` · recall → **recognition** · difficulty 2 · `bc-collagen.eds`: Easy bruising identifies the vascular type of Ehlers–Danlos syndrome. → **False**. Easy bruising occurs in several EDS types; arterial, bowel or uterine fragility and thin translucent skin point to the vascular type.
-- **Crossword** `mol-ehlers-danlos:clue1` · recall → **recognition** · difficulty 1 · `bc-collagen.eds`: Excessive joint range of motion typical of Ehlers–Danlos syndromes → **HYPERMOBILITY**
+- **True/false** **CORE** · `mol-ehlers-danlos:tf1` · recall → **recognition** · difficulty 2 · `bc-collagen.eds`: Classic Ehlers–Danlos syndrome is most often caused by type V collagen variants. → **True**. Correct: usually COL5A1 or COL5A2.
+- **True/false** **CORE** · `mol-ehlers-danlos:tf2` · recall → **recognition** · difficulty 2 · `bc-collagen.eds`: Easy bruising identifies the vascular type of Ehlers–Danlos syndrome. → **False**. Easy bruising occurs in several EDS types; arterial, bowel or uterine fragility and thin translucent skin point to the vascular type.
+- **Crossword** **CORE** · `mol-ehlers-danlos:clue1` · recall → **recognition** · difficulty 1 · `bc-collagen.eds`: Excessive joint range of motion typical of Ehlers–Danlos syndromes → **HYPERMOBILITY**
 
 ---
 
@@ -1011,7 +1059,7 @@ Objectives: `bc-collagen.menkes`
 
 **Takeaway.** Infant boy, kinky hair, seizures, hypotonia, low serum copper = Menkes (ATP7A); copper enzymes such as lysyl oxidase fail.
 
-- **MCQ** `mol-menkes:mcq1` · mechanism → **mechanism** · difficulty 3 · `bc-collagen.menkes`
+- **MCQ** **CORE** · `mol-menkes:mcq1` · mechanism → **mechanism** · difficulty 3 · `bc-collagen.menkes`
   - Children with ATP7A-related copper transport disorders often have loose skin and lax joints. Reduced activity of which enzyme best explains these connective tissue features?
   - ◻️ A. Lysyl hydroxylase — _Lysyl hydroxylase defects cause kyphoscoliotic EDS; it is not a copper enzyme._
   - ◻️ B. Procollagen N-proteinase — _Its deficiency causes dermatosparaxis EDS; it is not copper-dependent._
@@ -1019,7 +1067,7 @@ Objectives: `bc-collagen.menkes`
   - ✅ D. Lysyl oxidase
   - ◻️ E. Prolyl hydroxylase — _Prolyl hydroxylase needs vitamin C and iron, not copper; its failure causes scurvy._
   - Explanation: Lysyl oxidases are copper-dependent and cross-link collagen and elastin; without copper, connective tissue is weak and lax.
-- **MCQ** `mol-menkes:mcq2` · identification → **recognition** · difficulty 2 · `bc-collagen.menkes`
+- **MCQ** **CORE** · `mol-menkes:mcq2` · identification → **recognition** · difficulty 2 · `bc-collagen.menkes`
   - A 3-month-old boy was well for his first 8 weeks, then developed poor feeding and seizures. He is hypotonic. His scalp hair is sparse, short, light-colored and coarse. Serum copper is low. Which gene is most likely affected?
   - ◻️ A. HPRT1 — _HPRT1 deficiency causes hyperuricemia, dystonia and self-injury, not low copper._
   - ◻️ B. COL1A1 — _COL1A1 defects cause fractures and blue-grey sclerae._
@@ -1027,7 +1075,7 @@ Objectives: `bc-collagen.menkes`
   - ◻️ D. ATP7B — _ATP7B causes Wilson disease, with copper overload presenting in childhood to adulthood._
   - ◻️ E. SLC39A4 — _This zinc transporter is defective in acrodermatitis enteropathica._
   - Explanation: Infant boy, normal for weeks, then seizures, hypotonia, kinky hair and low copper = Menkes disease (ATP7A).
-- **MCQ** `mol-menkes:mcq3` · interpretation → **application** · difficulty 4 · `bc-collagen.menkes`
+- **MCQ** **SPECIALIST** · `mol-menkes:mcq3` · interpretation → **application** · difficulty 4 · `bc-collagen.menkes`
   - An infant has seizures, hypotonia and low serum copper. Tissue studies show copper accumulated in intestinal epithelial cells and kidney but low copper in the liver and brain. Which interpretation best fits?
   - ◻️ A. Dietary copper deficiency with normal transport — _Simple deficiency lowers copper everywhere, including the intestinal cells; it does not trap copper in enterocytes._
   - ✅ B. Failed export of absorbed copper from enterocytes (ATP7A, Menkes)
@@ -1036,8 +1084,17 @@ Objectives: `bc-collagen.menkes`
   - ◻️ E. Ceruloplasmin gene deficiency alone — _Isolated ceruloplasmin deficiency causes iron accumulation in adults, not infantile neurodegeneration with enterocyte copper trapping._
   - Steps: (1) Copper is absorbed (high in enterocytes), so intake is not the problem (2) It is not delivered onward (low liver, brain and serum) → export defect (3) Export from enterocytes is ATP7A (Menkes); ATP7B failure would overload the liver
   - Explanation: Copper absorbed but trapped in gut (and kidney) with low liver and brain copper = failure of ATP7A export, the Menkes pattern; Wilson disease is the opposite (liver overload).
-- **True/false** `mol-menkes:tf1` · recall → **recognition** · difficulty 2 · `bc-collagen.menkes`: Menkes disease is caused by copper overload in the liver. → **False**. Menkes causes tissue copper deficiency (copper retained in gut and kidney); Wilson disease causes hepatic copper overload.
-- **Crossword** `mol-menkes:clue1` · recall → **recognition** · difficulty 1 · `bc-collagen.menkes`: Metal poorly distributed to tissues in Menkes disease → **COPPER**
+- **MCQ** **APPLICATION** · `mol-menkes:mcq4` · comparison → **application** · difficulty 3 · `bc-collagen.menkes`
+  - Patient A is a 3-month-old boy with seizures, hypotonia, sparse kinky hair and low serum copper. Patient B is a 15-year-old with hepatitis, tremor and Kayser–Fleischer rings. Which pairing is correct?
+  - ◻️ A. A: ATP7B, copper overload in the brain; B: ATP7A, copper deficiency — _Reversed: Menkes (ATP7A) is a copper deficiency state; Wilson (ATP7B) is copper overload._
+  - ✅ B. A: ATP7A, too little copper reaches tissues; B: ATP7B, copper builds up in the liver
+  - ◻️ C. A: zinc deficiency; B: hemochromatosis — _Zinc deficiency does not cause kinky hair with low copper; Kayser–Fleischer rings are copper deposits, not iron._
+  - ◻️ D. A: dietary copper excess; B: ATP7A deficiency — _Neither picture is due to dietary excess; B has the classic eye sign of Wilson disease._
+  - ◻️ E. A and B: the same disorder at different ages — _They have opposite copper states, different genes and different inheritance._
+  - Steps: (1) Infant boy, kinky hair, seizures, low copper → Menkes disease (ATP7A). (2) Teenager with liver disease and Kayser–Fleischer rings → Wilson disease (ATP7B). (3) Menkes = copper deficiency in tissues; Wilson = copper overload.
+  - Explanation: Menkes (ATP7A) starves tissues of copper, so copper enzymes such as lysyl oxidase fail; Wilson disease (ATP7B) traps copper in the liver, brain and eyes.
+- **True/false** **CORE** · `mol-menkes:tf1` · recall → **recognition** · difficulty 2 · `bc-collagen.menkes`: Menkes disease is caused by copper overload in the liver. → **False**. Menkes causes tissue copper deficiency (copper retained in gut and kidney); Wilson disease causes hepatic copper overload.
+- **Crossword** **CORE** · `mol-menkes:clue1` · recall → **recognition** · difficulty 1 · `bc-collagen.menkes`: Metal poorly distributed to tissues in Menkes disease → **COPPER**
 
 ---
 
@@ -1077,7 +1134,7 @@ Objectives: `bc-collagen.marfan`, `bc-collagen.elastin`
 
 **Takeaway.** Fibrillin-1 scaffolds elastic fibers and holds TGF-β; Marfan = long limbs + ectopia lentis (often) + MVP + aortic root dilation and dissection.
 
-- **MCQ** `mol-marfan-elastin:mcq1` · mechanism → **mechanism** · difficulty 4 · `bc-collagen.marfan`
+- **MCQ** **CORE** · `mol-marfan-elastin:mcq1` · mechanism → **mechanism** · difficulty 4 · `bc-collagen.marfan`
   - How does loss of fibrillin-1 contribute to tissue disease in Marfan syndrome beyond weakening elastic fibers?
   - ◻️ A. Type III collagen synthesis is lost — _That describes vascular Ehlers–Danlos syndrome._
   - ◻️ B. Collagen hydroxylation stops in the aortic media — _Hydroxylation depends on vitamin C, not fibrillin._
@@ -1085,7 +1142,7 @@ Objectives: `bc-collagen.marfan`, `bc-collagen.elastin`
   - ◻️ D. Lysyl oxidase becomes copper-deficient — _Copper delivery is impaired in Menkes disease, not Marfan syndrome._
   - ✅ E. Less TGF-β is sequestered, so its activity rises
   - Explanation: Fibrillin-1 microfibrils normally sequester growth factors; with fewer microfibrils, excess TGF-β activity contributes to the phenotype.
-- **MCQ** `mol-marfan-elastin:mcq2` · identification → **recognition** · difficulty 3 · `bc-collagen.marfan`
+- **MCQ** **CORE** · `mol-marfan-elastin:mcq2` · identification → **recognition** · difficulty 3 · `bc-collagen.marfan`
   - A 19-year-old, 203 cm tall with long limbs and a sunken sternum, has myopia and dislocated lenses. A mid-systolic click is heard. Echocardiography shows dilatation of the aorta at the sinuses of Valsalva. His father died suddenly at 40. What is the most likely inheritance and gene?
   - ◻️ A. X-linked, ATP7A — _Menkes disease presents in infancy with neurodegeneration and kinky hair._
   - ◻️ B. Autosomal dominant, COL3A1 — _Vascular EDS causes thin skin and arterial or bowel rupture, not lens dislocation and tall stature._
@@ -1093,7 +1150,7 @@ Objectives: `bc-collagen.marfan`, `bc-collagen.elastin`
   - ◻️ D. Autosomal dominant, COL2A1 — _Stickler syndrome causes myopia and retinal detachment, but not this skeletal overgrowth and aortic root dilation._
   - ◻️ E. Autosomal dominant, FGFR3 — _FGFR3 activation causes achondroplasia (short stature)._
   - Explanation: Long limbs, pectus, myopia and ectopia lentis, mitral valve prolapse and aortic root dilation = Marfan syndrome (AD, FBN1).
-- **MCQ** `mol-marfan-elastin:mcq3` · mechanism → **mechanism** · difficulty 3 · `bc-collagen.elastin`
+- **MCQ** **CORE** · `mol-marfan-elastin:mcq3` · mechanism → **mechanism** · difficulty 3 · `bc-collagen.elastin`
   - Which step starts the formation of elastin cross-links, and which cofactor does its enzyme require?
   - ◻️ A. Proline hydroxylation by prolyl hydroxylase (vitamin C) — _This stabilizes the collagen triple helix; it does not start elastin cross-linking._
   - ◻️ B. Formation of disulfide bonds by protein disulfide isomerase — _Elastin cross-links are lysine-derived, not disulfides._
@@ -1101,7 +1158,7 @@ Objectives: `bc-collagen.marfan`, `bc-collagen.elastin`
   - ◻️ D. Addition of mannose-6-phosphate — _Mannose-6-phosphate targets lysosomal enzymes._
   - ✅ E. Lysine → allysine by lysyl oxidase (copper)
   - Explanation: Lysyl oxidases (copper-dependent) convert lysine to allysine, which condenses into elastin cross-links.
-- **MCQ** `mol-marfan-elastin:mcq4` · comparison → **application** · difficulty 4 · `bc-collagen.marfan`
+- **MCQ** **APPLICATION** · `mol-marfan-elastin:mcq4` · comparison → **application** · difficulty 4 · `bc-collagen.marfan`
   - A young adult has an aortic dissection. Which combination of findings favors Marfan syndrome over vascular Ehlers–Danlos syndrome?
   - ◻️ A. Extensive bruising with a characteristic thin-lipped face — _Bruising and these facial features are typical of vascular EDS._
   - ◻️ B. Uterine rupture during a previous pregnancy — _Uterine fragility is a vascular EDS feature._
@@ -1110,23 +1167,36 @@ Objectives: `bc-collagen.marfan`, `bc-collagen.elastin`
   - ✅ E. Long limbs, pectus, ectopia lentis, aortic root dilation
   - Steps: (1) Aortic dissection occurs in both disorders (2) Skeletal overgrowth, ectopia lentis and aortic root (sinus) dilation favor Marfan (3) Thin skin, bruising and bowel/uterine/medium-artery rupture favor vascular EDS
   - Explanation: Marfan: skeletal overgrowth, lens and aortic root disease. Vascular EDS: thin skin, bruising, arterial, bowel and uterine fragility.
-- **True/false** `mol-marfan-elastin:tf1` · recall → **recognition** · difficulty 2 · `bc-collagen.marfan`: Every person with Marfan syndrome has dislocated lenses. → **False**. Ectopia lentis occurs in about 60% of affected individuals; myopia is even more common.
-- **True/false** `mol-marfan-elastin:tf2` · recall → **recognition** · difficulty 2 · `bc-collagen.elastin`: Lysyl oxidase, which starts elastin cross-linking, is a copper-dependent enzyme. → **True**. Correct: copper deficiency (e.g. Menkes disease) therefore weakens elastic tissue.
-- **Crossword** `mol-marfan-elastin:clue1` · recall → **recognition** · difficulty 1 · `bc-collagen.marfan`: Microfibril protein defective in Marfan syndrome → **FIBRILLIN**
-- **Crossword** `mol-marfan-elastin:clue2` · recall → **recognition** · difficulty 2 · `bc-collagen.elastin`: Aldehyde formed from lysine by lysyl oxidase during elastin cross-linking → **ALLYSINE**
+- **True/false** **CORE** · `mol-marfan-elastin:tf1` · recall → **recognition** · difficulty 2 · `bc-collagen.marfan`: Every person with Marfan syndrome has dislocated lenses. → **False**. Ectopia lentis occurs in about 60% of affected individuals; myopia is even more common.
+- **True/false** **CORE** · `mol-marfan-elastin:tf2` · recall → **recognition** · difficulty 2 · `bc-collagen.elastin`: Lysyl oxidase, which starts elastin cross-linking, is a copper-dependent enzyme. → **True**. Correct: copper deficiency (e.g. Menkes disease) therefore weakens elastic tissue.
+- **Crossword** **CORE** · `mol-marfan-elastin:clue1` · recall → **recognition** · difficulty 1 · `bc-collagen.marfan`: Microfibril protein defective in Marfan syndrome → **FIBRILLIN**
+- **Crossword** **SPECIALIST** · `mol-marfan-elastin:clue2` · recall → **recognition** · difficulty 2 · `bc-collagen.elastin`: Aldehyde formed from lysine by lysyl oxidase during elastin cross-linking → **ALLYSINE**
 
 ---
 
+## Items flagged SPECIALIST (excluded from gameplay pending editorial review)
+
+- `mol-antimetabolites:mcq4` — Ternary-complex stabilization by leucovorin is beyond expected Step 1 depth; Step 1 needs only DHFR bypass (rescue) for methotrexate.
+- `mol-ada-deficiency:mcq3` — TREC screening and second-tier tandem mass spectrometry are newborn-screening detail beyond Step 1.
+- `mol-single-strand-repair:mcq5` — XP variant (polymerase η) is a niche subtype beyond Step 1.
+- `mol-lynch:mcq3` — Distinguishing sporadic MLH1-hypermethylated MSI cancer from Lynch syndrome is clinical pathology detail beyond typical Step 1 depth.
+- `mol-double-strand-repair:tf1` — RAD51 strand exchange is molecular detail beyond Step 1.
+- `mol-double-strand-repair:clue2` — Artemis is a niche SCID gene name; the Step 1 point is NHEJ defects → SCID.
+- `mol-ataxia-telangiectasia:mcq1` — MRN-versus-ATM step detail is beyond Step 1; replaced by core mcq4/mcq5.
+- `mol-ataxia-telangiectasia:mcq3` — MRN/NBS1 cell-line interpretation is postgraduate depth; replaced by core mcq5.
+- `mol-menkes:mcq3` — Tissue copper-distribution interpretation is beyond Step 1; replaced by core mcq4 (Menkes vs Wilson).
+- `mol-marfan-elastin:clue2` — Allysine is an intermediate name beyond Step 1; the Step 1 point is copper-dependent lysyl oxidase.
+
 ## Medical Connections: complete puzzles (16 tiles, verified single solution against the global catalog)
 
-### DNA repair machinery · `cx:dna-repair-machinery` · identification → **recognition** · difficulty 3 · `bc-dna-repair.ssb-pathways`, `bc-dna-repair.lynch`, `bc-dna-repair.dsb-pathways`, `bc-dna-repair.nhej-scid`, `bc-dna-repair.xp`, `bc-dna-repair.mutyh`
+### DNA repair machinery · **CORE** · `cx:dna-repair-machinery` · identification → **recognition** · difficulty 3 · `bc-dna-repair.ssb-pathways`, `bc-dna-repair.lynch`, `bc-dna-repair.dsb-pathways`, `bc-dna-repair.nhej-scid`, `bc-dna-repair.xp`, `bc-dna-repair.mutyh`
 
 - **Nucleotide excision repair** (tier 2): XPC, ERCC2, Thymine dimer, Xeroderma pigmentosum — NER removes bulky UV lesions such as thymine dimers; XPC and ERCC2 (and other XP genes) defects cause xeroderma pigmentosum.
 - **Base excision repair** (tier 3): Uracil-DNA glycosylase, MUTYH, AP endonuclease, 8-Oxoguanine — BER removes single damaged bases (uracil, 8-oxoguanine mispairs) via glycosylases and AP endonuclease.
 - **Mismatch repair** (tier 1): MLH1, MSH2, MSH6, PMS2 — Mismatch repair genes; germline variants cause Lynch syndrome.
 - **Nonhomologous end joining** (tier 4): Ku70, DNA-PKcs, Artemis, DNA ligase IV — NHEJ rejoins double-strand breaks and V(D)J segments; defects cause radiosensitive SCID.
 
-Strict check (any 4 tiles inside any of 90 catalog categories, the puzzle's groups or its decoys): **1** solution(s).
+Strict check (any 4 tiles inside any of 102 catalog categories, the puzzle's groups or its decoys): **1** solution(s).
 Manual audit with broad categories (a group is defensible only if a category covers exactly its four tiles; the last four may share any category): **1** defensible solution(s).
 Red herrings on the board (cannot complete an alternative board): Single-strand excision repair (NER or BER) (8 tiles); Cancer predisposition (gene or syndrome) (8 tiles); Autosomal recessive disease genes (6 tiles); DNA repair (any pathway) (16 tiles).
 
@@ -1144,14 +1214,14 @@ Red herrings on the board (cannot complete an alternative board): Single-strand 
 
 </details>
 
-### Nucleotides and the drugs that target them · `cx:nucleotides-and-drugs` · identification → **recognition** · difficulty 2 · `bc-nucleotide-synthesis.structure`, `bc-nucleotide-synthesis.drug-targets`, `bc-purine-salvage.pathway`
+### Nucleotides and the drugs that target them · **CORE** · `cx:nucleotides-and-drugs` · identification → **recognition** · difficulty 2 · `bc-nucleotide-synthesis.structure`, `bc-nucleotide-synthesis.drug-targets`, `bc-purine-salvage.pathway`
 
 - **Purine rings** (tier 1): IMP, Guanine, Hypoxanthine, Xanthine — Two-ring purines: IMP is the first purine nucleotide made de novo; hypoxanthine and xanthine are purine breakdown intermediates.
 - **Pyrimidine rings** (tier 2): Cytosine, Uracil, Thymine, Orotate — One-ring bases; orotate is the pyrimidine ring made before attachment to PRPP.
 - **Inhibit an enzyme of nucleotide synthesis** (tier 3): Methotrexate, Hydroxyurea, Leflunomide, Mycophenolate — DHFR, ribonucleotide reductase, dihydroorotate dehydrogenase and IMP dehydrogenase.
 - **Purine salvage or breakdown enzymes** (tier 4): HGPRT, Xanthine oxidase, Adenosine deaminase, Purine nucleoside phosphorylase — HGPRT salvages; ADA, PNP and xanthine oxidase break purines down toward uric acid.
 
-Strict check (any 4 tiles inside any of 90 catalog categories, the puzzle's groups or its decoys): **1** solution(s).
+Strict check (any 4 tiles inside any of 102 catalog categories, the puzzle's groups or its decoys): **1** solution(s).
 Manual audit with broad categories (a group is defensible only if a category covers exactly its four tiles; the last four may share any category): **1** defensible solution(s).
 Red herrings on the board (cannot complete an alternative board): Purines or pyrimidines (any) (8 tiles); Not found in DNA (5 tiles).
 
@@ -1167,14 +1237,14 @@ Red herrings on the board (cannot complete an alternative board): Purines or pyr
 
 </details>
 
-### Where each collagen lives · `cx:collagen-types` · identification → **recognition** · difficulty 3 · `bc-collagen.types`, `bc-collagen.eds`
+### Where each collagen lives · **CORE** · `cx:collagen-types` · identification → **recognition** · difficulty 3 · `bc-collagen.types`, `bc-collagen.eds`
 
 - **Type I collagen** (tier 1): Bone, Tendon, Sclera, Osteogenesis imperfecta — Type I is abundant in bone, skin, tendon and sclera; defective in osteogenesis imperfecta.
 - **Type II collagen** (tier 2): Vitreous humor, Nucleus pulposus, Growth plate, Stickler syndrome — Type II is found in cartilage, growth plates, vitreous and nucleus pulposus; COL2A1 causes Stickler syndrome.
 - **Type III collagen** (tier 3): Blood vessel wall, Intestinal wall, Vascular Ehlers–Danlos syndrome, COL3A1 — Type III is prominent in vessel and intestinal walls; COL3A1 defects cause vascular EDS.
 - **Type IV collagen** (tier 4): Glomerular basement membrane, Lens capsule, Alport syndrome, COL4A5 — Type IV forms basement membranes in kidney, eye and inner ear; COL4A5 causes X-linked Alport syndrome.
 
-Strict check (any 4 tiles inside any of 90 catalog categories, the puzzle's groups or its decoys): **1** solution(s).
+Strict check (any 4 tiles inside any of 102 catalog categories, the puzzle's groups or its decoys): **1** solution(s).
 Manual audit with broad categories (a group is defensible only if a category covers exactly its four tiles; the last four may share any category): **1** defensible solution(s).
 Red herrings on the board (cannot complete an alternative board): Inherited syndromes (4 tiles); Skeletal tissues (4 tiles); Contain type I collagen (in addition to other types) (5 tiles); Tissues or structures (any) (10 tiles).
 

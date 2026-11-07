@@ -1,4 +1,4 @@
-# Biochemistry Batch 2 — Molecular biochemistry (continued): medical review packet (revision 3)
+# Biochemistry Batch 2 — Molecular biochemistry (continued): medical review packet (revision 4)
 
 Status: **draft, AI-drafted, not medically reviewed.** Reviewer: mark each concept approved, needs changes or rejected, with notes. A citation alone is not approval.
 
@@ -11,6 +11,8 @@ Status: **draft, AI-drafted, not medically reviewed.** Reviewer: mark each conce
 - Mastery: true/false and crossword answers count as weaker recognition evidence; repeating an item within 7 days adds little; “strong” needs at least 3 distinct items, including a mechanism or application item.
 - Connections puzzles are checked for a single solution against the **global category catalog** (every bank category, every curated category and decoy, and a catalog of medically plausible groupings such as inheritance patterns, drug classes and toxin sources), not only against their own decoys. The daily builder applies the same check to every board it generates.
 
+- **Step 1 relevance.** Every item is labelled **CORE** (classic high-yield knowledge), **APPLICATION** (high-yield concepts used in interpretation or multistep reasoning) or **SPECIALIST** (beyond expected Step 1 depth). Specialist items are kept for editorial review but are never served in games and do not count toward coverage. Target mix for standard content: about 80% core / 20% application (a design target, not an exam weight).
+
 ## Summary
 
 | Measure | Value |
@@ -18,16 +20,18 @@ Status: **draft, AI-drafted, not medically reviewed.** Reviewer: mark each conce
 | Concepts | 20 |
 | Objectives taught | 26 |
 | Facts verified / awaiting direct confirmation | 104 / 0 |
-| **Playable learning items (total)** | **119** |
-| — MCQs / true-false / crossword clues | 45 / 28 / 32 |
+| **Playable learning items (total)** | **110** |
+| — MCQs / true-false / crossword clues | 46 / 28 / 32 |
 | — Mechanism Lab sequences / Match Up sets | 5 / 6 |
 | — Complete Connections puzzles / Mystery Patient cases | 1 / 2 |
 | Connections category-bank entries (builder input, **not** playable alone; excluded from item counts and coverage) | 3 |
-| Playable items: recall | 72 |
+| Step 1 relevance of items: CORE / APPLICATION / SPECIALIST | 89 / 21 / 10 |
+| Objectives: CORE / APPLICATION / SPECIALIST | 12 / 14 / 0 |
+| Playable items: recall | 68 |
 | Playable items: identification | 2 |
-| Playable items: mechanism | 21 |
-| Playable items: interpretation | 7 |
-| Playable items: prediction | 7 |
+| Playable items: mechanism | 19 |
+| Playable items: interpretation | 6 |
+| Playable items: prediction | 5 |
 | Playable items: comparison | 5 |
 | Playable items: multistep | 5 |
 
@@ -65,7 +69,7 @@ Objectives: `bc-chromatin-structure.nucleosome`, `bc-chromatin-structure.epigene
 
 **Takeaway.** Acetylation = open and active; CpG methylation + deacetylation = closed and silent; the sequence is unchanged.
 
-- **MCQ** `mol-chromatin:mcq1` · mechanism → **mechanism** · difficulty 3 · `bc-chromatin-structure.epigenetic`
+- **MCQ** **CORE** · `mol-chromatin:mcq1` · mechanism → **mechanism** · difficulty 3 · `bc-chromatin-structure.epigenetic`
   - A drug that inhibits histone deacetylases is added to cultured cells. What is the expected direct effect on chromatin at many promoters?
   - ◻️ A. The DNA sequence of silenced genes is altered — _Epigenetic changes alter packaging and protein binding, not the base sequence._
   - ◻️ B. CpG islands become more heavily methylated — _HDAC inhibition acts on histone acetyl groups; it does not add methyl groups to cytosines._
@@ -73,7 +77,7 @@ Objectives: `bc-chromatin-structure.nucleosome`, `bc-chromatin-structure.epigene
   - ✅ D. Histone tails stay acetylated and chromatin opens
   - ◻️ E. Nucleosomes are permanently removed from DNA — _Acetylation loosens DNA–histone contact; nucleosomes remain and can be re-compacted._
   - Explanation: Deacetylases remove acetyl groups; blocking them leaves tails acetylated, less positive and loosely bound to DNA, so chromatin opens.
-- **MCQ** `mol-chromatin:mcq2` · recall → **recognition** · difficulty 1 · `bc-chromatin-structure.nucleosome`
+- **MCQ** **CORE** · `mol-chromatin:mcq2` · recall → **recognition** · difficulty 1 · `bc-chromatin-structure.nucleosome`
   - Which description fits heterochromatin?
   - ◻️ A. Chromatin marked mainly by histone acetylation — _Acetylation is a mark of open, active chromatin, not heterochromatin._
   - ✅ B. Condensed, gene-poor and transcriptionally silent
@@ -81,10 +85,10 @@ Objectives: `bc-chromatin-structure.nucleosome`, `bc-chromatin-structure.epigene
   - ◻️ D. Open, gene-rich and actively transcribed — _This describes euchromatin._
   - ◻️ E. Loosely packed DNA found only in dividing cells — _Heterochromatin is compact and present in non-dividing cells too._
   - Explanation: Heterochromatin is the compact, silent state; euchromatin is the open, transcribed state.
-- **True/false** `mol-chromatin:tf1` · recall → **recognition** · difficulty 1 · `bc-chromatin-structure.epigenetic`: Acetylation of histone tails tends to loosen chromatin and favor transcription. → **True**. Correct: acetyl groups reduce the positive charge of histones, so they hold the negatively charged DNA less tightly.
-- **True/false** `mol-chromatin:tf2` · recall → **recognition** · difficulty 1 · `bc-chromatin-structure.nucleosome`: Euchromatin is the condensed, transcriptionally inactive form of chromatin. → **False**. That describes heterochromatin; euchromatin is open and transcriptionally accessible.
-- **Crossword** `mol-chromatin:clue1` · recall → **recognition** · difficulty 1 · `bc-chromatin-structure.nucleosome`: Bead of DNA wound around a histone core → **NUCLEOSOME**
-- **Crossword** `mol-chromatin:clue2` · recall → **recognition** · difficulty 2 · `bc-chromatin-structure.nucleosome`: Condensed, transcriptionally silent chromatin → **HETEROCHROMATIN**
+- **True/false** **CORE** · `mol-chromatin:tf1` · recall → **recognition** · difficulty 1 · `bc-chromatin-structure.epigenetic`: Acetylation of histone tails tends to loosen chromatin and favor transcription. → **True**. Correct: acetyl groups reduce the positive charge of histones, so they hold the negatively charged DNA less tightly.
+- **True/false** **CORE** · `mol-chromatin:tf2` · recall → **recognition** · difficulty 1 · `bc-chromatin-structure.nucleosome`: Euchromatin is the condensed, transcriptionally inactive form of chromatin. → **False**. That describes heterochromatin; euchromatin is open and transcriptionally accessible.
+- **Crossword** **CORE** · `mol-chromatin:clue1` · recall → **recognition** · difficulty 1 · `bc-chromatin-structure.nucleosome`: Bead of DNA wound around a histone core → **NUCLEOSOME**
+- **Crossword** **CORE** · `mol-chromatin:clue2` · recall → **recognition** · difficulty 2 · `bc-chromatin-structure.nucleosome`: Condensed, transcriptionally silent chromatin → **HETEROCHROMATIN**
 
 ---
 
@@ -126,7 +130,7 @@ Objectives: `bc-chromatin-structure.epigenetic-disease`
 
 **Takeaway.** Silencing can cause disease as surely as deletion: ask which copy is active, and whether it has been lost or turned off.
 
-- **MCQ** `mol-epigenetic-disease:mcq1` · interpretation → **application** · difficulty 4 · `bc-chromatin-structure.epigenetic-disease`
+- **MCQ** **SPECIALIST** · `mol-epigenetic-disease:mcq1` · interpretation → **application** · difficulty 4 · `bc-chromatin-structure.epigenetic-disease`
   - A hypotonic infant with poor feeding has a 15q11–q13 methylation test showing only the maternal pattern. Microarray shows normal chromosome 15 copy number. SNP genotyping of the infant and both parents shows that all informative chromosome 15 markers came from the mother, with no paternal alleles. Which mechanism best explains the results?
   - ◻️ A. An imprinting defect on a paternal chromosome 15 — _An imprinting defect also gives a maternal-only pattern with normal copy number, but a paternal chromosome 15 would be present; here there are no paternal alleles._
   - ◻️ B. Deletion of the paternal 15q11–q13 region — _A deletion would reduce copy number on microarray; this result shows normal copy number._
@@ -135,7 +139,7 @@ Objectives: `bc-chromatin-structure.epigenetic-disease`
   - ◻️ E. Loss of the maternal UBE3A copy — _Loss of maternal UBE3A causes Angelman syndrome and would leave a paternal pattern present._
   - Steps: (1) A maternal-only methylation pattern shows that active paternal 15q11–q13 genes are missing, but not why. (2) Normal copy number rules out a paternal deletion. (3) No paternal alleles on parental SNP genotyping rules out an imprinting defect → maternal uniparental disomy.
   - Explanation: A maternal-only methylation pattern can come from a paternal deletion, maternal uniparental disomy or an imprinting defect. Normal copy number excludes a deletion, and the absence of paternal alleles excludes an imprinting defect, leaving maternal uniparental disomy (Prader–Willi syndrome).
-- **MCQ** `mol-epigenetic-disease:mcq2` · mechanism → **mechanism** · difficulty 3 · `bc-chromatin-structure.epigenetic-disease`
+- **MCQ** **CORE** · `mol-epigenetic-disease:mcq2` · mechanism → **mechanism** · difficulty 3 · `bc-chromatin-structure.epigenetic-disease`
   - Why does a full mutation (more than 200 CGG repeats) in FMR1 cause fragile X syndrome?
   - ◻️ A. The repeat adds a polyglutamine tract to the protein — _CGG repeats in fragile X lie in the 5′ untranslated region and are not translated into polyglutamine; that is the CAG mechanism of Huntington disease._
   - ◻️ B. The repeat prevents X-inactivation of the affected X — _Fragile X silencing is gene-specific methylation, not a failure of X-inactivation._
@@ -143,7 +147,7 @@ Objectives: `bc-chromatin-structure.epigenetic-disease`
   - ◻️ D. The repeat creates a premature stop codon — _The repeat lies upstream of the coding sequence; the problem is that the gene is not transcribed at all._
   - ◻️ E. The repeat deletes the X chromosome — _The chromosome is intact; only the gene is silenced._
   - Explanation: Full-mutation CGG repeats are hypermethylated, the FMR1 promoter becomes heterochromatin and no FMR1 protein is made.
-- **MCQ** `mol-epigenetic-disease:mcq3` · prediction → **application** · difficulty 3 · `bc-chromatin-structure.epigenetic-disease`
+- **MCQ** **APPLICATION** · `mol-epigenetic-disease:mcq3` · prediction → **application** · difficulty 3 · `bc-chromatin-structure.epigenetic-disease`
   - Cells from a person with karyotype 47,XXX are examined. How many Barr bodies are expected per cell, and why?
   - ◻️ A. One, because only one X is ever inactivated — _Inactivation is not limited to one X: every X beyond the first is silenced._
   - ✅ B. Two, because all but one X is inactivated
@@ -152,11 +156,11 @@ Objectives: `bc-chromatin-structure.epigenetic-disease`
   - ◻️ E. None, because extra X chromosomes are lost — _The extra X persists in the karyotype and is inactivated, not lost._
   - Steps: (1) Each cell keeps exactly one active X. (2) Every additional X is condensed into a Barr body. (3) Three X chromosomes − one active = two Barr bodies.
   - Explanation: Dosage compensation keeps one X active and condenses the rest: three X chromosomes → two Barr bodies.
-- **True/false** `mol-epigenetic-disease:tf1` · recall → **recognition** · difficulty 2 · `bc-chromatin-structure.epigenetic-disease`: In Angelman syndrome the disease results from loss of function of the maternal copy of UBE3A in neurons. → **True**. Correct: only the maternal UBE3A is active in neurons, so losing it leaves no active copy.
-- **True/false** `mol-epigenetic-disease:tf2` · recall → **recognition** · difficulty 2 · `bc-chromatin-structure.epigenetic-disease`: In fragile X syndrome, the FMR1 protein is produced but contains an expanded amino acid repeat. → **False**. The full mutation silences FMR1 by methylation, so little or no protein is made.
-- **Crossword** `mol-epigenetic-disease:clue1` · recall → **recognition** · difficulty 2 · `bc-chromatin-structure.epigenetic-disease`: Parent-of-origin silencing of one gene copy → **IMPRINTING**
-- **Crossword** `mol-epigenetic-disease:clue2` · recall → **recognition** · difficulty 2 · `bc-chromatin-structure.epigenetic-disease`: Condensed inactive X seen in a cell nucleus → **BARRBODY**
-- **Match Up** `match:epigenetic-silencing` · recall → **recognition** · difficulty 2 · `bc-chromatin-structure.epigenetic`, `bc-chromatin-structure.epigenetic-disease`: Silenced, not deleted. Match each finding to its epigenetic explanation.
+- **True/false** **CORE** · `mol-epigenetic-disease:tf1` · recall → **recognition** · difficulty 2 · `bc-chromatin-structure.epigenetic-disease`: In Angelman syndrome the disease results from loss of function of the maternal copy of UBE3A in neurons. → **True**. Correct: only the maternal UBE3A is active in neurons, so losing it leaves no active copy.
+- **True/false** **CORE** · `mol-epigenetic-disease:tf2` · recall → **recognition** · difficulty 2 · `bc-chromatin-structure.epigenetic-disease`: In fragile X syndrome, the FMR1 protein is produced but contains an expanded amino acid repeat. → **False**. The full mutation silences FMR1 by methylation, so little or no protein is made.
+- **Crossword** **CORE** · `mol-epigenetic-disease:clue1` · recall → **recognition** · difficulty 2 · `bc-chromatin-structure.epigenetic-disease`: Parent-of-origin silencing of one gene copy → **IMPRINTING**
+- **Crossword** **CORE** · `mol-epigenetic-disease:clue2` · recall → **recognition** · difficulty 2 · `bc-chromatin-structure.epigenetic-disease`: Condensed inactive X seen in a cell nucleus → **BARRBODY**
+- **Match Up** **CORE** · `match:epigenetic-silencing` · recall → **recognition** · difficulty 2 · `bc-chromatin-structure.epigenetic`, `bc-chromatin-structure.epigenetic-disease`: Silenced, not deleted. Match each finding to its epigenetic explanation.
   - Barr body ↔ Condensed, inactivated extra X chromosome
   - Prader–Willi syndrome ↔ No active paternal 15q11–q13 genes
   - Angelman syndrome ↔ No active maternal UBE3A in neurons
@@ -200,7 +204,7 @@ Objectives: `bc-nucleotide-synthesis.otc-vs-orotic`
 
 **Takeaway.** Orotic aciduria: check ammonia (OTC) and the blood count (UMP synthase).
 
-- **MCQ** `mol-otc-vs-orotic:mcq1` · comparison → **application** · difficulty 4 · `bc-nucleotide-synthesis.otc-vs-orotic`
+- **MCQ** **APPLICATION** · `mol-otc-vs-orotic:mcq1` · comparison → **application** · difficulty 4 · `bc-nucleotide-synthesis.otc-vs-orotic`
   - Two infants both have raised urinary orotic acid. Infant A: plasma ammonia 260 µmol/L after a protein-rich feed, hemoglobin and MCV normal. Infant B: ammonia normal, hemoglobin 7.9 g/dL, MCV 112 fL, normal B12 and folate. Which pairing is correct?
   - ◻️ A. Both: hereditary orotic aciduria of different severity — _Hereditary orotic aciduria does not cause hyperammonemia, so it cannot explain infant A._
   - ◻️ B. A: OTC deficiency; B: folate deficiency — _Folate is normal in infant B, and folate deficiency does not raise urinary orotic acid._
@@ -209,7 +213,7 @@ Objectives: `bc-nucleotide-synthesis.otc-vs-orotic`
   - ✅ E. A: OTC deficiency; B: UMP synthase deficiency
   - Steps: (1) Infant A: hyperammonemia after protein = urea cycle block distal to carbamoyl phosphate. (2) Excess carbamoyl phosphate is diverted into pyrimidine synthesis → orotic acid; UMP synthase is intact, so megaloblastic anemia is not expected → OTC deficiency. (3) Infant B: normal ammonia + megaloblastic anemia not due to B12/folate → orotate cannot become UMP → UMP synthase deficiency.
   - Explanation: Orotic acid + hyperammonemia = urea cycle overflow (OTC). Orotic acid + megaloblastic anemia with normal B12/folate = UMP synthase deficiency.
-- **MCQ** `mol-otc-vs-orotic:mcq2` · multistep → **application** · difficulty 4 · `bc-nucleotide-synthesis.otc-vs-orotic`
+- **MCQ** **APPLICATION** · `mol-otc-vs-orotic:mcq2` · multistep → **application** · difficulty 4 · `bc-nucleotide-synthesis.otc-vs-orotic`
   - A 3-year-old girl has episodes of vomiting and drowsiness after high-protein meals. Ammonia is high and urinary orotic acid is raised; red cell UMP synthase activity is normal. Why is orotic acid raised?
   - ◻️ A. Folate deficiency blocks thymidylate synthesis — _Folate deficiency does not raise urinary orotic acid or ammonia._
   - ◻️ B. Purine salvage fails and diverts PRPP to orotate — _Failed purine salvage raises uric acid, not orotic acid with hyperammonemia._
@@ -218,8 +222,8 @@ Objectives: `bc-nucleotide-synthesis.otc-vs-orotic`
   - ◻️ E. Ammonia directly inhibits orotate phosphoribosyltransferase — _Enzyme activity is normal; the orotate comes from overproduction, not a blocked enzyme._
   - Steps: (1) Protein-triggered hyperammonemia = urea cycle block. (2) Normal UMP synthase excludes hereditary orotic aciduria. (3) Unused mitochondrial carbamoyl phosphate overflows into cytosolic pyrimidine synthesis → orotic acid.
   - Explanation: A partial urea cycle block (OTC deficiency, which can present in heterozygous girls) leaves carbamoyl phosphate unused; it overflows into the pyrimidine pathway.
-- **True/false** `mol-otc-vs-orotic:tf1` · recall → **recognition** · difficulty 2 · `bc-nucleotide-synthesis.otc-vs-orotic`: Hereditary orotic aciduria typically presents with hyperammonemia after protein feeds. → **False**. Ammonia is normal in UMP synthase deficiency; hyperammonemia with orotic aciduria suggests a urea cycle defect such as OTC deficiency.
-- **Crossword** `mol-otc-vs-orotic:clue1` · recall → **recognition** · difficulty 2 · `bc-nucleotide-synthesis.otc-vs-orotic`: X-linked urea cycle enzyme whose deficiency raises both ammonia and orotic acid (abbr.) → **OTC**
+- **True/false** **CORE** · `mol-otc-vs-orotic:tf1` · recall → **recognition** · difficulty 2 · `bc-nucleotide-synthesis.otc-vs-orotic`: Hereditary orotic aciduria typically presents with hyperammonemia after protein feeds. → **False**. Ammonia is normal in UMP synthase deficiency; hyperammonemia with orotic aciduria suggests a urea cycle defect such as OTC deficiency.
+- **Crossword** **CORE** · `mol-otc-vs-orotic:clue1` · recall → **recognition** · difficulty 2 · `bc-nucleotide-synthesis.otc-vs-orotic`: X-linked urea cycle enzyme whose deficiency raises both ammonia and orotic acid (abbr.) → **OTC**
 
 ---
 
@@ -256,7 +260,7 @@ Objectives: `bc-purine-salvage.xo-inhibitors`
 
 **Takeaway.** Xanthine oxidase inhibitor + azathioprine/6-MP = thiopurine toxicity (cytopenias).
 
-- **MCQ** `mol-xo-inhibitors:mcq1` · prediction → **application** · difficulty 4 · `bc-purine-salvage.xo-inhibitors`
+- **MCQ** **APPLICATION** · `mol-xo-inhibitors:mcq1` · prediction → **application** · difficulty 4 · `bc-purine-salvage.xo-inhibitors`
   - A kidney transplant recipient on azathioprine develops gout and is started on allopurinol at the usual dose. Three weeks later platelets are 22,000/mm³ and neutrophils 600/mm³. What explains the cytopenias?
   - ✅ A. Less 6-MP metabolism, so more thioguanine nucleotides
   - ◻️ B. Xanthine stones causing acute kidney injury — _Kidney injury would not explain neutropenia and thrombocytopenia._
@@ -265,7 +269,7 @@ Objectives: `bc-purine-salvage.xo-inhibitors`
   - ◻️ E. Allopurinol hypersensitivity destroying marrow cells — _Allopurinol hypersensitivity causes rash and organ injury; isolated predictable cytopenias with a thiopurine point to a metabolic interaction._
   - Steps: (1) Azathioprine → 6-mercaptopurine, which xanthine oxidase metabolizes. (2) Allopurinol blocks xanthine oxidase, so 6-MP exposure rises and more is converted to thioguanine nucleotides. (3) Thioguanine nucleotides suppress rapidly dividing marrow → neutropenia and thrombocytopenia.
   - Explanation: Xanthine oxidase metabolizes 6-mercaptopurine; blocking it raises 6-MP exposure and myelotoxic thioguanine nucleotides.
-- **MCQ** `mol-xo-inhibitors:mcq2` · prediction → **application** · difficulty 4 · `bc-purine-salvage.xo-inhibitors`
+- **MCQ** **SPECIALIST** · `mol-xo-inhibitors:mcq2` · prediction → **application** · difficulty 4 · `bc-purine-salvage.xo-inhibitors`
   - A boy with HGPRT deficiency treated with high-dose allopurinol develops new kidney stones that are radiolucent and not composed of uric acid. Which compound most likely forms them?
   - ◻️ A. Struvite — _Struvite stones are associated with urease-producing infections._
   - ◻️ B. Calcium oxalate — _Calcium oxalate stones are radiopaque and unrelated to xanthine oxidase blockade._
@@ -274,8 +278,8 @@ Objectives: `bc-purine-salvage.xo-inhibitors`
   - ✅ E. Xanthine
   - Steps: (1) HGPRT deficiency → large purine load reaches the degradation pathway. (2) Allopurinol blocks xanthine → urate. (3) Substrate xanthine accumulates and precipitates as stones.
   - Explanation: Blocking xanthine oxidase in massive purine overproduction lets xanthine accumulate, which is poorly soluble and can form stones.
-- **True/false** `mol-xo-inhibitors:tf1` · recall → **recognition** · difficulty 2 · `bc-purine-salvage.xo-inhibitors`: Febuxostat lowers urate by inhibiting xanthine oxidase, although, unlike allopurinol, it is not a purine analog. → **True**. Correct: febuxostat is a non-purine, selective xanthine oxidase inhibitor.
-- **Crossword** `mol-xo-inhibitors:clue1` · recall → **recognition** · difficulty 2 · `bc-purine-salvage.xo-inhibitors`: Non-purine xanthine oxidase inhibitor for gout → **FEBUXOSTAT**
+- **True/false** **CORE** · `mol-xo-inhibitors:tf1` · recall → **recognition** · difficulty 2 · `bc-purine-salvage.xo-inhibitors`: Febuxostat lowers urate by inhibiting xanthine oxidase, although, unlike allopurinol, it is not a purine analog. → **True**. Correct: febuxostat is a non-purine, selective xanthine oxidase inhibitor.
+- **Crossword** **CORE** · `mol-xo-inhibitors:clue1` · recall → **recognition** · difficulty 2 · `bc-purine-salvage.xo-inhibitors`: Non-purine xanthine oxidase inhibitor for gout → **FEBUXOSTAT**
 
 ---
 
@@ -312,7 +316,7 @@ Objectives: `bc-replication.enzymes`, `bc-replication.strands`
 
 **Takeaway.** Polymerase needs a primer and works 5′→3′: that explains primase, Okazaki fragments, primer removal and ligase.
 
-- **MCQ** `mol-replication:mcq1` · mechanism → **mechanism** · difficulty 3 · `bc-replication.enzymes`
+- **MCQ** **CORE** · `mol-replication:mcq1` · mechanism → **mechanism** · difficulty 3 · `bc-replication.enzymes`
   - A bacterial strain carries a DNA polymerase III mutation that abolishes its 3′→5′ exonuclease activity but leaves polymerization intact. What is the main consequence?
   - ◻️ A. Replication can no longer begin at the origin — _Initiation depends on helicase and primase, not proofreading._
   - ✅ B. Misincorporated bases are not removed, so mutation rate rises
@@ -320,7 +324,7 @@ Objectives: `bc-replication.enzymes`, `bc-replication.strands`
   - ◻️ D. Supercoiling ahead of the fork accumulates — _Relieving supercoils is the job of topoisomerases._
   - ◻️ E. RNA primers can no longer be removed from Okazaki fragments — _Primer removal in bacteria is a 5′→3′ exonuclease function of DNA polymerase I, not pol III proofreading._
   - Explanation: The 3′→5′ exonuclease is proofreading; without it, wrong bases stay in the new strand and the mutation rate rises (a mutator phenotype).
-- **MCQ** `mol-replication:mcq2` · mechanism → **mechanism** · difficulty 2 · `bc-replication.strands`
+- **MCQ** **CORE** · `mol-replication:mcq2` · mechanism → **mechanism** · difficulty 2 · `bc-replication.strands`
   - Why is the lagging strand synthesized as Okazaki fragments?
   - ✅ A. Polymerase extends only 5′→3′, away from the fork on that strand
   - ◻️ B. The lagging strand template is made of RNA — _Both templates are DNA; RNA is present only in the primers._
@@ -328,12 +332,12 @@ Objectives: `bc-replication.enzymes`, `bc-replication.strands`
   - ◻️ D. Ligase cuts the new strand to relieve torsional strain — _Ligase joins fragments; topoisomerases relieve strain._
   - ◻️ E. Helicase unwinds the lagging strand in short bursts — _Helicase unwinds both strands together; the direction of synthesis causes the fragments._
   - Explanation: On the lagging template, 5′→3′ synthesis runs away from the fork, so it must restart repeatedly from new primers.
-- **True/false** `mol-replication:tf1` · recall → **recognition** · difficulty 1 · `bc-replication.strands`: Eukaryotic chromosomes are replicated from many origins, whereas the E. coli chromosome has a single origin. → **True**. Correct: multiple origins let large eukaryotic genomes replicate in reasonable time.
-- **True/false** `mol-replication:tf2` · recall → **recognition** · difficulty 1 · `bc-replication.enzymes`: Primase synthesizes a short DNA primer that DNA polymerase extends. → **False**. Primase makes an RNA primer; it is later removed and replaced with DNA.
-- **Crossword** `mol-replication:clue1` · recall → **recognition** · difficulty 1 · `bc-replication.strands`: Name for the short fragments of the lagging strand → **OKAZAKI**
-- **Crossword** `mol-replication:clue2` · recall → **recognition** · difficulty 1 · `bc-replication.enzymes`: Enzyme that lays down an RNA starting point for DNA polymerase → **PRIMASE**
-- **Crossword** `mol-replication:clue3` · recall → **recognition** · difficulty 1 · `bc-replication.enzymes`: Seals the nicks between lagging-strand fragments → **LIGASE**
-- **Mechanism Lab** `seq:lagging-strand` · mechanism → **mechanism** · difficulty 2 · `bc-replication.enzymes`, `bc-replication.strands`: Build a lagging strand. Put the events at a bacterial replication fork in order, from opening the helix to a sealed lagging strand.
+- **True/false** **CORE** · `mol-replication:tf1` · recall → **recognition** · difficulty 1 · `bc-replication.strands`: Eukaryotic chromosomes are replicated from many origins, whereas the E. coli chromosome has a single origin. → **True**. Correct: multiple origins let large eukaryotic genomes replicate in reasonable time.
+- **True/false** **CORE** · `mol-replication:tf2` · recall → **recognition** · difficulty 1 · `bc-replication.enzymes`: Primase synthesizes a short DNA primer that DNA polymerase extends. → **False**. Primase makes an RNA primer; it is later removed and replaced with DNA.
+- **Crossword** **CORE** · `mol-replication:clue1` · recall → **recognition** · difficulty 1 · `bc-replication.strands`: Name for the short fragments of the lagging strand → **OKAZAKI**
+- **Crossword** **CORE** · `mol-replication:clue2` · recall → **recognition** · difficulty 1 · `bc-replication.enzymes`: Enzyme that lays down an RNA starting point for DNA polymerase → **PRIMASE**
+- **Crossword** **CORE** · `mol-replication:clue3` · recall → **recognition** · difficulty 1 · `bc-replication.enzymes`: Seals the nicks between lagging-strand fragments → **LIGASE**
+- **Mechanism Lab** **CORE** · `seq:lagging-strand` · mechanism → **mechanism** · difficulty 2 · `bc-replication.enzymes`, `bc-replication.strands`: Build a lagging strand. Put the events at a bacterial replication fork in order, from opening the helix to a sealed lagging strand.
   1. Helicase separates the parental strands
   2. Single-strand binding proteins keep the strands apart
   3. Primase lays down a short RNA primer
@@ -341,7 +345,7 @@ Objectives: `bc-replication.enzymes`, `bc-replication.strands`
   5. DNA polymerase I removes the RNA primer and fills the gap with DNA
   6. DNA ligase seals the nick between fragments
   - Polymerase needs a primer and works only 5′→3′, so the lagging strand is made in primed fragments whose RNA is later replaced and whose ends are joined by ligase.
-- **Match Up** `match:replication-enzymes` · recall → **recognition** · difficulty 1 · `bc-replication.enzymes`: Replication crew. Match each replication protein to its job.
+- **Match Up** **CORE** · `match:replication-enzymes` · recall → **recognition** · difficulty 1 · `bc-replication.enzymes`: Replication crew. Match each replication protein to its job.
   - Helicase ↔ Separates the two strands
   - Single-strand binding protein ↔ Stops separated strands re-annealing
   - Topoisomerase ↔ Relieves over-winding ahead of the fork
@@ -385,7 +389,7 @@ Objectives: `bc-replication.topo-drugs`
 
 **Takeaway.** Topo I: “-tecan”. Topo II: etoposide/teniposide. Gyrase/topo IV: fluoroquinolones.
 
-- **MCQ** `mol-topoisomerase-drugs:mcq1` · identification → **recognition** · difficulty 2 · `bc-replication.topo-drugs`
+- **MCQ** **CORE** · `mol-topoisomerase-drugs:mcq1` · identification → **recognition** · difficulty 2 · `bc-replication.topo-drugs`
   - A drug used for small cell lung cancer binds the complex of DNA and topoisomerase II after the enzyme has cut both strands, preventing resealing. Which other drug shares this target?
   - ✅ A. Teniposide
   - ◻️ B. Dactinomycin — _Dactinomycin intercalates into DNA and blocks transcription._
@@ -393,7 +397,7 @@ Objectives: `bc-replication.topo-drugs`
   - ◻️ D. Irinotecan — _Irinotecan is a camptothecin that inhibits topoisomerase I._
   - ◻️ E. Topotecan — _Topotecan traps topoisomerase I, which cuts only one strand._
   - Explanation: Etoposide and teniposide both trap human topoisomerase II.
-- **MCQ** `mol-topoisomerase-drugs:mcq2` · prediction → **application** · difficulty 3 · `bc-replication.topo-drugs`
+- **MCQ** **APPLICATION** · `mol-topoisomerase-drugs:mcq2` · prediction → **application** · difficulty 3 · `bc-replication.topo-drugs`
   - Cancer cells are treated with irinotecan. Which outcome is expected in cells that enter S phase?
   - ◻️ A. Supercoils relax faster, speeding up replication — _Trapping the enzyme prevents resealing; it does not speed replication._
   - ◻️ B. RNA primers persist because RNase H is inhibited — _Irinotecan does not act on RNase H._
@@ -402,10 +406,10 @@ Objectives: `bc-replication.topo-drugs`
   - ◻️ E. dTMP falls because thymidylate synthase is blocked — _That is the action of 5-fluorouracil._
   - Steps: (1) Irinotecan traps topoisomerase I on DNA after it nicks one strand. (2) The nick cannot be resealed. (3) Moving replication forks collide with the trapped complexes → DNA breaks → replication arrest and cell death.
   - Explanation: Camptothecins keep topoisomerase I covalently bound to a nicked strand; replication converts these lesions into breaks and the cell dies.
-- **True/false** `mol-topoisomerase-drugs:tf1` · recall → **recognition** · difficulty 1 · `bc-replication.topo-drugs`: Fluoroquinolones inhibit bacterial DNA gyrase and topoisomerase IV. → **True**. Correct: these type II enzymes are trapped on DNA, blocking replication and causing double-strand breaks.
-- **Crossword** `mol-topoisomerase-drugs:clue1` · recall → **recognition** · difficulty 2 · `bc-replication.topo-drugs`: Topoisomerase II poison derived from a plant toxin, used in chemotherapy → **ETOPOSIDE**
-- **Crossword** `mol-topoisomerase-drugs:clue2` · recall → **recognition** · difficulty 2 · `bc-replication.topo-drugs`: Bacterial type II topoisomerase blocked by ciprofloxacin → **GYRASE**
-- **Match Up** `match:central-dogma-poisons` · recall → **recognition** · difficulty 2 · `bc-replication.topo-drugs`, `bc-transcription.inhibitors`, `bc-translation.toxins`: Poisons of the central dogma. Match each drug or toxin to its molecular target.
+- **True/false** **CORE** · `mol-topoisomerase-drugs:tf1` · recall → **recognition** · difficulty 1 · `bc-replication.topo-drugs`: Fluoroquinolones inhibit bacterial DNA gyrase and topoisomerase IV. → **True**. Correct: these type II enzymes are trapped on DNA, blocking replication and causing double-strand breaks.
+- **Crossword** **CORE** · `mol-topoisomerase-drugs:clue1` · recall → **recognition** · difficulty 2 · `bc-replication.topo-drugs`: Topoisomerase II poison derived from a plant toxin, used in chemotherapy → **ETOPOSIDE**
+- **Crossword** **CORE** · `mol-topoisomerase-drugs:clue2` · recall → **recognition** · difficulty 2 · `bc-replication.topo-drugs`: Bacterial type II topoisomerase blocked by ciprofloxacin → **GYRASE**
+- **Match Up** **CORE** · `match:central-dogma-poisons` · recall → **recognition** · difficulty 2 · `bc-replication.topo-drugs`, `bc-transcription.inhibitors`, `bc-translation.toxins`: Poisons of the central dogma. Match each drug or toxin to its molecular target.
   - α-Amanitin ↔ Eukaryotic RNA polymerase II
   - Etoposide ↔ Human topoisomerase II
   - Irinotecan ↔ Human topoisomerase I
@@ -447,7 +451,7 @@ Objectives: `bc-replication.telomerase`
 
 **Takeaway.** Telomerase is an RNA-templated DNA polymerase that lets germ, stem and cancer cells keep dividing.
 
-- **MCQ** `mol-telomerase:mcq1` · mechanism → **mechanism** · difficulty 2 · `bc-replication.telomerase`
+- **MCQ** **CORE** · `mol-telomerase:mcq1` · mechanism → **mechanism** · difficulty 2 · `bc-replication.telomerase`
   - Why is telomerase classified as a reverse transcriptase?
   - ◻️ A. It transcribes telomeric DNA into regulatory RNA — _That would be DNA → RNA (ordinary transcription), not reverse transcription._
   - ◻️ B. It proofreads in the 3′→5′ direction — _Proofreading is an exonuclease activity of replicative polymerases._
@@ -455,7 +459,7 @@ Objectives: `bc-replication.telomerase`
   - ✅ D. It copies its own RNA template into DNA
   - ◻️ E. It removes RNA primers from Okazaki fragments — _Primer removal is done by RNase H (eukaryotes) or DNA polymerase I (bacteria)._
   - Explanation: TERT reads the template in telomerase RNA and writes TTAGGG repeats in DNA: RNA → DNA is reverse transcription.
-- **MCQ** `mol-telomerase:mcq2` · comparison → **application** · difficulty 3 · `bc-replication.telomerase`
+- **MCQ** **APPLICATION** · `mol-telomerase:mcq2` · comparison → **application** · difficulty 3 · `bc-replication.telomerase`
   - Cultured adult skin fibroblasts stop dividing after a fixed number of passages, but cells from the same person’s malignant melanoma keep dividing while keeping their telomere length stable. Which difference best explains this?
   - ✅ A. The melanoma cells express high telomerase activity
   - ◻️ B. The fibroblasts have more replication origins — _More origins speed replication; they do not set a limit on the number of divisions._
@@ -464,8 +468,8 @@ Objectives: `bc-replication.telomerase`
   - ◻️ E. The melanoma cells have longer Okazaki fragments — _Okazaki fragment length does not prevent end shortening._
   - Steps: (1) Somatic cells lack telomerase, so telomeres shorten each division. (2) Critically short telomeres stop division. (3) Cancer cells re-express telomerase, maintain telomeres and escape this limit.
   - Explanation: Somatic fibroblasts lack telomerase and their telomeres shorten until senescence; most cancers up-regulate telomerase and maintain telomere length.
-- **True/false** `mol-telomerase:tf1` · recall → **recognition** · difficulty 1 · `bc-replication.telomerase`: Most adult somatic cells have high telomerase activity. → **False**. Telomerase is active in germ cells and adult stem cells; most somatic cells do not make it.
-- **Crossword** `mol-telomerase:clue1` · recall → **recognition** · difficulty 1 · `bc-replication.telomerase`: Ribonucleoprotein that adds TTAGGG repeats to chromosome ends → **TELOMERASE**
+- **True/false** **CORE** · `mol-telomerase:tf1` · recall → **recognition** · difficulty 1 · `bc-replication.telomerase`: Most adult somatic cells have high telomerase activity. → **False**. Telomerase is active in germ cells and adult stem cells; most somatic cells do not make it.
+- **Crossword** **CORE** · `mol-telomerase:clue1` · recall → **recognition** · difficulty 1 · `bc-replication.telomerase`: Ribonucleoprotein that adds TTAGGG repeats to chromosome ends → **TELOMERASE**
 
 ---
 
@@ -501,7 +505,7 @@ Objectives: `bc-mutation-types.reading-frame`
 
 **Takeaway.** Frame kept → Becker; frame shifted → Duchenne. Size is not the deciding factor.
 
-- **MCQ** `mol-reading-frame:mcq1` · interpretation → **application** · difficulty 4 · `bc-mutation-types.reading-frame`
+- **MCQ** **APPLICATION** · `mol-reading-frame:mcq1` · interpretation → **application** · difficulty 4 · `bc-mutation-types.reading-frame`
   - Two boys have DMD deletions. Boy 1: deletion removes 3 exons totaling 360 nucleotides. Boy 2: deletion removes 1 exon of 118 nucleotides. Which phenotypes are most likely?
   - ◻️ A. Both Duchenne, because both remove whole exons — _Removing whole exons in frame still allows a shorter dystrophin to be made._
   - ◻️ B. Boy 1 Duchenne, Boy 2 Becker — _This assumes larger deletions are more severe; the frame, not the size, decides._
@@ -510,7 +514,7 @@ Objectives: `bc-mutation-types.reading-frame`
   - ✅ E. Boy 1 Becker, Boy 2 Duchenne
   - Steps: (1) 360 ÷ 3 = 120 codons: frame preserved → internally shortened dystrophin → Becker. (2) 118 ÷ 3 leaves a remainder: frameshift → premature stop → no functional dystrophin → Duchenne.
   - Explanation: 360 is divisible by 3 (in frame → Becker); 118 is not (frameshift → Duchenne). The rule predicts most phenotypes, but about 1 in 8 patients are exceptions, so the clinical course still matters.
-- **MCQ** `mol-reading-frame:mcq2` · prediction → **application** · difficulty 4 · `bc-mutation-types.reading-frame`
+- **MCQ** **SPECIALIST** · `mol-reading-frame:mcq2` · prediction → **application** · difficulty 4 · `bc-mutation-types.reading-frame`
   - A boy with Duchenne muscular dystrophy has an out-of-frame deletion. An antisense drug makes the spliceosome skip one additional neighboring exon so that the combined deletion becomes a multiple of three. What is the expected molecular effect?
   - ✅ A. A shorter, partly functional dystrophin is made
   - ◻️ B. Dystrophin mRNA is no longer transcribed — _Exon skipping changes splicing, not transcription._
@@ -519,7 +523,7 @@ Objectives: `bc-mutation-types.reading-frame`
   - ◻️ E. The deleted exons are re-inserted into the gene — _Antisense oligonucleotides do not alter the DNA._
   - Steps: (1) Out-of-frame deletion → premature stop → no dystrophin. (2) Skipping an extra exon makes the total missing length a multiple of 3. (3) Downstream codons are read in frame → shorter, partly functional protein (Becker-like).
   - Explanation: Restoring the frame lets translation continue past the deletion, producing a Becker-like internally deleted dystrophin.
-- **MCQ** `mol-reading-frame:mcq3` · mechanism → **mechanism** · difficulty 3 · `bc-mutation-types.reading-frame`
+- **MCQ** **CORE** · `mol-reading-frame:mcq3` · mechanism → **mechanism** · difficulty 3 · `bc-mutation-types.reading-frame`
   - Why do most out-of-frame deletions in DMD abolish dystrophin rather than produce a protein lacking only the deleted region?
   - ◻️ A. The deletion converts dystrophin into a toxic protein — _Duchenne results from loss of dystrophin, not a toxic gain of function._
   - ◻️ B. Deleted exons contain the dystrophin promoter — _Intragenic deletions usually spare the promoter; the problem is the frameshift._
@@ -527,8 +531,8 @@ Objectives: `bc-mutation-types.reading-frame`
   - ◻️ D. Dystrophin requires every exon to fold at all — _In-frame deletions show that dystrophin can work with internal exons missing._
   - ◻️ E. The ribosome cannot translate across an exon junction — _Ribosomes translate spliced mRNA with exon junctions normally._
   - Explanation: A frameshift changes every downstream codon and usually creates a premature stop codon, so no functional dystrophin is produced.
-- **True/false** `mol-reading-frame:tf1` · recall → **recognition** · difficulty 2 · `bc-mutation-types.reading-frame`: In dystrophinopathies, the size of the deletion is the main predictor of severity. → **False**. Whether the deletion preserves the reading frame is the main predictor; in-frame deletions usually cause Becker.
-- **Crossword** `mol-reading-frame:clue1` · recall → **recognition** · difficulty 2 · `bc-mutation-types.reading-frame`: Type of mutation behind most Duchenne deletions → **FRAMESHIFT**
+- **True/false** **CORE** · `mol-reading-frame:tf1` · recall → **recognition** · difficulty 2 · `bc-mutation-types.reading-frame`: In dystrophinopathies, the size of the deletion is the main predictor of severity. → **False**. Whether the deletion preserves the reading frame is the main predictor; in-frame deletions usually cause Becker.
+- **Crossword** **CORE** · `mol-reading-frame:clue1` · recall → **recognition** · difficulty 2 · `bc-mutation-types.reading-frame`: Type of mutation behind most Duchenne deletions → **FRAMESHIFT**
 
 ---
 
@@ -569,7 +573,7 @@ Objectives: `bc-transcription.polymerases`, `bc-transcription.regulation`
 
 **Takeaway.** I = rRNA, II = mRNA (+ most snRNA, miRNA), III = tRNA/5S/U6. Promoter defects lower quantity, not structure.
 
-- **MCQ** `mol-transcription:mcq1` · prediction → **application** · difficulty 3 · `bc-transcription.regulation`
+- **MCQ** **APPLICATION** · `mol-transcription:mcq1` · prediction → **application** · difficulty 3 · `bc-transcription.regulation`
   - A patient with β-thalassemia has a single-base change in the TATA box upstream of the β-globin gene. In cultured cells the mutant gene makes correctly spliced mRNA from the normal start site. What else is expected?
   - ◻️ A. A longer mRNA with an extra intron retained — _Intron retention is a splicing defect, which this mutant does not have._
   - ◻️ B. Normal mRNA amount with an abnormal β-globin chain — _Promoter mutations do not change the coding sequence, so the chain is normal._
@@ -578,7 +582,7 @@ Objectives: `bc-transcription.polymerases`, `bc-transcription.regulation`
   - ✅ E. Less β-globin mRNA, with a normal β-globin chain
   - Steps: (1) The TATA box positions the transcription machinery; it is not translated. (2) A mutation lowers initiation frequency → less mRNA. (3) The coding sequence and splicing are normal → normal β chain in reduced amount.
   - Explanation: TATA box mutations reduce transcription initiation (promoter-down): less mRNA, normal protein (β⁺ thalassemia).
-- **MCQ** `mol-transcription:mcq2` · recall → **recognition** · difficulty 2 · `bc-transcription.polymerases`
+- **MCQ** **SPECIALIST** · `mol-transcription:mcq2` · recall → **recognition** · difficulty 2 · `bc-transcription.polymerases`
   - Which RNA polymerase transcribes U6 snRNA?
   - ◻️ A. RNA polymerase II — _Pol II makes U1, U2, U4 and U5 snRNAs; U6 is the exception made by pol III._
   - ✅ B. RNA polymerase III
@@ -586,7 +590,7 @@ Objectives: `bc-transcription.polymerases`, `bc-transcription.regulation`
   - ◻️ D. RNA polymerase I — _Pol I makes the large rRNAs in the nucleolus._
   - ◻️ E. Mitochondrial RNA polymerase — _Spliceosomal snRNAs are encoded in the nucleus._
   - Explanation: U6 snRNA is a pol III transcript; the other major spliceosomal snRNAs are made by pol II.
-- **MCQ** `mol-transcription:mcq3` · mechanism → **mechanism** · difficulty 3 · `bc-transcription.regulation`
+- **MCQ** **SPECIALIST** · `mol-transcription:mcq3` · mechanism → **mechanism** · difficulty 3 · `bc-transcription.regulation`
   - Why does a mutation in the TATA box lower the rate at which a gene is transcribed?
   - ◻️ A. Enhancers can no longer bind any activator proteins — _Enhancers are separate elements; they modulate efficiency but are not the TATA box._
   - ◻️ B. The spliceosome can no longer find the first intron — _Splice sites are defined by GU…AG at intron ends, not by the promoter._
@@ -594,11 +598,19 @@ Objectives: `bc-transcription.polymerases`, `bc-transcription.regulation`
   - ◻️ D. The mutation creates a premature stop codon in the mRNA — _The TATA box lies upstream of the start site and is not part of the coding sequence._
   - ✅ E. TFIID binds poorly, so polymerase II is recruited less often
   - Explanation: The TATA-binding protein in TFIID recognizes the TATA box and nucleates the basal factor complex that positions RNA polymerase II; a weaker site means fewer initiation events.
-- **True/false** `mol-transcription:tf1` · recall → **recognition** · difficulty 1 · `bc-transcription.polymerases`: RNA polymerase II transcribes the protein-coding pre-mRNAs of eukaryotic cells. → **True**. Correct: pol II makes all protein-coding pre-mRNAs.
-- **True/false** `mol-transcription:tf2` · recall → **recognition** · difficulty 2 · `bc-transcription.regulation`: Enhancers must lie immediately next to the TATA box to work. → **False**. Enhancers can act from far upstream or downstream of the promoter by binding transcription factors.
-- **Crossword** `mol-transcription:clue1` · recall → **recognition** · difficulty 2 · `bc-transcription.polymerases`: Nuclear site where RNA polymerase I makes ribosomal RNA → **NUCLEOLUS**
-- **Crossword** `mol-transcription:clue2` · recall → **recognition** · difficulty 2 · `bc-transcription.regulation`: Distant DNA element that boosts transcription when bound by activators → **ENHANCER**
-- **Match Up** `match:rna-polymerases` · recall → **recognition** · difficulty 2 · `bc-transcription.polymerases`: Polymerases and their products. Match each polymerase to what it makes or what blocks it.
+- **MCQ** **CORE** · `mol-transcription:mcq4` · mechanism → **mechanism** · difficulty 2 · `bc-transcription.regulation`
+  - Why does a mutation in a gene’s promoter usually reduce the amount of its protein without changing the protein’s structure?
+  - ◻️ A. Promoter mutations cause premature stop codons — _Stop codons arise in coding sequence; promoters are not read by the ribosome._
+  - ◻️ B. The promoter encodes the protein’s signal sequence — _Signal sequences are part of the coding sequence, not the promoter._
+  - ◻️ C. The promoter determines which amino acids tRNAs carry — _tRNA charging is done by aminoacyl-tRNA synthetases._
+  - ◻️ D. The promoter is spliced out as an intron before translation — _Promoters lie upstream of the transcription start site and are not transcribed into pre-mRNA._
+  - ✅ E. The promoter controls how often transcription starts; it is not translated
+  - Explanation: Promoters (such as the TATA box) are where the transcription machinery assembles. A weaker promoter means less mRNA, so less of a normal protein.
+- **True/false** **CORE** · `mol-transcription:tf1` · recall → **recognition** · difficulty 1 · `bc-transcription.polymerases`: RNA polymerase II transcribes the protein-coding pre-mRNAs of eukaryotic cells. → **True**. Correct: pol II makes all protein-coding pre-mRNAs.
+- **True/false** **CORE** · `mol-transcription:tf2` · recall → **recognition** · difficulty 2 · `bc-transcription.regulation`: Enhancers must lie immediately next to the TATA box to work. → **False**. Enhancers can act from far upstream or downstream of the promoter by binding transcription factors.
+- **Crossword** **CORE** · `mol-transcription:clue1` · recall → **recognition** · difficulty 2 · `bc-transcription.polymerases`: Nuclear site where RNA polymerase I makes ribosomal RNA → **NUCLEOLUS**
+- **Crossword** **CORE** · `mol-transcription:clue2` · recall → **recognition** · difficulty 2 · `bc-transcription.regulation`: Distant DNA element that boosts transcription when bound by activators → **ENHANCER**
+- **Match Up** **CORE** · `match:rna-polymerases` · recall → **recognition** · difficulty 2 · `bc-transcription.polymerases`: Polymerases and their products. Match each polymerase to what it makes or what blocks it.
   - RNA polymerase I ↔ 28S, 18S and 5.8S rRNA in the nucleolus
   - RNA polymerase II ↔ Pre-mRNA; extremely sensitive to α-amanitin
   - RNA polymerase III ↔ tRNA, 5S rRNA and U6 snRNA
@@ -642,7 +654,7 @@ Objectives: `bc-transcription.inhibitors`
 
 **Takeaway.** Death cap → RNA pol II → liver. Rifampin → bacterial RNA polymerase. Dactinomycin → DNA template.
 
-- **MCQ** `mol-transcription-inhibitors:mcq1` · prediction → **application** · difficulty 3 · `bc-transcription.inhibitors`
+- **MCQ** **APPLICATION** · `mol-transcription-inhibitors:mcq1` · prediction → **application** · difficulty 3 · `bc-transcription.inhibitors`
   - Cultured human cells are exposed to a low concentration of α-amanitin that blocks one RNA polymerase completely. Synthesis of which RNA stops first?
   - ◻️ A. tRNA — _tRNA is made by RNA polymerase III, which is only moderately sensitive._
   - ✅ B. Pre-mRNA
@@ -651,7 +663,7 @@ Objectives: `bc-transcription.inhibitors`
   - ◻️ E. 5S rRNA — _5S rRNA is a pol III product, which needs higher toxin concentrations._
   - Steps: (1) Sensitivity order: pol II (extreme) > pol III (moderate) > pol I (insensitive). (2) A low concentration blocks only pol II. (3) Pol II makes pre-mRNA → pre-mRNA synthesis stops.
   - Explanation: RNA polymerase II is the most α-amanitin-sensitive polymerase, so pre-mRNA synthesis stops first.
-- **MCQ** `mol-transcription-inhibitors:mcq2` · mechanism → **mechanism** · difficulty 2 · `bc-transcription.inhibitors`
+- **MCQ** **CORE** · `mol-transcription-inhibitors:mcq2` · mechanism → **mechanism** · difficulty 2 · `bc-transcription.inhibitors`
   - Why does rifampin kill Mycobacterium tuberculosis without blocking transcription in the patient’s cells?
   - ◻️ A. It blocks the bacterial 30S ribosomal subunit — _That describes aminoglycosides and tetracyclines, which act on translation._
   - ✅ B. It binds bacterial RNA polymerase, not the eukaryotic enzymes
@@ -659,10 +671,10 @@ Objectives: `bc-transcription.inhibitors`
   - ◻️ D. It is activated only by mycobacterial catalase — _Catalase activation applies to isoniazid, not rifampin._
   - ◻️ E. It inhibits DNA gyrase in the bacterial cell — _DNA gyrase is the fluoroquinolone target._
   - Explanation: Rifampin inhibits the bacterial RNA polymerase; eukaryotic nuclear RNA polymerases are structurally different and unaffected.
-- **True/false** `mol-transcription-inhibitors:tf1` · recall → **recognition** · difficulty 2 · `bc-transcription.inhibitors`: RNA polymerase I is the eukaryotic polymerase most sensitive to α-amanitin. → **False**. RNA polymerase II is extremely sensitive; pol I is insensitive.
-- **Crossword** `mol-transcription-inhibitors:clue1` · recall → **recognition** · difficulty 2 · `bc-transcription.inhibitors`: Antimycobacterial drug that blocks bacterial RNA polymerase and induces liver enzymes → **RIFAMPIN**
-- **Crossword** `mol-transcription-inhibitors:clue2` · recall → **recognition** · difficulty 2 · `bc-transcription.inhibitors`: Antitumor antibiotic that intercalates DNA and halts transcription → **DACTINOMYCIN**
-- **Mystery Patient** `case:amanita-poisoning` · multistep → **application** · difficulty 4 · `bc-transcription.inhibitors`: The foragers’ supper
+- **True/false** **CORE** · `mol-transcription-inhibitors:tf1` · recall → **recognition** · difficulty 2 · `bc-transcription.inhibitors`: RNA polymerase I is the eukaryotic polymerase most sensitive to α-amanitin. → **False**. RNA polymerase II is extremely sensitive; pol I is insensitive.
+- **Crossword** **CORE** · `mol-transcription-inhibitors:clue1` · recall → **recognition** · difficulty 2 · `bc-transcription.inhibitors`: Antimycobacterial drug that blocks bacterial RNA polymerase and induces liver enzymes → **RIFAMPIN**
+- **Crossword** **CORE** · `mol-transcription-inhibitors:clue2` · recall → **recognition** · difficulty 2 · `bc-transcription.inhibitors`: Antitumor antibiotic that intercalates DNA and halts transcription → **DACTINOMYCIN**
+- **Mystery Patient** **APPLICATION** · `case:amanita-poisoning` · multistep → **application** · difficulty 4 · `bc-transcription.inhibitors`: The foragers’ supper
   - Presentation: A 45-year-old woman and her husband come to the emergency department with severe vomiting and profuse watery diarrhea.
   - History: About 10 hours earlier they ate a soup made from wild mushrooms they had gathered in a wood. They felt well for the first several hours.
   - Examination: Dry mucous membranes, tachycardia, diffuse abdominal tenderness. No jaundice yet.
@@ -715,7 +727,7 @@ Objectives: `bc-rna-processing.processing`, `bc-rna-processing.mirna`
 
 **Takeaway.** Mature mRNA = cap + tail + exons. Small RNAs silence mRNA after transcription via RISC.
 
-- **MCQ** `mol-rna-processing:mcq1` · mechanism → **mechanism** · difficulty 3 · `bc-rna-processing.mirna`
+- **MCQ** **SPECIALIST** · `mol-rna-processing:mcq1` · mechanism → **mechanism** · difficulty 3 · `bc-rna-processing.mirna`
   - A cell line lacks Dicer activity. What happens to most microRNAs?
   - ✅ A. Mature ~21-nucleotide miRNAs are not produced, so targets are derepressed
   - ◻️ B. Target mRNAs are cleaved more efficiently than normal — _Without mature miRNAs, silencing is lost rather than enhanced._
@@ -723,7 +735,7 @@ Objectives: `bc-rna-processing.processing`, `bc-rna-processing.mirna`
   - ◻️ D. miRNAs are made but cannot leave the nucleus — _Dicer acts in the cytoplasm after export; export is not the defect._
   - ◻️ E. Primary miRNA transcripts are not made by RNA polymerase II — _Transcription is upstream of Dicer and continues._
   - Explanation: Dicer makes the final small RNA; without it RISC cannot be loaded and the miRNA targets escape repression.
-- **MCQ** `mol-rna-processing:mcq2` · recall → **recognition** · difficulty 1 · `bc-rna-processing.processing`
+- **MCQ** **CORE** · `mol-rna-processing:mcq2` · recall → **recognition** · difficulty 1 · `bc-rna-processing.processing`
   - Which processing event requires the AAUAAA sequence near the end of a pre-mRNA?
   - ◻️ A. Addition of the 7-methylguanosine cap — _Capping occurs at the 5′ end early in transcription and does not need AAUAAA._
   - ◻️ B. Recognition of the 5′ splice site — _Splice sites are marked by GU at the intron start, not AAUAAA._
@@ -731,7 +743,7 @@ Objectives: `bc-rna-processing.processing`, `bc-rna-processing.mirna`
   - ◻️ D. Charging of tRNA with its amino acid — _tRNA charging is done by aminoacyl-tRNA synthetases._
   - ◻️ E. Loading of the transcript into RISC — _RISC loading involves small RNAs, not the polyadenylation signal._
   - Explanation: AAUAAA is the polyadenylation signal: cleavage occurs downstream and poly-A polymerase adds the tail.
-- **MCQ** `mol-rna-processing:mcq3` · mechanism → **mechanism** · difficulty 3 · `bc-rna-processing.processing`
+- **MCQ** **CORE** · `mol-rna-processing:mcq3` · mechanism → **mechanism** · difficulty 3 · `bc-rna-processing.processing`
   - A reporter mRNA is correctly spliced and polyadenylated but made without a 7-methylguanosine cap. When it is placed in a cell extract, which step is most directly impaired?
   - ◻️ A. Pairing of tRNA anticodons with codons in the A site — _Codon–anticodon pairing happens after initiation and does not read the cap._
   - ✅ B. Recognition of the mRNA by translation initiation factors
@@ -739,11 +751,11 @@ Objectives: `bc-rna-processing.processing`, `bc-rna-processing.mirna`
   - ◻️ D. Charging of tRNAs by aminoacyl-tRNA synthetases — _tRNA charging happens independently of any mRNA and does not involve the cap._
   - ◻️ E. Removal of introns by the spliceosome — _The mRNA is already spliced; the cap is not needed to define intron boundaries._
   - Explanation: Factors involved in protein synthesis recognize the 5′ cap to help ribosomes initiate translation, so an uncapped message is translated poorly.
-- **True/false** `mol-rna-processing:tf1` · recall → **recognition** · difficulty 1 · `bc-rna-processing.mirna`: MicroRNAs usually silence genes by binding the 3′ untranslated region of target mRNAs. → **True**. Correct: seed pairing to the 3′ UTR represses translation or promotes decay.
-- **True/false** `mol-rna-processing:tf2` · recall → **recognition** · difficulty 2 · `bc-rna-processing.processing`: The 5′ cap is added only after the pre-mRNA has been completely transcribed and spliced. → **False**. The cap is added while the pre-mRNA is still being synthesized.
-- **Crossword** `mol-rna-processing:clue1` · recall → **recognition** · difficulty 1 · `bc-rna-processing.processing`: snRNP machine that removes introns → **SPLICEOSOME**
-- **Crossword** `mol-rna-processing:clue2` · recall → **recognition** · difficulty 2 · `bc-rna-processing.mirna`: Cytoplasmic ribonuclease that trims pre-miRNA to its final length → **DICER**
-- **Mechanism Lab** `seq:mirna-silencing` · mechanism → **mechanism** · difficulty 3 · `bc-rna-processing.mirna`: From miRNA gene to silenced mRNA. Order the steps by which a microRNA silences its target.
+- **True/false** **CORE** · `mol-rna-processing:tf1` · recall → **recognition** · difficulty 1 · `bc-rna-processing.mirna`: MicroRNAs usually silence genes by binding the 3′ untranslated region of target mRNAs. → **True**. Correct: seed pairing to the 3′ UTR represses translation or promotes decay.
+- **True/false** **CORE** · `mol-rna-processing:tf2` · recall → **recognition** · difficulty 2 · `bc-rna-processing.processing`: The 5′ cap is added only after the pre-mRNA has been completely transcribed and spliced. → **False**. The cap is added while the pre-mRNA is still being synthesized.
+- **Crossword** **CORE** · `mol-rna-processing:clue1` · recall → **recognition** · difficulty 1 · `bc-rna-processing.processing`: snRNP machine that removes introns → **SPLICEOSOME**
+- **Crossword** **SPECIALIST** · `mol-rna-processing:clue2` · recall → **recognition** · difficulty 2 · `bc-rna-processing.mirna`: Cytoplasmic ribonuclease that trims pre-miRNA to its final length → **DICER**
+- **Mechanism Lab** **SPECIALIST** · `seq:mirna-silencing` · mechanism → **mechanism** · difficulty 3 · `bc-rna-processing.mirna`: From miRNA gene to silenced mRNA. Order the steps by which a microRNA silences its target.
   1. RNA polymerase II transcribes the primary miRNA
   2. Drosha cuts the primary transcript in the nucleus
   3. Dicer trims the precursor in the cytoplasm to ~21 nucleotides
@@ -786,7 +798,7 @@ Objectives: `bc-rna-processing.snrnp-antibodies`
 
 **Takeaway.** Spliceosome antigens: anti-Sm → SLE (specific); anti-U1 RNP → MCTD (required, not specific).
 
-- **MCQ** `mol-snrnp-autoantibodies:mcq1` · interpretation → **application** · difficulty 4 · `bc-rna-processing.snrnp-antibodies`
+- **MCQ** **APPLICATION** · `mol-snrnp-autoantibodies:mcq1` · interpretation → **application** · difficulty 4 · `bc-rna-processing.snrnp-antibodies`
   - A 34-year-old woman has Raynaud phenomenon, puffy swollen fingers, proximal muscle weakness with raised creatine kinase and arthralgia. ANA is positive at high titer with a speckled pattern; anti-U1 RNP is strongly positive; anti-Sm and anti-dsDNA are negative. Which conclusion is best supported?
   - ◻️ A. Limited systemic sclerosis (CREST) — _CREST is associated with anticentromere antibodies and lacks myositis._
   - ✅ B. Mixed connective tissue disease
@@ -795,7 +807,7 @@ Objectives: `bc-rna-processing.snrnp-antibodies`
   - ◻️ E. Drug-induced lupus — _Drug-induced lupus is associated with anti-histone antibodies and a culprit drug._
   - Steps: (1) Features span three diseases: Raynaud/puffy fingers (scleroderma), myositis, arthralgia (lupus). (2) Anti-U1 RNP is strongly positive and is required for MCTD. (3) The lupus-specific antibodies (anti-Sm, anti-dsDNA) are negative → MCTD rather than SLE.
   - Explanation: Overlap of lupus-like, scleroderma-like and myositis features with high-titer anti-U1 RNP and no anti-Sm/dsDNA fits MCTD.
-- **MCQ** `mol-snrnp-autoantibodies:mcq2` · recall → **recognition** · difficulty 2 · `bc-rna-processing.snrnp-antibodies`
+- **MCQ** **CORE** · `mol-snrnp-autoantibodies:mcq2` · recall → **recognition** · difficulty 2 · `bc-rna-processing.snrnp-antibodies`
   - A patient with SLE has antibodies against the Smith antigen. What normal cellular structure contains this antigen?
   - ◻️ A. Centromere proteins — _Anticentromere antibodies are associated with limited systemic sclerosis._
   - ◻️ B. Mitochondrial inner membrane enzymes — _Antimitochondrial antibodies are associated with primary biliary cholangitis._
@@ -803,8 +815,8 @@ Objectives: `bc-rna-processing.snrnp-antibodies`
   - ◻️ D. The signal recognition particle — _Anti-SRP antibodies are associated with a necrotizing myopathy._
   - ✅ E. Spliceosomal snRNPs
   - Explanation: Sm proteins form the core of spliceosomal snRNPs; anti-Sm is highly specific for SLE.
-- **True/false** `mol-snrnp-autoantibodies:tf1` · recall → **recognition** · difficulty 2 · `bc-rna-processing.snrnp-antibodies`: A negative anti-Smith test makes SLE very unlikely. → **False**. Anti-Sm is highly specific but insensitive: most patients with SLE are anti-Sm negative.
-- **Crossword** `mol-snrnp-autoantibodies:clue1` · recall → **recognition** · difficulty 2 · `bc-rna-processing.snrnp-antibodies`: Lupus-specific antigen of the snRNP core → **SMITH**
+- **True/false** **CORE** · `mol-snrnp-autoantibodies:tf1` · recall → **recognition** · difficulty 2 · `bc-rna-processing.snrnp-antibodies`: A negative anti-Smith test makes SLE very unlikely. → **False**. Anti-Sm is highly specific but insensitive: most patients with SLE are anti-Sm negative.
+- **Crossword** **CORE** · `mol-snrnp-autoantibodies:clue1` · recall → **recognition** · difficulty 2 · `bc-rna-processing.snrnp-antibodies`: Lupus-specific antigen of the snRNP core → **SMITH**
 
 ---
 
@@ -840,7 +852,7 @@ Objectives: `bc-rna-processing.splice-disease`
 
 **Takeaway.** Lose a splice site or gain a new one → abnormal mRNA → less normal protein.
 
-- **MCQ** `mol-splice-disease:mcq1` · multistep → **application** · difficulty 5 · `bc-rna-processing.splice-disease`
+- **MCQ** **APPLICATION** · `mol-splice-disease:mcq1` · multistep → **application** · difficulty 5 · `bc-rna-processing.splice-disease`
   - A child with transfusion-dependent anemia has a point mutation deep in intron 2 of the β-globin gene that creates a new splice site. Reticulocyte mRNA contains an extra 135-nucleotide segment with a premature stop codon. Which sequence of events explains the anemia?
   - ✅ A. Intronic sequence is spliced in, β chains fall and excess α chains precipitate
   - ◻️ B. The β chain gains a valine and polymerizes when deoxygenated — _That is the sickle missense mechanism, not a splicing defect._
@@ -849,7 +861,7 @@ Objectives: `bc-rna-processing.splice-disease`
   - ◻️ E. γ-globin is permanently silenced, so fetal hemoglobin disappears — _The mutation is in the β-globin gene and does not silence γ-globin._
   - Steps: (1) The mutation creates a new splice site → intronic sequence is included in the mRNA. (2) The inserted sequence contains a stop codon → little or no β-globin. (3) α chains are made normally → excess unpaired α chains precipitate → ineffective erythropoiesis.
   - Explanation: The new splice site makes the spliceosome include intronic sequence; the premature stop eliminates β-globin; unpaired α chains precipitate and destroy erythroid precursors.
-- **MCQ** `mol-splice-disease:mcq2` · mechanism → **mechanism** · difficulty 3 · `bc-rna-processing.splice-disease`
+- **MCQ** **CORE** · `mol-splice-disease:mcq2` · mechanism → **mechanism** · difficulty 3 · `bc-rna-processing.splice-disease`
   - Why can a single-base change at the GU at the start of an intron eliminate the normal protein even though no codon in the exons is altered?
   - ◻️ A. The intron is deleted from the gene during replication — _The DNA is not deleted; the RNA is processed abnormally._
   - ◻️ B. GU is translated as a stop signal in the mature mRNA — _Intron sequences are removed before translation; GU is a splicing signal, not a codon._
@@ -857,8 +869,8 @@ Objectives: `bc-rna-processing.splice-disease`
   - ✅ D. The spliceosome no longer recognizes the intron boundary
   - ◻️ E. The mutation prevents the poly-A tail from being added — _Polyadenylation depends on AAUAAA near the 3′ end._
   - Explanation: GU at the 5′ end of the intron is the splice donor; losing it causes exon skipping or use of cryptic sites, giving abnormal mRNA.
-- **True/false** `mol-splice-disease:tf1` · recall → **recognition** · difficulty 2 · `bc-rna-processing.splice-disease`: Somatic mutations in the spliceosome component SF3B1 are common in myelodysplastic syndrome with ring sideroblasts. → **True**. Correct: SF3B1 mutations are typical of MDS with ring sideroblasts and also occur in some CLL.
-- **Crossword** `mol-splice-disease:clue1` · recall → **recognition** · difficulty 2 · `bc-rna-processing.splice-disease`: Hidden splice site activated when the normal one is lost → **CRYPTIC**
+- **True/false** **SPECIALIST** · `mol-splice-disease:tf1` · recall → **recognition** · difficulty 2 · `bc-rna-processing.splice-disease`: Somatic mutations in the spliceosome component SF3B1 are common in myelodysplastic syndrome with ring sideroblasts. → **True**. Correct: SF3B1 mutations are typical of MDS with ring sideroblasts and also occur in some CLL.
+- **Crossword** **CORE** · `mol-splice-disease:clue1` · recall → **recognition** · difficulty 2 · `bc-rna-processing.splice-disease`: Hidden splice site activated when the normal one is lost → **CRYPTIC**
 
 ---
 
@@ -899,7 +911,7 @@ Objectives: `bc-translation.trna`, `bc-translation.steps`
 
 **Takeaway.** Synthetase picks the amino acid; the ribosome only checks the anticodon. Elongation: A → P → E; rRNA makes the bond.
 
-- **MCQ** `mol-translation:mcq1` · mechanism → **mechanism** · difficulty 3 · `bc-translation.trna`
+- **MCQ** **CORE** · `mol-translation:mcq1` · mechanism → **mechanism** · difficulty 3 · `bc-translation.trna`
   - A tRNA with an anticodon for cysteine is experimentally charged with alanine and added to a translation system. What happens at cysteine codons?
   - ◻️ A. Translation stops, because a release factor binds the mischarged tRNA — _Release factors recognize stop codons, not mischarged tRNAs._
   - ◻️ B. Cysteine is inserted, because the ribosome detects the wrong amino acid — _The ribosome checks codon–anticodon pairing, not the amino acid._
@@ -907,7 +919,7 @@ Objectives: `bc-translation.trna`, `bc-translation.steps`
   - ◻️ D. The ribosome skips the codon and shifts the frame — _A correctly pairing anticodon is accepted; no frameshift occurs._
   - ✅ E. Alanine is inserted, because the ribosome reads only the anticodon
   - Explanation: Fidelity of amino acid choice depends on synthetases; once charged, the tRNA delivers whatever it carries to any codon its anticodon pairs with.
-- **MCQ** `mol-translation:mcq2` · recall → **recognition** · difficulty 2 · `bc-translation.steps`
+- **MCQ** **CORE** · `mol-translation:mcq2` · recall → **recognition** · difficulty 2 · `bc-translation.steps`
   - During elongation, after the peptide bond has formed, where is the growing chain attached?
   - ◻️ A. To the initiator tRNA throughout translation — _The chain is transferred to each new aminoacyl-tRNA in turn._
   - ✅ B. To the tRNA in the A site, which then moves to the P site
@@ -915,10 +927,10 @@ Objectives: `bc-translation.trna`, `bc-translation.steps`
   - ◻️ D. To the 50S rRNA until the stop codon is reached — _rRNA catalyzes the bond but does not hold the chain._
   - ◻️ E. To the tRNA in the E site, which then leaves — _The E site holds the empty tRNA that has given up the chain._
   - Explanation: Peptidyl transfer moves the chain onto the A-site tRNA; translocation then shifts it into the P site and the empty tRNA to the E site.
-- **True/false** `mol-translation:tf1` · recall → **recognition** · difficulty 2 · `bc-translation.trna`: In human cells, the CCA sequence at the 3′ end of each tRNA is encoded in its tRNA gene. → **False**. In eukaryotes, including humans, CCA is added after transcription by the CCA-adding enzyme (TRNT1); only some bacterial tRNA genes encode it. It is where the amino acid is attached.
-- **True/false** `mol-translation:tf2` · recall → **recognition** · difficulty 1 · `bc-translation.steps`: Peptide bonds are formed by an RNA component of the large ribosomal subunit. → **True**. Correct: peptidyl transferase is an RNA-based enzyme (a ribozyme).
-- **Crossword** `mol-translation:clue1` · recall → **recognition** · difficulty 1 · `bc-translation.trna`: Three-base loop of tRNA that pairs with a codon → **ANTICODON**
-- **Mechanism Lab** `seq:elongation-cycle` · mechanism → **mechanism** · difficulty 2 · `bc-translation.steps`: One turn of the ribosome. Order the events of translation from start to finish.
+- **True/false** **CORE** · `mol-translation:tf1` · recall → **recognition** · difficulty 2 · `bc-translation.trna`: In human cells, the CCA sequence at the 3′ end of each tRNA is encoded in its tRNA gene. → **False**. In eukaryotes, including humans, CCA is added after transcription by the CCA-adding enzyme (TRNT1); only some bacterial tRNA genes encode it. It is where the amino acid is attached.
+- **True/false** **CORE** · `mol-translation:tf2` · recall → **recognition** · difficulty 1 · `bc-translation.steps`: Peptide bonds are formed by an RNA component of the large ribosomal subunit. → **True**. Correct: peptidyl transferase is an RNA-based enzyme (a ribozyme).
+- **Crossword** **CORE** · `mol-translation:clue1` · recall → **recognition** · difficulty 1 · `bc-translation.trna`: Three-base loop of tRNA that pairs with a codon → **ANTICODON**
+- **Mechanism Lab** **CORE** · `seq:elongation-cycle` · mechanism → **mechanism** · difficulty 2 · `bc-translation.steps`: One turn of the ribosome. Order the events of translation from start to finish.
   1. Initiator methionyl-tRNA pairs with AUG, with initiation factors and GTP
   2. A charged aminoacyl-tRNA enters the A site (GTP)
   3. Peptidyl transferase in the large-subunit rRNA forms the peptide bond
@@ -960,7 +972,7 @@ Objectives: `bc-translation.ribosomes`
 
 **Takeaway.** 30S: aminoglycosides, tetracyclines. 50S: macrolides, clindamycin, chloramphenicol, linezolid.
 
-- **MCQ** `mol-ribosome-antibiotics:mcq1` · comparison → **application** · difficulty 3 · `bc-translation.ribosomes`
+- **MCQ** **APPLICATION** · `mol-ribosome-antibiotics:mcq1` · comparison → **application** · difficulty 3 · `bc-translation.ribosomes`
   - Drug X binds the bacterial small subunit and prevents aminoacyl-tRNA from occupying the A site. Drug Y binds the large subunit and blocks peptide bond formation. Which pairing fits?
   - ◻️ A. X gentamicin; Y linezolid — _Gentamicin binds 30S but causes misreading; linezolid blocks initiation complex formation rather than peptide bond formation._
   - ✅ B. X doxycycline; Y azithromycin
@@ -969,7 +981,7 @@ Objectives: `bc-translation.ribosomes`
   - ◻️ E. X linezolid; Y streptomycin — _Linezolid binds 50S and streptomycin binds 30S, the opposite of the descriptions._
   - Steps: (1) Small subunit + A-site blockade → tetracycline class (doxycycline). (2) Large subunit + peptide bond blockade → macrolide or lincosamide (azithromycin). (3) Check the distractors against subunit and mechanism.
   - Explanation: Tetracyclines (doxycycline) block the A site on 30S; macrolides (azithromycin) block peptide bond formation on 50S.
-- **MCQ** `mol-ribosome-antibiotics:mcq2` · mechanism → **mechanism** · difficulty 3 · `bc-translation.ribosomes`
+- **MCQ** **CORE** · `mol-ribosome-antibiotics:mcq2` · mechanism → **mechanism** · difficulty 3 · `bc-translation.ribosomes`
   - Why are aminoglycosides bactericidal while tetracyclines are bacteriostatic, although both bind the 30S subunit?
   - ◻️ A. Tetracyclines bind only the 50S subunit — _Tetracyclines bind the 30S subunit._
   - ◻️ B. Aminoglycosides also bind human 80S ribosomes — _Selective toxicity depends on not binding host ribosomes; that would not explain killing bacteria._
@@ -977,9 +989,9 @@ Objectives: `bc-translation.ribosomes`
   - ◻️ D. Aminoglycosides inhibit DNA gyrase as well — _DNA gyrase is the fluoroquinolone target._
   - ◻️ E. Tetracyclines are inactivated inside bacteria — _Tetracyclines act inside bacteria; their effect is reversible blockade, not inactivation._
   - Explanation: In the standard explanation, aminoglycoside-induced codon–anticodon mismatches produce faulty proteins that insert into and disrupt the membrane, killing the cell.
-- **True/false** `mol-ribosome-antibiotics:tf1` · recall → **recognition** · difficulty 1 · `bc-translation.ribosomes`: Human cytoplasmic ribosomes are 70S, made of 30S and 50S subunits. → **False**. Human cytoplasmic ribosomes are 80S (40S + 60S); 70S ribosomes are prokaryotic.
-- **Crossword** `mol-ribosome-antibiotics:clue1` · recall → **recognition** · difficulty 2 · `bc-translation.ribosomes`: Oxazolidinone that stops the 50S–30S initiation complex from forming → **LINEZOLID**
-- **Match Up** `match:antibiotic-ribosome` · recall → **recognition** · difficulty 2 · `bc-translation.ribosomes`: Where antibiotics hit the ribosome. Match each antibiotic to its ribosomal site and action.
+- **True/false** **CORE** · `mol-ribosome-antibiotics:tf1` · recall → **recognition** · difficulty 1 · `bc-translation.ribosomes`: Human cytoplasmic ribosomes are 70S, made of 30S and 50S subunits. → **False**. Human cytoplasmic ribosomes are 80S (40S + 60S); 70S ribosomes are prokaryotic.
+- **Crossword** **CORE** · `mol-ribosome-antibiotics:clue1` · recall → **recognition** · difficulty 2 · `bc-translation.ribosomes`: Oxazolidinone that stops the 50S–30S initiation complex from forming → **LINEZOLID**
+- **Match Up** **CORE** · `match:antibiotic-ribosome` · recall → **recognition** · difficulty 2 · `bc-translation.ribosomes`: Where antibiotics hit the ribosome. Match each antibiotic to its ribosomal site and action.
   - Gentamicin ↔ 30S: causes codon misreading
   - Doxycycline ↔ 30S: blocks aminoacyl-tRNA at the A site
   - Azithromycin ↔ 50S: macrolide blocking peptide bond formation
@@ -1022,7 +1034,7 @@ Objectives: `bc-translation.toxins`
 
 **Takeaway.** EF-2: diphtheria, exotoxin A. 28S rRNA: Shiga, ricin.
 
-- **MCQ** `mol-translation-toxins:mcq1` · interpretation → **application** · difficulty 3 · `bc-translation.toxins`
+- **MCQ** **APPLICATION** · `mol-translation-toxins:mcq1` · interpretation → **application** · difficulty 3 · `bc-translation.toxins`
   - Toxin P is added to a cell-free translation system and is found to modify a protein factor; toxin Q leaves all proteins intact but alters a single nucleotide of 28S rRNA. Both stop translation. Which pairing is correct?
   - ◻️ A. P ricin; Q Pseudomonas exotoxin A — _Reversed: ricin modifies rRNA, and exotoxin A modifies the protein EF-2._
   - ✅ B. P diphtheria toxin; Q ricin
@@ -1031,7 +1043,7 @@ Objectives: `bc-translation.toxins`
   - ◻️ E. P cholera toxin; Q Shiga toxin — _Cholera toxin ADP-ribosylates a G protein and does not stop translation._
   - Steps: (1) Protein modified + translation stops → ADP-ribosylation of EF-2 → diphtheria toxin or exotoxin A. (2) 28S rRNA altered → N-glycosidase depurination → ricin or Shiga toxin. (3) Match each to the options.
   - Explanation: A protein factor is modified → EF-2 ADP-ribosylation (diphtheria toxin or exotoxin A). A 28S rRNA nucleotide is altered → depurination by ricin or Shiga toxin.
-- **MCQ** `mol-translation-toxins:mcq2` · recall → **recognition** · difficulty 1 · `bc-translation.toxins`
+- **MCQ** **CORE** · `mol-translation-toxins:mcq2` · recall → **recognition** · difficulty 1 · `bc-translation.toxins`
   - What is the molecular target of Pseudomonas exotoxin A?
   - ◻️ A. Gs α subunit — _Gs α is ADP-ribosylated by cholera toxin, which raises cAMP._
   - ✅ B. Elongation factor 2
@@ -1039,9 +1051,9 @@ Objectives: `bc-translation.toxins`
   - ◻️ D. The 30S ribosomal subunit — _Bacterial toxins that kill human cells act on eukaryotic translation, not the 30S subunit._
   - ◻️ E. RNA polymerase II — _RNA polymerase II is inhibited by α-amanitin._
   - Explanation: Exotoxin A, like diphtheria toxin, ADP-ribosylates EF-2 at diphthamide.
-- **True/false** `mol-translation-toxins:tf1` · recall → **recognition** · difficulty 2 · `bc-translation.toxins`: Ricin and Shiga toxin both inactivate ribosomes by removing an adenine from 28S rRNA. → **True**. Correct: both are RNA N-glycosidases acting on the sarcin–ricin loop.
-- **Crossword** `mol-translation-toxins:clue1` · recall → **recognition** · difficulty 2 · `bc-translation.toxins`: Modified histidine on EF-2 that diphtheria toxin targets → **DIPHTHAMIDE**
-- **Crossword** `mol-translation-toxins:clue2` · recall → **recognition** · difficulty 2 · `bc-translation.toxins`: Castor bean toxin that depurinates 28S rRNA → **RICIN**
+- **True/false** **CORE** · `mol-translation-toxins:tf1` · recall → **recognition** · difficulty 2 · `bc-translation.toxins`: Ricin and Shiga toxin both inactivate ribosomes by removing an adenine from 28S rRNA. → **True**. Correct: both are RNA N-glycosidases acting on the sarcin–ricin loop.
+- **Crossword** **SPECIALIST** · `mol-translation-toxins:clue1` · recall → **recognition** · difficulty 2 · `bc-translation.toxins`: Modified histidine on EF-2 that diphtheria toxin targets → **DIPHTHAMIDE**
+- **Crossword** **CORE** · `mol-translation-toxins:clue2` · recall → **recognition** · difficulty 2 · `bc-translation.toxins`: Castor bean toxin that depurinates 28S rRNA → **RICIN**
 
 ---
 
@@ -1082,7 +1094,7 @@ Objectives: `bc-protein-processing.ptm`, `bc-protein-processing.folding`
 
 **Takeaway.** Misfolded and cleared → loss of function (ΔF508). Misfolded and retained → loss of function plus toxicity (Z α1AT).
 
-- **MCQ** `mol-protein-folding:mcq1` · comparison → **application** · difficulty 4 · `bc-protein-processing.folding`
+- **MCQ** **APPLICATION** · `mol-protein-folding:mcq1` · comparison → **application** · difficulty 4 · `bc-protein-processing.folding`
   - Both ΔF508 CFTR and the Z variant of α1-antitrypsin misfold in the endoplasmic reticulum. Why does the Z variant injure the cell that produces it while ΔF508 CFTR mainly causes disease by its absence?
   - ◻️ A. Only the Z protein is modified by ubiquitin — _Both enter ER quality-control pathways; the difference is what escapes degradation._
   - ✅ B. Z protein polymerizes and is retained; ΔF508 is degraded by the proteasome
@@ -1091,7 +1103,7 @@ Objectives: `bc-protein-processing.ptm`, `bc-protein-processing.folding`
   - ◻️ E. Z protein is secreted in excess and digests the liver — _Z protein is under-secreted; serum levels fall._
   - Steps: (1) Both proteins misfold in the ER and are recognized by quality control. (2) ΔF508 CFTR is ubiquitinated and degraded → loss of function at the membrane only. (3) Z α1AT polymerizes and accumulates → hepatocyte injury plus low serum levels.
   - Explanation: ΔF508 CFTR is cleared by ERAD, so cells simply lack the channel. Z α1AT forms polymers that are retained in hepatocytes, injuring them (gain of toxic function) while serum levels fall.
-- **MCQ** `mol-protein-folding:mcq2` · mechanism → **mechanism** · difficulty 2 · `bc-protein-processing.folding`
+- **MCQ** **CORE** · `mol-protein-folding:mcq2` · mechanism → **mechanism** · difficulty 2 · `bc-protein-processing.folding`
   - A misfolded membrane protein in the ER is tagged with a chain of ubiquitin. What is the next fate of most such proteins?
   - ✅ A. Extraction from the ER and degradation by the proteasome
   - ◻️ B. Transport to the Golgi for glycosylation — _Ubiquitination marks the protein for destruction, not further processing._
@@ -1099,10 +1111,10 @@ Objectives: `bc-protein-processing.ptm`, `bc-protein-processing.folding`
   - ◻️ D. Secretion by exocytosis — _Quality control prevents misfolded proteins from leaving the ER._
   - ◻️ E. Degradation by lysosomal acid hydrolases inside the ER — _ERAD substrates are degraded in the cytoplasm by the 26S proteasome._
   - Explanation: In ERAD, polyubiquitinated proteins are retrotranslocated out of the ER and degraded by the 26S proteasome.
-- **True/false** `mol-protein-folding:tf1` · recall → **recognition** · difficulty 1 · `bc-protein-processing.ptm`: Ubiquitination of a protein commonly targets it for degradation by the proteasome. → **True**. Correct: polyubiquitin chains commit proteins, including misfolded ER proteins, to proteasomal destruction.
-- **Crossword** `mol-protein-folding:clue1` · recall → **recognition** · difficulty 1 · `bc-protein-processing.folding`: Barrel-shaped complex that destroys ubiquitin-tagged proteins → **PROTEASOME**
-- **Crossword** `mol-protein-folding:clue2` · recall → **recognition** · difficulty 1 · `bc-protein-processing.folding`: Protein that helps others fold and holds those that fail → **CHAPERONE**
-- **Match Up** `match:protein-modifications` · recall → **recognition** · difficulty 1 · `bc-protein-processing.ptm`: Finishing touches. Match each post-translational modification to an example of what it does.
+- **True/false** **CORE** · `mol-protein-folding:tf1` · recall → **recognition** · difficulty 1 · `bc-protein-processing.ptm`: Ubiquitination of a protein commonly targets it for degradation by the proteasome. → **True**. Correct: polyubiquitin chains commit proteins, including misfolded ER proteins, to proteasomal destruction.
+- **Crossword** **CORE** · `mol-protein-folding:clue1` · recall → **recognition** · difficulty 1 · `bc-protein-processing.folding`: Barrel-shaped complex that destroys ubiquitin-tagged proteins → **PROTEASOME**
+- **Crossword** **CORE** · `mol-protein-folding:clue2` · recall → **recognition** · difficulty 1 · `bc-protein-processing.folding`: Protein that helps others fold and holds those that fail → **CHAPERONE**
+- **Match Up** **CORE** · `match:protein-modifications` · recall → **recognition** · difficulty 1 · `bc-protein-processing.ptm`: Finishing touches. Match each post-translational modification to an example of what it does.
   - Phosphorylation ↔ Kinase-added phosphate that switches activity
   - Ubiquitination ↔ Tags a misfolded protein for the proteasome
   - Hydroxylation ↔ Vitamin C-dependent change to collagen proline
@@ -1149,7 +1161,7 @@ Objectives: `bc-protein-processing.a1at`
 
 **Takeaway.** One misfolded protein, two mechanisms: retained in the liver (toxicity), missing in the lung (elastase unopposed).
 
-- **MCQ** `mol-a1at:mcq1` · interpretation → **application** · difficulty 4 · `bc-protein-processing.a1at`
+- **MCQ** **APPLICATION** · `mol-a1at:mcq1` · interpretation → **application** · difficulty 4 · `bc-protein-processing.a1at`
   - A liver biopsy from a 6-week-old with prolonged conjugated jaundice shows periportal hepatocytes with globules that are PAS-positive after diastase digestion. Serum α1-antitrypsin is very low. What do the globules contain, and why are they there?
   - ◻️ A. Bilirubin crystals from biliary obstruction — _Bile pigment is not PAS-positive diastase-resistant globules._
   - ◻️ B. Neutrophil elastase complexes taken up from blood — _The globules consist of the patient’s own misfolded α1-antitrypsin._
@@ -1158,7 +1170,7 @@ Objectives: `bc-protein-processing.a1at`
   - ✅ E. Polymerized α1-antitrypsin retained in the ER
   - Steps: (1) Diastase resistance excludes glycogen. (2) Very low serum α1AT with hepatocyte globules → protein made but not secreted. (3) Z protein polymerizes and is retained in the ER → globules + neonatal liver injury.
   - Explanation: Z α1-antitrypsin polymerizes in the hepatocyte ER; the retained protein forms PAS-positive, diastase-resistant globules and injures the liver while serum levels fall.
-- **MCQ** `mol-a1at:mcq2` · mechanism → **mechanism** · difficulty 2 · `bc-protein-processing.a1at`
+- **MCQ** **CORE** · `mol-a1at:mcq2` · mechanism → **mechanism** · difficulty 2 · `bc-protein-processing.a1at`
   - Why does α1-antitrypsin deficiency cause emphysema?
   - ◻️ A. α1AT directly synthesizes alveolar elastin — _α1AT is a protease inhibitor; it does not synthesize elastin._
   - ◻️ B. Mucus plugs obstruct the small airways — _Mucus plugging is the mechanism in cystic fibrosis and chronic bronchitis._
@@ -1166,11 +1178,11 @@ Objectives: `bc-protein-processing.a1at`
   - ✅ D. Neutrophil elastase is left uninhibited in the alveoli
   - ◻️ E. Smoking-induced mutations inactivate SERPINA1 — _The defect is inherited; smoking accelerates protease damage._
   - Explanation: Too little α1-antitrypsin reaches the lung, so neutrophil elastase digests alveolar walls (loss of antiprotease function).
-- **True/false** `mol-a1at:tf1` · recall → **recognition** · difficulty 2 · `bc-protein-processing.a1at`: α1-Antitrypsin deficiency is the most common genetic cause of liver disease in children. → **True**. Correct: retained Z protein can cause neonatal cholestasis and later chronic liver disease.
-- **True/false** `mol-a1at:tf2` · recall → **recognition** · difficulty 2 · `bc-protein-processing.a1at`: In α1-antitrypsin deficiency the liver makes too little of the protein, so hepatocytes are spared. → **False**. The Z protein is made but retained as polymers in hepatocytes, which injures the liver.
-- **Crossword** `mol-a1at:clue1` · recall → **recognition** · difficulty 1 · `bc-protein-processing.a1at`: Neutrophil protease left unopposed in α1-antitrypsin deficiency → **ELASTASE**
-- **Crossword** `mol-a1at:clue2` · recall → **recognition** · difficulty 2 · `bc-protein-processing.a1at`: Whole-acinus pattern of emphysema typical of α1-antitrypsin deficiency → **PANACINAR**
-- **Mechanism Lab** `seq:a1at-emphysema` · mechanism → **mechanism** · difficulty 3 · `bc-protein-processing.a1at`, `bc-protein-processing.folding`: From Z allele to emphysema. Order the chain of events linking the Z allele of SERPINA1 to lung damage.
+- **True/false** **CORE** · `mol-a1at:tf1` · recall → **recognition** · difficulty 2 · `bc-protein-processing.a1at`: α1-Antitrypsin deficiency is the most common genetic cause of liver disease in children. → **True**. Correct: retained Z protein can cause neonatal cholestasis and later chronic liver disease.
+- **True/false** **CORE** · `mol-a1at:tf2` · recall → **recognition** · difficulty 2 · `bc-protein-processing.a1at`: In α1-antitrypsin deficiency the liver makes too little of the protein, so hepatocytes are spared. → **False**. The Z protein is made but retained as polymers in hepatocytes, which injures the liver.
+- **Crossword** **CORE** · `mol-a1at:clue1` · recall → **recognition** · difficulty 1 · `bc-protein-processing.a1at`: Neutrophil protease left unopposed in α1-antitrypsin deficiency → **ELASTASE**
+- **Crossword** **CORE** · `mol-a1at:clue2` · recall → **recognition** · difficulty 2 · `bc-protein-processing.a1at`: Whole-acinus pattern of emphysema typical of α1-antitrypsin deficiency → **PANACINAR**
+- **Mechanism Lab** **CORE** · `seq:a1at-emphysema` · mechanism → **mechanism** · difficulty 3 · `bc-protein-processing.a1at`, `bc-protein-processing.folding`: From Z allele to emphysema. Order the chain of events linking the Z allele of SERPINA1 to lung damage.
   1. The Z protein misfolds during synthesis in the hepatocyte ER
   2. Misfolded protein polymerizes and is retained in the liver
   3. Very little α1-antitrypsin reaches the blood
@@ -1178,7 +1190,7 @@ Objectives: `bc-protein-processing.a1at`
   5. Alveolar wall elastin is degraded
   6. Airspaces enlarge (emphysema)
   - The protein is made in the liver but used in the lung: retention in hepatocytes both injures the liver and starves the lung of antiprotease.
-- **Mystery Patient** `case:a1at-deficiency` · multistep → **application** · difficulty 4 · `bc-protein-processing.a1at`, `bc-protein-processing.folding`: Short of breath at 38
+- **Mystery Patient** **APPLICATION** · `case:a1at-deficiency` · multistep → **application** · difficulty 4 · `bc-protein-processing.a1at`, `bc-protein-processing.folding`: Short of breath at 38
   - Presentation: A 38-year-old man has two years of progressive breathlessness on exertion.
   - History: He smoked 10 cigarettes a day for 15 years. As a newborn he had prolonged jaundice that resolved. His sister has “liver problems”.
   - Examination: Hyperinflated chest with reduced breath sounds at both bases. Liver edge palpable 2 cm below the costal margin.
@@ -1229,7 +1241,7 @@ Objectives: `bc-collagen.synthesis`
 
 **Takeaway.** Inside: hydroxylate (vitamin C), glycosylate, triple helix. Outside: cleave propeptides, cross-link (copper).
 
-- **MCQ** `mol-collagen-synthesis:mcq1` · multistep → **application** · difficulty 4 · `bc-collagen.synthesis`
+- **MCQ** **APPLICATION** · `mol-collagen-synthesis:mcq1` · multistep → **application** · difficulty 4 · `bc-collagen.synthesis`
   - A 58-year-old man who lives alone and eats almost no fruit or vegetables has swollen bleeding gums, perifollicular hemorrhages and a leg wound that will not heal. Which step of collagen synthesis is impaired?
   - ◻️ A. Glycine substitution in the triple helix — _Glycine substitutions are inherited structural defects (osteogenesis imperfecta)._
   - ◻️ B. Translation of Gly-X-Y chains on ribosomes — _Translation of collagen chains does not require vitamin C._
@@ -1238,7 +1250,7 @@ Objectives: `bc-collagen.synthesis`
   - ◻️ E. Copper-dependent cross-linking of fibrils — _Cross-linking by lysyl oxidase depends on copper, not vitamin C._
   - Steps: (1) Diet without fruit or vegetables → vitamin C deficiency. (2) Vitamin C is needed by prolyl and lysyl hydroxylases in the RER. (3) Underhydroxylated collagen forms an unstable helix → bleeding gums, perifollicular hemorrhage, poor wound healing.
   - Explanation: Vitamin C is the cofactor for prolyl and lysyl hydroxylases; without hydroxylation the triple helix is unstable and vessels and wounds are fragile (scurvy).
-- **MCQ** `mol-collagen-synthesis:mcq2` · interpretation → **application** · difficulty 4 · `bc-collagen.synthesis`
+- **MCQ** **APPLICATION** · `mol-collagen-synthesis:mcq2` · interpretation → **application** · difficulty 4 · `bc-collagen.synthesis`
   - Fibroblasts from an infant secrete procollagen normally and cleave its propeptides, but the fibrils outside the cell have very few covalent cross-links. Serum copper is very low. Which enzyme activity is reduced?
   - ◻️ A. Prolyl hydroxylase — _Hydroxylation happens before secretion; normal procollagen secretion argues against a hydroxylation defect._
   - ◻️ B. Procollagen peptidase — _Propeptides are cleaved normally in this case._
@@ -1247,11 +1259,11 @@ Objectives: `bc-collagen.synthesis`
   - ✅ E. Lysyl oxidase
   - Steps: (1) Secretion and propeptide cleavage are normal → intracellular steps and peptidases are intact. (2) The defect is in extracellular cross-linking. (3) Cross-linking needs lysyl oxidase, a copper enzyme; serum copper is very low → reduced lysyl oxidase activity.
   - Explanation: Lysyl oxidase is a copper enzyme that cross-links collagen and elastin outside the cell; copper deficiency (as in Menkes disease) reduces its activity.
-- **True/false** `mol-collagen-synthesis:tf1` · recall → **recognition** · difficulty 2 · `bc-collagen.synthesis`: Propeptides are cleaved from procollagen inside the rough endoplasmic reticulum. → **False**. Propeptides are cleaved after secretion, outside the cell, forming tropocollagen.
-- **True/false** `mol-collagen-synthesis:tf2` · recall → **recognition** · difficulty 1 · `bc-collagen.synthesis`: Glycine occupies every third position of collagen chains, allowing the triple helix to pack tightly. → **True**. Correct: Gly-X-Y repeats place glycine at the crowded center of the helix.
-- **Crossword** `mol-collagen-synthesis:clue1` · recall → **recognition** · difficulty 2 · `bc-collagen.synthesis`: Collagen molecule formed after propeptides are cleaved outside the cell → **TROPOCOLLAGEN**
-- **Crossword** `mol-collagen-synthesis:clue2` · recall → **recognition** · difficulty 1 · `bc-collagen.synthesis`: Vitamin C deficiency with bleeding gums and poor wound healing → **SCURVY**
-- **Mechanism Lab** `seq:collagen` · mechanism → **mechanism** · difficulty 3 · `bc-collagen.synthesis`: Making collagen. Order collagen synthesis from the ribosome to a cross-linked fibril.
+- **True/false** **CORE** · `mol-collagen-synthesis:tf1` · recall → **recognition** · difficulty 2 · `bc-collagen.synthesis`: Propeptides are cleaved from procollagen inside the rough endoplasmic reticulum. → **False**. Propeptides are cleaved after secretion, outside the cell, forming tropocollagen.
+- **True/false** **CORE** · `mol-collagen-synthesis:tf2` · recall → **recognition** · difficulty 1 · `bc-collagen.synthesis`: Glycine occupies every third position of collagen chains, allowing the triple helix to pack tightly. → **True**. Correct: Gly-X-Y repeats place glycine at the crowded center of the helix.
+- **Crossword** **CORE** · `mol-collagen-synthesis:clue1` · recall → **recognition** · difficulty 2 · `bc-collagen.synthesis`: Collagen molecule formed after propeptides are cleaved outside the cell → **TROPOCOLLAGEN**
+- **Crossword** **CORE** · `mol-collagen-synthesis:clue2` · recall → **recognition** · difficulty 1 · `bc-collagen.synthesis`: Vitamin C deficiency with bleeding gums and poor wound healing → **SCURVY**
+- **Mechanism Lab** **CORE** · `seq:collagen` · mechanism → **mechanism** · difficulty 3 · `bc-collagen.synthesis`: Making collagen. Order collagen synthesis from the ribosome to a cross-linked fibril.
   1. Pre-pro-α chains (Gly-X-Y repeats) are made into the rough ER
   2. Proline and lysine are hydroxylated (vitamin C)
   3. Hydroxylysine residues are glycosylated
@@ -1301,7 +1313,7 @@ Objectives: `bc-collagen.oi`
 
 **Takeaway.** Less collagen → usually milder OI; abnormal collagen (glycine substitution) → usually more severe OI, with exceptions. Keep OI in the differential for unexplained fractures.
 
-- **MCQ** `mol-osteogenesis-imperfecta:mcq1` · comparison → **application** · difficulty 4 · `bc-collagen.oi`
+- **MCQ** **APPLICATION** · `mol-osteogenesis-imperfecta:mcq1` · comparison → **application** · difficulty 4 · `bc-collagen.oi`
   - Two families have osteogenesis imperfecta. Family 1 carries a COL1A1 nonsense mutation whose mRNA is degraded; Family 2 carries a COL1A1 glycine-to-cysteine substitution in the triple-helical domain. Which family is more likely to have severe disease, and why?
   - ◻️ A. Both equally, because both affect COL1A1 — _The type of mutation, not just the gene, determines severity._
   - ✅ B. Family 2, because abnormal chains disrupt the helices they join
@@ -1310,7 +1322,7 @@ Objectives: `bc-collagen.oi`
   - ◻️ E. Family 2, because cysteine prevents collagen secretion — _The key problem is that the abnormal chain is built into helices and spoils them._
   - Steps: (1) Family 1: mRNA degraded → about half the normal collagen, all of it normal → usually mild OI. (2) Family 2: abnormal chain incorporated into trimers → helices containing it are disrupted. (3) Dominant-negative structural defect → more likely to be severe, though not certain.
   - Explanation: A null allele reduces the amount of normal collagen and usually causes mild OI. A glycine substitution puts abnormal chains into helices with normal ones (dominant negative) and more often causes severe OI. This is a tendency, not a rule: severity also depends on the position and the replacing residue.
-- **MCQ** `mol-osteogenesis-imperfecta:mcq2` · interpretation → **application** · difficulty 4 · `bc-collagen.oi`
+- **MCQ** **APPLICATION** · `mol-osteogenesis-imperfecta:mcq2` · interpretation → **application** · difficulty 4 · `bc-collagen.oi`
   - A 4-month-old has a femoral fracture after his parent reports he rolled against a cot rail. There are no bruises. His sclerae are grey-blue, a skull radiograph shows Wormian bones, and his father had several childhood fractures. Which conclusion is best supported?
   - ◻️ A. Scurvy is the likely cause of the fracture — _Scurvy is rare in infants on formula or breast milk and does not cause blue sclerae or Wormian bones._
   - ◻️ B. Menkes disease is the most likely diagnosis — _Menkes causes kinky hair, hypotonia and seizures in boys and is X-linked, not father-to-son._
@@ -1319,7 +1331,7 @@ Objectives: `bc-collagen.oi`
   - ✅ E. Osteogenesis imperfecta should be evaluated, e.g. with type I collagen testing
   - Steps: (1) Fracture with minimal reported trauma raises both OI and inflicted injury. (2) Blue-grey sclerae, Wormian bones and an affected father (dominant pattern) point to a heritable collagen defect. (3) Evaluate for OI (including COL1A1/COL1A2 testing) while assessing safeguarding concerns in parallel.
   - Explanation: Blue sclerae, Wormian bones and an affected father support OI; molecular testing helps when unexplained fractures raise the question of inflicted injury.
-- **MCQ** `mol-osteogenesis-imperfecta:mcq3` · mechanism → **mechanism** · difficulty 3 · `bc-collagen.oi`
+- **MCQ** **CORE** · `mol-osteogenesis-imperfecta:mcq3` · mechanism → **mechanism** · difficulty 3 · `bc-collagen.oi`
   - Why does replacing a single glycine in the triple-helical domain of the α1(I) chain disrupt type I collagen?
   - ◻️ A. Glycine forms the copper-dependent cross-links between fibrils — _Cross-links form from lysine and hydroxylysine side chains via lysyl oxidase._
   - ◻️ B. Glycine is the attachment site for collagen sugar chains — _Sugars are attached to hydroxylysine residues._
@@ -1327,21 +1339,34 @@ Objectives: `bc-collagen.oi`
   - ◻️ D. Losing glycine prevents translation of the COL1A1 mRNA — _The mutant chain is translated; it is the folding of the helix that fails._
   - ◻️ E. Glycine is the residue hydroxylated by vitamin C-dependent enzymes — _Hydroxylation acts on proline and lysine, not glycine._
   - Explanation: Glycine at every third position packs into the center of the helix; a bulkier residue there distorts folding of every trimer that includes the mutant chain.
-- **True/false** `mol-osteogenesis-imperfecta:tf1` · recall → **recognition** · difficulty 1 · `bc-collagen.oi`: Most osteogenesis imperfecta is caused by autosomal dominant mutations in COL1A1 or COL1A2. → **True**. Correct: most cases involve type I collagen genes and dominant inheritance.
-- **Crossword** `mol-osteogenesis-imperfecta:clue1` · recall → **recognition** · difficulty 2 · `bc-collagen.oi`: Extra skull sutural bones seen on radiographs in brittle bone disease → **WORMIAN**
+- **True/false** **CORE** · `mol-osteogenesis-imperfecta:tf1` · recall → **recognition** · difficulty 1 · `bc-collagen.oi`: Most osteogenesis imperfecta is caused by autosomal dominant mutations in COL1A1 or COL1A2. → **True**. Correct: most cases involve type I collagen genes and dominant inheritance.
+- **Crossword** **CORE** · `mol-osteogenesis-imperfecta:clue1` · recall → **recognition** · difficulty 2 · `bc-collagen.oi`: Extra skull sutural bones seen on radiographs in brittle bone disease → **WORMIAN**
 
 ---
 
+## Items flagged SPECIALIST (excluded from gameplay pending editorial review)
+
+- `mol-epigenetic-disease:mcq1` — Separating uniparental disomy from an imprinting defect by SNP studies is beyond Step 1; Step 1 needs deletion vs UPD and which parent’s copy is active.
+- `mol-xo-inhibitors:mcq2` — Xanthine stones during allopurinol therapy are a niche complication beyond Step 1.
+- `mol-reading-frame:mcq2` — Antisense exon-skipping therapy is beyond typical Step 1 depth.
+- `mol-transcription:mcq2` — Which polymerase makes U6 snRNA is beyond Step 1; Step 1 needs pol I/II/III → rRNA/mRNA/tRNA.
+- `mol-transcription:mcq3` — TFIID/TATA-binding protein detail is beyond Step 1; replaced by core mcq4.
+- `mol-rna-processing:mcq1` — Dicer processing is beyond Step 1 depth; Step 1 needs miRNA silences mRNA post-transcriptionally.
+- `mol-rna-processing:clue2` — Dicer is beyond Step 1 depth.
+- `mol-splice-disease:tf1` — SF3B1 in MDS is specialist hematopathology.
+- `mol-translation-toxins:clue1` — Diphthamide is beyond Step 1; the Step 1 point is EF-2 ADP-ribosylation.
+- `seq:mirna-silencing` — Drosha/Dicer/RISC biogenesis order is beyond Step 1.
+
 ## Medical Connections: complete puzzles (16 tiles, verified single solution against the global catalog)
 
-### Gene expression: made and jammed · `cx:gene-expression-blockers` · identification → **recognition** · difficulty 3 · `bc-rna-processing.processing`, `bc-translation.toxins`, `bc-replication.topo-drugs`, `bc-transcription.inhibitors`, `bc-transcription.regulation`
+### Gene expression: made and jammed · **CORE** · `cx:gene-expression-blockers` · identification → **recognition** · difficulty 3 · `bc-rna-processing.processing`, `bc-translation.toxins`, `bc-replication.topo-drugs`, `bc-transcription.inhibitors`, `bc-transcription.regulation`
 
 - **Pre-mRNA processing** (tier 1): 7-Methylguanosine cap, Poly-A tail, Spliceosome, AAUAAA signal — A pre-mRNA becomes mature mRNA by 5′ capping, cleavage after the AAUAAA signal with poly-A tail addition, and intron removal by the spliceosome.
 - **Toxins that halt eukaryotic translation** (tier 2): Diphtheria toxin, Pseudomonas exotoxin A, Shiga toxin, Ricin — EF-2 ADP-ribosylation (diphtheria toxin, exotoxin A) or 28S rRNA depurination (Shiga toxin, ricin).
 - **Inhibit human topoisomerases** (tier 3): Etoposide, Teniposide, Irinotecan, Topotecan — Etoposide and teniposide trap topoisomerase II; irinotecan and topotecan trap topoisomerase I.
 - **Reduce transcription** (tier 4): α-Amanitin, Rifampin, Dactinomycin, TATA box mutation — α-Amanitin (RNA polymerase II), rifampin (bacterial RNA polymerase), dactinomycin (intercalates the template) and a TATA box mutation (weaker promoter) all lower transcription.
 
-Strict check (any 4 tiles inside any of 90 catalog categories, the puzzle's groups or its decoys): **1** solution(s).
+Strict check (any 4 tiles inside any of 102 catalog categories, the puzzle's groups or its decoys): **1** solution(s).
 Manual audit with broad categories (a group is defensible only if a category covers exactly its four tiles; the last four may share any category): **1** defensible solution(s).
 Red herrings on the board (cannot complete an alternative board): Toxins of any origin (5 tiles); Cancer chemotherapy drugs (5 tiles); Plant-derived compounds (5 tiles); Made by bacteria (5 tiles); Involve RNA polymerase II or its transcripts (6 tiles); Inhibitors of gene expression (any step) (12 tiles); Cytotoxic to human cells (10 tiles); Made by bacteria (natural or derived) (5 tiles); Plant or fungal products (6 tiles); Natural toxins (poisons) (5 tiles); Anticancer drugs (5 tiles); Bind DNA or a DNA–enzyme complex (5 tiles).
 
