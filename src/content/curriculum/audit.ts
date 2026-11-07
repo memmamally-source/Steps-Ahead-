@@ -28,6 +28,9 @@ export function rollUp(coverages: Coverage[]): Coverage {
 }
 
 export type ObjectiveReview = 'no content' | ReviewStatus;
+
+/** Complete, independently playable items (everything except Connections category-bank entries). */
+export const isPlayable = (i: GameItem) => i.kind !== 'group';
 const ORDER: ReviewStatus[] = ['draft', 'in_review', 'approved', 'published', 'retired'];
 
 /** The audit result for one objective, combining curriculum-linked content with legacy judgements. */
@@ -59,8 +62,11 @@ export interface ContentIndex {
  */
 export function auditObjective(o: Objective, content: ContentIndex): ObjectiveAudit {
   const linked = content.concepts.filter((c) => c.curriculum?.includes(o.id)).map((c) => c.id);
-  const linkedItems = content.items.filter((i) => i.objectiveIds?.includes(o.id));
-  const legacyItems = content.items.filter((i) => !i.objectiveIds && i.conceptIds.some((id) => o.existing.includes(id)));
+  // Connections category-bank entries are builder input, not playable on their own: they never count
+  // as items or as evidence that a depth is assessed.
+  const playable = content.items.filter((i) => isPlayable(i));
+  const linkedItems = playable.filter((i) => i.objectiveIds?.includes(o.id));
+  const legacyItems = playable.filter((i) => !i.objectiveIds && i.conceptIds.some((id) => o.existing.includes(id)));
   const items = [...new Set([...linkedItems, ...legacyItems])];
   const concepts = [...new Set([...linked, ...o.existing])];
   const depthsAssessed = [...new Set(linkedItems.map((i) => i.depth).filter((d): d is Depth => !!d))];

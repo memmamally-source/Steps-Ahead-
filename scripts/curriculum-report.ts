@@ -50,7 +50,8 @@ p('- **Depth codes:** R = recognition (recall or identify), M = mechanism (expla
 p('- **Outline basis:** *Listed* means the official USMLE Content Outline (2026) names the topic or its example; the exact area › section › category › term is quoted so it can be checked. *Foundational* means the topic is not named but belongs to a foundational strand that the 2024 outline update redistributed into organ systems (“will still be assessed within an organ system/disease process”); the section where it is assessed is given. All quoted headings and terms were verified against the published outline by `scripts/check-outline-terms.ts`.');
 p('- **Coverage rule (strict):** an objective is *covered* only if existing content teaches all of it; *partial* if some of it; *missing* otherwise. A subtopic or topic is *covered* only when every objective in it is covered. Incidental mentions (for example, Down syndrome named as an Alzheimer risk factor) are recorded as mentions and never count as coverage.');
 p('- **Computed coverage for new content:** content written from batch 1 onward declares the objectives it teaches, and every item declares the objective and depth it assesses. Such an objective is *covered* only when linked items assess every depth the checklist requires; otherwise it is partial. Legacy content keeps the manual judgement. “(new)” marks curriculum-linked concepts.');
-p('- **Question items:** for linked content, items are counted per objective with the depths they assess; legacy items are counted through the concepts mapped to the objective.');
+p('- **Playable items:** for linked content, items are counted per objective with the depths they assess; legacy items are counted through the concepts mapped to the objective. Only complete, independently playable items count (MCQ, true/false, crossword clue, Mechanism Lab, Match Up, complete Connections puzzle, Mystery Patient case). Connections category-bank entries are builder input and are excluded from counts and from coverage evidence.');
+p('- **Coverage is not clinical validation:** an objective marked covered has linked draft content at every required depth. It says nothing about medical accuracy; that requires medical review.');
 p('- **Medical review:** the least advanced review status of the mapped content. “—” means no content exists yet.');
 p('- **Cross-links:** where another subject owns the clinical detail (for example, hemochromatosis in Gastrointestinal), the objective is marked with its home subject and Biochemistry teaches only the biochemical or genetic part, so knowledge is not duplicated.');
 p('- **Copyright:** the owner uses First Aid 2026 privately to check scope. No text, tables, mnemonics, illustrations or questions from it or any other commercial resource are reproduced here.', '');
@@ -79,7 +80,7 @@ p(`| Objectives requiring all three depths | ${allThree} |`);
 p(`| Subtopic priority: core / important / supporting | ${count(subtopics, (s) => s.priority === 3)} / ${count(subtopics, (s) => s.priority === 2)} / ${count(subtopics, (s) => s.priority === 1)} |`);
 p(`| Objectives whose clinical detail is owned by another subject | ${count(objectives, (o) => !!o.home)} |`);
 p(`| Existing content concepts teaching an objective | ${mappedConcepts.length} |`);
-p(`| Original question items assessing these objectives | ${allItems.size} |`);
+p(`| Playable items assessing these objectives (Connections category-bank entries excluded) | ${allItems.size} |`);
 p(`| Objectives covered by curriculum-linked new content (computed) | ${count(linkedObjectives, (o) => cov(o) === 'covered')} of ${linkedObjectives.length} linked |`);
 p('| Content medically reviewed or approved | 0 (all existing content is draft, AI-drafted) |', '');
 
@@ -124,7 +125,7 @@ for (const d of S.subdivisions) {
     p(`#### ${t.title} — ${MARK[covOf(obs)]}`, '');
     p(`- Objectives: ${obs.length} (${count(obs, (o) => cov(o) === 'covered')} covered, ${count(obs, (o) => cov(o) === 'partial')} partial, ${count(obs, (o) => cov(o) === 'missing')} missing); ${count(obs, (o) => cov(o) !== 'covered')} still need content.`);
     p(`- Existing content: ${ids.length ? code(ids) : 'none'}.`);
-    p(`- Original question items available: ${itemsOf(obs).size}.`);
+    p(`- Playable items available: ${itemsOf(obs).size}.`);
     p(`- Medical review status: ${reviews.length ? reviews.join(', ') : 'no content to review'}.`, '');
     for (const s of t.subtopics) {
       const origin = s.origin.length === 0 ? ' · new' : s.origin[0] !== s.id ? ` · from ${code(s.origin)}` : '';

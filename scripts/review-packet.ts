@@ -9,6 +9,7 @@ import { molecularBatch2 } from '../src/content/biochem/molecular2';
 import { globalCategories } from '../src/content/connectionsCatalog';
 import { redHerrings, solutions } from '../src/content/connectionsVerify';
 import { factEvidence, type GameItem } from '../src/content/schema';
+import { isPlayable } from '../src/content/curriculum/audit';
 
 const BATCHES = { batch1: molecularBatch1, batch2: molecularBatch2 } as const;
 const [sel = 'batch1', out = 'docs/subjects/review/packet.md', title = 'Review packet'] = process.argv.slice(2).filter((a) => a !== '--');
@@ -39,10 +40,12 @@ L('## Summary', '');
 L('| Measure | Value |', '|---|---|');
 L(`| Concepts | ${concepts.length} |`, `| Objectives taught | ${new Set(concepts.flatMap((c) => c.curriculum!)).size} |`);
 L(`| Facts verified / awaiting direct confirmation | ${evidence.filter((e) => e === 'verified').length} / ${evidence.filter((e) => e === 'pending').length} |`);
-L(`| MCQs / true-false / crossword clues | ${count((i) => i.kind === 'mcq')} / ${count((i) => i.kind === 'tf')} / ${count((i) => i.kind === 'clue')} |`);
-L(`| Mechanism Lab sequences / Match Up sets | ${count((i) => i.kind === 'sequence')} / ${count((i) => i.kind === 'match')} |`);
-L(`| Complete Connections puzzles / category groups / Mystery Patient cases | ${count((i) => i.kind === 'connections')} / ${count((i) => i.kind === 'group')} / ${count((i) => i.kind === 'case')} |`);
-for (const r of ['recall', 'identification', 'mechanism', 'interpretation', 'prediction', 'comparison', 'multistep'] as const) L(`| Items: ${r} | ${count((i) => i.reasoning === r)} |`);
+L(`| **Playable learning items (total)** | **${count(isPlayable)}** |`);
+L(`| — MCQs / true-false / crossword clues | ${count((i) => i.kind === 'mcq')} / ${count((i) => i.kind === 'tf')} / ${count((i) => i.kind === 'clue')} |`);
+L(`| — Mechanism Lab sequences / Match Up sets | ${count((i) => i.kind === 'sequence')} / ${count((i) => i.kind === 'match')} |`);
+L(`| — Complete Connections puzzles / Mystery Patient cases | ${count((i) => i.kind === 'connections')} / ${count((i) => i.kind === 'case')} |`);
+L(`| Connections category-bank entries (builder input, **not** playable alone; excluded from item counts and coverage) | ${count((i) => i.kind === 'group')} |`);
+for (const r of ['recall', 'identification', 'mechanism', 'interpretation', 'prediction', 'comparison', 'multistep'] as const) L(`| Playable items: ${r} | ${count((i) => isPlayable(i) && i.reasoning === r)} |`);
 L('');
 
 const opts = (i: { options: { id: string; text: string; whyWrong?: string }[]; answerId: string }) =>

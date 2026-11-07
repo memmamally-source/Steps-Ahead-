@@ -5,6 +5,8 @@ import { REASONING_DEPTH, type ConnectionsPuzzleItem, type GameItem, type McqIte
 import { defensiblePartitions, solutions, verifyPuzzle } from '@/content/connectionsVerify';
 import { globalCategories } from '@/content/connectionsCatalog';
 import { MANUAL_AUDIT } from '@/content/connectionsAudit';
+import { BIOCHEMISTRY } from '@/content/curriculum/biochemistry';
+import { auditObjective } from '@/content/curriculum/audit';
 
 const mcqs = ALL_ITEMS.filter((i): i is McqItem => i.kind === 'mcq');
 const linked = ALL_ITEMS.filter((i) => i.objectiveIds?.length);
@@ -142,6 +144,19 @@ describe('Curated Medical Connections puzzles', () => {
     const oldNucleotides = [['Adenine', 'Guanine', 'Hypoxanthine', 'Xanthine'], ['Cytosine', 'Uracil', 'Thymine', 'Orotate'], ['Methotrexate', 'Hydroxyurea', 'Leflunomide', 'Mycophenolate'], ['HGPRT', 'Xanthine oxidase', 'Adenosine deaminase', 'Purine nucleoside phosphorylase']];
     const dnaBases = { label: 'Bases found in DNA', members: ['Adenine', 'Guanine', 'Cytosine', 'Thymine'] };
     expect(defensiblePartitions(oldNucleotides.flat(), oldNucleotides, [dnaBases, ...catalog, ...manual('cx:nucleotides-and-drugs')]).length).toBeGreaterThan(1);
+  });
+
+  it('never counts category-bank entries as playable items or coverage evidence', () => {
+    const bank = ALL_ITEMS.filter((i) => i.kind === 'group' && i.objectiveIds?.length);
+    expect(bank.length).toBeGreaterThan(0);
+    for (const g of bank) {
+      for (const id of g.objectiveIds!) {
+        const o = BIOCHEMISTRY.subdivisions.flatMap((s) => s.topics.flatMap((t) => t.subtopics.flatMap((st) => st.objectives))).find((x) => x.id === id);
+        if (!o) continue;
+        const audit = auditObjective(o, { concepts: ALL_CONCEPTS, items: ALL_ITEMS });
+        expect(audit.items.some((i) => i.kind === 'group'), id).toBe(false);
+      }
+    }
   });
 
   it('keeps legacy category groups out of the "complete game" set', () => {
