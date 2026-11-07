@@ -181,4 +181,4 @@ Distractor explanations say why each option fits less well. Most name features t
 
 ### Browser validation
 
-Result recorded below once the run completes.
+`npm run check:games` method (reviewer-preview build `VITE_ALLOW_UNREVIEWED=true`, `vite preview`, headless Chromium, iPhone 13 emulation): **745 passed, 0 failed**. All 22 Mechanism Lab sequences were played correctly and incorrectly, and all 26 Match Up sets were played, including `seq:vhl-hif`, `seq:wilson-copper`, `match:tumor-syndrome-genes`, `match:which-inheritance`, `match:which-test-shows-it` and the revised `match:imprinting-causes`. No server was left running. The build was made before the final pedigree-layout tweak, which affects only figures, not these games. These are technical checks only, not evidence of medical accuracy.

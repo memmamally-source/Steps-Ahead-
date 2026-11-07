@@ -103,7 +103,7 @@ Large unstructured batches have stopped. Content is now developed subject by sub
     - 62 verified facts, 0 pending.
   - Genetics coverage: 66 covered / 14 core-deferred / 0 partial / 3 missing (CF presentation, CF diagnosis and prenatal screening are left to the organ chapters).
   - Docs: change log `BIOCHEM_GEN3_CHANGELOG.md`, packet `BIOCHEM_GEN3_REVIEW.md`.
-  - Browser play-check: PLAYCHECK_RESULT.
+  - Browser play-check (reviewer-preview build): 745 passed, 0 failed.
 
   **Stopped for review. Next (only on the owner's request): Nutrition or Metabolism; the "Read the result" activity; the remaining Genetics organ-chapter objectives.**
 - Existing content (including the neuro/behavioral, MSK/skin and reproductive/endocrine batches drafted before the change) is preserved unchanged for its own subject audit.
