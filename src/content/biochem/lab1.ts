@@ -441,7 +441,7 @@ const core = defineConcepts([
             { label: 'Boy B', bands: [{ kDa: 400, intensity: 1 }] },
           ],
           alt: 'Western blot for dystrophin: strong band at 427 kDa in normal muscle, no band in boy A, a faint smaller band near 400 kDa in boy B.',
-          caption: 'Muscle biopsy Western blot (illustrative sizes; the dashed outline marks where a normal band would be).',
+          caption: 'Muscle biopsy Western blot with equal protein loaded per lane (illustrative sizes). A lane with no band means no dystrophin detected; the arrowhead outside the membrane marks where normal dystrophin runs.',
         },
         options: [
           ['a', 'A: Duchenne (no dystrophin); B: Becker (abnormal dystrophin)'],
@@ -631,6 +631,12 @@ const core = defineConcepts([
     mcq: [
       {
         stem: 'A young adult has episodes of dark morning urine, hemolytic anemia and a thrombosis in a large abdominal vein. Flow cytometry of red cells shows a large population with no CD55 or CD59 staining. What is the underlying defect?',
+        figure: {
+          kind: 'flow-histogram', marker: 'CD59', cells: 'Patient red cells stained for CD59',
+          populations: [{ label: 'CD59-negative', center: 0.9, spread: 0.3, percent: 60 }, { label: 'CD59-positive', center: 3.2, spread: 0.3, percent: 40 }],
+          alt: 'Flow histogram of red cells: a large peak at very low CD59 fluorescence (60% of cells) and a smaller peak at normal CD59 fluorescence (40%).',
+          caption: 'Peak area reflects the share of cells (illustrative values).',
+        },
         options: [
           ['a', 'Acquired loss of GPI anchors from a PIGA mutation'],
           ['b', 'Inherited spectrin deficiency in the red cell membrane', 'Spherocytosis does not remove GPI-anchored proteins.'],
@@ -678,6 +684,12 @@ const core = defineConcepts([
       },
       {
         stem: 'A dot plot of a patient’s T cells shows CD4 fluorescence on the y-axis and CD8 on the x-axis. Most cells fall in the lower-right quadrant and few in the upper-left. What does this show?',
+        figure: {
+          kind: 'flow-dot', xMarker: 'CD8', yMarker: 'CD4', cells: 'Patient T cells (CD3⁺)',
+          quadrants: { ll: 3, lr: 82, ul: 13, ur: 2 },
+          alt: 'Dot plot of T cells with CD8 on the x-axis and CD4 on the y-axis: 82% of cells in the lower-right quadrant (CD8-positive) and 13% in the upper-left (CD4-positive).',
+          caption: 'Quadrant percentages are illustrative.',
+        },
         options: [
           ['a', 'CD4 T cells are depleted relative to CD8 T cells'],
           ['b', 'CD8 T cells are depleted relative to CD4 T cells', 'The lower-right quadrant is CD8-positive, CD4-negative, and it holds most cells.'],
@@ -826,6 +838,12 @@ const core = defineConcepts([
       },
       {
         stem: 'An infant with typical features of Down syndrome has a karyotype showing 46 chromosomes. One chromosome 14 carries extra chromosome 21 material joined to it. What does this result mean for the family?',
+        figure: {
+          kind: 'karyogram', karyotype: '46,XY,der(14;21)(q10;q10),+21', sex: 'XY',
+          changes: [{ type: 'robertsonian', a: '14', b: '21' }, { type: 'trisomy', chr: '21' }],
+          alt: 'Karyogram with 46 chromosomes: one chromosome 14 and one 21 are fused into a single derivative chromosome, and two free chromosome 21s are present, giving three copies of 21q.',
+          caption: 'Schematic karyogram (no banding detail).',
+        },
         options: [
           ['a', 'A translocation is present; parents should be karyotyped'],
           ['b', 'Down syndrome is excluded because there are 46 chromosomes', 'Extra chromosome 21 material on another chromosome still causes Down syndrome.'],
@@ -887,6 +905,12 @@ const core = defineConcepts([
     mcq: [
       {
         stem: 'A newborn has a congenital heart defect, hypocalcemic seizures and recurrent infections. Her karyotype is normal. FISH with a 22q11.2 probe shows one signal and a control signal on each chromosome 22. What explains this?',
+        figure: {
+          kind: 'fish', phase: 'metaphase', chromosome: '22',
+          probes: [{ target: '22q11.2 (TBX1 region)', color: 'red', signals: 1 }, { target: '22q13 control', color: 'green', signals: 2 }],
+          alt: 'Metaphase FISH of chromosome 22: the green control probe lights both chromosome 22s; the red 22q11.2 probe lights only one.',
+          caption: 'The deletion (about 3 Mb) is too small to see on a routine karyotype; the missing red signal reveals it.',
+        },
         options: [
           ['a', 'A 22q11.2 microdeletion on one chromosome 22'],
           ['b', 'Trisomy 22 missed by the karyotype', 'Trisomy would give three signals, and a karyotype would show it.'],

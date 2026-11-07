@@ -67,6 +67,9 @@ const CF_SWEAT = PM(41318507, 'Bhuiyan I et al. CF diagnosis: compatible clinica
 const CF_DUCT = PM(23284077, 'Reddy MM, Stutts MJ. In cystic fibrosis, salt and fluid absorption by gland duct epithelia is effectively prevented by loss of CFTR; in airway epithelia, CFTR-mediated Cl⁻ secretion is absent. Cold Spring Harb Perspect Med 2013');
 const BWS_IGF2 = PM(9260520, 'Reik W. Loss of imprinting of the paternally expressed growth enhancer IGF2 is the most common molecular defect in Beckwith–Wiedemann syndrome; IGF2 overexpression can reproduce most of its features. Trends Genet 1997');
 const UPD_TIMING = PM(14747835, 'Kotzot D. In maternal heterodisomy with known timing of nondisjunction, about two-thirds were due to a maternal meiosis I error. Eur J Hum Genet 2004');
+const CDM_MATERNAL = PM(28257691, 'Barbé L et al. Congenital myotonic dystrophy type 1, the most severe form, shows large expansions and almost exclusive maternal transmission. Am J Hum Genet 2017');
+const DM_MBNL = PM(39460437, 'Frison-Roche C et al. In myotonic dystrophy type 1, expanded CUG repeat RNA sequesters MBNL proteins, depleting them and deregulating alternative splicing. Brain 2025');
+const RB_MOSAIC = PM(40338593, 'Gao C et al. RB1 mosaicism was found in 14.7% of 136 patients with retinoblastoma, including 4 with earlier negative germline tests; mosaic patients less often had bilateral disease. JAMA Ophthalmol 2025');
 
 const IM = 'bc-imprinting';
 const HW = 'bc-hardy-weinberg';
@@ -93,11 +96,8 @@ const core = defineConcepts([
       'Uniparental disomy (UPD) is inheriting both copies of a chromosome, or part of one, from one parent. It often has no effect, because most genes are not imprinted, but it can leave a person with no active copy of an imprinted gene (Prader–Willi and Angelman syndromes from 15q; Beckwith–Wiedemann syndrome from 11p).',
       'In isodisomy the two copies are duplicates of one parental chromosome, raising the risk of a recessive disorder by making the person homozygous; in heterodisomy the two copies are the two different homologues of one parent.',
       'Maternal heterodisomy is the most common type of UPD.',
-      'Heterodisomy (both different homologues from one parent) most often reflects a meiosis I error; isodisomy (two copies of one homologue) fits a meiosis II error or duplication of a single chromosome after fertilization.',
+      'In maternal heterodisomy, about two-thirds of cases with known timing arise from a meiosis I error.',
     ],
-    // Fact 4: partly verified. PMID 14747835 attributes about two-thirds of maternal heterodisomy to meiosis I errors (the rest to
-    // meiosis II); the isodisomy mapping (meiosis II error or postzygotic duplication) is not stated in the sources read.
-    factPending: [4],
     factRefs: [[0], [0], [1], [2], [1, 3]],
     mechanism:
       'Methyl marks laid down in the egg or sperm silence one parental copy of imprinted genes, so a child depends on the copy from the other parent. Losing that active copy (by deletion, or by inheriting both copies from the wrong parent) removes the gene’s function. Isodisomy also makes every gene on the chromosome homozygous, so a parent’s recessive variant can cause disease even though the other parent is not a carrier.',
@@ -126,6 +126,8 @@ const core = defineConcepts([
         answer: 'a',
         mini: 'Two identical maternal chromosome 7s = maternal isodisomy, so the mother’s single CFTR variant became homozygous in the child even though the father is not a carrier.',
         reasoning: 'interpretation',
+        relevance: 'supplementary',
+        relevanceNote: 'A useful advanced application of recessive inheritance, but CF from maternal isodisomy is an uncommon presentation; the general UPD and imprinting mechanisms remain core.',
         objectives: [`${IM}.upd`],
         steps: ['Cystic fibrosis needs two variant alleles, but only the mother is a carrier.', 'Both chromosome 7s are maternal and identical → maternal isodisomy.', 'Duplicating the mother’s variant-bearing chromosome makes the child homozygous → disease.'],
         difficulty: 3,
@@ -296,8 +298,9 @@ const core = defineConcepts([
       'Children with Beckwith–Wiedemann syndrome have an increased risk of tumors, particularly Wilms tumor (kidney) and hepatoblastoma (liver).',
       'Most cases result from abnormal regulation of imprinted genes on chromosome 11p15; at least half involve methylation changes at imprinting control regions that regulate growth genes including CDKN1C, H19 and IGF2.',
       'Overexpression of the paternally expressed growth factor gene IGF2 contributes to the overgrowth.',
+      'About 20% of cases result from paternal uniparental disomy of 11p15, usually arising early in development and affecting only some cells (mosaic), which leaves two active paternal copies and no maternal copy of the imprinted genes.',
     ],
-    factRefs: [[0], [0], [0, 1], [0, 2]],
+    factRefs: [[0], [0], [0, 1], [0, 2], [0]],
     mechanism:
       'Imprinting errors at 11p15 unbalance growth-regulating genes so that growth-promoting activity (including IGF2) is increased. The result is prenatal and childhood overgrowth, organ enlargement and a raised risk of embryonal tumors.',
     associations: ['11p15 imprinting', 'Macrosomia', 'Macroglossia', 'Omphalocele', 'Hemihyperplasia', 'Neonatal hypoglycemia', 'Wilms tumor', 'Hepatoblastoma'],
@@ -331,7 +334,7 @@ const core = defineConcepts([
       {
         stem: 'A newborn has macrosomia, macroglossia and an omphalocele, with low glucose in the first days of life. The karyotype is normal 46,XY. Which further result would most likely explain the condition?',
         options: [
-          ['a', 'Abnormal methylation at imprinting control regions on 11p15'],
+          ['a', 'Abnormal methylation at 11p15 imprinting centers'],
           ['b', 'Deletion of the paternal 15q11–q13 segment', 'A paternal 15q deletion causes Prader–Willi syndrome, with hypotonia, not overgrowth.'],
           ['c', 'Expansion of a CGG repeat in FMR1', 'Fragile X does not cause neonatal overgrowth, macroglossia or omphalocele.'],
           ['d', 'Trisomy 13 detected on repeat karyotype', 'The karyotype is normal, and trisomy 13 does not cause overgrowth.'],
@@ -373,17 +376,17 @@ const core = defineConcepts([
     ],
     factRefs: [[0], [0], [1], [2]],
     mechanism:
-      'If allele frequencies are p and q and alleles combine at random, genotypes follow p², 2pq and q². For a rare recessive disease the affected frequency is q², so q = √(prevalence) and the carrier frequency 2pq is close to 2q. For an X-linked recessive disease, males show the allele frequency directly (q) and affected females are q². Drift, founder effects, selection and heterozygote advantage move a population away from these expectations.',
+      'If allele frequencies are p and q and alleles combine at random, genotypes follow p², 2pq and q². For a rare recessive disease the affected frequency is q², so q = √(prevalence) and the carrier frequency 2pq is close to 2q. For an X-linked recessive disease, males show the allele frequency directly (q) and affected females are q². Drift, founder effects and selection (including heterozygote advantage) change allele frequencies. A founder population that then mates at random can again show Hardy–Weinberg proportions at its new frequencies.',
     associations: ['p + q = 1', 'p² + 2pq + q² = 1', 'q = √(prevalence)', 'Carrier ≈ 2q', 'X-linked: males q, females q²', 'Founder effect', 'Genetic drift', 'Heterozygote advantage (sickle trait, malaria)'],
     misconception:
       'The carrier frequency is not the square root of prevalence: √prevalence gives the allele frequency q; carriers are about 2q.',
     quick:
-      'p + q = 1; p² + 2pq + q² = 1 (large population, random mating, no mutation, migration or selection). Rare AR disease: q = √prevalence, carriers ≈ 2q. XR: affected males = q, affected females = q². Departures: drift, founder effect, selection, heterozygote advantage.',
+      'p + q = 1; p² + 2pq + q² = 1 (large population, random mating, no mutation, migration or selection). Rare AR disease: q = √prevalence, carriers ≈ 2q. XR: affected males = q, affected females = q². Allele frequencies change by drift, founder effect, selection, heterozygote advantage.',
     detailed: [
       'Hardy–Weinberg assumes a large, randomly mating population without mutation, migration or selection; then allele frequencies (p, q) and genotype frequencies (p², 2pq, q²) stay constant. For a rare autosomal recessive disease, prevalence = q², so q = √prevalence; with p ≈ 1, carriers = 2pq ≈ 2q. For an X-linked recessive disease, each male has one X, so the proportion of affected males equals q; affected females need two copies, q².',
-      'Real populations depart from equilibrium through genetic drift (chance, strongest in small populations), founder effects (a small isolated group with unusual allele frequencies), selection, and heterozygote advantage, the classic example being sickle cell trait protecting against malaria.',
+      'Allele frequencies change through genetic drift (chance, strongest in small populations), founder effects (a small isolated group starting with unusual allele frequencies), selection, and heterozygote advantage (sickle cell trait protecting against malaria). A founder effect alters frequencies relative to the source population; if the new population then mates at random, its genotypes can still fit Hardy–Weinberg proportions at the new frequencies.',
     ],
-    takeaway: 'q = √prevalence; carriers ≈ 2q; X-linked males = q; drift, founders and heterozygote advantage break equilibrium.',
+    takeaway: 'q = √prevalence; carriers ≈ 2q; X-linked males = q; drift, founders and selection change allele frequencies.',
     related: ['gen-sickle', 'gen-ar'],
     outline: found(MS, GEN),
     mcq: [
@@ -410,7 +413,7 @@ const core = defineConcepts([
           ['b', '1 in 5,000', 'That is the male frequency (q); females need two copies.'],
           ['c', '1 in 10,000', 'Halving the male frequency does not model two-copy inheritance.'],
           ['d', '1 in 2,500', 'Females are far less often affected than males in X-linked recessive disease.'],
-          ['e', '1 in 70,700', 'That is roughly √(1/5,000), which is not the female frequency.'],
+          ['e', '1 in 71', 'That is roughly √(1/5,000) (√5,000 ≈ 70.7); a square root is not a genotype frequency, and affected females are q².'],
         ],
         answer: 'a',
         mini: 'In males the affected frequency equals the allele frequency: q = 1/5,000. Affected females need two copies: q² = 1/25,000,000.',
@@ -424,12 +427,12 @@ const core = defineConcepts([
         options: [
           ['a', 'Founder effect'],
           ['b', 'Heterozygote advantage', 'Heterozygote advantage requires a selective benefit to carriers, which is not described.'],
-          ['c', 'Hardy–Weinberg equilibrium', 'Equilibrium predicts stable frequencies; this is a departure from them.'],
+          ['c', 'Hardy–Weinberg equilibrium', 'Hardy–Weinberg proportions describe genotypes at the current allele frequencies; they do not explain why the frequency differs from the source population.'],
           ['d', 'New mutations in every generation', 'Recurrent new mutation would not concentrate the allele in one isolated group.'],
           ['e', 'Anticipation', 'Anticipation describes worsening of repeat disorders over generations.'],
         ],
         answer: 'a',
-        mini: 'A small founding group can carry an allele at a frequency atypical of its source population; isolation preserves it: the founder effect.',
+        mini: 'A small founding group can carry an allele at a frequency atypical of its source population, and isolation preserves it: the founder effect. It changes allele frequency relative to the source population; if the community then mates at random, its genotypes can still fit Hardy–Weinberg proportions at the new frequency.',
         reasoning: 'identification',
         objectives: [`${HW}.violations`],
         difficulty: 2,
@@ -472,7 +475,7 @@ const core = defineConcepts([
     difficulty: 3,
     curriculum: [`${TN}.principles`, `${TN}.fragile-x`, `${TN}.friedreich`, `${TN}.match`, `${MD}.myotonic`],
     objectives: ['Explain repeat expansion and parent-of-origin bias', 'Explain fragile X, Friedreich ataxia and myotonic dystrophy', 'Match each repeat disorder to its repeat, gene and inheritance'],
-    citations: [MP_FRAGX, MP_FMR1, FX_MATERNAL, MP_FA, MP_DM, MP_DMPK, MP_HD, HD_PATERNAL, JHD_PATERNAL],
+    citations: [MP_FRAGX, MP_FMR1, FX_MATERNAL, MP_FA, MP_DM, MP_DMPK, MP_HD, HD_PATERNAL, JHD_PATERNAL, CDM_MATERNAL, DM_MBNL],
     facts: [
       'Fragile X syndrome is caused by more than 200 CGG repeats in FMR1, which silence the gene and prevent production of FMRP; 55–200 repeats is a premutation. Features include intellectual disability (milder and less frequent in females), autism features in about one-third, a long narrow face, large ears, a prominent jaw, flexible fingers and enlarged testes after puberty.',
       'Fragile X premutation alleles expand to full mutations during maternal transmission.',
@@ -480,11 +483,12 @@ const core = defineConcepts([
       'Myotonic dystrophy type 1 is autosomal dominant and caused by an expanded CTG repeat in DMPK (normally 5–34; 50 to over 1,000 in disease, more than 1,000 in the congenital form). It causes myotonia (difficulty releasing a grip), progressive muscle weakness, cataracts, cardiac conduction defects and diabetes, and shows anticipation.',
       'Huntington disease shows anticipation particularly when inherited through the father, because the CAG repeat tends to expand in paternal meioses; juvenile Huntington disease is paternally transmitted in 80–90% of cases.',
       'The long GAA repeat disrupts production of frataxin, severely reducing it; certain nerve and muscle cells cannot function properly without enough frataxin.',
-      'The expanded DMPK repeat produces an abnormally long messenger RNA that traps proteins in clumps inside the cell, interfering with the production of many other proteins.',
+      'The expanded DMPK repeat produces RNA with a long CUG repeat that traps proteins in clumps inside the cell; it sequesters MBNL splicing proteins, so alternative splicing of many other transcripts is deregulated.',
+      'Congenital myotonic dystrophy type 1, the most severe form, is associated with very large expansions and almost exclusively maternal transmission.',
     ],
-    factRefs: [[0, 1], [2], [3], [4, 5], [6, 7, 8], [3], [4, 5]],
+    factRefs: [[0, 1], [2], [3], [4, 5], [6, 7, 8], [3], [4, 5, 10], [9]],
     mechanism:
-      'Repeats above a threshold are unstable and can grow when passed on. The parent matters: Huntington CAG repeats expand mainly in the father’s germ line, fragile X premutations expand to full mutations through the mother, and large myotonic dystrophy expansions can give a congenital form. Where the repeat sits sets the mechanism: CGG silencing (fragile X), GAA loss of frataxin (Friedreich), toxic CTG RNA (myotonic dystrophy), and polyglutamine CAG (Huntington).',
+      'Repeats above a threshold are unstable and can grow when passed on. The parent matters: Huntington CAG repeats expand mainly in the father’s germ line, fragile X premutations expand to full mutations through the mother, and very large myotonic dystrophy expansions, passed on almost always by the mother, give the congenital form. Where the repeat sits sets the mechanism: CGG silencing (fragile X), GAA loss of frataxin (Friedreich), toxic CUG-repeat RNA that sequesters MBNL splicing proteins (myotonic dystrophy), and polyglutamine CAG (Huntington).',
     associations: ['Huntington: CAG, HTT, AD, paternal expansion', 'Fragile X: CGG, FMR1, X-linked, maternal expansion', 'Friedreich: GAA, FXN, AR, cardiomyopathy', 'Myotonic dystrophy 1: CTG, DMPK, AD, myotonia, cataracts', 'Premutation 55–200 CGG'],
     misconception:
       'Not every repeat disorder is dominant or shows anticipation in the same way: Friedreich ataxia is recessive, and fragile X expansions occur on maternal transmission whereas Huntington expansions occur mainly through fathers.',
@@ -529,17 +533,17 @@ const core = defineConcepts([
         difficulty: 3,
       },
       {
-        stem: 'A 35-year-old man cannot let go of a door handle after gripping it, and has early cataracts and a cardiac conduction defect. His mother had cataracts at 60; his newborn son was floppy at birth. Which gene and repeat are involved?',
+        stem: 'A 32-year-old woman cannot let go of a door handle after gripping it, and has early cataracts and a cardiac conduction defect. Her father had cataracts at 60. Her newborn son was profoundly floppy at birth and needed help with breathing and feeding. Which gene and repeat are involved?',
         figure: {
           kind: 'pedigree', mode: 'AD',
           generations: [
-            [{ id: 'gf', sex: 'M', status: 'unaffected' }, { id: 'gm', sex: 'F', status: 'affected', note: 'cataracts 60y' }],
-            [{ id: 'man', sex: 'M', status: 'affected', proband: true, note: 'myotonia 35y' }, { id: 'wife', sex: 'F', status: 'unaffected' }],
-            [{ id: 'baby', sex: 'M', status: 'affected', note: 'floppy newborn' }],
+            [{ id: 'gf', sex: 'M', status: 'affected', note: 'cataract 60y' }, { id: 'gm', sex: 'F', status: 'unaffected' }],
+            [{ id: 'husband', sex: 'M', status: 'unaffected' }, { id: 'woman', sex: 'F', status: 'affected', proband: true, note: 'myotonia 32y' }],
+            [{ id: 'baby', sex: 'M', status: 'affected', note: 'congenital form' }],
           ],
-          families: [{ parents: ['gf', 'gm'], children: ['man'] }, { parents: ['man', 'wife'], children: ['baby'] }],
-          alt: 'Three-generation pedigree: a grandmother with late cataracts, her son with myotonia at 35, and his son affected at birth.',
-          caption: 'Onset becomes earlier and more severe in each generation.',
+          families: [{ parents: ['gf', 'gm'], children: ['woman'] }, { parents: ['husband', 'woman'], children: ['baby'] }],
+          alt: 'Three-generation pedigree: a grandfather with cataracts at 60, his daughter with myotonia at 32, and her son with the congenital form at birth.',
+          caption: 'Earlier, more severe disease in each generation; the congenital form is transmitted almost always by the mother.',
         },
         options: [
           ['a', 'CTG expansion in DMPK'],
@@ -549,16 +553,16 @@ const core = defineConcepts([
           ['e', 'Deletion in the dystrophin gene', 'Dystrophinopathies do not cause myotonia or cataracts.'],
         ],
         answer: 'a',
-        mini: 'Myotonia, cataracts and conduction defects with anticipation over three generations (late cataracts → adult myotonia → floppy newborn) = myotonic dystrophy type 1, a dominant CTG expansion in DMPK.',
+        mini: 'Myotonia, cataracts and conduction defects with anticipation over three generations (late cataracts → adult myotonia → floppy newborn) = myotonic dystrophy type 1, a dominant CTG expansion in DMPK. The severe congenital form usually follows a large expansion passed on by an affected mother, as here.',
         reasoning: 'interpretation',
         objectives: [`${MD}.myotonic`],
-        steps: ['Difficulty releasing a grip, cataracts and conduction defects → myotonic dystrophy.', 'Each generation is affected earlier and more severely → anticipation from repeat expansion.', 'Myotonic dystrophy type 1 = autosomal dominant CTG expansion in DMPK.'],
+        steps: ['Difficulty releasing a grip, cataracts and conduction defects → myotonic dystrophy.', 'Each generation is affected earlier and more severely → anticipation from repeat expansion; the congenital form comes through the mother.', 'Myotonic dystrophy type 1 = autosomal dominant CTG expansion in DMPK.'],
         difficulty: 3,
       },
       {
         stem: 'How does the expanded GAA repeat in FXN cause Friedreich ataxia?',
         options: [
-          ['a', 'It severely reduces frataxin, a protein needed for mitochondrial function'],
+          ['a', 'It severely reduces frataxin, needed for mitochondrial function'],
           ['b', 'It adds a toxic polyglutamine tract to the encoded protein', 'A polyglutamine tract is the mechanism of CAG repeats such as Huntington disease.'],
           ['c', 'Its messenger RNA traps proteins in clumps inside the cell', 'Toxic RNA clumps are the mechanism of the DMPK CTG repeat in myotonic dystrophy.'],
           ['d', 'It silences an X-linked gene by hypermethylation', 'FXN is autosomal; methylation silencing of FMR1 causes fragile X syndrome.'],
@@ -589,14 +593,14 @@ const core = defineConcepts([
       {
         stem: 'How does the expanded CTG repeat in DMPK cause myotonic dystrophy type 1?',
         options: [
-          ['a', 'Its long mRNA traps proteins in clumps, disrupting other protein production'],
+          ['a', 'Its CUG-repeat RNA sequesters MBNL splicing proteins, disrupting splicing'],
           ['b', 'It silences DMPK by hypermethylation so that no protein is made at all', 'Hypermethylation silencing of the repeat-bearing gene is the mechanism of fragile X syndrome (FMR1).'],
           ['c', 'It severely reduces frataxin needed for mitochondrial function', 'Frataxin deficiency from a GAA repeat causes Friedreich ataxia.'],
           ['d', 'It deletes exons of the dystrophin gene and shifts the reading frame', 'Frameshift dystrophin deletions cause Duchenne muscular dystrophy.'],
           ['e', 'It is passed only through the mitochondria of the mother', 'Myotonic dystrophy type 1 is autosomal dominant, nuclear inheritance.'],
         ],
         answer: 'a',
-        mini: 'The expanded DMPK repeat produces an abnormally long messenger RNA that traps proteins in clumps; the clumps interfere with the production of many other proteins.',
+        mini: 'The expanded CTG repeat is transcribed into RNA with a long CUG repeat. This toxic RNA forms nuclear clumps that sequester RNA-binding proteins such as MBNL, so alternative splicing of many other transcripts is abnormal (toxic RNA gain of function).',
         reasoning: 'mechanism',
         objectives: [`${MD}.myotonic`],
         difficulty: 3,
@@ -933,13 +937,14 @@ const core = defineConcepts([
     difficulty: 3,
     curriculum: [`${GT}.loh`],
     objectives: ['Explain the two-hit hypothesis and loss of heterozygosity'],
-    citations: [MP_RB],
+    citations: [MP_RB, RB_MOSAIC],
     facts: [
       'About two-thirds of retinoblastomas are non-hereditary: affected children are born with two normal RB1 copies, and both copies acquire mutations in retinal cells, usually in early childhood; these mutations cannot be passed on.',
       'In hereditary retinoblastoma, one altered RB1 copy is present in every cell (inherited in an autosomal dominant pattern or arising as a new mutation); a second mutation in retinal cells usually occurs in childhood and typically leads to tumors in both eyes.',
       'About one-third of retinoblastomas are hereditary: one altered RB1 copy in each cell is enough to increase cancer risk, and it may be inherited from a parent or arise as a new mutation in an egg or sperm cell or just after fertilization.',
+      'RB1 mosaicism (the variant present in only some body cells) occurs in some patients with retinoblastoma, including some whose earlier germline blood tests were negative; mosaic patients less often have bilateral disease.',
     ],
-    factRefs: [[0], [0], [0]],
+    factRefs: [[0], [0], [0], [1]],
     mechanism:
       'RB1 is a tumor suppressor: one working copy is enough, so a retinal cell becomes cancerous only after both copies are lost. In hereditary cases the first hit is inherited in every cell, so a second hit is very likely in many cells → early, often bilateral tumors. In sporadic cases both hits must occur by chance in the same cell → later, usually unilateral disease. Losing the remaining normal allele in a cell that started heterozygous is loss of heterozygosity.',
     associations: ['Tumor suppressor', 'Two hits', 'Loss of heterozygosity', 'Hereditary: germline first hit, bilateral, early', 'Sporadic: both hits somatic, unilateral', 'Autosomal dominant predisposition'],
@@ -981,19 +986,19 @@ const core = defineConcepts([
         difficulty: 3,
       },
       {
-        stem: 'A 3-year-old has a single tumor in one eye; there is no family history and blood testing shows no germline RB1 variant. What is the expected risk to his future children from this tumor?',
+        stem: 'Two children have retinoblastoma. Child A has tumors in both eyes at 8 months, and the same RB1 variant is found in blood and in tumor. Child B has one tumor at 3 years; two RB1 variants are found in the tumor and neither is detected in blood. Which statement best explains the difference?',
         options: [
-          ['a', 'Not increased, because both hits were somatic'],
-          ['b', '50%, because retinoblastoma is dominant', 'Only germline (hereditary) RB1 variants are passed on.'],
-          ['c', '25%, because both parents are carriers', 'Retinoblastoma is not an autosomal recessive disorder.'],
-          ['d', '100% of sons only', 'RB1 is autosomal, not X-linked.'],
-          ['e', 'Increased, because tumors always mean germline mutation', 'About two-thirds of retinoblastomas are non-hereditary.'],
+          ['a', 'A has a germline first hit in every cell; B’s hits most likely arose in the retina'],
+          ['b', 'B has a germline first hit in every cell; A’s hits most likely arose in the retina', 'The variant in A’s blood shows a germline first hit; B’s variants were found only in the tumor.'],
+          ['c', 'A needed only one hit because RB1 acts as an oncogene in infancy', 'RB1 is a tumor suppressor: every tumor cell lacks both functional copies.'],
+          ['d', 'B’s tumor needed only one hit because it appeared later', 'Both tumors needed loss of both RB1 copies; B has two variants in the tumor.'],
+          ['e', 'Both children inherited two mutated RB1 copies from carrier parents', 'Retinoblastoma predisposition is not autosomal recessive; A has one germline variant.'],
         ],
         answer: 'a',
-        mini: 'Unilateral disease with no germline variant fits sporadic retinoblastoma: both RB1 mutations arose in retinal cells and cannot be passed on.',
-        reasoning: 'prediction',
+        mini: 'Germline (A): one RB1 hit in every cell, so second hits occur early in many retinal cells → early, bilateral tumors, and the variant can be passed on. Somatic (B): both hits in one retinal cell → later, unilateral. A negative blood test makes a germline variant much less likely but does not exclude low-level mosaicism.',
+        reasoning: 'comparison',
         objectives: [`${GT}.loh`],
-        steps: ['A single tumor, no family history and no germline variant → sporadic retinoblastoma.', 'Both hits occurred in retinal (somatic) cells.', 'Somatic mutations are not passed to children → no increased risk from this tumor.'],
+        steps: ['A’s variant is in blood and tumor → germline first hit present in every cell.', 'B’s two variants are only in the tumor → both hits most likely somatic.', 'A germline first hit makes second hits likely in many retinal cells → earlier, bilateral disease.'],
         difficulty: 3,
       },
     ],
@@ -1241,16 +1246,16 @@ const matches: MatchItem[] = [
   match({
     id: 'match:imprinting-causes',
     relevance: 'core',
-    title: 'Which parent’s copy is missing?',
-    prompt: 'Match each genetic finding to the syndrome it causes.',
+    title: 'Genetic alteration → imprinting disorder',
+    prompt: 'Match each genetic alteration to the disorder it causes.',
     pairs: [
       { left: 'Paternal 15q11–q13 deletion', right: 'Prader–Willi syndrome' },
       { left: 'Maternal UPD 15', right: 'Prader–Willi (two maternal 15s)' },
       { left: 'Maternal 15q11–q13 deletion', right: 'Angelman syndrome' },
       { left: 'Paternal UPD 15', right: 'Angelman (two paternal 15s)' },
-      { left: '11p15 imprinting defect', right: 'Beckwith–Wiedemann syndrome' },
+      { left: 'Paternal UPD of 11p15', right: 'Beckwith–Wiedemann syndrome' },
     ],
-    explanation: 'Prader–Willi = no active paternal 15q genes; Angelman = no active maternal UBE3A; Beckwith–Wiedemann = 11p15 imprinting.',
+    explanation: 'Prader–Willi = no active paternal 15q genes; Angelman = no active maternal UBE3A; Beckwith–Wiedemann can result from paternal UPD of 11p15 (about 20% of cases, usually mosaic), giving two active paternal copies of growth genes such as IGF2.',
     conceptIds: ['gen-pws-angelman', 'gen-bws'],
     objectiveIds: [`${IM}.pws`, `${IM}.angelman`, `${IM}.bws`],
     difficulty: 2,

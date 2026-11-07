@@ -1239,6 +1239,12 @@ const core = defineConcepts([
     mcq: [
       {
         stem: 'A healthy woman with two miscarriages has a son with Down syndrome. Her karyotype is 45,XX,der(14;21)(q10;q10). What does this result mean?',
+        figure: {
+          kind: 'karyogram', karyotype: '45,XX,der(14;21)(q10;q10)', sex: 'XX',
+          changes: [{ type: 'robertsonian', a: '14', b: '21' }],
+          alt: 'Karyogram with 45 chromosomes: one chromosome 14 and one chromosome 21 are fused into a single derivative chromosome; one free 14 and one free 21 remain.',
+          caption: 'Balanced carrier: no 21q material is missing or extra.',
+        },
         options: [
           ['a', 'She is a balanced Robertsonian carrier at risk of unbalanced offspring'],
           ['b', 'She has Down syndrome herself', 'Her genome is balanced; she has no extra chromosome 21 material.'],

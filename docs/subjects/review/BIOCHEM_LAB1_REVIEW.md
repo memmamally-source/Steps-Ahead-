@@ -476,6 +476,11 @@ Objectives: `bc-elisa-flow.flow`
 
 - **MCQ** **CORE** · depth APPLICATION · `lab-flow:mcq1` · interpretation → **application** · difficulty 3 · `bc-elisa-flow.flow`
   - A young adult has episodes of dark morning urine, hemolytic anemia and a thrombosis in a large abdominal vein. Flow cytometry of red cells shows a large population with no CD55 or CD59 staining. What is the underlying defect?
+  - Figure (flow-histogram, original, generated from data; passes validation):
+
+    ![Flow histogram of red cells: a large peak at very low CD59 fluorescence (60% of cells) and a smaller peak at normal CD59 fluorescence (40%).](figures/lab-flow_mcq1.svg)
+
+  - Figure text: Flow cytometry histogram of patient red cells stained for cd59, CD59 fluorescence on a log scale. CD59-negative: 60% of cells, peak at low fluorescence (about 10^0.9). CD59-positive: 40% of cells, peak at intermediate fluorescence (about 10^3.2).
   - ◻️ A. Antibodies coating the red cells — _Autoimmune hemolysis shows antibody on red cells, not loss of CD55 and CD59._
   - ✅ B. Acquired loss of GPI anchors from a PIGA mutation
   - ◻️ C. Deficiency of glucose-6-phosphate dehydrogenase — _G6PD deficiency causes oxidant hemolysis without loss of GPI-anchored proteins._
@@ -502,6 +507,11 @@ Objectives: `bc-elisa-flow.flow`
   - Explanation: A CD4 count below 200 per μL indicates advanced immunosuppression: the risk of opportunistic infections is substantial (immunity is impaired, not entirely absent).
 - **MCQ** **CORE** · depth APPLICATION · `lab-flow:mcq4` · interpretation → **application** · difficulty 3 · `bc-elisa-flow.flow`
   - A dot plot of a patient’s T cells shows CD4 fluorescence on the y-axis and CD8 on the x-axis. Most cells fall in the lower-right quadrant and few in the upper-left. What does this show?
+  - Figure (flow-dot, original, generated from data; passes validation):
+
+    ![Dot plot of T cells with CD8 on the x-axis and CD4 on the y-axis: 82% of cells in the lower-right quadrant (CD8-positive) and 13% in the upper-left (CD4-positive).](figures/lab-flow_mcq4.svg)
+
+  - Figure text: Flow cytometry dot plot of patient t cells (cd3⁺): CD8 on the x-axis, CD4 on the y-axis; each dot is one cell. Lower left (CD8⁻ CD4⁻) 3%, lower right (CD8⁺ CD4⁻) 82%, upper left (CD8⁻ CD4⁺) 13%, upper right (CD8⁺ CD4⁺) 2%.
   - ✅ A. CD4 T cells are depleted relative to CD8 T cells
   - ◻️ B. The sample contains red cells lacking CD59 — _CD59 loss is a PNH finding and is not what this plot measures._
   - ◻️ C. Most T cells express both CD4 and CD8 — _Double-positive cells would fall in the upper-right quadrant._
@@ -621,6 +631,11 @@ Objectives: `bc-karyotype-fish.karyotype`
   - Explanation: Suspected Down syndrome: a karyotype shows trisomy 21 and, because it displays whole chromosomes, whether the extra 21 is part of a translocation.
 - **MCQ** **CORE** · depth APPLICATION · `lab-karyotype:mcq3` · interpretation → **application** · difficulty 3 · `bc-karyotype-fish.karyotype`
   - An infant with typical features of Down syndrome has a karyotype showing 46 chromosomes. One chromosome 14 carries extra chromosome 21 material joined to it. What does this result mean for the family?
+  - Figure (karyogram, original, generated from data; passes validation):
+
+    ![Karyogram with 46 chromosomes: one chromosome 14 and one 21 are fused into a single derivative chromosome, and two free chromosome 21s are present, giving three copies of 21q.](figures/lab-karyotype_mcq3.svg)
+
+  - Figure text: Karyogram 46,XY,der(14;21)(q10;q10),+21: 46 chromosomes arranged in pairs by size; sex chromosomes XY. Changes: one chromosome 14 and one chromosome 21 joined at their centromeres (Robertsonian translocation); three copies of chromosome 21.
   - ◻️ A. The finding needs a CD4 count to interpret — _CD4 counts are unrelated to chromosome rearrangements._
   - ◻️ B. The result shows a point mutation on chromosome 21 — _A karyotype cannot detect point mutations; it shows a rearrangement._
   - ✅ C. A translocation is present; parents should be karyotyped
@@ -669,6 +684,11 @@ Objectives: `bc-karyotype-fish.fish`
 
 - **MCQ** **CORE** · depth APPLICATION · `lab-fish:mcq1` · interpretation → **application** · difficulty 3 · `bc-karyotype-fish.fish`
   - A newborn has a congenital heart defect, hypocalcemic seizures and recurrent infections. Her karyotype is normal. FISH with a 22q11.2 probe shows one signal and a control signal on each chromosome 22. What explains this?
+  - Figure (fish, original, generated from data; passes validation):
+
+    ![Metaphase FISH of chromosome 22: the green control probe lights both chromosome 22s; the red 22q11.2 probe lights only one.](figures/lab-fish_mcq1.svg)
+
+  - Figure text: FISH on metaphase chromosomes 22. red probe for 22q11.2 (TBX1 region): 1 signal; green probe for 22q13 control: 2 signals. Red signal on only one homologue; Green signal on both homologues.
   - ✅ A. A 22q11.2 microdeletion on one chromosome 22
   - ◻️ B. A balanced translocation of chromosome 22 — _A balanced translocation keeps both copies of the region, giving two signals._
   - ◻️ C. Trisomy 22 missed by the karyotype — _Trisomy would give three signals, and a karyotype would show it._

@@ -2,6 +2,34 @@
 
 All content is **draft, AI-drafted, not medically reviewed**. A verified source is not medical approval, and passing automated or browser checks shows only technical validity, not medical accuracy or editorial approval. Review packet: `BIOCHEM_GEN2_REVIEW.md`. Source: `src/content/biochem/gen2.ts` (`geneticsBatch2`).
 
+## Revision 1 (owner review of batch 2)
+
+These are targeted corrections. Concept IDs, item IDs, objective mappings and study history are unchanged (new facts and citations are appended), and all content stays **draft and medically unapproved**. Sections 1–7 describe the original batch; this section takes precedence where they differ.
+
+### Corrections
+
+| # | Item | Change | Source |
+|---|---|---|---|
+| 1 | `gen-repeats:mcq3` (and its pedigree) | Myotonic dystrophy now passes through the **mother**. An affected grandfather (cataract at 60) has an affected daughter (the proband, myotonia at 32), whose son has the congenital form. The stem, generated pedigree, alt text, caption, explanation and steps were all updated, and the pedigree still validates as autosomal dominant. A new fact states that congenital DM1 is almost exclusively maternally transmitted, and the concept text now says so. | PMID 28257691 (Barbé 2017) |
+| 2 | `gen-two-hit:mcq2` | Replaced the "risk to future children" question, which implied zero risk. It now contrasts **germline** (variant in blood and tumor; early, bilateral) with **somatic** (both hits only in the tumor; later, unilateral) RB1 mutations. The explanation states that a negative blood test makes a germline variant much less likely but **does not exclude low-level mosaicism**. A new fact on RB1 mosaicism was added; there are no counselling percentages in gameplay. | PMID 40338593 (Gao 2025: 14.7% mosaicism, including 4 patients with earlier negative germline tests) |
+| 3 | `gen-hardy-weinberg:mcq2` | Distractor corrected from "1 in 70,700" to **"1 in 71"** (√(1/5,000) ≈ 1/70.7), and its explanation now shows the arithmetic. See also the new automatic arithmetic checks below. | — |
+| 4 | `match:imprinting-causes` | "11p15 imprinting defect" was replaced by **"Paternal UPD of 11p15" → Beckwith–Wiedemann syndrome**, a defined mechanism. The title is now "Genetic alteration → imprinting disorder", with a matching prompt. A new `gen-bws` fact covers paternal UPD (about 20% of cases, usually mosaic). | MedlinePlus BWS |
+| 5 | `gen-repeats:mcq6` | Answer and explanation: the expanded transcript carries **toxic CUG repeats that sequester MBNL splicing proteins**, so **alternative splicing** of other transcripts is abnormal. The fact and the concept mechanism were updated to match. | PMID 39460437 (Frison-Roche 2025) |
+| 6 | `gen-hardy-weinberg:mcq3` and concept text | A founder effect is now described as shifting allele frequency **relative to the source population**. The descendant population can still show Hardy–Weinberg genotype proportions at its new frequency if it mates at random. The "Hardy–Weinberg equilibrium" distractor explanation, mechanism, quick, detailed text and takeaway were corrected. The checklist wording of `bc-hardy-weinberg.violations` was refined the same way (ID unchanged). | Reasoned from the Hardy–Weinberg assumptions (OpenStax Biology 19.1–19.2) |
+| 7 | `gen-imprinting:mcq1` | Reclassified as **SUPPLEMENTARY**, with a note: a useful advanced application, but CF from maternal isodisomy is uncommon. The general UPD and imprinting items stay CORE. | — |
+| 8 | `gen-imprinting` fact 5 | The pending meiosis I/II mapping was **reduced to its verified part**: in maternal heterodisomy, about two-thirds of cases with known timing arise from a meiosis I error. The unverified isodisomy mapping was removed from student-facing text and recorded as a deferred component of `bc-imprinting.upd`. **Batch 2 now has no pending facts.** | PMID 14747835 (Kotzot 2004) |
+
+### Automatic arithmetic checks (new)
+
+`src/content/arithmetic.ts` and `src/content/__tests__/arithmetic.test.ts` run in `npm test`:
+- **Every written calculation chain** in every concept and item (e.g. "q = √(1/10,000) = 1/100", "1/2 × 1/2 = 1/4", "RR = 0.1 / 0.14 = 0.71") is parsed and recomputed. "=" must hold within 0.5% (or the displayed rounding) and "≈" within 5%. 101 calculations are checked, and all pass.
+- **Every numerical question** in a registry (Hardy–Weinberg, recurrence-risk, sensitivity/specificity and NNT items, including the new `gen-pkd:mcq3`) has its keyed answer recomputed from the stem. Every numeric option must equal the quantity its explanation says it is (e.g. "1 in 71" = √(1/5,000)).
+- A regression test confirms the original "1 in 70,700" would have failed.
+
+### Counts after revision
+
+Items: **66 CORE / 2 SUPPLEMENTARY** (added `gen-imprinting:mcq1`); depth unchanged (37 / 13 / 18). Facts: **53 verified, 0 pending.** A verified source is not medical approval.
+
 ## 1. Scope and approach
 
 - **23 objectives**, chosen after checking the coverage report so that nothing already covered by Genetics batch 1 or legacy content is duplicated. They cover the areas requested:
@@ -166,6 +194,6 @@ These are named in the checklist text, so the objectives are not counted as cove
 - Browser play-check: see below.
 - No device testing, deployment or medical review was done.
 
-### Browser validation
+### Browser validation (original batch)
 
 `npm run check:games` method (reviewer-preview build `VITE_ALLOW_UNREVIEWED=true`, `vite preview`, headless Chromium, iPhone 13 emulation): **672 passed, 0 failed**. All 20 Mechanism Lab sequences were played correctly and incorrectly, and all 23 Match Up sets were played, including `seq:cftr-df508`, `match:repeat-disorders` and `match:imprinting-causes`. No server was left running. Technical checks only; not evidence of medical accuracy.

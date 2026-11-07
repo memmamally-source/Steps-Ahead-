@@ -36,7 +36,7 @@ export const genetics: Subdivision = {
           o('equations', 'State p + q = 1 and p² + 2pq + q² = 1 and the assumptions (large population, random mating, no mutation, selection or migration).', RM),
           o('ar-calc', 'Calculate allele and carrier frequencies from the prevalence of an autosomal recessive disease (q = √prevalence; carrier ≈ 2q).', app),
           o('x-calc', 'Calculate X-linked recessive disease frequency in males (q) and females (q²).', app),
-          o('violations', 'Recognize departures from equilibrium: founder effect, genetic drift, selection and heterozygote advantage (sickle cell trait and malaria).', R),
+          o('violations', 'Recognize forces that change allele frequencies or break the equilibrium assumptions: founder effect (frequencies shifted relative to the source population), genetic drift, selection and heterozygote advantage (sickle cell trait and malaria).', R),
         ]),
       ],
     },

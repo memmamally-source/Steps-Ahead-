@@ -22,8 +22,9 @@ import { cellularBatch2 } from './biochem/cellular2';
 import { labBatch1 } from './biochem/lab1';
 import { geneticsBatch1 } from './biochem/gen1';
 import { geneticsBatch2 } from './biochem/gen2';
+import { geneticsBatch3 } from './biochem/gen3';
 
-const bundles = [cardioRenal, hemeImmuneResp, biochemGenetics, microPharmEndoStats, microGroups, virusGroups, gnGroups, biostatGroups, fpGroups, neuroBehavior, mskSkin, reproEndo, molecularBatch1, molecularBatch2, cellularBatch1, cellularBatch2, labBatch1, geneticsBatch1, geneticsBatch2];
+const bundles = [cardioRenal, hemeImmuneResp, biochemGenetics, microPharmEndoStats, microGroups, virusGroups, gnGroups, biostatGroups, fpGroups, neuroBehavior, mskSkin, reproEndo, molecularBatch1, molecularBatch2, cellularBatch1, cellularBatch2, labBatch1, geneticsBatch1, geneticsBatch2, geneticsBatch3];
 
 export const ALL_CONCEPTS: Concept[] = bundles.flatMap((b) => b.concepts).map((c) => ({ ...c, outline: STEP1_OUTLINE[c.id] ?? c.outline }));
 export const ALL_ITEMS: GameItem[] = [...bundles.flatMap((b) => b.items), ...CONNECTION_GROUPS, ...CASES, ...KB_ITEMS].map((i) =>

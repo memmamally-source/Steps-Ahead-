@@ -2,6 +2,23 @@
 
 All content is **draft, AI-drafted, not medically reviewed**. A verified source is not medical approval, and passing automated or browser checks shows only technical validity, not medical accuracy or editorial approval. Review packet: `BIOCHEM_LAB1_REVIEW.md`. Source: `src/content/biochem/lab1.ts` (`labBatch1`).
 
+## Revision 3 (figures, with the Genetics batch 3 cycle)
+
+No medical text changed apart from one figure caption. IDs and mappings are unchanged, and all content stays **draft**.
+
+- **New figures:**
+  - `lab-flow:mcq1`: PNH red cells, CD59 histogram with a 60% negative and a 40% positive peak;
+  - `lab-flow:mcq4`: CD4/CD8 dot plot, 82% CD8⁺ and 13% CD4⁺;
+  - `lab-fish:mcq1`: metaphase chromosome 22 pair, one red 22q11.2 signal beside two green controls; the caption says the 3-Mb deletion is below karyotype resolution;
+  - `lab-karyotype:mcq3`: schematic karyogram 46,XY,der(14;21)(q10;q10),+21.
+
+  All are validated, and previews are in `docs/subjects/review/figures/previews/`.
+- `lab-karyotype:mcq2` was left without a figure, because a karyogram would give away its answer (it asks which test to order).
+- **Western blot rendering (owner point 12):**
+  - An absent band is now an **empty lane**, as on a real blot, rather than a dashed outline.
+  - The expected 427-kDa position is marked by an arrowhead outside the membrane.
+  - The `lab-blotting:mcq3` caption now says equal protein was loaded per lane and explains the arrowhead.
+
 ## Revision 2 (evidence status and figures)
 
 No medical content changed except the three statements below. IDs and mappings are unchanged, and all content stays **draft**.

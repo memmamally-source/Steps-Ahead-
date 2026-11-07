@@ -34,4 +34,13 @@ export const CONTENT_GAPS: Record<string, ContentGap> = {
   'bc-trinucleotide.fragile-x': { deferred: 'mitral valve prolapse — not stated in the sources read' },
   'bc-trinucleotide.friedreich': { deferred: 'iron handling as the specific mitochondrial role, loss of vibration and position sense (taught as sensory loss), pes cavus — not stated in the sources read' },
   'bc-muscular-dystrophy.myotonic': { deferred: 'distal pattern of weakness, frontal balding, testicular atrophy — not stated in the sources read' },
+  'bc-imprinting.upd': { deferred: 'mapping isodisomy to a meiosis II error or postzygotic duplication — not stated in the sources read (heterodisomy from meiosis I is taught)' },
+  // Genetics batch 3.
+  'bc-ad-diseases.nf1': { deferred: 'pheochromocytoma as an NF1 association — not stated in the sources read' },
+  'bc-ad-diseases.vhl': { deferred: 'the 3p band location and bilaterality of renal carcinoma — chromosome 3 is taught; the rest is not stated in the sources read' },
+  'bc-ad-diseases.fap': { deferred: 'Gardner and Turcot variants — specialist detail, not in the sources read' },
+  'bc-ar-diseases.sma': { deferred: 'tongue fasciculations — not supported by an abstract read (titles only)' },
+  'bc-ar-diseases.thalassemia': { deferred: 'ancestry patterns of cis versus trans α-deletions — not stated in the sources read (the cis/trans mechanism is taught)' },
+  'bc-x-linked-diseases.wiskott': { deferred: 'raised IgA — the source read reports low-to-normal IgA and IgM with raised IgE; flagged for the reviewer as a checklist/source conflict' },
+  'bc-structural-chromosome.cri-du-chat': { deferred: 'ventricular septal defect as the specific heart defect — the sources read say only "heart defect"' },
 };

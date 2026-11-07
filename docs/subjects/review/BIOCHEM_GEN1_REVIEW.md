@@ -890,6 +890,11 @@ Objectives: `bc-structural-chromosome.robertsonian`
 
 - **MCQ** **CORE** · depth APPLICATION · `gen-robertsonian:mcq1` · interpretation → **application** · difficulty 3 · `bc-structural-chromosome.robertsonian`
   - A healthy woman with two miscarriages has a son with Down syndrome. Her karyotype is 45,XX,der(14;21)(q10;q10). What does this result mean?
+  - Figure (karyogram, original, generated from data; passes validation):
+
+    ![Karyogram with 45 chromosomes: one chromosome 14 and one chromosome 21 are fused into a single derivative chromosome; one free 14 and one free 21 remain.](figures/gen-robertsonian_mcq1.svg)
+
+  - Figure text: Karyogram 45,XX,der(14;21)(q10;q10): 45 chromosomes arranged in pairs by size; sex chromosomes XX. Changes: one chromosome 14 and one chromosome 21 joined at their centromeres (Robertsonian translocation).
   - ◻️ A. She is missing essential chromosome 14 genes — _Only the short arms are lost, which carry no essential unique genes._
   - ◻️ B. She has Down syndrome herself — _Her genome is balanced; she has no extra chromosome 21 material._
   - ◻️ C. Her son’s Down syndrome must be free trisomy from nondisjunction — _Her translocation explains translocation Down syndrome in her son._

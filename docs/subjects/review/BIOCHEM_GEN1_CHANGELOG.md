@@ -2,6 +2,12 @@
 
 All content is **draft, AI-drafted, not medically reviewed**. A verified source is not medical approval, and passing automated or browser checks shows only technical validity, not medical accuracy or editorial approval. Review packet: `BIOCHEM_GEN1_REVIEW.md`. Source: `src/content/biochem/gen1.ts` (`geneticsBatch1`).
 
+## Revision 2 (figures, with the Genetics batch 3 cycle)
+
+- `gen-robertsonian:mcq1` now shows a schematic karyogram **45,XX,der(14;21)(q10;q10)**: a balanced carrier, with one free 14, one free 21 and the fused derivative. It is validated for chromosome count, sex and acrocentric fusion.
+- Pedigree rendering was revised so that notes never overlap neighbouring labels and the proband arrow is clear of descent lines.
+- No medical text changed. IDs are unchanged, and all content stays **draft**.
+
 ## Revision 1 (owner review of batch 1)
 
 These are targeted corrections. Concept IDs, item IDs, curriculum mappings and study history are unchanged, and all content stays **draft**. Sections 1–7 below describe the original batch; this section takes precedence where they differ.

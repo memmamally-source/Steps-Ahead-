@@ -1,6 +1,8 @@
 # Visual learning items — plan and implementation status
 
-Status: **approved by the owner; phase 1 and phase 3 (pedigrees) built, phase 2 not started.** Every figure is attached to draft content and is **not medically reviewed**. The validation tests show that a figure is internally consistent, not that it is clinically realistic.
+Status: **approved by the owner. Phases 1 and 3 are built, and the phase 2 renderers (flow histograms, flow dot plots, FISH, karyograms) are built and attached to the existing Laboratory and Genetics items. The planned new interphase BCR-ABL1 fusion item and the "Read the result" activity are next and not yet built.** Every figure is attached to draft content and is **not medically reviewed**. The validation tests show that a figure is internally consistent, not that it is clinically realistic.
+
+**Previews for review:** `docs/subjects/review/figures/previews/` holds every figure rendered at phone width (358 px figure area) in light and dark theme, as PNG at 2× density, with an `index.html` gallery showing the alt text, text description and validation result. Regenerate with `npx vite-node scripts/figure-previews.ts -- docs/subjects/review/figures/previews`. The review packets also embed each figure's SVG.
 
 ## Implementation status
 
@@ -8,21 +10,22 @@ Status: **approved by the owner; phase 1 and phase 3 (pedigrees) built, phase 2 
 |---|---|
 | Schema: optional `figure` on MCQs and Mystery Patient cases (`src/content/figures.ts`, `schema.ts`) | Built |
 | Gel renderer (log-scale band position, ladder, labelled lanes, optional intensity) | Built |
-| Western blot renderer (kDa scale, target label, absent band drawn as a dashed outline, never omitted) | Built |
-| Pedigree renderer (squares and circles, affected, carrier, proband arrow, consanguinity double line, notes) | Built (moved ahead of phase 2 at the owner's request) |
-| Validation (`src/content/__tests__/figures.test.ts`, 6 tests) | Built. Gels and blots: ladder sorted, bands within range, labelled lanes, absent bands explicit. Pedigrees: unique IDs; each couple is one male and one female in the same generation; children sit in the next generation with one set of parents; no male shown as an X-linked carrier; and no explicit contradiction of the declared mode (AD, AR, XR, XD, MT), with tested noncarriers marked so the check never relies on assumptions. |
-| Accessibility | Built. SVG has `role="img"`, `<title>` and `<desc>`; all labels are escaped; each figure carries alt text and an expandable plain-language text description generated from the same data. |
-| Responsive and theme-aware | Built. SVG scales to the card width; colours use the app's CSS tokens with fallbacks, checked in light and dark mode on a phone-width screenshot (no device testing). |
-| Review packets | Built. Each figure is written to `docs/subjects/review/figures/*.svg` and embedded beside its item with its validation result and text description. |
-| Items with figures | 3 gels (`lab-gel:mcq1`–`mcq3`), 1 Western blot (`lab-blotting:mcq3`), 8 pedigrees (`gen-ad:mcq1`, `gen-ar:mcq1`, `gen-xlr:mcq2`, `gen-xld:mcq1`, `gen-mito:mcq1`, `case:xlr-family`, `gen-repeats:mcq3`, `gen-two-hit:mcq1`). Item IDs unchanged. |
-| Flow histogram and dot plot | Not built (phase 2) |
-| Karyogram | Not built (phase 2). It will follow the resolution rule below. |
-| FISH | Not built (phase 2) |
-| "Read the result" game mode | Not built |
+| Western blot renderer (kDa scale, target label, intensity) | Built. **Absent bands (revised):** the lane is left **empty**, exactly as a real negative looks. The expected size is marked by an arrowhead and size label **outside** the membrane. The earlier dashed outline inside the lane was removed because it could teach students that a negative shows as a faint outline. The dystrophin caption now states that equal protein was loaded per lane. |
+| Pedigree renderer (squares and circles, affected, carrier, proband arrow, consanguinity double line, notes) | Built. **Revised:** notes move to a second line so neighbouring labels never collide, and the proband arrow is drawn on the side away from the couple's descent line. |
+| Flow cytometry histogram | **Built (new).** Log-fluorescence axis (10⁰–10⁵); each population is a curve whose **area** is proportional to its percentage; labelled peaks; cell type stated. |
+| Flow cytometry dot plot | **Built (new).** Two log axes, dashed quadrant gates and quadrant percentages. 600 dots are placed deterministically (seeded) and clamped inside their quadrant, so the picture matches the stated percentages exactly and renders identically every time. |
+| FISH | **Built (new).** Interphase nucleus (red, green and yellow fusion signals) or metaphase homologue pair of a named chromosome with each probe's signals, plus a legend with signal counts, on a dark fluorescence background. |
+| Karyogram | **Built (new).** Schematic pairs in standard size order (rows 1–5, 6–12 + X, 13–18, 19–22 + Y) with centromere positions. Supports trisomy, monosomy, terminal deletion and Robertsonian derivatives (labelled, e.g. der(14;21)), and prints the ISCN karyotype. There is no G-band pattern; the figure is schematic. |
+| Validation (`src/content/__tests__/figures.test.ts`, 11 tests) | Built. **Gels and blots:** ladder sorted, bands in range, labelled lanes, absent bands explicit; an absent band draws nothing in the lane. **Pedigrees:** structure, plus no contradiction of the declared mode. **Flow:** percentages sum to 100 and peaks stay on the axis; dot count matches the percentages. **FISH:** whole-number signals 0–4, one colour per probe, a fusion needs both probes, and metaphase allows at most one signal per homologue. **Karyogram:** the drawn chromosome count must equal the count in the ISCN string, the sex must match, Robertsonian fusions need acrocentric chromosomes, a deletion cannot exceed its arm, and **deletions below 5 Mb are rejected** (see below). |
+| Accessibility | Built. SVG has `role="img"`, `<title>` and `<desc>`; labels are escaped; each figure has alt text and an expandable plain-language description generated from the same data (quadrant percentages, signal counts and chromosome changes included). |
+| Responsive and theme-aware | Built. SVG scales to the card width; colours use the app's CSS tokens with fallbacks. FISH uses a fixed dark panel with light text in both themes, as fluorescence images do. Checked by rendering at phone width in light and dark mode (no device testing). |
+| Review packets | Built. Each figure is written to `docs/subjects/review/figures/*.svg` and embedded beside its item. |
+| Items with figures (20) | **Gels:** `lab-gel:mcq1`–`mcq3`. **Western blot:** `lab-blotting:mcq3`. **Flow:** `lab-flow:mcq1` (PNH CD59 histogram), `lab-flow:mcq4` (CD4/CD8 dot plot). **FISH:** `lab-fish:mcq1` (22q11.2, one red signal), `gen-deletion-syndromes:mcq1` (7q11.23 ELN). **Karyograms:** `lab-karyotype:mcq3` (46,XY,der(14;21)(q10;q10),+21), `gen-robertsonian:mcq1` (45,XX,der(14;21)(q10;q10)), `gen-deletion-syndromes:mcq2` (46,XX,del(5)(p14)). **Pedigrees:** `gen-ad:mcq1`, `gen-ar:mcq1`, `gen-xlr:mcq2`, `gen-xld:mcq1`, `gen-mito:mcq1`, `case:xlr-family`, `gen-repeats:mcq3`, `gen-two-hit:mcq1`, `gen-mito-disorders:mcq1`. Item IDs are unchanged. |
+| "Read the result" activity | **Not built: the next stage.** Planned to reuse the MCQ engine on figure-bearing items so that progress and mastery work unchanged. |
 
-### Resolution rule (owner instruction)
+### Resolution rule (owner instruction, now enforced)
 
-A figure must show only what the test can detect. **Microscopic (sub-band) deletions are never drawn as visible on a routine karyogram.** The 22q11.2 deletion, the 15q11–q13 deletions of Prader–Willi and Angelman syndromes and similar microdeletions will be shown with a **FISH** figure (a missing probe signal beside a control signal) or a **microarray** figure (a copy-number dip), and a karyogram shown for such a patient will appear normal. The karyogram validator will reject a deletion below routine banding resolution.
+A figure must show only what the test can detect. **Microscopic (sub-band) deletions are never drawn on a routine karyogram.** Conventional karyotyping only identifies imbalances larger than about 5–10 Mb (Gijsbers AC et al., Eur J Med Genet 2010, PMID 20542150), so the karyogram validator rejects any deletion under 5 Mb with the message "below routine karyotype resolution; show it with FISH or a microarray". The 22q11.2 and 7q11.23 deletions are shown with FISH (one missing probe signal beside two control signals). The cri-du-chat 5p deletion is drawn on a karyogram only because large terminal 5p deletions are visible; its size there (20 Mb) is illustrative and the caption says so.
 
 ## Goal
 
@@ -46,6 +49,8 @@ Each figure is **original SVG generated at runtime from a small data object** st
 Raster photographs (real gels, real karyotypes) are out of scope unless a specific openly licensed image is approved. Each such image would need its licence and source recorded in `CONTENT_SOURCES.md`.
 
 ## Schema
+
+The implemented types are in `src/content/figures.ts` and differ in detail from the sketch below (for example `ladder` for both gels and blots, and `percent` per flow population).
 
 Add an optional `figure` to MCQs and cases:
 

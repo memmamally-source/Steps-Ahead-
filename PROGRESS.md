@@ -74,7 +74,38 @@ Large unstructured batches have stopped. Content is now developed subject by sub
   - Docs: change log `BIOCHEM_GEN2_CHANGELOG.md`, packet `BIOCHEM_GEN2_REVIEW.md`.
   - Browser play-check (reviewer-preview build): 672 passed, 0 failed.
 
-  **Stopped for review. Next (only after review and on the owner's request): Nutrition or Metabolism, or the remaining Genetics objectives.**
+- **Genetics batch 2 revision 1 + visual learning phase 2 + Genetics batch 3 (7 Nov 2026, draft):**
+  - Batch 2 corrections:
+    - myotonic dystrophy pedigree now maternal (congenital DM1);
+    - RB1 germline vs somatic item with a mosaicism caveat;
+    - √(1/5,000) ≈ 1/71 fix;
+    - paternal UPD 11p15 in the imprinting match;
+    - DMPK CUG/MBNL splicing;
+    - founder effect vs Hardy–Weinberg proportions;
+    - `gen-imprinting:mcq1` SUPPLEMENTARY;
+    - UPD fact trimmed to its verified part. Batch 2: 53 verified facts, 0 pending.
+  - New automatic arithmetic checks (`src/content/arithmetic.ts`): 101 written calculations and a registry of numerical questions recomputed in `npm test`.
+  - Visuals:
+    - Western absent bands are now empty lanes, with the expected size marked outside the membrane;
+    - new flow histogram, flow dot plot, FISH and karyogram renderers with validation; microdeletions under 5 Mb are rejected on karyograms (PMID 20542150);
+    - 20 items have figures;
+    - PNG previews (light and dark) are in `docs/subjects/review/figures/previews/` (`scripts/figure-previews.ts`).
+    - The "Read the result" activity is not built yet.
+  - Genetics batch 3: `src/content/biochem/gen3.ts`, 13 concepts, 23 objectives:
+    - pleiotropy/LD; MELAS/MERRF/LHON and ragged-red fibers;
+    - NF1, NF2, TSC, VHL, FAP, Li–Fraumeni, HHT;
+    - ADPKD/ARPKD, Wilson, hemochromatosis, SMA, thalassemia;
+    - inheritance grouping and Wiskott–Aldrich;
+    - Williams, cri-du-chat, VACTERL.
+  - Batch 3 items and facts:
+    - 83 items: 81 CORE / 2 SUPPLEMENTARY; 53 R / 9 M / 21 A;
+    - 2 sequences, 3 match sets, 1 case, 3 figures;
+    - 62 verified facts, 0 pending.
+  - Genetics coverage: 66 covered / 14 core-deferred / 0 partial / 3 missing (CF presentation, CF diagnosis and prenatal screening are left to the organ chapters).
+  - Docs: change log `BIOCHEM_GEN3_CHANGELOG.md`, packet `BIOCHEM_GEN3_REVIEW.md`.
+  - Browser play-check: PLAYCHECK_RESULT.
+
+  **Stopped for review. Next (only on the owner's request): Nutrition or Metabolism; the "Read the result" activity; the remaining Genetics organ-chapter objectives.**
 - Existing content (including the neuro/behavioral, MSK/skin and reproductive/endocrine batches drafted before the change) is preserved unchanged for its own subject audit.
 
 ## Knowledge tables (6 Nov 2026, in progress)

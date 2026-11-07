@@ -19,21 +19,21 @@ Status: **draft, AI-drafted, not medically reviewed.** Reviewer: mark each conce
 |---|---|
 | Concepts | 13 |
 | Objectives taught | 23 |
-| Facts verified / awaiting direct confirmation | 49 / 1 |
+| Facts verified / awaiting direct confirmation | 53 / 0 |
 | **Playable learning items (total)** | **68** |
 | — MCQs / true-false / crossword clues | 34 / 20 / 10 |
 | — Mechanism Lab sequences / Match Up sets | 1 / 2 |
 | — Complete Connections puzzles / Mystery Patient cases | 0 / 1 |
 | Connections category-bank entries (builder input, **not** playable alone; excluded from item counts and coverage) | 0 |
-| Items, Step 1 relevance: CORE / SUPPLEMENTARY / SPECIALIST / UNREVIEWED | 67 / 1 / 0 / 0 |
+| Items, Step 1 relevance: CORE / SUPPLEMENTARY / SPECIALIST / UNREVIEWED | 66 / 2 / 0 / 0 |
 | Items, cognitive depth: RECOGNITION / MECHANISM / APPLICATION | 37 / 13 / 18 |
 | Objectives, Step 1 relevance: CORE / SUPPLEMENTARY / SPECIALIST / UNREVIEWED | 23 / 0 / 0 / 0 |
 | Playable items: recall | 33 |
 | Playable items: identification | 4 |
 | Playable items: mechanism | 13 |
 | Playable items: interpretation | 8 |
-| Playable items: prediction | 6 |
-| Playable items: comparison | 1 |
+| Playable items: prediction | 5 |
+| Playable items: comparison | 2 |
 | Playable items: multistep | 3 |
 
 ## Genomic imprinting and uniparental disomy (`gen-imprinting`)
@@ -53,10 +53,7 @@ Objectives: `bc-imprinting.mechanism`, `bc-imprinting.upd`
 - Uniparental disomy (UPD) is inheriting both copies of a chromosome, or part of one, from one parent. It often has no effect, because most genes are not imprinted, but it can leave a person with no active copy of an imprinted gene (Prader–Willi and Angelman syndromes from 15q; Beckwith–Wiedemann syndrome from 11p). [1]
 - In isodisomy the two copies are duplicates of one parental chromosome, raising the risk of a recessive disorder by making the person homozygous; in heterodisomy the two copies are the two different homologues of one parent. [2]
 - Maternal heterodisomy is the most common type of UPD. [3]
-
-**Awaiting direct source confirmation** (reasoned or existence-only; must be confirmed before approval)
-
-- Heterodisomy (both different homologues from one parent) most often reflects a meiosis I error; isodisomy (two copies of one homologue) fits a meiosis II error or duplication of a single chromosome after fertilization. [2, 4]
+- In maternal heterodisomy, about two-thirds of cases with known timing arise from a meiosis I error. [2, 4]
 
 **Mechanism.** Methyl marks laid down in the egg or sperm silence one parental copy of imprinted genes, so a child depends on the copy from the other parent. Losing that active copy (by deletion, or by inheriting both copies from the wrong parent) removes the gene’s function. Isodisomy also makes every gene on the chromosome homozygous, so a parent’s recessive variant can cause disease even though the other parent is not a carrier.
 
@@ -72,7 +69,7 @@ Objectives: `bc-imprinting.mechanism`, `bc-imprinting.upd`
 
 **Takeaway.** Imprinting = methylation silences one parental copy; isodisomy can unmask a recessive variant.
 
-- **MCQ** **CORE** · depth APPLICATION · `gen-imprinting:mcq1` · interpretation → **application** · difficulty 3 · `bc-imprinting.upd`
+- **MCQ** **SUPPLEMENTARY** · depth APPLICATION · `gen-imprinting:mcq1` · interpretation → **application** · difficulty 3 · `bc-imprinting.upd`
   - A child has cystic fibrosis. Testing shows the father carries no CFTR variant; the mother is a carrier. SNP analysis shows both copies of chromosome 7 came from the mother and are identical. What explains the disease?
   - ✅ A. Maternal isodisomy made the variant homozygous
   - ◻️ B. Nonpaternity explains the result — _The child has two identical maternal chromosome 7s, so the explanation is uniparental isodisomy._
@@ -172,13 +169,13 @@ Objectives: `bc-imprinting.pws`, `bc-imprinting.angelman`
 - **True/false** **CORE** · depth RECOGNITION · `gen-pws-angelman:tf2` · recall → **recognition** · difficulty 1 · `bc-imprinting.angelman`: In brain neurons, only the paternal copy of UBE3A is active. → **False**. Only the maternal copy is active in neurons; its loss causes Angelman syndrome.
 - **Crossword** **CORE** · depth RECOGNITION · `gen-pws-angelman:clue1` · recall → **recognition** · difficulty 1 · `bc-imprinting.angelman`: Syndrome from loss of maternal UBE3A → **ANGELMAN**
 - **Crossword** **CORE** · depth RECOGNITION · `gen-pws-angelman:clue2` · recall → **recognition** · difficulty 2 · `bc-imprinting.pws`: Extreme overeating that begins in childhood in Prader–Willi syndrome → **HYPERPHAGIA**
-- **Match Up** **CORE** · depth RECOGNITION · `match:imprinting-causes` · recall → **recognition** · difficulty 2 · `bc-imprinting.pws`, `bc-imprinting.angelman`, `bc-imprinting.bws`: Which parent’s copy is missing?. Match each genetic finding to the syndrome it causes.
+- **Match Up** **CORE** · depth RECOGNITION · `match:imprinting-causes` · recall → **recognition** · difficulty 2 · `bc-imprinting.pws`, `bc-imprinting.angelman`, `bc-imprinting.bws`: Genetic alteration → imprinting disorder. Match each genetic alteration to the disorder it causes.
   - Paternal 15q11–q13 deletion ↔ Prader–Willi syndrome
   - Maternal UPD 15 ↔ Prader–Willi (two maternal 15s)
   - Maternal 15q11–q13 deletion ↔ Angelman syndrome
   - Paternal UPD 15 ↔ Angelman (two paternal 15s)
-  - 11p15 imprinting defect ↔ Beckwith–Wiedemann syndrome
-  - Prader–Willi = no active paternal 15q genes; Angelman = no active maternal UBE3A; Beckwith–Wiedemann = 11p15 imprinting.
+  - Paternal UPD of 11p15 ↔ Beckwith–Wiedemann syndrome
+  - Prader–Willi = no active paternal 15q genes; Angelman = no active maternal UBE3A; Beckwith–Wiedemann can result from paternal UPD of 11p15 (about 20% of cases, usually mosaic), giving two active paternal copies of growth genes such as IGF2.
 
 ---
 
@@ -198,6 +195,7 @@ Objectives: `bc-imprinting.bws`
 - Children with Beckwith–Wiedemann syndrome have an increased risk of tumors, particularly Wilms tumor (kidney) and hepatoblastoma (liver). [1]
 - Most cases result from abnormal regulation of imprinted genes on chromosome 11p15; at least half involve methylation changes at imprinting control regions that regulate growth genes including CDKN1C, H19 and IGF2. [1, 2]
 - Overexpression of the paternally expressed growth factor gene IGF2 contributes to the overgrowth. [1, 3]
+- About 20% of cases result from paternal uniparental disomy of 11p15, usually arising early in development and affecting only some cells (mosaic), which leaves two active paternal copies and no maternal copy of the imprinted genes. [1]
 
 **Mechanism.** Imprinting errors at 11p15 unbalance growth-regulating genes so that growth-promoting activity (including IGF2) is increased. The result is prenatal and childhood overgrowth, organ enlargement and a raised risk of embryonal tumors.
 
@@ -223,7 +221,7 @@ Objectives: `bc-imprinting.bws`
   - Explanation: Macrosomia, macroglossia, omphalocele, hypoglycemia and hemihyperplasia = Beckwith–Wiedemann syndrome (11p15 imprinting), with increased Wilms tumor and hepatoblastoma risk.
 - **MCQ** **CORE** · depth APPLICATION · `gen-bws:mcq2` · interpretation → **application** · difficulty 3 · `bc-imprinting.bws`
   - A newborn has macrosomia, macroglossia and an omphalocele, with low glucose in the first days of life. The karyotype is normal 46,XY. Which further result would most likely explain the condition?
-  - ✅ A. Abnormal methylation at imprinting control regions on 11p15
+  - ✅ A. Abnormal methylation at 11p15 imprinting centers
   - ◻️ B. Deletion of the paternal 15q11–q13 segment — _A paternal 15q deletion causes Prader–Willi syndrome, with hypotonia, not overgrowth._
   - ◻️ C. Expansion of a CGG repeat in FMR1 — _Fragile X does not cause neonatal overgrowth, macroglossia or omphalocele._
   - ◻️ D. A heteroplasmic mitochondrial DNA variant — _The overgrowth picture points to an 11p15 imprinting disorder._
@@ -252,19 +250,19 @@ Objectives: `bc-hardy-weinberg.equations`, `bc-hardy-weinberg.ar-calc`, `bc-hard
 - Genetic drift is a random change in allele frequency that matters most in small populations; the founder effect is a change in allele frequency in a small, isolated group that is not typical of the original population. [2]
 - The sickle hemoglobin allele has been selected repeatedly because heterozygotes (sickle cell trait) are protected against malaria (heterozygote advantage). [3]
 
-**Mechanism.** If allele frequencies are p and q and alleles combine at random, genotypes follow p², 2pq and q². For a rare recessive disease the affected frequency is q², so q = √(prevalence) and the carrier frequency 2pq is close to 2q. For an X-linked recessive disease, males show the allele frequency directly (q) and affected females are q². Drift, founder effects, selection and heterozygote advantage move a population away from these expectations.
+**Mechanism.** If allele frequencies are p and q and alleles combine at random, genotypes follow p², 2pq and q². For a rare recessive disease the affected frequency is q², so q = √(prevalence) and the carrier frequency 2pq is close to 2q. For an X-linked recessive disease, males show the allele frequency directly (q) and affected females are q². Drift, founder effects and selection (including heterozygote advantage) change allele frequencies. A founder population that then mates at random can again show Hardy–Weinberg proportions at its new frequencies.
 
-**Quick.** p + q = 1; p² + 2pq + q² = 1 (large population, random mating, no mutation, migration or selection). Rare AR disease: q = √prevalence, carriers ≈ 2q. XR: affected males = q, affected females = q². Departures: drift, founder effect, selection, heterozygote advantage.
+**Quick.** p + q = 1; p² + 2pq + q² = 1 (large population, random mating, no mutation, migration or selection). Rare AR disease: q = √prevalence, carriers ≈ 2q. XR: affected males = q, affected females = q². Allele frequencies change by drift, founder effect, selection, heterozygote advantage.
 
 **Detailed**
 
 > Hardy–Weinberg assumes a large, randomly mating population without mutation, migration or selection; then allele frequencies (p, q) and genotype frequencies (p², 2pq, q²) stay constant. For a rare autosomal recessive disease, prevalence = q², so q = √prevalence; with p ≈ 1, carriers = 2pq ≈ 2q. For an X-linked recessive disease, each male has one X, so the proportion of affected males equals q; affected females need two copies, q².
 
-> Real populations depart from equilibrium through genetic drift (chance, strongest in small populations), founder effects (a small isolated group with unusual allele frequencies), selection, and heterozygote advantage, the classic example being sickle cell trait protecting against malaria.
+> Allele frequencies change through genetic drift (chance, strongest in small populations), founder effects (a small isolated group starting with unusual allele frequencies), selection, and heterozygote advantage (sickle cell trait protecting against malaria). A founder effect alters frequencies relative to the source population; if the new population then mates at random, its genotypes can still fit Hardy–Weinberg proportions at the new frequencies.
 
 **Misconception.** The carrier frequency is not the square root of prevalence: √prevalence gives the allele frequency q; carriers are about 2q.
 
-**Takeaway.** q = √prevalence; carriers ≈ 2q; X-linked males = q; drift, founders and heterozygote advantage break equilibrium.
+**Takeaway.** q = √prevalence; carriers ≈ 2q; X-linked males = q; drift, founders and selection change allele frequencies.
 
 - **MCQ** **CORE** · depth APPLICATION · `gen-hardy-weinberg:mcq1` · multistep → **application** · difficulty 4 · `bc-hardy-weinberg.ar-calc`
   - An autosomal recessive disease affects 1 in 10,000 people in a population in Hardy–Weinberg equilibrium. What is the approximate carrier frequency?
@@ -277,7 +275,7 @@ Objectives: `bc-hardy-weinberg.equations`, `bc-hardy-weinberg.ar-calc`, `bc-hard
   - Explanation: q² = 1/10,000 → q = 1/100; carriers = 2pq ≈ 2q = 2/100 = 1 in 50.
 - **MCQ** **CORE** · depth APPLICATION · `gen-hardy-weinberg:mcq2` · prediction → **application** · difficulty 3 · `bc-hardy-weinberg.x-calc`
   - An X-linked recessive disease affects 1 in 5,000 males in a population in Hardy–Weinberg equilibrium. Approximately how often would it affect females?
-  - ◻️ A. 1 in 70,700 — _That is roughly √(1/5,000), which is not the female frequency._
+  - ◻️ A. 1 in 71 — _That is roughly √(1/5,000) (√5,000 ≈ 70.7); a square root is not a genotype frequency, and affected females are q²._
   - ◻️ B. 1 in 2,500 — _Females are far less often affected than males in X-linked recessive disease._
   - ✅ C. 1 in 25,000,000
   - ◻️ D. 1 in 10,000 — _Halving the male frequency does not model two-copy inheritance._
@@ -288,10 +286,10 @@ Objectives: `bc-hardy-weinberg.equations`, `bc-hardy-weinberg.ar-calc`, `bc-hard
   - A rare recessive disorder is far more common in an isolated community descended from a few settlers than in the population they came from. What explains this?
   - ◻️ A. Anticipation — _Anticipation describes worsening of repeat disorders over generations._
   - ✅ B. Founder effect
-  - ◻️ C. Hardy–Weinberg equilibrium — _Equilibrium predicts stable frequencies; this is a departure from them._
+  - ◻️ C. Hardy–Weinberg equilibrium — _Hardy–Weinberg proportions describe genotypes at the current allele frequencies; they do not explain why the frequency differs from the source population._
   - ◻️ D. Heterozygote advantage — _Heterozygote advantage requires a selective benefit to carriers, which is not described._
   - ◻️ E. New mutations in every generation — _Recurrent new mutation would not concentrate the allele in one isolated group._
-  - Explanation: A small founding group can carry an allele at a frequency atypical of its source population; isolation preserves it: the founder effect.
+  - Explanation: A small founding group can carry an allele at a frequency atypical of its source population, and isolation preserves it: the founder effect. It changes allele frequency relative to the source population; if the community then mates at random, its genotypes can still fit Hardy–Weinberg proportions at the new frequency.
 - **MCQ** **CORE** · depth MECHANISM · `gen-hardy-weinberg:mcq4` · mechanism → **mechanism** · difficulty 2 · `bc-hardy-weinberg.equations`
   - In Hardy–Weinberg equilibrium, why is the carrier frequency of a rare recessive allele approximately 2q?
   - ◻️ A. Heterozygote advantage doubles the number of carriers — _Selection breaks equilibrium; the 2q estimate assumes no selection._
@@ -322,6 +320,8 @@ Objectives: `bc-trinucleotide.principles`, `bc-trinucleotide.fragile-x`, `bc-tri
 7. MedlinePlus Genetics: Huntington disease — <https://medlineplus.gov/genetics/condition/huntington-disease/> — checked: full-text
 8. Tzagournissakis M et al. Huntington anticipation is seen particularly when inherited through the father; the CAG repeat tends to expand in paternal meioses. Hum Mol Genet 1995 — PMID 8634693 — <https://pubmed.ncbi.nlm.nih.gov/8634693/> — checked: summary
 9. Nicolas G et al. Juvenile Huntington disease: usually >60 CAG repeats; paternal transmission in 80–90% of cases. Am J Med Genet A 2011 — PMID 21412977 — <https://pubmed.ncbi.nlm.nih.gov/21412977/> — checked: summary
+10. Barbé L et al. Congenital myotonic dystrophy type 1, the most severe form, shows large expansions and almost exclusive maternal transmission. Am J Hum Genet 2017 — PMID 28257691 — <https://pubmed.ncbi.nlm.nih.gov/28257691/> — checked: summary
+11. Frison-Roche C et al. In myotonic dystrophy type 1, expanded CUG repeat RNA sequesters MBNL proteins, depleting them and deregulating alternative splicing. Brain 2025 — PMID 39460437 — <https://pubmed.ncbi.nlm.nih.gov/39460437/> — checked: summary
 
 **Verified facts** [supporting citations]
 
@@ -331,9 +331,10 @@ Objectives: `bc-trinucleotide.principles`, `bc-trinucleotide.fragile-x`, `bc-tri
 - Myotonic dystrophy type 1 is autosomal dominant and caused by an expanded CTG repeat in DMPK (normally 5–34; 50 to over 1,000 in disease, more than 1,000 in the congenital form). It causes myotonia (difficulty releasing a grip), progressive muscle weakness, cataracts, cardiac conduction defects and diabetes, and shows anticipation. [5, 6]
 - Huntington disease shows anticipation particularly when inherited through the father, because the CAG repeat tends to expand in paternal meioses; juvenile Huntington disease is paternally transmitted in 80–90% of cases. [7, 8, 9]
 - The long GAA repeat disrupts production of frataxin, severely reducing it; certain nerve and muscle cells cannot function properly without enough frataxin. [4]
-- The expanded DMPK repeat produces an abnormally long messenger RNA that traps proteins in clumps inside the cell, interfering with the production of many other proteins. [5, 6]
+- The expanded DMPK repeat produces RNA with a long CUG repeat that traps proteins in clumps inside the cell; it sequesters MBNL splicing proteins, so alternative splicing of many other transcripts is deregulated. [5, 6, 11]
+- Congenital myotonic dystrophy type 1, the most severe form, is associated with very large expansions and almost exclusively maternal transmission. [10]
 
-**Mechanism.** Repeats above a threshold are unstable and can grow when passed on. The parent matters: Huntington CAG repeats expand mainly in the father’s germ line, fragile X premutations expand to full mutations through the mother, and large myotonic dystrophy expansions can give a congenital form. Where the repeat sits sets the mechanism: CGG silencing (fragile X), GAA loss of frataxin (Friedreich), toxic CTG RNA (myotonic dystrophy), and polyglutamine CAG (Huntington).
+**Mechanism.** Repeats above a threshold are unstable and can grow when passed on. The parent matters: Huntington CAG repeats expand mainly in the father’s germ line, fragile X premutations expand to full mutations through the mother, and very large myotonic dystrophy expansions, passed on almost always by the mother, give the congenital form. Where the repeat sits sets the mechanism: CGG silencing (fragile X), GAA loss of frataxin (Friedreich), toxic CUG-repeat RNA that sequesters MBNL splicing proteins (myotonic dystrophy), and polyglutamine CAG (Huntington).
 
 **Quick.** CAG Huntington (AD, paternal expansion). CGG fragile X (X-linked, FMR1 silenced; premutation 55–200 expands via mother; long face, large ears, macroorchidism). GAA Friedreich (AR, frataxin; ataxia, cardiomyopathy, diabetes). CTG myotonic dystrophy 1 (AD, DMPK; myotonia, cataracts, conduction defects).
 
@@ -364,23 +365,23 @@ Objectives: `bc-trinucleotide.principles`, `bc-trinucleotide.fragile-x`, `bc-tri
   - ◻️ E. Her father’s premutation was mitochondrial — _FMR1 is on the X chromosome._
   - Explanation: Premutation alleles (55–200 CGG) can expand to full mutations (>200) when passed through a mother, so a carrier mother’s son can have fragile X syndrome even though her transmitting father’s children were unaffected.
 - **MCQ** **CORE** · depth APPLICATION · `gen-repeats:mcq3` · interpretation → **application** · difficulty 3 · `bc-muscular-dystrophy.myotonic`
-  - A 35-year-old man cannot let go of a door handle after gripping it, and has early cataracts and a cardiac conduction defect. His mother had cataracts at 60; his newborn son was floppy at birth. Which gene and repeat are involved?
+  - A 32-year-old woman cannot let go of a door handle after gripping it, and has early cataracts and a cardiac conduction defect. Her father had cataracts at 60. Her newborn son was profoundly floppy at birth and needed help with breathing and feeding. Which gene and repeat are involved?
   - Figure (pedigree, original, generated from data; passes validation):
 
-    ![Three-generation pedigree: a grandmother with late cataracts, her son with myotonia at 35, and his son affected at birth.](figures/gen-repeats_mcq3.svg)
+    ![Three-generation pedigree: a grandfather with cataracts at 60, his daughter with myotonia at 32, and her son with the congenital form at birth.](figures/gen-repeats_mcq3.svg)
 
-  - Figure text: Pedigree. Generation I: I-1 male, unaffected; I-2 female, affected (cataracts 60y). Generation II: II-1 male, affected (proband) (myotonia 35y); II-2 female, unaffected. Generation III: III-1 male, affected (floppy newborn). I-1 and I-2 have II-1. II-1 and II-2 have III-1.
+  - Figure text: Pedigree. Generation I: I-1 male, affected (cataract 60y); I-2 female, unaffected. Generation II: II-1 male, unaffected; II-2 female, affected (proband) (myotonia 32y). Generation III: III-1 male, affected (congenital form). I-1 and I-2 have II-2. II-1 and II-2 have III-1.
   - ✅ A. CTG expansion in DMPK
   - ◻️ B. CGG expansion in FMR1 — _Fragile X causes intellectual disability and is X-linked._
   - ◻️ C. Deletion in the dystrophin gene — _Dystrophinopathies do not cause myotonia or cataracts._
   - ◻️ D. GAA expansion in FXN — _Friedreich ataxia is recessive and causes ataxia with cardiomyopathy._
   - ◻️ E. CAG expansion in HTT — _Huntington disease causes a movement disorder, not myotonia and cataracts._
-  - Steps: (1) Difficulty releasing a grip, cataracts and conduction defects → myotonic dystrophy. (2) Each generation is affected earlier and more severely → anticipation from repeat expansion. (3) Myotonic dystrophy type 1 = autosomal dominant CTG expansion in DMPK.
-  - Explanation: Myotonia, cataracts and conduction defects with anticipation over three generations (late cataracts → adult myotonia → floppy newborn) = myotonic dystrophy type 1, a dominant CTG expansion in DMPK.
+  - Steps: (1) Difficulty releasing a grip, cataracts and conduction defects → myotonic dystrophy. (2) Each generation is affected earlier and more severely → anticipation from repeat expansion; the congenital form comes through the mother. (3) Myotonic dystrophy type 1 = autosomal dominant CTG expansion in DMPK.
+  - Explanation: Myotonia, cataracts and conduction defects with anticipation over three generations (late cataracts → adult myotonia → floppy newborn) = myotonic dystrophy type 1, a dominant CTG expansion in DMPK. The severe congenital form usually follows a large expansion passed on by an affected mother, as here.
 - **MCQ** **CORE** · depth MECHANISM · `gen-repeats:mcq4` · mechanism → **mechanism** · difficulty 2 · `bc-trinucleotide.friedreich`
   - How does the expanded GAA repeat in FXN cause Friedreich ataxia?
   - ◻️ A. Its messenger RNA traps proteins in clumps inside the cell — _Toxic RNA clumps are the mechanism of the DMPK CTG repeat in myotonic dystrophy._
-  - ✅ B. It severely reduces frataxin, a protein needed for mitochondrial function
+  - ✅ B. It severely reduces frataxin, needed for mitochondrial function
   - ◻️ C. It adds a toxic polyglutamine tract to the encoded protein — _A polyglutamine tract is the mechanism of CAG repeats such as Huntington disease._
   - ◻️ D. It produces a dominant negative frataxin protein — _Friedreich ataxia is recessive: disease results from too little frataxin._
   - ◻️ E. It silences an X-linked gene by hypermethylation — _FXN is autosomal; methylation silencing of FMR1 causes fragile X syndrome._
@@ -400,8 +401,8 @@ Objectives: `bc-trinucleotide.principles`, `bc-trinucleotide.fragile-x`, `bc-tri
   - ◻️ B. It deletes exons of the dystrophin gene and shifts the reading frame — _Frameshift dystrophin deletions cause Duchenne muscular dystrophy._
   - ◻️ C. It severely reduces frataxin needed for mitochondrial function — _Frataxin deficiency from a GAA repeat causes Friedreich ataxia._
   - ◻️ D. It is passed only through the mitochondria of the mother — _Myotonic dystrophy type 1 is autosomal dominant, nuclear inheritance._
-  - ✅ E. Its long mRNA traps proteins in clumps, disrupting other protein production
-  - Explanation: The expanded DMPK repeat produces an abnormally long messenger RNA that traps proteins in clumps; the clumps interfere with the production of many other proteins.
+  - ✅ E. Its CUG-repeat RNA sequesters MBNL splicing proteins, disrupting splicing
+  - Explanation: The expanded CTG repeat is transcribed into RNA with a long CUG repeat. This toxic RNA forms nuclear clumps that sequester RNA-binding proteins such as MBNL, so alternative splicing of many other transcripts is abnormal (toxic RNA gain of function).
 - **MCQ** **CORE** · depth APPLICATION · `gen-repeats:mcq7` · comparison → **application** · difficulty 3 · `bc-trinucleotide.match`, `bc-trinucleotide.principles`
   - A man developed chorea at 48. His son developed it at 36, and his son’s son developed the disease at 14. Which repeat best explains the disease and its earlier onset in each generation?
   - ✅ A. A CAG repeat in HTT that tends to expand in paternal meioses
@@ -661,12 +662,14 @@ Objectives: `bc-gen-terms.loh`
 **Citations**
 
 1. MedlinePlus Genetics: Retinoblastoma — <https://medlineplus.gov/genetics/condition/retinoblastoma/> — checked: full-text
+2. Gao C et al. RB1 mosaicism was found in 14.7% of 136 patients with retinoblastoma, including 4 with earlier negative germline tests; mosaic patients less often had bilateral disease. JAMA Ophthalmol 2025 — PMID 40338593 — <https://pubmed.ncbi.nlm.nih.gov/40338593/> — checked: summary
 
 **Verified facts** [supporting citations]
 
 - About two-thirds of retinoblastomas are non-hereditary: affected children are born with two normal RB1 copies, and both copies acquire mutations in retinal cells, usually in early childhood; these mutations cannot be passed on. [1]
 - In hereditary retinoblastoma, one altered RB1 copy is present in every cell (inherited in an autosomal dominant pattern or arising as a new mutation); a second mutation in retinal cells usually occurs in childhood and typically leads to tumors in both eyes. [1]
 - About one-third of retinoblastomas are hereditary: one altered RB1 copy in each cell is enough to increase cancer risk, and it may be inherited from a parent or arise as a new mutation in an egg or sperm cell or just after fertilization. [1]
+- RB1 mosaicism (the variant present in only some body cells) occurs in some patients with retinoblastoma, including some whose earlier germline blood tests were negative; mosaic patients less often have bilateral disease. [2]
 
 **Mechanism.** RB1 is a tumor suppressor: one working copy is enough, so a retinal cell becomes cancerous only after both copies are lost. In hereditary cases the first hit is inherited in every cell, so a second hit is very likely in many cells → early, often bilateral tumors. In sporadic cases both hits must occur by chance in the same cell → later, usually unilateral disease. Losing the remaining normal allele in a cell that started heterozygous is loss of heterozygosity.
 
@@ -695,15 +698,15 @@ Objectives: `bc-gen-terms.loh`
   - ✅ D. Every cell carries one inherited RB1 hit, so a second hit is likely
   - ◻️ E. Both RB1 copies were inherited mutated — _One altered copy is inherited; the second hit happens in retinal cells._
   - Explanation: In hereditary retinoblastoma one RB1 mutation is in every cell, so only one more hit per retinal cell is needed: tumors arise early and often in both eyes.
-- **MCQ** **CORE** · depth APPLICATION · `gen-two-hit:mcq2` · prediction → **application** · difficulty 3 · `bc-gen-terms.loh`
-  - A 3-year-old has a single tumor in one eye; there is no family history and blood testing shows no germline RB1 variant. What is the expected risk to his future children from this tumor?
-  - ◻️ A. 50%, because retinoblastoma is dominant — _Only germline (hereditary) RB1 variants are passed on._
-  - ◻️ B. Increased, because tumors always mean germline mutation — _About two-thirds of retinoblastomas are non-hereditary._
-  - ◻️ C. 25%, because both parents are carriers — _Retinoblastoma is not an autosomal recessive disorder._
-  - ◻️ D. 100% of sons only — _RB1 is autosomal, not X-linked._
-  - ✅ E. Not increased, because both hits were somatic
-  - Steps: (1) A single tumor, no family history and no germline variant → sporadic retinoblastoma. (2) Both hits occurred in retinal (somatic) cells. (3) Somatic mutations are not passed to children → no increased risk from this tumor.
-  - Explanation: Unilateral disease with no germline variant fits sporadic retinoblastoma: both RB1 mutations arose in retinal cells and cannot be passed on.
+- **MCQ** **CORE** · depth APPLICATION · `gen-two-hit:mcq2` · comparison → **application** · difficulty 3 · `bc-gen-terms.loh`
+  - Two children have retinoblastoma. Child A has tumors in both eyes at 8 months, and the same RB1 variant is found in blood and in tumor. Child B has one tumor at 3 years; two RB1 variants are found in the tumor and neither is detected in blood. Which statement best explains the difference?
+  - ◻️ A. B has a germline first hit in every cell; A’s hits most likely arose in the retina — _The variant in A’s blood shows a germline first hit; B’s variants were found only in the tumor._
+  - ◻️ B. Both children inherited two mutated RB1 copies from carrier parents — _Retinoblastoma predisposition is not autosomal recessive; A has one germline variant._
+  - ◻️ C. A needed only one hit because RB1 acts as an oncogene in infancy — _RB1 is a tumor suppressor: every tumor cell lacks both functional copies._
+  - ◻️ D. B’s tumor needed only one hit because it appeared later — _Both tumors needed loss of both RB1 copies; B has two variants in the tumor._
+  - ✅ E. A has a germline first hit in every cell; B’s hits most likely arose in the retina
+  - Steps: (1) A’s variant is in blood and tumor → germline first hit present in every cell. (2) B’s two variants are only in the tumor → both hits most likely somatic. (3) A germline first hit makes second hits likely in many retinal cells → earlier, bilateral disease.
+  - Explanation: Germline (A): one RB1 hit in every cell, so second hits occur early in many retinal cells → early, bilateral tumors, and the variant can be passed on. Somatic (B): both hits in one retinal cell → later, unilateral. A negative blood test makes a germline variant much less likely but does not exclude low-level mosaicism.
 - **True/false** **CORE** · depth RECOGNITION · `gen-two-hit:tf1` · recall → **recognition** · difficulty 1 · `bc-gen-terms.loh`: Hereditary retinoblastoma typically causes tumors in both eyes. → **True**. Correct: a second hit is likely in many retinal cells when the first hit is germline.
 
 ---
@@ -849,6 +852,7 @@ Objectives: `bc-ad-diseases.map`
 
 ## Items judged SUPPLEMENTARY (shown less often in games)
 
+- `gen-imprinting:mcq1` (depth application) — A useful advanced application of recessive inheritance, but CF from maternal isodisomy is an uncommon presentation; the general UPD and imprinting mechanisms remain core.
 - `gen-hemophilia:mcq1` (depth recognition) — The specific intron 22 inversion is a detail beyond core; X-linked F8/F9 inheritance is core.
 
 ## Items flagged SPECIALIST (excluded from gameplay pending editorial review)
