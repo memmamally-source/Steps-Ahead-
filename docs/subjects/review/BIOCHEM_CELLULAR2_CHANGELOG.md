@@ -2,6 +2,111 @@
 
 All content is **draft, AI-drafted, not medically reviewed**. A verified source is not medical approval, and computed coverage is not clinical validation. Review packet: `BIOCHEM_CELLULAR2_REVIEW.md`. Source: `src/content/biochem/cellular2.ts` (`cellularBatch2`).
 
+## Revision 1 (owner review of batch 2)
+
+Sections 1–7 below describe the original batch and are kept as a record. Where this revision changes them, this section takes precedence. All content stays **draft / AI-drafted**. Existing objectives, item IDs and curriculum mappings are unchanged; new items were appended.
+
+### R1. Relevance labels reassessed
+
+All 70 original items had been CORE. Labels now follow how important the knowledge is for the average Step 1 student, not whether it is mainstream. Each SUPPLEMENTARY item has a written reason in the packet.
+
+| Changed to SUPPLEMENTARY | Reason |
+|---|---|
+| `cel-jak-stat:mcq3`, TOFACITINIB clue | Specific immunology drug; the JAK–STAT pathway is core |
+| `cel-jak-stat:mcq4` | JAK3-deficient SCID (autosomal recessive) is the less common form; X-linked IL2RG SCID is core |
+| MILRINONE clue | Recall of a drug name; cAMP and PDE inhibition are core |
+| `match:second-messenger-drugs` | Drug-name recall (milrinone, roflumilast) |
+| `cel-other-receptors:tf1` | Where the thyroid receptor sits before ligand binding |
+| IONOTROPIC clue | Terminology rather than a tested mechanism |
+| New: `cel-hormone-gpcr:mcq5` (familial male precocious puberty), `cel-hormone-gpcr:tf3` (PLC arm of PTH signaling), `cel-jak-stat:mcq8` (JAK2-inhibitor reasoning) | Beyond core; the underlying mechanism is core |
+| New concept `cel-tgf-beta` (all 5 items) and objective `bc-receptor-other.ser-thr` | TGF-β/SMAD and its Marfan/Loeys–Dietz link are beyond core depth; FBN1 and Marfan syndrome are core elsewhere |
+
+Kept CORE on purpose: milrinone's mechanism MCQ and theophylline. Both are named PDE inhibitors in mainstream Step 1 pharmacology, and the question tests cAMP logic.
+
+### R2. Classic mechanisms written from other reliable sources
+
+Facts that OpenStax or MedlinePlus did not state were sourced from **published review abstracts on PubMed** (E-utilities). Every citation label (authors, journal, year) was checked against the PubMed record. NCBI Bookshelf (StatPearls, Endotext) was not reachable from this environment: the pages returned a browser check, which I did not try to get around. Reactome was blocked by the network policy. Neither is cited.
+
+### R3. High-yield gaps filled
+
+| Gap | Where | Sources |
+|---|---|---|
+| GHRH, ACTH, LH, FSH, PTH (Gs/cAMP) and GnRH, TRH, oxytocin (Gq) | New concept `cel-hormone-gpcr` (5 MCQs, 3 TF, 2 clues) and `match:hormone-second-messenger` | PMID 7740167, 27065945, 8734448, 30023464, 10856878, 19395963, 9465287, 10573034, 8772588, 11274341, 9699174, 41824769 |
+| Cholera toxin → cAMP → PKA → CFTR chloride secretion | `cel-gpcr-toxins` (fact, MCQ, TF, CFTR clue), `seq:cholera-secretion`; the cholera case explanation now includes CFTR | PMID 40168442, 25188334 |
+| Insulin → IRS → PI3K → Akt → GLUT4 | `cel-rtk` (fact, prediction MCQ, TF, AKT clue), `seq:insulin-glut4` | PMID 18171430, 24075894 |
+| GH, prolactin, EPO through JAK2–STAT5 | `cel-jak-stat` (facts, recall and prediction MCQs, PROLACTIN and ERYTHROPOIETIN clues) | PMID 12099386, 23182823, 39476210, 34281163 |
+| STAT phosphorylation, dimerization and nuclear transcription | `cel-jak-stat` (fact, TF), `seq:jak-stat` | PMID 16426581 |
+| Common γ chain (IL2RG) | `cel-jak-stat` (fact, TF) | MedlinePlus IL2RG gene |
+| GABA-A, NMDA, 5-HT3 receptor classes; ligand-gated channels mediate *fast* transmission | `cel-other-receptors` (facts, 3 MCQs, 2 TF, ONDANSETRON clue) | PMID 7545236, 9702060, 16719808, 18761359, 14965242, 20849671; MedlinePlus ondansetron |
+| RET mutations and MEN2 (and RET loss in Hirschsprung disease) | `cel-oncogenic-signaling` (facts, identification and comparison MCQs, TF, RET clue) | PMID 15982921, 40102258; MedlinePlus RET gene and MEN pages |
+| HER2/ERBB2 amplification and HER2-targeted therapy | `cel-oncogenic-signaling` (fact, MCQ) | PMID 39039196, 31548601 |
+| Calcitriol acts on a nuclear receptor (VDR with RXR) | `cel-other-receptors` (fact, TF) | PMID 10444570 |
+| TGF-β receptor serine/threonine kinases → SMADs; Marfan (FBN1) and Loeys–Dietz | New concept `cel-tgf-beta` (SUPPLEMENTARY) | PMID 11752591, 10605817; MedlinePlus Marfan, FBN1, Loeys–Dietz |
+
+"Fastest receptor class" is still not used as a claim. The sources say ligand-gated channels mediate *fast* synaptic transmission, and that wording is used instead.
+
+### R4. GHRH reconciled
+
+GHRH is taught as **Gs/cAMP**: the GHRH receptor is a seven-transmembrane Gs-coupled receptor, and cAMP → PKA → CREB is its principal pathway (PMID 7740167; also 41824769). The OpenStax table lists GHRH among Ca²⁺-using hormones. That reflects GHRH-stimulated GH release involving G-protein effects on ion channels, a downstream effect that does not change the classic association. A fact in `cel-hormone-gpcr` states this reconciliation and cites both sources. An application item uses it: an activating Gsα mutation in a somatotroph adenoma mimics GHRH and causes acromegaly.
+
+### R5. Theophylline qualified
+
+The fact, the MCQ stem and its explanation now say that theophylline inhibits phosphodiesterases **and** antagonizes adenosine receptors, and that its toxicity probably has several mechanisms. Adenosine antagonism is one *proposed* contributor, and the seizure mechanism is not established. A rat study found that adenosine and an A1 agonist did not prevent theophylline seizures (PMID 10874349, added). The stem now asks which action "is thought to contribute". It is relabelled recall-level mechanism, difficulty 2.
+
+### R6. Difficulty and reasoning labels reassessed
+
+A vignette or a written explanation no longer counts as multistep on its own. Classic presentations are labelled easy or medium:
+
+- **Batch 2:**
+  - Polycythemia vera (JAK2 V617F), CML + imatinib, α1 agonist and desmopressin/V2: interpretation, multistep or prediction at difficulty 3–4 → **mechanism, difficulty 2**.
+  - X-linked SCID vignette: 3 → 2. Toxin A/B experiment: 4 → 3. McCune–Albright mosaicism: 3 → 2. JAK3 SCID prediction: 4 → 3.
+  - Both Mystery Patient cases (cholera, McCune–Albright): **multistep 4 → interpretation 3**. Cases may now declare interpretation instead of the default multistep.
+- **Earlier batches (labels only, text unchanged):**
+  - Scurvy (multistep → interpretation) and bilateral retinoblastoma (multistep → interpretation): 4 → 3.
+  - α1-antitrypsin PAS-positive globules, osteogenesis imperfecta blue sclerae, mixed connective tissue disease (anti-U1), ataxia–telangiectasia lymphoma risk, HGPRT de novo purine synthesis, azathioprine + allopurinol, Marfan vs vascular EDS, and vascular vs classic EDS: 4 → 3.
+- Because some relabelled items had been the only application items for their objectives, new application items were added where the checklist requires application:
+  - β1 agonist + milrinone (cAMP made faster and broken down slower);
+  - JAK2-inhibitor prediction in polycythemia vera;
+  - Gsα-mutant somatotroph adenoma;
+  - phospholipase C blocker and oxytocin;
+  - PI3K blocker and GLUT4;
+  - RET in MEN2 vs Hirschsprung disease.
+
+### R7. Coverage gaps: important omissions vs optional details
+
+`contentGaps.ts` now separates the two:
+- **Important omissions** keep an objective partial. None remain in Cellular.
+- **Optional supplementary details** are named in the checklist but deliberately not taught at core depth. They are listed per objective in the coverage report and do not block coverage.
+
+| Objective | Optional detail not taught |
+|---|---|
+| `bc-gpcr.receptors` | CRH and hCG (Gs), M1 and gastrin (Gq) receptors |
+| `bc-second-messengers.camp` | Cilostazol |
+| `bc-rtk.mechanism` | Adaptor docking, mTOR, IGF-1/PDGF/VEGF/NGF as named ligands |
+| `bc-rtk.insulin` | Glycogen synthesis and anabolic effects (taught with Metabolism) |
+| `bc-rtk.oncogenic` | KIT (taught with Hematology/Oncology) |
+| `bc-jak-stat.ligands` | G-CSF, GM-CSF and interferons by name |
+| `bc-jak-stat.jak2` | Ruxolitinib by name |
+| `bc-receptor-other.nuclear` | Retinoic acid receptors; zinc-finger DNA-binding domain |
+
+**Cellular Biochemistry: 41 of 41 objectives covered** (previously 28 covered, 12 partial, 1 missing).
+
+### R8. Counts after revision 1
+
+| Measure | Batch 2 | All curriculum-linked content |
+|---|---|---|
+| Items | 115 playable (was 70) | 429, of which the 20 specialist items are kept out of play |
+| CORE / SUPPLEMENTARY / SPECIALIST / UNREVIEWED | **100 / 15 / 0 / 0** | 383 / 26 / 20 / 0 |
+| RECOGNITION / MECHANISM / APPLICATION | **73 / 28 / 14** | 269 / 88 / 72 |
+| Objectives CORE / SUPPLEMENTARY | 19 / 1 | 89 / 3 (274 not yet reviewed, all in later subdivisions) |
+| Facts verified / awaiting confirmation | 78 / 0 | |
+
+Batch 2 now has 46 MCQs, 29 true/false, 25 clues, 7 sequences, 5 match sets, 1 Connections puzzle and 2 cases.
+
+### R9. Browser validation
+
+BROWSER_PLACEHOLDER
+
 ## 1. Scope and approach
 
 - Written from mainstream references already checked: OpenStax Biology 2e (9.1, 9.2) and Anatomy & Physiology 2e (12.5, 17.2, 17.9), MedlinePlus Genetics and MedlinePlus Drug Information. Where a receptor–G-protein pairing or a drug mechanism needed confirmation beyond those, a published review abstract on PubMed was read (listed in §6).

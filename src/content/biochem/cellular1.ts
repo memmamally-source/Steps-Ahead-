@@ -219,9 +219,9 @@ const core = defineConcepts([
         ],
         answer: 'a',
         mini: 'Hereditary retinoblastoma: the first RB1 hit is in every cell, so a single acquired hit in a retinal cell causes a tumor — often in both eyes and early. She also has an increased later risk of osteosarcoma.',
-        reasoning: 'multistep',
+        reasoning: 'interpretation',
         steps: ['Bilateral, early tumors plus an affected father → hereditary (germline) RB1 variant.', 'Every retinal cell already has one hit.', 'Only one acquired hit is needed per cell → multiple, bilateral, early tumors.'],
-        difficulty: 4,
+        difficulty: 3,
       },
       {
         stem: 'A 29-year-old woman has breast cancer. Her brother had osteosarcoma at 15 and her mother a soft tissue sarcoma at 40. A germline variant in which gene is most likely?',

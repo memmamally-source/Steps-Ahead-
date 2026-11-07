@@ -143,6 +143,8 @@ export interface Concept {
   curriculum?: string[];
   /** Step 1 relevance of the concept as a whole (items carry their own label). */
   relevance?: Relevance;
+  /** Reason for a supplementary or specialist concept label; inherited by items that inherit the label. */
+  relevanceNote?: string;
   /** For each fact (same index), the indices of `citations` that support it. */
   factRefs?: number[][];
   /**

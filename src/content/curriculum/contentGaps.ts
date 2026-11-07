@@ -1,21 +1,26 @@
 /**
- * Parts of an objective's checklist text that linked content deliberately does not yet teach, usually
- * because a fact could not be verified against a mainstream source when the batch was written and was
- * left unwritten rather than guessed. An objective with a gap is at most `partial`, whatever depths its
- * items assess, so coverage never overstates what was written. Remove an entry once the gap is filled.
+ * Parts of an objective's checklist text that linked content does not (yet) teach.
+ *
+ * - `core`: a genuinely important omission. The objective is at most `partial` until it is written.
+ * - `optional`: a supplementary detail named in the checklist that is deliberately not taught at
+ *   Step 1 core depth (or is taught with its home subject). It is listed in the coverage report but
+ *   does not block coverage.
+ *
+ * Remove an entry once the gap is filled. Medical reviewers may move a detail between the two lists.
  */
-export const CONTENT_GAPS: Record<string, string> = {
-  // Cellular batch 2 (signalling). See BIOCHEM_CELLULAR2_CHANGELOG.md, "Left unwritten".
-  'bc-gpcr.receptors': 'receptors for PTH, ACTH, LH, FSH, hCG, CRH and GHRH (Gs) and for M1, oxytocin, GnRH, TRH and gastrin (Gq)',
-  'bc-gpcr.toxins': 'CFTR chloride secretion as the step between cAMP and watery diarrhea',
-  'bc-second-messengers.camp': 'cilostazol',
-  'bc-rtk.mechanism': 'adaptor docking, the PI3K–AKT–mTOR pathway, and IGF-1, PDGF, VEGF and NGF as ligands',
-  'bc-rtk.insulin': 'PI3K–AKT as the named pathway, glycogen synthesis and other anabolic effects',
-  'bc-rtk.oncogenic': 'HER2/ERBB2 amplification, RET (MEN2) and KIT',
-  'bc-jak-stat.mechanism': 'STAT dimerization before nuclear entry',
-  'bc-jak-stat.ligands': 'growth hormone, prolactin, erythropoietin, G-CSF, GM-CSF and interferons as JAK–STAT ligands',
-  'bc-jak-stat.jak2': 'ruxolitinib',
-  'bc-jak-stat.scid': 'the common γ chain as the IL2RG product shared by several interleukin receptors',
-  'bc-receptor-other.nuclear': 'calcitriol and retinoid receptors, and the zinc-finger DNA-binding domain',
-  'bc-receptor-other.ion-channels': 'GABA-A, NMDA and 5-HT3 receptors, and ligand-gated channels as the fastest receptor class',
+export interface ContentGap {
+  core?: string;
+  optional?: string;
+}
+
+export const CONTENT_GAPS: Record<string, ContentGap> = {
+  // Cellular batch 2 (signalling), revision 1. No core omissions remain.
+  'bc-gpcr.receptors': { optional: 'CRH and hCG (Gs) and M1 and gastrin (Gq) receptors' },
+  'bc-second-messengers.camp': { optional: 'cilostazol (PDE3 inhibitor for claudication)' },
+  'bc-rtk.mechanism': { optional: 'adaptor docking, mTOR, and IGF-1, PDGF, VEGF and NGF as named ligands' },
+  'bc-rtk.insulin': { optional: 'glycogen synthesis and other anabolic effects of insulin (taught with Metabolism)' },
+  'bc-rtk.oncogenic': { optional: 'KIT (taught with Hematology/Oncology)' },
+  'bc-jak-stat.ligands': { optional: 'G-CSF, GM-CSF and interferons as named JAK–STAT ligands' },
+  'bc-jak-stat.jak2': { optional: 'ruxolitinib by name (JAK inhibition is taught through the mechanism)' },
+  'bc-receptor-other.nuclear': { optional: 'retinoic acid receptors and the zinc-finger DNA-binding domain' },
 };

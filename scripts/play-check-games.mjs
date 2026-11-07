@@ -27,6 +27,10 @@ const norm = (s) => s.toLowerCase().replace(/\s+/g, ' ').trim();
 
 const server = spawn('npx', ['vite', '--port', String(PORT), '--strictPort'], { stdio: 'ignore' });
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+// Items are drawn at random, weighted by Step 1 relevance (core 3, supplementary 1), so a rarely drawn
+// item can take many rounds to appear. Repeat draws are cheap (the board is skipped), so the cap scales
+// with the number of items instead of being fixed.
+const maxRounds = (n) => 60 * n;
 
 async function main() {
   for (let i = 0; i < 40; i++) {
@@ -55,7 +59,7 @@ async function main() {
   const seqByTitle = new Map(sequences.map((s) => [norm(s.title), s]));
   const seqDone = { right: new Set(), wrong: new Set() };
   await page.goto(URL + 'play/mechanism');
-  for (let round = 0; round < 80 && (seqDone.right.size < sequences.length || seqDone.wrong.size < sequences.length); round++) {
+  for (let round = 0; round < maxRounds(sequences.length) && (seqDone.right.size < sequences.length || seqDone.wrong.size < sequences.length); round++) {
     await page.locator('.card .label').first().waitFor();
     const title = norm(await page.locator('.card .label').first().innerText());
     const item = seqByTitle.get(title);
@@ -114,7 +118,7 @@ async function main() {
   const matchByTitle = new Map(matches.map((m) => [norm(m.title), m]));
   const matchDone = new Set();
   await page.goto(URL + 'play/match-up');
-  for (let round = 0; round < 80 && matchDone.size < matches.length; round++) {
+  for (let round = 0; round < maxRounds(matches.length) && matchDone.size < matches.length; round++) {
     await page.locator('.card .label').first().waitFor();
     const title = norm(await page.locator('.card .label').first().innerText());
     const item = matchByTitle.get(title);

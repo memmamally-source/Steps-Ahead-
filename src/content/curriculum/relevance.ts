@@ -79,7 +79,8 @@ export const OBJECTIVE_RELEVANCE: Record<string, { relevance: Relevance; note?: 
   'bc-membrane-pumps.na-k-atpase': { relevance: 'core' },
   'bc-membrane-pumps.glycosides': { relevance: 'core' },
   'bc-membrane-pumps.transporters': { relevance: 'core' },
-  // Cellular signalling batch (cellular2). bc-receptor-other.ser-thr (TGF-β/SMAD) is unwritten and stays unreviewed.
+  // Cellular signalling batch (cellular2).
+  'bc-receptor-other.ser-thr': { relevance: 'supplementary', note: 'TGF-β/SMAD signaling and its Marfan/Loeys–Dietz link are beyond core depth; FBN1 and Marfan syndrome themselves are core in other objectives.' },
   'bc-gpcr.cycle': { relevance: 'core' },
   'bc-gpcr.classes': { relevance: 'core' },
   'bc-gpcr.receptors': { relevance: 'core' },

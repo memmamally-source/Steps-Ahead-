@@ -86,10 +86,11 @@ export function auditObjective(o: Objective, content: ContentIndex): ObjectiveAu
 
   if (linked.length) {
     const gap = CONTENT_GAPS[o.id];
-    const coverage: Coverage = missingDepths.length || gap ? 'partial' : 'covered';
+    const coverage: Coverage = missingDepths.length || gap?.core ? 'partial' : 'covered';
     const notes = [
       missingDepths.length ? `Linked content does not yet assess: ${missingDepths.join(', ')}.` : '',
-      gap ? `Not yet taught (left unwritten until verified): ${gap}.` : '',
+      gap?.core ? `Important omission, not yet taught: ${gap.core}.` : '',
+      gap?.optional ? `Optional supplementary detail, deliberately not taught: ${gap.optional}.` : '',
     ].filter(Boolean);
     return {
       coverage, basis: 'linked content', concepts, linked, items, depthsAssessed, missingDepths, review,

@@ -53,6 +53,43 @@ const SILDENAFIL = PM(9628660, 'Chuang AT et al. Sildenafil, a PDE5 inhibitor, a
 const MILRINONE = PM(17059376, 'Endoh M. PDE3 inhibitors (milrinone) act via cAMP/PKA; inotropic and vasodilator effects. Expert Opin Pharmacother 2006');
 const ROFLUMILAST = PM(20689641, 'Giembycz MA, Field SK. Roflumilast: first PDE4 inhibitor approved for COPD. Drug Des Devel Ther 2010');
 const THEOPHYLLINE = PM(27713276, 'Barnes PJ. Theophylline: PDE inhibition (bronchodilation); adenosine A1 antagonism at high levels. Pharmaceuticals (Basel) 2010');
+const THEO_SEIZURE = PM(10874349, 'Gupta YK, Malhotra J. Theophylline seizures in rats: mechanism unknown; adenosine and an A1 agonist did not protect. Indian J Physiol Pharmacol 1998');
+
+// Revision 1 sources.
+const GHRH_GS = PM(7740167, 'Mayo KE et al. GHRH acts through a seven-transmembrane Gs-coupled receptor: cAMP → PKA → CREB; GH release also involves G-protein effects on ion channels. Recent Prog Horm Res 1995');
+const SOMATOTROPH = PM(41824769, 'Ben-Shlomo A, Melmed S. Somatotroph adenomas: GHRH receptor signaling; excess GH causes acromegaly. J Clin Endocrinol Metab 2026');
+const ACTH_CAMP = PM(27065945, 'Ruggiero C, Lalli E. ACTH → MC2R → adenylyl cyclase → cAMP/PKA → steroidogenesis. Front Endocrinol (Lausanne) 2016');
+const LH_GS = PM(8734448, 'Clayton RN. Gonadotrophin receptors: the LH receptor couples to Gs; activating mutations cause familial male precocious puberty. Baillieres Clin Endocrinol Metab 1996');
+const GLYCO_GS = PM(30023464, 'Kim JM et al. Glycoprotein hormone receptors such as the FSH receptor couple to Gs → adenylyl cyclase → cAMP. Dev Reprod 2018');
+const PTH_RECEPTOR = PM(10856878, 'Esbrit P et al. PTH and PTHrP share the type 1 PTH/PTHrP receptor, activating adenylate cyclase and phospholipase C. J Endocrinol 2000');
+const PTH_PKA = PM(19395963, 'Lee M, Partridge NC. PTH signaling in bone and kidney through protein kinase A and protein kinase C. Curr Opin Nephrol Hypertens 2009');
+const GNRH_GQ = PM(9465287, 'Naor Z et al. The GnRH receptor couples to Gq: PLC → IP₃ (Ca²⁺) and DAG (PKC). Front Neuroendocrinol 1998');
+const GNRH_LHFSH = PM(10573034, 'Ortmann O, Diedrich K. GnRH receptor → Gq/G11 → PLC → DAG/PKC and IP₃/Ca²⁺ → LH and FSH secretion. Hum Reprod 1999');
+const TRH_GQ = PM(8772588, 'Dong Q et al. TRH receptor → Gq/PLCβ/Ca²⁺/PKC; activating Gsα mutations in ~40% of somatotroph tumors. J Clin Endocrinol Metab 1996');
+const OXYTOCIN_GQ = PM(11274341, 'Gimpl G, Fahrenholz F. The oxytocin receptor couples mainly via Gq to phospholipase Cβ. Physiol Rev 2001');
+const MYOMETRIUM = PM(9699174, 'Phillippe M, Chien EK. Uterotonic GPCRs (including oxytocin) act through Gq/PLCβ in myometrium. J Soc Gynecol Investig 1998');
+const CHOLERA_CFTR = PM(40168442, 'Liu J et al. Cholera toxin raises cAMP; PKA phosphorylates CFTR → Cl⁻ efflux and water secretion into the gut lumen. PLoS Pathog 2025');
+const CHOLERA_CL = PM(25188334, 'Pongkorpsakol P et al. cAMP-activated CFTR chloride secretion in the pathogenesis of cholera. PLoS Negl Trop Dis 2014');
+const INSULIN_PI3K = PM(18171430, 'Ishikura S et al. Insulin → IR–IRS–PI3K → Akt → GLUT4 translocation in muscle and fat. Acta Physiol (Oxf) 2008');
+const GLUT4_AKT = PM(24075894, 'Aoi W et al. Insulin-stimulated GLUT4 membrane translocation in muscle depends on PI3K/Akt. Free Radic Biol Med 2013');
+const RET_RTK = PM(15982921, 'Arighi E et al. RET receptor tyrosine kinase: MEN2 mutations potentiate its intrinsic kinase activity. Cytokine Growth Factor Rev 2005');
+const MEN2 = PM(40102258, 'Frank-Raue K, Raue F. MEN2: autosomal dominant gain-of-function RET variants; MEN2A and MEN2B phenotypes. Recent Results Cancer Res 2025');
+const HER2_RTK = PM(39039196, 'Yoon J, Oh DY. HER2 (ErbB2) is a receptor tyrosine kinase targeted in breast and gastric cancer with HER2 overexpression or ERBB2 amplification. Nat Rev Clin Oncol 2024');
+const HER2_DRUGS = PM(31548601, 'Oh DY, Bang YJ. HER2-targeted therapies (trastuzumab and others) in HER2-positive breast and gastric cancer. Nat Rev Clin Oncol 2020');
+const GH_JAK = PM(12099386, 'Piwien-Pilipuk G et al. Growth hormone receptor → JAK2 → STATs, MAPK and PI3K. J Pediatr Endocrinol Metab 2002');
+const GH_STAT5 = PM(23182823, 'Waters MJ, Brooks AJ. GH acts mainly through JAK2 activation of STAT5, which induces IGF-1. Endocr Dev 2012');
+const PRL_JAK = PM(39476210, 'Chasseloup F et al. The prolactin receptor signals mainly through JAK2/STAT5. Rev Endocr Metab Disord 2024');
+const EPO_JAK = PM(34281163, 'Tóthová Z et al. EPOR–JAK2–STAT5 is the canonical erythropoietin pathway for erythroid progenitors. Int J Mol Sci 2021');
+const STAT_DIMER = PM(16426581, 'Valentino L, Pierre J. JAKs phosphorylate STATs, which dimerize, enter the nucleus and regulate transcription. Biochem Pharmacol 2006');
+const GABA_A = PM(7545236, 'Lüddens H, Korpi ER. GABA-A receptors open an intrinsic anion channel; benzodiazepine sites. J Psychiatr Res 1995');
+const GABA_CL = PM(9702060, 'Hashimoto T. GABA-A receptors are ligand-gated Cl⁻ channels with benzodiazepine and barbiturate sites. Nihon Rinsho 1998');
+const NMDA = PM(16719808, 'Schrattenholz A, Soskic V. NMDA receptors are ligand-gated Ca²⁺ channels with a voltage-dependent Mg²⁺ block; excitotoxicity. Curr Top Med Chem 2006');
+const HT3 = PM(18761359, 'Barnes NM et al. The 5-HT3 receptor is a cation-selective Cys-loop ion channel. Neuropharmacology 2009');
+const HT3_ANTIEMETIC = PM(14965242, 'Costall B, Naylor RJ. 5-HT3 antagonists prevent chemotherapy-, radiotherapy- and postoperative emesis. Curr Drug Targets CNS Neurol Disord 2004');
+const CYS_LOOP = PM(20849671, 'Thompson AJ et al. Cys-loop receptors (nACh, 5-HT3, GABA-A, glycine) mediate fast synaptic transmission. Q Rev Biophys 2010');
+const VDR = PM(10444570, 'Brown AJ et al. Calcitriol binds the vitamin D receptor, which pairs with RXR and binds DNA. Am J Physiol 1999');
+const SMADS = PM(10605817, 'Hill CS. Type I serine/threonine kinase receptors phosphorylate R-SMADs, which join the common-mediator SMAD and enter the nucleus. Int J Biochem Cell Biol 1999');
+const TGFB_RECEPTORS = PM(11752591, 'Wrana JL. TGF-β family ligands signal through type II and type I serine/threonine kinase receptors and SMADs. Sci STKE 2000');
 
 const GP = 'bc-gpcr';
 const SM = 'bc-second-messengers';
@@ -141,10 +178,9 @@ const core = defineConcepts([
         ],
         answer: 'a',
         mini: 'α1 receptors couple to Gq: phospholipase C → IP₃ → Ca²⁺ → smooth muscle contraction (vasoconstriction).',
-        reasoning: 'prediction',
+        reasoning: 'mechanism',
         objectives: [`${GP}.receptors`],
-        steps: ['α1 receptors couple to Gq.', 'Gq activates phospholipase C → IP₃ → Ca²⁺ release in vascular smooth muscle.', 'Raised Ca²⁺ → contraction → vasoconstriction and higher blood pressure.'],
-        difficulty: 3,
+        difficulty: 2,
       },
     ],
     tf: [
@@ -170,14 +206,15 @@ const core = defineConcepts([
     difficulty: 3,
     curriculum: [`${GP}.toxins`],
     objectives: ['Explain how cholera, heat-labile E. coli and pertussis toxins alter G-protein signaling'],
-    citations: [CHOLERA, CHOLERA_GS, PERTUSSIS, OS_RECEPTORS],
+    citations: [CHOLERA, CHOLERA_GS, PERTUSSIS, OS_RECEPTORS, CHOLERA_CFTR, CHOLERA_CL],
     facts: [
       'Cholera toxin (Vibrio cholerae) and the related heat-labile enterotoxin of E. coli enter intestinal cells and modify intracellular targets, activating adenylate cyclase and causing life-threatening diarrhoeal disease.',
       'Cholera toxin covalently ADP-ribosylates the α subunit of Gs.',
       'Pertussis toxin ADP-ribosylates Gi, uncoupling receptors from adenylyl cyclase inhibition, so receptor-mediated lowering of cAMP is lost.',
       'Bacterial toxins that interrupt G-protein-linked receptor function cause illnesses such as pertussis and cholera.',
+      'In cholera, raised cAMP activates PKA, which phosphorylates the CFTR chloride channel on intestinal epithelial cells; chloride flows into the lumen and water follows, causing rapid fluid loss.',
     ],
-    factRefs: [[0], [1], [2], [3]],
+    factRefs: [[0], [1], [2], [3], [4, 5]],
     mechanism:
       'Both toxins use ADP-ribosylation to raise cAMP, by opposite routes. Cholera toxin locks Gs in the “on” state, so adenylyl cyclase keeps making cAMP in intestinal cells, which pour out fluid. Pertussis toxin disables Gi, the brake on adenylyl cyclase, so cAMP is no longer lowered when inhibitory receptors are stimulated.',
     associations: ['Cholera toxin', 'Heat-labile toxin (LT)', 'Pertussis toxin', 'ADP-ribosylation', 'Gs', 'Gi', 'cAMP'],
@@ -220,14 +257,31 @@ const core = defineConcepts([
         mini: 'Cholera toxin keeps Gs on regardless of other inputs. Pertussis toxin only matters when Gi is trying to lower cAMP, because it removes that brake.',
         reasoning: 'interpretation',
         steps: ['Toxin A raises cAMP through the stimulatory pathway alone → it activates Gs (cholera toxin).', 'Toxin B matters only when Gi is active → it disables the inhibitory G protein.', 'Pertussis toxin ADP-ribosylates Gi.'],
-        difficulty: 4,
+        difficulty: 3,
+      },
+      {
+        stem: 'In cholera, cAMP rises in intestinal epithelial cells. Which channel then secretes the chloride that draws water into the gut lumen?',
+        options: [
+          ['a', 'CFTR, opened by PKA phosphorylation'],
+          ['b', 'Aquaporin-2, inserted by vasopressin', 'Aquaporin-2 reabsorbs water in the renal collecting duct; it is not the intestinal chloride channel.'],
+          ['c', 'The epithelial sodium channel (ENaC)', 'ENaC absorbs sodium; cholera causes chloride secretion through CFTR.'],
+          ['d', 'The Na⁺/K⁺-ATPase pumping chloride out', 'The Na⁺/K⁺-ATPase moves sodium and potassium, not chloride.'],
+          ['e', 'A ligand-gated chloride channel opened by GABA', 'GABA-A channels are neuronal; intestinal chloride secretion uses CFTR.'],
+        ],
+        answer: 'a',
+        mini: 'Cholera toxin → Gsα stuck on → cAMP → PKA phosphorylates CFTR → Cl⁻ secreted into the lumen, water follows → watery diarrhea.',
+        reasoning: 'mechanism',
+        objectives: [`${GP}.toxins`],
+        difficulty: 2,
       },
     ],
     tf: [
       { statement: 'Pertussis toxin ADP-ribosylates the inhibitory G protein Gi.', isTrue: true, correction: 'Correct: Gi can no longer inhibit adenylyl cyclase, so cAMP rises.', difficulty: 1 },
+      { statement: 'In cholera, PKA opens the CFTR chloride channel, and water follows the secreted chloride into the gut.', isTrue: true, correction: 'Correct: cAMP-activated chloride secretion through CFTR drives the fluid loss.', objectives: [`${GP}.toxins`], difficulty: 1 },
     ],
     clues: [
       { answer: 'PERTUSSIS', clue: 'Toxin that ADP-ribosylates Gi', difficulty: 1 },
+      { answer: 'CFTR', clue: 'Chloride channel that PKA opens in cholera (abbreviation)', objectives: [`${GP}.toxins`], difficulty: 2 },
     ],
   },
   // ------------------------------------------------------------------------------------------------
@@ -292,7 +346,7 @@ const core = defineConcepts([
         answer: 'a',
         mini: 'Mosaicism: the mutation occurs early in embryonic development, so only descendants of that cell carry it.',
         reasoning: 'mechanism',
-        difficulty: 3,
+        difficulty: 2,
       },
     ],
     tf: [
@@ -315,16 +369,17 @@ const core = defineConcepts([
     difficulty: 2,
     curriculum: [`${SM}.camp`, `${SM}.ip3-dag`],
     objectives: ['Explain cAMP signaling and its termination by phosphodiesterases, and recognize PDE inhibitors', 'Explain IP₃, Ca²⁺–calmodulin and DAG–PKC signaling'],
-    citations: [OS_PROPAGATION, AP_HORMONES, MILRINONE, ROFLUMILAST, THEOPHYLLINE, M3_GQ],
+    citations: [OS_PROPAGATION, AP_HORMONES, MILRINONE, ROFLUMILAST, THEOPHYLLINE, M3_GQ, THEO_SEIZURE],
     facts: [
       'Adenylyl cyclase makes cAMP from ATP; cAMP activates cAMP-dependent protein kinase (PKA); phosphodiesterase converts cAMP to AMP, which keeps cAMP signals short.',
       'Phospholipase C cleaves PIP₂ into DAG and IP₃. DAG stays in the membrane and activates protein kinase C; IP₃ opens Ca²⁺ channels in the endoplasmic reticulum.',
       'Released Ca²⁺ acts directly or binds calmodulin, which then regulates protein kinases.',
       'PDE3 inhibitors (milrinone) raise cAMP and PKA activity, increasing cardiac contractility and dilating vessels (“inodilators”).',
       'Roflumilast is a selective PDE4 inhibitor used in severe COPD.',
-      'Theophylline relaxes bronchi by inhibiting phosphodiesterases; at higher levels it causes arrhythmias and seizures through adenosine A1 receptor antagonism.',
+      'Theophylline relaxes bronchi by inhibiting phosphodiesterases and also antagonizes adenosine receptors; adenosine A1 antagonism is proposed to contribute to its high-level side effects such as arrhythmias and seizures.',
+      'Seizures are a major theophylline toxicity, but their mechanism is not established: in rats, adenosine and an adenosine A1 agonist did not prevent them, so adenosine antagonism is unlikely to be the whole explanation.',
     ],
-    factRefs: [[0, 1], [0, 1], [1], [2], [3], [4]],
+    factRefs: [[0, 1], [0, 1], [1], [2], [3], [4], [6]],
     mechanism:
       'Second messengers amplify a receptor signal inside the cell. cAMP activates PKA until phosphodiesterase destroys it, so blocking a phosphodiesterase prolongs and strengthens cAMP signals. IP₃ and DAG are made together: IP₃ raises cytosolic Ca²⁺ (often acting through calmodulin) and DAG activates PKC.',
     associations: ['cAMP', 'PKA', 'Phosphodiesterase', 'Milrinone (PDE3)', 'Roflumilast (PDE4)', 'Theophylline', 'IP₃', 'DAG', 'PKC', 'Calmodulin'],
@@ -356,20 +411,19 @@ const core = defineConcepts([
         difficulty: 2,
       },
       {
-        stem: 'A man with asthma takes theophylline. After an extra dose taken by mistake, he develops a rapid irregular heartbeat and then a seizure. What explains the toxicity at high levels?',
+        stem: 'A man with asthma takes theophylline. After an extra dose taken by mistake, he develops a rapid irregular heartbeat and then a seizure. Besides phosphodiesterase inhibition, which action of theophylline is thought to contribute to this toxicity?',
         options: [
           ['a', 'Adenosine receptor antagonism'],
-          ['b', 'Excess PDE5 inhibition causing hypotension', 'Theophylline’s high-level toxicity is attributed to adenosine A1 antagonism, not PDE5.'],
+          ['b', 'Excess PDE5 inhibition causing hypotension', 'Theophylline toxicity is not explained by PDE5 inhibition; adenosine receptor antagonism is one proposed contributor.'],
           ['c', 'Cholinergic stimulation of the heart', 'Theophylline is not a cholinergic agonist.'],
           ['d', 'Opening of K⁺ channels by Gβγ', 'Gβγ-gated K⁺ channels slow the heart; they do not cause seizures.'],
           ['e', 'Inhibition of ribonucleotide reductase', 'That is the action of hydroxyurea.'],
         ],
         answer: 'a',
-        mini: 'Theophylline’s bronchodilation comes from PDE inhibition; at high levels adenosine A1 receptor antagonism causes arrhythmias and seizures.',
-        reasoning: 'prediction',
+        mini: 'Theophylline inhibits phosphodiesterases and blocks adenosine receptors. Its toxicity (arrhythmias, seizures) likely has several mechanisms; adenosine antagonism is one proposed contributor, and the seizure mechanism is not fully established.',
+        reasoning: 'mechanism',
         objectives: [`${SM}.camp`],
-        steps: ['Theophylline has a narrow therapeutic range.', 'At high concentrations it blocks adenosine A1 receptors.', 'Loss of adenosine’s calming effect on heart and brain → arrhythmias and seizures.'],
-        difficulty: 3,
+        difficulty: 2,
       },
       {
         stem: 'Acetylcholine contracts bladder (detrusor) smooth muscle through M3 receptors. Which messenger directly releases Ca²⁺ from intracellular stores in this response?',
@@ -386,6 +440,22 @@ const core = defineConcepts([
         objectives: [`${SM}.ip3-dag`],
         difficulty: 2,
       },
+      {
+        stem: 'In cardiogenic shock, a β1-adrenergic agonist and milrinone are given together. Why do their effects on contractility add to each other?',
+        options: [
+          ['a', 'One makes more cAMP; the other slows its breakdown'],
+          ['b', 'Both block phosphodiesterase 3 at different sites', 'The β1 agonist acts on a receptor; only milrinone inhibits PDE3.'],
+          ['c', 'Both raise cGMP in cardiac muscle', 'Both act through cAMP, not cGMP.'],
+          ['d', 'Milrinone increases β1 receptor number', 'Milrinone acts beyond the receptor, on phosphodiesterase 3.'],
+          ['e', 'The β1 agonist inhibits the Na⁺/K⁺-ATPase', 'That is the action of digoxin; β1 agonists act through Gs.'],
+        ],
+        answer: 'a',
+        mini: 'β1 agonist → Gs → adenylyl cyclase → more cAMP; milrinone blocks PDE3 → less cAMP breakdown. Together cAMP and PKA activity rise further, increasing contractility.',
+        reasoning: 'prediction',
+        objectives: [`${SM}.camp`],
+        steps: ['The β1 receptor activates Gs and adenylyl cyclase, so cAMP synthesis rises.', 'Milrinone inhibits PDE3, so cAMP is broken down more slowly.', 'More production plus less breakdown → higher cAMP and PKA activity → greater contractility.'],
+        difficulty: 3,
+      },
     ],
     tf: [
       { statement: 'Phosphodiesterase ends cAMP signals by converting cAMP to AMP.', isTrue: true, correction: 'Correct: inhibiting phosphodiesterase prolongs cAMP signaling.', objectives: [`${SM}.camp`], difficulty: 1 },
@@ -393,7 +463,7 @@ const core = defineConcepts([
     ],
     clues: [
       { answer: 'CALMODULIN', clue: 'Calcium-binding protein that relays IP₃-released Ca²⁺ signals', objectives: [`${SM}.ip3-dag`], difficulty: 2 },
-      { answer: 'MILRINONE', clue: 'PDE3 inhibitor used as an inodilator', objectives: [`${SM}.camp`], difficulty: 2 },
+      { answer: 'MILRINONE', clue: 'PDE3 inhibitor used as an inodilator', objectives: [`${SM}.camp`], relevance: 'supplementary', relevanceNote: 'Recall of a specific inotrope name; cAMP and PDE inhibition are core.', difficulty: 2 },
     ],
   },
   // ------------------------------------------------------------------------------------------------
@@ -515,10 +585,9 @@ const core = defineConcepts([
         ],
         answer: 'a',
         mini: 'V2 → Gs → cAMP → aquaporin-2 moves to the apical membrane → water is reabsorbed → urine concentrates.',
-        reasoning: 'prediction',
+        reasoning: 'mechanism',
         objectives: [`${SM}.predict`],
-        steps: ['Desmopressin is a V2-selective agonist.', 'V2 receptors raise cAMP in collecting duct cells.', 'cAMP sends aquaporin-2 to the apical membrane → water reabsorption → less, more concentrated urine.'],
-        difficulty: 3,
+        difficulty: 2,
       },
       {
         stem: 'Drug P acts on a G-protein-coupled receptor and Drug Q is a steroid that acts on an intracellular receptor. Which statement about their time courses is most accurate?',
@@ -557,15 +626,16 @@ const core = defineConcepts([
     difficulty: 3,
     curriculum: [`${RT}.mechanism`, `${RT}.insulin`],
     objectives: ['Explain RTK signaling through dimerization, phosphorylation and RAS/MAPK', 'Explain how insulin increases glucose uptake'],
-    citations: [OS_RECEPTORS, OS_PROPAGATION, MPG('gene/kras', 'KRAS gene'), MPG('gene/braf', 'BRAF gene'), AP_PANCREAS],
+    citations: [OS_RECEPTORS, OS_PROPAGATION, MPG('gene/kras', 'KRAS gene'), MPG('gene/braf', 'BRAF gene'), AP_PANCREAS, INSULIN_PI3K, GLUT4_AKT],
     facts: [
       'Receptor tyrosine kinases are enzyme-linked receptors with a single membrane-spanning segment; ligand binding brings two receptors together (dimerization) and they transfer phosphate groups to tyrosine residues.',
       'When EGF binds its receptor tyrosine kinase, a cascade causes the cell to grow and divide; inappropriate activation can cause cancer.',
       'RAS (for example K-Ras) is a GTPase switch: it relays signals when bound to GTP and turns off when it hydrolyzes GTP to GDP. It is part of the RAS/MAPK pathway, which controls proliferation, differentiation, migration and apoptosis.',
       'BRAF is part of the RAS/MAPK pathway.',
       'Insulin activates a tyrosine kinase receptor, triggering phosphorylation of many intracellular substrates that move vesicles containing glucose transporters to the cell membrane; skeletal muscle and adipose cells are the main targets. Red cells and cells of the brain, liver and kidneys take up glucose without insulin.',
+      'Insulin signals to GLUT4 mainly through the insulin receptor–IRS–PI3K axis: PI3K activates the kinase Akt, which promotes translocation of GLUT4 vesicles to the plasma membrane of muscle and fat cells.',
     ],
-    factRefs: [[0], [1], [1, 2], [3], [4]],
+    factRefs: [[0], [1], [1, 2], [3], [4], [5, 6]],
     mechanism:
       'Growth factors pair up their receptors, which phosphorylate each other on tyrosines. The phosphorylated receptor activates RAS by loading it with GTP; RAS then starts a kinase cascade (including RAF/BRAF) that reaches the nucleus and drives growth and division. RAS switches itself off by hydrolyzing GTP. Insulin uses the same receptor class but its main metabolic effect is moving glucose transporters to the surface of muscle and fat cells.',
     associations: ['Dimerization', 'Tyrosine phosphorylation', 'EGF receptor', 'RAS-GTP', 'RAS/MAPK pathway', 'BRAF', 'Insulin receptor', 'GLUT4 translocation'],
@@ -642,13 +712,31 @@ const core = defineConcepts([
         steps: ['Insulin moves glucose transporters to the membrane in insulin-dependent cells.', 'Skeletal muscle and adipose tissue are the main insulin-dependent tissues.', 'Weak post-receptor signaling → less transporter translocation → reduced uptake in muscle and fat.'],
         difficulty: 3,
       },
+      {
+        stem: 'A research drug blocks phosphatidylinositol 3-kinase (PI3K). How does it change the effect of insulin on skeletal muscle?',
+        options: [
+          ['a', 'GLUT4 stays inside the cell, so glucose uptake falls'],
+          ['b', 'Insulin can no longer bind its receptor', 'Binding happens upstream of PI3K and is unaffected.'],
+          ['c', 'GLUT4 moves to the membrane even without insulin', 'Blocking PI3K removes the signal that moves GLUT4; it does not mimic insulin.'],
+          ['d', 'Muscle switches to a Gs–cAMP route to take up glucose', 'Insulin does not act through Gs; no alternative route restores uptake.'],
+          ['e', 'SGLT2 replaces GLUT4 in muscle', 'SGLT2 is a renal tubular transporter, not a muscle glucose transporter.'],
+        ],
+        answer: 'a',
+        mini: 'Insulin receptor → IRS → PI3K → Akt → GLUT4 vesicles fuse with the membrane. Without PI3K, insulin-stimulated glucose uptake into muscle fails.',
+        reasoning: 'prediction',
+        objectives: [`${RT}.insulin`],
+        steps: ['Insulin binds its tyrosine kinase receptor, which phosphorylates IRS.', 'IRS activates PI3K, and PI3K activates Akt.', 'Akt drives GLUT4 translocation; blocking PI3K stops it, so muscle glucose uptake falls.'],
+        difficulty: 3,
+      },
     ],
     tf: [
       { statement: 'RAS is active when bound to GTP and inactive after it hydrolyzes GTP to GDP.', isTrue: true, correction: 'Correct: RAS is a GTPase switch in the RAS/MAPK pathway.', objectives: [`${RT}.mechanism`], difficulty: 1 },
+      { statement: 'Insulin moves GLUT4 to the muscle cell membrane through IRS–PI3K–Akt signaling.', isTrue: true, correction: 'Correct: this receptor tyrosine kinase cascade drives GLUT4 translocation in muscle and fat.', objectives: [`${RT}.insulin`], difficulty: 1 },
     ],
     clues: [
       { answer: 'DIMERIZATION', clue: 'Pairing of two receptor tyrosine kinases after ligand binding', objectives: [`${RT}.mechanism`], difficulty: 2 },
       { answer: 'TYROSINE', clue: 'Amino acid phosphorylated by insulin and growth factor receptors', objectives: [`${RT}.mechanism`], difficulty: 1 },
+      { answer: 'AKT', clue: 'Kinase activated by PI3K that sends GLUT4 to the membrane', objectives: [`${RT}.insulin`], difficulty: 2 },
     ],
   },
   // ------------------------------------------------------------------------------------------------
@@ -664,15 +752,19 @@ const core = defineConcepts([
     difficulty: 3,
     curriculum: [`${RT}.oncogenic`],
     objectives: ['Recognize constitutively active signaling proteins in disease and the use of kinase inhibitors'],
-    citations: [MPG('gene/kras', 'KRAS gene'), MPG('gene/braf', 'BRAF gene'), MPG('gene/fgfr3', 'FGFR3 gene'), MPG('condition/achondroplasia', 'Achondroplasia'), MPG('condition/chronic-myeloid-leukemia', 'Chronic myeloid leukemia'), MPD('a606018', 'Imatinib'), OS_PROPAGATION],
+    citations: [MPG('gene/kras', 'KRAS gene'), MPG('gene/braf', 'BRAF gene'), MPG('gene/fgfr3', 'FGFR3 gene'), MPG('condition/achondroplasia', 'Achondroplasia'), MPG('condition/chronic-myeloid-leukemia', 'Chronic myeloid leukemia'), MPD('a606018', 'Imatinib'), OS_PROPAGATION, RET_RTK, MEN2, MPG('gene/ret', 'RET gene'), MPG('condition/multiple-endocrine-neoplasia', 'Multiple endocrine neoplasia'), HER2_RTK, HER2_DRUGS],
     facts: [
       'In certain cancers RAS loses its GTPase activity and can no longer hydrolyze GTP to GDP, so it stays active.',
       'The BRAF V600E mutation (valine to glutamic acid at position 600) occurs in the RAS/MAPK pathway.',
       'Achondroplasia, the most common short-limbed dwarfism, is caused by FGFR3 variants that make the receptor overly active, so it signals without a growth factor and disturbs bone growth.',
       'In chronic myeloid leukemia, the t(9;22) translocation (Philadelphia chromosome) fuses BCR and ABL1; the BCR-ABL1 protein promotes proliferation and blocks apoptosis without needing a signal to turn it on.',
       'Imatinib is used for chronic myeloid leukemia and gastrointestinal stromal tumors; it works by blocking the action of the abnormal protein in cancer cells.',
+      'RET is a receptor tyrosine kinase. Germline gain-of-function point mutations increase its kinase activity and cause multiple endocrine neoplasia type 2 (MEN2A, MEN2B) and familial medullary thyroid carcinoma.',
+      'MEN2 is autosomal dominant. All forms carry a high risk of medullary thyroid carcinoma; MEN2A adds pheochromocytoma and primary hyperparathyroidism, and MEN2B adds pheochromocytoma, a marfanoid habitus and intestinal ganglioneuromas.',
+      'Loss-of-function RET mutations are the most common genetic cause of Hirschsprung disease: without RET signaling, enteric nerves do not develop properly.',
+      'HER2 (ERBB2) is a receptor tyrosine kinase. HER2 overexpression or ERBB2 amplification marks a subset of breast and gastric cancers, which are treated with HER2-targeted drugs such as trastuzumab.',
     ],
-    factRefs: [[6, 0], [1], [2, 3], [4], [5]],
+    factRefs: [[6, 0], [1], [2, 3], [4], [5], [7, 8], [8, 10], [9], [11, 12]],
     mechanism:
       'Each disorder has a signaling protein that is “on” without its normal input: RAS that cannot hydrolyze GTP, an FGFR3 receptor that signals without ligand, or the BCR-ABL1 fusion kinase. Constitutive signaling drives growth (cancer) or, for FGFR3 in cartilage, inhibits normal bone growth. Kinase inhibitors such as imatinib switch off the abnormal kinase.',
     associations: ['RAS', 'BRAF V600E', 'FGFR3 (achondroplasia)', 'BCR-ABL1', 'Philadelphia chromosome', 'Imatinib'],
@@ -713,17 +805,64 @@ const core = defineConcepts([
         ],
         answer: 'a',
         mini: 't(9;22) creates the BCR-ABL1 fusion, an always-on kinase that drives CML; imatinib blocks the abnormal protein.',
-        reasoning: 'multistep',
-        steps: ['High white count with immature granulocytes + t(9;22) → chronic myeloid leukemia.', 't(9;22) fuses BCR and ABL1 → a kinase active without signals → proliferation, blocked apoptosis.', 'Imatinib blocks the abnormal BCR-ABL1 protein.'],
-        difficulty: 4,
+        reasoning: 'mechanism',
+        difficulty: 2,
+      },
+      {
+        stem: 'A 32-year-old woman has medullary thyroid carcinoma, an adrenal pheochromocytoma and hypercalcemia from parathyroid hyperplasia. Her father had medullary thyroid carcinoma. Which genetic change is most likely?',
+        options: [
+          ['a', 'A gain-of-function RET mutation'],
+          ['b', 'A loss-of-function RET mutation', 'Loss of RET function causes Hirschsprung disease, not endocrine tumors.'],
+          ['c', 'An inactivating MEN1 mutation', 'MEN1 causes parathyroid, pituitary and pancreatic tumors, not medullary thyroid carcinoma.'],
+          ['d', 'A postzygotic activating GNAS mutation', 'That causes McCune–Albright syndrome (fibrous dysplasia, café-au-lait spots, endocrine hyperfunction).'],
+          ['e', 'An activating FGFR3 mutation', 'Activating FGFR3 variants cause achondroplasia.'],
+        ],
+        answer: 'a',
+        mini: 'Medullary thyroid carcinoma + pheochromocytoma + hyperparathyroidism, autosomal dominant = MEN2A, caused by an activating RET (receptor tyrosine kinase) mutation.',
+        reasoning: 'identification',
+        objectives: [`${RT}.oncogenic`],
+        difficulty: 2,
+      },
+      {
+        stem: 'RET mutations cause multiple endocrine neoplasia type 2 in one family and Hirschsprung disease in another. Which statement best explains how one gene causes such different diseases?',
+        options: [
+          ['a', 'MEN2 variants overactivate RET; Hirschsprung variants abolish it'],
+          ['b', 'Both diseases come from RET amplification', 'MEN2 is caused by activating point mutations, and Hirschsprung disease by loss of RET function, not amplification.'],
+          ['c', 'MEN2 variants abolish RET; Hirschsprung variants overactivate it', 'This reverses the two: MEN2 is gain of function, Hirschsprung disease loss of function.'],
+          ['d', 'Both are caused by the same variant with variable penetrance', 'Different variants with opposite effects on RET signaling cause the two diseases.'],
+          ['e', 'RET encodes a G protein whose GTPase activity differs', 'RET is a receptor tyrosine kinase, not a G protein.'],
+        ],
+        answer: 'a',
+        mini: 'Gain of RET function drives endocrine tumors (MEN2); loss of RET function stops enteric nerve development (Hirschsprung disease).',
+        reasoning: 'comparison',
+        objectives: [`${RT}.oncogenic`],
+        steps: ['RET is a receptor tyrosine kinase needed for enteric nerve development.', 'Activating variants keep RET signaling on → tumors of RET-expressing endocrine tissues (MEN2).', 'Inactivating variants remove RET signaling → enteric nerves fail to develop (Hirschsprung disease).'],
+        difficulty: 3,
+      },
+      {
+        stem: 'A breast cancer shows ERBB2 gene amplification on in situ hybridization. Trastuzumab is added to her treatment. What does this drug target?',
+        options: [
+          ['a', 'The HER2 receptor tyrosine kinase'],
+          ['b', 'The BCR-ABL1 fusion kinase', 'BCR-ABL1 is targeted by imatinib in chronic myeloid leukemia.'],
+          ['c', 'The estrogen receptor in the nucleus', 'Estrogen receptors are intracellular receptors, not the product of ERBB2.'],
+          ['d', 'Mutant KRAS stuck in the GTP-bound state', 'KRAS is a G protein downstream of receptors; ERBB2 encodes HER2.'],
+          ['e', 'Janus kinase 2 downstream of cytokines', 'JAK2 is mutated in myeloproliferative neoplasms, not amplified in breast cancer.'],
+        ],
+        answer: 'a',
+        mini: 'ERBB2 encodes HER2, a receptor tyrosine kinase. Overexpression or amplification marks HER2-positive breast and gastric cancers, which are treated with HER2-targeted drugs such as trastuzumab.',
+        reasoning: 'recall',
+        objectives: [`${RT}.oncogenic`],
+        difficulty: 2,
       },
     ],
     tf: [
       { statement: 'The Philadelphia chromosome results from a t(9;22) translocation fusing BCR and ABL1.', isTrue: true, correction: 'Correct: the fusion protein is active without signals and drives chronic myeloid leukemia.', difficulty: 1 },
+      { statement: 'Multiple endocrine neoplasia type 2 is caused by loss-of-function RET mutations.', isTrue: false, correction: 'MEN2 is caused by gain-of-function RET mutations; loss of RET function causes Hirschsprung disease.', objectives: [`${RT}.oncogenic`], difficulty: 1 },
     ],
     clues: [
       { answer: 'IMATINIB', clue: 'Kinase inhibitor that blocks BCR-ABL1 in chronic myeloid leukemia', difficulty: 1 },
       { answer: 'ACHONDROPLASIA', clue: 'Short-limbed dwarfism from overactive FGFR3', difficulty: 1 },
+      { answer: 'RET', clue: 'Receptor tyrosine kinase proto-oncogene activated in MEN2', objectives: [`${RT}.oncogenic`], difficulty: 1 },
     ],
   },
   // ------------------------------------------------------------------------------------------------
@@ -746,6 +885,7 @@ const core = defineConcepts([
       MPG('gene/jak3', 'JAK3 gene'),
       MPG('condition/x-linked-severe-combined-immunodeficiency', 'X-linked severe combined immunodeficiency'),
       MPD('a613025', 'Tofacitinib'),
+      GH_JAK, GH_STAT5, PRL_JAK, EPO_JAK, STAT_DIMER, MPG('gene/il2rg', 'IL2RG gene'),
     ],
     facts: [
       'The JAK/STAT pathway transmits chemical signals from outside the cell to the nucleus; JAK2 transmits signals after receptors such as the thrombopoietin receptor (MPL) are activated.',
@@ -754,8 +894,12 @@ const core = defineConcepts([
       'JAK3 relays signals that regulate the growth and maturation of T cells and NK cells and the maturation of B cells; without functional JAK3, these signals do not reach the nucleus, causing JAK3-deficient SCID.',
       'X-linked SCID, caused by IL2RG variants, occurs almost exclusively in males and is the most common form of SCID; untreated infants have recurrent infections, thrush, chronic diarrhea and poor growth.',
       'Tofacitinib is a Janus kinase (JAK) inhibitor used for rheumatoid arthritis, psoriatic arthritis and ulcerative colitis; it decreases immune system activity.',
+      'JAK kinases phosphorylate STAT proteins on tyrosine; phosphorylated STATs dimerize, move into the nucleus and regulate transcription of target genes.',
+      'Growth hormone binding to its receptor activates the associated tyrosine kinase JAK2; JAK2 activation of STAT5 is the most important GH pathway, and STAT5 induces IGF-1.',
+      'Prolactin and erythropoietin receptors also signal mainly through JAK2 and STAT5; the EPO receptor–JAK2–STAT5 pathway regulates the differentiation, proliferation and survival of erythroid progenitors.',
+      'IL2RG encodes the common gamma chain, a component of several immune-cell receptors; without it, signals are not relayed to the nucleus and lymphocytes cannot develop normally.',
     ],
-    factRefs: [[0, 3], [1], [0, 2, 3], [4], [5], [6]],
+    factRefs: [[0, 3], [1], [0, 2, 3], [4], [5], [6], [11], [7, 8], [9, 10], [12]],
     mechanism:
       'Cytokine and hematopoietic growth-factor receptors work with JAK kinases. When the receptor is activated, JAKs relay the signal through STAT proteins to the nucleus. A JAK2 that is always on (V617F) drives blood cell overproduction; a missing JAK3 (or the IL2RG receptor component in X-linked SCID) stops lymphocytes developing. JAK inhibitors damp cytokine signaling in autoimmune disease.',
     associations: ['JAK', 'STAT', 'JAK2 V617F', 'Polycythemia vera', 'Essential thrombocythemia', 'Primary myelofibrosis', 'MPL (thrombopoietin receptor)', 'JAK3', 'IL2RG', 'X-linked SCID', 'Tofacitinib'],
@@ -782,10 +926,9 @@ const core = defineConcepts([
         ],
         answer: 'a',
         mini: 'JAK2 V617F makes JAK2 constantly active, increasing production of red cells (and often white cells and platelets) — polycythemia vera.',
-        reasoning: 'interpretation',
+        reasoning: 'mechanism',
         objectives: [`${JS}.jak2`],
-        steps: ['High hemoglobin plus raised white cells and platelets → myeloproliferative process.', 'JAK2 V617F → constitutive JAK/STAT signaling.', 'More blood cells → thick blood → thrombosis (polycythemia vera).'],
-        difficulty: 3,
+        difficulty: 2,
       },
       {
         stem: 'A 5-month-old boy has persistent thrush, chronic diarrhea and poor growth. His maternal uncle died of infections in infancy. Lymphocyte studies show very few T cells. Which gene is most likely affected?',
@@ -800,7 +943,7 @@ const core = defineConcepts([
         mini: 'Severe early infections with absent T cells in a boy with an affected maternal uncle = X-linked SCID (IL2RG), the most common SCID.',
         reasoning: 'identification',
         objectives: [`${JS}.scid`],
-        difficulty: 3,
+        difficulty: 2,
       },
       {
         stem: 'Tofacitinib is used for rheumatoid arthritis. Which signaling step does it block?',
@@ -815,6 +958,8 @@ const core = defineConcepts([
         mini: 'Tofacitinib is a JAK inhibitor: it damps cytokine signaling through the JAK–STAT pathway, reducing immune activity.',
         reasoning: 'recall',
         objectives: [`${JS}.ligands`],
+        relevance: 'supplementary',
+        relevanceNote: 'Tofacitinib is a specific immunology drug example; the JAK–STAT pathway and JAK2/IL2RG disease are core.',
         difficulty: 1,
       },
       {
@@ -831,7 +976,9 @@ const core = defineConcepts([
         reasoning: 'prediction',
         objectives: [`${JS}.ligands`, `${JS}.mechanism`],
         steps: ['The receptors are present but their associated kinase is missing → JAK deficiency.', 'Interleukin signals in lymphocytes use JAK3.', 'Without JAK3, T and NK cells fail to develop and B cells do not mature → SCID.'],
-        difficulty: 4,
+        relevance: 'supplementary',
+        relevanceNote: 'JAK3-deficient SCID is a less common autosomal recessive form; X-linked (IL2RG) SCID is the core example.',
+        difficulty: 3,
       },
       {
         stem: 'The thrombopoietin receptor (MPL) has no kinase domain of its own. How does its signal reach the nucleus after thrombopoietin binds?',
@@ -848,15 +995,68 @@ const core = defineConcepts([
         objectives: [`${JS}.mechanism`],
         difficulty: 2,
       },
+      {
+        stem: 'Which hormone acts on a cytokine-type receptor that signals through JAK2 and STAT5 rather than through a G protein?',
+        options: [
+          ['a', 'Growth hormone'],
+          ['b', 'Growth hormone–releasing hormone', 'GHRH acts on a Gs-coupled receptor that raises cAMP.'],
+          ['c', 'Thyrotropin-releasing hormone', 'TRH acts on a Gq-coupled receptor (phospholipase C).'],
+          ['d', 'Cortisol', 'Cortisol acts on an intracellular receptor that binds DNA.'],
+          ['e', 'Insulin', 'Insulin acts on a receptor tyrosine kinase with intrinsic kinase activity.'],
+        ],
+        answer: 'a',
+        mini: 'GH, prolactin and EPO receptors are cytokine-type receptors: they use associated JAK2, which activates STAT5. GHRH (Gs) and TRH (Gq) use GPCRs.',
+        reasoning: 'recall',
+        objectives: [`${JS}.ligands`],
+        difficulty: 1,
+      },
+      {
+        stem: 'A patient receives a drug that inhibits JAK2. Based on how erythropoietin signals, which effect on the blood is expected?',
+        options: [
+          ['a', 'Reduced EPO-driven red cell production'],
+          ['b', 'Higher hemoglobin from unopposed EPO', 'EPO needs JAK2 to signal; blocking JAK2 reduces, not increases, red cell production.'],
+          ['c', 'No effect, because EPO acts through Gs and cAMP', 'The EPO receptor is a cytokine receptor that signals through JAK2 and STAT5.'],
+          ['d', 'Loss of B cells only, sparing red cells', 'JAK2 carries EPO, thrombopoietin and other signals; red cell production depends on it.'],
+          ['e', 'Increased STAT5 activity in erythroid cells', 'JAK2 activates STAT5; inhibiting JAK2 lowers STAT5 activity.'],
+        ],
+        answer: 'a',
+        mini: 'EPO receptor → JAK2 → STAT5 drives erythroid progenitor proliferation and survival, so JAK2 inhibition is expected to reduce red cell production.',
+        reasoning: 'prediction',
+        objectives: [`${JS}.ligands`, `${JS}.mechanism`],
+        steps: ['EPO acts on a cytokine receptor with no kinase of its own.', 'It signals through associated JAK2, which activates STAT5.', 'STAT5 supports erythroid progenitor proliferation and survival, so blocking JAK2 lowers red cell production.'],
+        difficulty: 3,
+      },
+      {
+        stem: 'A woman with polycythemia vera carries JAK2 V617F, with high hemoglobin and platelets. Based on how this mutation acts, what would a drug that inhibits JAK2 be expected to do?',
+        options: [
+          ['a', 'Lower blood counts by damping constitutive JAK2 signaling'],
+          ['b', 'Raise blood counts by removing feedback inhibition', 'JAK2 drives production in these cells; inhibiting it lowers counts.'],
+          ['c', 'Correct the mutation in her marrow stem cells', 'A kinase inhibitor blocks activity; it does not repair the acquired mutation.'],
+          ['d', 'Have no effect, because V617F acts through Gs', 'V617F is a JAK2 mutation; the signal runs through JAK–STAT, not Gs.'],
+          ['e', 'Mainly restore T-cell development', 'T-cell development depends on JAK3 and the common γ chain, which are not the problem here.'],
+        ],
+        answer: 'a',
+        mini: 'V617F makes JAK2 constantly active, overstimulating blood cell production. Inhibiting JAK2 damps this signal, so counts are expected to fall; the mutation itself remains.',
+        reasoning: 'prediction',
+        objectives: [`${JS}.jak2`],
+        steps: ['JAK2 V617F is a gain-of-function mutation: JAK2 signals without its normal trigger.', 'This drives overproduction of red cells, platelets and white cells.', 'A JAK2 inhibitor reduces that signaling, so counts are expected to fall without correcting the mutation.'],
+        relevance: 'supplementary',
+        relevanceNote: 'Reasoning about JAK2-inhibitor therapy is beyond core; JAK2 V617F and polycythemia vera are core.',
+        difficulty: 3,
+      },
     ],
     tf: [
       { statement: 'The JAK2 V617F mutation produces a JAK2 protein that is constantly turned on.', isTrue: true, correction: 'Correct: it drives myeloproliferative neoplasms such as polycythemia vera.', objectives: [`${JS}.jak2`], difficulty: 1 },
       { statement: 'X-linked SCID affects boys and girls equally.', isTrue: false, correction: 'X-linked SCID occurs almost exclusively in males.', objectives: [`${JS}.scid`], difficulty: 1 },
       { statement: 'JAK/STAT signaling carries signals from cell-surface receptors to the nucleus.', isTrue: true, correction: 'Correct: STATs relay JAK signals to the nucleus to change transcription.', objectives: [`${JS}.mechanism`], difficulty: 1 },
+      { statement: 'Phosphorylated STAT proteins dimerize and enter the nucleus to change transcription.', isTrue: true, correction: 'Correct: JAKs phosphorylate STATs, which dimerize and act as transcription factors.', objectives: [`${JS}.mechanism`], difficulty: 1 },
+      { statement: 'The IL2RG gene encodes the common gamma chain, part of several immune-cell receptors.', isTrue: true, correction: 'Correct: loss of the common gamma chain blocks lymphocyte development in X-linked SCID.', objectives: [`${JS}.scid`], difficulty: 2 },
     ],
     clues: [
-      { answer: 'TOFACITINIB', clue: 'Janus kinase inhibitor used in rheumatoid arthritis', objectives: [`${JS}.ligands`], difficulty: 2 },
+      { answer: 'TOFACITINIB', clue: 'Janus kinase inhibitor used in rheumatoid arthritis', objectives: [`${JS}.ligands`], relevance: 'supplementary', relevanceNote: 'Specific JAK-inhibitor drug name; the JAK–STAT pathway itself is core.', difficulty: 2 },
       { answer: 'POLYCYTHEMIA', clue: 'Vera: myeloproliferative neoplasm with JAK2 mutation in nearly all patients', objectives: [`${JS}.jak2`], difficulty: 1 },
+      { answer: 'PROLACTIN', clue: 'Lactotroph hormone whose receptor signals mainly through JAK2 and STAT5', objectives: [`${JS}.ligands`], difficulty: 2 },
+      { answer: 'ERYTHROPOIETIN', clue: 'Hormone whose receptor uses JAK2 and STAT5 to drive red cell production', objectives: [`${JS}.ligands`], difficulty: 1 },
     ],
   },
   // ------------------------------------------------------------------------------------------------
@@ -872,14 +1072,19 @@ const core = defineConcepts([
     difficulty: 2,
     curriculum: [`${RO}.nuclear`, `${RO}.ion-channels`],
     objectives: ['Explain intracellular (nuclear) receptors for steroid and thyroid hormones', 'Recognize ligand-gated ion channels'],
-    citations: [OS_RECEPTORS, AP_HORMONES, AP_NEURONS],
+    citations: [OS_RECEPTORS, AP_HORMONES, AP_NEURONS, GABA_A, GABA_CL, NMDA, HT3, HT3_ANTIEMETIC, CYS_LOOP, VDR, MPD('a601209', 'Ondansetron')],
     facts: [
       'Intracellular receptors respond to hydrophobic ligands that cross the plasma membrane; many are transcription factors that bind DNA in the nucleus and regulate gene expression.',
       'Steroid hormones bind receptors in the cytosol or nucleus, and the complex binds DNA; thyroid hormones enter cells by a carrier and bind receptors already bound to DNA. Both trigger transcription and new protein synthesis.',
       'Ion channel-linked receptors bind a ligand and open a channel that lets specific ions cross the membrane.',
       'Ionotropic receptors are ligand-gated ion channels, such as the nicotinic acetylcholine receptor and the glycine receptor; acetylcholine binding to the nicotinic receptor opens a cation channel and depolarizes the cell. Metabotropic receptors instead act through a G protein and second messengers.',
+      'GABA-A receptors are ligand-gated chloride channels: GABA opens an intrinsic anion channel. The receptor carries binding sites for benzodiazepines and barbiturates.',
+      'NMDA receptors are ligand-gated calcium channels opened by glutamate, with a voltage-dependent magnesium block; they are thought to be responsible for excitotoxicity.',
+      '5-HT3 receptors are cation-selective ligand-gated ion channels. 5-HT3 antagonists such as ondansetron prevent chemotherapy-, radiotherapy- and postoperative nausea and vomiting.',
+      'Cys-loop ligand-gated channels (nicotinic acetylcholine, 5-HT3, GABA-A and glycine receptors) mediate fast excitatory and inhibitory synaptic transmission.',
+      'Calcitriol (1,25-dihydroxyvitamin D) binds the vitamin D receptor, a ligand-activated transcription factor that pairs with the retinoid X receptor and binds vitamin D response elements in DNA.',
     ],
-    factRefs: [[0], [1], [0], [2]],
+    factRefs: [[0], [1], [0], [2], [3, 4], [5], [6, 7, 10], [8], [9]],
     mechanism:
       'Hydrophobic hormones reach receptors inside the cell and change which genes are transcribed. Ligand-gated ion channels are the opposite extreme: binding opens the channel itself, changing membrane potential immediately, without second messengers.',
     associations: ['Steroid hormones', 'Thyroid hormone', 'Nuclear receptors', 'Transcription', 'Nicotinic receptor', 'Glycine receptor', 'Ionotropic vs metabotropic'],
@@ -925,14 +1130,272 @@ const core = defineConcepts([
         objectives: [`${RO}.ion-channels`],
         difficulty: 1,
       },
+      {
+        stem: 'Benzodiazepines increase the effect of GABA at GABA-A receptors. Which ion movement explains the neuronal inhibition?',
+        options: [
+          ['a', 'More chloride flows through the receptor’s own channel'],
+          ['b', 'Gi lowers cAMP in the neuron', 'GABA-A receptors are ligand-gated channels, not G-protein-coupled receptors.'],
+          ['c', 'Sodium enters through the receptor and depolarizes', 'Cation entry excites neurons; GABA-A channels conduct chloride.'],
+          ['d', 'Calcium enters through NMDA receptors', 'NMDA receptors are glutamate-gated calcium channels and excite neurons.'],
+          ['e', 'The receptor binds DNA and changes transcription', 'That describes intracellular receptors for steroid and thyroid hormones.'],
+        ],
+        answer: 'a',
+        mini: 'GABA-A is a ligand-gated chloride channel. Benzodiazepines (and barbiturates) act at sites on it, increasing chloride flow and inhibiting the neuron.',
+        reasoning: 'mechanism',
+        objectives: [`${RO}.ion-channels`],
+        difficulty: 2,
+      },
+      {
+        stem: 'Ondansetron prevents chemotherapy-induced vomiting. What type of receptor does it block?',
+        options: [
+          ['a', 'A serotonin-gated cation channel (5-HT3)'],
+          ['b', 'A Gq-coupled serotonin receptor', 'The 5-HT3 receptor is a ligand-gated ion channel, not a GPCR.'],
+          ['c', 'A glutamate-gated calcium channel (NMDA)', 'NMDA receptors are glutamate-gated; ondansetron blocks 5-HT3 receptors.'],
+          ['d', 'A GABA-gated chloride channel (GABA-A)', 'GABA-A receptors are enhanced by benzodiazepines, not blocked by ondansetron.'],
+          ['e', 'A dopamine D1 receptor coupled to Gs', 'Ondansetron is a 5-HT3 receptor antagonist, not a dopamine antagonist.'],
+        ],
+        answer: 'a',
+        mini: 'Ondansetron is a 5-HT3 antagonist. The 5-HT3 receptor is the serotonin receptor that is a ligand-gated cation channel.',
+        reasoning: 'recall',
+        objectives: [`${RO}.ion-channels`],
+        difficulty: 1,
+      },
+      {
+        stem: 'Glutamate opens a ligand-gated channel that admits Ca²⁺ and is linked to excitotoxic neuronal injury. Which receptor is it?',
+        options: [
+          ['a', 'NMDA receptor'],
+          ['b', 'GABA-A receptor', 'GABA-A receptors are chloride channels and inhibit neurons.'],
+          ['c', '5-HT3 receptor', '5-HT3 receptors are serotonin-gated, not glutamate-gated.'],
+          ['d', 'M2 muscarinic receptor', 'M2 receptors are G-protein-coupled (Gi).'],
+          ['e', 'Glycine receptor', 'Glycine receptors are inhibitory chloride channels.'],
+        ],
+        answer: 'a',
+        mini: 'NMDA receptors are glutamate-gated Ca²⁺ channels with a voltage-dependent Mg²⁺ block; excessive activation is thought to cause excitotoxicity.',
+        reasoning: 'recall',
+        objectives: [`${RO}.ion-channels`],
+        difficulty: 2,
+      },
     ],
     tf: [
-      { statement: 'Thyroid hormones bind receptors that are already bound to DNA.', isTrue: true, correction: 'Correct: binding triggers transcription of target genes.', objectives: [`${RO}.nuclear`], difficulty: 2 },
+      { relevance: 'supplementary', relevanceNote: 'Where the thyroid receptor sits before ligand binding is beyond core depth; nuclear-receptor action is core.', statement: 'Thyroid hormones bind receptors that are already bound to DNA.', isTrue: true, correction: 'Correct: binding triggers transcription of target genes.', objectives: [`${RO}.nuclear`], difficulty: 2 },
       { statement: 'Muscarinic acetylcholine receptors are ligand-gated ion channels.', isTrue: false, correction: 'Muscarinic receptors are G-protein-coupled; nicotinic receptors are ligand-gated ion channels.', objectives: [`${RO}.ion-channels`], difficulty: 1 },
+      { statement: 'GABA-A receptors are ligand-gated chloride channels.', isTrue: true, correction: 'Correct: GABA opens the receptor’s own anion channel; benzodiazepines and barbiturates act at sites on it.', objectives: [`${RO}.ion-channels`], difficulty: 1 },
+      { statement: 'The 5-HT3 receptor is a G-protein-coupled serotonin receptor.', isTrue: false, correction: 'The 5-HT3 receptor is a cation-selective ligand-gated ion channel (the target of ondansetron).', objectives: [`${RO}.ion-channels`], difficulty: 2 },
+      { statement: 'Calcitriol acts through an intracellular receptor that binds DNA and regulates transcription.', isTrue: true, correction: 'Correct: the vitamin D receptor is a ligand-activated transcription factor (paired with RXR).', objectives: [`${RO}.nuclear`], difficulty: 1 },
     ],
     clues: [
       { answer: 'NICOTINIC', clue: 'Acetylcholine receptor that is a ligand-gated cation channel', objectives: [`${RO}.ion-channels`], difficulty: 1 },
-      { answer: 'IONOTROPIC', clue: 'Describes a receptor that is itself an ion channel', objectives: [`${RO}.ion-channels`], difficulty: 2 },
+      { relevance: 'supplementary', relevanceNote: 'Terminology (ionotropic) rather than a tested mechanism.', answer: 'IONOTROPIC', clue: 'Describes a receptor that is itself an ion channel', objectives: [`${RO}.ion-channels`], difficulty: 2 },
+      { answer: 'ONDANSETRON', clue: 'Antiemetic that blocks the serotonin-gated 5-HT3 channel', objectives: [`${RO}.ion-channels`], difficulty: 1 },
+    ],
+  },
+  // ------------------------------------------------------------------------------------------------
+  // Revision 1 (owner review): hormone receptors and TGF-β/SMAD.
+  // ------------------------------------------------------------------------------------------------
+  {
+    id: 'cel-hormone-gpcr',
+    relevance: 'core',
+    title: 'Hormone receptors: which G protein? (GHRH, ACTH, LH/FSH, PTH, GnRH, TRH, oxytocin)',
+    discipline: 'biochemistry',
+    alsoDisciplines: ['physiology'],
+    system: 'endocrine',
+    alsoSystems: ['reproductive'],
+    topic: 'biochem-cellular',
+    difficulty: 2,
+    curriculum: [`${GP}.receptors`, `${SM}.predict`],
+    objectives: ['Assign high-yield hormone receptors to Gs or Gq', 'Predict a hormone’s second messenger and effect'],
+    citations: [GHRH_GS, SOMATOTROPH, ACTH_CAMP, LH_GS, GLYCO_GS, PTH_RECEPTOR, PTH_PKA, GNRH_GQ, GNRH_LHFSH, TRH_GQ, OXYTOCIN_GQ, MYOMETRIUM, AP_HORMONES],
+    facts: [
+      'The GHRH receptor on pituitary somatotrophs is a seven-transmembrane Gs-coupled receptor: GHRH raises cAMP, and PKA phosphorylates the transcription factor CREB; growth hormone release also involves G-protein effects on ion channels.',
+      'ACTH binds the melanocortin 2 receptor (MC2R) on adrenal cells and stimulates adenylyl cyclase; cAMP and PKA drive both the rapid supply of cholesterol for steroid synthesis and transcription of steroidogenic genes.',
+      'The LH and FSH receptors are seven-transmembrane glycoprotein-hormone receptors that couple to Gs, activating adenylyl cyclase and raising cAMP. Activating LH-receptor mutations cause gonadotropin-independent familial male precocious puberty through constant cAMP signaling in Leydig cells.',
+      'PTH (and PTHrP) act on the shared type 1 PTH receptor in bone and kidney, which activates adenylyl cyclase (cAMP–PKA) and also phospholipase C (PKC).',
+      'The GnRH receptor on pituitary gonadotropes couples to Gq/G11: phospholipase C produces IP₃ (Ca²⁺ release) and DAG (protein kinase C), driving LH and FSH synthesis and secretion.',
+      'The TRH receptor triggers the Gq–phospholipase Cβ–Ca²⁺–protein kinase C pathway in thyrotrophs.',
+      'The oxytocin receptor couples mainly through Gq to phospholipase Cβ; oxytocin and other uterotonic agonists act through Gq/PLCβ in myometrium.',
+      'About 40% of pituitary somatotroph tumors carry activating Gsα mutations (at Arg201 or Gln227), and excess GH from somatotroph adenomas causes acromegaly.',
+      'Reconciling sources: OpenStax lists GHRH among hormones that use Ca²⁺ as a second messenger. GHRH-stimulated GH release does involve G-protein effects on ion channels, but the GHRH receptor is Gs-coupled and cAMP is its principal second messenger, which is the classic Step 1 association.',
+    ],
+    factRefs: [[0], [2], [3, 4], [5, 6], [7, 8], [9], [10, 11], [9, 1], [12, 0]],
+    mechanism:
+      'The hormones in this group that raise cAMP use Gs (GHRH on somatotrophs, ACTH on the adrenal cortex, LH and FSH on the gonads, PTH on bone and kidney). Hypothalamic GnRH and TRH, and oxytocin on the uterus, use Gq: phospholipase C → IP₃ (Ca²⁺) and DAG (PKC). Knowing the G protein predicts what a constantly active Gsα or a phospholipase C blocker would do.',
+    associations: ['GHRH → Gs', 'ACTH (MC2R) → Gs', 'LH, FSH → Gs', 'PTH → Gs (and PLC)', 'GnRH → Gq', 'TRH → Gq', 'Oxytocin → Gq', 'Somatotroph adenoma', 'Acromegaly', 'Familial male precocious puberty'],
+    misconception:
+      'A Ca²⁺ effect does not make a hormone a Gq hormone: GHRH-stimulated GH release involves ion channels, but the GHRH receptor is Gs-coupled and cAMP is the classic messenger.',
+    quick:
+      'Gs/cAMP: GHRH, ACTH (MC2R), LH, FSH, PTH (also PLC). Gq/IP₃–DAG: GnRH, TRH, oxytocin. Activating Gsα in somatotrophs mimics constant GHRH → GH excess → acromegaly.',
+    detailed: [
+      'Gs hormones activate adenylyl cyclase: GHRH (somatotrophs, cAMP → PKA → CREB), ACTH (MC2R in the adrenal cortex, cAMP → steroidogenesis), LH and FSH (glycoprotein-hormone receptors in the gonads) and PTH (type 1 PTH receptor in bone and kidney, which also activates phospholipase C).',
+      'Gq hormones activate phospholipase C, producing IP₃ (Ca²⁺ release) and DAG (protein kinase C): GnRH on gonadotropes (LH and FSH release), TRH on thyrotrophs and oxytocin on the myometrium. Disease follows the same logic: a constantly active Gsα in somatotrophs behaves like unremitting GHRH and causes GH excess, and an activating LH-receptor mutation produces testosterone without gonadotropins.',
+    ],
+    takeaway: 'GHRH, ACTH, LH, FSH, PTH → Gs/cAMP. GnRH, TRH, oxytocin → Gq/IP₃–DAG.',
+    related: ['cel-gpcr', 'cel-second-messengers', 'cel-signal-predict'],
+    outline: found('Endocrine System', 'Disorders of the pituitary gland and hypothalamus'),
+    mcq: [
+      {
+        stem: 'Which hypothalamic or pituitary hormone acts through a Gq-coupled receptor that raises IP₃ and Ca²⁺?',
+        options: [
+          ['a', 'GnRH'],
+          ['b', 'ACTH', 'ACTH acts on MC2R, which stimulates adenylyl cyclase (Gs, cAMP).'],
+          ['c', 'GHRH', 'The GHRH receptor is Gs-coupled and raises cAMP.'],
+          ['d', 'LH', 'The LH receptor couples to Gs and raises cAMP.'],
+          ['e', 'Growth hormone', 'GH acts on a cytokine-type receptor that uses JAK2 and STAT5.'],
+        ],
+        answer: 'a',
+        mini: 'GnRH (like TRH and oxytocin) uses Gq → phospholipase C → IP₃ and DAG. GHRH, ACTH, LH and FSH use Gs → cAMP; GH uses JAK2–STAT5.',
+        reasoning: 'recall',
+        objectives: [`${GP}.receptors`],
+        difficulty: 1,
+      },
+      {
+        stem: 'ACTH stimulates cortisol synthesis in the adrenal cortex within minutes and increases steroidogenic enzyme expression over hours. Which signal mediates both effects?',
+        options: [
+          ['a', 'cAMP and protein kinase A after MC2R activation'],
+          ['b', 'IP₃-released Ca²⁺ after Gq activation', 'ACTH acts through MC2R and adenylyl cyclase, not Gq.'],
+          ['c', 'JAK2 phosphorylation of STAT5', 'JAK2–STAT5 is used by GH, prolactin and EPO, not ACTH.'],
+          ['d', 'cGMP from soluble guanylyl cyclase', 'Soluble guanylyl cyclase responds to nitric oxide.'],
+          ['e', 'ACTH entering the nucleus to bind DNA', 'ACTH is a peptide acting on a membrane receptor.'],
+        ],
+        answer: 'a',
+        mini: 'ACTH → MC2R → adenylyl cyclase → cAMP → PKA, which supplies cholesterol rapidly and, over hours, increases transcription of steroidogenic genes.',
+        reasoning: 'mechanism',
+        objectives: [`${GP}.receptors`, `${SM}.predict`],
+        difficulty: 2,
+      },
+      {
+        stem: 'A pituitary adenoma carries an activating mutation that keeps Gsα in its GTP-bound state. Which hormone’s signal does this mutation mimic, and what is the expected clinical result?',
+        options: [
+          ['a', 'GHRH; GH excess causing acromegaly'],
+          ['b', 'GnRH; excess LH and FSH', 'GnRH acts through Gq, not Gs.'],
+          ['c', 'TRH; excess TSH and hyperthyroidism', 'TRH acts through Gq; activating Gsα mutations are typical of somatotroph tumors.'],
+          ['d', 'Oxytocin; excessive uterine contraction', 'Oxytocin acts through Gq on the myometrium.'],
+          ['e', 'Growth hormone; low IGF-1', 'GH itself uses JAK2–STAT5; constant somatotroph cAMP raises GH and IGF-1.'],
+        ],
+        answer: 'a',
+        mini: 'GHRH acts through a Gs-coupled receptor. A constantly active Gsα in somatotrophs keeps cAMP high, like unremitting GHRH, so GH is overproduced → acromegaly.',
+        reasoning: 'prediction',
+        objectives: [`${GP}.receptors`],
+        steps: ['The mutation keeps Gsα active, so cAMP stays high.', 'In the pituitary, the hormone that normally raises cAMP is GHRH (somatotrophs).', 'Constant GHRH-like signaling → excess GH → acromegaly.'],
+        difficulty: 3,
+      },
+      {
+        stem: 'A research drug blocks phospholipase C in uterine smooth muscle. Which hormone’s action on the myometrium is most reduced?',
+        options: [
+          ['a', 'Oxytocin'],
+          ['b', 'Luteinizing hormone', 'LH acts through Gs on the gonads, not through PLC in myometrium.'],
+          ['c', 'Growth hormone–releasing hormone', 'GHRH acts through Gs on pituitary somatotrophs.'],
+          ['d', 'ACTH', 'ACTH acts through Gs (MC2R) on the adrenal cortex.'],
+          ['e', 'Parathyroid hormone', 'PTH mainly acts on bone and kidney; its classic messenger is cAMP.'],
+        ],
+        answer: 'a',
+        mini: 'The oxytocin receptor couples through Gq to phospholipase Cβ; blocking PLC removes the IP₃/Ca²⁺ signal that contracts the myometrium.',
+        reasoning: 'prediction',
+        objectives: [`${GP}.receptors`, `${SM}.predict`],
+        steps: ['Phospholipase C is the effector of Gq.', 'In the myometrium, oxytocin acts through a Gq-coupled receptor.', 'Blocking PLC removes the IP₃/Ca²⁺ signal, so oxytocin-induced contraction falls.'],
+        difficulty: 3,
+      },
+      {
+        stem: 'A 4-year-old boy has rapid growth, pubic hair and an enlarged penis. Testosterone is in the adult range, but LH and FSH are undetectable. His father had the same problem. Which defect is most likely?',
+        options: [
+          ['a', 'An activating LH-receptor mutation causing constant cAMP'],
+          ['b', 'Early activation of hypothalamic GnRH pulses', 'Central puberty raises LH and FSH; here they are undetectable.'],
+          ['c', 'An inactivating mutation of the TRH receptor', 'TRH receptor defects affect thyroid function, not testosterone.'],
+          ['d', 'A loss-of-function FSH receptor mutation', 'Loss of FSH signaling would not produce adult testosterone.'],
+          ['e', 'A JAK2 V617F mutation', 'JAK2 V617F causes myeloproliferative neoplasms.'],
+        ],
+        answer: 'a',
+        mini: 'Gonadotropin-independent precocious puberty in a boy with an affected father: an activating LH-receptor mutation keeps Gs–cAMP signaling on in Leydig cells.',
+        reasoning: 'identification',
+        objectives: [`${GP}.receptors`],
+        relevance: 'supplementary',
+        relevanceNote: 'Familial male precocious puberty is a less common disorder; LH acting through Gs/cAMP is core.',
+        difficulty: 3,
+      },
+    ],
+    tf: [
+      { statement: 'The GHRH receptor is Gs-coupled, and cAMP is its principal second messenger.', isTrue: true, correction: 'Correct: GHRH → Gs → cAMP → PKA → CREB in somatotrophs.', objectives: [`${GP}.receptors`], difficulty: 1 },
+      { statement: 'TRH acts on thyrotrophs through Gs and cAMP.', isTrue: false, correction: 'The TRH receptor uses Gq: phospholipase Cβ → Ca²⁺ and protein kinase C.', objectives: [`${GP}.receptors`], difficulty: 1 },
+      { statement: 'The PTH receptor can activate both adenylyl cyclase and phospholipase C.', isTrue: true, correction: 'Correct: the type 1 PTH receptor signals through cAMP–PKA (classic) and PLC–PKC.', objectives: [`${GP}.receptors`], relevance: 'supplementary', relevanceNote: 'The PLC arm of PTH signaling is beyond core; PTH → cAMP is core.', difficulty: 2 },
+    ],
+    clues: [
+      { answer: 'OXYTOCIN', clue: 'Posterior pituitary hormone whose Gq-coupled receptor contracts the uterus', objectives: [`${GP}.receptors`], difficulty: 1 },
+      { answer: 'GNRH', clue: 'Hypothalamic decapeptide whose Gq receptor drives LH and FSH release (abbreviation)', objectives: [`${GP}.receptors`], difficulty: 2 },
+    ],
+  },
+  // ------------------------------------------------------------------------------------------------
+  {
+    id: 'cel-tgf-beta',
+    relevance: 'supplementary',
+    relevanceNote: 'TGF-β/SMAD signaling and its link to Marfan and Loeys–Dietz syndromes are beyond core depth; Marfan syndrome itself (FBN1, fibrillin-1) is taught as core elsewhere.',
+    title: 'Receptor serine/threonine kinases: TGF-β and SMADs',
+    discipline: 'biochemistry',
+    alsoDisciplines: ['genetics'],
+    system: 'multisystem',
+    alsoSystems: ['musculoskeletal-skin'],
+    topic: 'biochem-cellular',
+    difficulty: 2,
+    curriculum: [`${RO}.ser-thr`],
+    objectives: ['Recognize receptor serine/threonine kinases (TGF-β → SMAD)', 'Relate fibrillin-1 and TGF-β to Marfan syndrome'],
+    citations: [TGFB_RECEPTORS, SMADS, MPG('condition/marfan-syndrome', 'Marfan syndrome'), MPG('gene/fbn1', 'FBN1 gene'), MPG('condition/loeys-dietz-syndrome', 'Loeys-Dietz syndrome')],
+    facts: [
+      'TGF-β family ligands signal through complexes of type II and type I receptors that are serine/threonine kinases.',
+      'The type I receptor phosphorylates receptor-regulated SMADs, which form complexes with the common-mediator SMAD, move to the nucleus and regulate transcription together with DNA-binding partners.',
+      'In Marfan syndrome (FBN1, autosomal dominant), reduced fibrillin-1 means microfibrils cannot bind growth factors, so excess growth factors are available and tissues overgrow and become unstable; fibrillin-1 microfibrils normally store TGF-β in an inactive form.',
+      'Loeys–Dietz syndrome (TGFBR1, TGFBR2, SMAD3, TGFB2 or TGFB3; autosomal dominant) shows paradoxically increased TGF-β pathway signaling.',
+    ],
+    factRefs: [[0], [1], [2, 3], [4]],
+    mechanism:
+      'TGF-β binds a type II receptor, which recruits and activates a type I receptor; both are serine/threonine kinases. The type I receptor phosphorylates SMADs that carry the signal to the nucleus. Fibrillin-1 microfibrils keep TGF-β stored and inactive, so losing fibrillin-1 (Marfan syndrome) releases more active growth factor.',
+    associations: ['TGF-β', 'Type I and II receptors', 'Serine/threonine kinase', 'R-SMAD', 'Common-mediator SMAD', 'Fibrillin-1', 'FBN1', 'Marfan syndrome', 'Loeys–Dietz syndrome'],
+    misconception:
+      'Not every enzyme-linked receptor is a tyrosine kinase: TGF-β receptors phosphorylate SMADs on serine and threonine.',
+    quick:
+      'TGF-β → type II + type I receptor serine/threonine kinases → phosphorylated R-SMAD + common SMAD → nucleus → transcription. Marfan: FBN1 loss → microfibrils cannot store TGF-β → excess active growth factor.',
+    detailed: [
+      'Receptor serine/threonine kinases form a third class of enzyme-linked receptors. TGF-β family ligands bring type II and type I receptors together; the type I receptor phosphorylates receptor-regulated SMADs, which partner with the common-mediator SMAD and enter the nucleus to regulate transcription.',
+      'Fibrillin-1 microfibrils store TGF-β in an inactive form. In Marfan syndrome, FBN1 variants reduce functional microfibrils, more growth factor is available and tissues overgrow and become unstable. Loeys–Dietz syndrome, caused by variants in TGF-β pathway genes, also shows increased pathway signaling.',
+    ],
+    takeaway: 'TGF-β receptors are serine/threonine kinases that act through SMADs; fibrillin-1 loss (Marfan) frees TGF-β.',
+    related: ['cel-rtk', 'cel-jak-stat'],
+    outline: found(MS, GEN),
+    mcq: [
+      {
+        stem: 'TGF-β binds its cell-surface receptor. Which event carries the signal to the nucleus?',
+        options: [
+          ['a', 'Receptor serine/threonine kinases phosphorylate SMADs'],
+          ['b', 'Associated JAKs phosphorylate STATs', 'JAK–STAT signaling is used by cytokine receptors such as those for GH and EPO.'],
+          ['c', 'Gs raises cAMP, which activates PKA', 'TGF-β receptors are not G-protein-coupled.'],
+          ['d', 'Receptor tyrosine kinases activate RAS', 'TGF-β receptors phosphorylate SMADs on serine and threonine.'],
+          ['e', 'TGF-β enters the nucleus and binds DNA', 'TGF-β acts on membrane receptors; SMADs carry the signal.'],
+        ],
+        answer: 'a',
+        mini: 'TGF-β → type II and type I receptor serine/threonine kinases → phosphorylated SMADs → nucleus → transcription.',
+        reasoning: 'mechanism',
+        objectives: [`${RO}.ser-thr`],
+        difficulty: 2,
+      },
+      {
+        stem: 'Why do FBN1 variants in Marfan syndrome increase growth-factor signaling in connective tissue?',
+        options: [
+          ['a', 'Fewer microfibrils store TGF-β, so more is active'],
+          ['b', 'Fibrillin-1 is itself a TGF-β receptor', 'Fibrillin-1 forms microfibrils that bind and store growth factors; it is not a receptor.'],
+          ['c', 'Fibrillin-1 normally degrades SMAD proteins', 'Fibrillin-1 is an extracellular matrix protein and does not degrade SMADs.'],
+          ['d', 'Abnormal collagen cross-links trap TGF-β', 'Collagen cross-linking defects are not the mechanism in Marfan syndrome.'],
+          ['e', 'FBN1 variants activate Gsα in fibroblasts', 'Activating Gsα (GNAS) mutations cause McCune–Albright syndrome.'],
+        ],
+        answer: 'a',
+        mini: 'Fibrillin-1 microfibrils store TGF-β inactively. Fewer microfibrils in Marfan syndrome leave more growth factor free, so tissues overgrow and become unstable.',
+        reasoning: 'mechanism',
+        objectives: [`${RO}.ser-thr`],
+        difficulty: 2,
+      },
+    ],
+    tf: [
+      { statement: 'SMAD proteins carry TGF-β receptor signals to the nucleus.', isTrue: true, correction: 'Correct: phosphorylated R-SMADs partner with the common-mediator SMAD and regulate transcription.', objectives: [`${RO}.ser-thr`], difficulty: 1 },
+      { statement: 'In Loeys–Dietz syndrome, TGF-β pathway signaling is decreased throughout the body.', isTrue: false, correction: 'Although the mutant proteins have reduced function, TGF-β pathway signaling is paradoxically increased.', objectives: [`${RO}.ser-thr`], difficulty: 2 },
+    ],
+    clues: [
+      { answer: 'SMAD', clue: 'Protein family phosphorylated by TGF-β receptors that carries the signal to the nucleus', objectives: [`${RO}.ser-thr`], difficulty: 2 },
     ],
   },
 ]);
@@ -950,7 +1413,9 @@ const match = (x: Omit<MatchItem, Shared | 'depth' | 'reasoning'>): MatchItem =>
 const group = (x: Omit<ConnectionGroup, Shared | 'depth' | 'reasoning'>): ConnectionGroup => ({
   kind: 'group', review: AI_DRAFT, version: 1, depth: 'recognition', reasoning: 'identification', ...x,
 });
-const kase = (x: Omit<CaseItem, Shared | 'depth' | 'reasoning'>): CaseItem => ({
+// Cases are application by format. A classic presentation whose findings point to one diagnosis and
+// mechanism is `interpretation` (medium); `multistep` is kept for cases that chain several inferences.
+const kase = (x: Omit<CaseItem, Shared | 'depth' | 'reasoning'> & { reasoning?: 'interpretation' | 'multistep' }): CaseItem => ({
   kind: 'case', review: AI_DRAFT, version: 1, depth: 'application', reasoning: 'multistep', ...x,
 });
 const puzzle = (x: Omit<ConnectionsPuzzleItem, Shared | 'depth' | 'reasoning'>): ConnectionsPuzzleItem => ({
@@ -1030,6 +1495,61 @@ const sequences: SequenceItem[] = [
     objectiveIds: [`${RT}.mechanism`],
     difficulty: 2,
   }),
+  seq({
+    id: 'seq:cholera-secretion',
+    relevance: 'core',
+    title: 'How cholera empties the gut',
+    prompt: 'Order the steps from cholera toxin to watery diarrhea.',
+    steps: [
+      'The toxin’s B part binds the intestinal epithelial cell',
+      'The A part enters and ADP-ribosylates Gsα',
+      'Adenylyl cyclase stays on and cAMP rises',
+      'PKA phosphorylates the CFTR chloride channel',
+      'Chloride is secreted into the gut lumen',
+      'Water follows, causing massive watery diarrhea',
+    ],
+    explanation: 'Cholera toxin keeps Gsα active, so cAMP and PKA stay high; PKA opens CFTR, chloride is secreted and water follows.',
+    conceptIds: ['cel-gpcr-toxins'],
+    objectiveIds: [`${GP}.toxins`],
+    difficulty: 2,
+  }),
+  seq({
+    id: 'seq:insulin-glut4',
+    relevance: 'core',
+    title: 'Insulin opens the glucose door',
+    prompt: 'Order the steps from insulin binding to glucose uptake in muscle.',
+    steps: [
+      'Insulin binds its receptor tyrosine kinase',
+      'The receptor phosphorylates its own tyrosines',
+      'Insulin receptor substrate (IRS) is phosphorylated',
+      'IRS activates PI3K',
+      'PI3K signaling activates Akt',
+      'GLUT4 vesicles fuse with the plasma membrane',
+      'Glucose enters the muscle cell',
+    ],
+    explanation: 'Insulin receptor → IRS → PI3K → Akt → GLUT4 translocation, the main route for insulin-stimulated glucose uptake in muscle and fat.',
+    conceptIds: ['cel-rtk'],
+    objectiveIds: [`${RT}.insulin`],
+    difficulty: 2,
+  }),
+  seq({
+    id: 'seq:jak-stat',
+    relevance: 'core',
+    title: 'Cytokine to nucleus',
+    prompt: 'Order the steps of JAK–STAT signaling after a cytokine or hormone such as growth hormone binds.',
+    steps: [
+      'The ligand binds a receptor that has no kinase of its own',
+      'Receptor-associated JAKs are activated',
+      'JAKs phosphorylate STAT proteins on tyrosine',
+      'Phosphorylated STATs dimerize',
+      'STAT dimers move into the nucleus',
+      'Target genes are transcribed (for growth hormone, IGF-1)',
+    ],
+    explanation: 'Cytokine receptors borrow a kinase: JAKs phosphorylate STATs, which dimerize, enter the nucleus and change transcription (GH → JAK2 → STAT5 → IGF-1).',
+    conceptIds: ['cel-jak-stat'],
+    objectiveIds: [`${JS}.mechanism`],
+    difficulty: 2,
+  }),
 ];
 
 const matches: MatchItem[] = [
@@ -1053,7 +1573,8 @@ const matches: MatchItem[] = [
   }),
   match({
     id: 'match:second-messenger-drugs',
-    relevance: 'core',
+    relevance: 'supplementary',
+    relevanceNote: 'Matches several specific PDE drugs (milrinone, roflumilast); NO, ANP and sildenafil are core but the set as a whole is drug-name recall.',
     title: 'Messengers and the drugs that tune them',
     prompt: 'Match each drug or signal to its target.',
     pairs: [
@@ -1103,6 +1624,24 @@ const matches: MatchItem[] = [
     conceptIds: ['cel-signal-predict', 'cel-other-receptors'],
     objectiveIds: [`${RO}.classify`, `${RO}.nuclear`, `${RO}.ion-channels`],
     difficulty: 1,
+  }),
+  match({
+    id: 'match:hormone-second-messenger',
+    relevance: 'core',
+    title: 'Hormones and their G proteins',
+    prompt: 'Match each hormone to its G protein and target cell.',
+    pairs: [
+      { left: 'GHRH', right: 'Gs → cAMP in somatotrophs' },
+      { left: 'ACTH', right: 'Gs (MC2R) → cAMP in adrenal cortex' },
+      { left: 'LH', right: 'Gs → cAMP in Leydig cells' },
+      { left: 'GnRH', right: 'Gq → IP₃ and DAG in gonadotropes' },
+      { left: 'TRH', right: 'Gq → Ca²⁺ and PKC in thyrotrophs' },
+      { left: 'Oxytocin', right: 'Gq → phospholipase Cβ in myometrium' },
+    ],
+    explanation: 'GHRH, ACTH, LH (and FSH, PTH) raise cAMP through Gs; GnRH, TRH and oxytocin act through Gq and phospholipase C.',
+    conceptIds: ['cel-hormone-gpcr'],
+    objectiveIds: [`${GP}.receptors`],
+    difficulty: 2,
   }),
 ];
 
@@ -1169,7 +1708,8 @@ const cases: CaseItem[] = [
     title: 'Rice-water stools',
     conceptIds: ['cel-gpcr-toxins', 'cel-gpcr'],
     objectiveIds: [`${GP}.toxins`],
-    difficulty: 4,
+    reasoning: 'interpretation',
+    difficulty: 3,
     stages: [
       { label: 'Presentation', text: 'A 30-year-old aid worker has had profuse, painless watery diarrhea for 12 hours, many liters in total.' },
       { label: 'History', text: 'She has been working in a camp where several people have similar illness after drinking untreated water.' },
@@ -1187,8 +1727,8 @@ const cases: CaseItem[] = [
     ],
     answerId: 'a',
     explanation:
-      'Massive painless watery diarrhea after contaminated water, without blood or white cells, and a curved gram-negative rod point to cholera. Cholera toxin ADP-ribosylates Gsα, so adenylyl cyclase stays on, cAMP rises and the intestine secretes huge volumes of fluid.',
-    mechanism: 'Cholera toxin → ADP-ribosylated Gsα (cannot switch off) → adenylyl cyclase on → ↑ cAMP → intestinal fluid secretion → dehydration.',
+      'Massive painless watery diarrhea after contaminated water, without blood or white cells, and a curved gram-negative rod point to cholera. Cholera toxin ADP-ribosylates Gsα, so adenylyl cyclase stays on and cAMP rises; PKA then opens the CFTR chloride channel, chloride is secreted into the lumen and water follows, producing huge volumes of fluid.',
+    mechanism: 'Cholera toxin → ADP-ribosylated Gsα (cannot switch off) → adenylyl cyclase on → ↑ cAMP → PKA opens CFTR → Cl⁻ and water into the lumen → dehydration.',
     takeaway: 'Rice-water diarrhea = cholera toxin locking Gs on (↑ cAMP).',
     differentials: [
       { name: 'Enterotoxigenic E. coli', why: 'Its heat-labile toxin acts like cholera toxin; usually milder traveler’s diarrhea.' },
@@ -1201,7 +1741,8 @@ const cases: CaseItem[] = [
     title: 'Early puberty and a crooked map',
     conceptIds: ['cel-mccune-albright', 'cel-gpcr'],
     objectiveIds: [`${GP}.mccune-albright`],
-    difficulty: 4,
+    reasoning: 'interpretation',
+    difficulty: 3,
     stages: [
       { label: 'Presentation', text: 'A 5-year-old girl is brought in for breast development and an episode of vaginal bleeding.' },
       { label: 'History', text: 'She broke her thigh bone after a minor fall last year. No family history of similar problems.' },

@@ -43,7 +43,9 @@ Large unstructured batches have stopped. Content is now developed subject by sub
   - Unverified facts were left unwritten; `src/content/curriculum/contentGaps.ts` marks those objectives partial (Cellular now 28 covered / 12 partial / 1 missing). TGF-β/SMAD (`bc-receptor-other.ser-thr`) not written. GHRH second-messenger source conflict flagged for the reviewer.
   - Change log `BIOCHEM_CELLULAR2_CHANGELOG.md`, packet `BIOCHEM_CELLULAR2_REVIEW.md`.
 
-  **Stopped for review. Next (only after review): fill the Cellular content gaps once verified, then the next subdivision on the owner's request.**
+- **Cellular batch 2, revision 1 (owner review, 7 Nov 2026, draft):** relevance reassessed (batch 2: 100 CORE / 15 SUPPLEMENTARY); classic mechanisms sourced from PubMed review abstracts where the textbooks were silent (NCBI Bookshelf and Reactome were not reachable); GHRH reconciled as Gs/cAMP; theophylline toxicity qualified; classic vignettes relabelled easy/medium (cases may be `interpretation`); high-yield gaps filled (hormone G proteins, cholera CFTR, insulin PI3K/Akt/GLUT4, GH/prolactin/EPO JAK2–STAT5, STAT dimers, common γ chain, GABA-A/NMDA/5-HT3, RET/MEN2, HER2, calcitriol); new concepts `cel-hormone-gpcr` and `cel-tgf-beta` (supplementary). `contentGaps.ts` separates important omissions from optional details. **All 41 Cellular objectives covered.** Batch 2: 115 playable items, 73 R / 28 M / 14 A. Play-check rounds now scale with item count.
+
+  **Stopped for review. Next (only after review): Laboratory Techniques, on the owner's request.**
 - Existing content (including the neuro/behavioral, MSK/skin and reproductive/endocrine batches drafted before the change) is preserved unchanged for its own subject audit.
 
 ## Knowledge tables (6 Nov 2026, in progress)

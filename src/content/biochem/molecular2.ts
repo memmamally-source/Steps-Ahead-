@@ -420,7 +420,7 @@ const core = defineConcepts([
           'Allopurinol blocks xanthine oxidase, so 6-MP exposure rises and more is converted to thioguanine nucleotides.',
           'Thioguanine nucleotides suppress rapidly dividing marrow → neutropenia and thrombocytopenia.',
         ],
-        difficulty: 4,
+        difficulty: 3,
       },
       {
         stem: 'A boy with HGPRT deficiency treated with high-dose allopurinol develops new kidney stones that are radiolucent and not composed of uric acid. Which compound most likely forms them?',
@@ -1135,7 +1135,7 @@ const core = defineConcepts([
         mini: 'Overlap of lupus-like, scleroderma-like and myositis features with high-titer anti-U1 RNP and no anti-Sm/dsDNA fits MCTD.',
         reasoning: 'interpretation',
         steps: ['Features span three diseases: Raynaud/puffy fingers (scleroderma), myositis, arthralgia (lupus).', 'Anti-U1 RNP is strongly positive and is required for MCTD.', 'The lupus-specific antibodies (anti-Sm, anti-dsDNA) are negative → MCTD rather than SLE.'],
-        difficulty: 4,
+        difficulty: 3,
       },
       {
         stem: 'A patient with SLE has antibodies against the Smith antigen. What normal cellular structure contains this antigen?',
@@ -1620,7 +1620,7 @@ const core = defineConcepts([
         mini: 'Z α1-antitrypsin polymerizes in the hepatocyte ER; the retained protein forms PAS-positive, diastase-resistant globules and injures the liver while serum levels fall.',
         reasoning: 'interpretation',
         steps: ['Diastase resistance excludes glycogen.', 'Very low serum α1AT with hepatocyte globules → protein made but not secreted.', 'Z protein polymerizes and is retained in the ER → globules + neonatal liver injury.'],
-        difficulty: 4,
+        difficulty: 3,
       },
       {
         stem: 'Why does α1-antitrypsin deficiency cause emphysema?',
@@ -1699,9 +1699,9 @@ const core = defineConcepts([
         ],
         answer: 'a',
         mini: 'Vitamin C is the cofactor for prolyl and lysyl hydroxylases; without hydroxylation the triple helix is unstable and vessels and wounds are fragile (scurvy).',
-        reasoning: 'multistep',
+        reasoning: 'interpretation',
         steps: ['Diet without fruit or vegetables → vitamin C deficiency.', 'Vitamin C is needed by prolyl and lysyl hydroxylases in the RER.', 'Underhydroxylated collagen forms an unstable helix → bleeding gums, perifollicular hemorrhage, poor wound healing.'],
-        difficulty: 4,
+        difficulty: 3,
       },
       {
         stem: 'Fibroblasts from an infant secrete procollagen normally and cleave its propeptides, but the fibrils outside the cell have very few covalent cross-links. Serum copper is very low. Which enzyme activity is reduced?',
@@ -1802,7 +1802,7 @@ const core = defineConcepts([
         mini: 'Blue sclerae, Wormian bones and an affected father support OI; molecular testing helps when unexplained fractures raise the question of inflicted injury.',
         reasoning: 'interpretation',
         steps: ['Fracture with minimal reported trauma raises both OI and inflicted injury.', 'Blue-grey sclerae, Wormian bones and an affected father (dominant pattern) point to a heritable collagen defect.', 'Evaluate for OI (including COL1A1/COL1A2 testing) while assessing safeguarding concerns in parallel.'],
-        difficulty: 4,
+        difficulty: 3,
       },
       {
         stem: 'Why does replacing a single glycine in the triple-helical domain of the α1(I) chain disrupt type I collagen?',

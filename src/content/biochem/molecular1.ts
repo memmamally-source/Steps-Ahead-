@@ -376,7 +376,7 @@ const core = defineConcepts([
         mini: 'PRPP is the substrate of both salvage and the committed step of de novo synthesis; without HGPRT it is spared for de novo synthesis, which increases purine production and urate.',
         reasoning: 'mechanism',
         objectives: [`${PS}.pathway`, `${PS}.lesch-nyhan`],
-        difficulty: 4,
+        difficulty: 3,
       },
       {
         stem: 'A 2-year-old boy has developmental delay, generalized dystonia and repeated biting of his lips and fingers. His parents noticed orange grains in his diapers in infancy. Serum uric acid is high. His mother’s brother had a similar illness. Which enzyme is deficient?',
@@ -1147,7 +1147,7 @@ const core = defineConcepts([
         mini: 'The picture is ataxia–telangiectasia, whose lymphoid cancers arise on a background of hypersensitivity to ionizing radiation: standard radiotherapy doses can cause severe toxicity.',
         reasoning: 'prediction',
         steps: ['Ataxia + telangiectasias + sinopulmonary infections → ataxia–telangiectasia (ATM).', 'ATM loss leaves double-strand breaks unsignaled → hypersensitivity to ionizing radiation.', 'Radiotherapy causes double-strand breaks → expect severe toxicity at standard doses.'],
-        difficulty: 4,
+        difficulty: 3,
       },
     ],
     tf: [
@@ -1425,7 +1425,7 @@ const core = defineConcepts([
         mini: 'Discriminating features: thin translucent skin and arterial, bowel or uterine fragility (vascular) vs stretchy skin and atrophic scars (classic).',
         reasoning: 'comparison',
         steps: ['Bruising and hypermobility occur in both types, so they do not discriminate', 'Stretchy skin and atrophic scars favor classic EDS', 'Thin translucent skin and arterial fragility favor vascular EDS'],
-        difficulty: 4,
+        difficulty: 3,
       },
     ],
     tf: [
@@ -1644,7 +1644,7 @@ const core = defineConcepts([
         reasoning: 'comparison',
         steps: ['Aortic dissection occurs in both disorders', 'Skeletal overgrowth, ectopia lentis and aortic root (sinus) dilation favor Marfan', 'Thin skin, bruising and bowel/uterine/medium-artery rupture favor vascular EDS'],
         objectives: [`${CO}.marfan`],
-        difficulty: 4,
+        difficulty: 3,
       },
     ],
     tf: [
