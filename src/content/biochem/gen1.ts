@@ -62,6 +62,14 @@ const ROB_FAMILY = PM(26236088, 'Kolgeci S et al. A maternal rob(14;21) caused m
 const POUCH_DERIVATIVES = PM(32491656, 'Miles B, Srinivasan VN. The pharyngeal pouches give rise to the middle ear cavity, palatine tonsils, thymus, parathyroid glands and thyroid parafollicular cells; malformation causes DiGeorge syndrome. StatPearls 2023');
 const DGS_POUCH = PM(35110278, 'Altshuler E et al. 22q11.2 microdeletion impairs pharyngeal pouch development: craniofacial, parathyroid, thymus and cardiac outflow tract anomalies. BMJ Case Rep 2022');
 
+// Revision 1 sources.
+const DGA_NEURAL_CREST = PM(1931005, 'Hong R. The DiGeorge anomaly: pharyngeal pouch derivatives fail to arise, usually from inadequate neural crest contribution; conotruncal anomalies (type B interrupted aortic arch, truncus arteriosus) are characteristic. Immunodefic Rev 1991');
+const PARATHYROID_POUCHES = PM(30725888, 'Ilahi A et al. Superior parathyroids derive from the fourth pharyngeal pouch and inferior parathyroids from the third. StatPearls 2023');
+const MITO_THRESHOLD = PM(32906214, 'McCormick EM et al. Heteroplasmy can mask the disease phenotype unless a threshold proportion of mutant mtDNA is reached. Hum Mutat 2020');
+const DOWN_AAI = PM(2966926, 'Davidson RG. The AAP Committee on Sports Medicine reported a remarkably high incidence of atlantoaxial instability in Down syndrome; whether radiographic instability predicts dislocation is uncertain. Pediatrics 1988');
+const DUODENAL_ATRESIA = PM(8337875, 'Grosfeld JL, Rescorla FJ. Duodenal atresia and stenosis: Down syndrome common; diagnosis by a double-bubble sign on abdominal radiograph in most infants. World J Surg 1993');
+const T18_FEATURES = PM(18232589, 'Shaw J. Trisomy 18: prominent occiput, micrognathia, clenched fists with overlapping fingers, rocker-bottom feet. Neonatal Netw 2008');
+
 const AD = 'bc-ad-inheritance';
 const AR = 'bc-ar-inheritance';
 const XL = 'bc-xlinked-inheritance';
@@ -112,7 +120,7 @@ const core = defineConcepts([
           ['a', 'Autosomal dominant'],
           ['b', 'X-linked recessive', 'X-linked traits are never passed from father to son, but here an affected son has an affected son.'],
           ['c', 'X-linked dominant', 'An affected father would pass an X-linked dominant trait to all daughters and no sons.'],
-          ['d', 'Autosomal recessive', 'Recessive disorders usually skip generations and appear in siblings of unaffected parents.'],
+          ['d', 'Autosomal recessive', 'Recessive disorders usually skip generations; affected people in three successive generations make this much less likely.'],
           ['e', 'Mitochondrial', 'Fathers do not transmit mitochondrial disorders.'],
         ],
         answer: 'a',
@@ -123,7 +131,7 @@ const core = defineConcepts([
         difficulty: 3,
       },
       {
-        stem: 'A woman with an autosomal dominant disorder (heterozygous) and an unaffected man plan a pregnancy. What is the chance that their child will be affected?',
+        stem: 'A woman heterozygous for a fully penetrant autosomal dominant disorder and a man who does not carry the variant plan a pregnancy. What is the chance that their child will be affected?',
         options: [
           ['a', '50%'],
           ['b', '25%', 'Twenty-five percent is the risk for two carriers of a recessive disorder.'],
@@ -230,7 +238,7 @@ const core = defineConcepts([
         options: [
           ['a', 'Autosomal recessive'],
           ['b', 'Autosomal dominant', 'Dominant disorders appear in every generation; here both parents are unaffected.'],
-          ['c', 'X-linked recessive', 'An affected daughter of an unaffected father argues against X-linked recessive.'],
+          ['c', 'X-linked recessive', 'An affected daughter of an unaffected father makes X-linked recessive unlikely.'],
           ['d', 'Mitochondrial', 'Mitochondrial disorders pass from an affected mother to all her children.'],
           ['e', 'X-linked dominant', 'An X-linked dominant trait would appear in a parent.'],
         ],
@@ -242,7 +250,7 @@ const core = defineConcepts([
         difficulty: 3,
       },
       {
-        stem: 'A couple has a child with cystic fibrosis. Their unaffected daughter asks her chance of being a carrier. What is it?',
+        stem: 'A couple, both shown to be carriers, has a child with cystic fibrosis. Their unaffected daughter asks her chance of being a carrier. What is it?',
         options: [
           ['a', '2/3'],
           ['b', '1/2', 'One half ignores that the affected genotype is already excluded for her.'],
@@ -325,7 +333,7 @@ const core = defineConcepts([
     quick:
       'XR: mostly males; no male-to-male; carrier mothers. Affected father → all daughters carriers, no sons affected. Carrier mother → 50% of sons affected, 50% of daughters carriers. Females affected by skewed X-inactivation or 45,X (Turner).',
     detailed: [
-      'An X-linked recessive pedigree shows affected males related through unaffected females, often a "knight’s move" from grandfather to grandson through a carrier daughter, and never father-to-son transmission. Every daughter of an affected man inherits his X and is a carrier; each son of a carrier mother has a 50% chance of being affected.',
+      'An X-linked recessive pedigree shows affected males related through unaffected females, often passing from grandfather to grandson through a carrier daughter, and never father-to-son transmission. Every daughter of an affected man inherits his X and is a carrier; each son of a carrier mother has a 50% chance of being affected.',
       'Females are protected by having two X chromosomes, but each cell keeps only one active: X-inactivation is random and permanent early in development. If, by chance, most cells inactivate the X carrying the normal allele, a carrier can show disease (for example a symptomatic hemophilia carrier). A woman with Turner syndrome (45,X) has a single X and can be affected like a male.',
     ],
     takeaway: 'XR = affected males via carrier females; no male-to-male; X-inactivation explains affected carriers.',
@@ -333,7 +341,7 @@ const core = defineConcepts([
     outline: found(MS, GEN),
     mcq: [
       {
-        stem: 'A man has hemophilia A. His partner has no family history. What are the risks for their children?',
+        stem: 'A man has hemophilia A. Testing shows his partner does not carry an F8 variant. What are the risks for their children?',
         options: [
           ['a', 'All daughters carriers; no sons affected'],
           ['b', 'Half of sons affected; half of daughters carriers', 'That is the pattern for a carrier mother, not an affected father.'],
@@ -352,16 +360,16 @@ const core = defineConcepts([
         stem: 'Several men in a family have the same bleeding disorder. An affected man’s grandson through his unaffected daughter is affected, but none of the affected men’s sons are. Which inheritance pattern fits?',
         options: [
           ['a', 'X-linked recessive'],
-          ['b', 'Autosomal dominant', 'Dominant inheritance would affect the daughter and allow father-to-son transmission.'],
-          ['c', 'Autosomal recessive', 'Recessive disorders do not follow a grandfather-to-grandson line through daughters.'],
+          ['b', 'Autosomal dominant', 'Dominant inheritance would usually affect the daughter, and father-to-son transmission would be expected.'],
+          ['c', 'Autosomal recessive', 'Recessive inheritance can occasionally produce a similar picture, but affected males only, in different branches linked through unaffected women and never father to son, fits X-linked recessive far better.'],
           ['d', 'Mitochondrial', 'Affected men cannot transmit mitochondrial disorders.'],
           ['e', 'Y-linked', 'A Y-linked trait would pass from father to every son.'],
         ],
         answer: 'a',
-        mini: 'Affected males linked through unaffected females, with no male-to-male transmission, is X-linked recessive (as in hemophilia).',
+        mini: 'Affected males linked through unaffected females, with no male-to-male transmission, is best explained by X-linked recessive inheritance (as in hemophilia). Other patterns can mimic it in a small family, but are much less likely.',
         reasoning: 'interpretation',
         objectives: [`${XL}.xr-pedigree`],
-        steps: ['Only males are affected, and never father to son.', 'The disorder passes from an affected man through his unaffected (carrier) daughter to her son.', 'That pattern = X-linked recessive.'],
+        steps: ['Only males are affected, and never father to son.', 'The disorder passes from an affected man through his unaffected (likely carrier) daughter to her son.', 'That pattern is most consistent with X-linked recessive inheritance.'],
         difficulty: 3,
       },
       {
@@ -440,7 +448,7 @@ const core = defineConcepts([
     outline: found(MS, GEN),
     mcq: [
       {
-        stem: 'A man with hypophosphatemic rickets has four daughters and three sons with an unaffected woman. All four daughters have low phosphate; none of the sons does. Which inheritance pattern explains this?',
+        stem: 'A man with hypophosphatemic rickets has four daughters and three sons with a woman who does not carry the variant. All four daughters have low phosphate; none of the sons does. Which inheritance pattern explains this?',
         options: [
           ['a', 'X-linked dominant'],
           ['b', 'X-linked recessive', 'Daughters of an affected man would be carriers, usually unaffected.'],
@@ -491,42 +499,43 @@ const core = defineConcepts([
     difficulty: 2,
     curriculum: [`${MT}.pattern`],
     objectives: ['Recognize maternal transmission to all children', 'Explain variable expression by heteroplasmy'],
-    citations: [MP_PATTERNS, MP_RISK, MP_MTDNA],
+    citations: [MP_PATTERNS, MP_RISK, MP_MTDNA, MITO_THRESHOLD],
     facts: [
       'Mitochondrial (maternal) inheritance applies to genes in mitochondrial DNA. Only egg cells contribute mitochondria to the embryo, so only females pass on mitochondrial variants; these disorders can appear in every generation and affect both sexes, but fathers do not pass them on (for example Leber hereditary optic neuropathy).',
       'A woman with a disorder caused by a mitochondrial DNA change passes the variant to all of her children; the children of an affected man do not inherit it.',
       'Cells can contain a mix of mitochondria with and without a variant (heteroplasmy), and the severity of many mitochondrial disorders is thought to depend on the percentage of mitochondria carrying the change.',
+      'Heteroplasmy can mask the disease unless a threshold proportion of mutant mitochondrial DNA is reached, so a child who inherits a maternal variant may be mildly affected or unaffected.',
     ],
-    factRefs: [[0], [1], [2]],
+    factRefs: [[0], [1], [2], [3]],
     mechanism:
-      'The embryo’s mitochondria all come from the egg, so a mother passes her mitochondrial DNA to every child and a father to none. Each cell carries many mitochondrial genomes; the share that carries the variant (heteroplasmy) differs between children and tissues, so relatives with the same variant can be affected very differently.',
-    associations: ['Maternal transmission', 'All children of an affected mother', 'Never from father', 'Both sexes affected', 'Heteroplasmy', 'Variable severity', 'Leber hereditary optic neuropathy'],
+      'The embryo’s mitochondria all come from the egg, so a mother can pass a mitochondrial DNA variant to any of her children and a father to none. Transmission does not guarantee disease: each cell carries many mitochondrial genomes, the share carrying the variant (heteroplasmy) differs between children and tissues, and symptoms appear only above a threshold, so relatives can range from unaffected to severely ill.',
+    associations: ['Maternal transmission', 'Variant passed to children of an affected mother', 'Never from father', 'Both sexes affected', 'Heteroplasmy', 'Tissue distribution', 'Threshold effect', 'Variable severity, some unaffected', 'Leber hereditary optic neuropathy'],
     misconception:
       'Mitochondrial inheritance is not X-linked: sons and daughters of an affected mother are both at risk, and affected men never transmit it.',
     quick:
-      'Mitochondrial: transmitted only by mothers, to all children (both sexes); never by fathers. Heteroplasmy (mix of normal and variant mtDNA) → variable severity within a family. Example: Leber hereditary optic neuropathy.',
+      'Mitochondrial: transmitted only by mothers (to sons and daughters), never by fathers. Disease is not certain in every child: heteroplasmy, tissue distribution and a threshold effect give variable severity, and some children are unaffected. Example: Leber hereditary optic neuropathy.',
     detailed: [
-      'Mitochondria are inherited from the egg, so a mitochondrial DNA variant passes from a mother to all her sons and daughters, while affected men have unaffected children. The pattern can look dominant (every generation) but always runs through women.',
-      'Each cell has many copies of mitochondrial DNA. When normal and variant copies coexist (heteroplasmy), the proportion in each child and tissue varies, which explains why siblings can range from unaffected to severely ill.',
+      'Mitochondria are inherited from the egg, so a mitochondrial DNA variant passes from a mother to her sons and daughters, while affected men have unaffected children. The pattern can look dominant (every generation) but always runs through women.',
+      'Each cell has many copies of mitochondrial DNA. When normal and variant copies coexist (heteroplasmy), the proportion in each child and tissue varies, and disease appears only when the mutant share passes a threshold. That is why siblings who all inherited the variant can range from unaffected to severely ill.',
     ],
-    takeaway: 'Mitochondrial = mother to all children, never father; heteroplasmy explains variable severity.',
+    takeaway: 'Mitochondrial = through mothers, never fathers; heteroplasmy and thresholds make expression variable.',
     related: ['gen-ad'],
     outline: found(MS, GEN),
     mcq: [
       {
-        stem: 'In a family with a neuromuscular disorder, an affected woman’s children are all affected to varying degrees, from mild to severe. Her affected brother’s children are all unaffected. Which mechanism explains both the pattern and the variability?',
+        stem: 'In a family with a neuromuscular disorder, an affected woman has four children: three are affected, from mild to severe, and one is unaffected. Her affected brother’s children are all unaffected. Which mechanism explains both the pattern and the variability?',
         options: [
           ['a', 'Mitochondrial inheritance with heteroplasmy'],
-          ['b', 'Autosomal dominant with reduced penetrance', 'The brother’s children would then be at 50% risk.'],
+          ['b', 'Autosomal dominant with reduced penetrance', 'The brother’s children would then be at 50% risk, yet none is affected.'],
           ['c', 'X-linked recessive with skewed X-inactivation', 'X-linked recessive disorders affect mainly sons, not all children.'],
           ['d', 'Autosomal recessive with consanguinity', 'Recessive disorders do not pass to all children of one parent.'],
           ['e', 'Anticipation from a repeat expansion', 'Anticipation does not explain why only the mother transmits it.'],
         ],
         answer: 'a',
-        mini: 'All children of an affected mother and none of an affected father = mitochondrial. Different proportions of variant mtDNA (heteroplasmy) explain the different severities.',
+        mini: 'Transmission through the mother but never the father = mitochondrial. Different proportions of variant mtDNA (heteroplasmy) and a threshold effect explain the range from unaffected to severe.',
         reasoning: 'interpretation',
         objectives: [`${MT}.pattern`],
-        steps: ['The mother transmits to all children; the affected man transmits to none.', 'That is the signature of mitochondrial (maternal) inheritance.', 'Variable severity reflects different proportions of mutant mtDNA (heteroplasmy).'],
+        steps: ['The mother transmits to her children; the affected man transmits to none.', 'That is the signature of mitochondrial (maternal) inheritance.', 'Variable severity, including an unaffected child, reflects different proportions of mutant mtDNA (heteroplasmy) and a threshold effect.'],
         difficulty: 3,
       },
       {
@@ -963,26 +972,28 @@ const core = defineConcepts([
     difficulty: 2,
     curriculum: [`${TR}.down`, `${TR}.down-associations`],
     objectives: ['Recognize the features of Down syndrome', 'Apply its associations to clinical findings'],
-    citations: [MP_DOWN, DOWN_ANOMALIES, DOWN_TMD],
+    citations: [MP_DOWN, DOWN_ANOMALIES, DOWN_TMD, DOWN_AAI, DUODENAL_ATRESIA],
     facts: [
       'Down syndrome causes intellectual disability, weak muscle tone (hypotonia) in infancy and a characteristic appearance: flattened face, upslanting palpebral fissures, small ears, short neck, protruding tongue, small hands and feet and a single palmar crease.',
       'About half of children with Down syndrome have a heart defect; about 15 percent have hypothyroidism; approximately half of adults develop Alzheimer disease, often earlier than usual; a small percentage of children develop leukemia.',
       'Heart defects are the most common associated anomalies, led by atrioventricular septal defect; among digestive anomalies, duodenal atresia is most common, followed by Hirschsprung disease.',
       'A transient myeloproliferative disorder (transient abnormal myelopoiesis) occurs in about 10% of newborns with Down syndrome and involves GATA1 mutation; it can precede later myeloid leukemia.',
+      'Atlantoaxial instability is a recognised association of Down syndrome, reported at a remarkably high incidence.',
+      'Duodenal atresia is often diagnosed by a double-bubble sign on abdominal radiograph, and many affected infants have Down syndrome.',
     ],
-    factRefs: [[0], [0], [1], [2]],
+    factRefs: [[0], [0], [1], [2], [3], [4]],
     mechanism:
       'An extra copy of chromosome 21 genes disturbs development across many organs. The endocardial cushions are often affected (atrioventricular septal defect), the gut can fail to canalize (duodenal atresia) or lack ganglion cells (Hirschsprung disease), and blood-forming cells are prone to transient and later leukemic proliferation. Extra chromosome 21 material also brings early-onset Alzheimer disease.',
-    associations: ['Hypotonia', 'Upslanting palpebral fissures', 'Single palmar crease', 'AV septal (endocardial cushion) defect', 'Duodenal atresia (double bubble)', 'Hirschsprung disease', 'Transient myeloproliferative disorder (GATA1)', 'Leukemia', 'Hypothyroidism', 'Early Alzheimer disease'],
+    associations: ['Hypotonia', 'Upslanting palpebral fissures', 'Single palmar crease', 'AV septal (endocardial cushion) defect', 'Duodenal atresia (double bubble)', 'Hirschsprung disease', 'Transient myeloproliferative disorder (GATA1)', 'Leukemia', 'Hypothyroidism', 'Early Alzheimer disease', 'Atlantoaxial instability'],
     misconception:
       'The most characteristic Down syndrome heart lesion is not tetralogy of Fallot: atrioventricular septal (endocardial cushion) defect leads the list.',
     quick:
-      'Down syndrome: hypotonia, flat face, upslanting palpebral fissures, single palmar crease, intellectual disability. Associations: AV septal defect (~half have heart disease), duodenal atresia, Hirschsprung, transient myeloproliferative disorder (GATA1) and leukemia, hypothyroidism, early Alzheimer.',
+      'Down syndrome: hypotonia, flat face, upslanting fissures, single palmar crease, intellectual disability. Associations: AV septal defect, duodenal atresia, Hirschsprung, transient myeloproliferative disorder and leukemia, hypothyroidism, early Alzheimer, atlantoaxial instability.',
     detailed: [
       'Newborns with Down syndrome are hypotonic, with a flattened face, upslanting palpebral fissures, small ears, a protruding tongue and a single palmar crease; intellectual disability is usual.',
-      'Look for associated problems: about half have congenital heart disease, most characteristically an atrioventricular septal defect; duodenal atresia and Hirschsprung disease are the leading gut anomalies; about 10% of newborns have a transient myeloproliferative disorder (GATA1), and leukemia is more common; about 15% have hypothyroidism; about half of adults develop Alzheimer disease, often early.',
+      'Look for associated problems: about half have congenital heart disease, most characteristically an atrioventricular septal defect; duodenal atresia and Hirschsprung disease are the leading gut anomalies; about 10% of newborns have a transient myeloproliferative disorder (GATA1), and leukemia is more common; about 15% have hypothyroidism; about half of adults develop Alzheimer disease, often early; and atlantoaxial instability is a recognised association.',
     ],
-    takeaway: 'Down: hypotonia + characteristic face; AV canal, duodenal atresia, Hirschsprung, leukemia, hypothyroidism, early Alzheimer.',
+    takeaway: 'Down: hypotonia + characteristic face; AV canal, duodenal atresia, Hirschsprung, leukemia, hypothyroidism, early Alzheimer, atlantoaxial instability.',
     related: ['gen-nondisjunction', 'gen-robertsonian'],
     outline: listed('Multisystem Processes & Disorders', GEN),
     mcq: [
@@ -1039,6 +1050,7 @@ const core = defineConcepts([
       { statement: 'About half of children with Down syndrome are born with a heart defect.', isTrue: true, correction: 'Correct: atrioventricular septal defect is the most characteristic.', objectives: [`${TR}.down-associations`], difficulty: 1 },
       { statement: 'Hypothyroidism is uncommon in Down syndrome.', isTrue: false, correction: 'About 15% of people with Down syndrome have hypothyroidism.', objectives: [`${TR}.down-associations`], difficulty: 2 },
       { statement: 'Upslanting palpebral fissures, a single palmar crease and infant hypotonia are features of Down syndrome.', isTrue: true, correction: 'Correct: with a flattened face, small ears and intellectual disability.', objectives: [`${TR}.down`], difficulty: 1 },
+      { statement: 'Atlantoaxial instability is a recognised association of Down syndrome.', isTrue: true, correction: 'Correct: it is reported at a high incidence in people with Down syndrome.', objectives: [`${TR}.down-associations`], difficulty: 1 },
     ],
     clues: [
       { answer: 'HIRSCHSPRUNG', clue: 'Aganglionic colon disease associated with Down syndrome', objectives: [`${TR}.down-associations`], difficulty: 2 },
@@ -1056,31 +1068,32 @@ const core = defineConcepts([
     difficulty: 2,
     curriculum: [`${TR}.edwards`, `${TR}.patau`],
     objectives: ['Recognize trisomy 18', 'Recognize trisomy 13'],
-    citations: [MP_T18, MP_T13, PATAU_TRIAD, PATAU_HPE],
+    citations: [MP_T18, MP_T13, PATAU_TRIAD, PATAU_HPE, T18_FEATURES],
     facts: [
       'Trisomy 18 (Edwards syndrome) causes intrauterine growth restriction and low birth weight, heart defects, a small abnormally shaped head, a small jaw and mouth, and clenched fists with overlapping fingers. Many affected infants die before birth or within the first month, and only 5–10% live past the first year.',
       'Trisomy 13 (Patau syndrome) causes severe intellectual disability, heart defects, brain or spinal cord abnormalities, very small or poorly developed eyes (microphthalmia), extra fingers or toes, cleft lip with or without cleft palate and hypotonia. Many infants die within the first days or weeks, and only 5–10% live past the first year.',
       'The classic Patau triad is cleft lip and palate, microphthalmia/anophthalmia and postaxial polydactyly; scalp defects are common.',
       'Holoprosencephaly is a major finding in trisomy 13.',
+      'Infants with trisomy 18 typically have a prominent occiput, micrognathia, clenched fists with the index finger overlapping the third and the fifth overlapping the fourth, and rocker-bottom feet.',
     ],
-    factRefs: [[0], [1], [2], [3]],
+    factRefs: [[0], [1], [2], [3], [4]],
     mechanism:
       'Both are trisomies of larger autosomes than 21 and disturb development of many organs, so most affected fetuses are lost and survival beyond the first year is uncommon. Trisomy 18 stands out for growth restriction, a small jaw and clenched hands with overlapping fingers; trisomy 13 for midline defects (holoprosencephaly, cleft lip and palate), small eyes and polydactyly.',
-    associations: ['T18: clenched fists, overlapping fingers', 'T18: micrognathia', 'T18: growth restriction', 'T13: holoprosencephaly', 'T13: cleft lip/palate', 'T13: microphthalmia', 'T13: polydactyly', 'T13: scalp defects', 'Both: heart defects, early death'],
+    associations: ['T18: clenched fists, overlapping fingers', 'T18: micrognathia', 'T18: prominent occiput', 'T18: rocker-bottom feet', 'T18: growth restriction', 'T13: holoprosencephaly', 'T13: cleft lip/palate', 'T13: microphthalmia', 'T13: polydactyly', 'T13: scalp defects', 'Both: heart defects, early death'],
     misconception:
       'Overlapping fingers and polydactyly point to different trisomies: clenched fists with overlapping fingers suggest trisomy 18, extra digits suggest trisomy 13.',
     quick:
-      'Trisomy 18 (Edwards): growth restriction, micrognathia, clenched fists with overlapping fingers, heart defects. Trisomy 13 (Patau): holoprosencephaly, cleft lip/palate, microphthalmia, polydactyly, scalp defects, heart defects. Both: most die early; 5–10% survive the first year.',
+      'Trisomy 18: growth restriction, prominent occiput, micrognathia, clenched overlapping fingers, rocker-bottom feet, heart defects. Trisomy 13: holoprosencephaly, cleft lip/palate, microphthalmia, polydactyly, scalp defects, heart defects. Both: 5–10% survive the first year.',
     detailed: [
-      'Trisomy 18 (Edwards syndrome) presents with growth restriction and low birth weight, a small head and jaw, clenched fists with overlapping fingers and heart defects; many die before birth or in the first month.',
+      'Trisomy 18 (Edwards syndrome) presents with growth restriction and low birth weight, a prominent occiput, a small jaw, clenched fists with overlapping fingers, rocker-bottom feet and heart defects; many die before birth or in the first month.',
       'Trisomy 13 (Patau syndrome) has midline brain and face defects (holoprosencephaly, cleft lip and palate), small or absent eyes, postaxial polydactyly, scalp defects and heart defects, with severe intellectual disability. For both, only 5–10% of children survive the first year.',
     ],
-    takeaway: 'T18 = clenched overlapping fingers, small jaw; T13 = midline defects, small eyes, extra digits.',
+    takeaway: 'T18 = clenched overlapping fingers, small jaw, prominent occiput, rocker-bottom feet; T13 = midline defects, small eyes, extra digits.',
     related: ['gen-nondisjunction', 'gen-down'],
     outline: found(MS, GEN),
     mcq: [
       {
-        stem: 'A newborn has a small jaw, clenched fists with the index finger overlapping the third finger, a heart defect and was small for gestational age. Which karyotype is most likely?',
+        stem: 'A newborn has a prominent occiput, a small jaw, clenched fists with the index finger overlapping the third finger, rocker-bottom feet and a heart defect, and was small for gestational age. Which karyotype is most likely?',
         options: [
           ['a', '47,XX,+18'],
           ['b', '47,XX,+13', 'Trisomy 13 features midline defects, small eyes and polydactyly.'],
@@ -1089,7 +1102,7 @@ const core = defineConcepts([
           ['e', '46,XX,del(5p)', 'A 5p deletion is a structural disorder with a different pattern of findings.'],
         ],
         answer: 'a',
-        mini: 'Growth restriction, micrognathia and clenched fists with overlapping fingers, plus a heart defect = trisomy 18 (Edwards).',
+        mini: 'Growth restriction, prominent occiput, micrognathia, clenched fists with overlapping fingers and rocker-bottom feet, plus a heart defect = trisomy 18 (Edwards).',
         reasoning: 'identification',
         objectives: [`${TR}.edwards`],
         difficulty: 2,
@@ -1222,45 +1235,44 @@ const core = defineConcepts([
     difficulty: 3,
     curriculum: [`${SC}.22q11`],
     objectives: ['Explain how a 22q11.2 deletion produces its findings'],
-    citations: [MP_22Q, DGS_POUCH, POUCH_DERIVATIVES],
+    citations: [MP_22Q, DGS_POUCH, POUCH_DERIVATIVES, DGA_NEURAL_CREST, PARATHYROID_POUCHES],
     facts: [
       '22q11.2 deletion syndrome is caused by deletion of about 3 million base pairs on one chromosome 22 (a contiguous gene deletion of 30–40 genes); loss of TBX1 probably causes many features, including heart defects, cleft palate, distinctive facial features and low calcium.',
       'People with 22q11.2 deletion syndrome commonly have congenital heart abnormalities, recurrent infections caused by immune problems, distinctive facial features and palate abnormalities (often submucosal cleft palate).',
       'The 22q11.2 microdeletion impairs development of the pharyngeal pouch system, giving abnormalities of craniofacial structures, the parathyroid glands, the thymus and the cardiac outflow tract.',
-      'The pharyngeal pouches give rise to the thymus and the parathyroid glands (classically the third and fourth pouches), among other structures.',
+      'The pharyngeal pouches give rise to the thymus and the parathyroid glands, among other structures; the inferior parathyroids derive from the third pouch and the superior parathyroids from the fourth.',
+      'In the DiGeorge anomaly, pharyngeal pouch derivatives fail to develop, usually because of inadequate neural crest contribution, and conotruncal (outflow-tract) heart defects are characteristic.',
     ],
-    // Fact 3: pouch derivatives verified; the specific numbering (third and fourth) is standard teaching not stated in the sources read.
-    factPending: [3],
-    factRefs: [[0], [0], [1], [2]],
+    factRefs: [[0], [0], [1], [2, 4], [3]],
     mechanism:
-      'The 3-Mb deletion removes many genes, including TBX1, needed for the third and fourth pharyngeal pouches and the cardiac outflow tract. Without normal pouches the thymus (T cells) and parathyroid glands (calcium) are small or absent, and outflow-tract (conotruncal) heart defects and palate and facial anomalies follow.',
-    associations: ['3-Mb deletion, TBX1', 'Pharyngeal pouches 3 and 4', 'Thymic hypoplasia → T-cell deficiency, infections', 'Parathyroid hypoplasia → hypocalcemia', 'Conotruncal heart defects', 'Cleft palate', 'Detected by FISH or microarray'],
+      'The 3-Mb deletion removes many genes, including TBX1. Two developmental systems are affected: the pharyngeal pouches, which form the thymus (T cells) and parathyroid glands (calcium), and the cardiac neural crest and outflow tract, whose abnormal development causes conotruncal heart defects. Palate and facial anomalies are also common.',
+    associations: ['3-Mb deletion, TBX1', 'Pharyngeal pouches (thymus; parathyroids from pouches 3 and 4)', 'Thymic hypoplasia → T-cell deficiency, infections', 'Parathyroid hypoplasia → hypocalcemia', 'Cardiac neural crest / outflow tract → conotruncal defects', 'Cleft palate', 'Detected by FISH or microarray'],
     misconception:
       'The immune problem in 22q11.2 deletion is not a B-cell defect: absent or small thymus reduces T cells.',
     quick:
-      '22q11.2 deletion (DiGeorge/velocardiofacial): 3-Mb deletion (TBX1) → abnormal pharyngeal pouches 3/4 → thymic hypoplasia (T-cell deficiency, infections), hypoparathyroidism (hypocalcemia), conotruncal heart defects, cleft palate, facial features. Detected by FISH or microarray.',
+      '22q11.2 deletion (DiGeorge): 3-Mb deletion (TBX1). Pharyngeal pouches → thymic hypoplasia (T cells) and hypoparathyroidism (hypocalcemia). Cardiac neural crest/outflow tract → conotruncal defects. Also cleft palate, facial features. Detected by FISH or microarray.',
     detailed: [
       'The usual deletion removes about 3 million base pairs of chromosome 22, including TBX1, too small to see on a routine karyotype. The missing genes are needed for the pharyngeal pouch system and the cardiac outflow tract.',
-      'The findings follow from embryology: thymic hypoplasia (T-cell deficiency, recurrent infections), parathyroid hypoplasia (hypocalcemia, sometimes neonatal seizures), outflow-tract heart defects, palate abnormalities and distinctive facial features. FISH or chromosomal microarray detects the deletion (Laboratory batch).',
+      'The findings follow from embryology. Abnormal pharyngeal pouch development gives thymic hypoplasia (T-cell deficiency, recurrent infections) and parathyroid hypoplasia (hypocalcemia, sometimes neonatal seizures). Abnormal cardiac neural crest and outflow-tract development gives conotruncal heart defects. Palate abnormalities and distinctive facial features complete the picture. FISH or chromosomal microarray detects the deletion (Laboratory batch).',
     ],
-    takeaway: '22q11.2 = pharyngeal pouch failure: thymus (T cells), parathyroids (calcium), outflow tract, palate.',
+    takeaway: '22q11.2 = pouches (thymus, parathyroids) + cardiac neural crest/outflow tract (conotruncal defects) + palate.',
     related: ['lab-fish', 'gen-down'],
     outline: listed('Immune System', 'Disorders associated with immunodeficiency'),
     mcq: [
       {
-        stem: 'A newborn with an outflow-tract heart defect has a seizure; serum calcium is low and PTH is inappropriately low. Chest imaging shows no thymic shadow. Which embryologic failure links these findings?',
+        stem: 'A newborn with an outflow-tract heart defect has a seizure; serum calcium is low and PTH is inappropriately low. Chest imaging shows no thymic shadow. Which embryologic explanation best accounts for all three findings?',
         options: [
-          ['a', 'Failure of the third and fourth pharyngeal pouches'],
-          ['b', 'Failure of the first pharyngeal arch', 'The thymus and parathyroids derive from the pharyngeal pouches, not the first arch.'],
+          ['a', 'Abnormal pharyngeal pouch and cardiac neural crest development'],
+          ['b', 'Failure of the first pharyngeal arch alone', 'The thymus and parathyroids derive from the pharyngeal pouches, and the heart defect involves neural crest.'],
           ['c', 'Failure of neural tube closure', 'Neural tube defects do not explain thymic and parathyroid absence.'],
           ['d', 'Failure of the endocardial cushions alone', 'Cushion defects are typical of Down syndrome and do not explain hypocalcemia.'],
-          ['e', 'Failure of the yolk sac', 'The thymus and parathyroids derive from the pharyngeal pouches.'],
+          ['e', 'Pharyngeal pouch failure explains the heart defect too', 'The pouches form the thymus and parathyroids; conotruncal defects reflect neural crest and outflow-tract development.'],
         ],
         answer: 'a',
-        mini: 'The 22q11.2 deletion impairs pharyngeal pouch development: parathyroids (hypocalcemia with low PTH), thymus (T-cell deficiency) and the cardiac outflow tract are affected.',
+        mini: 'In 22q11.2 deletion, abnormal pharyngeal pouch development explains the absent thymus (T cells) and parathyroids (hypocalcemia with low PTH); the conotruncal heart defect reflects abnormal cardiac neural crest and outflow-tract development.',
         reasoning: 'interpretation',
         objectives: [`${SC}.22q11`],
-        steps: ['Low calcium with low PTH → absent or small parathyroids.', 'No thymic shadow → thymic hypoplasia; the outflow-tract defect adds a third clue.', 'Parathyroids and thymus come from pharyngeal pouches 3 and 4 → 22q11.2 deletion.'],
+        steps: ['Low calcium with low PTH and no thymic shadow → parathyroid and thymic hypoplasia, both pharyngeal pouch derivatives.', 'The outflow-tract (conotruncal) defect reflects abnormal cardiac neural crest and outflow-tract development.', 'Together they point to 22q11.2 deletion, which disturbs both systems.'],
         difficulty: 3,
       },
       {
@@ -1334,7 +1346,7 @@ const matches: MatchItem[] = [
       { left: 'Affected siblings of unaffected consanguineous parents', right: 'Autosomal recessive' },
       { left: 'Affected men linked through unaffected women', right: 'X-linked recessive' },
       { left: 'Affected father: all daughters affected, no sons', right: 'X-linked dominant' },
-      { left: 'Affected mother: all children affected; fathers never transmit', right: 'Mitochondrial' },
+      { left: 'Passes through mothers only; fathers never transmit', right: 'Mitochondrial' },
       { left: 'Earlier onset in each generation', right: 'Anticipation (repeat expansion)' },
     ],
     explanation: 'Who transmits to whom is the key: fathers to sons excludes X-linked; fathers to all daughters means X-linked dominant; only mothers transmitting means mitochondrial.',

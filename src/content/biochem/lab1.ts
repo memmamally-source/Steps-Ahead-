@@ -36,6 +36,7 @@ const OSB = (page: string, title: string): Citation => ({
 const MB_DNA = OSM('12-2-visualizing-and-characterizing-dna-rna-and-protein', '12.2 Visualizing and Characterizing DNA, RNA, and Protein');
 const MB_COMPLEX = OSM('20-2-detecting-antigen-antibody-complexes', '20.2 Detecting Antigen-Antibody Complexes');
 const MB_ELISA = OSM('20-4-eias-and-elisas', '20.4 EIAs and ELISAs');
+const MB_TOOLS = OSM('12-1-microbes-and-the-tools-of-genetic-engineering', '12.1 Microbes and the Tools of Genetic Engineering');
 const MB_FA = OSM('20-5-fluorescent-antibody-techniques', '20.5 Fluorescent Antibody Techniques');
 const BIO_BIOTECH = OSB('17-1-biotechnology', '17.1 Biotechnology');
 const BIO_SEQ = OSB('17-3-whole-genome-sequencing', '17.3 Whole-Genome Sequencing');
@@ -914,12 +915,10 @@ const core = defineConcepts([
       'Microarrays find pathogenic copy-number changes in many children whose karyotypes are normal.',
       'A targeted single-variant test is used for relatives of someone with a known familial variant; panels are used when many genes can cause the condition; exome or genome sequencing when the cause remains unclear.',
       'A karyotype shows chromosome number and structure, including translocations.',
-      'Guidelines allow more than one initial approach. When a specific disorder can be suspected from the phenotype, testing is targeted to it; otherwise a hypothesis-free (genome-wide) approach is used, and exome or genome sequencing is recommended as a first- or second-tier test alongside chromosomal microarray.',
+      'Guidelines allow more than one initial approach: the AAP (2025) recommends testing selected by phenotype when possible and a hypothesis-free approach otherwise, and the ACMG (2021) recommends exome or genome sequencing as a first- or second-tier test; chromosomal microarray has also long been used first-line.',
       'Copy-number microarrays cannot detect balanced structural changes (such as balanced translocations), because no DNA is gained or lost.',
     ],
-    // Pending: reasoned or only partly supported by the sources read (see the change log).
-    factPending: [5],
-    factRefs: [[0, 1], [2], [3], [4, 3], [5, 6], [7]],
+    factRefs: [[0, 1], [2], [3], [4, 3], [5, 6, 0], [7]],
     mechanism:
       'Each test answers a different question. A karyotype shows number and arrangement of whole chromosomes; FISH asks about one known region; chromosomal microarray measures copy number across the genome; sequencing reads the bases of chosen genes. Because a microarray measures amount, a balanced rearrangement (same DNA, new position) is a karyotype question.',
     associations: ['CMA: genome-wide copy number', 'Exome/genome sequencing: genome-wide sequence variants', 'Karyotype: aneuploidy, translocations', 'FISH: known region', 'Targeted test: known family variant', 'Panel: many candidate genes', 'Exome: unclear cause', 'Balanced rearrangement → karyotype'],
@@ -1000,15 +999,13 @@ const core = defineConcepts([
     difficulty: 2,
     curriculum: [`${GE}.cloning`, `${GE}.crispr`],
     objectives: ['Recognize cDNA cloning into a plasmid vector', 'Recognize CRISPR-Cas9 genome editing'],
-    citations: [BIO_BIOTECH, MB_DNA, MP_CRISPR],
+    citations: [BIO_BIOTECH, MB_DNA, MP_CRISPR, MB_TOOLS],
     facts: [
       'Reverse transcriptase copies mRNA into complementary DNA (cDNA). Because mature mRNA has already had its introns removed, cDNA contains only the coding sequence.',
       'In molecular cloning, a DNA fragment is inserted into a plasmid vector (a small circular DNA that replicates independently) at a multiple cloning site and introduced into bacteria; this is how human insulin and growth hormone are produced.',
       'CRISPR-Cas9 genome editing uses a guide RNA with a short sequence complementary to a target site in the DNA; Cas9 cuts the DNA there, and the cell’s repair can disable the gene or insert a change. It was adapted from a bacterial defense against viruses.',
     ],
-    // Pending: reasoned or only partly supported by the sources read (see the change log).
-    factPending: [0],
-    factRefs: [[0, 1], [0], [2]],
+    factRefs: [[0, 1, 3], [0], [2]],
     mechanism:
       'Cloning makes many copies of one piece of DNA by carrying it in a plasmid that bacteria replicate; starting from mRNA (via cDNA) gives the coding sequence without introns, which bacteria can express as protein. Genome editing goes the other way, changing the DNA in place: a guide RNA brings Cas9 to the target, Cas9 cuts, and repair alters the gene.',
     associations: ['Reverse transcriptase', 'cDNA (no introns)', 'Plasmid vector', 'Multiple cloning site', 'Recombinant insulin', 'Guide RNA', 'Cas9 nuclease'],
