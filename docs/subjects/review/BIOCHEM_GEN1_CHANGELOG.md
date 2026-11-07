@@ -105,4 +105,4 @@ Pedigrees are described in words for now. Drawn pedigrees are phase 3 of `docs/V
 
 ### Browser validation
 
-BROWSER_PLACEHOLDER
+`npm run check:games` (headless Chromium, iPhone 13 emulation, reviewer-preview production build `VITE_ALLOW_UNREVIEWED=true` served by `vite preview`): **630 passed, 0 failed**. All 19 Mechanism Lab sequences were played both correctly and incorrectly, and all 21 Match Up sets were played. That includes the new `seq:nondisjunction-t21`, `match:inheritance-clues` and `match:chromosomal-syndromes`, and the revised Laboratory items. No server was left running. These are technical checks only; they are not evidence of medical accuracy.
