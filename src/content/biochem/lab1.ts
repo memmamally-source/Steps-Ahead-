@@ -68,6 +68,17 @@ const CMA_FIRST_TIER = PM(23245550, 'Flore LA, Milunsky JM. Chromosomal microarr
 const CMA_YIELD = PM(30903683, 'Cheng SSW et al. Chromosomal microarray is a first-tier test for developmental delay, intellectual disability, autism and multiple anomalies. Am J Med Genet C 2019');
 const CMA_SNP = PM(29631977, 'Wang R et al. SNP-array CMA finds pathogenic copy-number changes in children with normal karyotypes. Pediatr Neonatol 2019');
 
+// Revision 1 sources.
+const AAP_2025 = PM(40545261, 'Rodan LH et al. Genetic evaluation of the child with intellectual disability or global developmental delay (AAP clinical report): phenotype-driven testing when possible, otherwise an agnostic (hypothesis-free) approach. Pediatrics 2025');
+const ACMG_ES_GS = PM(34211152, 'Manickam K et al. ACMG guideline: exome or genome sequencing recommended as a first- or second-tier test for congenital anomalies, developmental delay or intellectual disability. Genet Med 2021');
+const CNV_BALANCED = PM(34237280, 'Mantere T et al. Copy-number microarrays cannot detect balanced structural variants; karyotyping has low resolution. Am J Hum Genet 2021');
+const DOT_PLOT_USE = PM(9462230, 'Afeltra A et al. Multicolour flow cytometry analysed as bivariate dot-plot quadrant displays of co-expressed T-cell markers. Int J Exp Pathol 1997');
+const LYME_EM_CLINICAL = PM(26593258, 'Schriefer ME. Lyme serology: two-tier testing detects early localized infection poorly and late disease well; erythema migrans should prompt treatment without testing. Clin Lab Med 2015');
+const LYME_MTTT = PM(32632699, 'Baarsma ME et al. Modified two-tier testing confirms with a second enzyme immunoassay instead of an immunoblot. Eur J Clin Microbiol Infect Dis 2020');
+const LYME_ARTHRITIS = PM(34417687, 'Corre C et al. Lyme arthritis (mostly knee monoarthritis) documented by IgG ELISA confirmed by Western blot. Eur J Clin Microbiol Infect Dis 2022');
+const HIV_NAT = PM(24342476, 'Bennett B et al. HIV algorithm: 4th-generation Ag/Ab immunoassay → HIV-1/HIV-2 antibody differentiation test → HIV-1 nucleic acid test if the differentiation test is nonreactive or indeterminate. J Clin Virol 2013');
+const CD4_RISK = PM(8099477, 'Nightingale SD et al. Survival and AIDS-defining events are inversely related to the CD4 count. Arch Intern Med 1993');
+
 const PS = 'bc-pcr-sequencing';
 const BL = 'bc-blotting';
 const EF = 'bc-elisa-flow';
@@ -275,14 +286,14 @@ const core = defineConcepts([
     facts: [
       'Sanger (chain-termination, dideoxy) sequencing copies a template with DNA polymerase and a small proportion of labeled dideoxynucleotides (ddNTPs); a ddNTP lacks the 3′-OH needed to add the next nucleotide, so each incorporation stops the chain.',
       'Next-generation (massively parallel) sequencing reads hundreds of thousands to millions of short fragments in a day, and software assembles them.',
-      'Molecular genetic tests vary in scope: a targeted single-variant test (for example, testing relatives for a known familial variant), a single-gene test, a gene panel (when many genes can cause the symptoms), and whole-exome or whole-genome sequencing (when panels have not given a diagnosis or the cause is unclear).',
+      'Molecular genetic tests vary in scope: a targeted single-variant test (for example, testing relatives for a known familial variant), a single-gene test, a gene panel (when many genes can cause the symptoms), and whole-exome or whole-genome sequencing (often when panels have not given a diagnosis or the cause is unclear, and increasingly as an early test).',
     ],
     factRefs: [[0, 1], [1], [2]],
     mechanism:
       'Sanger sequencing works by controlled stopping: a dideoxynucleotide has no 3′-OH, so the chain ends wherever one is added, and the lengths of the stopped fragments reveal the sequence. Next-generation sequencing reads millions of short fragments in parallel, which makes panels, exomes and genomes practical.',
     associations: ['Chain termination', 'ddNTP lacks 3′-OH', 'Next-generation (massively parallel) sequencing', 'Single-variant test', 'Single-gene test', 'Gene panel', 'Whole-exome sequencing', 'Whole-genome sequencing'],
     misconception:
-      'Exome sequencing is not the first test for everyone: a known familial variant needs only a targeted test, and exome or genome sequencing is used when panels fail or the cause is unclear.',
+      'Broader is not always better: a known familial variant needs only a targeted test, while exome or genome sequencing is used when many genes could be responsible or the cause is unclear.',
     quick:
       'Sanger: ddNTP (no 3′-OH) stops the chain → fragment lengths give the sequence. NGS: millions of short reads in parallel. Scope: known familial variant → targeted test; one suspected gene → single-gene test; many possible genes → panel; still unclear → exome/genome.',
     detailed: [
@@ -309,7 +320,7 @@ const core = defineConcepts([
         difficulty: 2,
       },
       {
-        stem: 'A child has seizures that could be caused by variants in any of hundreds of genes. No variant is known in the family. Which test is the most efficient first molecular test?',
+        stem: 'A child has seizures that could be caused by variants in any of hundreds of genes. No variant is known in the family. Which molecular test examines many of these candidate genes together?',
         options: [
           ['a', 'A multigene panel for epilepsy genes'],
           ['b', 'A targeted test for a single known variant', 'No familial variant is known, so there is nothing to target.'],
@@ -318,7 +329,7 @@ const core = defineConcepts([
           ['e', 'A Western blot of blood proteins', 'Protein blotting does not test for gene variants.'],
         ],
         answer: 'a',
-        mini: 'When many genes can cause the same picture, a gene panel tests them together. Exome or genome sequencing follows if the panel finds nothing.',
+        mini: 'A gene panel sequences many candidate genes at once; exome or genome sequencing goes further, covering most genes. Which genome-wide or targeted test comes first depends on the clinical picture and current guidelines.',
         reasoning: 'identification',
         objectives: [`${PS}.sequencing`],
         difficulty: 2,
@@ -329,7 +340,7 @@ const core = defineConcepts([
       { statement: 'Relatives of a person with a known familial variant are usually tested with whole-exome sequencing.', isTrue: false, correction: 'A targeted single-variant test is used; exome sequencing is for unclear causes.', objectives: [`${PS}.sequencing`], difficulty: 1 },
     ],
     clues: [
-      { answer: 'DIDEOXY', clue: 'Type of nucleotide that ends the chain in Sanger sequencing', objectives: [`${PS}.sequencing`], difficulty: 2 },
+      { relevance: 'supplementary', relevanceNote: 'Sequencing chemistry term; what Sanger and NGS detect is core.', answer: 'DIDEOXY', clue: 'Type of nucleotide that ends the chain in Sanger sequencing', objectives: [`${PS}.sequencing`], difficulty: 2 },
     ],
   },
   // ------------------------------------------------------------------------------------------------
@@ -344,26 +355,26 @@ const core = defineConcepts([
     difficulty: 2,
     curriculum: [`${BL}.choose`, `${BL}.western`],
     objectives: ['Choose the blot that detects DNA, RNA, protein or a DNA-binding protein', 'Interpret a Western blot as a confirmatory test'],
-    citations: [MB_DNA, MB_COMPLEX, MP_DMD, DMD_WB, DMD_REVIEW, LYME_TWO_TIER, LYME_SEROLOGY, HIV_ALGORITHM, DMD_CLINICAL],
+    citations: [MB_DNA, MB_COMPLEX, MP_DMD, DMD_WB, DMD_REVIEW, LYME_TWO_TIER, LYME_SEROLOGY, HIV_ALGORITHM, DMD_CLINICAL, LYME_EM_CLINICAL, LYME_MTTT, LYME_ARTHRITIS, HIV_NAT],
     facts: [
       'In a Southern blot, DNA fragments are separated by agarose gel electrophoresis, transferred to a membrane and detected with a labeled DNA probe. In a Northern blot, RNA is immobilized and probed, typically to measure how much mRNA a gene makes.',
       'In a Western blot, proteins are separated by gel electrophoresis (SDS-PAGE), transferred to a membrane and detected with a primary antibody and a labeled secondary antibody. A Southwestern blot probes separated proteins with a labeled DNA probe to find DNA-binding proteins.',
       'Duchenne muscular dystrophy results from DMD mutations that prevent any functional dystrophin; mutations that leave an abnormal but partly functional dystrophin usually cause the milder Becker form. Western blot of muscle dystrophin helps distinguish them.',
-      'Lyme disease is diagnosed by two-tier antibody testing: a sensitive ELISA first, then a confirmatory second tier, classically a Western blot; some algorithms now use a second immunoassay instead.',
-      'In current HIV testing, a reactive antigen/antibody screen is followed by an HIV-1/HIV-2 antibody differentiation assay, which has replaced the HIV-1 Western blot as the supplemental test.',
+      'Serologic diagnosis of Lyme disease uses two-tier antibody testing: a sensitive ELISA first, then a confirmatory second tier, classically a Western blot (standard two-tier) or a second enzyme immunoassay (modified two-tier). Serology detects late disease such as Lyme arthritis well but early localized infection poorly, so classic erythema migrans is treated on clinical grounds without testing.',
+      'In current HIV testing, a reactive antigen/antibody screen is followed by an HIV-1/HIV-2 antibody differentiation assay, which has replaced the HIV-1 Western blot as the supplemental test; an HIV-1 nucleic acid test is used if the differentiation assay is nonreactive or indeterminate.',
       'Classic Duchenne features in a young boy include difficulty rising from the floor (Gowers sign), calf pseudohypertrophy, hypotonia and a raised creatine kinase.',
     ],
-    factRefs: [[0], [1], [2, 3, 4], [5, 6], [7], [8]],
+    factRefs: [[0], [1], [2, 3, 4], [5, 6, 9, 10, 11], [7, 12], [8]],
     mechanism:
       'Every blot separates molecules on a gel, transfers them to a membrane and finds one target with a specific probe. The probe decides the blot: DNA probe for DNA (Southern) or RNA (Northern), antibody for protein (Western), DNA probe for a DNA-binding protein (Southwestern).',
     associations: ['Southern = DNA', 'Northern = RNA', 'Western = protein', 'Southwestern = DNA-binding protein', 'SDS-PAGE', 'Dystrophin (DMD vs Becker)', 'Lyme two-tier testing', 'HIV differentiation assay'],
     misconception:
       'The Western blot is no longer the confirmatory test in the standard HIV algorithm: a differentiation immunoassay follows a reactive antigen/antibody screen.',
     quick:
-      'Southern = DNA, Northern = RNA (mRNA amount), Western = protein (antibody probe), Southwestern = DNA-binding protein. Western confirms: absent dystrophin (Duchenne) vs abnormal/reduced (Becker); Lyme two-tier (ELISA → Western). HIV: differentiation assay has replaced Western blot.',
+      'Southern = DNA, Northern = RNA (mRNA amount), Western = protein (antibody probe), Southwestern = DNA-binding protein. Western confirms: absent dystrophin (Duchenne) vs abnormal/reduced (Becker); Lyme two-tier (ELISA → Western or 2nd EIA). HIV: differentiation assay, not Western blot.',
     detailed: [
       'Blots share three steps: separate by size on a gel, transfer to a membrane, detect with a labeled probe. Southern blots detect DNA and Northern blots RNA with nucleic acid probes; Western blots detect protein with antibodies; Southwestern blots find proteins that bind a DNA probe.',
-      'Western blotting is used to confirm a specific protein. In muscle, absent dystrophin points to Duchenne and an abnormal or reduced band to Becker muscular dystrophy. In Lyme serology, a positive screening ELISA is followed by a second tier, classically a Western blot of antibody bands. HIV is the exception to remember: its supplemental test is now a differentiation immunoassay.',
+      'Western blotting is used to confirm a specific protein. In muscle, absent dystrophin points to Duchenne and an abnormal or reduced band to Becker muscular dystrophy. In Lyme serology (for example suspected Lyme arthritis), a positive screening ELISA is followed by a second tier, classically a Western blot of antibody bands, or a second immunoassay in modified protocols. HIV is the exception to remember: its supplemental test is now a differentiation immunoassay, with nucleic acid testing when indicated.',
     ],
     takeaway: 'SNoW DRoP-style pairing: Southern DNA, Northern RNA, Western protein; Western confirms a specific protein.',
     related: ['lab-elisa', 'lab-gel'],
@@ -397,6 +408,8 @@ const core = defineConcepts([
         mini: 'Separated proteins probed with labeled DNA = Southwestern blot, which identifies DNA-binding proteins such as transcription factors.',
         reasoning: 'identification',
         objectives: [`${BL}.choose`],
+        relevance: 'supplementary',
+        relevanceNote: 'Southwestern blotting is specialised; Southern, Northern and Western blots are core.',
         difficulty: 2,
       },
       {
@@ -416,19 +429,19 @@ const core = defineConcepts([
         difficulty: 3,
       },
       {
-        stem: 'A hiker with a spreading rash and joint pain has a positive Lyme disease ELISA. What is the purpose of the follow-up immunoblot (Western blot)?',
+        stem: 'A man from a Lyme-endemic area has had a swollen, warm right knee for 6 weeks. He recalls hiking several months ago. His Lyme ELISA is positive, and a standard two-tier protocol is used. What does the follow-up immunoblot (Western blot) add?',
         options: [
-          ['a', 'To confirm antibodies to specific Borrelia proteins'],
-          ['b', 'To measure how many bacteria are in the blood', 'Serologic blots detect antibodies, not the number of organisms.'],
-          ['c', 'To replace the ELISA, which is not sensitive', 'The ELISA is the sensitive first tier; the blot confirms it.'],
-          ['d', 'To detect Borrelia DNA in the joint fluid', 'Western blots detect proteins (here, antibodies binding them), not DNA.'],
-          ['e', 'To identify the patient’s HLA type', 'HLA typing is not part of Lyme serology.'],
+          ['a', 'It confirms IgG antibodies to specific Borrelia proteins'],
+          ['b', 'It measures how many bacteria are in the joint', 'Serologic blots detect antibodies, not the number of organisms.'],
+          ['c', 'It replaces the ELISA, which is not sensitive', 'The ELISA is the sensitive first tier; the second tier confirms it.'],
+          ['d', 'It detects Borrelia DNA in the joint fluid', 'Western blots detect proteins (here, antibodies binding them), not DNA.'],
+          ['e', 'It identifies the patient’s HLA type', 'HLA typing is not part of Lyme serology.'],
         ],
         answer: 'a',
-        mini: 'Two-tier Lyme testing: a sensitive ELISA screens, then a second tier (classically a Western blot showing antibody bands to specific Borrelia proteins) confirms.',
+        mini: 'Suspected Lyme arthritis is late disease, when serology performs well. A sensitive ELISA screens; the second tier confirms, classically a Western blot showing IgG bands to specific Borrelia proteins (modified two-tier protocols use a second immunoassay instead). Classic erythema migrans, in contrast, is treated clinically without serology.',
         reasoning: 'interpretation',
         objectives: [`${BL}.western`],
-        steps: ['The ELISA is sensitive but can be falsely positive.', 'A confirmatory second tier is therefore needed.', 'The Western blot shows antibodies against specific Borrelia proteins, confirming true infection.'],
+        steps: ['Months after exposure, a monoarthritis of the knee suggests Lyme arthritis, when antibody testing is reliable.', 'The ELISA is sensitive but can be falsely positive, so a confirmatory second tier is needed.', 'The Western blot shows IgG antibodies against specific Borrelia proteins, confirming infection.'],
         difficulty: 3,
       },
       {
@@ -454,7 +467,7 @@ const core = defineConcepts([
     ],
     clues: [
       { answer: 'NORTHERN', clue: 'Blot that detects RNA', objectives: [`${BL}.choose`], difficulty: 1 },
-      { answer: 'SOUTHWESTERN', clue: 'Blot that finds DNA-binding proteins', objectives: [`${BL}.choose`], difficulty: 2 },
+      { relevance: 'supplementary', relevanceNote: 'Southwestern blotting is specialised; Southern, Northern and Western blots are core.', answer: 'SOUTHWESTERN', clue: 'Blot that finds DNA-binding proteins', objectives: [`${BL}.choose`], difficulty: 2 },
     ],
   },
   // ------------------------------------------------------------------------------------------------
@@ -470,32 +483,32 @@ const core = defineConcepts([
     difficulty: 2,
     curriculum: [`${EF}.elisa`],
     objectives: ['Explain direct, indirect and sandwich ELISA', 'Explain why ELISA screens and why positives are confirmed'],
-    citations: [MB_ELISA, MP_HIV_TEST, HIV_4TH_GEN, LYME_SEROLOGY, HIV_ALGORITHM],
+    citations: [MB_ELISA, MP_HIV_TEST, HIV_4TH_GEN, LYME_SEROLOGY, HIV_ALGORITHM, HIV_NAT],
     facts: [
       'ELISAs use an antibody linked to an enzyme; adding a colorless substrate (chromogen) gives a colored product, which detects or quantifies the target.',
       'A direct ELISA uses one enzyme-labeled antibody against the antigen; it is faster but less sensitive. A sandwich ELISA captures antigen between two antibodies to quantify it (for example a pathogen antigen or a hormone).',
-      'An indirect ELISA puts known antigen (for example HIV peptides) in the well; the patient’s antibodies bind it and are detected with an enzyme-linked anti-human immunoglobulin, so it detects antibodies. It is widely used for HIV and Lyme screening.',
+      'An indirect ELISA puts known antigen (for example HIV peptides) in the well; the patient’s antibodies bind it and are detected with an enzyme-linked anti-human immunoglobulin, so it detects antibodies. This classic design underlies antibody screening such as the first tier of Lyme serology and earlier HIV antibody tests.',
       'Cross-reacting antibodies can cause false-positive ELISA results, so a positive screen is confirmed with a more specific test.',
-      'Most HIV tests now detect both HIV antibodies and antigen (p24); these fourth-generation assays are prone to false positives, so reactive results are confirmed, now with an HIV-1/HIV-2 differentiation assay.',
+      'Contemporary HIV screening uses fourth-generation antigen/antibody immunoassays that detect both HIV antibodies and p24 antigen (so infection is detected earlier than with antibody-only tests). They can be falsely positive, so a reactive result goes on to an HIV-1/HIV-2 antibody differentiation immunoassay, and to an HIV-1 nucleic acid test if that is nonreactive or indeterminate; the Western blot is no longer part of this algorithm.',
     ],
-    factRefs: [[0], [0], [0], [0, 3], [1, 2, 4]],
+    factRefs: [[0], [0], [0], [0, 3], [1, 2, 4, 5]],
     mechanism:
       'An enzyme attached to an antibody turns a colorless substrate into color, so binding becomes visible and measurable. What sits on the plate decides what is detected: capture antibody to find antigen (direct or sandwich), or known antigen to find the patient’s antibodies (indirect). High sensitivity makes ELISA a good screen; cross-reactivity means positives need confirmation.',
     associations: ['Enzyme-linked antibody', 'Chromogen', 'Direct ELISA (antigen)', 'Indirect ELISA (patient antibody)', 'Sandwich ELISA (quantify antigen)', 'HIV Ag/Ab (4th generation)', 'Lyme first tier', 'Confirm positives'],
     misconception:
       'A positive screening ELISA is not a diagnosis: cross-reacting antibodies can give false positives, so a more specific test confirms it.',
     quick:
-      'ELISA: enzyme-linked antibody + chromogen → color. Direct/sandwich: detect or quantify antigen. Indirect: antigen on plate detects patient antibodies (HIV, Lyme screening). Sensitive screen; confirm positives (HIV: differentiation assay).',
+      'ELISA: enzyme-linked antibody + chromogen → color. Direct/sandwich: detect or quantify antigen. Indirect: antigen on plate detects patient antibodies (classic antibody screen, e.g. Lyme first tier). Modern HIV screen = 4th-generation Ag/Ab → differentiation assay → NAT if needed.',
     detailed: [
       'In every ELISA an enzyme bound to an antibody converts a colorless chromogen into a colored product. In a direct ELISA a labeled antibody binds the antigen; in a sandwich ELISA antigen is captured between two antibodies, which allows precise quantification of things like hormones or pathogen antigens.',
-      'An indirect ELISA asks a different question: does the patient have antibodies? Known antigen coats the well, patient serum is added, and an enzyme-linked anti-human antibody reveals any bound antibody. Because screening ELISAs are sensitive but can cross-react, positives are confirmed with a more specific test.',
+      'An indirect ELISA asks a different question: does the patient have antibodies? Known antigen coats the well, patient serum is added, and an enzyme-linked anti-human antibody reveals any bound antibody. Because screening immunoassays are sensitive but can cross-react, positives are confirmed with a more specific test. Modern HIV screening goes further: fourth-generation assays detect p24 antigen as well as antibody, and reactive results proceed to a differentiation immunoassay and, when indicated, nucleic acid testing.',
     ],
     takeaway: 'ELISA: enzyme + chromogen; indirect finds antibodies, sandwich quantifies antigen; screen, then confirm.',
     related: ['lab-blotting', 'lab-flow'],
     outline: found(MS, INF),
     mcq: [
       {
-        stem: 'In an HIV screening ELISA, HIV peptides coat the wells, patient serum is added, and then an enzyme-linked anti-human immunoglobulin. What does a color change show?',
+        stem: 'In a classic indirect ELISA, HIV peptides coat the wells, patient serum is added, and then an enzyme-linked anti-human immunoglobulin. What does a color change show?',
         options: [
           ['a', 'The patient has antibodies against HIV'],
           ['b', 'HIV RNA is present in the serum', 'This assay detects antibodies; HIV RNA is measured by RT-PCR.'],
@@ -504,7 +517,7 @@ const core = defineConcepts([
           ['e', 'HIV has integrated into the patient’s DNA', 'Integration is not measured by ELISA.'],
         ],
         answer: 'a',
-        mini: 'Antigen on the plate + patient serum + enzyme-linked anti-human Ig = indirect ELISA. Color means the patient’s antibodies bound the HIV antigen.',
+        mini: 'Antigen on the plate + patient serum + enzyme-linked anti-human Ig = indirect ELISA. Color means the patient’s antibodies bound the HIV antigen. (Current HIV screening uses fourth-generation assays that detect p24 antigen as well as antibody.)',
         reasoning: 'mechanism',
         objectives: [`${EF}.elisa`],
         difficulty: 2,
@@ -519,7 +532,7 @@ const core = defineConcepts([
           ['e', 'Confirm with a CD4 count by flow cytometry', 'A CD4 count stages immune damage; it does not confirm infection.'],
         ],
         answer: 'a',
-        mini: 'Screening immunoassays are sensitive but can be falsely positive (cross-reacting antibodies). A reactive screen is confirmed with a specific supplemental test, now an HIV-1/HIV-2 differentiation assay.',
+        mini: 'Screening immunoassays are sensitive but can be falsely positive. A reactive fourth-generation HIV screen goes to an HIV-1/HIV-2 antibody differentiation immunoassay, then to an HIV-1 nucleic acid test if that is nonreactive or indeterminate; it is not confirmed by Western blot.',
         reasoning: 'interpretation',
         objectives: [`${EF}.elisa`],
         steps: ['Screening ELISAs are chosen for sensitivity.', 'Their trade-off is false positives, especially when infection is unlikely.', 'So a reactive screen needs a specific confirmatory test before diagnosis.'],
@@ -543,7 +556,7 @@ const core = defineConcepts([
     ],
     tf: [
       { statement: 'An indirect ELISA detects antibodies in the patient’s serum.', isTrue: true, correction: 'Correct: known antigen captures the patient’s antibodies, revealed by an enzyme-linked anti-human antibody.', objectives: [`${EF}.elisa`], difficulty: 1 },
-      { statement: 'A single positive screening ELISA is enough to diagnose HIV infection.', isTrue: false, correction: 'Cross-reactivity causes false positives, so reactive screens are confirmed with a specific test.', objectives: [`${EF}.elisa`], difficulty: 1 },
+      { statement: 'A single positive screening ELISA is enough to diagnose HIV infection.', isTrue: false, correction: 'Screens can be falsely positive: a reactive result goes to a differentiation immunoassay and, if needed, nucleic acid testing.', objectives: [`${EF}.elisa`], difficulty: 1 },
     ],
     clues: [
       { relevance: 'supplementary', relevanceNote: 'Assay terminology rather than a tested principle.', answer: 'CHROMOGEN', clue: 'Colorless enzyme substrate that turns colored in an ELISA', objectives: [`${EF}.elisa`], difficulty: 2 },
@@ -561,25 +574,27 @@ const core = defineConcepts([
     difficulty: 3,
     curriculum: [`${EF}.flow`],
     objectives: ['Explain how flow cytometry counts labeled cells', 'Read histograms and two-marker dot plots', 'Interpret flow results for CD4 counts and PNH'],
-    citations: [MB_FA, MP_CD4, MP_PNH, PNH_FLOW, PNH_FLAER],
+    citations: [MB_FA, MP_CD4, MP_PNH, PNH_FLOW, PNH_FLAER, CD4_RISK, DOT_PLOT_USE],
     facts: [
       'Flow cytometry counts cells labeled with fluorescent monoclonal antibodies as they pass single file through a laser; two markers can be studied at once with different fluorochromes. In a histogram, the x-axis is fluorescence (log scale), the y-axis is cell number, and the area under each peak is proportional to the number of cells in that population.',
-      'In HIV infection, CD4 T-cell counts guide care: below 500 per μL the risk of opportunistic infections rises, and below 200 per μL the patient can no longer mount a useful adaptive immune response.',
+      'In HIV infection, CD4 T-cell counts guide care: the lower the count, the higher the risk of opportunistic infections and AIDS-defining events. Below 200 per μL indicates advanced immunosuppression with a substantial opportunistic infection risk.',
       'A CD4 count is a blood test of CD4 (helper T) cells, mostly used to monitor the immune system in HIV infection, which destroys CD4 cells.',
       'In paroxysmal nocturnal hemoglobinuria (an acquired PIGA defect), blood cells lack GPI-anchored proteins such as CD55 and CD59 and bind little FLAER; flow cytometry of red cells and neutrophils is the standard diagnostic test.',
       'When two markers are labeled with different fluorochromes, results can be shown as a two-parameter dot plot: each dot is one cell placed by its fluorescence for each marker, so the four quadrants separate double-negative, single-positive and double-positive cells.',
     ],
-    factRefs: [[0], [0], [1], [2, 3, 4], [0]],
+    // Pending: reasoned or only partly supported by the sources read (see the change log).
+    factPending: [4],
+    factRefs: [[0], [0, 5], [1], [2, 3, 4], [0, 6]],
     mechanism:
       'Each cell is tagged with fluorescent antibodies against surface markers and passed through a laser one at a time; the detector counts how many cells fluoresce and how brightly. Losing a marker shows up as a population that does not fluoresce: CD4 cells disappearing in HIV, or red cells and neutrophils missing GPI-anchored CD55 and CD59 in PNH.',
     associations: ['Fluorescent monoclonal antibodies', 'Single-file cells, laser', 'Histogram: fluorescence vs cell number', 'CD4 count (<200/μL)', 'PNH: CD55⁻ CD59⁻', 'FLAER', 'GPI anchor (PIGA)'],
     misconception:
       'In a flow histogram, the height of a peak is not the whole story: the area under the peak is proportional to the number of cells in that population.',
     quick:
-      'Flow cytometry: fluorescent antibody-labeled cells pass single file through a laser → counts per marker. CD4 count: HIV monitoring (<200/μL = severe immunodeficiency). PNH: red cells and neutrophils lack GPI-anchored CD55/CD59 (low FLAER).',
+      'Flow cytometry: fluorescent antibody-labeled cells pass single file through a laser → counts per marker. CD4 count: HIV monitoring (<200/μL = advanced immunosuppression). PNH: red cells and neutrophils lack GPI-anchored CD55/CD59 (low FLAER).',
     detailed: [
       'Cells are incubated with fluorescent monoclonal antibodies against surface markers such as CD4, then pushed in single file past a laser. The instrument records each cell’s fluorescence, so populations can be counted. Results are often shown as a histogram of fluorescence (x-axis, log scale) against cell number, where the area under each peak reflects the size of that population.',
-      'Two clinical uses stand out. In HIV infection, the CD4 count shows how far the immune system has been damaged: below 200 per μL, the patient cannot mount a useful adaptive response. In paroxysmal nocturnal hemoglobinuria, an acquired PIGA defect removes GPI-anchored proteins, so a population of red cells and neutrophils is negative for CD55 and CD59 (and binds little FLAER).',
+      'Two clinical uses stand out. In HIV infection, the CD4 count shows how far the immune system has been damaged: below 200 per μL indicates advanced immunosuppression with a substantial risk of opportunistic infections. In paroxysmal nocturnal hemoglobinuria, an acquired PIGA defect removes GPI-anchored proteins, so a population of red cells and neutrophils is negative for CD55 and CD59 (and binds little FLAER).',
     ],
     takeaway: 'Flow = count cells by fluorescent markers: CD4 in HIV; CD55/CD59-negative cells in PNH.',
     related: ['lab-elisa'],
@@ -619,17 +634,17 @@ const core = defineConcepts([
       {
         stem: 'A patient with HIV has a CD4 count of 150 per μL on flow cytometry. What does this result indicate?',
         options: [
-          ['a', 'Severe loss of adaptive immunity with high opportunistic risk'],
+          ['a', 'Advanced immunosuppression with substantial infection risk'],
           ['b', 'A normal CD4 count with no added risk', 'Below 200 per μL is far below normal.'],
           ['c', 'HIV infection has been confirmed by this test', 'A CD4 count stages immune damage; it does not diagnose HIV.'],
           ['d', 'High viral load, measured directly', 'Viral load is measured by quantitative RT-PCR, not by CD4 count.'],
           ['e', 'A false result, because flow cannot count T cells', 'Flow cytometry is the standard way to count CD4 T cells.'],
         ],
         answer: 'a',
-        mini: 'Below 200 CD4 cells per μL the patient can no longer mount a useful adaptive immune response, so opportunistic infections become likely.',
+        mini: 'A CD4 count below 200 per μL indicates advanced immunosuppression: the risk of opportunistic infections is substantial (immunity is impaired, not entirely absent).',
         reasoning: 'interpretation',
         objectives: [`${EF}.flow`],
-        steps: ['HIV destroys CD4 T cells, and flow cytometry counts them.', 'Below 500 per μL infection risk rises; below 200 per μL adaptive immunity fails.', '150 per μL → severe immunodeficiency with high opportunistic risk.'],
+        steps: ['HIV destroys CD4 T cells, and flow cytometry counts them.', 'Opportunistic infection risk rises as the count falls; below 200 per μL indicates advanced immunosuppression.', '150 per μL → advanced immunosuppression with substantial opportunistic infection risk.'],
         difficulty: 3,
       },
       {
@@ -673,7 +688,7 @@ const core = defineConcepts([
     facts: [
       'A microarray holds thousands of known DNA sequences (more than 30,000 per slide) on a glass slide. Labeled DNA or cDNA (made from mRNA by reverse transcriptase) from two samples, typically with red and green dyes, hybridizes to complementary spots, comparing gene expression between samples such as cancerous and healthy cells.',
       'SNP-based chromosomal microarrays detect pathogenic copy-number changes in children whose standard karyotypes are normal.',
-      'Chromosomal microarray detects chromosomal imbalances and is recommended as a first-tier test for developmental delay, intellectual disability, autism and multiple congenital anomalies.',
+      'Chromosomal microarray detects chromosomal imbalances (copy-number changes) and is widely used in the genetic evaluation of developmental delay, intellectual disability, autism and multiple congenital anomalies.',
     ],
     factRefs: [[0], [1], [2]],
     mechanism:
@@ -682,10 +697,10 @@ const core = defineConcepts([
     misconception:
       'Microarrays measure how much of each sequence is present; they do not read the order of bases the way sequencing does.',
     quick:
-      'Microarray: thousands of known sequences on a slide; labeled sample DNA/cDNA hybridizes → expression profile (cancer vs normal) or copy-number changes and SNPs (chromosomal microarray, first-tier for developmental delay).',
+      'Microarray: thousands of known sequences on a slide; labeled sample DNA/cDNA hybridizes → expression profile (cancer vs normal) or copy-number changes and SNPs (chromosomal microarray).',
     detailed: [
       'In a microarray, known DNA fragments are fixed in thousands of spots. Sample DNA, or cDNA made from mRNA, is labeled with fluorescent dye and allowed to hybridize; comparing two samples labeled red and green shows which genes are more or less active in each.',
-      'The same principle applied to genomic DNA measures copy number across the genome. Chromosomal (often SNP-based) microarrays find deletions and duplications too small for a karyotype and are used first for unexplained developmental delay or multiple anomalies.',
+      'The same principle applied to genomic DNA measures copy number across the genome. Chromosomal (often SNP-based) microarrays find deletions and duplications too small for a karyotype and are widely used in evaluating unexplained developmental delay or multiple anomalies.',
     ],
     takeaway: 'Microarray = thousands of hybridizations at once: expression profiles or copy-number changes.',
     related: ['lab-test-choice', 'lab-karyotype'],
@@ -893,23 +908,27 @@ const core = defineConcepts([
     difficulty: 3,
     curriculum: [`${KF}.choose`],
     objectives: ['Choose the genetic test that answers a clinical question'],
-    citations: [CMA_FIRST_TIER, CMA_YIELD, CMA_SNP, MP_TEST_TYPES, BIO_KARYO],
+    citations: [CMA_FIRST_TIER, CMA_YIELD, CMA_SNP, MP_TEST_TYPES, BIO_KARYO, AAP_2025, ACMG_ES_GS, CNV_BALANCED],
     facts: [
-      'Chromosomal microarray is now a first-line test for global developmental delay or intellectual disability, with the G-banded karyotype used as an adjunct; it is recommended first-tier for developmental delay, intellectual disability, autism and multiple congenital anomalies.',
+      'Chromosomal microarray detects deletions and duplications (copy-number changes) across the genome, and for unexplained developmental delay or intellectual disability it largely replaced the karyotype, which is now an adjunct.',
       'Microarrays find pathogenic copy-number changes in many children whose karyotypes are normal.',
       'A targeted single-variant test is used for relatives of someone with a known familial variant; panels are used when many genes can cause the condition; exome or genome sequencing when the cause remains unclear.',
       'A karyotype shows chromosome number and structure, including translocations.',
+      'Guidelines allow more than one initial approach. When a specific disorder can be suspected from the phenotype, testing is targeted to it; otherwise a hypothesis-free (genome-wide) approach is used, and exome or genome sequencing is recommended as a first- or second-tier test alongside chromosomal microarray.',
+      'Copy-number microarrays cannot detect balanced structural changes (such as balanced translocations), because no DNA is gained or lost.',
     ],
-    factRefs: [[0, 1], [2], [3], [4, 3]],
+    // Pending: reasoned or only partly supported by the sources read (see the change log).
+    factPending: [5],
+    factRefs: [[0, 1], [2], [3], [4, 3], [5, 6], [7]],
     mechanism:
       'Each test answers a different question. A karyotype shows number and arrangement of whole chromosomes; FISH asks about one known region; chromosomal microarray measures copy number across the genome; sequencing reads the bases of chosen genes. Because a microarray measures amount, a balanced rearrangement (same DNA, new position) is a karyotype question.',
-    associations: ['CMA first-tier (DD/ID, autism, anomalies)', 'Karyotype: aneuploidy, translocations', 'FISH: known region', 'Targeted test: known family variant', 'Panel: many candidate genes', 'Exome: unclear cause', 'Balanced rearrangement → karyotype'],
+    associations: ['CMA: genome-wide copy number', 'Exome/genome sequencing: genome-wide sequence variants', 'Karyotype: aneuploidy, translocations', 'FISH: known region', 'Targeted test: known family variant', 'Panel: many candidate genes', 'Exome: unclear cause', 'Balanced rearrangement → karyotype'],
     misconception:
       'Chromosomal microarray is not a better karyotype for every question: it measures copy number, so a balanced translocation, which changes position but not amount, is sought with a karyotype.',
     quick:
-      'Unexplained DD/ID, autism or multiple anomalies → chromosomal microarray first. Suspected trisomy or a balanced translocation (e.g. recurrent miscarriage) → karyotype. Specific known microdeletion → FISH. Known family variant → targeted test; many candidate genes → panel; unclear → exome.',
+      'Ask what kind of change is suspected. Copy-number changes genome-wide → chromosomal microarray; sequence variants genome-wide → exome/genome; trisomy or balanced translocation → karyotype; one known region → FISH; known family variant → targeted test.',
     detailed: [
-      'Start from the clinical question. For unexplained developmental delay, intellectual disability, autism or multiple congenital anomalies, chromosomal microarray is the first-tier test because it finds deletions and duplications across the genome, many invisible on a karyotype.',
+      'Start from the kind of change each test can see. Chromosomal microarray finds deletions and duplications across the genome, many invisible on a karyotype; exome or genome sequencing finds sequence variants in many genes at once. For unexplained developmental delay or intellectual disability, current guidelines accept either genome-wide approach as an initial test, and choose targeted tests when the phenotype points to a specific disorder.',
       'A karyotype remains the test for suspected aneuploidy and for rearrangements that do not change the amount of DNA, such as a balanced translocation in a couple with recurrent miscarriage. FISH confirms a specific suspected region, and sequencing is chosen for single-gene questions, from a targeted variant to an exome.',
     ],
     takeaway: 'Match the test to the question: CMA for copy number, karyotype for number and arrangement, FISH for one region, sequencing for genes.',
@@ -917,26 +936,26 @@ const core = defineConcepts([
     outline: listed('Pregnancy, Childbirth, & the Puerperium', 'Prenatal care'),
     mcq: [
       {
-        stem: 'A 4-year-old has global developmental delay, autism features and several minor dysmorphic features. No syndrome is clinically recognized. Which genetic test should be done first?',
+        stem: 'A 4-year-old has global developmental delay and minor dysmorphic features; no syndrome is recognized. Chromosomal microarray shows a 1.5-million-base-pair deletion that was not visible on an earlier karyotype. Why did the microarray detect it?',
         options: [
-          ['a', 'Chromosomal microarray'],
-          ['b', 'FISH for the 22q11.2 region', 'FISH tests one suspected region; no specific syndrome is suspected here.'],
-          ['c', 'Targeted test for a single known variant', 'There is no known familial variant to target.'],
-          ['d', 'Northern blot of blood RNA', 'Northern blots are research tools, not first-line genetic tests.'],
-          ['e', 'Sandwich ELISA for growth hormone', 'An ELISA measures a protein, not a genetic cause of delay.'],
+          ['a', 'It measures copy number genome-wide at higher resolution'],
+          ['b', 'It reads the base sequence of every gene', 'Reading sequence is what exome or genome sequencing does; microarrays measure amount.'],
+          ['c', 'It detects balanced translocations', 'Microarrays cannot see balanced changes, because no DNA is gained or lost.'],
+          ['d', 'It uses a probe for one suspected region', 'That describes FISH; a microarray covers the whole genome.'],
+          ['e', 'It measures the protein made from each gene', 'Microarrays of genomic DNA measure DNA copy number, not protein.'],
         ],
         answer: 'a',
-        mini: 'For unexplained developmental delay, intellectual disability, autism or multiple anomalies, chromosomal microarray is the first-tier test; it finds copy-number changes a karyotype misses.',
-        reasoning: 'prediction',
+        mini: 'Chromosomal microarray compares the amount of DNA at many points across the genome, so it finds deletions and duplications far smaller than a karyotype can show. (Exome/genome sequencing is the genome-wide test for sequence variants.)',
+        reasoning: 'interpretation',
         objectives: [`${KF}.choose`],
-        steps: ['No specific syndrome is suspected, so a targeted test (FISH, single variant) has nothing to target.', 'The likely causes include deletions and duplications anywhere in the genome.', 'Chromosomal microarray screens copy number genome-wide → first-tier test.'],
+        steps: ['A karyotype only resolves large changes, so a 1.5-Mb deletion can be invisible.', 'A microarray measures DNA amount at many points across the genome.', 'A region with one copy instead of two shows up as a deletion → detected by the microarray.'],
         difficulty: 3,
       },
       {
         stem: 'A healthy couple has had three first-trimester miscarriages. A balanced chromosomal rearrangement in one partner is suspected. Which test is most appropriate for the parents?',
         options: [
           ['a', 'Karyotype of both partners'],
-          ['b', 'Chromosomal microarray of both partners', 'A microarray measures copy number, so a balanced rearrangement (no gain or loss) can be missed.'],
+          ['b', 'Chromosomal microarray of both partners', 'Copy-number microarrays cannot detect a balanced rearrangement, because no DNA is gained or lost.'],
           ['c', 'Gene panel for epilepsy genes', 'A single-gene panel does not show chromosome rearrangements.'],
           ['d', 'Indirect ELISA for antiphospholipid antibodies only', 'Antibody testing does not show a chromosome rearrangement.'],
           ['e', 'Flow cytometry of the partners’ blood', 'Flow cytometry counts cell types, not chromosome structure.'],
@@ -965,7 +984,7 @@ const core = defineConcepts([
       },
     ],
     tf: [
-      { statement: 'Chromosomal microarray is a first-tier test for unexplained developmental delay or intellectual disability.', isTrue: true, correction: 'Correct: the karyotype is now an adjunct for this indication.', objectives: [`${KF}.choose`], difficulty: 1 },
+      { statement: 'Chromosomal microarray detects deletions and duplications too small to see on a karyotype.', isTrue: true, correction: 'Correct: it measures copy number genome-wide; it cannot see balanced rearrangements.', objectives: [`${KF}.choose`], difficulty: 1 },
     ],
     clues: [],
   },
@@ -987,6 +1006,8 @@ const core = defineConcepts([
       'In molecular cloning, a DNA fragment is inserted into a plasmid vector (a small circular DNA that replicates independently) at a multiple cloning site and introduced into bacteria; this is how human insulin and growth hormone are produced.',
       'CRISPR-Cas9 genome editing uses a guide RNA with a short sequence complementary to a target site in the DNA; Cas9 cuts the DNA there, and the cell’s repair can disable the gene or insert a change. It was adapted from a bacterial defense against viruses.',
     ],
+    // Pending: reasoned or only partly supported by the sources read (see the change log).
+    factPending: [0],
     factRefs: [[0, 1], [0], [2]],
     mechanism:
       'Cloning makes many copies of one piece of DNA by carrying it in a plasmid that bacteria replicate; starting from mRNA (via cDNA) gives the coding sequence without introns, which bacteria can express as protein. Genome editing goes the other way, changing the DNA in place: a guide RNA brings Cas9 to the target, Cas9 cuts, and repair alters the gene.',
@@ -1113,7 +1134,7 @@ const matches: MatchItem[] = [
       { left: 'CD4 count in HIV', right: 'Flow cytometry' },
       { left: 'Suspected trisomy 21 in a newborn', right: 'Karyotype' },
       { left: 'Suspected 22q11.2 deletion', right: 'FISH' },
-      { left: 'Unexplained developmental delay', right: 'Chromosomal microarray' },
+      { left: 'Small deletions or duplications genome-wide', right: 'Chromosomal microarray' },
       { left: 'Absent dystrophin in muscle', right: 'Western blot' },
     ],
     explanation: 'Choose by the question: amount of viral RNA (qRT-PCR), labeled cells (flow), whole chromosomes (karyotype), one region (FISH), genome-wide copy number (microarray), one protein (Western blot).',
