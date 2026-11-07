@@ -51,7 +51,30 @@ Large unstructured batches have stopped. Content is now developed subject by sub
 - **Laboratory batch 1, revision 1 (owner review, 7 Nov 2026, draft):** test-choice items test what each technique detects (no universal first-line test; ACMG 2021, AAP 2025); CD4 < 200 = advanced immunosuppression; Lyme serology taught with Lyme arthritis (EM is clinical; modified two-tier noted); classic indirect ELISA separated from 4th-generation HIV Ag/Ab screening (differentiation assay, NAT); Southwestern/dideoxy terminology supplementary; three inferred facts marked pending (balanced translocation now verified). Visual items planned in `docs/VISUAL_LEARNING_PLAN.md` (not built; needs approval). Lab: 61 CORE / 6 SUPPLEMENTARY.
 - **Genetics batch 1 (7 Nov 2026, draft):** `src/content/biochem/gen1.ts`, 14 concepts, 23 objectives (AD/AR/XR/XD/mitochondrial inheritance, pedigrees and risk, X-inactivation, codominance, penetrance/expressivity, anticipation, dominant negative/haploinsufficiency, mosaicism, nondisjunction, Down syndrome, trisomies 18/13, Robertsonian translocation, 22q11.2). 81 playable items: 78 CORE / 3 SUPPLEMENTARY; 52 R / 10 M / 19 A. 18 objectives covered in full, 5 with deferred parts; 1 fact pending. Change log `BIOCHEM_GEN1_CHANGELOG.md`, packet `BIOCHEM_GEN1_REVIEW.md`.
 
-  **Stopped for review. Next (only after review): Genetics batch 2 (imprinting, Hardy–Weinberg, single-gene disorders, repeats, sex chromosomes), on the owner's request.**
+- **Genetics batch 1 revision 1 + visual learning + Genetics batch 2 (7 Nov 2026, draft):**
+  - Revision 1 (owner review):
+    - 22q11.2: pouches (thymus, parathyroids) vs cardiac neural crest/outflow tract (conotruncal defects);
+    - probability stems state carrier/noncarrier status; best-fit (not "impossible") distractor explanations;
+    - mitochondrial inheritance qualified (heteroplasmy, tissue distribution, threshold);
+    - atlantoaxial instability restored; prominent occiput and rocker-bottom feet added;
+    - pending claims confirmed or kept pending with their status. Gen1: 61 verified / 0 pending; Lab1: 47 / 1.
+  - Visual learning (approved):
+    - `src/content/figures.ts` + `Figure.tsx`: original data-generated SVG gels, Western blots and pedigrees;
+    - validation tests, accessible text equivalents, packet export;
+    - 12 items have figures.
+    - Flow plots, karyogram and FISH are not built. Microdeletions will be shown by FISH or microarray, never on a karyogram (`docs/VISUAL_LEARNING_PLAN.md`).
+  - Genetics batch 2: `src/content/biochem/gen2.ts`, 13 concepts, 23 objectives:
+    - imprinting/UPD, Prader–Willi, Angelman, Beckwith–Wiedemann;
+    - Hardy–Weinberg; repeat disorders; 47,XYY;
+    - CF; sickle; hemophilia; two-hit; heterogeneity; reciprocal translocations; inheritance-pattern map.
+  - Batch 2 items and facts:
+    - 68 playable items: 67 CORE / 1 SUPPLEMENTARY; 37 R / 13 M / 18 A;
+    - 49 verified facts, 1 pending (UPD meiosis mapping).
+  - Genetics coverage: 51 covered / 6 core-deferred / 2 partial / 24 missing (of 83).
+  - Docs: change log `BIOCHEM_GEN2_CHANGELOG.md`, packet `BIOCHEM_GEN2_REVIEW.md`.
+  - Browser play-check: PLAYCHECK_RESULT.
+
+  **Stopped for review. Next (only after review and on the owner's request): Nutrition or Metabolism, or the remaining Genetics objectives.**
 - Existing content (including the neuro/behavioral, MSK/skin and reproductive/endocrine batches drafted before the change) is preserved unchanged for its own subject audit.
 
 ## Knowledge tables (6 Nov 2026, in progress)

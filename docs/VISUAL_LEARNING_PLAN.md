@@ -1,6 +1,28 @@
-# Visual learning items — plan (for owner approval)
+# Visual learning items — plan and implementation status
 
-Status: **plan only, nothing built yet.** It needs a schema change, a new rendering component and a validation layer. It is written up for approval before implementation.
+Status: **approved by the owner; phase 1 and phase 3 (pedigrees) built, phase 2 not started.** Every figure is attached to draft content and is **not medically reviewed**. The validation tests show that a figure is internally consistent, not that it is clinically realistic.
+
+## Implementation status
+
+| Part | Status |
+|---|---|
+| Schema: optional `figure` on MCQs and Mystery Patient cases (`src/content/figures.ts`, `schema.ts`) | Built |
+| Gel renderer (log-scale band position, ladder, labelled lanes, optional intensity) | Built |
+| Western blot renderer (kDa scale, target label, absent band drawn as a dashed outline, never omitted) | Built |
+| Pedigree renderer (squares and circles, affected, carrier, proband arrow, consanguinity double line, notes) | Built (moved ahead of phase 2 at the owner's request) |
+| Validation (`src/content/__tests__/figures.test.ts`, 6 tests) | Built. Gels and blots: ladder sorted, bands within range, labelled lanes, absent bands explicit. Pedigrees: unique IDs; each couple is one male and one female in the same generation; children sit in the next generation with one set of parents; no male shown as an X-linked carrier; and no explicit contradiction of the declared mode (AD, AR, XR, XD, MT), with tested noncarriers marked so the check never relies on assumptions. |
+| Accessibility | Built. SVG has `role="img"`, `<title>` and `<desc>`; all labels are escaped; each figure carries alt text and an expandable plain-language text description generated from the same data. |
+| Responsive and theme-aware | Built. SVG scales to the card width; colours use the app's CSS tokens with fallbacks, checked in light and dark mode on a phone-width screenshot (no device testing). |
+| Review packets | Built. Each figure is written to `docs/subjects/review/figures/*.svg` and embedded beside its item with its validation result and text description. |
+| Items with figures | 3 gels (`lab-gel:mcq1`–`mcq3`), 1 Western blot (`lab-blotting:mcq3`), 8 pedigrees (`gen-ad:mcq1`, `gen-ar:mcq1`, `gen-xlr:mcq2`, `gen-xld:mcq1`, `gen-mito:mcq1`, `case:xlr-family`, `gen-repeats:mcq3`, `gen-two-hit:mcq1`). Item IDs unchanged. |
+| Flow histogram and dot plot | Not built (phase 2) |
+| Karyogram | Not built (phase 2). It will follow the resolution rule below. |
+| FISH | Not built (phase 2) |
+| "Read the result" game mode | Not built |
+
+### Resolution rule (owner instruction)
+
+A figure must show only what the test can detect. **Microscopic (sub-band) deletions are never drawn as visible on a routine karyogram.** The 22q11.2 deletion, the 15q11–q13 deletions of Prader–Willi and Angelman syndromes and similar microdeletions will be shown with a **FISH** figure (a missing probe signal beside a control signal) or a **microarray** figure (a copy-number dip), and a karyogram shown for such a patient will appear normal. The karyogram validator will reject a deletion below routine banding resolution.
 
 ## Goal
 
@@ -47,7 +69,7 @@ Every figure also carries `alt` (a one-sentence description) and `caption`. The 
 | Western | Same rules on a kDa scale; an "absent" band has intensity 0 (drawn as no band, never omitted silently) |
 | Flow histogram | Populations stay inside the axis range; peak area is proportional to `count` (so the "area reflects number of cells" principle is true in the picture) |
 | Flow dot plot | Quadrant counts add up to the stated total; quadrant labels come from the marker names (e.g. upper-left = CD4⁺CD8⁻) |
-| Karyogram | The chromosome count implied by `changes` matches the stated karyotype (e.g. 47,XX,+21); a deletion region exists on that arm |
+| Karyogram | The chromosome count implied by `changes` matches the stated karyotype (e.g. 47,XX,+21); a deletion region exists on that arm and is large enough to be visible by routine banding (microdeletions are rejected and must use FISH or microarray) |
 | FISH | Signal counts match the item's answer (e.g. one 22q11.2 signal plus two control signals for a deletion); a fusion requires both probes |
 
 The tests prove the figure is **internally consistent**. Medical review still decides whether it is **clinically realistic**, and each figure is shown in the review packet next to its item.

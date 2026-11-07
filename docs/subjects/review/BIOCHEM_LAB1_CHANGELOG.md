@@ -2,6 +2,20 @@
 
 All content is **draft, AI-drafted, not medically reviewed**. A verified source is not medical approval, and passing automated or browser checks shows only technical validity, not medical accuracy or editorial approval. Review packet: `BIOCHEM_LAB1_REVIEW.md`. Source: `src/content/biochem/lab1.ts` (`labBatch1`).
 
+## Revision 2 (evidence status and figures)
+
+No medical content changed except the three statements below. IDs and mappings are unchanged, and all content stays **draft**.
+
+| Statement | Revision 1 status | Now |
+|---|---|---|
+| cDNA lacks introns because it is copied from mature mRNA | Pending (inferred) | **Verified** (OpenStax Microbiology 12.1, which states that cDNA made from mRNA lacks introns) |
+| Guidelines allow more than one initial approach | Pending (partly verified) | **Verified.** Reworded to exactly what the sources state: the AAP (2025, PMID 40545261) recommends phenotype-directed testing when possible and a hypothesis-free approach otherwise; the ACMG (2021, PMID 34211152) recommends exome or genome sequencing as a first- or second-tier test. |
+| Reading a two-marker dot plot (quadrants are marker combinations) | Pending | **Still pending.** It is partly supported (OpenStax: two markers can be labelled at once; PMID 9462230 on dot-plot use). The quadrant reading is standard but not stated in the sources read. |
+
+**Facts now: 47 verified, 1 awaiting confirmation** (45 / 3 in revision 1). A verified source is not medical approval.
+
+**Figures:** original data-generated SVG figures were added to `lab-gel:mcq1` (HTT CAG repeat PCR), `lab-gel:mcq2` (lost restriction site), `lab-gel:mcq3` (pathogen PCR with positive and no-template controls) and `lab-blotting:mcq3` (dystrophin Western blot, with the absent band drawn as a dashed outline). Each figure passes the validation tests and is shown in the review packet. Flow plots, karyogram and FISH figures are not built yet. When they are, microdeletions will be shown by FISH or microarray, never as visible on a routine karyogram.
+
 ## Revision 1 (owner review of batch 1)
 
 These are targeted corrections. Concept IDs, item IDs and curriculum mappings are unchanged, and all content stays **draft**. Sections 1–7 below describe the original batch; this section takes precedence where they differ.

@@ -2,6 +2,40 @@
 
 All content is **draft, AI-drafted, not medically reviewed**. A verified source is not medical approval, and passing automated or browser checks shows only technical validity, not medical accuracy or editorial approval. Review packet: `BIOCHEM_GEN1_REVIEW.md`. Source: `src/content/biochem/gen1.ts` (`geneticsBatch1`).
 
+## Revision 1 (owner review of batch 1)
+
+These are targeted corrections. Concept IDs, item IDs, curriculum mappings and study history are unchanged, and all content stays **draft**. Sections 1–7 below describe the original batch; this section takes precedence where they differ.
+
+### Corrections
+
+| # | Item(s) | Change |
+|---|---|---|
+| 1 | `gen-22q11` (concept, `mcq1`) | DiGeorge embryology now separates two developmental systems. Abnormal **pharyngeal pouch** development explains thymic hypoplasia (T cells) and parathyroid hypoplasia (hypocalcemia). Abnormal **cardiac neural crest and outflow-tract** development explains the conotruncal defects. The correct answer reads "Abnormal pharyngeal pouch and cardiac neural crest development", and option e ("pouch failure explains the heart defect too") is now a distractor. Sources: PMID 1931005 (Hong 1991), PMID 30725888 (Ilahi, StatPearls 2023). |
+| 2 | `gen-xlr:mcq1`, and every other probability item reviewed | Stems now state the assumptions the answer depends on. The mother of the hemophilia man's children **does not carry an F8 variant** (on testing). The other stems now say: the AD partner **does not carry the variant** and the disorder is **fully penetrant**; the CF parents are **both shown to be carriers**; the XLH mother **does not carry the variant**. In `case:xlr-family`, the obligate-carrier reasoning was already explicit. |
+| 3 | `gen-xlr:mcq2` | The autosomal recessive explanation no longer claims it is impossible. It now says recessive inheritance can occasionally produce a similar picture, but affected males only, linked through unaffected women and never father to son, fits X-linked recessive far better. The answer explanation and steps now say "best explained by" and "most consistent with". The autosomal dominant and `gen-ad:mcq1` recessive explanations were softened the same way. |
+| 4 | `gen-mito` (concept, `mcq1`) | Mitochondrial transmission no longer implies that every child is affected. Heteroplasmy, tissue distribution and a threshold effect explain variable expression, including unaffected children. The stem now has three affected children and one unaffected child, and states that the woman's mother was affected. Source: PMID 32906214 (McCormick 2020). |
+| 5 | `gen-down` | Atlantoaxial instability is restored as a recognised association (new fact and new true/false item, appended). Screening recommendations are not taught. Sources: PMID 2966926 (Davidson 1988). Duodenal atresia and the double-bubble sign: PMID 8337875 (Grosfeld & Rescorla 1993). The deferred entry for atlantoaxial instability was removed. |
+| 6 | `gen-trisomy-18-13` | Prominent occiput and rocker-bottom feet were added to the classic trisomy 18 features (fact, quick, detailed, associations). Source: PMID 18232589 (Shaw 2008). The deferred entry was removed. |
+| 7 | Pedigree figures | Drawn pedigrees were added to `gen-ad:mcq1`, `gen-ar:mcq1`, `gen-xlr:mcq2`, `gen-xld:mcq1`, `gen-mito:mcq1` and `case:xlr-family` (see `docs/VISUAL_LEARNING_PLAN.md`). The `gen-mito:mcq1` stem gained "(whose mother was also affected)" to match its pedigree. |
+
+### Verification status after revision
+
+| Statement | Before | Now |
+|---|---|---|
+| Parathyroids from the third (inferior) and fourth (superior) pharyngeal pouches | Pending | **Verified** (PMID 30725888). The thymus is taught as a pouch derivative without a pouch number. |
+| Conotruncal defects reflect neural crest and outflow-tract development | Not stated | **Verified** (PMID 1931005) |
+| "Double bubble" radiograph for duodenal atresia | Not verified | **Verified** (PMID 8337875) |
+| Atlantoaxial instability as a Down syndrome association | Deferred | **Verified** as an association (PMID 2966926); its clinical significance is not taught |
+| Prominent occiput and rocker-bottom feet in trisomy 18 | Deferred | **Verified** (PMID 18232589) |
+| Heteroplasmy threshold explains variable expression | Partly stated | **Verified** (PMID 32906214) |
+| "Knight's move" phrase | Not verified | **Removed.** The text now describes the pattern ("grandfather to grandson through a carrier daughter"). |
+| A 45,X girl with a hemophilia variant can be affected | Reasoned | Unchanged: **reasoned** from verified facts (not a stated fact; it appears only in an item explanation) |
+| Defective subunit in a tetramer lowers function far below 50% | Mechanism verified, arithmetic reasoned | Unchanged |
+
+**Facts now: 61 verified, 0 awaiting confirmation** (55 / 1 before). A verified source means a source states the claim; it is **not** medical approval.
+
+**Coverage after revision:** `bc-autosomal-trisomies.down-associations` and `.edwards` are now covered in full. The remaining deferred items are the structural/receptor generalization (`ad-inheritance.mechanisms`), p53 (`dominant-negative`) and epicanthal folds/sandal gap (`down`).
+
 ## 1. Scope and approach
 
 - **23 objectives** from the approved Genetics checklist, prioritizing inheritance patterns and pedigrees, recurrence risk, atypical inheritance, mutation effects and the classic chromosomal syndromes. Imprinting, Hardy–Weinberg, single-gene disease catalogs, repeat disorders in detail and sex chromosome aneuploidies (already covered by legacy content) are left for later batches.
@@ -39,7 +73,7 @@ All content is **draft, AI-drafted, not medically reviewed**. A verified source 
 - Match Up: `match:inheritance-clues` (pedigree clue → pattern) and `match:chromosomal-syndromes`.
 - Mystery Patient: `case:xlr-family`. The sister of a man with hemophilia, whose mother is an obligate carrier, asks her son's risk: 1/2 × 1/2 = 1/4.
 
-Pedigrees are described in words for now. Drawn pedigrees are phase 3 of `docs/VISUAL_LEARNING_PLAN.md`.
+Pedigrees were described in words in the original batch; drawn pedigrees were added in revision 1.
 
 ## 3. Counts
 

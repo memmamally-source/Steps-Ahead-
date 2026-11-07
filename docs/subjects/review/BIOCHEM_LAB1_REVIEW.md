@@ -1,4 +1,4 @@
-# Biochemistry — Laboratory Techniques Batch 1, revision 1: medical review packet
+# Biochemistry — Laboratory techniques batch 1 review packet
 
 Status: **draft, AI-drafted, not medically reviewed.** Reviewer: mark each concept approved, needs changes or rejected, with notes. A citation alone is not approval.
 

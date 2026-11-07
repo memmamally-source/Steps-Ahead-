@@ -30,4 +30,8 @@ export const CONTENT_GAPS: Record<string, ContentGap> = {
   'bc-ad-inheritance.mechanisms': { deferred: 'the generalization that dominant disorders often involve structural proteins or receptors — not stated in the sources read' },
   'bc-gen-terms.dominant-negative': { deferred: 'mutant p53 as a named dominant negative example — taught with Hematology/Oncology' },
   'bc-autosomal-trisomies.down': { deferred: 'epicanthal folds and sandal gap — minor features not in the sources read' },
+  // Genetics batch 2.
+  'bc-trinucleotide.fragile-x': { deferred: 'mitral valve prolapse — not stated in the sources read' },
+  'bc-trinucleotide.friedreich': { deferred: 'iron handling as the specific mitochondrial role, loss of vibration and position sense (taught as sensory loss), pes cavus — not stated in the sources read' },
+  'bc-muscular-dystrophy.myotonic': { deferred: 'distal pattern of weakness, frontal balding, testicular atrophy — not stated in the sources read' },
 };
