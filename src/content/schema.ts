@@ -180,6 +180,21 @@ export const REASONING_DEPTH: Record<Reasoning, AssessedDepth> = {
   multistep: 'application',
 };
 
+/**
+ * Step 1 relevance of an item (a product-design label, not an official exam weight).
+ * - core: classic high-yield Step 1 knowledge a student preparing with mainstream resources should master.
+ * - application: high-yield concepts used in integration, interpretation or multistep Step 1 reasoning.
+ * - specialist: obscure, experimental or beyond expected Step 1 depth. Never shown in normal gameplay;
+ *   kept for editorial review.
+ * Target mix for standard content: about 80% core, 20% application.
+ */
+export type Priority = 'core' | 'application' | 'specialist';
+
+/** Explicit label if set; otherwise application-depth items are `application` and the rest `core`. */
+export function itemPriority(i: { priority?: Priority; depth?: AssessedDepth }): Priority {
+  return i.priority ?? (i.depth === 'application' ? 'application' : 'core');
+}
+
 /** Per-fact evidence status: verified directly in a read source, or awaiting confirmation. */
 export function factEvidence(c: Pick<Concept, 'facts' | 'factRefs' | 'factPending' | 'citations'>): ('verified' | 'pending')[] {
   return c.facts.map((_, i) => {
@@ -200,6 +215,10 @@ interface ItemBase {
   reasoning?: Reasoning;
   /** For application MCQs: the inferential steps the learner must make (≥ 2). Sequence items use `steps` for their ordered steps. */
   steps?: string[];
+  /** Step 1 relevance (see `Priority`); defaults via `itemPriority`. */
+  priority?: Priority;
+  /** Why an item was flagged specialist (or another note for editors). */
+  priorityNote?: string;
   difficulty: Difficulty;
   review: ReviewInfo;
   version: number;

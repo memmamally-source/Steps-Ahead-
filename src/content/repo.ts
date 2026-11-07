@@ -19,6 +19,7 @@ import type {
   SystemId,
   TrueFalseItem,
 } from './schema';
+import { itemPriority } from './schema';
 import { getTopic } from './taxonomy';
 
 export interface ContentPolicy {
@@ -53,8 +54,11 @@ export class ContentRepo {
     const ok = (s: ReviewStatus) => policy.visible.includes(s);
     this.concepts = allConcepts.filter((c) => c.packages.includes(pkg) && ok(c.review.status));
     this.conceptMap = new Map(this.concepts.map((c) => [c.id, c]));
-    // An item is visible only if it and every concept it links to are visible.
-    this.items = allItems.filter((i) => ok(i.review.status) && i.conceptIds.every((id) => this.conceptMap.has(id)));
+    // An item is visible only if it and every concept it links to are visible. Items flagged
+    // `specialist` (beyond expected Step 1 depth) never reach normal gameplay, pending editorial review.
+    this.items = allItems.filter(
+      (i) => ok(i.review.status) && itemPriority(i) !== 'specialist' && i.conceptIds.every((id) => this.conceptMap.has(id)),
+    );
   }
 
   get isPreview(): boolean {

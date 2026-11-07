@@ -228,6 +228,8 @@ const core = defineConcepts([
           'Normal copy number rules out a paternal deletion.',
           'No paternal alleles on parental SNP genotyping rules out an imprinting defect → maternal uniparental disomy.',
         ],
+        priority: 'specialist',
+        priorityNote: 'Separating uniparental disomy from an imprinting defect by SNP studies is beyond Step 1; Step 1 needs deletion vs UPD and which parent’s copy is active.',
         difficulty: 4,
       },
       {
@@ -429,6 +431,8 @@ const core = defineConcepts([
         mini: 'Blocking xanthine oxidase in massive purine overproduction lets xanthine accumulate, which is poorly soluble and can form stones.',
         reasoning: 'prediction',
         steps: ['HGPRT deficiency → large purine load reaches the degradation pathway.', 'Allopurinol blocks xanthine → urate.', 'Substrate xanthine accumulates and precipitates as stones.'],
+        priority: 'specialist',
+        priorityNote: 'Xanthine stones during allopurinol therapy are a niche complication beyond Step 1.',
         difficulty: 4,
       },
     ],
@@ -740,6 +744,8 @@ const core = defineConcepts([
         mini: 'Restoring the frame lets translation continue past the deletion, producing a Becker-like internally deleted dystrophin.',
         reasoning: 'prediction',
         steps: ['Out-of-frame deletion → premature stop → no dystrophin.', 'Skipping an extra exon makes the total missing length a multiple of 3.', 'Downstream codons are read in frame → shorter, partly functional protein (Becker-like).'],
+        priority: 'specialist',
+        priorityNote: 'Antisense exon-skipping therapy is beyond typical Step 1 depth.',
         difficulty: 4,
       },
       {
@@ -837,6 +843,8 @@ const core = defineConcepts([
         mini: 'U6 snRNA is a pol III transcript; the other major spliceosomal snRNAs are made by pol II.',
         reasoning: 'recall',
         objectives: [`${TX}.polymerases`],
+        priority: 'specialist',
+        priorityNote: 'Which polymerase makes U6 snRNA is beyond Step 1; Step 1 needs pol I/II/III → rRNA/mRNA/tRNA.',
         difficulty: 2,
       },
       {
@@ -852,7 +860,24 @@ const core = defineConcepts([
         mini: 'The TATA-binding protein in TFIID recognizes the TATA box and nucleates the basal factor complex that positions RNA polymerase II; a weaker site means fewer initiation events.',
         reasoning: 'mechanism',
         objectives: [`${TX}.regulation`],
+        priority: 'specialist',
+        priorityNote: 'TFIID/TATA-binding protein detail is beyond Step 1; replaced by core mcq4.',
         difficulty: 3,
+      },
+      {
+        stem: 'Why does a mutation in a gene’s promoter usually reduce the amount of its protein without changing the protein’s structure?',
+        options: [
+          ['a', 'The promoter controls how often transcription starts; it is not translated'],
+          ['b', 'The promoter is spliced out as an intron before translation', 'Promoters lie upstream of the transcription start site and are not transcribed into pre-mRNA.'],
+          ['c', 'The promoter encodes the protein’s signal sequence', 'Signal sequences are part of the coding sequence, not the promoter.'],
+          ['d', 'Promoter mutations cause premature stop codons', 'Stop codons arise in coding sequence; promoters are not read by the ribosome.'],
+          ['e', 'The promoter determines which amino acids tRNAs carry', 'tRNA charging is done by aminoacyl-tRNA synthetases.'],
+        ],
+        answer: 'a',
+        mini: 'Promoters (such as the TATA box) are where the transcription machinery assembles. A weaker promoter means less mRNA, so less of a normal protein.',
+        reasoning: 'mechanism',
+        objectives: [`${TX}.regulation`],
+        difficulty: 2,
       },
     ],
     tf: [
@@ -999,6 +1024,8 @@ const core = defineConcepts([
         mini: 'Dicer makes the final small RNA; without it RISC cannot be loaded and the miRNA targets escape repression.',
         reasoning: 'mechanism',
         objectives: [`${RN}.mirna`],
+        priority: 'specialist',
+        priorityNote: 'Dicer processing is beyond Step 1 depth; Step 1 needs miRNA silences mRNA post-transcriptionally.',
         difficulty: 3,
       },
       {
@@ -1038,7 +1065,7 @@ const core = defineConcepts([
     ],
     clues: [
       { answer: 'SPLICEOSOME', clue: 'snRNP machine that removes introns', objectives: [`${RN}.processing`], difficulty: 1 },
-      { answer: 'DICER', clue: 'Cytoplasmic ribonuclease that trims pre-miRNA to its final length', objectives: [`${RN}.mirna`], difficulty: 2 },
+      { answer: 'DICER', clue: 'Cytoplasmic ribonuclease that trims pre-miRNA to its final length', objectives: [`${RN}.mirna`], priority: 'specialist', priorityNote: 'Dicer is beyond Step 1 depth.', difficulty: 2 },
     ],
   },
   // ------------------------------------------------------------------------------------------------
@@ -1189,7 +1216,7 @@ const core = defineConcepts([
       },
     ],
     tf: [
-      { statement: 'Somatic mutations in the spliceosome component SF3B1 are common in myelodysplastic syndrome with ring sideroblasts.', isTrue: true, correction: 'Correct: SF3B1 mutations are typical of MDS with ring sideroblasts and also occur in some CLL.', difficulty: 2 },
+      { statement: 'Somatic mutations in the spliceosome component SF3B1 are common in myelodysplastic syndrome with ring sideroblasts.', isTrue: true, correction: 'Correct: SF3B1 mutations are typical of MDS with ring sideroblasts and also occur in some CLL.', priority: 'specialist', priorityNote: 'SF3B1 in MDS is specialist hematopathology.', difficulty: 2 },
     ],
     clues: [
       { answer: 'CRYPTIC', clue: 'Hidden splice site activated when the normal one is lost', difficulty: 2 },
@@ -1426,7 +1453,7 @@ const core = defineConcepts([
       { statement: 'Ricin and Shiga toxin both inactivate ribosomes by removing an adenine from 28S rRNA.', isTrue: true, correction: 'Correct: both are RNA N-glycosidases acting on the sarcin–ricin loop.', difficulty: 2 },
     ],
     clues: [
-      { answer: 'DIPHTHAMIDE', clue: 'Modified histidine on EF-2 that diphtheria toxin targets', difficulty: 2 },
+      { answer: 'DIPHTHAMIDE', clue: 'Modified histidine on EF-2 that diphtheria toxin targets', priority: 'specialist', priorityNote: 'Diphthamide is beyond Step 1; the Step 1 point is EF-2 ADP-ribosylation.', difficulty: 2 },
       { answer: 'RICIN', clue: 'Castor bean toxin that depurinates 28S rRNA', difficulty: 2 },
     ],
   },
@@ -1835,6 +1862,8 @@ const sequences: SequenceItem[] = [
     explanation: 'miRNA biogenesis runs nucleus → cytoplasm: Pol II transcription, Drosha, export, Dicer, Argonaute loading; target recognition by seed pairing then reduces protein output.',
     conceptIds: ['mol-rna-processing'],
     objectiveIds: [`${RN}.mirna`],
+    priority: 'specialist',
+    priorityNote: 'Drosha/Dicer/RISC biogenesis order is beyond Step 1.',
     difficulty: 3,
   }),
   seq({

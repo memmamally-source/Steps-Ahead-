@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { ALL_CONCEPTS, ALL_ITEMS } from '@/content/index';
 import { presentOptions } from '@/content/options';
-import { REASONING_DEPTH, type ConnectionsPuzzleItem, type GameItem, type McqItem, type Reasoning } from '@/content/schema';
+import { ContentRepo, REVIEWER_PREVIEW } from '@/content/repo';
+import { REASONING_DEPTH, itemPriority, type ConnectionsPuzzleItem, type GameItem, type McqItem, type Reasoning } from '@/content/schema';
 import { defensiblePartitions, solutions, verifyPuzzle } from '@/content/connectionsVerify';
 import { globalCategories } from '@/content/connectionsCatalog';
 import { MANUAL_AUDIT } from '@/content/connectionsAudit';
@@ -175,5 +176,28 @@ describe('Opaque option ids', () => {
 describe('Genuine application items', () => {
   it('state at least two inferential steps for every application-level MCQ', () => {
     for (const i of ALL_ITEMS) if (i.kind === 'mcq' && i.depth === 'application') expect(i.steps?.length ?? 0, i.id).toBeGreaterThanOrEqual(2);
+  });
+});
+
+describe('Step 1 relevance labels (core / application / specialist)', () => {
+  const linked = ALL_ITEMS.filter((i) => i.objectiveIds?.length);
+
+  it('gives every specialist item a reason and keeps it out of normal gameplay', () => {
+    const specialist = linked.filter((i) => itemPriority(i) === 'specialist');
+    expect(specialist.length).toBeGreaterThan(0);
+    for (const i of specialist) expect((i.priorityNote ?? '').length, i.id).toBeGreaterThan(20);
+    const repo = new ContentRepo(ALL_CONCEPTS, ALL_ITEMS, REVIEWER_PREVIEW);
+    for (const i of specialist) expect(repo.item(i.id), i.id).toBeUndefined();
+  });
+
+  it('never labels a recognition item as application without reasoning to match', () => {
+    for (const i of linked) if (itemPriority(i) === 'application') expect(i.depth, i.id).toBe('application');
+  });
+
+  it('keeps standard curriculum-linked content mostly core (target ≈ 80% core / 20% application)', () => {
+    const standard = linked.filter((i) => i.kind !== 'group' && itemPriority(i) !== 'specialist');
+    const core = standard.filter((i) => itemPriority(i) === 'core').length / standard.length;
+    expect(core).toBeGreaterThan(0.7);
+    expect(core).toBeLessThan(0.9);
   });
 });

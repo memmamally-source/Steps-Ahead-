@@ -1,5 +1,6 @@
 import type { Coverage, Depth, Objective, Subject, Subtopic } from './types';
 import type { Concept, GameItem, ReviewStatus } from '../schema';
+import { itemPriority } from '../schema';
 
 export interface Located<T> {
   subdivision: string;
@@ -29,8 +30,14 @@ export function rollUp(coverages: Coverage[]): Coverage {
 
 export type ObjectiveReview = 'no content' | ReviewStatus;
 
-/** Complete, independently playable items (everything except Connections category-bank entries). */
-export const isPlayable = (i: GameItem) => i.kind !== 'group';
+/**
+ * Complete, independently playable items in normal gameplay: everything except Connections
+ * category-bank entries and items flagged `specialist` (excluded pending editorial review).
+ */
+export const isPlayable = (i: GameItem) => i.kind !== 'group' && itemPriority(i) !== 'specialist';
+/** Objective relevance label (explicit, or derived from the depths it requires). */
+export const objectivePriority = (o: Objective): 'core' | 'application' | 'specialist' =>
+  o.priority ?? (o.depth.includes('application') ? 'application' : 'core');
 const ORDER: ReviewStatus[] = ['draft', 'in_review', 'approved', 'published', 'retired'];
 
 /** The audit result for one objective, combining curriculum-linked content with legacy judgements. */
