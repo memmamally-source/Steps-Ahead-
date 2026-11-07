@@ -23,6 +23,14 @@ Large unstructured batches have stopped. Content is now developed subject by sub
   - new playable games **Mechanism Lab** (`sequence` items) and **Match Up** (`match` items).
 
   Batch 2 is `src/content/biochem/molecular2.ts`: 20 concepts covering the remaining 26 Molecular objectives (chromatin/epigenetics, OTC vs orotic aciduria, XO inhibitors, replication, topoisomerase drugs, telomerase, reading-frame rule, transcription and inhibitors, RNA processing/miRNA, snRNP autoantibodies, splice disease, translation, ribosomes/antibiotics, translation toxins, protein folding, α1AT, collagen synthesis, OI). It has 122 items: 45 MCQs (22 application), 28 TF, 32 clues, 5 sequences, 6 match sets, 1 curated puzzle, 3 bank groups and 2 cases. Facts: 98 verified, 4 awaiting confirmation. All 51 Molecular objectives are now covered by linked content. Change logs: `BIOCHEM_BATCH1_CHANGELOG.md` (revision 3 section) and `BIOCHEM_BATCH2_CHANGELOG.md`; packets: `BIOCHEM_BATCH1_REVIEW.md` and `BIOCHEM_BATCH2_REVIEW.md` (`npx vite-node scripts/review-packet.ts -- batch2 <out> "<title>"`). **Stopped for review; Cellular Biochemistry not started.**
+- **Batch 2 revision 2 + batch 1 revision 4 (7 Nov 2026, draft):** owner corrections.
+  - Epigenetics mcq1 disambiguated with parental SNP data; OI genotype–phenotype qualified; OTC wording corrected.
+  - The four pending mechanisms verified (PMC10453542, ULORIC label on DailyMed, NCBI Gene EEF2, PMID 22708567); batch 2 has 104 verified facts, 0 pending.
+  - Gameplay validated: `npm run check:games`, 174/174 checks on a touch phone viewport; a teach-sheet duplicate-key bug was fixed.
+  - Connections re-audited with `defensiblePartitions` plus a per-puzzle manual audit (`connectionsAudit.ts`): two batch 1 puzzles had genuine second solutions (fixed) and the batch 2 puzzle was redesigned.
+  - Category-bank entries are excluded from item counts and coverage (`isPlayable`).
+
+  **Cellular Biochemistry not started; awaiting the owner's request.**
 - Existing content (including the neuro/behavioral, MSK/skin and reproductive/endocrine batches drafted before the change) is preserved unchanged for its own subject audit.
 
 ## Knowledge tables (6 Nov 2026, in progress)
