@@ -105,7 +105,14 @@ Batch 2 now has 46 MCQs, 29 true/false, 25 clues, 7 sequences, 5 match sets, 1 C
 
 ### R9. Browser validation
 
-BROWSER_PLACEHOLDER
+`npm run check:games` (headless Chromium, iPhone 13 emulation, production build): **522 passed, 0 failed**. All 16 Mechanism Lab sequences were played both correctly and incorrectly, and all 17 Match Up sets were played, including the 3 new sequences and the new match set.
+
+How the two earlier failures were resolved:
+- **Stale explanation (`match:receptor-classes`):** the item snapshot had been taken before the explanation was edited. The check now regenerates the snapshot on every run, so it compares against current content.
+- **12 of 13 sequences in the incorrect-order pass:** the fixed 80-round cap was too low under relevance-weighted random draws. The cap now scales with the number of items (60 rounds per item).
+- **Intermittent Mechanism Lab slot failures** (`seq:a1at-emphysema` earlier, `seq:collagen` in the first revision run): reproducible whenever source files were edited during a run. The check used the Vite dev server, which hot-reloads on every edit and swapped the item on screen mid-round. A run with no source edits passed 285 checks before my 900-second debug timeout stopped it. The check now builds first and serves the production build (`vite preview`), and the full run above passed with no failures.
+
+No device testing, deployment or medical review was done.
 
 ## 1. Scope and approach
 
