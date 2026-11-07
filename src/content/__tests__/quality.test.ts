@@ -201,11 +201,14 @@ describe('Step 1 relevance (independent of cognitive depth)', () => {
     expect(linked.some((i) => itemRelevance(i) === 'specialist' && i.depth === 'recognition')).toBe(true);
   });
 
-  it('meets the flexible game-design mix (~80% recognition/mechanism, ~20% application) in playable linked content', () => {
-    const playable = linked.filter((i) => i.kind !== 'group' && itemRelevance(i) !== 'specialist');
-    const app = playable.filter((i) => i.depth === 'application').length / playable.length;
-    expect(app).toBeGreaterThan(0.1);
-    expect(app).toBeLessThan(0.3);
+  it('matches cognitive depth to the game format (no fixed global quota)', () => {
+    // Depth follows the learning objective and the format: Mystery Patient applies foundational science,
+    // Mechanism Lab tests mechanisms, Match Up and Connections reinforce recall.
+    for (const i of linked) {
+      if (i.kind === 'case') expect(i.depth, i.id).toBe('application');
+      if (i.kind === 'sequence') expect(i.depth, i.id).toBe('mechanism');
+      if (i.kind === 'match' || i.kind === 'group' || i.kind === 'connections') expect(i.depth, i.id).toBe('recognition');
+    }
   });
 
   it('prioritises core content in weighted draws', () => {
