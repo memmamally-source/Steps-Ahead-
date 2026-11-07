@@ -1,3 +1,4 @@
+import { Figure } from '@/components/Figure';
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router';
 import { Icon } from '@/components/Icon';
@@ -141,6 +142,7 @@ function Case({ kase, daily, focusLabel, onAgain }: { kase: CaseItem; daily?: st
             </div>
               <div className="stack-sm">
                 <p className="question">{kase.question}</p>
+            {kase.figure && <Figure figure={kase.figure} />}
                 {options}
               </div>
             </div>
@@ -191,6 +193,7 @@ function Case({ kase, daily, focusLabel, onAgain }: { kase: CaseItem; daily?: st
         <Sheet title="Your answer" onClose={() => setAnswering(false)}>
           <div className="stack">
             <p className="question">{kase.question}</p>
+            {kase.figure && <Figure figure={kase.figure} />}
             {options}
           </div>
         </Sheet>

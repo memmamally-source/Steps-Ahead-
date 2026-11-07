@@ -306,3 +306,7 @@ details.more[open] > summary .chev-down { transform: rotate(180deg); }
 
 .ring-label { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; line-height: 1.05; }
 .empty { text-align: center; padding: 32px 20px; color: var(--muted); }
+
+/* Data-generated figures (gels, blots, pedigrees) */
+.figure-art { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.figure-art svg { display: block; margin: 0 auto; }

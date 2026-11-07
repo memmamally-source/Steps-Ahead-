@@ -19,7 +19,7 @@ Status: **draft, AI-drafted, not medically reviewed.** Reviewer: mark each conce
 |---|---|
 | Concepts | 11 |
 | Objectives taught | 14 |
-| Facts verified / awaiting direct confirmation | 45 / 3 |
+| Facts verified / awaiting direct confirmation | 47 / 1 |
 | **Playable learning items (total)** | **67** |
 | — MCQs / true-false / crossword clues | 30 / 19 / 12 |
 | — Mechanism Lab sequences / Match Up sets | 2 / 2 |
@@ -144,6 +144,11 @@ Objectives: `bc-pcr-sequencing.interpret`, `bc-pcr-sequencing.pcr`
 
 - **MCQ** **CORE** · depth APPLICATION · `lab-gel:mcq1` · interpretation → **application** · difficulty 3 · `bc-pcr-sequencing.interpret`
   - PCR across the HTT CAG repeat is run on a gel. A man’s lanes show one band at the normal size and one band well above it, nearer the wells. What does the upper band represent?
+  - Figure (gel, original, generated from data; passes validation):
+
+    ![Agarose gel: the control lane has one band at 200 bp; the patient lane has bands at 200 bp and 290 bp.](figures/lab-gel_mcq1.svg)
+
+  - Figure text: Agarose gel. Ladder: 500, 400, 300, 200, 100 bp. Control: 200 bp. Patient: 200 bp, 290 bp.
   - ◻️ A. A more abundant copy of the normal allele — _Band position reflects size, not amount._
   - ◻️ B. Contaminating protein in the sample — _Proteins are not stained or separated by this DNA gel in the same way._
   - ◻️ C. An RNA transcript of the HTT gene — _PCR of genomic DNA amplifies DNA, not RNA._
@@ -153,6 +158,11 @@ Objectives: `bc-pcr-sequencing.interpret`, `bc-pcr-sequencing.pcr`
   - Explanation: Longer fragments run less far. A band above the normal allele is a larger product: an expanded CAG repeat (40 or more almost always causes Huntington disease).
 - **MCQ** **CORE** · depth APPLICATION · `lab-gel:mcq2` · interpretation → **application** · difficulty 3 · `bc-pcr-sequencing.interpret`
   - A gene region is cut with a restriction enzyme and run on a gel. A control gives two short bands; a patient gives one longer band of their combined size. What is the most likely explanation?
+  - Figure (gel, original, generated from data; passes validation):
+
+    ![Agarose gel: the control digest gives bands at 600 and 400 bp; the patient gives a single band at 1000 bp.](figures/lab-gel_mcq2.svg)
+
+  - Figure text: Agarose gel. Ladder: 1000, 700, 500, 300, 200, 100 bp. Control: 600 bp, 400 bp. Patient: 1000 bp.
   - ◻️ A. The patient has a trinucleotide repeat expansion — _An expansion lengthens one fragment; it does not remove a cut site._
   - ◻️ B. The enzyme cut the patient’s DNA at more sites — _More cutting gives more, shorter fragments, not one longer one._
   - ✅ C. A mutation destroyed the restriction site
@@ -162,6 +172,11 @@ Objectives: `bc-pcr-sequencing.interpret`, `bc-pcr-sequencing.pcr`
   - Explanation: If the site between two fragments is lost, the enzyme cannot cut there: the two shorter fragments become one longer band of their combined size.
 - **MCQ** **CORE** · depth APPLICATION · `lab-gel:mcq3` · interpretation → **application** · difficulty 3 · `bc-pcr-sequencing.interpret`
   - PCR for a pathogen-specific gene is run on a patient sample, a positive control and a no-template control. Only the patient lane and the positive control show a band of the expected size. What does this indicate?
+  - Figure (gel, original, generated from data; passes validation):
+
+    ![Agarose gel: patient and positive-control lanes each show a 350 bp band; the no-template control lane is empty.](figures/lab-gel_mcq3.svg)
+
+  - Figure text: Agarose gel. Ladder: 1000, 500, 300, 200, 100 bp. Patient: 350 bp. Positive: 350 bp. No template: no band.
   - ◻️ A. The band shows the amount of pathogen present — _End-point PCR is not quantitative._
   - ◻️ B. The patient has antibodies to the pathogen — _PCR detects nucleic acid, not antibodies._
   - ✅ C. The pathogen’s DNA is present in the sample
@@ -288,6 +303,11 @@ Objectives: `bc-blotting.choose`, `bc-blotting.western`
   - Explanation: Separated proteins probed with labeled DNA = Southwestern blot, which identifies DNA-binding proteins such as transcription factors.
 - **MCQ** **CORE** · depth APPLICATION · `lab-blotting:mcq3` · interpretation → **application** · difficulty 3 · `bc-blotting.western`
   - Two boys with proximal muscle weakness have muscle biopsies. On Western blot for dystrophin, boy A has no band; boy B has a band that is fainter and smaller than normal. Which interpretation fits?
+  - Figure (western, original, generated from data; passes validation):
+
+    ![Western blot for dystrophin: strong band at 427 kDa in normal muscle, no band in boy A, a faint smaller band near 400 kDa in boy B.](figures/lab-blotting_mcq3.svg)
+
+  - Figure text: Western blot for dystrophin. Markers: 460, 268, 171, 117 kDa. Normal: strong band at 427 kDa. Boy A: no band at 427 kDa. Boy B: faint band at 400 kDa.
   - ◻️ A. Both need a Southern blot before any interpretation — _The protein result itself distinguishes the two forms._
   - ◻️ B. A: Becker; B: Duchenne — _Duchenne lacks functional dystrophin; Becker keeps an abnormal, partly functional protein._
   - ◻️ C. Neither has a dystrophinopathy — _Absent or abnormal dystrophin defines a dystrophinopathy._
@@ -691,10 +711,7 @@ Objectives: `bc-karyotype-fish.choose`
 - Microarrays find pathogenic copy-number changes in many children whose karyotypes are normal. [3]
 - A targeted single-variant test is used for relatives of someone with a known familial variant; panels are used when many genes can cause the condition; exome or genome sequencing when the cause remains unclear. [4]
 - A karyotype shows chromosome number and structure, including translocations. [5, 4]
-- Guidelines allow more than one initial approach. When a specific disorder can be suspected from the phenotype, testing is targeted to it; otherwise a hypothesis-free (genome-wide) approach is used, and exome or genome sequencing is recommended as a first- or second-tier test alongside chromosomal microarray. [6, 7]
-
-**Awaiting direct source confirmation** (reasoned or existence-only; must be confirmed before approval)
-
+- Guidelines allow more than one initial approach: the AAP (2025) recommends testing selected by phenotype when possible and a hypothesis-free approach otherwise, and the ACMG (2021) recommends exome or genome sequencing as a first- or second-tier test; chromosomal microarray has also long been used first-line. [6, 7, 1]
 - Copy-number microarrays cannot detect balanced structural changes (such as balanced translocations), because no DNA is gained or lost. [8]
 
 **Mechanism.** Each test answers a different question. A karyotype shows number and arrangement of whole chromosomes; FISH asks about one known region; chromosomal microarray measures copy number across the genome; sequencing reads the bases of chosen genes. Because a microarray measures amount, a balanced rearrangement (same DNA, new position) is a karyotype question.
@@ -758,15 +775,13 @@ Objectives: `bc-gene-editing.cloning`, `bc-gene-editing.crispr`
 1. OpenStax Biology 2e, 17.1 Biotechnology — <https://openstax.org/books/biology-2e/pages/17-1-biotechnology> — checked: full-text
 2. OpenStax Microbiology, 12.2 Visualizing and Characterizing DNA, RNA, and Protein — <https://openstax.org/books/microbiology/pages/12-2-visualizing-and-characterizing-dna-rna-and-protein> — checked: full-text
 3. MedlinePlus Genetics: What are genome editing and CRISPR-Cas9? — <https://medlineplus.gov/genetics/understanding/genomicresearch/genomeediting/> — checked: full-text
+4. OpenStax Microbiology, 12.1 Microbes and the Tools of Genetic Engineering — <https://openstax.org/books/microbiology/pages/12-1-microbes-and-the-tools-of-genetic-engineering> — checked: full-text
 
 **Verified facts** [supporting citations]
 
+- Reverse transcriptase copies mRNA into complementary DNA (cDNA). Because mature mRNA has already had its introns removed, cDNA contains only the coding sequence. [1, 2, 4]
 - In molecular cloning, a DNA fragment is inserted into a plasmid vector (a small circular DNA that replicates independently) at a multiple cloning site and introduced into bacteria; this is how human insulin and growth hormone are produced. [1]
 - CRISPR-Cas9 genome editing uses a guide RNA with a short sequence complementary to a target site in the DNA; Cas9 cuts the DNA there, and the cell’s repair can disable the gene or insert a change. It was adapted from a bacterial defense against viruses. [3]
-
-**Awaiting direct source confirmation** (reasoned or existence-only; must be confirmed before approval)
-
-- Reverse transcriptase copies mRNA into complementary DNA (cDNA). Because mature mRNA has already had its introns removed, cDNA contains only the coding sequence. [1, 2]
 
 **Mechanism.** Cloning makes many copies of one piece of DNA by carrying it in a plasmid that bacteria replicate; starting from mRNA (via cDNA) gives the coding sequence without introns, which bacteria can express as protein. Genome editing goes the other way, changing the DNA in place: a guide RNA brings Cas9 to the target, Cas9 cuts, and repair alters the gene.
 

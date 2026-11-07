@@ -116,6 +116,16 @@ const core = defineConcepts([
     mcq: [
       {
         stem: 'In a three-generation pedigree, a disorder affects a grandfather, two of his sons and one daughter, and a son of one affected son. Unaffected people never have affected children. Which inheritance pattern fits best?',
+        figure: {
+          kind: 'pedigree', mode: 'AD',
+          generations: [
+            [{ id: 'gf', sex: 'M', status: 'affected' }, { id: 'gm', sex: 'F', status: 'unaffected' }],
+            [{ id: 's1', sex: 'M', status: 'affected' }, { id: 'w1', sex: 'F', status: 'unaffected' }, { id: 's2', sex: 'M', status: 'affected' }, { id: 'd1', sex: 'F', status: 'affected' }],
+            [{ id: 'g1', sex: 'M', status: 'affected', proband: true }, { id: 'g2', sex: 'F', status: 'unaffected' }],
+          ],
+          families: [{ parents: ['gf', 'gm'], children: ['s1', 's2', 'd1'] }, { parents: ['s1', 'w1'], children: ['g1', 'g2'] }],
+          alt: 'Three-generation pedigree: an affected grandfather has two affected sons and an affected daughter; one affected son has an affected son and an unaffected daughter.',
+        },
         options: [
           ['a', 'Autosomal dominant'],
           ['b', 'X-linked recessive', 'X-linked traits are never passed from father to son, but here an affected son has an affected son.'],
@@ -235,6 +245,16 @@ const core = defineConcepts([
     mcq: [
       {
         stem: 'Two unaffected first cousins have three children; two (a son and a daughter) have the same metabolic disorder. No other relatives in four generations are affected. Which inheritance pattern is most likely?',
+        figure: {
+          kind: 'pedigree', mode: 'AR',
+          generations: [
+            [{ id: 'f', sex: 'M', status: 'unaffected' }, { id: 'm', sex: 'F', status: 'unaffected' }],
+            [{ id: 'c1', sex: 'M', status: 'affected', proband: true }, { id: 'c2', sex: 'F', status: 'affected' }, { id: 'c3', sex: 'M', status: 'unaffected' }],
+          ],
+          families: [{ parents: ['f', 'm'], children: ['c1', 'c2', 'c3'], consanguineous: true }],
+          alt: 'Pedigree: unaffected first-cousin parents (double line) have an affected son, an affected daughter and an unaffected son.',
+          caption: 'Double line = consanguineous (related) couple.',
+        },
         options: [
           ['a', 'Autosomal recessive'],
           ['b', 'Autosomal dominant', 'Dominant disorders appear in every generation; here both parents are unaffected.'],
@@ -358,6 +378,16 @@ const core = defineConcepts([
       },
       {
         stem: 'Several men in a family have the same bleeding disorder. An affected man’s grandson through his unaffected daughter is affected, but none of the affected men’s sons are. Which inheritance pattern fits?',
+        figure: {
+          kind: 'pedigree', mode: 'XR',
+          generations: [
+            [{ id: 'gf', sex: 'M', status: 'affected' }, { id: 'gm', sex: 'F', status: 'unaffected' }],
+            [{ id: 'son', sex: 'M', status: 'unaffected' }, { id: 'dau', sex: 'F', status: 'unaffected' }, { id: 'sil', sex: 'M', status: 'unaffected' }],
+            [{ id: 'gs', sex: 'M', status: 'affected', proband: true }, { id: 'gd', sex: 'F', status: 'unaffected' }],
+          ],
+          families: [{ parents: ['gf', 'gm'], children: ['son', 'dau'] }, { parents: ['sil', 'dau'], children: ['gs', 'gd'] }],
+          alt: 'Pedigree: an affected man has an unaffected son and an unaffected daughter; the daughter’s son is affected.',
+        },
         options: [
           ['a', 'X-linked recessive'],
           ['b', 'Autosomal dominant', 'Dominant inheritance would usually affect the daughter, and father-to-son transmission would be expected.'],
@@ -449,6 +479,18 @@ const core = defineConcepts([
     mcq: [
       {
         stem: 'A man with hypophosphatemic rickets has four daughters and three sons with a woman who does not carry the variant. All four daughters have low phosphate; none of the sons does. Which inheritance pattern explains this?',
+        figure: {
+          kind: 'pedigree', mode: 'XD',
+          generations: [
+            [{ id: 'f', sex: 'M', status: 'affected' }, { id: 'm', sex: 'F', status: 'unaffected', note: 'noncarrier' }],
+            [
+              { id: 'd1', sex: 'F', status: 'affected' }, { id: 's1', sex: 'M', status: 'unaffected' }, { id: 'd2', sex: 'F', status: 'affected' },
+              { id: 's2', sex: 'M', status: 'unaffected' }, { id: 'd3', sex: 'F', status: 'affected' }, { id: 's3', sex: 'M', status: 'unaffected' }, { id: 'd4', sex: 'F', status: 'affected' },
+            ],
+          ],
+          families: [{ parents: ['f', 'm'], children: ['d1', 's1', 'd2', 's2', 'd3', 's3', 'd4'] }],
+          alt: 'Pedigree: an affected father and a noncarrier mother have four affected daughters and three unaffected sons.',
+        },
         options: [
           ['a', 'X-linked dominant'],
           ['b', 'X-linked recessive', 'Daughters of an affected man would be carriers, usually unaffected.'],
@@ -523,7 +565,20 @@ const core = defineConcepts([
     outline: found(MS, GEN),
     mcq: [
       {
-        stem: 'In a family with a neuromuscular disorder, an affected woman has four children: three are affected, from mild to severe, and one is unaffected. Her affected brother’s children are all unaffected. Which mechanism explains both the pattern and the variability?',
+                stem: 'In a family with a neuromuscular disorder, an affected woman (whose mother was also affected) has four children: three are affected, from mild to severe, and one is unaffected. Her affected brother’s children are all unaffected. Which mechanism explains both the pattern and the variability?',
+        figure: {
+          kind: 'pedigree', mode: 'MT',
+          generations: [
+            [{ id: 'gf', sex: 'M', status: 'unaffected' }, { id: 'gm', sex: 'F', status: 'affected' }],
+            [{ id: 'h', sex: 'M', status: 'unaffected' }, { id: 'w', sex: 'F', status: 'affected', proband: true }, { id: 'b', sex: 'M', status: 'affected' }, { id: 'bw', sex: 'F', status: 'unaffected' }],
+            [
+              { id: 'k1', sex: 'M', status: 'affected', note: 'severe' }, { id: 'k2', sex: 'F', status: 'affected', note: 'mild' }, { id: 'k3', sex: 'F', status: 'affected' }, { id: 'k4', sex: 'M', status: 'unaffected' },
+              { id: 'n1', sex: 'F', status: 'unaffected' }, { id: 'n2', sex: 'M', status: 'unaffected' },
+            ],
+          ],
+          families: [{ parents: ['gf', 'gm'], children: ['w', 'b'] }, { parents: ['h', 'w'], children: ['k1', 'k2', 'k3', 'k4'] }, { parents: ['b', 'bw'], children: ['n1', 'n2'] }],
+          alt: 'Pedigree: an affected grandmother has an affected daughter and an affected son. The daughter has three affected children of varying severity and one unaffected child; the son’s two children are unaffected.',
+        },
         options: [
           ['a', 'Mitochondrial inheritance with heteroplasmy'],
           ['b', 'Autosomal dominant with reduced penetrance', 'The brother’s children would then be at 50% risk, yet none is affected.'],
@@ -1378,6 +1433,16 @@ const cases: CaseItem[] = [
     id: 'case:xlr-family',
     relevance: 'core',
     title: 'The bleeding cousins',
+    figure: {
+      kind: 'pedigree', mode: 'XR',
+      generations: [
+        [{ id: 'gf', sex: 'M', status: 'unaffected' }, { id: 'gm', sex: 'F', status: 'unaffected' }],
+        [{ id: 'uncle', sex: 'M', status: 'affected' }, { id: 'mom', sex: 'F', status: 'unaffected' }, { id: 'dad', sex: 'M', status: 'unaffected' }],
+        [{ id: 'bro', sex: 'M', status: 'affected' }, { id: 'her', sex: 'F', status: 'unaffected', proband: true }],
+      ],
+      families: [{ parents: ['gf', 'gm'], children: ['uncle', 'mom'] }, { parents: ['dad', 'mom'], children: ['bro', 'her'] }],
+      alt: 'Pedigree: the proband’s maternal uncle and her brother have hemophilia A; her parents and maternal grandparents are unaffected.',
+    },
     conceptIds: ['gen-xlr'],
     objectiveIds: [`${XL}.xr-risk`],
     reasoning: 'multistep',

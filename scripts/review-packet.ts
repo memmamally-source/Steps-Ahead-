@@ -2,7 +2,9 @@
  * Writes a medical-review packet for curriculum-linked content.
  * Usage: npx vite-node scripts/review-packet.ts -- <batch1|batch2|cellular1|cellular2|lab1|gen1|conceptIdPrefix> <output.md> "<title>"
  */
-import { writeFileSync } from 'node:fs';
+import { mkdirSync, writeFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
+import { describeFigure, figureSvg, validateFigure, type Figure } from '../src/content/figures';
 import { ALL_CONCEPTS, ALL_ITEMS } from '../src/content/index';
 import { molecularBatch1 } from '../src/content/biochem/molecular1';
 import { molecularBatch2 } from '../src/content/biochem/molecular2';
@@ -64,6 +66,15 @@ L('');
 
 const opts = (i: { options: { id: string; text: string; whyWrong?: string }[]; answerId: string }) =>
   i.options.map((o, n) => `  - ${o.id === i.answerId ? '✅' : '◻️'} ${letter(n)}. ${o.text}${o.whyWrong ? ` — _${o.whyWrong}_` : ''}`);
+// Figures are written as standalone SVG files next to the packet and embedded by relative link.
+const figureLines = (id: string, f: Figure | undefined): string[] => {
+  if (!f) return [];
+  const file = `figures/${id.replace(/[^a-z0-9-]+/gi, '_')}.svg`;
+  mkdirSync(join(dirname(out), 'figures'), { recursive: true });
+  writeFileSync(join(dirname(out), file), figureSvg(f));
+  const problems = validateFigure(f);
+  return [`  - Figure (${f.kind}, original, generated from data${problems.length ? `; VALIDATION PROBLEMS: ${problems.join('; ')}` : '; passes validation'}):`, '', `    ![${f.alt}](${file})`, '', `  - Figure text: ${describeFigure(f)}`];
+};
 const stepLines = (i: GameItem) => (i.kind === 'mcq' && i.steps?.length ? [`  - Steps: ${i.steps.map((s, n) => `(${n + 1}) ${s}`).join(' ')}`] : []);
 
 for (const c of concepts) {
@@ -80,13 +91,13 @@ for (const c of concepts) {
   L(`**Misconception.** ${c.misconception}`, '', `**Takeaway.** ${c.takeaway}`, '');
   for (const i of items.filter((x) => x.conceptIds[0] === c.id)) {
     if (i.kind === 'mcq') {
-      L(`- **MCQ** ${tag(i)}`, `  - ${i.stem}`, ...opts(i), ...stepLines(i), `  - Explanation: ${i.mini}`);
+      L(`- **MCQ** ${tag(i)}`, `  - ${i.stem}`, ...figureLines(i.id, i.figure), ...opts(i), ...stepLines(i), `  - Explanation: ${i.mini}`);
     } else if (i.kind === 'tf') {
       L(`- **True/false** ${tag(i)}: ${i.statement} → **${i.isTrue ? 'True' : 'False'}**. ${i.correction}`);
     } else if (i.kind === 'clue') {
       L(`- **Crossword** ${tag(i)}: ${i.clue} → **${i.answer}**`);
     } else if (i.kind === 'case') {
-      L(`- **Mystery Patient** ${tag(i)}: ${i.title}`, ...i.stages.map((s) => `  - ${s.label}: ${s.text}`), `  - Q: ${i.question}`, ...opts(i), `  - ${i.explanation}`,
+      L(`- **Mystery Patient** ${tag(i)}: ${i.title}`, ...i.stages.map((s) => `  - ${s.label}: ${s.text}`), `  - Q: ${i.question}`, ...figureLines(i.id, i.figure), ...opts(i), `  - ${i.explanation}`,
         `  - Differentials: ${i.differentials.map((d) => `${d.name} (${d.why})`).join('; ')}`);
     } else if (i.kind === 'sequence') {
       L(`- **Mechanism Lab** ${tag(i)}: ${i.title}. ${i.prompt}`, ...i.steps.map((s, n) => `  ${n + 1}. ${s}`), `  - ${i.explanation}`);

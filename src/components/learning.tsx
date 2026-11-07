@@ -11,6 +11,7 @@ import { presentOptions } from '@/content/options';
 import { useSeed } from '@/state/clock';
 import { DISCIPLINES, SYSTEMS } from '@/content/taxonomy';
 import { useProgress } from '@/state/progress';
+import { Figure } from './Figure';
 import { Icon } from './Icon';
 import { Segmented, Sheet } from './ui';
 
@@ -54,6 +55,7 @@ export function QuestionCard({ item, onAnswer, answered }: { item: QItem; onAnsw
   return (
     <div className="stack">
       <p className="question">{promptText(item)}</p>
+      {item.kind === 'mcq' && item.figure && <Figure figure={item.figure} />}
       <div className={item.kind === 'tf' ? 'grid-2' : 'stack-sm'}>
         {choices.map((c, i) => {
           const state = answered ? (c.id === correctId ? ' is-correct' : c.id === answered ? ' is-wrong' : ' dim') : '';

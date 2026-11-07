@@ -1,3 +1,4 @@
+import type { Figure } from './figures';
 /**
  * Authoring helpers. A concept is written once with its items alongside it, then split into
  * normalised Concept and GameItem records with stable ids (`<conceptId>:mcq1`, `:tf1`, `:clue1`).
@@ -42,6 +43,8 @@ export interface McqDraft {
   /** Step 1 relevance; when omitted the concept's declared relevance applies (else unreviewed). */
   relevance?: Relevance;
   relevanceNote?: string;
+  /** Optional original figure (see figures.ts). */
+  figure?: Figure;
 }
 
 export interface TfDraft {
@@ -110,6 +113,7 @@ export function defineConcepts(drafts: ConceptDraft[]): Bundle {
         review: AI_DRAFT,
         version: 1,
         stem: m.stem,
+        ...(m.figure ? { figure: m.figure } : {}),
         options: m.options.map(([id, text, whyWrong]) => ({ id, text, whyWrong })),
         answerId: m.answer,
         mini: m.mini,

@@ -216,6 +216,12 @@ const core = defineConcepts([
     mcq: [
       {
         stem: 'PCR across the HTT CAG repeat is run on a gel. A man’s lanes show one band at the normal size and one band well above it, nearer the wells. What does the upper band represent?',
+        figure: {
+          kind: 'gel', ladder: [500, 400, 300, 200, 100],
+          lanes: [{ label: 'Control', bands: [{ bp: 200 }] }, { label: 'Patient', bands: [{ bp: 200 }, { bp: 290 }] }],
+          alt: 'Agarose gel: the control lane has one band at 200 bp; the patient lane has bands at 200 bp and 290 bp.',
+          caption: 'PCR across the HTT CAG repeat (illustrative product sizes).',
+        },
         options: [
           ['a', 'An allele with an expanded (longer) CAG repeat'],
           ['b', 'An allele with a deletion of the repeat', 'A deletion shortens the product, so its band would run farther, not less far.'],
@@ -232,6 +238,12 @@ const core = defineConcepts([
       },
       {
         stem: 'A gene region is cut with a restriction enzyme and run on a gel. A control gives two short bands; a patient gives one longer band of their combined size. What is the most likely explanation?',
+        figure: {
+          kind: 'gel', ladder: [1000, 700, 500, 300, 200, 100],
+          lanes: [{ label: 'Control', bands: [{ bp: 600 }, { bp: 400 }] }, { label: 'Patient', bands: [{ bp: 1000 }] }],
+          alt: 'Agarose gel: the control digest gives bands at 600 and 400 bp; the patient gives a single band at 1000 bp.',
+          caption: 'Restriction digest of the same gene region (illustrative sizes).',
+        },
         options: [
           ['a', 'A mutation destroyed the restriction site'],
           ['b', 'The patient has an extra copy of the gene', 'An extra copy would not join the two fragments into one.'],
@@ -248,6 +260,12 @@ const core = defineConcepts([
       },
       {
         stem: 'PCR for a pathogen-specific gene is run on a patient sample, a positive control and a no-template control. Only the patient lane and the positive control show a band of the expected size. What does this indicate?',
+        figure: {
+          kind: 'gel', ladder: [1000, 500, 300, 200, 100],
+          lanes: [{ label: 'Patient', bands: [{ bp: 350 }] }, { label: 'Positive', bands: [{ bp: 350 }] }, { label: 'No template', bands: [] }],
+          alt: 'Agarose gel: patient and positive-control lanes each show a 350 bp band; the no-template control lane is empty.',
+          caption: 'Pathogen-specific PCR with controls.',
+        },
         options: [
           ['a', 'The pathogen’s DNA is present in the sample'],
           ['b', 'The test failed because the no-template lane is blank', 'A blank no-template control is the expected result; it shows no contamination.'],
@@ -415,6 +433,16 @@ const core = defineConcepts([
       },
       {
         stem: 'Two boys with proximal muscle weakness have muscle biopsies. On Western blot for dystrophin, boy A has no band; boy B has a band that is fainter and smaller than normal. Which interpretation fits?',
+        figure: {
+          kind: 'western', ladder: [460, 268, 171, 117], target: 'dystrophin',
+          lanes: [
+            { label: 'Normal', bands: [{ kDa: 427, intensity: 3 }] },
+            { label: 'Boy A', bands: [{ kDa: 427, intensity: 0 }] },
+            { label: 'Boy B', bands: [{ kDa: 400, intensity: 1 }] },
+          ],
+          alt: 'Western blot for dystrophin: strong band at 427 kDa in normal muscle, no band in boy A, a faint smaller band near 400 kDa in boy B.',
+          caption: 'Muscle biopsy Western blot (illustrative sizes; the dashed outline marks where a normal band would be).',
+        },
         options: [
           ['a', 'A: Duchenne (no dystrophin); B: Becker (abnormal dystrophin)'],
           ['b', 'A: Becker; B: Duchenne', 'Duchenne lacks functional dystrophin; Becker keeps an abnormal, partly functional protein.'],

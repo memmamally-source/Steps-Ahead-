@@ -1,3 +1,4 @@
+import type { Figure } from './figures';
 /**
  * Medical content schema. Content is data, separate from game logic: every game reads the same
  * concepts and items, and every item links back to one or more concepts so analytics can roll up
@@ -248,6 +249,8 @@ export interface McqOption {
 export interface McqItem extends ItemBase {
   kind: 'mcq';
   stem: string;
+  /** Optional original figure the student must read (gel, blot, pedigree…); see `figures.ts`. */
+  figure?: Figure;
   options: McqOption[];
   answerId: string;
   mini: string;
@@ -294,6 +297,8 @@ export interface CaseStage {
 export interface CaseItem extends ItemBase {
   kind: 'case';
   title: string;
+  /** Optional original figure shown with the question. */
+  figure?: Figure;
   stages: CaseStage[];
   question: string;
   options: McqOption[];
