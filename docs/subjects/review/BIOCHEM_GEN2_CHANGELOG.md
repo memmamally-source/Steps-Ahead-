@@ -168,4 +168,4 @@ These are named in the checklist text, so the objectives are not counted as cove
 
 ### Browser validation
 
-See the result recorded below once the run completes.
+`npm run check:games` method (reviewer-preview build `VITE_ALLOW_UNREVIEWED=true`, `vite preview`, headless Chromium, iPhone 13 emulation): **672 passed, 0 failed**. All 20 Mechanism Lab sequences were played correctly and incorrectly, and all 23 Match Up sets were played, including `seq:cftr-df508`, `match:repeat-disorders` and `match:imprinting-causes`. No server was left running. Technical checks only; not evidence of medical accuracy.

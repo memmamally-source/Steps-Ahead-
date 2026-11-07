@@ -72,7 +72,7 @@ Large unstructured batches have stopped. Content is now developed subject by sub
     - 49 verified facts, 1 pending (UPD meiosis mapping).
   - Genetics coverage: 51 covered / 6 core-deferred / 2 partial / 24 missing (of 83).
   - Docs: change log `BIOCHEM_GEN2_CHANGELOG.md`, packet `BIOCHEM_GEN2_REVIEW.md`.
-  - Browser play-check: PLAYCHECK_RESULT.
+  - Browser play-check (reviewer-preview build): 672 passed, 0 failed.
 
   **Stopped for review. Next (only after review and on the owner's request): Nutrition or Metabolism, or the remaining Genetics objectives.**
 - Existing content (including the neuro/behavioral, MSK/skin and reproductive/endocrine batches drafted before the change) is preserved unchanged for its own subject audit.
