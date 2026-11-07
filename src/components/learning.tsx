@@ -312,10 +312,10 @@ export function LessonBody({ concept, excludeItemId }: { concept: Concept; exclu
       {concept.citations.length > 0 && (
         <p className="tiny muted">
           Reference:{' '}
-          {concept.citations.map((c) => {
+          {concept.citations.map((c, i) => {
             const s = getSource(c.sourceId);
             return s ? (
-              <a key={c.sourceId} href={s.url} target="_blank" rel="noreferrer">
+              <a key={`${i}:${c.url ?? c.sourceId}`} href={c.url ?? s.url} target="_blank" rel="noreferrer">
                 {s.name}
                 {c.locator ? ` (${c.locator})` : ''}
               </a>

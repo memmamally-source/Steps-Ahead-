@@ -12,7 +12,8 @@
     "test": "vitest run",
     "validate:content": "vitest run src/content",
     "check": "npm run typecheck && npm run lint && npm run test",
-    "report:biochem": "vite-node scripts/curriculum-report.ts"
+    "report:biochem": "vite-node scripts/curriculum-report.ts",
+    "check:games": "vite-node scripts/dump-game-items.ts -- /tmp/steps-ahead-game-items.json && node scripts/play-check-games.mjs /tmp/steps-ahead-game-items.json"
   },
   "dependencies": {
     "@fontsource-variable/inter": "^5.3.0",
