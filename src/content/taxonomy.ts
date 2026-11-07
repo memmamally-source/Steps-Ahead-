@@ -90,6 +90,7 @@ export const TOPICS: Topic[] = [
   { id: 'biochem-metabolism', title: 'Metabolic pathways', system: 'endocrine', discipline: 'biochemistry' },
   { id: 'biochem-molecular', title: 'Molecular biology: nucleotides, mutations and DNA repair', system: 'multisystem', discipline: 'biochemistry' },
   { id: 'biochem-cellular', title: 'Cellular biochemistry: cell cycle, organelles, cytoskeleton and membranes', system: 'multisystem', discipline: 'biochemistry' },
+  { id: 'biochem-lab', title: 'Laboratory techniques: PCR, blots, ELISA, flow cytometry, cytogenetics and sequencing', system: 'multisystem', discipline: 'biochemistry' },
   { id: 'biochem-connective', title: 'Collagen, elastin and connective tissue disorders', system: 'musculoskeletal-skin', discipline: 'biochemistry' },
   { id: 'biochem-inborn-errors', title: 'Inborn errors of metabolism', system: 'multisystem', discipline: 'biochemistry' },
   { id: 'biochem-lysosomal', title: 'Lysosomal storage disorders', system: 'multisystem', discipline: 'biochemistry' },

@@ -23,4 +23,7 @@ export const CONTENT_GAPS: Record<string, ContentGap> = {
   'bc-jak-stat.ligands': { deferred: 'G-CSF and GM-CSF as named JAK–STAT ligands — supplementary' },
   'bc-jak-stat.jak2': { deferred: 'ruxolitinib by name — supplementary drug example' },
   'bc-receptor-other.nuclear': { deferred: 'retinoic acid receptors and the zinc-finger DNA-binding domain — supplementary' },
+  // Laboratory techniques batch 1.
+  'bc-elisa-flow.flow': { deferred: 'leukemia and lymphoma immunophenotyping — taught with Hematology/Oncology' },
+  'bc-gene-editing.crispr': { deferred: 'RNA interference, knock-in/knock-out and transgenic models, Cre-lox conditional systems — supplementary research tools' },
 };

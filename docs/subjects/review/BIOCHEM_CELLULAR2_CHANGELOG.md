@@ -81,6 +81,18 @@ M1, hCG, interferons and VEGF are no longer deferred.
 
 Relevance and difficulty remain separate labels. The new items are core, easy recognition items.
 
+### R2.7 Correction to the revision 1 browser-validation record
+
+Revision 1 (§R9) said that the 522-check run used the **production build**. That was not correct.
+- **Why it can't have been the production build:** a plain production build hides all draft content (only `published` items are shown unless the build is a reviewer preview, `VITE_ALLOW_UNREVIEWED=true`). It would have had nothing to play. The run must have reached a leftover development server on the same port, left over from an earlier debug run that had been stopped by a timeout. The 522 checks were genuine checks of the then-current content, but not against a production build.
+- **The earlier intermittent Mechanism Lab failures:** the dev-server hot-reload explanation remains the most likely cause, but it is not proven.
+- **What changed in the play-check:**
+  - `npm run check:games` now builds a reviewer preview (`VITE_ALLOW_UNREVIEWED=true`), the same setting the Pages deploy workflow uses.
+  - It starts Vite directly, so stopping it stops the server rather than leaving one behind.
+  - It refuses to run if its port is already in use.
+  - It fails clearly if the build contains no playable content.
+- **Current result:** see the Laboratory techniques batch 1 change log for the run that covers this content.
+
 ## Revision 1 (owner review of batch 2)
 
 Sections 1–7 below describe the original batch and are kept as a record. Where this revision changes them, this section takes precedence. All content stays **draft / AI-drafted**. Existing objectives, item IDs and curriculum mappings are unchanged; new items were appended.

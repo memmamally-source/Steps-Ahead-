@@ -1,6 +1,6 @@
 /**
  * Writes a medical-review packet for curriculum-linked content.
- * Usage: npx vite-node scripts/review-packet.ts -- <batch1|batch2|cellular1|cellular2|conceptIdPrefix> <output.md> "<title>"
+ * Usage: npx vite-node scripts/review-packet.ts -- <batch1|batch2|cellular1|cellular2|lab1|conceptIdPrefix> <output.md> "<title>"
  */
 import { writeFileSync } from 'node:fs';
 import { ALL_CONCEPTS, ALL_ITEMS } from '../src/content/index';
@@ -8,6 +8,7 @@ import { molecularBatch1 } from '../src/content/biochem/molecular1';
 import { molecularBatch2 } from '../src/content/biochem/molecular2';
 import { cellularBatch1 } from '../src/content/biochem/cellular1';
 import { cellularBatch2 } from '../src/content/biochem/cellular2';
+import { labBatch1 } from '../src/content/biochem/lab1';
 import { globalCategories } from '../src/content/connectionsCatalog';
 import { defensiblePartitions, redHerrings, solutions } from '../src/content/connectionsVerify';
 import { MANUAL_AUDIT } from '../src/content/connectionsAudit';
@@ -15,7 +16,7 @@ import { factEvidence, itemRelevance, type GameItem } from '../src/content/schem
 import { isPlayable, objectiveRelevance, objectivesOf } from '../src/content/curriculum/audit';
 import { BIOCHEMISTRY } from '../src/content/curriculum/biochemistry';
 
-const BATCHES = { batch1: molecularBatch1, batch2: molecularBatch2, cellular1: cellularBatch1, cellular2: cellularBatch2 } as const;
+const BATCHES = { batch1: molecularBatch1, batch2: molecularBatch2, cellular1: cellularBatch1, cellular2: cellularBatch2, lab1: labBatch1 } as const;
 const [sel = 'batch1', out = 'docs/subjects/review/packet.md', title = 'Review packet'] = process.argv.slice(2).filter((a) => a !== '--');
 const batch = BATCHES[sel as keyof typeof BATCHES];
 const conceptIdsOfBatch = batch ? new Set(batch.concepts.map((c) => c.id)) : undefined;

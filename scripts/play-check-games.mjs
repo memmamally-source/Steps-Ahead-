@@ -27,9 +27,17 @@ const norm = (s) => s.toLowerCase().replace(/\s+/g, ' ').trim();
 
 // Serve the production build, not the dev server: the dev server hot-reloads when a source file
 // changes, which can swap the item on screen mid-round and fail checks that have nothing to do with
-// the game. Run `npm run build` first (`npm run check:games` does).
+// the game. Build a reviewer preview first, `VITE_ALLOW_UNREVIEWED=true npm run build` (`npm run
+// check:games` does): a plain production build hides all draft content, so there would be nothing to play.
 if (!existsSync('dist/index.html')) throw new Error('dist/ not found: run npm run build first');
-const server = spawn('npx', ['vite', 'preview', '--port', String(PORT), '--strictPort'], { stdio: 'ignore' });
+// Refuse to test a stale server: if something already answers on the port, stop before starting ours.
+if (await fetch(URL).then(() => true, () => false)) {
+  console.log(`FAIL port ${PORT} is already in use: stop the old server first`);
+  process.exit(1);
+}
+// Start Vite directly (not through npx) so killing `server` stops the server itself; a wrapper left
+// running keeps serving the previous build's file list and makes the next run fail.
+const server = spawn(process.execPath, ['node_modules/vite/bin/vite.js', 'preview', '--port', String(PORT), '--strictPort'], { stdio: 'ignore' });
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 // Items are drawn at random, weighted by Step 1 relevance (core 3, supplementary 1), so a rarely drawn
 // item can take many rounds to appear. Repeat draws are cheap (the board is skipped), so the cap scales
@@ -63,6 +71,11 @@ async function main() {
   const seqByTitle = new Map(sequences.map((s) => [norm(s.title), s]));
   const seqDone = { right: new Set(), wrong: new Set() };
   await page.goto(URL + 'play/mechanism');
+  await page.locator('.card .label').or(page.getByText('No pathways yet.')).first().waitFor();
+  if (await page.getByText('No pathways yet.').count()) {
+    check('content visible (build with VITE_ALLOW_UNREVIEWED=true to preview draft content)', false);
+    throw new Error('no playable content in this build');
+  }
   for (let round = 0; round < maxRounds(sequences.length) && (seqDone.right.size < sequences.length || seqDone.wrong.size < sequences.length); round++) {
     await page.locator('.card .label').first().waitFor();
     const title = norm(await page.locator('.card .label').first().innerText());
