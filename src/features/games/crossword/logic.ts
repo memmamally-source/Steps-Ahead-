@@ -1,6 +1,6 @@
 import type { ContentRepo, ItemQuery } from '@/content/repo';
-import type { ClueItem } from '@/content/schema';
-import { seeded, shuffle } from '@/engine/random';
+import { relevanceWeight, type ClueItem } from '@/content/schema';
+import { seeded, weightedShuffle } from '@/engine/random';
 import { cellsOf, generateCrossword, type Grid, type Placed } from './generator';
 
 export type CrosswordKind = 'mini' | 'standard' | 'subject' | 'advanced';
@@ -26,7 +26,7 @@ export function buildCrossword(repo: ContentRepo, kind: CrosswordKind, seed: str
   // A word longer than the grid can never be placed (and would break a grid seeded with it).
   clues = clues.filter((c) => c.answer.length <= size.maxSize);
   const rnd = seeded(seed);
-  const pool = shuffle(clues, rnd);
+  const pool = weightedShuffle(clues, relevanceWeight, rnd);
   const grid = generateCrossword(
     pool.map((c) => ({ id: c.id, answer: c.answer, clue: c.clue })),
     rnd,

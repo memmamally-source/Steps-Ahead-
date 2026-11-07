@@ -5,8 +5,8 @@ import { TeachSheet } from '@/components/learning';
 import { ActionBar, Empty } from '@/components/ui';
 import { content } from '@/content';
 import type { ItemQuery } from '@/content/repo';
-import type { SequenceItem } from '@/content/schema';
-import { seeded, shuffle } from '@/engine/random';
+import { relevanceWeight, type SequenceItem } from '@/content/schema';
+import { seeded, shuffle, weightedShuffle } from '@/engine/random';
 import { useSeed } from '@/state/clock';
 import { useProgress } from '@/state/progress';
 import { useStudyContext } from '@/state/studyTimer';
@@ -20,7 +20,7 @@ export function MechanismGame({ query, focusLabel }: { query: ItemQuery; focusLa
   const item = useMemo(() => {
     const pool = content.itemsOf('sequence', query);
     const all = pool.length ? pool : content.itemsOf('sequence');
-    return shuffle(all, seeded(`${seedBase}:${round}`))[0];
+    return weightedShuffle(all, relevanceWeight, seeded(`${seedBase}:${round}`))[0];
   }, [query, round, seedBase]);
   if (!item) return <Empty>No pathways yet.</Empty>;
   return <Board key={`${item.id}-${round}`} item={item} seed={`${seedBase}:${round}`} focusLabel={focusLabel} onAgain={() => setRound((r) => r + 1)} />;

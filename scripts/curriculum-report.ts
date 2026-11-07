@@ -4,8 +4,8 @@
  */
 import { writeFileSync } from 'node:fs';
 import { BIOCHEMISTRY, BIOCHEMISTRY_V1_IDS } from '../src/content/curriculum/biochemistry';
-import { auditObjective, objectivePriority, objectivesOf, rollUp, subtopicsOf, type ObjectiveAudit } from '../src/content/curriculum/audit';
-import { itemPriority } from '../src/content/schema';
+import { auditObjective, objectiveRelevance, objectivesOf, rollUp, subtopicsOf, type ObjectiveAudit } from '../src/content/curriculum/audit';
+import { itemRelevance } from '../src/content/schema';
 import { NUTRITION_CROSS_CUTTING } from '../src/content/curriculum/crossCutting';
 import type { Coverage, Depth, Objective, OutlineRef, Subtopic } from '../src/content/curriculum/types';
 import { ALL_CONCEPTS, ALL_ITEMS } from '../src/content/index';
@@ -84,8 +84,10 @@ p(`| Existing content concepts teaching an objective | ${mappedConcepts.length} 
 p(`| Playable items assessing these objectives (Connections category-bank entries excluded) | ${allItems.size} |`);
 p(`| Objectives covered by curriculum-linked new content (computed) | ${count(linkedObjectives, (o) => cov(o) === 'covered')} of ${linkedObjectives.length} linked |`);
 const linkedItems = ALL_ITEMS.filter((i) => i.objectiveIds?.length && i.kind !== 'group');
-p(`| Step 1 relevance of objectives: CORE / APPLICATION / SPECIALIST | ${count(objectives, (o) => objectivePriority(o) === 'core')} / ${count(objectives, (o) => objectivePriority(o) === 'application')} / ${count(objectives, (o) => objectivePriority(o) === 'specialist')} |`);
-p(`| Curriculum-linked items: CORE / APPLICATION / SPECIALIST (specialist excluded from games and coverage) | ${count(linkedItems, (i) => itemPriority(i) === 'core')} / ${count(linkedItems, (i) => itemPriority(i) === 'application')} / ${count(linkedItems, (i) => itemPriority(i) === 'specialist')} |`);
+const rel = <T,>(xs: T[], f: (x: T) => string) => (['core', 'supplementary', 'specialist', 'unreviewed'] as const).map((r) => count(xs, (x) => f(x) === r)).join(' / ');
+p(`| Step 1 relevance of objectives: CORE / SUPPLEMENTARY / SPECIALIST / UNREVIEWED | ${rel(objectives, objectiveRelevance)} |`);
+p(`| Curriculum-linked items, Step 1 relevance: CORE / SUPPLEMENTARY / SPECIALIST / UNREVIEWED (specialist excluded from games and coverage) | ${rel(linkedItems, itemRelevance)} |`);
+p(`| Curriculum-linked items, cognitive depth: RECOGNITION / MECHANISM / APPLICATION | ${(['recognition', 'mechanism', 'application'] as const).map((d) => count(linkedItems, (i) => i.depth === d)).join(' / ')} |`);
 p('| Content medically reviewed or approved | 0 (all existing content is draft, AI-drafted) |', '');
 
 p('### By subdivision', '');
@@ -104,7 +106,7 @@ p('- Fabry disease described as X-linked with frequently affected heterozygous f
 p('- Sorbitol pathway reframed as one contributor to diabetic complications alongside glycation, PKC activation, hexosamine flux and oxidative stress; sorbitol is most important in the lens.');
 p('- Mechanism review: hyperammonemia (α-ketoglutarate depletion marked as debated), kwashiorkor edema (multifactorial), von Gierke and hereditary fructose intolerance hyperuricemia, alcoholic ketoacidosis, homocystinuria lens mechanism, familial chylomicronemia atherosclerosis risk, ADA toxicity, Marfan TGF-β wording, thiamine–glucose rationale.');
 p('- Nutrition kept as a cross-cutting area for later subjects (see the section below).');
-p('- Batch 1 content added for 25 Molecular biochemistry objectives and Batch 2 for the remaining 26, so all 51 Molecular objectives now have linked content. Cellular batch 1 adds the first 21 Cellular objectives (cell cycle, organelles, cytoskeleton, membranes); cell signaling follows. Coverage is computed from the content and counts only playable CORE and APPLICATION items. All of it is draft and not medically reviewed.', '');
+p('- Batch 1 content added for 25 Molecular biochemistry objectives and Batch 2 for the remaining 26, so all 51 Molecular objectives now have linked content. Cellular batch 1 adds the first 21 Cellular objectives (cell cycle, organelles, cytoskeleton, membranes); cell signaling follows. Coverage is computed from the content and counts playable items (core and supplementary; specialist excluded). Relevance (core / supplementary / specialist / unreviewed) is judged separately from cognitive depth. All of it is draft and not medically reviewed.', '');
 
 p('## Changes from version 1', '');
 const added = subtopics.filter((s) => s.origin.length === 0);

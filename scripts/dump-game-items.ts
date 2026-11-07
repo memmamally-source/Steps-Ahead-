@@ -5,10 +5,10 @@
  */
 import { writeFileSync } from 'node:fs';
 import { ALL_ITEMS } from '../src/content/index';
-import { itemPriority } from '../src/content/schema';
+import { itemRelevance } from '../src/content/schema';
 
 const [out = 'game-items.json'] = process.argv.slice(2).filter((a) => a !== '--');
-const playable = ALL_ITEMS.filter((i) => itemPriority(i) !== 'specialist');
+const playable = ALL_ITEMS.filter((i) => itemRelevance(i) !== 'specialist');
 const sequences = playable.flatMap((i) => (i.kind === 'sequence' ? [{ id: i.id, title: i.title, steps: i.steps, explanation: i.explanation }] : []));
 const matches = playable.flatMap((i) => (i.kind === 'match' ? [{ id: i.id, title: i.title, pairs: i.pairs, explanation: i.explanation }] : []));
 writeFileSync(out, JSON.stringify({ sequences, matches }, null, 2));

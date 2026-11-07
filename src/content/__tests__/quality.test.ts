@@ -1,8 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import { ALL_CONCEPTS, ALL_ITEMS } from '@/content/index';
 import { presentOptions } from '@/content/options';
+import { seeded, weightedShuffle } from '@/engine/random';
 import { ContentRepo, REVIEWER_PREVIEW } from '@/content/repo';
-import { REASONING_DEPTH, itemPriority, type ConnectionsPuzzleItem, type GameItem, type McqItem, type Reasoning } from '@/content/schema';
+import { REASONING_DEPTH, itemRelevance, relevanceWeight, type ConnectionsPuzzleItem, type GameItem, type McqItem, type Reasoning } from '@/content/schema';
 import { defensiblePartitions, solutions, verifyPuzzle } from '@/content/connectionsVerify';
 import { globalCategories } from '@/content/connectionsCatalog';
 import { MANUAL_AUDIT } from '@/content/connectionsAudit';
@@ -179,25 +180,40 @@ describe('Genuine application items', () => {
   });
 });
 
-describe('Step 1 relevance labels (core / application / specialist)', () => {
+describe('Step 1 relevance (independent of cognitive depth)', () => {
   const linked = ALL_ITEMS.filter((i) => i.objectiveIds?.length);
 
-  it('gives every specialist item a reason and keeps it out of normal gameplay', () => {
-    const specialist = linked.filter((i) => itemPriority(i) === 'specialist');
-    expect(specialist.length).toBeGreaterThan(0);
-    for (const i of specialist) expect((i.priorityNote ?? '').length, i.id).toBeGreaterThan(20);
+  it('labels every curriculum-linked item explicitly; nothing defaults to core', () => {
+    for (const i of linked) expect(i.relevance, i.id).toBeDefined();
+    const legacy = ALL_ITEMS.filter((i) => !i.objectiveIds?.length && !i.relevance);
+    expect(legacy.length).toBeGreaterThan(0);
+    for (const i of legacy) expect(itemRelevance(i), i.id).toBe('unreviewed');
+  });
+
+  it('gives every specialist or supplementary item a reason, and keeps specialist items out of gameplay', () => {
+    for (const i of linked) if (itemRelevance(i) === 'specialist' || itemRelevance(i) === 'supplementary') expect((i.relevanceNote ?? '').length, i.id).toBeGreaterThan(20);
     const repo = new ContentRepo(ALL_CONCEPTS, ALL_ITEMS, REVIEWER_PREVIEW);
-    for (const i of specialist) expect(repo.item(i.id), i.id).toBeUndefined();
+    for (const i of linked) if (itemRelevance(i) === 'specialist') expect(repo.item(i.id), i.id).toBeUndefined();
   });
 
-  it('never labels a recognition item as application without reasoning to match', () => {
-    for (const i of linked) if (itemPriority(i) === 'application') expect(i.depth, i.id).toBe('application');
+  it('keeps relevance and depth independent: core items exist at application depth', () => {
+    expect(linked.some((i) => itemRelevance(i) === 'core' && i.depth === 'application')).toBe(true);
+    expect(linked.some((i) => itemRelevance(i) === 'specialist' && i.depth === 'recognition')).toBe(true);
   });
 
-  it('keeps standard curriculum-linked content mostly core (target ≈ 80% core / 20% application)', () => {
-    const standard = linked.filter((i) => i.kind !== 'group' && itemPriority(i) !== 'specialist');
-    const core = standard.filter((i) => itemPriority(i) === 'core').length / standard.length;
-    expect(core).toBeGreaterThan(0.7);
-    expect(core).toBeLessThan(0.9);
+  it('meets the flexible game-design mix (~80% recognition/mechanism, ~20% application) in playable linked content', () => {
+    const playable = linked.filter((i) => i.kind !== 'group' && itemRelevance(i) !== 'specialist');
+    const app = playable.filter((i) => i.depth === 'application').length / playable.length;
+    expect(app).toBeGreaterThan(0.1);
+    expect(app).toBeLessThan(0.3);
+  });
+
+  it('prioritises core content in weighted draws', () => {
+    const pool = [...Array.from({ length: 50 }, (_, n) => ({ id: `c${n}`, relevance: 'core' as const })), ...Array.from({ length: 50 }, (_, n) => ({ id: `s${n}`, relevance: 'supplementary' as const }))];
+    const rnd = seeded('weights');
+    let core = 0;
+    for (let k = 0; k < 400; k++) if (weightedShuffle(pool, relevanceWeight, rnd)[0]!.relevance === 'core') core++;
+    expect(core / 400).toBeGreaterThan(0.65);
+    expect(weightedShuffle([{ relevance: 'specialist' as const }, { relevance: 'core' as const }], relevanceWeight, rnd)[0]!.relevance).toBe('core');
   });
 });

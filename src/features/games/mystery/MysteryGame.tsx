@@ -5,8 +5,8 @@ import { TeachSheet } from '@/components/learning';
 import { ActionBar, Empty, Sheet } from '@/components/ui';
 import { content } from '@/content';
 import type { ItemQuery } from '@/content/repo';
-import type { CaseItem } from '@/content/schema';
-import { dateKey, seeded, shuffle } from '@/engine/random';
+import { relevanceWeight, type CaseItem } from '@/content/schema';
+import { dateKey, seeded, weightedShuffle } from '@/engine/random';
 import { useSeed } from '@/state/clock';
 import { presentOptions } from '@/content/options';
 import { useProgress } from '@/state/progress';
@@ -21,7 +21,7 @@ export function MysteryGame({ daily, query, focusLabel }: { daily: boolean; quer
   const kase = useMemo(() => {
     const cases = content.itemsOf('case', query);
     if (daily) return dailyCase(content.itemsOf('case'), today);
-    return shuffle(cases.length ? cases : content.itemsOf('case'), seeded(`${seedBase}:${round}`))[0];
+    return weightedShuffle(cases.length ? cases : content.itemsOf('case'), relevanceWeight, seeded(`${seedBase}:${round}`))[0];
   }, [daily, query, round, today, seedBase]);
   if (!kase) return <Empty>No cases yet.</Empty>;
   return <Case key={`${kase.id}-${round}`} kase={kase} daily={daily ? `${today}:mystery` : undefined} focusLabel={focusLabel} onAgain={daily ? undefined : () => setRound((r) => r + 1)} />;

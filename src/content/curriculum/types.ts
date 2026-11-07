@@ -93,12 +93,6 @@ export interface Objective {
   home?: SubjectId;
   /** Outline references specific to this objective (in addition to the subtopic's). */
   outline: OutlineRef[];
-  /**
-   * Step 1 relevance. Set to 'specialist' only for objectives judged beyond expected Step 1 depth
-   * (excluded from new content). Otherwise derived: application if it requires application depth,
-   * else core (see objectivePriority in audit.ts).
-   */
-  priority?: 'core' | 'application' | 'specialist';
 }
 
 export interface Subtopic {

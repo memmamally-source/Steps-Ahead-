@@ -12,7 +12,7 @@ import type {
   Difficulty,
   GameItem,
   McqItem,
-  Priority,
+  Relevance,
   ReviewInfo,
   TrueFalseItem,
 } from './schema';
@@ -39,9 +39,9 @@ export interface McqDraft {
   reasoning?: Reasoning;
   /** Required for application-level reasoning: the inferential steps (≥ 2). */
   steps?: string[];
-  /** Step 1 relevance; omit to derive it from depth (see itemPriority). */
-  priority?: Priority;
-  priorityNote?: string;
+  /** Step 1 relevance; when omitted the concept's declared relevance applies (else unreviewed). */
+  relevance?: Relevance;
+  relevanceNote?: string;
 }
 
 export interface TfDraft {
@@ -53,8 +53,8 @@ export interface TfDraft {
   /** Defaults to recognition. */
   depth?: AssessedDepth;
   reasoning?: Reasoning;
-  priority?: Priority;
-  priorityNote?: string;
+  relevance?: Relevance;
+  relevanceNote?: string;
 }
 
 export interface ClueDraft {
@@ -65,8 +65,8 @@ export interface ClueDraft {
   /** Defaults to recognition. */
   depth?: AssessedDepth;
   reasoning?: Reasoning;
-  priority?: Priority;
-  priorityNote?: string;
+  relevance?: Relevance;
+  relevanceNote?: string;
 }
 
 export type ConceptDraft = Omit<Concept, 'packages' | 'review' | 'version' | 'updatedAt' | 'citations'> & {
@@ -105,7 +105,7 @@ export function defineConcepts(drafts: ConceptDraft[]): Bundle {
         conceptIds: [d.id],
         ...link(m.objectives, m.depth, m.reasoning),
         ...(m.steps ? { steps: m.steps } : {}),
-        ...(m.priority ? { priority: m.priority } : {}), ...(m.priorityNote ? { priorityNote: m.priorityNote } : {}),
+        ...((m.relevance ?? d.relevance) ? { relevance: m.relevance ?? d.relevance } : {}), ...(m.relevanceNote ? { relevanceNote: m.relevanceNote } : {}),
         difficulty: m.difficulty ?? d.difficulty,
         review: AI_DRAFT,
         version: 1,
@@ -125,7 +125,7 @@ export function defineConcepts(drafts: ConceptDraft[]): Bundle {
         id: `${d.id}:tf${i + 1}`,
         conceptIds: [d.id],
         ...link(t.objectives, t.depth ?? 'recognition', t.reasoning ?? (d.curriculum ? 'recall' : undefined)),
-        ...(t.priority ? { priority: t.priority } : {}), ...(t.priorityNote ? { priorityNote: t.priorityNote } : {}),
+        ...((t.relevance ?? d.relevance) ? { relevance: t.relevance ?? d.relevance } : {}), ...(t.relevanceNote ? { relevanceNote: t.relevanceNote } : {}),
         difficulty: t.difficulty ?? d.difficulty,
         review: AI_DRAFT,
         version: 1,
@@ -142,7 +142,7 @@ export function defineConcepts(drafts: ConceptDraft[]): Bundle {
         id: `${d.id}:clue${i + 1}`,
         conceptIds: [d.id],
         ...link(c.objectives, c.depth ?? 'recognition', c.reasoning ?? (d.curriculum ? 'recall' : undefined)),
-        ...(c.priority ? { priority: c.priority } : {}), ...(c.priorityNote ? { priorityNote: c.priorityNote } : {}),
+        ...((c.relevance ?? d.relevance) ? { relevance: c.relevance ?? d.relevance } : {}), ...(c.relevanceNote ? { relevanceNote: c.relevanceNote } : {}),
         difficulty: c.difficulty ?? d.difficulty,
         review: AI_DRAFT,
         version: 1,

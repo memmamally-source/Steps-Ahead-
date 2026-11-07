@@ -141,6 +141,8 @@ export interface Concept {
    * after the subject-by-subject strategy must declare them so coverage is computed, not judged.
    */
   curriculum?: string[];
+  /** Step 1 relevance of the concept as a whole (items carry their own label). */
+  relevance?: Relevance;
   /** For each fact (same index), the indices of `citations` that support it. */
   factRefs?: number[][];
   /**
@@ -181,19 +183,28 @@ export const REASONING_DEPTH: Record<Reasoning, AssessedDepth> = {
 };
 
 /**
- * Step 1 relevance of an item (a product-design label, not an official exam weight).
- * - core: classic high-yield Step 1 knowledge a student preparing with mainstream resources should master.
- * - application: high-yield concepts used in integration, interpretation or multistep Step 1 reasoning.
- * - specialist: obscure, experimental or beyond expected Step 1 depth. Never shown in normal gameplay;
- *   kept for editorial review.
- * Target mix for standard content: about 80% core, 20% application.
+ * Step 1 relevance of an item or concept. Independent of cognitive depth (`AssessedDepth`): a complex
+ * application vignette on a classic mechanism can be CORE; a one-line recall of an obscure finding
+ * can be SPECIALIST.
+ * - core: topic and expected depth are supported by the official Step 1 outline and mainstream Step 1
+ *   preparation standards.
+ * - supplementary: within the curriculum but beyond core depth; reinforces it and may appear in games
+ *   at a lower frequency.
+ * - specialist: obscure, experimental or postgraduate depth. Never served in games; kept for review.
+ * - unreviewed: not yet evaluated. Nothing is assumed to be core.
  */
-export type Priority = 'core' | 'application' | 'specialist';
+export type Relevance = 'core' | 'supplementary' | 'specialist' | 'unreviewed';
 
-/** Explicit label if set; otherwise application-depth items are `application` and the rest `core`. */
-export function itemPriority(i: { priority?: Priority; depth?: AssessedDepth }): Priority {
-  return i.priority ?? (i.depth === 'application' ? 'application' : 'core');
+/** Explicit label, or `unreviewed` until an editor evaluates the item. */
+export function itemRelevance(i: { relevance?: Relevance }): Relevance {
+  return i.relevance ?? 'unreviewed';
 }
+
+/** Relative frequency in normal gameplay: core is prioritised, specialist never appears. */
+export const RELEVANCE_WEIGHT: Record<Relevance, number> = { core: 3, supplementary: 1, unreviewed: 1, specialist: 0 };
+
+/** Gameplay weight of an item from its relevance. */
+export const relevanceWeight = (i: { relevance?: Relevance }): number => RELEVANCE_WEIGHT[itemRelevance(i)];
 
 /** Per-fact evidence status: verified directly in a read source, or awaiting confirmation. */
 export function factEvidence(c: Pick<Concept, 'facts' | 'factRefs' | 'factPending' | 'citations'>): ('verified' | 'pending')[] {
@@ -215,10 +226,10 @@ interface ItemBase {
   reasoning?: Reasoning;
   /** For application MCQs: the inferential steps the learner must make (≥ 2). Sequence items use `steps` for their ordered steps. */
   steps?: string[];
-  /** Step 1 relevance (see `Priority`); defaults via `itemPriority`. */
-  priority?: Priority;
-  /** Why an item was flagged specialist (or another note for editors). */
-  priorityNote?: string;
+  /** Step 1 relevance (see `Relevance`); `unreviewed` when absent. Independent of `depth`. */
+  relevance?: Relevance;
+  /** Why an item is supplementary or specialist (or another note for editors). */
+  relevanceNote?: string;
   difficulty: Difficulty;
   review: ReviewInfo;
   version: number;

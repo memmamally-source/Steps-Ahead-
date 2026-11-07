@@ -88,6 +88,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'mol-chromatin',
+    relevance: 'core',
     title: 'Chromatin structure and epigenetic control',
     discipline: 'biochemistry',
     alsoDisciplines: ['genetics'],
@@ -169,6 +170,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'mol-epigenetic-disease',
+    relevance: 'core',
     title: 'Epigenetic silencing in disease: X-inactivation, imprinting and fragile X',
     discipline: 'genetics',
     alsoDisciplines: ['biochemistry'],
@@ -228,8 +230,8 @@ const core = defineConcepts([
           'Normal copy number rules out a paternal deletion.',
           'No paternal alleles on parental SNP genotyping rules out an imprinting defect → maternal uniparental disomy.',
         ],
-        priority: 'specialist',
-        priorityNote: 'Separating uniparental disomy from an imprinting defect by SNP studies is beyond Step 1; Step 1 needs deletion vs UPD and which parent’s copy is active.',
+        relevance: 'specialist',
+        relevanceNote: 'Separating uniparental disomy from an imprinting defect by SNP studies is beyond Step 1; Step 1 needs deletion vs UPD and which parent’s copy is active.',
         difficulty: 4,
       },
       {
@@ -274,6 +276,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'mol-otc-vs-orotic',
+    relevance: 'core',
     title: 'Orotic aciduria: OTC deficiency vs UMP synthase deficiency',
     discipline: 'biochemistry',
     alsoDisciplines: ['genetics'],
@@ -361,6 +364,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'mol-xo-inhibitors',
+    relevance: 'core',
     title: 'Xanthine oxidase inhibitors and the thiopurine interaction',
     discipline: 'pharmacology',
     alsoDisciplines: ['biochemistry'],
@@ -431,8 +435,8 @@ const core = defineConcepts([
         mini: 'Blocking xanthine oxidase in massive purine overproduction lets xanthine accumulate, which is poorly soluble and can form stones.',
         reasoning: 'prediction',
         steps: ['HGPRT deficiency → large purine load reaches the degradation pathway.', 'Allopurinol blocks xanthine → urate.', 'Substrate xanthine accumulates and precipitates as stones.'],
-        priority: 'specialist',
-        priorityNote: 'Xanthine stones during allopurinol therapy are a niche complication beyond Step 1.',
+        relevance: 'specialist',
+        relevanceNote: 'Xanthine stones during allopurinol therapy are a niche complication beyond Step 1.',
         difficulty: 4,
       },
     ],
@@ -446,6 +450,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'mol-replication',
+    relevance: 'core',
     title: 'DNA replication: enzymes, strands and origins',
     discipline: 'biochemistry',
     system: 'multisystem',
@@ -526,6 +531,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'mol-topoisomerase-drugs',
+    relevance: 'core',
     title: 'Topoisomerase inhibitors: anticancer drugs and fluoroquinolones',
     discipline: 'pharmacology',
     alsoDisciplines: ['biochemistry', 'microbiology'],
@@ -604,6 +610,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'mol-telomerase',
+    relevance: 'core',
     title: 'Telomeres and telomerase',
     discipline: 'biochemistry',
     alsoDisciplines: ['cell-biology', 'pathology'],
@@ -679,6 +686,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'mol-reading-frame',
+    relevance: 'core',
     title: 'The reading-frame rule: Duchenne vs Becker muscular dystrophy',
     discipline: 'genetics',
     alsoDisciplines: ['biochemistry'],
@@ -744,8 +752,8 @@ const core = defineConcepts([
         mini: 'Restoring the frame lets translation continue past the deletion, producing a Becker-like internally deleted dystrophin.',
         reasoning: 'prediction',
         steps: ['Out-of-frame deletion → premature stop → no dystrophin.', 'Skipping an extra exon makes the total missing length a multiple of 3.', 'Downstream codons are read in frame → shorter, partly functional protein (Becker-like).'],
-        priority: 'specialist',
-        priorityNote: 'Antisense exon-skipping therapy is beyond typical Step 1 depth.',
+        relevance: 'specialist',
+        relevanceNote: 'Antisense exon-skipping therapy is beyond typical Step 1 depth.',
         difficulty: 4,
       },
       {
@@ -773,6 +781,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'mol-transcription',
+    relevance: 'core',
     title: 'Eukaryotic transcription: RNA polymerases and promoters',
     discipline: 'biochemistry',
     system: 'multisystem',
@@ -828,6 +837,8 @@ const core = defineConcepts([
         reasoning: 'prediction',
         objectives: [`${TX}.regulation`],
         steps: ['The TATA box positions the transcription machinery; it is not translated.', 'A mutation lowers initiation frequency → less mRNA.', 'The coding sequence and splicing are normal → normal β chain in reduced amount.'],
+        relevance: 'supplementary',
+        relevanceNote: 'TATA-box β-thalassemia is a supplementary example; promoter function is core.',
         difficulty: 3,
       },
       {
@@ -843,8 +854,8 @@ const core = defineConcepts([
         mini: 'U6 snRNA is a pol III transcript; the other major spliceosomal snRNAs are made by pol II.',
         reasoning: 'recall',
         objectives: [`${TX}.polymerases`],
-        priority: 'specialist',
-        priorityNote: 'Which polymerase makes U6 snRNA is beyond Step 1; Step 1 needs pol I/II/III → rRNA/mRNA/tRNA.',
+        relevance: 'specialist',
+        relevanceNote: 'Which polymerase makes U6 snRNA is beyond Step 1; Step 1 needs pol I/II/III → rRNA/mRNA/tRNA.',
         difficulty: 2,
       },
       {
@@ -860,8 +871,8 @@ const core = defineConcepts([
         mini: 'The TATA-binding protein in TFIID recognizes the TATA box and nucleates the basal factor complex that positions RNA polymerase II; a weaker site means fewer initiation events.',
         reasoning: 'mechanism',
         objectives: [`${TX}.regulation`],
-        priority: 'specialist',
-        priorityNote: 'TFIID/TATA-binding protein detail is beyond Step 1; replaced by core mcq4.',
+        relevance: 'specialist',
+        relevanceNote: 'TFIID/TATA-binding protein detail is beyond Step 1; replaced by core mcq4.',
         difficulty: 3,
       },
       {
@@ -892,6 +903,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'mol-transcription-inhibitors',
+    relevance: 'core',
     title: 'Transcription inhibitors: α-amanitin, rifampin and dactinomycin',
     discipline: 'pharmacology',
     alsoDisciplines: ['biochemistry', 'microbiology'],
@@ -972,6 +984,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'mol-rna-processing',
+    relevance: 'core',
     title: 'mRNA processing and small regulatory RNAs',
     discipline: 'biochemistry',
     system: 'multisystem',
@@ -1024,8 +1037,8 @@ const core = defineConcepts([
         mini: 'Dicer makes the final small RNA; without it RISC cannot be loaded and the miRNA targets escape repression.',
         reasoning: 'mechanism',
         objectives: [`${RN}.mirna`],
-        priority: 'specialist',
-        priorityNote: 'Dicer processing is beyond Step 1 depth; Step 1 needs miRNA silences mRNA post-transcriptionally.',
+        relevance: 'specialist',
+        relevanceNote: 'Dicer processing is beyond Step 1 depth; Step 1 needs miRNA silences mRNA post-transcriptionally.',
         difficulty: 3,
       },
       {
@@ -1065,12 +1078,13 @@ const core = defineConcepts([
     ],
     clues: [
       { answer: 'SPLICEOSOME', clue: 'snRNP machine that removes introns', objectives: [`${RN}.processing`], difficulty: 1 },
-      { answer: 'DICER', clue: 'Cytoplasmic ribonuclease that trims pre-miRNA to its final length', objectives: [`${RN}.mirna`], priority: 'specialist', priorityNote: 'Dicer is beyond Step 1 depth.', difficulty: 2 },
+      { answer: 'DICER', clue: 'Cytoplasmic ribonuclease that trims pre-miRNA to its final length', objectives: [`${RN}.mirna`], relevance: 'specialist', relevanceNote: 'Dicer is beyond Step 1 depth.', difficulty: 2 },
     ],
   },
   // ------------------------------------------------------------------------------------------------
   {
     id: 'mol-snrnp-autoantibodies',
+    relevance: 'core',
     title: 'snRNP autoantibodies: anti-Smith and anti-U1 RNP',
     discipline: 'immunology',
     alsoDisciplines: ['biochemistry'],
@@ -1148,6 +1162,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'mol-splice-disease',
+    relevance: 'core',
     title: 'Splice-site mutations in disease',
     discipline: 'genetics',
     alsoDisciplines: ['biochemistry', 'pathology'],
@@ -1216,15 +1231,16 @@ const core = defineConcepts([
       },
     ],
     tf: [
-      { statement: 'Somatic mutations in the spliceosome component SF3B1 are common in myelodysplastic syndrome with ring sideroblasts.', isTrue: true, correction: 'Correct: SF3B1 mutations are typical of MDS with ring sideroblasts and also occur in some CLL.', priority: 'specialist', priorityNote: 'SF3B1 in MDS is specialist hematopathology.', difficulty: 2 },
+      { statement: 'Somatic mutations in the spliceosome component SF3B1 are common in myelodysplastic syndrome with ring sideroblasts.', isTrue: true, correction: 'Correct: SF3B1 mutations are typical of MDS with ring sideroblasts and also occur in some CLL.', relevance: 'specialist', relevanceNote: 'SF3B1 in MDS is specialist hematopathology.', difficulty: 2 },
     ],
     clues: [
-      { answer: 'CRYPTIC', clue: 'Hidden splice site activated when the normal one is lost', difficulty: 2 },
+      { answer: 'CRYPTIC', clue: 'Hidden splice site activated when the normal one is lost', relevance: 'supplementary', relevanceNote: 'The term cryptic splice site is supplementary vocabulary; splice-site mutations are core.', difficulty: 2 },
     ],
   },
   // ------------------------------------------------------------------------------------------------
   {
     id: 'mol-translation',
+    relevance: 'core',
     title: 'tRNA charging and the steps of translation',
     discipline: 'biochemistry',
     system: 'multisystem',
@@ -1307,6 +1323,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'mol-ribosome-antibiotics',
+    relevance: 'core',
     title: 'Ribosomes and protein synthesis inhibitors',
     discipline: 'microbiology',
     alsoDisciplines: ['pharmacology', 'biochemistry'],
@@ -1382,6 +1399,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'mol-translation-toxins',
+    relevance: 'core',
     title: 'Toxins that halt eukaryotic translation',
     discipline: 'microbiology',
     alsoDisciplines: ['biochemistry'],
@@ -1453,13 +1471,14 @@ const core = defineConcepts([
       { statement: 'Ricin and Shiga toxin both inactivate ribosomes by removing an adenine from 28S rRNA.', isTrue: true, correction: 'Correct: both are RNA N-glycosidases acting on the sarcin–ricin loop.', difficulty: 2 },
     ],
     clues: [
-      { answer: 'DIPHTHAMIDE', clue: 'Modified histidine on EF-2 that diphtheria toxin targets', priority: 'specialist', priorityNote: 'Diphthamide is beyond Step 1; the Step 1 point is EF-2 ADP-ribosylation.', difficulty: 2 },
+      { answer: 'DIPHTHAMIDE', clue: 'Modified histidine on EF-2 that diphtheria toxin targets', relevance: 'specialist', relevanceNote: 'Diphthamide is beyond Step 1; the Step 1 point is EF-2 ADP-ribosylation.', difficulty: 2 },
       { answer: 'RICIN', clue: 'Castor bean toxin that depurinates 28S rRNA', difficulty: 2 },
     ],
   },
   // ------------------------------------------------------------------------------------------------
   {
     id: 'mol-protein-folding',
+    relevance: 'core',
     title: 'Protein modification, folding and quality control',
     discipline: 'biochemistry',
     alsoDisciplines: ['cell-biology'],
@@ -1545,6 +1564,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'mol-a1at',
+    relevance: 'core',
     title: 'α1-Antitrypsin deficiency',
     discipline: 'pathology',
     alsoDisciplines: ['biochemistry', 'genetics'],
@@ -1629,6 +1649,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'mol-collagen-synthesis',
+    relevance: 'core',
     title: 'Collagen synthesis',
     discipline: 'biochemistry',
     alsoDisciplines: ['nutrition'],
@@ -1710,6 +1731,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'mol-osteogenesis-imperfecta',
+    relevance: 'core',
     title: 'Osteogenesis imperfecta',
     discipline: 'genetics',
     alsoDisciplines: ['biochemistry', 'pathology'],
@@ -1832,6 +1854,7 @@ const puzzle = (x: Omit<ConnectionsPuzzleItem, Shared | 'depth' | 'reasoning'>):
 const sequences: SequenceItem[] = [
   seq({
     id: 'seq:lagging-strand',
+    relevance: 'core',
     title: 'Build a lagging strand',
     prompt: 'Put the events at a bacterial replication fork in order, from opening the helix to a sealed lagging strand.',
     steps: [
@@ -1862,12 +1885,13 @@ const sequences: SequenceItem[] = [
     explanation: 'miRNA biogenesis runs nucleus → cytoplasm: Pol II transcription, Drosha, export, Dicer, Argonaute loading; target recognition by seed pairing then reduces protein output.',
     conceptIds: ['mol-rna-processing'],
     objectiveIds: [`${RN}.mirna`],
-    priority: 'specialist',
-    priorityNote: 'Drosha/Dicer/RISC biogenesis order is beyond Step 1.',
+    relevance: 'specialist',
+    relevanceNote: 'Drosha/Dicer/RISC biogenesis order is beyond Step 1.',
     difficulty: 3,
   }),
   seq({
     id: 'seq:elongation-cycle',
+    relevance: 'core',
     title: 'One turn of the ribosome',
     prompt: 'Order the events of translation from start to finish.',
     steps: [
@@ -1885,6 +1909,7 @@ const sequences: SequenceItem[] = [
   }),
   seq({
     id: 'seq:collagen',
+    relevance: 'core',
     title: 'Making collagen',
     prompt: 'Order collagen synthesis from the ribosome to a cross-linked fibril.',
     steps: [
@@ -1903,6 +1928,7 @@ const sequences: SequenceItem[] = [
   }),
   seq({
     id: 'seq:a1at-emphysema',
+    relevance: 'core',
     title: 'From Z allele to emphysema',
     prompt: 'Order the chain of events linking the Z allele of SERPINA1 to lung damage.',
     steps: [
@@ -1924,6 +1950,7 @@ const sequences: SequenceItem[] = [
 const matches: MatchItem[] = [
   match({
     id: 'match:rna-polymerases',
+    relevance: 'core',
     title: 'Polymerases and their products',
     prompt: 'Match each polymerase to what it makes or what blocks it.',
     pairs: [
@@ -1940,6 +1967,7 @@ const matches: MatchItem[] = [
   }),
   match({
     id: 'match:replication-enzymes',
+    relevance: 'core',
     title: 'Replication crew',
     prompt: 'Match each replication protein to its job.',
     pairs: [
@@ -1957,6 +1985,7 @@ const matches: MatchItem[] = [
   }),
   match({
     id: 'match:central-dogma-poisons',
+    relevance: 'core',
     title: 'Poisons of the central dogma',
     prompt: 'Match each drug or toxin to its molecular target.',
     pairs: [
@@ -1974,6 +2003,7 @@ const matches: MatchItem[] = [
   }),
   match({
     id: 'match:antibiotic-ribosome',
+    relevance: 'core',
     title: 'Where antibiotics hit the ribosome',
     prompt: 'Match each antibiotic to its ribosomal site and action.',
     pairs: [
@@ -1990,6 +2020,7 @@ const matches: MatchItem[] = [
   }),
   match({
     id: 'match:epigenetic-silencing',
+    relevance: 'core',
     title: 'Silenced, not deleted',
     prompt: 'Match each finding to its epigenetic explanation.',
     pairs: [
@@ -2007,6 +2038,7 @@ const matches: MatchItem[] = [
   }),
   match({
     id: 'match:protein-modifications',
+    relevance: 'core',
     title: 'Finishing touches',
     prompt: 'Match each post-translational modification to an example of what it does.',
     pairs: [
@@ -2027,6 +2059,7 @@ const matches: MatchItem[] = [
 const groups: ConnectionGroup[] = [
   group({
     id: 'grp:translation-toxins',
+    relevance: 'core',
     label: 'Toxins that stop eukaryotic translation',
     tier: 2,
     conceptIds: ['mol-translation-toxins'],
@@ -2037,6 +2070,7 @@ const groups: ConnectionGroup[] = [
   }),
   group({
     id: 'grp:topoisomerase-inhibitors',
+    relevance: 'core',
     label: 'Topoisomerase inhibitors',
     tier: 3,
     conceptIds: ['mol-topoisomerase-drugs'],
@@ -2047,6 +2081,7 @@ const groups: ConnectionGroup[] = [
   }),
   group({
     id: 'grp:imprinting-silencing',
+    relevance: 'core',
     label: 'Disease from a silenced or missing active gene copy',
     tier: 3,
     conceptIds: ['mol-epigenetic-disease'],
@@ -2061,6 +2096,7 @@ const groups: ConnectionGroup[] = [
 const puzzles: ConnectionsPuzzleItem[] = [
   puzzle({
     id: 'cx:gene-expression-blockers',
+    relevance: 'core',
     title: 'Gene expression: made and jammed',
     difficulty: 3,
     conceptIds: ['mol-rna-processing', 'mol-translation-toxins', 'mol-topoisomerase-drugs', 'mol-transcription-inhibitors', 'mol-transcription'],
@@ -2097,6 +2133,7 @@ const puzzles: ConnectionsPuzzleItem[] = [
 const cases: CaseItem[] = [
   kase({
     id: 'case:a1at-deficiency',
+    relevance: 'core',
     title: 'Short of breath at 38',
     conceptIds: ['mol-a1at', 'mol-protein-folding'],
     objectiveIds: [`${PP}.a1at`, `${PP}.folding`],
@@ -2130,6 +2167,7 @@ const cases: CaseItem[] = [
   }),
   kase({
     id: 'case:amanita-poisoning',
+    relevance: 'core',
     title: 'The foragers’ supper',
     conceptIds: ['mol-transcription-inhibitors'],
     objectiveIds: [`${TX}.inhibitors`],

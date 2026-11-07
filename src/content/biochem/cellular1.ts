@@ -98,6 +98,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'cel-cell-cycle',
+    relevance: 'core',
     title: 'Cell cycle phases, checkpoints and phase-specific drugs',
     discipline: 'biochemistry',
     alsoDisciplines: ['cell-biology', 'pharmacology'],
@@ -159,6 +160,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'cel-rb-p53',
+    relevance: 'core',
     title: 'Rb and p53: tumor suppressors at the G1 checkpoint',
     discipline: 'pathology',
     alsoDisciplines: ['biochemistry', 'genetics'],
@@ -248,6 +250,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'cel-cell-types',
+    relevance: 'core',
     title: 'Permanent, stable and labile cells',
     discipline: 'pathology',
     alsoDisciplines: ['cell-biology'],
@@ -312,6 +315,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'cel-er-golgi',
+    relevance: 'core',
     title: 'ER, Golgi and vesicle traffic',
     discipline: 'biochemistry',
     alsoDisciplines: ['cell-biology', 'histology'],
@@ -387,6 +391,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'cel-i-cell',
+    relevance: 'core',
     title: 'I-cell disease (mucolipidosis II)',
     discipline: 'biochemistry',
     alsoDisciplines: ['genetics', 'pathology'],
@@ -459,6 +464,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'cel-peroxisome',
+    relevance: 'core',
     title: 'Peroxisomes: functions, Zellweger syndrome and Refsum disease',
     discipline: 'biochemistry',
     alsoDisciplines: ['genetics'],
@@ -551,6 +557,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'cel-x-ald',
+    relevance: 'core',
     title: 'X-linked adrenoleukodystrophy',
     discipline: 'biochemistry',
     alsoDisciplines: ['genetics'],
@@ -623,6 +630,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'cel-proteasome',
+    relevance: 'core',
     title: 'Ubiquitin–proteasome system and bortezomib',
     discipline: 'biochemistry',
     alsoDisciplines: ['pharmacology'],
@@ -680,6 +688,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'cel-cytoskeleton',
+    relevance: 'core',
     title: 'Cytoskeleton, motor proteins and microtubule drugs',
     discipline: 'biochemistry',
     alsoDisciplines: ['cell-biology', 'pharmacology'],
@@ -755,6 +764,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'cel-pcd',
+    relevance: 'core',
     title: 'Primary ciliary dyskinesia (Kartagener syndrome)',
     discipline: 'genetics',
     alsoDisciplines: ['cell-biology', 'pathology'],
@@ -844,6 +854,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'cel-if-markers',
+    relevance: 'core',
     title: 'Intermediate filaments as tissue markers',
     discipline: 'pathology',
     alsoDisciplines: ['histology', 'cell-biology'],
@@ -904,6 +915,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'cel-membrane-transport',
+    relevance: 'core',
     title: 'Membranes and glucose transporters',
     discipline: 'biochemistry',
     alsoDisciplines: ['cell-biology', 'physiology'],
@@ -981,6 +993,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'cel-na-k-atpase',
+    relevance: 'core',
     title: 'Na⁺/K⁺-ATPase and cardiac glycosides',
     discipline: 'biochemistry',
     alsoDisciplines: ['pharmacology', 'physiology'],
@@ -1093,6 +1106,7 @@ const puzzle = (x: Omit<ConnectionsPuzzleItem, Shared | 'depth' | 'reasoning'>):
 const sequences: SequenceItem[] = [
   seq({
     id: 'seq:g1-s-rb',
+    relevance: 'core',
     title: 'Passing the G1/S checkpoint',
     prompt: 'Order the events that let a cell leave G1 and enter S phase.',
     steps: [
@@ -1110,6 +1124,7 @@ const sequences: SequenceItem[] = [
   }),
   seq({
     id: 'seq:p53-damage',
+    relevance: 'core',
     title: 'p53 answers DNA damage',
     prompt: 'Order the response of a G1 cell to DNA damage.',
     steps: [
@@ -1127,6 +1142,7 @@ const sequences: SequenceItem[] = [
   }),
   seq({
     id: 'seq:secretory-pathway',
+    relevance: 'core',
     title: 'Route of a secreted protein',
     prompt: 'Order the journey of a protein that a plasma cell secretes.',
     steps: [
@@ -1144,6 +1160,7 @@ const sequences: SequenceItem[] = [
   }),
   seq({
     id: 'seq:m6p-lysosome',
+    relevance: 'core',
     title: 'Addressing an enzyme to the lysosome',
     prompt: 'Order the steps that deliver a hydrolase to the lysosome. Which step fails in I-cell disease?',
     steps: [
@@ -1161,6 +1178,7 @@ const sequences: SequenceItem[] = [
   }),
   seq({
     id: 'seq:digoxin',
+    relevance: 'core',
     title: 'How digoxin strengthens the heartbeat',
     prompt: 'Order the events from digoxin binding to increased contractility.',
     steps: [
@@ -1181,6 +1199,7 @@ const sequences: SequenceItem[] = [
 const matches: MatchItem[] = [
   match({
     id: 'match:phase-drugs',
+    relevance: 'core',
     title: 'Which phase does it hit?',
     prompt: 'Match each anticancer drug to the cell-cycle phase and action it targets.',
     pairs: [
@@ -1197,6 +1216,7 @@ const matches: MatchItem[] = [
   }),
   match({
     id: 'match:traffic',
+    relevance: 'core',
     title: 'Organelles and traffic routes',
     prompt: 'Match each organelle, coat or tag to its job.',
     pairs: [
@@ -1214,6 +1234,7 @@ const matches: MatchItem[] = [
   }),
   match({
     id: 'match:if-markers',
+    relevance: 'core',
     title: 'Tumor markers: intermediate filaments',
     prompt: 'Match each intermediate filament to the cells it marks.',
     pairs: [
@@ -1231,6 +1252,7 @@ const matches: MatchItem[] = [
   }),
   match({
     id: 'match:glucose-transporters',
+    relevance: 'core',
     title: 'Glucose transporters',
     prompt: 'Match each transporter to where or how it works.',
     pairs: [
@@ -1248,6 +1270,7 @@ const matches: MatchItem[] = [
   }),
   match({
     id: 'match:peroxisome',
+    relevance: 'core',
     title: 'Peroxisome: jobs and failures',
     prompt: 'Match each item to its peroxisomal role or defect.',
     pairs: [
@@ -1264,6 +1287,7 @@ const matches: MatchItem[] = [
   }),
   match({
     id: 'match:microtubules',
+    relevance: 'core',
     title: 'Microtubules: drugs and motors',
     prompt: 'Match each drug or motor to its action.',
     pairs: [
@@ -1283,6 +1307,7 @@ const matches: MatchItem[] = [
 const groups: ConnectionGroup[] = [
   group({
     id: 'grp:microtubule-drugs',
+    relevance: 'core',
     label: 'Act on microtubules',
     tier: 2,
     conceptIds: ['cel-cytoskeleton'],
@@ -1293,6 +1318,7 @@ const groups: ConnectionGroup[] = [
   }),
   group({
     id: 'grp:intermediate-filaments',
+    relevance: 'core',
     label: 'Intermediate filaments',
     tier: 2,
     conceptIds: ['cel-if-markers'],
@@ -1306,6 +1332,7 @@ const groups: ConnectionGroup[] = [
 const puzzles: ConnectionsPuzzleItem[] = [
   puzzle({
     id: 'cx:cell-machinery',
+    relevance: 'core',
     title: 'Inside the cell',
     difficulty: 2,
     conceptIds: ['cel-if-markers', 'cel-peroxisome', 'cel-cytoskeleton', 'cel-membrane-transport'],
@@ -1340,6 +1367,7 @@ const puzzles: ConnectionsPuzzleItem[] = [
 const cases: CaseItem[] = [
   kase({
     id: 'case:i-cell',
+    relevance: 'core',
     title: 'Enzymes in the wrong place',
     conceptIds: ['cel-i-cell', 'cel-er-golgi'],
     objectiveIds: [`${EG}.i-cell`, `${EG}.golgi`],
@@ -1371,6 +1399,7 @@ const cases: CaseItem[] = [
   }),
   kase({
     id: 'case:x-ald',
+    relevance: 'core',
     title: 'Falling grades, rising VLCFA',
     conceptIds: ['cel-x-ald', 'cel-peroxisome'],
     objectiveIds: [`${PX}.x-ald`],

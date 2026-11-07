@@ -2,7 +2,8 @@
  * Medical Survival: three lives, difficulty rises every three correct answers. Accuracy drives
  * the score; the optional timer adds at most a 20% bonus and never costs points.
  */
-import type { McqItem, TrueFalseItem } from '@/content/schema';
+import { relevanceWeight, type McqItem, type TrueFalseItem } from '@/content/schema';
+import { weightedPick } from '@/engine/random';
 
 export type SurvivalItem = McqItem | TrueFalseItem;
 
@@ -38,7 +39,8 @@ export function pickNext(pool: SurvivalItem[], s: SurvivalState, rnd: () => numb
       best = [i];
     } else if (gap === bestGap) best.push(i);
   }
-  return best[Math.floor(rnd() * best.length)]!;
+  // Among equally suitable items, core content is chosen more often than supplementary content.
+  return weightedPick(best, relevanceWeight, rnd)!;
 }
 
 export function pointsFor(difficulty: number, streak: number, timeFraction: number | null): number {

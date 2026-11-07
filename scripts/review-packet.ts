@@ -10,8 +10,8 @@ import { cellularBatch1 } from '../src/content/biochem/cellular1';
 import { globalCategories } from '../src/content/connectionsCatalog';
 import { defensiblePartitions, redHerrings, solutions } from '../src/content/connectionsVerify';
 import { MANUAL_AUDIT } from '../src/content/connectionsAudit';
-import { factEvidence, itemPriority, type GameItem } from '../src/content/schema';
-import { isPlayable, objectivePriority, objectivesOf } from '../src/content/curriculum/audit';
+import { factEvidence, itemRelevance, type GameItem } from '../src/content/schema';
+import { isPlayable, objectiveRelevance, objectivesOf } from '../src/content/curriculum/audit';
 import { BIOCHEMISTRY } from '../src/content/curriculum/biochemistry';
 
 const BATCHES = { batch1: molecularBatch1, batch2: molecularBatch2, cellular1: cellularBatch1 } as const;
@@ -26,7 +26,7 @@ const lines: string[] = [];
 const L = (...s: string[]) => lines.push(...s);
 const letter = (n: number) => String.fromCharCode(65 + n);
 const tag = (i: GameItem) =>
-  `**${itemPriority(i).toUpperCase()}** · \`${i.id}\` · ${i.reasoning ?? '—'} → **${i.depth ?? '—'}** · difficulty ${i.difficulty} · ${(i.objectiveIds ?? []).map((o) => `\`${o}\``).join(', ')}`;
+  `**${itemRelevance(i).toUpperCase()}** · depth ${(i.depth ?? '—').toUpperCase()} · \`${i.id}\` · ${i.reasoning ?? '—'} → **${i.depth ?? '—'}** · difficulty ${i.difficulty} · ${(i.objectiveIds ?? []).map((o) => `\`${o}\``).join(', ')}`;
 const count = (f: (i: GameItem) => boolean) => items.filter(f).length;
 const evidence = concepts.flatMap((c) => factEvidence(c));
 
@@ -39,7 +39,7 @@ L('- Facts are split into **verified** (a supporting source was read in full tex
 L('- Citation “checked”: **full-text** (page read), **summary** (published abstract or summary read), **existence** (record confirmed but full text not accessible).');
 L('- Mastery: true/false and crossword answers count as weaker recognition evidence; repeating an item within 7 days adds little; “strong” needs at least 3 distinct items, including a mechanism or application item.');
 L('- Connections puzzles are checked for a single solution against the **global category catalog** (every bank category, every curated category and decoy, and a catalog of medically plausible groupings such as inheritance patterns, drug classes and toxin sources), not only against their own decoys. The daily builder applies the same check to every board it generates.', '');
-L('- **Step 1 relevance.** Every item is labelled **CORE** (classic high-yield knowledge), **APPLICATION** (high-yield concepts used in interpretation or multistep reasoning) or **SPECIALIST** (beyond expected Step 1 depth). Specialist items are kept for editorial review but are never served in games and do not count toward coverage. Target mix for standard content: about 80% core / 20% application (a design target, not an exam weight).', '');
+L('- **Two independent classifications.** *Step 1 relevance*: **CORE** (topic and depth supported by the official outline and mainstream Step 1 preparation), **SUPPLEMENTARY** (within the curriculum but beyond core depth; shown less often in games), **SPECIALIST** (obscure or postgraduate; never shown in games, excluded from coverage) or **UNREVIEWED** (not yet evaluated; never assumed core). *Cognitive depth*: **RECOGNITION**, **MECHANISM** or **APPLICATION**, from the reasoning task. A complex vignette on a classic mechanism can be CORE; a simple recall of an obscure finding can be SPECIALIST. The ~80/20 recognition-and-mechanism vs application mix is a flexible game-design target, not a relevance judgement.', '');
 L('## Summary', '');
 L('| Measure | Value |', '|---|---|');
 L(`| Concepts | ${concepts.length} |`, `| Objectives taught | ${new Set(concepts.flatMap((c) => c.curriculum!)).size} |`);
@@ -50,10 +50,12 @@ L(`| — Mechanism Lab sequences / Match Up sets | ${count((i) => i.kind === 'se
 L(`| — Complete Connections puzzles / Mystery Patient cases | ${count((i) => i.kind === 'connections')} / ${count((i) => i.kind === 'case')} |`);
 L(`| Connections category-bank entries (builder input, **not** playable alone; excluded from item counts and coverage) | ${count((i) => i.kind === 'group')} |`);
 const std = items.filter((i) => i.kind !== 'group');
-L(`| Step 1 relevance of items: CORE / APPLICATION / SPECIALIST | ${std.filter((i) => itemPriority(i) === 'core').length} / ${std.filter((i) => itemPriority(i) === 'application').length} / ${std.filter((i) => itemPriority(i) === 'specialist').length} |`);
+const relCount = <T,>(xs: T[], f: (x: T) => string) => (['core', 'supplementary', 'specialist', 'unreviewed'] as const).map((r) => xs.filter((x) => f(x) === r).length).join(' / ');
+L(`| Items, Step 1 relevance: CORE / SUPPLEMENTARY / SPECIALIST / UNREVIEWED | ${relCount(std, itemRelevance)} |`);
+L(`| Items, cognitive depth: RECOGNITION / MECHANISM / APPLICATION | ${(['recognition', 'mechanism', 'application'] as const).map((d) => std.filter((i) => i.depth === d).length).join(' / ')} |`);
 const objIds = new Set(concepts.flatMap((c) => c.curriculum!));
 const objs = objectivesOf(BIOCHEMISTRY).map((x) => x.item).filter((o) => objIds.has(o.id));
-L(`| Objectives: CORE / APPLICATION / SPECIALIST | ${objs.filter((o) => objectivePriority(o) === 'core').length} / ${objs.filter((o) => objectivePriority(o) === 'application').length} / ${objs.filter((o) => objectivePriority(o) === 'specialist').length} |`);
+L(`| Objectives, Step 1 relevance: CORE / SUPPLEMENTARY / SPECIALIST / UNREVIEWED | ${relCount(objs, objectiveRelevance)} |`);
 for (const r of ['recall', 'identification', 'mechanism', 'interpretation', 'prediction', 'comparison', 'multistep'] as const) L(`| Playable items: ${r} | ${count((i) => isPlayable(i) && i.reasoning === r)} |`);
 L('');
 
@@ -92,10 +94,15 @@ for (const c of concepts) {
   L('', '---', '');
 }
 
-const spec = items.filter((i) => itemPriority(i) === 'specialist');
+const supp = items.filter((i) => itemRelevance(i) === 'supplementary');
+L('## Items judged SUPPLEMENTARY (shown less often in games)', '');
+if (!supp.length) L('None in this batch.', '');
+for (const i of supp) L(`- \`${i.id}\` (depth ${i.depth ?? '—'}) — ${i.relevanceNote ?? ''}`);
+L('');
+const spec = items.filter((i) => itemRelevance(i) === 'specialist');
 L('## Items flagged SPECIALIST (excluded from gameplay pending editorial review)', '');
 if (!spec.length) L('None in this batch.', '');
-for (const i of spec) L(`- \`${i.id}\` — ${i.priorityNote ?? ''}`);
+for (const i of spec) L(`- \`${i.id}\` (depth ${i.depth ?? '—'}) — ${i.relevanceNote ?? ''}`);
 L('');
 L('## Medical Connections: complete puzzles (16 tiles, verified single solution against the global catalog)', '');
 for (const p of items) {

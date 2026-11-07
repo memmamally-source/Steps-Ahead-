@@ -46,6 +46,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'mol-nucleotides',
+    relevance: 'core',
     title: 'Nucleotide structure and de novo synthesis',
     discipline: 'biochemistry',
     system: 'multisystem',
@@ -115,6 +116,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'mol-antimetabolites',
+    relevance: 'core',
     title: 'Drugs that block nucleotide synthesis',
     discipline: 'biochemistry',
     alsoDisciplines: ['pharmacology'],
@@ -216,8 +218,8 @@ const core = defineConcepts([
         mini: 'Same molecule, opposite effects: reduced folate restores THF beyond the DHFR block, but with 5-FU it completes the FdUMP–thymidylate synthase–folate inhibitory complex.',
         reasoning: 'comparison',
         steps: ['Leucovorin is a reduced folate', 'After methotrexate it bypasses the DHFR block and restores THF', 'With 5-FU it raises methylene-THF, stabilizing the FdUMP–TS–folate complex'],
-        priority: 'specialist',
-        priorityNote: 'Ternary-complex stabilization by leucovorin is beyond expected Step 1 depth; Step 1 needs only DHFR bypass (rescue) for methotrexate.',
+        relevance: 'specialist',
+        relevanceNote: 'Ternary-complex stabilization by leucovorin is beyond expected Step 1 depth; Step 1 needs only DHFR bypass (rescue) for methotrexate.',
         difficulty: 5,
       },
     ],
@@ -230,6 +232,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'mol-orotic-aciduria',
+    relevance: 'core',
     title: 'Hereditary orotic aciduria',
     discipline: 'biochemistry',
     system: 'blood-immune',
@@ -316,6 +319,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'mol-purine-salvage',
+    relevance: 'core',
     title: 'Purine salvage and Lesch–Nyhan syndrome',
     discipline: 'biochemistry',
     alsoDisciplines: ['genetics'],
@@ -418,6 +422,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'mol-ada-deficiency',
+    relevance: 'core',
     title: 'Adenosine deaminase deficiency (ADA-SCID)',
     discipline: 'biochemistry',
     alsoDisciplines: ['immunology'],
@@ -497,8 +502,8 @@ const core = defineConcepts([
         mini: 'Low TRECs flag absent naive T cells; raised (deoxy)adenosine identifies the metabolic cause as ADA deficiency.',
         reasoning: 'interpretation',
         steps: ['Low TRECs = few naive T cells (SCID-range lymphopenia)', 'Raised adenosine/deoxyadenosine = failed purine catabolism', 'Together: ADA deficiency rather than other causes of low TRECs'],
-        priority: 'specialist',
-        priorityNote: 'TREC screening and second-tier tandem mass spectrometry are newborn-screening detail beyond Step 1.',
+        relevance: 'specialist',
+        relevanceNote: 'TREC screening and second-tier tandem mass spectrometry are newborn-screening detail beyond Step 1.',
         difficulty: 4,
       },
       {
@@ -518,11 +523,12 @@ const core = defineConcepts([
       },
     ],
     tf: [{ statement: 'Adenosine deaminase deficiency can present after infancy as a milder combined immunodeficiency.', isTrue: true, correction: 'Correct: about 15–20% have delayed or late-onset disease, reflecting residual enzyme activity.', difficulty: 2 }],
-    clues: [{ answer: 'DEOXYADENOSINE', clue: 'Nucleoside that accumulates in ADA deficiency and is phosphorylated to dATP', difficulty: 2 }],
+    clues: [{ answer: 'DEOXYADENOSINE', clue: 'Nucleoside that accumulates in ADA deficiency and is phosphorylated to dATP', relevance: 'supplementary', relevanceNote: 'The deoxyadenosine intermediate is supplementary; dATP toxicity in ADA deficiency is core.', difficulty: 2 }],
   },
   // ------------------------------------------------------------------------------------------------
   {
     id: 'mol-mutation-types',
+    relevance: 'core',
     title: 'Types of mutation and their effects',
     discipline: 'genetics',
     alsoDisciplines: ['biochemistry'],
@@ -638,6 +644,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'mol-single-strand-repair',
+    relevance: 'core',
     title: 'Single-strand DNA repair: excision repair and xeroderma pigmentosum',
     discipline: 'biochemistry',
     alsoDisciplines: ['genetics'],
@@ -738,6 +745,8 @@ const core = defineConcepts([
         mini: 'Without MUTYH, adenine stays opposite 8-oxoguanine and replication fixes G:C→T:A transversions in growth-control genes.',
         reasoning: 'mechanism',
         objectives: [`${DR}.mutyh`],
+        relevance: 'supplementary',
+        relevanceNote: 'The MUTYH mutation spectrum (G:C→T:A transversions) is beyond core depth; MUTYH polyposis itself is core.',
         difficulty: 4,
       },
       {
@@ -754,8 +763,8 @@ const core = defineConcepts([
         reasoning: 'interpretation',
         steps: ['Removal of UV damage is normal → core NER factors work', 'Copying past lesions fails → translesion polymerase defect', 'XP variant: DNA polymerase η (POLH)'],
         objectives: [`${DR}.xp`],
-        priority: 'specialist',
-        priorityNote: 'XP variant (polymerase η) is a niche subtype beyond Step 1.',
+        relevance: 'specialist',
+        relevanceNote: 'XP variant (polymerase η) is a niche subtype beyond Step 1.',
         difficulty: 5,
       },
       {
@@ -788,6 +797,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'mol-lynch',
+    relevance: 'core',
     title: 'Mismatch repair and Lynch syndrome',
     discipline: 'genetics',
     alsoDisciplines: ['biochemistry', 'pathology'],
@@ -867,8 +877,8 @@ const core = defineConcepts([
         mini: 'MLH1 loss + promoter hypermethylation + BRAF V600E in an older patient without family history = sporadic MSI cancer.',
         reasoning: 'interpretation',
         steps: ['MLH1 loss = mismatch repair–deficient tumor', 'MLH1 promoter hypermethylation + BRAF V600E point to somatic silencing', 'Age and absent family history fit a sporadic MSI cancer rather than Lynch syndrome'],
-        priority: 'specialist',
-        priorityNote: 'Distinguishing sporadic MLH1-hypermethylated MSI cancer from Lynch syndrome is clinical pathology detail beyond typical Step 1 depth.',
+        relevance: 'specialist',
+        relevanceNote: 'Distinguishing sporadic MLH1-hypermethylated MSI cancer from Lynch syndrome is clinical pathology detail beyond typical Step 1 depth.',
         difficulty: 5,
       },
       {
@@ -893,6 +903,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'mol-double-strand-repair',
+    relevance: 'core',
     title: 'Double-strand break repair: homologous recombination and NHEJ',
     discipline: 'biochemistry',
     alsoDisciplines: ['genetics', 'immunology'],
@@ -964,6 +975,8 @@ const core = defineConcepts([
         reasoning: 'multistep',
         steps: ['Germline BRCA1 variant; second allele lost only in the tumor', 'Tumor lacks homologous recombination; normal cells keep it', 'Blocking PARP-dependent repair adds breaks the tumor cannot repair (synthetic lethality)'],
         objectives: [`${DR}.brca`, `${DR}.dsb-pathways`],
+        relevance: 'supplementary',
+        relevanceNote: 'PARP-inhibitor synthetic lethality is supplementary pharmacology reasoning; BRCA and homologous recombination are core.',
         difficulty: 4,
       },
       {
@@ -980,6 +993,8 @@ const core = defineConcepts([
         reasoning: 'comparison',
         steps: ['T⁻B⁻ with NK present points to failed V(D)J recombination', 'Radiosensitivity adds a general double-strand break repair defect', 'Only NHEJ factors explain both (RAG and ADA do not cause radiosensitivity)'],
         objectives: [`${DR}.nhej-scid`],
+        relevance: 'supplementary',
+        relevanceNote: 'Radiosensitive (NHEJ-defect) SCID is a niche SCID subtype.',
         difficulty: 4,
       },
       {
@@ -995,24 +1010,27 @@ const core = defineConcepts([
         mini: 'T- and B-cell receptor genes are assembled by cutting (RAG) and rejoining (NHEJ); without rejoining, neither lineage can complete development.',
         reasoning: 'mechanism',
         objectives: [`${DR}.nhej-scid`],
+        relevance: 'supplementary',
+        relevanceNote: 'Artemis and V(D)J joining detail are beyond core depth.',
         difficulty: 3,
       },
     ],
     tf: [
-      { statement: 'Homologous recombination uses RAD51-directed strand exchange with a homologous template.', isTrue: true, correction: 'Correct: that is the defining step of HR.', objectives: [`${DR}.dsb-pathways`], priority: 'specialist', priorityNote: 'RAD51 strand exchange is molecular detail beyond Step 1.', difficulty: 2 },
+      { statement: 'Homologous recombination uses RAD51-directed strand exchange with a homologous template.', isTrue: true, correction: 'Correct: that is the defining step of HR.', objectives: [`${DR}.dsb-pathways`], relevance: 'specialist', relevanceNote: 'RAD51 strand exchange is molecular detail beyond Step 1.', difficulty: 2 },
       { statement: 'BRCA2 variants increase the risk of male breast cancer.', isTrue: true, correction: 'Correct: male breast, prostate and pancreatic cancer risks are mainly associated with BRCA2.', objectives: [`${DR}.brca`], difficulty: 2 },
       { statement: 'V(D)J recombination depends on nonhomologous end joining.', isTrue: true, correction: 'Correct: RAG cuts the DNA and NHEJ factors rejoin the segments.', objectives: [`${DR}.nhej-scid`], difficulty: 2 },
-      { statement: 'Bloom syndrome is caused by a defective nucleotide excision repair protein.', isTrue: false, correction: 'Bloom syndrome is caused by BLM, a RecQ helicase that limits sister chromatid exchange.', objectives: [`${DR}.bloom`], difficulty: 2 },
+      { statement: 'Bloom syndrome is caused by a defective nucleotide excision repair protein.', isTrue: false, correction: 'Bloom syndrome is caused by BLM, a RecQ helicase that limits sister chromatid exchange.', objectives: [`${DR}.bloom`], relevance: 'supplementary', relevanceNote: 'Bloom syndrome is supplementary (less commonly tested).', difficulty: 2 },
     ],
     clues: [
       { answer: 'HOMOLOGOUS', clue: 'Kind of recombination that repairs double-strand breaks with RAD51', objectives: [`${DR}.dsb-pathways`], difficulty: 2 },
-      { answer: 'ARTEMIS', clue: 'NHEJ factor whose loss causes radiosensitive SCID', objectives: [`${DR}.nhej-scid`], priority: 'specialist', priorityNote: 'Artemis is a niche SCID gene name; the Step 1 point is NHEJ defects → SCID.', difficulty: 2 },
-      { answer: 'BLOOM', clue: 'Syndrome of BLM helicase deficiency with facial rash and short stature', objectives: [`${DR}.bloom`], difficulty: 2 },
+      { answer: 'ARTEMIS', clue: 'NHEJ factor whose loss causes radiosensitive SCID', objectives: [`${DR}.nhej-scid`], relevance: 'specialist', relevanceNote: 'Artemis is a niche SCID gene name; the Step 1 point is NHEJ defects → SCID.', difficulty: 2 },
+      { answer: 'BLOOM', clue: 'Syndrome of BLM helicase deficiency with facial rash and short stature', objectives: [`${DR}.bloom`], relevance: 'supplementary', relevanceNote: 'Bloom syndrome is supplementary (less commonly tested).', difficulty: 2 },
     ],
   },
   // ------------------------------------------------------------------------------------------------
   {
     id: 'mol-ataxia-telangiectasia',
+    relevance: 'core',
     title: 'Ataxia–telangiectasia: the ATM DNA damage response',
     discipline: 'genetics',
     alsoDisciplines: ['biochemistry', 'immunology'],
@@ -1067,8 +1085,8 @@ const core = defineConcepts([
         answer: 'a',
         mini: 'MRN detects the break and activates ATM; ATM is the kinase that phosphorylates checkpoint and repair proteins. Without ATM, detection occurs but the signal is not transmitted.',
         reasoning: 'mechanism',
-        priority: 'specialist',
-        priorityNote: 'MRN-versus-ATM step detail is beyond Step 1; replaced by core mcq4/mcq5.',
+        relevance: 'specialist',
+        relevanceNote: 'MRN-versus-ATM step detail is beyond Step 1; replaced by core mcq4/mcq5.',
         difficulty: 3,
       },
       {
@@ -1098,8 +1116,8 @@ const core = defineConcepts([
         mini: 'Order of events: MRN detects the break → activates ATM → ATM phosphorylates checkpoint proteins. A defect is located at the first step that fails.',
         reasoning: 'interpretation',
         steps: ['Place MRN upstream (detection) and ATM downstream (kinase signaling)', 'Line 1: detection intact, signaling absent → ATM', 'Line 2: detection absent → MRN component such as NBS1'],
-        priority: 'specialist',
-        priorityNote: 'MRN/NBS1 cell-line interpretation is postgraduate depth; replaced by core mcq5.',
+        relevance: 'specialist',
+        relevanceNote: 'MRN/NBS1 cell-line interpretation is postgraduate depth; replaced by core mcq5.',
         difficulty: 5,
       },
       {
@@ -1141,6 +1159,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'mol-fanconi-anemia',
+    relevance: 'core',
     title: 'Fanconi anemia: interstrand crosslink repair',
     discipline: 'genetics',
     alsoDisciplines: ['biochemistry', 'pathology'],
@@ -1191,6 +1210,8 @@ const core = defineConcepts([
         mini: 'Diepoxybutane creates interstrand crosslinks; excess breakage shows the FA repair pathway is defective.',
         reasoning: 'interpretation',
         steps: ['Diepoxybutane creates interstrand crosslinks', 'Excess breaks and radial figures = crosslinks not repaired', 'Supports Fanconi anemia rather than acquired aplastic anemia'],
+        relevance: 'supplementary',
+        relevanceNote: 'Chromosome-breakage testing detail is supplementary; Fanconi anemia features are core.',
         difficulty: 3,
       },
       {
@@ -1228,6 +1249,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'mol-collagen-types',
+    relevance: 'core',
     title: 'Collagen types and the diseases that affect them',
     discipline: 'biochemistry',
     alsoDisciplines: ['histology'],
@@ -1310,6 +1332,8 @@ const core = defineConcepts([
         mini: 'Type II collagen is in vitreous, cartilage and inner ear: predict eye, joint and hearing problems (Stickler syndrome).',
         reasoning: 'prediction',
         steps: ['COL2A1 encodes type II collagen', 'Type II collagen is in vitreous, cartilage and inner ear', 'Predict myopia/retinal detachment, early arthritis and hearing loss (Stickler syndrome)'],
+        relevance: 'supplementary',
+        relevanceNote: 'Stickler syndrome is supplementary; type II collagen distribution is core.',
         difficulty: 4,
       },
     ],
@@ -1322,6 +1346,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'mol-ehlers-danlos',
+    relevance: 'core',
     title: 'Ehlers–Danlos syndromes',
     discipline: 'genetics',
     alsoDisciplines: ['biochemistry'],
@@ -1412,6 +1437,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'mol-menkes',
+    relevance: 'core',
     title: 'Menkes disease: copper transport',
     discipline: 'biochemistry',
     alsoDisciplines: ['genetics', 'nutrition'],
@@ -1492,8 +1518,8 @@ const core = defineConcepts([
         mini: 'Copper absorbed but trapped in gut (and kidney) with low liver and brain copper = failure of ATP7A export, the Menkes pattern; Wilson disease is the opposite (liver overload).',
         reasoning: 'interpretation',
         steps: ['Copper is absorbed (high in enterocytes), so intake is not the problem', 'It is not delivered onward (low liver, brain and serum) → export defect', 'Export from enterocytes is ATP7A (Menkes); ATP7B failure would overload the liver'],
-        priority: 'specialist',
-        priorityNote: 'Tissue copper-distribution interpretation is beyond Step 1; replaced by core mcq4 (Menkes vs Wilson).',
+        relevance: 'specialist',
+        relevanceNote: 'Tissue copper-distribution interpretation is beyond Step 1; replaced by core mcq4 (Menkes vs Wilson).',
         difficulty: 4,
       },
       {
@@ -1518,6 +1544,7 @@ const core = defineConcepts([
   // ------------------------------------------------------------------------------------------------
   {
     id: 'mol-marfan-elastin',
+    relevance: 'core',
     title: 'Fibrillin, elastin and Marfan syndrome',
     discipline: 'genetics',
     alsoDisciplines: ['biochemistry'],
@@ -1626,7 +1653,7 @@ const core = defineConcepts([
     ],
     clues: [
       { answer: 'FIBRILLIN', clue: 'Microfibril protein defective in Marfan syndrome', objectives: [`${CO}.marfan`], difficulty: 1 },
-      { answer: 'ALLYSINE', clue: 'Aldehyde formed from lysine by lysyl oxidase during elastin cross-linking', objectives: [`${CO}.elastin`], priority: 'specialist', priorityNote: 'Allysine is an intermediate name beyond Step 1; the Step 1 point is copper-dependent lysyl oxidase.', difficulty: 2 },
+      { answer: 'ALLYSINE', clue: 'Aldehyde formed from lysine by lysyl oxidase during elastin cross-linking', objectives: [`${CO}.elastin`], relevance: 'specialist', relevanceNote: 'Allysine is an intermediate name beyond Step 1; the Step 1 point is copper-dependent lysyl oxidase.', difficulty: 2 },
     ],
   },
 ]);
@@ -1649,6 +1676,7 @@ const puzzle = (x: Omit<ConnectionsPuzzleItem, 'kind' | 'review' | 'version' | '
 const groups: ConnectionGroup[] = [
   group({
     id: 'grp:dna-repair-defects',
+    relevance: 'core',
     label: 'DNA repair defects',
     tier: 2,
     conceptIds: ['mol-single-strand-repair', 'mol-lynch', 'mol-fanconi-anemia', 'mol-double-strand-repair'],
@@ -1660,6 +1688,7 @@ const groups: ConnectionGroup[] = [
   }),
   group({
     id: 'grp:antimetabolites',
+    relevance: 'core',
     label: 'Inhibit an enzyme of nucleotide synthesis',
     tier: 2,
     conceptIds: ['mol-antimetabolites'],
@@ -1670,6 +1699,7 @@ const groups: ConnectionGroup[] = [
   }),
   group({
     id: 'grp:connective-protein-defects',
+    relevance: 'core',
     label: 'Structural connective tissue protein defects',
     tier: 1,
     conceptIds: ['mol-ehlers-danlos', 'mol-menkes', 'mol-marfan-elastin', 'mol-collagen-types'],
@@ -1684,6 +1714,7 @@ const groups: ConnectionGroup[] = [
 const puzzles: ConnectionsPuzzleItem[] = [
   puzzle({
     id: 'cx:dna-repair-machinery',
+    relevance: 'core',
     title: 'DNA repair machinery',
     difficulty: 3,
     conceptIds: ['mol-single-strand-repair', 'mol-lynch', 'mol-double-strand-repair'],
@@ -1711,6 +1742,7 @@ const puzzles: ConnectionsPuzzleItem[] = [
   }),
   puzzle({
     id: 'cx:nucleotides-and-drugs',
+    relevance: 'core',
     title: 'Nucleotides and the drugs that target them',
     difficulty: 2,
     conceptIds: ['mol-nucleotides', 'mol-antimetabolites', 'mol-purine-salvage', 'mol-ada-deficiency'],
@@ -1739,6 +1771,7 @@ const puzzles: ConnectionsPuzzleItem[] = [
   }),
   puzzle({
     id: 'cx:collagen-types',
+    relevance: 'core',
     title: 'Where each collagen lives',
     difficulty: 3,
     conceptIds: ['mol-collagen-types', 'mol-ehlers-danlos'],
@@ -1769,6 +1802,7 @@ const puzzles: ConnectionsPuzzleItem[] = [
 const cases: CaseItem[] = [
   kase({
     id: 'case:lesch-nyhan',
+    relevance: 'core',
     title: 'The orange diaper',
     conceptIds: ['mol-purine-salvage'],
     objectiveIds: [`${PS}.lesch-nyhan`, `${PS}.pathway`],
@@ -1802,6 +1836,7 @@ const cases: CaseItem[] = [
   }),
   kase({
     id: 'case:fanconi-anemia',
+    relevance: 'core',
     title: 'Small thumbs, falling counts',
     conceptIds: ['mol-fanconi-anemia'],
     objectiveIds: [`${DR}.fanconi`],

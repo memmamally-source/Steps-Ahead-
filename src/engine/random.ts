@@ -47,3 +47,22 @@ export function uid(): string {
   if (typeof crypto !== 'undefined' && 'randomUUID' in crypto) return crypto.randomUUID();
   return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;
 }
+
+/**
+ * Weighted random order (Efraimidis–Spirakis): items with higher weight tend to come first; weight 0
+ * items go last. Used to prioritise core content over supplementary content in games.
+ */
+export function weightedShuffle<T>(arr: readonly T[], weight: (x: T) => number, rnd: () => number = Math.random): T[] {
+  return arr
+    .map((x) => {
+      const w = weight(x);
+      return { x, k: w > 0 ? Math.pow(rnd() || Number.MIN_VALUE, 1 / w) : -1 };
+    })
+    .sort((a, b) => b.k - a.k)
+    .map((e) => e.x);
+}
+
+/** One weighted random choice (undefined for an empty list). */
+export function weightedPick<T>(arr: readonly T[], weight: (x: T) => number, rnd: () => number = Math.random): T | undefined {
+  return weightedShuffle(arr, weight, rnd)[0];
+}

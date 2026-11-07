@@ -114,3 +114,40 @@ Facts: **65 verified, 0 awaiting confirmation**. Sources:
 ## 6. Not started
 
 Cell signaling (the remaining 20 Cellular objectives: GPCRs, second messengers, RTKs, JAK–STAT, intracellular receptors), Laboratory techniques, Genetics, Nutrition, Metabolism and other subjects.
+
+---
+
+## Revision 1 — relevance and depth separated (owner correction)
+
+The first version derived the label from depth: application-depth items were APPLICATION and everything else CORE. That rule has been replaced.
+
+- **Two independent classifications on every item.**
+  - *Step 1 relevance*: CORE, SUPPLEMENTARY, SPECIALIST or UNREVIEWED.
+  - *Cognitive depth*: RECOGNITION, MECHANISM or APPLICATION, unchanged and still derived from the reasoning task.
+
+  A complex vignette on a classic mechanism can be CORE (for example the digoxin-overdose prediction or the bilateral-retinoblastoma two-hit question). A simple recall of an obscure finding can be SPECIALIST (for example the DIPHTHAMIDE clue).
+- **Nothing defaults to CORE.** Unlabelled items are UNREVIEWED. This now applies to all 936 older items written before the subject-by-subject strategy. They remain playable at low weight until evaluated.
+- **Explicit labels.** Every curriculum-linked item now carries an explicit label (a test enforces this):
+  - Molecular batch 1: 92 CORE, 9 SUPPLEMENTARY, 10 SPECIALIST.
+  - Molecular batch 2: 108 CORE, 2 SUPPLEMENTARY, 10 SPECIALIST.
+  - Cellular batch 1: 83 CORE.
+
+  Concepts declare `relevance: 'core'` once they have been reviewed, and items inherit it unless they override it.
+- **New SUPPLEMENTARY items** (each with a reason):
+  - MUTYH transversion spectrum (`mol-single-strand-repair:mcq4`);
+  - PARP-inhibitor synthetic lethality (`mol-double-strand-repair:mcq2`);
+  - radiosensitive NHEJ SCID and Artemis (`mol-double-strand-repair:mcq3`, `mcq4`);
+  - Bloom syndrome (`mol-double-strand-repair:tf4`, BLOOM clue);
+  - DEB chromosome-breakage test (`mol-fanconi-anemia:mcq1`);
+  - Stickler syndrome (`mol-collagen-types:mcq3`);
+  - DEOXYADENOSINE clue;
+  - TATA-box β-thalassemia (`mol-transcription:mcq1`);
+  - CRYPTIC clue.
+
+  The 20 SPECIALIST items from the first audit are unchanged.
+- **Objectives** carry editorial relevance in `src/content/curriculum/relevance.ts`. The 72 objectives reviewed so far (51 Molecular, 21 Cellular batch 1) are **70 CORE and 2 SUPPLEMENTARY** (`bc-dna-repair.nhej-scid`, `bc-dna-repair.bloom`). All other checklist objectives are UNREVIEWED until content is written for them.
+- **Gameplay.**
+  - SPECIALIST items are excluded.
+  - CORE is prioritised: Survival, review, Fact or Fiction, Mechanism Lab, Match Up, Mystery Patient and crossword draw items with a relevance-weighted shuffle (core 3 : supplementary 1 : unreviewed 1).
+  - SUPPLEMENTARY items still appear, less often.
+- **Depth-mix target.** The ~80/20 recognition-and-mechanism vs application mix is a flexible game-design target. It is tested on playable curriculum-linked content (application share between 10% and 30%) and is no longer a relevance label.
