@@ -22,10 +22,12 @@ export function objectivesOf(subject: Subject): Located<Objective>[] {
 
 /**
  * Coverage of a group of objectives. Strict rule: "covered" only when EVERY objective is covered;
+ * "core" when every objective is covered or core-covered with deferred parts;
  * "missing" only when none has any coverage; anything else is "partial".
  */
 export function rollUp(coverages: Coverage[]): Coverage {
   if (coverages.length && coverages.every((c) => c === 'covered')) return 'covered';
+  if (coverages.length && coverages.every((c) => c === 'covered' || c === 'core')) return 'core';
   if (coverages.every((c) => c === 'missing')) return 'missing';
   return 'partial';
 }
@@ -86,11 +88,11 @@ export function auditObjective(o: Objective, content: ContentIndex): ObjectiveAu
 
   if (linked.length) {
     const gap = CONTENT_GAPS[o.id];
-    const coverage: Coverage = missingDepths.length || gap?.core ? 'partial' : 'covered';
+    const coverage: Coverage = missingDepths.length || gap?.core ? 'partial' : gap?.deferred ? 'core' : 'covered';
     const notes = [
       missingDepths.length ? `Linked content does not yet assess: ${missingDepths.join(', ')}.` : '',
       gap?.core ? `Important omission, not yet taught: ${gap.core}.` : '',
-      gap?.optional ? `Optional supplementary detail, deliberately not taught: ${gap.optional}.` : '',
+      gap?.deferred ? `Deferred (not taught; the objective is not fully covered): ${gap.deferred}.` : '',
     ].filter(Boolean);
     return {
       coverage, basis: 'linked content', concepts, linked, items, depthsAssessed, missingDepths, review,

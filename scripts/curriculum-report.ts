@@ -2,6 +2,7 @@
  * Writes the Biochemistry coverage checklist and audit report.
  * Usage: npm run report:biochem
  */
+import { CONTENT_GAPS } from '../src/content/curriculum/contentGaps';
 import { writeFileSync } from 'node:fs';
 import { BIOCHEMISTRY, BIOCHEMISTRY_V1_IDS } from '../src/content/curriculum/biochemistry';
 import { auditObjective, objectiveRelevance, objectivesOf, rollUp, subtopicsOf, type ObjectiveAudit } from '../src/content/curriculum/audit';
@@ -22,7 +23,7 @@ const itemsOf = (os: Objective[]) => new Set(os.flatMap((o) => aud(o).items.map(
 const itemsFor = (ids: string[]) => new Set(ALL_ITEMS.filter((i) => i.conceptIds.some((c) => ids.includes(c))).map((i) => i.id));
 const pct = (n: number, d: number) => (d ? Math.round((100 * n) / d) : 0);
 const count = <T,>(xs: T[], f: (x: T) => boolean) => xs.filter(f).length;
-const MARK: Record<Coverage, string> = { covered: '✅ covered', partial: '🟡 partial', missing: '⬜ missing' };
+const MARK: Record<Coverage, string> = { covered: '✅ covered', core: '🟦 core covered, parts deferred', partial: '🟡 partial', missing: '⬜ missing' };
 const DEPTH: Record<Depth, string> = { recognition: 'R', mechanism: 'M', application: 'A' };
 const depthStr = (d: Depth[]) => d.map((x) => DEPTH[x]).join('·');
 const isListed = (refs: OutlineRef[]) => refs.some((r) => r.term);
@@ -73,8 +74,8 @@ p('| Measure | Value |', '|---|---|');
 p(`| Subdivisions / topics / subtopics | ${S.subdivisions.length} / ${S.subdivisions.reduce((n, d) => n + d.topics.length, 0)} / ${subtopics.length} |`);
 p(`| Assessable learning objectives | ${objectives.length} |`);
 p(`| Disorder objectives with an integration chain | ${count(objectives, (o) => o.kind === 'disorder')} |`);
-p(`| Objectives covered / partial / missing | ${objCov('covered')} (${pct(objCov('covered'), objectives.length)}%) / ${objCov('partial')} (${pct(objCov('partial'), objectives.length)}%) / ${objCov('missing')} (${pct(objCov('missing'), objectives.length)}%) |`);
-p(`| Subtopics covered / partial / missing | ${count(subCov, (c) => c === 'covered')} / ${count(subCov, (c) => c === 'partial')} / ${count(subCov, (c) => c === 'missing')} |`);
+p(`| Objectives covered in full / core covered with named parts deferred / partial / missing | ${objCov('covered')} (${pct(objCov('covered'), objectives.length)}%) / ${objCov('core')} (${pct(objCov('core'), objectives.length)}%) / ${objCov('partial')} (${pct(objCov('partial'), objectives.length)}%) / ${objCov('missing')} (${pct(objCov('missing'), objectives.length)}%) |`);
+p(`| Subtopics covered in full / core covered (parts deferred) / partial / missing | ${count(subCov, (c) => c === 'covered')} / ${count(subCov, (c) => c === 'core')} / ${count(subCov, (c) => c === 'partial')} / ${count(subCov, (c) => c === 'missing')} |`);
 p(`| Objectives tied to a listed outline term / foundational only | ${listedObjectives} / ${objectives.length - listedObjectives} |`);
 p(`| Depth: objectives requiring R / M / A | ${count(objectives, (o) => o.depth.includes('recognition'))} / ${count(objectives, (o) => o.depth.includes('mechanism'))} / ${count(objectives, (o) => o.depth.includes('application'))} |`);
 p(`| Objectives requiring all three depths | ${allThree} |`);
@@ -82,7 +83,7 @@ p(`| Subtopic priority: core / important / supporting | ${count(subtopics, (s) =
 p(`| Objectives whose clinical detail is owned by another subject | ${count(objectives, (o) => !!o.home)} |`);
 p(`| Existing content concepts teaching an objective | ${mappedConcepts.length} |`);
 p(`| Playable items assessing these objectives (Connections category-bank entries excluded) | ${allItems.size} |`);
-p(`| Objectives covered by curriculum-linked new content (computed) | ${count(linkedObjectives, (o) => cov(o) === 'covered')} of ${linkedObjectives.length} linked |`);
+p(`| Linked objectives: covered in full / core covered with parts deferred / partial (computed) | ${count(linkedObjectives, (o) => cov(o) === 'covered')} / ${count(linkedObjectives, (o) => cov(o) === 'core')} / ${count(linkedObjectives, (o) => cov(o) === 'partial')} of ${linkedObjectives.length} linked |`);
 const linkedItems = ALL_ITEMS.filter((i) => i.objectiveIds?.length && i.kind !== 'group');
 const rel = <T,>(xs: T[], f: (x: T) => string) => (['core', 'supplementary', 'specialist', 'unreviewed'] as const).map((r) => count(xs, (x) => f(x) === r)).join(' / ');
 p(`| Step 1 relevance of objectives: CORE / SUPPLEMENTARY / SPECIALIST / UNREVIEWED | ${rel(objectives, objectiveRelevance)} |`);
@@ -91,11 +92,11 @@ p(`| Curriculum-linked items, cognitive depth: RECOGNITION / MECHANISM / APPLICA
 p('| Content medically reviewed or approved | 0 (all existing content is draft, AI-drafted) |', '');
 
 p('### By subdivision', '');
-p('| Subdivision | Topics | Subtopics | Objectives | Covered | Partial | Missing | Items available |', '|---|---|---|---|---|---|---|---|');
+p('| Subdivision | Topics | Subtopics | Objectives | Covered in full | Core covered, parts deferred | Partial | Missing | Items available |', '|---|---|---|---|---|---|---|---|---|');
 for (const d of S.subdivisions) {
   const sts = d.topics.flatMap((t) => t.subtopics);
   const obs = sts.flatMap((s) => s.objectives);
-  p(`| ${d.title} | ${d.topics.length} | ${sts.length} | ${obs.length} | ${count(obs, (o) => cov(o) === 'covered')} | ${count(obs, (o) => cov(o) === 'partial')} | ${count(obs, (o) => cov(o) === 'missing')} | ${itemsOf(obs).size} |`);
+  p(`| ${d.title} | ${d.topics.length} | ${sts.length} | ${obs.length} | ${count(obs, (o) => cov(o) === 'covered')} | ${count(obs, (o) => cov(o) === 'core')} | ${count(obs, (o) => cov(o) === 'partial')} | ${count(obs, (o) => cov(o) === 'missing')} | ${itemsOf(obs).size} |`);
 }
 p('');
 
@@ -122,6 +123,15 @@ p('- Every outline mapping now quotes the exact section, category and listed ter
 
 // ------------------------------------------------------------------------------------------------
 p('## Checklist and audit', '');
+p('## Deferred components', '');
+p('Objectives marked 🟦 have their core components taught at every required depth, but the checklist text names further components that were deliberately not taught. They are **not** counted as covered in full. Source: `src/content/curriculum/contentGaps.ts`.', '');
+const deferred = objectives.filter((o) => CONTENT_GAPS[o.id]?.deferred);
+if (deferred.length) {
+  p('| Objective | Deferred component(s) |', '|---|---|');
+  for (const o of deferred) p(`| \`${o.id}\` — ${o.text} | ${CONTENT_GAPS[o.id]!.deferred} |`);
+} else p('None.');
+p('');
+
 for (const d of S.subdivisions) {
   p(`### ${d.title}`, '', `_Scope:_ ${d.scope}`, '');
   for (const t of d.topics) {
@@ -129,7 +139,7 @@ for (const d of S.subdivisions) {
     const ids = [...new Set(obs.flatMap((o) => aud(o).concepts))];
     const reviews = [...new Set(obs.map(reviewLabel).filter((r) => r !== '—'))];
     p(`#### ${t.title} — ${MARK[covOf(obs)]}`, '');
-    p(`- Objectives: ${obs.length} (${count(obs, (o) => cov(o) === 'covered')} covered, ${count(obs, (o) => cov(o) === 'partial')} partial, ${count(obs, (o) => cov(o) === 'missing')} missing); ${count(obs, (o) => cov(o) !== 'covered')} still need content.`);
+    p(`- Objectives: ${obs.length} (${count(obs, (o) => cov(o) === 'covered')} covered in full, ${count(obs, (o) => cov(o) === 'core')} core covered with parts deferred, ${count(obs, (o) => cov(o) === 'partial')} partial, ${count(obs, (o) => cov(o) === 'missing')} missing); ${count(obs, (o) => cov(o) === 'partial' || cov(o) === 'missing')} still need core content.`);
     p(`- Existing content: ${ids.length ? code(ids) : 'none'}.`);
     p(`- Playable items available: ${itemsOf(obs).size}.`);
     p(`- Medical review status: ${reviews.length ? reviews.join(', ') : 'no content to review'}.`, '');

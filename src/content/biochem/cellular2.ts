@@ -91,6 +91,19 @@ const VDR = PM(10444570, 'Brown AJ et al. Calcitriol binds the vitamin D recepto
 const SMADS = PM(10605817, 'Hill CS. Type I serine/threonine kinase receptors phosphorylate R-SMADs, which join the common-mediator SMAD and enter the nucleus. Int J Biochem Cell Biol 1999');
 const TGFB_RECEPTORS = PM(11752591, 'Wrana JL. TGF-β family ligands signal through type II and type I serine/threonine kinase receptors and SMADs. Sci STKE 2000');
 
+// Revision 2 sources.
+const INSR_STRUCTURE = PM(6923809, 'Jacobs S, Cuatrecasas P. The insulin receptor is a disulphide-linked (αβ)₂ heterotetramer. Ciba Found Symp 1982');
+const GAMMA_JAK3_SCID = PM(11213805, 'Notarangelo LD et al. γc or JAK3 defects cause T⁻B⁺NK⁻ SCID: T and NK development fail, B cells are generated. Immunol Rev 2000');
+const JAK3_PATIENTS = PM(14615376, 'Roberts JL et al. JAK3 deficiency: T⁻B⁺NK⁻ phenotype with abnormal B-cell IL-2-induced STAT5 signaling. Blood 2004');
+const ADA_GENEREVIEWS = PM(20301656, 'GeneReviews: Adenosine deaminase deficiency (low T, B and NK cells; absent humoral and cellular immunity). NCBI Bookshelf');
+const M1_GQ = PM(8441322, 'Ross EM, Berstein G. The M1 muscarinic receptor activates Gq/11 and phospholipase C-β. Life Sci 1993');
+const LH_HCG = PM(1343973, 'Ziecik AJ et al. LH and its agonist hCG share a common receptor in gonadal cells. J Physiol Pharmacol 1992');
+const LHR_CAMP = PM(30386968, 'Zhang D et al. The LH receptor, a seven-transmembrane GPCR, signals by activating adenylate cyclase (cAMP). J Fluoresc 2019');
+const IFN_RECEPTORS = PM(9208871, 'Pestka S. Interferon-γ receptor: JAK1 and JAK2 activate STAT1. Semin Oncol 1997');
+const IFN_JAK_STAT = PM(31275057, 'Johnson HM et al. IFN-γ: JAK1/JAK2 → STAT1; type I IFN: JAK1/TYK2 → STAT1 and STAT2. Mediators Inflamm 2019');
+const VEGF_RTK = PM(12778165, 'Ferrara N et al. VEGF acts through two receptor tyrosine kinases, VEGFR-1 and VEGFR-2, regulating angiogenesis. Nat Med 2003');
+const VEGF_REVIEW = PM(37491579, 'Pérez-Gutiérrez L, Ferrara N. VEGFA and its tyrosine kinase receptors VEGFR1 and VEGFR2 mediate angiogenesis and are major therapeutic targets. Nat Rev Mol Cell Biol 2023');
+
 const GP = 'bc-gpcr';
 const SM = 'bc-second-messengers';
 const RT = 'bc-rtk';
@@ -110,7 +123,7 @@ const core = defineConcepts([
     difficulty: 2,
     curriculum: [`${GP}.cycle`, `${GP}.classes`, `${GP}.receptors`],
     objectives: ['Describe the G-protein cycle', 'Explain Gs, Gi and Gq signaling', 'Assign high-yield receptors to their G protein'],
-    citations: [OS_RECEPTORS, OS_PROPAGATION, AP_HORMONES, ADRENERGIC, M2_GI, M3_GQ, DOPAMINE, HISTAMINE, V2_AQP2, PRESSOR_GQ],
+    citations: [OS_RECEPTORS, OS_PROPAGATION, AP_HORMONES, ADRENERGIC, M2_GI, M3_GQ, DOPAMINE, HISTAMINE, V2_AQP2, PRESSOR_GQ, M1_GQ],
     facts: [
       'G-protein-coupled receptors have seven transmembrane domains. Ligand binding makes the α subunit release GDP and bind GTP; α and βγ then separate and act on effectors; GTP hydrolysis to GDP ends the signal and the subunits reassociate.',
       'Gs activates adenylyl cyclase, which makes cAMP from ATP; cAMP activates protein kinase A; phosphodiesterase ends the signal by converting cAMP to AMP.',
@@ -120,15 +133,16 @@ const core = defineConcepts([
       'D1 receptors couple to Gs and activate adenylyl cyclase; D2 receptors couple to Gi and inhibit it. H1 receptors activate phospholipase C; H2 receptors raise cAMP.',
       'Vasopressin V2 receptors raise cAMP, sending aquaporin-2 to the apical membrane of collecting duct cells; vasopressin (V1), angiotensin II and endothelin receptors couple to Gq and phospholipase C.',
       'Glucagon, TSH and calcitonin use cAMP as their second messenger; angiotensin II uses Ca²⁺.',
+      'M1 muscarinic receptors, like M3, couple to Gq/11 and activate phospholipase C-β.',
     ],
-    factRefs: [[0], [1, 2], [1, 2], [3], [4, 5], [6, 7], [8, 9], [2]],
+    factRefs: [[0], [1, 2], [1, 2], [3], [4, 5], [6, 7], [8, 9], [2], [10]],
     mechanism:
       'The receptor is a switch for the G protein: ligand binding swaps GDP for GTP on Gα. Gs then turns adenylyl cyclase on (more cAMP, PKA), Gi turns it down (and its βγ can open K⁺ channels), and Gq turns on phospholipase C (IP₃ releases Ca²⁺, DAG activates PKC). Gα’s own GTPase activity switches the signal off.',
     associations: ['Seven transmembrane domains', 'GDP–GTP exchange', 'Gs', 'Gi', 'Gq', 'Adenylyl cyclase', 'Phospholipase C', 'α1', 'α2', 'β1', 'β2', 'M2', 'M3', 'D1', 'D2', 'H1', 'H2', 'V1', 'V2'],
     misconception:
       'Gi does not “turn on an inhibitor”: it lowers cAMP by inhibiting adenylyl cyclase, and its βγ subunit can open K⁺ channels (as in the SA node).',
     quick:
-      'Gs → adenylyl cyclase ↑ → cAMP → PKA (β1, β2, D1, H2, V2; glucagon, TSH, calcitonin). Gi → adenylyl cyclase ↓ (α2, M2, D2). Gq → phospholipase C → IP₃ (Ca²⁺) + DAG (PKC) (α1, M3, H1, V1, angiotensin II). GTP hydrolysis ends the signal.',
+      'Gs → adenylyl cyclase ↑ → cAMP → PKA (β1, β2, D1, H2, V2; glucagon, TSH, calcitonin). Gi → adenylyl cyclase ↓ (α2, M2, D2). Gq → phospholipase C → IP₃ (Ca²⁺) + DAG (PKC) (α1, M1, M3, H1, V1, angiotensin II). GTP hydrolysis ends the signal.',
     detailed: [
       'G-protein-coupled receptors span the membrane seven times. The bound heterotrimeric G protein (α, β, γ) exchanges GDP for GTP when the ligand binds, separates into α-GTP and βγ, and activates effectors until GTP is hydrolyzed.',
       'The three high-yield pathways differ by their effector. Gs stimulates adenylyl cyclase, raising cAMP and activating PKA; Gi inhibits adenylyl cyclase and, through βγ, opens K⁺ channels; Gq activates phospholipase C, producing IP₃ (Ca²⁺ release from the ER) and DAG (protein kinase C). Knowing which G protein a receptor uses predicts its effect: α1 constricts vessels, β1 increases heart rate and contractility, M2 slows the heart, V2 inserts aquaporin-2.',
@@ -159,7 +173,7 @@ const core = defineConcepts([
           ['b', 'Adenylyl cyclase is inhibited and cAMP falls', 'That is Gi signaling, used by α2, M2 and D2 receptors.'],
           ['c', 'Adenylyl cyclase is stimulated and PKA is activated', 'That is Gs signaling, used by β1, β2, D1 and V2 receptors.'],
           ['d', 'Soluble guanylyl cyclase makes cGMP', 'Soluble guanylyl cyclase is activated by nitric oxide, not Gq.'],
-          ['e', 'The receptor dimerizes and phosphorylates tyrosines', 'Dimerization and tyrosine phosphorylation describe receptor tyrosine kinases.'],
+          ['e', 'The receptor dimerizes and phosphorylates tyrosines', 'Dimerization and tyrosine phosphorylation describe growth-factor receptor tyrosine kinases.'],
         ],
         answer: 'a',
         mini: 'Gq → phospholipase C → PIP₂ split into IP₃ (releases ER Ca²⁺) and DAG (activates protein kinase C).',
@@ -187,6 +201,7 @@ const core = defineConcepts([
       { statement: 'G-protein-coupled receptors have seven transmembrane domains.', isTrue: true, correction: 'Correct: all G-protein-linked receptors span the membrane seven times.', objectives: [`${GP}.cycle`], difficulty: 1 },
       { statement: 'β1-adrenergic receptors in the heart couple to Gi and lower cAMP.', isTrue: false, correction: 'β1 receptors couple to Gs: adenylyl cyclase → cAMP → PKA → increased rate and contractility.', objectives: [`${GP}.receptors`], difficulty: 1 },
       { statement: 'M2 muscarinic receptors in the SA node couple to Gi and slow the heart.', isTrue: true, correction: 'Correct: Gβγ opens K⁺ channels, slowing pacemaker firing.', objectives: [`${GP}.receptors`], difficulty: 2 },
+      { statement: 'M1 and M3 muscarinic receptors couple to Gq, whereas M2 couples to Gi.', isTrue: true, correction: 'Correct: M1 and M3 → Gq → phospholipase C; M2 → Gi (heart).', objectives: [`${GP}.receptors`], difficulty: 1 },
     ],
     clues: [
       { answer: 'ADENYLYL', clue: 'Cyclase that Gs stimulates and Gi inhibits (first word)', objectives: [`${GP}.classes`], difficulty: 2 },
@@ -625,34 +640,36 @@ const core = defineConcepts([
     topic: 'biochem-cellular',
     difficulty: 3,
     curriculum: [`${RT}.mechanism`, `${RT}.insulin`],
-    objectives: ['Explain RTK signaling through dimerization, phosphorylation and RAS/MAPK', 'Explain how insulin increases glucose uptake'],
-    citations: [OS_RECEPTORS, OS_PROPAGATION, MPG('gene/kras', 'KRAS gene'), MPG('gene/braf', 'BRAF gene'), AP_PANCREAS, INSULIN_PI3K, GLUT4_AKT],
+    objectives: ['Explain RTK signaling: ligand-activated tyrosine kinase activity (dimerization for growth-factor receptors), phosphorylation and RAS/MAPK', 'Explain how insulin increases glucose uptake'],
+    citations: [OS_RECEPTORS, OS_PROPAGATION, MPG('gene/kras', 'KRAS gene'), MPG('gene/braf', 'BRAF gene'), AP_PANCREAS, INSULIN_PI3K, GLUT4_AKT, INSR_STRUCTURE, VEGF_RTK, VEGF_REVIEW],
     facts: [
-      'Receptor tyrosine kinases are enzyme-linked receptors with a single membrane-spanning segment; ligand binding brings two receptors together (dimerization) and they transfer phosphate groups to tyrosine residues.',
+      'Receptor tyrosine kinases are enzyme-linked receptors with a single membrane-spanning segment. For growth-factor receptors, ligand binding brings two receptors together (dimerization) and they transfer phosphate groups to tyrosine residues.',
       'When EGF binds its receptor tyrosine kinase, a cascade causes the cell to grow and divide; inappropriate activation can cause cancer.',
       'RAS (for example K-Ras) is a GTPase switch: it relays signals when bound to GTP and turns off when it hydrolyzes GTP to GDP. It is part of the RAS/MAPK pathway, which controls proliferation, differentiation, migration and apoptosis.',
       'BRAF is part of the RAS/MAPK pathway.',
       'Insulin activates a tyrosine kinase receptor, triggering phosphorylation of many intracellular substrates that move vesicles containing glucose transporters to the cell membrane; skeletal muscle and adipose cells are the main targets. Red cells and cells of the brain, liver and kidneys take up glucose without insulin.',
       'Insulin signals to GLUT4 mainly through the insulin receptor–IRS–PI3K axis: PI3K activates the kinase Akt, which promotes translocation of GLUT4 vesicles to the plasma membrane of muscle and fat cells.',
+      'The insulin receptor is already a disulfide-linked (αβ)₂ heterotetramer before insulin binds; insulin binding activates its intrinsic tyrosine kinase rather than bringing two separate receptors together.',
+      'VEGF (VEGF-A) acts through two receptor tyrosine kinases, VEGFR-1 and VEGFR-2, and is a key regulator of physiological and pathological angiogenesis (tumors, intraocular neovascular disease); the VEGF pathway is a major therapeutic target.',
     ],
-    factRefs: [[0], [1], [1, 2], [3], [4], [5, 6]],
+    factRefs: [[0], [1], [1, 2], [3], [4], [5, 6], [7, 4], [8, 9]],
     mechanism:
-      'Growth factors pair up their receptors, which phosphorylate each other on tyrosines. The phosphorylated receptor activates RAS by loading it with GTP; RAS then starts a kinase cascade (including RAF/BRAF) that reaches the nucleus and drives growth and division. RAS switches itself off by hydrolyzing GTP. Insulin uses the same receptor class but its main metabolic effect is moving glucose transporters to the surface of muscle and fat cells.',
-    associations: ['Dimerization', 'Tyrosine phosphorylation', 'EGF receptor', 'RAS-GTP', 'RAS/MAPK pathway', 'BRAF', 'Insulin receptor', 'GLUT4 translocation'],
+      'Growth factors such as EGF pair up their receptors, which phosphorylate each other on tyrosines. (The insulin receptor is different: it is already a disulfide-linked α₂β₂ complex, and insulin binding switches on its intrinsic kinase.) The phosphorylated receptor activates RAS by loading it with GTP; RAS then starts a kinase cascade (including RAF/BRAF) that reaches the nucleus and drives growth and division. RAS switches itself off by hydrolyzing GTP. Insulin uses the same receptor class but its main metabolic effect is moving glucose transporters to the surface of muscle and fat cells.',
+    associations: ['Dimerization (growth-factor RTKs)', 'Tyrosine phosphorylation', 'EGF receptor', 'VEGF receptors (angiogenesis)', 'RAS-GTP', 'RAS/MAPK pathway', 'BRAF', 'Insulin receptor (preformed α₂β₂)', 'GLUT4 translocation'],
     misconception:
       'Insulin does not increase glucose uptake into the brain, liver or red cells: those cells take up glucose without insulin; muscle and fat are its main targets.',
     quick:
-      'RTK: ligand → dimerization → tyrosine autophosphorylation → RAS-GTP → RAF → MAPK cascade → nucleus (growth). RAS off = GTP hydrolysis. Insulin receptor (RTK) → phosphorylation cascade → GLUT4 vesicles to membrane in muscle and fat.',
+      'Growth-factor RTK (EGFR, VEGFR): ligand → dimerization → tyrosine autophosphorylation → RAS → MAPK → growth. Insulin receptor: preformed α₂β₂; insulin activates its kinase → IRS → PI3K → Akt → GLUT4 to the membrane (muscle, fat).',
     detailed: [
-      'Receptor tyrosine kinases (receptors for insulin, EGF and other growth factors) have one transmembrane segment. Ligand binding causes dimerization and phosphorylation of tyrosines, which recruit signaling proteins. One major branch activates RAS, a small GTPase, which turns on the RAF/BRAF–MAPK kinase cascade that controls proliferation.',
+      'Receptor tyrosine kinases (receptors for insulin, EGF, VEGF and other growth factors) have intrinsic tyrosine kinase activity. For growth-factor receptors, ligand binding causes dimerization and phosphorylation of tyrosines, which recruit signaling proteins; the insulin receptor is already a disulfide-linked α₂β₂ dimer, and insulin binding activates its kinase. One major branch activates RAS, a small GTPase, which turns on the RAF/BRAF–MAPK kinase cascade that controls proliferation.',
       'Insulin activates its tyrosine kinase receptor in skeletal muscle and adipose tissue, setting off a phosphorylation cascade that moves glucose-transporter vesicles to the membrane, rapidly increasing glucose uptake.',
     ],
-    takeaway: 'RTK → dimerize → phosphorylate → RAS-GTP → MAPK → growth. Insulin RTK → GLUT4 to the membrane (muscle, fat).',
+    takeaway: 'Growth-factor RTK → dimerize → phosphorylate → RAS → MAPK → growth. Insulin receptor (already α₂β₂) → kinase on → GLUT4 to the membrane.',
     related: ['cel-oncogenic-signaling', 'cel-membrane-transport'],
     outline: found(MS, 'Neoplasms and related disorders'),
     mcq: [
       {
-        stem: 'A growth factor binds its receptor tyrosine kinase. What is the first change that allows the receptors to signal?',
+        stem: 'Epidermal growth factor (EGF) binds its receptor tyrosine kinase. What is the first change that allows the receptors to signal?',
         options: [
           ['a', 'Two receptors dimerize and phosphorylate tyrosines'],
           ['b', 'A G protein exchanges GDP for GTP at the receptor', 'GDP–GTP exchange at the receptor describes G-protein-coupled receptors.'],
@@ -661,7 +678,7 @@ const core = defineConcepts([
           ['e', 'Phospholipase C makes IP₃ and DAG', 'That is the Gq pathway, not receptor tyrosine kinase signaling.'],
         ],
         answer: 'a',
-        mini: 'RTK ligands bring two receptors together; they phosphorylate tyrosines, which recruit downstream signaling proteins.',
+        mini: 'Growth-factor RTKs such as the EGF receptor pair up when the ligand binds and phosphorylate each other’s tyrosines, which recruit downstream signaling proteins. (The insulin receptor is already a disulfide-linked α₂β₂ dimer.)',
         reasoning: 'recall',
         objectives: [`${RT}.mechanism`],
         difficulty: 1,
@@ -725,16 +742,18 @@ const core = defineConcepts([
         mini: 'Insulin receptor → IRS → PI3K → Akt → GLUT4 vesicles fuse with the membrane. Without PI3K, insulin-stimulated glucose uptake into muscle fails.',
         reasoning: 'prediction',
         objectives: [`${RT}.insulin`],
-        steps: ['Insulin binds its tyrosine kinase receptor, which phosphorylates IRS.', 'IRS activates PI3K, and PI3K activates Akt.', 'Akt drives GLUT4 translocation; blocking PI3K stops it, so muscle glucose uptake falls.'],
+        steps: ['Insulin binds its receptor (already an α₂β₂ dimer) and activates its tyrosine kinase, which phosphorylates IRS.', 'IRS activates PI3K, and PI3K activates Akt.', 'Akt drives GLUT4 translocation; blocking PI3K stops it, so muscle glucose uptake falls.'],
         difficulty: 3,
       },
     ],
     tf: [
       { statement: 'RAS is active when bound to GTP and inactive after it hydrolyzes GTP to GDP.', isTrue: true, correction: 'Correct: RAS is a GTPase switch in the RAS/MAPK pathway.', objectives: [`${RT}.mechanism`], difficulty: 1 },
       { statement: 'Insulin moves GLUT4 to the muscle cell membrane through IRS–PI3K–Akt signaling.', isTrue: true, correction: 'Correct: this receptor tyrosine kinase cascade drives GLUT4 translocation in muscle and fat.', objectives: [`${RT}.insulin`], difficulty: 1 },
+      { statement: 'Like the EGF receptor, the insulin receptor must pair up with a second receptor after insulin binds.', isTrue: false, correction: 'The insulin receptor is already a disulfide-linked α₂β₂ complex; insulin binding activates its intrinsic tyrosine kinase.', objectives: [`${RT}.mechanism`, `${RT}.insulin`], difficulty: 2 },
+      { statement: 'VEGF stimulates angiogenesis through receptor tyrosine kinases (VEGFR-1 and VEGFR-2).', isTrue: true, correction: 'Correct: VEGF receptors are RTKs, and the VEGF pathway drives physiological and tumor angiogenesis.', objectives: [`${RT}.mechanism`], difficulty: 1 },
     ],
     clues: [
-      { answer: 'DIMERIZATION', clue: 'Pairing of two receptor tyrosine kinases after ligand binding', objectives: [`${RT}.mechanism`], difficulty: 2 },
+      { answer: 'DIMERIZATION', clue: 'Pairing of two growth-factor receptor tyrosine kinases (e.g. EGFR) after ligand binding', objectives: [`${RT}.mechanism`], difficulty: 2 },
       { answer: 'TYROSINE', clue: 'Amino acid phosphorylated by insulin and growth factor receptors', objectives: [`${RT}.mechanism`], difficulty: 1 },
       { answer: 'AKT', clue: 'Kinase activated by PI3K that sends GLUT4 to the membrane', objectives: [`${RT}.insulin`], difficulty: 2 },
     ],
@@ -886,6 +905,11 @@ const core = defineConcepts([
       MPG('condition/x-linked-severe-combined-immunodeficiency', 'X-linked severe combined immunodeficiency'),
       MPD('a613025', 'Tofacitinib'),
       GH_JAK, GH_STAT5, PRL_JAK, EPO_JAK, STAT_DIMER, MPG('gene/il2rg', 'IL2RG gene'),
+      GAMMA_JAK3_SCID,
+      JAK3_PATIENTS,
+      ADA_GENEREVIEWS,
+      IFN_RECEPTORS,
+      IFN_JAK_STAT
     ],
     facts: [
       'The JAK/STAT pathway transmits chemical signals from outside the cell to the nucleus; JAK2 transmits signals after receptors such as the thrombopoietin receptor (MPL) are activated.',
@@ -898,8 +922,10 @@ const core = defineConcepts([
       'Growth hormone binding to its receptor activates the associated tyrosine kinase JAK2; JAK2 activation of STAT5 is the most important GH pathway, and STAT5 induces IGF-1.',
       'Prolactin and erythropoietin receptors also signal mainly through JAK2 and STAT5; the EPO receptor–JAK2–STAT5 pathway regulates the differentiation, proliferation and survival of erythroid progenitors.',
       'IL2RG encodes the common gamma chain, a component of several immune-cell receptors; without it, signals are not relayed to the nucleus and lymphocytes cannot develop normally.',
+      'Defects of the common γ chain or JAK3 cause T⁻B⁺NK⁻ SCID: T and NK cell development fails, B cells are generated (with abnormal function); adenosine deaminase deficiency, by contrast, classically lowers T, B and NK cells.',
+      'Interferons signal through JAK–STAT: the interferon-γ receptor uses JAK1 and JAK2 to activate STAT1, and type I interferon (α, β) receptors use JAK1 and TYK2 to activate STAT1 and STAT2.',
     ],
-    factRefs: [[0, 3], [1], [0, 2, 3], [4], [5], [6], [11], [7, 8], [9, 10], [12]],
+    factRefs: [[0, 3], [1], [0, 2, 3], [4], [5], [6], [11], [7, 8], [9, 10], [12], [13, 14, 15], [16, 17]],
     mechanism:
       'Cytokine and hematopoietic growth-factor receptors work with JAK kinases. When the receptor is activated, JAKs relay the signal through STAT proteins to the nucleus. A JAK2 that is always on (V617F) drives blood cell overproduction; a missing JAK3 (or the IL2RG receptor component in X-linked SCID) stops lymphocytes developing. JAK inhibitors damp cytokine signaling in autoimmune disease.',
     associations: ['JAK', 'STAT', 'JAK2 V617F', 'Polycythemia vera', 'Essential thrombocythemia', 'Primary myelofibrosis', 'MPL (thrombopoietin receptor)', 'JAK3', 'IL2RG', 'X-linked SCID', 'Tofacitinib'],
@@ -965,17 +991,17 @@ const core = defineConcepts([
       {
         stem: 'A child’s lymphocytes cannot respond to several interleukins because the receptors’ associated kinase is missing, although the receptors themselves are present. Which other finding is expected?',
         options: [
-          ['a', 'Severe combined immunodeficiency (few T and NK cells)'],
+          ['a', 'SCID: T and NK cells absent, B cells present but nonfunctional'],
           ['b', 'Polycythemia with raised hemoglobin', 'That is JAK2 gain of function.'],
           ['c', 'Isolated absence of B cells with normal T cells', 'That pattern is X-linked agammaglobulinemia (BTK).'],
-          ['d', 'Short-limbed dwarfism with a large head', 'That is FGFR3 gain of function (achondroplasia).'],
+          ['d', 'SCID with T, B and NK cells all absent', 'Loss of all three populations (T⁻B⁻NK⁻) is classic for ADA deficiency; JAK3 deficiency leaves B-cell numbers intact.'],
           ['e', 'Café-au-lait spots and fibrous dysplasia', 'That is McCune–Albright syndrome (Gsα).'],
         ],
         answer: 'a',
-        mini: 'Interleukin receptors signal through JAK3; without it, T and NK cell development fails and B cells do not mature: JAK3-deficient SCID.',
+        mini: 'JAK3-deficient SCID is T⁻B⁺NK⁻: T and NK cells fail to develop, while B cells are present in normal numbers but function poorly. ADA-deficient SCID, by contrast, classically lowers T, B and NK cells.',
         reasoning: 'prediction',
         objectives: [`${JS}.ligands`, `${JS}.mechanism`],
-        steps: ['The receptors are present but their associated kinase is missing → JAK deficiency.', 'Interleukin signals in lymphocytes use JAK3.', 'Without JAK3, T and NK cells fail to develop and B cells do not mature → SCID.'],
+        steps: ['The receptors are present but their associated kinase is missing → JAK deficiency.', 'Interleukin signals in lymphocytes use JAK3.', 'Without JAK3, T and NK cells fail to develop; B cells are made but work poorly → T⁻B⁺NK⁻ SCID.'],
         relevance: 'supplementary',
         relevanceNote: 'JAK3-deficient SCID is a less common autosomal recessive form; X-linked (IL2RG) SCID is the core example.',
         difficulty: 3,
@@ -1051,6 +1077,8 @@ const core = defineConcepts([
       { statement: 'JAK/STAT signaling carries signals from cell-surface receptors to the nucleus.', isTrue: true, correction: 'Correct: STATs relay JAK signals to the nucleus to change transcription.', objectives: [`${JS}.mechanism`], difficulty: 1 },
       { statement: 'Phosphorylated STAT proteins dimerize and enter the nucleus to change transcription.', isTrue: true, correction: 'Correct: JAKs phosphorylate STATs, which dimerize and act as transcription factors.', objectives: [`${JS}.mechanism`], difficulty: 1 },
       { statement: 'The IL2RG gene encodes the common gamma chain, part of several immune-cell receptors.', isTrue: true, correction: 'Correct: loss of the common gamma chain blocks lymphocyte development in X-linked SCID.', objectives: [`${JS}.scid`], difficulty: 2 },
+      { statement: 'In X-linked and JAK3-deficient SCID, B cells are usually present in normal numbers but function poorly.', isTrue: true, correction: 'Correct: γc/JAK3 SCID is T⁻B⁺NK⁻; ADA-deficient SCID classically lowers T, B and NK cells.', objectives: [`${JS}.scid`], difficulty: 2 },
+      { statement: 'Interferons signal through G-protein-coupled receptors and cAMP.', isTrue: false, correction: 'Interferon receptors are cytokine receptors that use JAKs (JAK1, JAK2, TYK2) to activate STATs.', objectives: [`${JS}.ligands`], difficulty: 1 },
     ],
     clues: [
       { answer: 'TOFACITINIB', clue: 'Janus kinase inhibitor used in rheumatoid arthritis', objectives: [`${JS}.ligands`], relevance: 'supplementary', relevanceNote: 'Specific JAK-inhibitor drug name; the JAK–STAT pathway itself is core.', difficulty: 2 },
@@ -1106,7 +1134,7 @@ const core = defineConcepts([
           ['a', 'Binds DNA and changes transcription of target genes'],
           ['b', 'Activates adenylyl cyclase at the membrane', 'Steroids act through intracellular receptors, not G proteins.'],
           ['c', 'Opens a ligand-gated ion channel', 'Ion channel receptors are on the plasma membrane and act on ion flow.'],
-          ['d', 'Dimerizes and phosphorylates tyrosines', 'That describes receptor tyrosine kinases.'],
+          ['d', 'Dimerizes and phosphorylates tyrosines', 'That describes growth-factor receptor tyrosine kinases.'],
           ['e', 'Activates JAK kinases associated with the receptor', 'JAK–STAT signaling is used by cytokine receptors.'],
         ],
         answer: 'a',
@@ -1204,7 +1232,7 @@ const core = defineConcepts([
     difficulty: 2,
     curriculum: [`${GP}.receptors`, `${SM}.predict`],
     objectives: ['Assign high-yield hormone receptors to Gs or Gq', 'Predict a hormone’s second messenger and effect'],
-    citations: [GHRH_GS, SOMATOTROPH, ACTH_CAMP, LH_GS, GLYCO_GS, PTH_RECEPTOR, PTH_PKA, GNRH_GQ, GNRH_LHFSH, TRH_GQ, OXYTOCIN_GQ, MYOMETRIUM, AP_HORMONES],
+    citations: [GHRH_GS, SOMATOTROPH, ACTH_CAMP, LH_GS, GLYCO_GS, PTH_RECEPTOR, PTH_PKA, GNRH_GQ, GNRH_LHFSH, TRH_GQ, OXYTOCIN_GQ, MYOMETRIUM, AP_HORMONES, LH_HCG, LHR_CAMP],
     facts: [
       'The GHRH receptor on pituitary somatotrophs is a seven-transmembrane Gs-coupled receptor: GHRH raises cAMP, and PKA phosphorylates the transcription factor CREB; growth hormone release also involves G-protein effects on ion channels.',
       'ACTH binds the melanocortin 2 receptor (MC2R) on adrenal cells and stimulates adenylyl cyclase; cAMP and PKA drive both the rapid supply of cholesterol for steroid synthesis and transcription of steroidogenic genes.',
@@ -1215,15 +1243,16 @@ const core = defineConcepts([
       'The oxytocin receptor couples mainly through Gq to phospholipase Cβ; oxytocin and other uterotonic agonists act through Gq/PLCβ in myometrium.',
       'About 40% of pituitary somatotroph tumors carry activating Gsα mutations (at Arg201 or Gln227), and excess GH from somatotroph adenomas causes acromegaly.',
       'Reconciling sources: OpenStax lists GHRH among hormones that use Ca²⁺ as a second messenger. GHRH-stimulated GH release does involve G-protein effects on ion channels, but the GHRH receptor is Gs-coupled and cAMP is its principal second messenger, which is the classic Step 1 association.',
+      'LH and hCG share a common receptor in the gonads (the LH receptor), a seven-transmembrane GPCR that signals by activating adenylyl cyclase and raising cAMP.',
     ],
-    factRefs: [[0], [2], [3, 4], [5, 6], [7, 8], [9], [10, 11], [9, 1], [12, 0]],
+    factRefs: [[0], [2], [3, 4], [5, 6], [7, 8], [9], [10, 11], [9, 1], [12, 0], [13, 14]],
     mechanism:
       'The hormones in this group that raise cAMP use Gs (GHRH on somatotrophs, ACTH on the adrenal cortex, LH and FSH on the gonads, PTH on bone and kidney). Hypothalamic GnRH and TRH, and oxytocin on the uterus, use Gq: phospholipase C → IP₃ (Ca²⁺) and DAG (PKC). Knowing the G protein predicts what a constantly active Gsα or a phospholipase C blocker would do.',
     associations: ['GHRH → Gs', 'ACTH (MC2R) → Gs', 'LH, FSH → Gs', 'PTH → Gs (and PLC)', 'GnRH → Gq', 'TRH → Gq', 'Oxytocin → Gq', 'Somatotroph adenoma', 'Acromegaly', 'Familial male precocious puberty'],
     misconception:
       'A Ca²⁺ effect does not make a hormone a Gq hormone: GHRH-stimulated GH release involves ion channels, but the GHRH receptor is Gs-coupled and cAMP is the classic messenger.',
     quick:
-      'Gs/cAMP: GHRH, ACTH (MC2R), LH, FSH, PTH (also PLC). Gq/IP₃–DAG: GnRH, TRH, oxytocin. Activating Gsα in somatotrophs mimics constant GHRH → GH excess → acromegaly.',
+      'Gs/cAMP: GHRH, ACTH (MC2R), LH and hCG (shared LH receptor), FSH, PTH (also PLC). Gq/IP₃–DAG: GnRH, TRH, oxytocin. Activating Gsα in somatotrophs mimics constant GHRH → GH excess → acromegaly.',
     detailed: [
       'Gs hormones activate adenylyl cyclase: GHRH (somatotrophs, cAMP → PKA → CREB), ACTH (MC2R in the adrenal cortex, cAMP → steroidogenesis), LH and FSH (glycoprotein-hormone receptors in the gonads) and PTH (type 1 PTH receptor in bone and kidney, which also activates phospholipase C).',
       'Gq hormones activate phospholipase C, producing IP₃ (Ca²⁺ release) and DAG (protein kinase C): GnRH on gonadotropes (LH and FSH release), TRH on thyrotrophs and oxytocin on the myometrium. Disease follows the same logic: a constantly active Gsα in somatotrophs behaves like unremitting GHRH and causes GH excess, and an activating LH-receptor mutation produces testosterone without gonadotropins.',
@@ -1316,6 +1345,7 @@ const core = defineConcepts([
       { statement: 'The GHRH receptor is Gs-coupled, and cAMP is its principal second messenger.', isTrue: true, correction: 'Correct: GHRH → Gs → cAMP → PKA → CREB in somatotrophs.', objectives: [`${GP}.receptors`], difficulty: 1 },
       { statement: 'TRH acts on thyrotrophs through Gs and cAMP.', isTrue: false, correction: 'The TRH receptor uses Gq: phospholipase Cβ → Ca²⁺ and protein kinase C.', objectives: [`${GP}.receptors`], difficulty: 1 },
       { statement: 'The PTH receptor can activate both adenylyl cyclase and phospholipase C.', isTrue: true, correction: 'Correct: the type 1 PTH receptor signals through cAMP–PKA (classic) and PLC–PKC.', objectives: [`${GP}.receptors`], relevance: 'supplementary', relevanceNote: 'The PLC arm of PTH signaling is beyond core; PTH → cAMP is core.', difficulty: 2 },
+      { statement: 'hCG acts on the same Gs-coupled receptor as LH.', isTrue: true, correction: 'Correct: LH and hCG share the LH receptor, which raises cAMP (Gs).', objectives: [`${GP}.receptors`], difficulty: 1 },
     ],
     clues: [
       { answer: 'OXYTOCIN', clue: 'Posterior pituitary hormone whose Gq-coupled receptor contracts the uterus', objectives: [`${GP}.receptors`], difficulty: 1 },
@@ -1340,22 +1370,22 @@ const core = defineConcepts([
     facts: [
       'TGF-β family ligands signal through complexes of type II and type I receptors that are serine/threonine kinases.',
       'The type I receptor phosphorylates receptor-regulated SMADs, which form complexes with the common-mediator SMAD, move to the nucleus and regulate transcription together with DNA-binding partners.',
-      'In Marfan syndrome (FBN1, autosomal dominant), reduced fibrillin-1 means microfibrils cannot bind growth factors, so excess growth factors are available and tissues overgrow and become unstable; fibrillin-1 microfibrils normally store TGF-β in an inactive form.',
+      'Marfan syndrome (FBN1, autosomal dominant) is a connective-tissue disorder of fibrillin-1 microfibrils: its two primary features are lens dislocation and aortic dilation with risk of dissection, and patients are usually tall with long fingers and loose joints. Microfibrils also bind growth factors; with fewer microfibrils, more growth factor is available, which is thought to contribute to tissue overgrowth. Fibrillin-1 normally stores TGF-β in an inactive form.',
       'Loeys–Dietz syndrome (TGFBR1, TGFBR2, SMAD3, TGFB2 or TGFB3; autosomal dominant) shows paradoxically increased TGF-β pathway signaling.',
     ],
     factRefs: [[0], [1], [2, 3], [4]],
     mechanism:
-      'TGF-β binds a type II receptor, which recruits and activates a type I receptor; both are serine/threonine kinases. The type I receptor phosphorylates SMADs that carry the signal to the nucleus. Fibrillin-1 microfibrils keep TGF-β stored and inactive, so losing fibrillin-1 (Marfan syndrome) releases more active growth factor.',
+      'TGF-β binds a type II receptor, which recruits and activates a type I receptor; both are serine/threonine kinases. The type I receptor phosphorylates SMADs that carry the signal to the nucleus. In Marfan syndrome the central problem is defective fibrillin-1 and weak connective tissue; increased availability of TGF-β from fewer microfibrils is one contributing mechanism, not the whole explanation.',
     associations: ['TGF-β', 'Type I and II receptors', 'Serine/threonine kinase', 'R-SMAD', 'Common-mediator SMAD', 'Fibrillin-1', 'FBN1', 'Marfan syndrome', 'Loeys–Dietz syndrome'],
     misconception:
-      'Not every enzyme-linked receptor is a tyrosine kinase: TGF-β receptors phosphorylate SMADs on serine and threonine.',
+      'Not every enzyme-linked receptor is a tyrosine kinase: TGF-β receptors phosphorylate SMADs on serine and threonine. And Marfan syndrome is not “a TGF-β disease”: it is a fibrillin-1 connective-tissue disorder in which TGF-β dysregulation is thought to contribute.',
     quick:
-      'TGF-β → type II + type I receptor serine/threonine kinases → phosphorylated R-SMAD + common SMAD → nucleus → transcription. Marfan: FBN1 loss → microfibrils cannot store TGF-β → excess active growth factor.',
+      'TGF-β → type II + type I receptor serine/threonine kinases → phosphorylated R-SMAD + common SMAD → nucleus → transcription. Marfan: FBN1 → defective fibrillin-1 microfibrils (lens dislocation, aortic dilation); more free TGF-β is thought to contribute.',
     detailed: [
       'Receptor serine/threonine kinases form a third class of enzyme-linked receptors. TGF-β family ligands bring type II and type I receptors together; the type I receptor phosphorylates receptor-regulated SMADs, which partner with the common-mediator SMAD and enter the nucleus to regulate transcription.',
-      'Fibrillin-1 microfibrils store TGF-β in an inactive form. In Marfan syndrome, FBN1 variants reduce functional microfibrils, more growth factor is available and tissues overgrow and become unstable. Loeys–Dietz syndrome, caused by variants in TGF-β pathway genes, also shows increased pathway signaling.',
+      'Marfan syndrome is caused by FBN1 variants that reduce functional fibrillin-1 microfibrils, weakening connective tissue: lens dislocation, aortic dilation and dissection, tall stature and long fingers. Because microfibrils also store TGF-β in an inactive form, more growth factor becomes available, which is thought to contribute; the full mechanism is complex. Loeys–Dietz syndrome, caused by variants in TGF-β pathway genes, also shows increased pathway signaling.',
     ],
-    takeaway: 'TGF-β receptors are serine/threonine kinases that act through SMADs; fibrillin-1 loss (Marfan) frees TGF-β.',
+    takeaway: 'TGF-β receptors are serine/threonine kinases acting through SMADs. Marfan = fibrillin-1 defect; extra free TGF-β is a contributing mechanism.',
     related: ['cel-rtk', 'cel-jak-stat'],
     outline: found(MS, GEN),
     mcq: [
@@ -1375,16 +1405,16 @@ const core = defineConcepts([
         difficulty: 2,
       },
       {
-        stem: 'Why do FBN1 variants in Marfan syndrome increase growth-factor signaling in connective tissue?',
+        stem: 'In Marfan syndrome, FBN1 variants reduce functional fibrillin-1, weakening connective-tissue microfibrils. Which additional mechanism is thought to contribute to the tissue changes?',
         options: [
-          ['a', 'Fewer microfibrils store TGF-β, so more is active'],
+          ['a', 'Fewer microfibrils store TGF-β, so more is available'],
           ['b', 'Fibrillin-1 is itself a TGF-β receptor', 'Fibrillin-1 forms microfibrils that bind and store growth factors; it is not a receptor.'],
           ['c', 'Fibrillin-1 normally degrades SMAD proteins', 'Fibrillin-1 is an extracellular matrix protein and does not degrade SMADs.'],
           ['d', 'Abnormal collagen cross-links trap TGF-β', 'Collagen cross-linking defects are not the mechanism in Marfan syndrome.'],
           ['e', 'FBN1 variants activate Gsα in fibroblasts', 'Activating Gsα (GNAS) mutations cause McCune–Albright syndrome.'],
         ],
         answer: 'a',
-        mini: 'Fibrillin-1 microfibrils store TGF-β inactively. Fewer microfibrils in Marfan syndrome leave more growth factor free, so tissues overgrow and become unstable.',
+        mini: 'Marfan syndrome is primarily a fibrillin-1 connective-tissue defect (lens dislocation, aortic dilation and dissection, tall stature). Microfibrils also store TGF-β, so fewer microfibrils leave more growth factor available, which is thought to contribute; it is not the whole explanation.',
         reasoning: 'mechanism',
         objectives: [`${RO}.ser-thr`],
         difficulty: 2,
@@ -1481,7 +1511,7 @@ const sequences: SequenceItem[] = [
     id: 'seq:rtk-ras',
     relevance: 'core',
     title: 'Growth factor to nucleus',
-    prompt: 'Order the steps of receptor tyrosine kinase signaling through RAS.',
+    prompt: 'Order the steps of growth-factor receptor tyrosine kinase signaling (for example the EGF receptor) through RAS.',
     steps: [
       'A growth factor binds its receptor',
       'Two receptors dimerize',
@@ -1519,8 +1549,8 @@ const sequences: SequenceItem[] = [
     title: 'Insulin opens the glucose door',
     prompt: 'Order the steps from insulin binding to glucose uptake in muscle.',
     steps: [
-      'Insulin binds its receptor tyrosine kinase',
-      'The receptor phosphorylates its own tyrosines',
+      'Insulin binds its preformed α₂β₂ receptor',
+      'The receptor’s intrinsic tyrosine kinase phosphorylates its own tyrosines',
       'Insulin receptor substrate (IRS) is phosphorylated',
       'IRS activates PI3K',
       'PI3K signaling activates Akt',

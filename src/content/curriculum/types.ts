@@ -59,7 +59,12 @@ export interface CrossLink {
 }
 
 /** Coverage judgement for existing content, made by reading the content (not automatic). */
-export type Coverage = 'covered' | 'partial' | 'missing';
+/**
+ * `core`: the objective's core components are taught at every required depth, but components named in
+ * the checklist text were deliberately deferred (listed in `contentGaps.ts`). It is never reported as
+ * fully covered.
+ */
+export type Coverage = 'covered' | 'core' | 'partial' | 'missing';
 
 /**
  * Metabolic integration for a disorder objective: the chain a learner must reason through, from the

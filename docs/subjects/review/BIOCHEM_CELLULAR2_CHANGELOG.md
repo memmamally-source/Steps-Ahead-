@@ -2,6 +2,85 @@
 
 All content is **draft, AI-drafted, not medically reviewed**. A verified source is not medical approval, and computed coverage is not clinical validation. Review packet: `BIOCHEM_CELLULAR2_REVIEW.md`. Source: `src/content/biochem/cellular2.ts` (`cellularBatch2`).
 
+## Revision 2 (owner review of revision 1)
+
+The owner approved the content structure, subject to the corrections below. These are targeted edits: concept IDs, item IDs and curriculum mappings are unchanged, and new items were appended. All content stays **draft / AI-drafted**. Passing automated and browser checks shows only that the content is technically valid. It is not evidence of medical accuracy or editorial approval.
+
+### R2.1 Receptor tyrosine kinases: dimerization is not universal
+
+Ligand-induced dimerization is now described only for **growth-factor RTKs** (EGF receptor, VEGF receptors). The **insulin receptor** is taught as an already disulfide-linked (αβ)₂ heterotetramer whose intrinsic tyrosine kinase is activated by insulin (PMID 6923809).
+
+Edited:
+- `cel-rtk`: objective wording, fact 0, mechanism, quick, detailed, takeaway and associations.
+- `cel-rtk:mcq1`: the stem now names EGF, and the explanation notes the insulin-receptor exception.
+- DIMERIZATION clue (now "growth-factor RTKs, e.g. EGFR").
+- The distractor explanations in `cel-gpcr:mcq2` and `cel-other-receptors:mcq1`.
+- `seq:rtk-ras` (prompt now names the EGF receptor) and `seq:insulin-glut4` (now "Insulin binds its preformed α₂β₂ receptor", then "The receptor's intrinsic tyrosine kinase phosphorylates its own tyrosines").
+- The `cel-rtk` PI3K MCQ steps.
+
+Added: one fact and a true/false item: "Like the EGF receptor, the insulin receptor must pair up after insulin binds" (false).
+
+No remaining question or explanation says that all RTKs require ligand-induced dimerization. STAT dimerization is unaffected.
+
+### R2.2 JAK3-deficient SCID (`cel-jak-stat:mcq4`)
+
+The answer now reads "SCID: T and NK cells absent, B cells present but nonfunctional", i.e. T⁻B⁺NK⁻. One distractor was replaced so the question tests the contrast with ADA deficiency: "SCID with T, B and NK cells all absent" is explained as the classic ADA pattern. The explanation and steps were updated to match.
+
+Added:
+- a fact (γc/JAK3 SCID is T⁻B⁺NK⁻; ADA SCID lowers T, B and NK cells; PMID 11213805, 14615376 and GeneReviews ADA deficiency, PMID 20301656);
+- a true/false item: B cells are present but poorly functional in γc and JAK3 SCID.
+
+### R2.3 Marfan syndrome and TGF-β (`cel-tgf-beta`)
+
+Marfan syndrome is now presented first as a **fibrillin-1 connective-tissue disorder**. Its classic findings come from MedlinePlus: lens dislocation, aortic dilation and dissection, tall stature, long fingers and loose joints. Increased availability of TGF-β is described as **a contributing mechanism that is thought to play a part**, not the whole explanation.
+
+Edited:
+- `cel-tgf-beta:mcq2`: the stem now asks which *additional* mechanism is thought to contribute; the answer and explanation are qualified.
+- The concept's facts, mechanism, misconception, quick, detailed and takeaway.
+
+The concept stays SUPPLEMENTARY. The Molecular item `mol-marfan-elastin:mcq1` was checked and already says excess TGF-β activity "contributes", with the classic findings central, so it is unchanged.
+
+### R2.4 Associations added (concise teaching, no specialised questions)
+
+| Association | Where | Source |
+|---|---|---|
+| M1 receptor → Gq (like M3) | `cel-gpcr`: fact, quick summary, TF "M1 and M3 → Gq; M2 → Gi" | PMID 8441322 |
+| hCG acts on the Gs-coupled LH receptor | `cel-hormone-gpcr`: fact, quick summary, TF | PMID 1343973, 30386968 |
+| Interferons → JAK–STAT (IFN-γ: JAK1/JAK2 → STAT1; type I: JAK1/TYK2 → STAT1/STAT2) | `cel-jak-stat`: fact, TF (interferons do not use GPCRs) | PMID 9208871, 31275057 |
+| VEGF → receptor tyrosine kinases (VEGFR-1, VEGFR-2), angiogenesis | `cel-rtk`: fact, associations, TF | PMID 12778165, 37491579 |
+
+All four are CORE and assessed by recognition-level true/false items. No new MCQs were written for them.
+
+### R2.5 Coverage report transparency
+
+The report has a new state, **🟦 core covered, parts deferred**. It applies when an objective's core components are taught at every required depth but the checklist text names further components that were deliberately not taught. These objectives are counted separately everywhere: summary, subdivision table, topics and subtopics. They are never counted as covered in full. A new **Deferred components** section lists every deferred part with the objective text.
+
+Cellular Biochemistry now reports **33 covered in full, 8 core covered with parts deferred, 0 partial and 0 missing** (of 41). Revision 1 reported 41 covered. Deferred:
+
+| Objective | Deferred component(s) |
+|---|---|
+| `bc-gpcr.receptors` | CRH (Gs) and gastrin (Gq) receptors (supplementary) |
+| `bc-second-messengers.camp` | cilostazol (supplementary drug) |
+| `bc-rtk.mechanism` | adaptor docking, mTOR, IGF-1/PDGF/NGF as named ligands (supplementary) |
+| `bc-rtk.insulin` | glycogen synthesis and anabolic effects (taught with Metabolism) |
+| `bc-rtk.oncogenic` | KIT (taught with Hematology/Oncology) |
+| `bc-jak-stat.ligands` | G-CSF and GM-CSF by name (supplementary) |
+| `bc-jak-stat.jak2` | ruxolitinib by name (supplementary drug) |
+| `bc-receptor-other.nuclear` | retinoic acid receptors; zinc-finger DNA-binding domain (supplementary) |
+
+M1, hCG, interferons and VEGF are no longer deferred.
+
+### R2.6 Counts after revision 2
+
+| Measure | Batch 2 | All curriculum-linked content |
+|---|---|---|
+| Playable items | 121 (46 MCQ, 35 TF, 25 clues, 7 sequences, 5 match sets, 1 puzzle, 2 cases) | — |
+| CORE / SUPPLEMENTARY / SPECIALIST / UNREVIEWED | **106 / 15 / 0 / 0** | 389 / 26 / 20 / 0 |
+| RECOGNITION / MECHANISM / APPLICATION | **79 / 28 / 14** | 275 / 88 / 72 |
+| Facts verified / awaiting confirmation | 84 / 0 | |
+
+Relevance and difficulty remain separate labels. The new items are core, easy recognition items.
+
 ## Revision 1 (owner review of batch 2)
 
 Sections 1–7 below describe the original batch and are kept as a record. Where this revision changes them, this section takes precedence. All content stays **draft / AI-drafted**. Existing objectives, item IDs and curriculum mappings are unchanged; new items were appended.

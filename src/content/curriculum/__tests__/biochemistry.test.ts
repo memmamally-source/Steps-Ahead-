@@ -67,6 +67,8 @@ describe('Biochemistry coverage checklist', () => {
   it('rolls coverage up strictly', () => {
     expect(rollUp(['covered', 'covered'])).toBe('covered');
     expect(rollUp(['covered', 'missing'])).toBe('partial');
+    expect(rollUp(['covered', 'core'])).toBe('core');
+    expect(rollUp(['core', 'partial'])).toBe('partial');
     expect(rollUp(['missing', 'missing'])).toBe('missing');
   });
 
