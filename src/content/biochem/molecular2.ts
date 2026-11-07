@@ -35,6 +35,15 @@ const PM = (pmid: number, label: string, checked: Citation['checked'] = 'summary
 const OSB = (page: string, title: string): Citation => ({
   sourceId: 'openstax-bio', locator: `OpenStax Biology 2e, ${title}`, url: `https://openstax.org/books/biology-2e/pages/${page}`, checked: 'full-text',
 });
+const DM = (setid: string, title: string): Citation => ({
+  sourceId: 'dailymed', locator: `DailyMed: ${title}`, url: `https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=${setid}`, ref: `SPL set id ${setid}`, checked: 'full-text',
+});
+const GENE = (id: number, title: string): Citation => ({
+  sourceId: 'ncbi-gene', locator: `NCBI Gene: ${title} (RefSeq summary)`, url: `https://www.ncbi.nlm.nih.gov/gene/${id}`, ref: `Gene ID ${id}`, checked: 'summary',
+});
+const PMC = (pmcid: string, pmid: number, label: string): Citation => ({
+  sourceId: 'pubmed', locator: label, url: `https://pmc.ncbi.nlm.nih.gov/articles/${pmcid}/`, ref: `PMID ${pmid}; ${pmcid}`, checked: 'full-text',
+});
 const OSM = (page: string, title: string): Citation => ({
   sourceId: 'openstax-micro', locator: `OpenStax Microbiology, ${title}`, url: `https://openstax.org/books/microbiology/pages/${page}`, checked: 'full-text',
 });
@@ -179,7 +188,7 @@ const core = defineConcepts([
     ],
     facts: [
       'Early in female development, one X chromosome in each cell condenses into a quiescent Barr body; every X except one is inactivated, so individuals with extra X chromosomes have extra Barr bodies.',
-      'In Prader–Willi syndrome the genes of the region are missing from the paternal chromosome 15 while the maternal copies are normally turned off: about 70% of cases are paternal deletions and about 25% are maternal uniparental disomy.',
+      'In Prader–Willi syndrome the genes of the region are missing from the paternal chromosome 15 while the maternal copies are normally turned off: about 70% of cases are paternal deletions and about 25% are maternal uniparental disomy; rarely, a change abnormally turns off the genes on the paternal chromosome 15 (an imprinting defect).',
       'In neurons only the maternal copy of UBE3A is active; Angelman syndrome results when the maternal copy is lost (deletion, UBE3A variant) or, less often, from paternal uniparental disomy.',
       'Fragile X syndrome is caused by expansion of the CGG repeat in FMR1 to more than 200 copies, which silences the gene.',
       'The expanded CGG repeat is hypermethylated and the FMR1 promoter becomes heterochromatin; experimental demethylation reactivates the gene.',
@@ -195,7 +204,7 @@ const core = defineConcepts([
       'Barr body = silenced extra X. Imprinting: Prader–Willi = no active paternal 15q genes (deletion ~70%, maternal UPD ~25%); Angelman = no active maternal UBE3A. Fragile X: CGG >200 → FMR1 hypermethylated and silenced.',
     detailed: [
       'Dosage compensation inactivates all but one X chromosome per cell; the condensed X is visible as a Barr body. A cell from a person with 47,XXY therefore has one Barr body, and 47,XXX has two.',
-      'Imprinted genes are expressed from only one parental copy. Because the maternal Prader–Willi region is normally silent, losing the paternal copy by deletion or inheriting two maternal chromosomes 15 (uniparental disomy) gives the same result. The reverse logic applies to Angelman syndrome and maternal UBE3A. Methylation testing detects both mechanisms because it reads the parent-specific pattern.',
+      'Imprinted genes are expressed from only one parental copy. Because the maternal Prader–Willi region is normally silent, losing the paternal copy by deletion or inheriting two maternal chromosomes 15 (uniparental disomy) gives the same result. The reverse logic applies to Angelman syndrome and maternal UBE3A. A methylation test shows that the paternal pattern is missing but not why: a deletion, uniparental disomy and an imprinting defect all give the same result, so copy-number and parental-origin (SNP) studies are needed to tell them apart.',
       'In fragile X, a full mutation (>200 CGG repeats) is hypermethylated and the promoter adopts a heterochromatin state, so FMR1 is not transcribed. The phenotype comes from loss of the gene product, not from a change in the protein sequence.',
     ],
     takeaway: 'Silencing can cause disease as surely as deletion: ask which copy is active, and whether it has been lost or turned off.',
@@ -203,21 +212,21 @@ const core = defineConcepts([
     outline: found(MS, GEN),
     mcq: [
       {
-        stem: 'A hypotonic infant with poor feeding has a normal chromosome 15 copy number on microarray, but methylation testing of 15q11–q13 shows only the maternal pattern. Which mechanism best explains the result?',
+        stem: 'A hypotonic infant with poor feeding has a 15q11–q13 methylation test showing only the maternal pattern. Microarray shows normal chromosome 15 copy number. SNP genotyping of the infant and both parents shows that all informative chromosome 15 markers came from the mother, with no paternal alleles. Which mechanism best explains the results?',
         options: [
           ['a', 'Two maternal chromosome 15s, so no active paternal genes'],
           ['b', 'Deletion of the paternal 15q11–q13 region', 'A deletion would reduce copy number on microarray; this result shows normal copy number.'],
           ['c', 'Loss of the maternal UBE3A copy', 'Loss of maternal UBE3A causes Angelman syndrome and would leave a paternal pattern present.'],
-          ['d', 'Expansion of a CGG repeat on the X chromosome', 'CGG expansion silences FMR1 in fragile X and does not change chromosome 15 methylation.'],
+          ['d', 'An imprinting defect on a paternal chromosome 15', 'An imprinting defect also gives a maternal-only pattern with normal copy number, but a paternal chromosome 15 would be present; here there are no paternal alleles.'],
           ['e', 'Two paternal chromosome 15s', 'Paternal uniparental disomy would show only the paternal pattern and is a cause of Angelman syndrome.'],
         ],
         answer: 'a',
-        mini: 'Normal copy number excludes a deletion; an all-maternal methylation pattern means maternal uniparental disomy, so no active paternal genes (Prader–Willi).',
+        mini: 'A maternal-only methylation pattern can come from a paternal deletion, maternal uniparental disomy or an imprinting defect. Normal copy number excludes a deletion, and the absence of paternal alleles excludes an imprinting defect, leaving maternal uniparental disomy (Prader–Willi syndrome).',
         reasoning: 'interpretation',
         steps: [
-          'Normal copy number rules out a deletion.',
-          'Only the maternal methylation pattern means both chromosome 15s came from the mother.',
-          'The maternal copies of the region are normally silent, so no active genes remain → Prader–Willi syndrome by maternal uniparental disomy.',
+          'A maternal-only methylation pattern shows that active paternal 15q11–q13 genes are missing, but not why.',
+          'Normal copy number rules out a paternal deletion.',
+          'No paternal alleles on parental SNP genotyping rules out an imprinting defect → maternal uniparental disomy.',
         ],
         difficulty: 4,
       },
@@ -277,24 +286,24 @@ const core = defineConcepts([
       PM(1234064, 'Beaudry MA et al. Chronic hyperammonemia with orotic aciduria: evidence of pyrimidine pathway stimulation. Diabete Metab 1975'),
       PM(36999056, 'Staretz-Chacham O et al. Hereditary orotic aciduria identified by newborn screening. Front Genet 2023'),
       PM(33489760, 'Al Absi HS et al. Hereditary orotic aciduria (HOA): a novel UMPS mutation. Mol Genet Metab Rep 2021'),
+      PMC('PMC10453542', 37628367, 'Ibrahim MS et al. Diagnostic and management issues in patients with late-onset ornithine transcarbamylase deficiency. Children (Basel) 2023'),
     ],
     facts: [
       'Ornithine transcarbamylase (OTC) deficiency is an X-linked urea cycle disorder that causes hyperammonemia; the severe neonatal form usually affects males.',
       'In hyperammonemia with orotic aciduria from a partial urea cycle block, orotic acid excretion rises with ammonia and reflects stimulation of the pyrimidine pathway; red cell orotate phosphoribosyltransferase and orotidine decarboxylase (UMP synthase) activities are normal.',
       'Hereditary orotic aciduria is a UMP synthase deficiency with megaloblastic anemia that does not respond to vitamin B12 or folate.',
-      'In OTC deficiency, carbamoyl phosphate that cannot enter the urea cycle spills into pyrimidine synthesis, producing orotic acid without impairing UMP formation.',
+      'In OTC deficiency, orotic aciduria results from excess carbamoyl phosphate diverted into the pyrimidine pathway; plasma glutamine is high and citrulline low.',
     ],
-    factRefs: [[0], [1], [2, 3], [1]],
-    factPending: [3],
+    factRefs: [[0], [1], [2, 3], [4, 1]],
     mechanism:
-      'Orotic acid can accumulate for two opposite reasons. In OTC deficiency, mitochondrial carbamoyl phosphate cannot combine with ornithine and overflows into the cytosolic pyrimidine pathway, so orotate is overproduced while UMP synthase works normally: ammonia rises, blood count is normal. In hereditary orotic aciduria, UMP synthase itself is defective, so orotate cannot be converted to UMP: ammonia is normal and pyrimidine-starved marrow becomes megaloblastic.',
+      'Orotic acid can accumulate for two opposite reasons. In OTC deficiency, mitochondrial carbamoyl phosphate cannot combine with ornithine and overflows into the cytosolic pyrimidine pathway, so orotate is overproduced while UMP synthase itself is intact: ammonia rises, but the megaloblastic anemia that characterizes hereditary orotic aciduria is not a feature. In hereditary orotic aciduria, UMP synthase itself is defective, so orotate cannot be converted to UMP: ammonia is normal and pyrimidine-starved marrow becomes megaloblastic.',
     associations: ['Ornithine transcarbamylase', 'Carbamoyl phosphate', 'UMP synthase', 'Orotic acid', 'Hyperammonemia', 'Megaloblastic anemia'],
     misconception:
       'Orotic aciduria alone does not identify the disorder. The deciding clues are ammonia (high in OTC deficiency) and the blood count (megaloblastic anemia in UMP synthase deficiency).',
     quick:
-      'Orotic aciduria + hyperammonemia, normal blood count → OTC deficiency (urea cycle overflow; X-linked). Orotic aciduria + megaloblastic anemia unresponsive to B12/folate, no hyperammonemia → UMP synthase deficiency.',
+      'Orotic aciduria + hyperammonemia, without the megaloblastic anemia of UMP synthase deficiency → OTC deficiency (urea cycle overflow; X-linked). Orotic aciduria + megaloblastic anemia unresponsive to B12/folate, no hyperammonemia → UMP synthase deficiency.',
     detailed: [
-      'Carbamoyl phosphate made in the mitochondrion by carbamoyl phosphate synthetase I normally combines with ornithine via OTC. When OTC is deficient, carbamoyl phosphate leaks to the cytosol and enters pyrimidine synthesis beyond the usual control point, so orotate is overproduced. UMP synthase is intact, so nucleotide supply and the blood count are normal; the danger is ammonia toxicity, especially after protein loads.',
+      'Carbamoyl phosphate made in the mitochondrion by carbamoyl phosphate synthetase I normally combines with ornithine via OTC. When OTC is deficient, excess carbamoyl phosphate is diverted into pyrimidine synthesis, so orotate is overproduced. UMP synthase is intact, so OTC deficiency does not characteristically cause the megaloblastic anemia of hereditary orotic aciduria (other causes of anemia can still coexist); the danger is ammonia toxicity, especially after protein loads.',
       'In hereditary orotic aciduria, orotate accumulates because it cannot be converted to UMP. The urea cycle is normal, so ammonia is not raised, but rapidly dividing erythroid precursors lack pyrimidine nucleotides and the anemia is megaloblastic despite normal B12 and folate.',
     ],
     takeaway: 'Orotic aciduria: check ammonia (OTC) and the blood count (UMP synthase).',
@@ -315,7 +324,7 @@ const core = defineConcepts([
         reasoning: 'comparison',
         steps: [
           'Infant A: hyperammonemia after protein = urea cycle block distal to carbamoyl phosphate.',
-          'Excess carbamoyl phosphate overflows into pyrimidine synthesis → orotic acid; marrow is spared → OTC deficiency.',
+          'Excess carbamoyl phosphate is diverted into pyrimidine synthesis → orotic acid; UMP synthase is intact, so megaloblastic anemia is not expected → OTC deficiency.',
           'Infant B: normal ammonia + megaloblastic anemia not due to B12/folate → orotate cannot become UMP → UMP synthase deficiency.',
         ],
         difficulty: 4,
@@ -364,25 +373,25 @@ const core = defineConcepts([
       PM(25040676, 'Weiler S et al. Treatment of gout in a renal transplant patient leading to severe thrombocytopenia (allopurinol–azathioprine). J Clin Pharm Ther 2014'),
       PM(30001695, 'Xanthine calculi in a patient with Lesch-Nyhan syndrome treated with allopurinol. BMC Pediatr 2018'),
       PM(33457651, 'Recurrent xanthine stones in a young patient with Lesch-Nyhan syndrome. J Endourol Case Rep 2020'),
+      DM('54de10ef-fe5f-4930-b91d-6bbb04c664bd', 'ULORIC (febuxostat) tablets, Takeda: prescribing information (sections 4, 7 and 12.3), Dec 2025'),
     ],
     facts: [
       'Allopurinol inhibits xanthine oxidase; combined with azathioprine it can cause myelotoxicity, with raised myelotoxic 6-thioguanine nucleotide levels.',
       'Febuxostat is a non-purine, selective inhibitor of xanthine oxidase used to lower serum urate in gout.',
       'Blocking xanthine oxidase raises its substrates: in purine overproduction, xanthine can accumulate and form stones during allopurinol therapy.',
-      'Xanthine oxidase normally inactivates 6-mercaptopurine (the active metabolite of azathioprine), so inhibiting it shunts more drug toward thioguanine nucleotides.',
+      'Azathioprine and mercaptopurine are metabolized by xanthine oxidase; febuxostat increased exposure to 6-mercaptopurine (a metabolite of azathioprine), which may cause toxicity, and is contraindicated with either drug.',
     ],
-    factRefs: [[1], [0], [2, 3], [1]],
-    factPending: [3],
+    factRefs: [[1], [0], [2, 3], [4, 1]],
     mechanism:
-      'Xanthine oxidase converts hypoxanthine to xanthine and xanthine to uric acid. Inhibiting it lowers urate but raises the upstream oxypurines. 6-Mercaptopurine is a purine analog that the same enzyme inactivates, so when xanthine oxidase is blocked more of the drug is converted to cytotoxic thioguanine nucleotides, and the marrow is suppressed.',
+      'Xanthine oxidase converts hypoxanthine to xanthine and xanthine to uric acid. Inhibiting it lowers urate but raises the upstream oxypurines. 6-Mercaptopurine (the active metabolite of azathioprine) is also metabolized by xanthine oxidase, so when the enzyme is blocked, 6-mercaptopurine exposure rises, more is converted to cytotoxic thioguanine nucleotides, and the marrow is suppressed.',
     associations: ['Allopurinol', 'Febuxostat', 'Xanthine oxidase', 'Azathioprine', '6-Mercaptopurine', '6-Thioguanine nucleotides', 'Xanthine stones'],
     misconception:
       'The allopurinol–azathioprine interaction is not an immune or allergic reaction: it is a predictable metabolic shunt of the thiopurine toward its myelotoxic nucleotides when xanthine oxidase is blocked.',
     quick:
-      'Allopurinol (purine analog) and febuxostat (non-purine) inhibit xanthine oxidase → less urate, more hypoxanthine/xanthine. With azathioprine/6-MP: less inactivation → more thioguanine nucleotides → cytopenias.',
+      'Allopurinol (purine analog) and febuxostat (non-purine) inhibit xanthine oxidase → less urate, more hypoxanthine/xanthine. With azathioprine/6-MP: less XO metabolism → more 6-MP and thioguanine nucleotides → cytopenias.',
     detailed: [
       'Xanthine oxidase catalyzes the last two steps of purine degradation. Inhibitors lower serum urate in gout and prevent urate overload during tumor lysis. Febuxostat is structurally unrelated to purines and inhibits the enzyme selectively.',
-      'Azathioprine is converted to 6-mercaptopurine, which has competing fates: activation to thioguanine nucleotides (the immunosuppressive and myelotoxic products) or inactivation, including by xanthine oxidase. Blocking the inactivating route shifts the balance toward thioguanine nucleotides, so the combination causes marrow suppression unless the thiopurine dose is greatly reduced or the combination is avoided.',
+      'Azathioprine is converted to 6-mercaptopurine, which is either converted to thioguanine nucleotides (the immunosuppressive and myelotoxic products) or metabolized by other routes, including xanthine oxidase. Blocking xanthine oxidase raises 6-mercaptopurine exposure and thioguanine nucleotide levels. The febuxostat label contraindicates combination with azathioprine or mercaptopurine; with allopurinol, severe myelotoxicity has been reported, so the combination needs specialist dose adjustment with close monitoring, or avoidance.',
     ],
     takeaway: 'Xanthine oxidase inhibitor + azathioprine/6-MP = thiopurine toxicity (cytopenias).',
     related: ['mol-purine-salvage', 'mol-antimetabolites'],
@@ -391,18 +400,18 @@ const core = defineConcepts([
       {
         stem: 'A kidney transplant recipient on azathioprine develops gout and is started on allopurinol at the usual dose. Three weeks later platelets are 22,000/mm³ and neutrophils 600/mm³. What explains the cytopenias?',
         options: [
-          ['a', 'Less 6-MP inactivation, so more thioguanine nucleotides'],
+          ['a', 'Less 6-MP metabolism, so more thioguanine nucleotides'],
           ['b', 'Allopurinol hypersensitivity destroying marrow cells', 'Allopurinol hypersensitivity causes rash and organ injury; isolated predictable cytopenias with a thiopurine point to a metabolic interaction.'],
           ['c', 'Uric acid crystals deposited in the bone marrow', 'Allopurinol lowers urate; marrow crystal deposition is not the mechanism.'],
           ['d', 'Allopurinol inhibiting dihydrofolate reductase', 'Allopurinol inhibits xanthine oxidase, not DHFR.'],
           ['e', 'Xanthine stones causing acute kidney injury', 'Kidney injury would not explain neutropenia and thrombocytopenia.'],
         ],
         answer: 'a',
-        mini: 'Xanthine oxidase inactivates 6-mercaptopurine; blocking it raises myelotoxic thioguanine nucleotides.',
+        mini: 'Xanthine oxidase metabolizes 6-mercaptopurine; blocking it raises 6-MP exposure and myelotoxic thioguanine nucleotides.',
         reasoning: 'prediction',
         steps: [
-          'Azathioprine → 6-mercaptopurine, which xanthine oxidase inactivates.',
-          'Allopurinol blocks xanthine oxidase, so more 6-MP is converted to thioguanine nucleotides.',
+          'Azathioprine → 6-mercaptopurine, which xanthine oxidase metabolizes.',
+          'Allopurinol blocks xanthine oxidase, so 6-MP exposure rises and more is converted to thioguanine nucleotides.',
           'Thioguanine nucleotides suppress rapidly dividing marrow → neutropenia and thrombocytopenia.',
         ],
         difficulty: 4,
@@ -641,7 +650,7 @@ const core = defineConcepts([
         difficulty: 2,
       },
       {
-        stem: 'Cultured adult skin fibroblasts stop dividing after a fixed number of passages, but cells from the same person’s malignant melanoma keep dividing. Which difference best explains this?',
+        stem: 'Cultured adult skin fibroblasts stop dividing after a fixed number of passages, but cells from the same person’s malignant melanoma keep dividing while keeping their telomere length stable. Which difference best explains this?',
         options: [
           ['a', 'The melanoma cells express high telomerase activity'],
           ['b', 'The fibroblasts have more replication origins', 'More origins speed replication; they do not set a limit on the number of divisions.'],
@@ -713,7 +722,7 @@ const core = defineConcepts([
           ['e', 'Phenotype cannot be predicted without protein sequencing', 'The reading-frame rule predicts most phenotypes from deletion length alone, although exceptions exist.'],
         ],
         answer: 'a',
-        mini: '360 is divisible by 3 (in frame → Becker); 118 is not (frameshift → Duchenne).',
+        mini: '360 is divisible by 3 (in frame → Becker); 118 is not (frameshift → Duchenne). The rule predicts most phenotypes, but about 1 in 8 patients are exceptions, so the clinical course still matters.',
         reasoning: 'interpretation',
         steps: ['360 ÷ 3 = 120 codons: frame preserved → internally shortened dystrophin → Becker.', '118 ÷ 3 leaves a remainder: frameshift → premature stop → no functional dystrophin → Duchenne.'],
         difficulty: 4,
@@ -1008,16 +1017,16 @@ const core = defineConcepts([
         difficulty: 1,
       },
       {
-        stem: 'A pre-mRNA carries a mutation that changes the GU at the start of intron 3 to AU. How does this disrupt production of the normal mRNA?',
+        stem: 'A reporter mRNA is correctly spliced and polyadenylated but made without a 7-methylguanosine cap. When it is placed in a cell extract, which step is most directly impaired?',
         options: [
-          ['a', 'The spliceosome cannot mark the intron start, so exon 3 is skipped or a cryptic site used'],
-          ['b', 'The 5′ cap cannot be added, so the transcript is degraded at once', 'Capping occurs at the 5′ end of the transcript and does not depend on intron sequences.'],
-          ['c', 'Poly-A polymerase adds the tail inside intron 3 instead of at the end', 'Polyadenylation is directed by AAUAAA near the 3′ end, not by splice sites.'],
-          ['d', 'RNA polymerase II stops transcribing at the mutated base', 'A single base change in an intron does not terminate transcription.'],
-          ['e', 'The intron is translated, adding amino acids to the middle of the protein', 'Introns are removed or mis-spliced in the nucleus; the error arises during splicing, not translation.'],
+          ['a', 'Recognition of the mRNA by translation initiation factors'],
+          ['b', 'Removal of introns by the spliceosome', 'The mRNA is already spliced; the cap is not needed to define intron boundaries.'],
+          ['c', 'Addition of the poly-A tail after the AAUAAA signal', 'The tail is already present and its addition depends on AAUAAA, not on the cap.'],
+          ['d', 'Pairing of tRNA anticodons with codons in the A site', 'Codon–anticodon pairing happens after initiation and does not read the cap.'],
+          ['e', 'Charging of tRNAs by aminoacyl-tRNA synthetases', 'tRNA charging happens independently of any mRNA and does not involve the cap.'],
         ],
         answer: 'a',
-        mini: 'GU at the 5′ end of the intron is the donor site recognized by spliceosomal snRNPs; without it the exon is skipped or a nearby cryptic donor is used.',
+        mini: 'Factors involved in protein synthesis recognize the 5′ cap to help ribosomes initiate translation, so an uncapped message is translated poorly.',
         reasoning: 'mechanism',
         objectives: [`${RN}.processing`],
         difficulty: 3,
@@ -1051,7 +1060,7 @@ const core = defineConcepts([
       PM(28281463, 'Flechsig A et al. What is the clinical significance of anti-Sm antibodies in systemic lupus erythematosus? Clin Exp Rheumatol 2017'),
     ],
     facts: [
-      'Smith (Sm) antigens are core proteins of the U2–U6 small nuclear ribonucleoproteins (snRNPs) of the spliceosome; anti-Sm antibodies are highly specific for SLE.',
+      'Smith (Sm) antigens are core proteins of spliceosomal small nuclear ribonucleoproteins (snRNPs); anti-Sm antibodies are highly specific for SLE, and some Sm epitopes cross-react with U1-specific RNP proteins.',
       'Anti-Sm antibodies have low sensitivity for SLE: about a quarter of patients in one cohort at 99% specificity.',
       'Mixed connective tissue disease combines features of SLE, systemic sclerosis and inflammatory myositis with positive anti-U1 RNP antibodies; Raynaud phenomenon and pulmonary arterial hypertension are characteristic.',
       'Anti-U1 RNP positivity is mandatory for an MCTD diagnosis but also occurs in some patients with SLE (reported in roughly 13–30% of lupus cohorts).',
@@ -1065,7 +1074,7 @@ const core = defineConcepts([
     quick:
       'Anti-Smith = antibodies to core snRNP proteins → highly specific (not sensitive) for SLE. Anti-U1 RNP = required for MCTD (SLE + scleroderma + myositis features, Raynaud, pulmonary hypertension); also seen in some SLE.',
     detailed: [
-      'Spliceosomal snRNPs combine a small nuclear RNA with proteins. The seven Sm proteins form a shared core; U1 has its own additional proteins (70K, A and C). Autoantibodies to these particles are detected as extractable nuclear antigen antibodies.',
+      'Spliceosomal snRNPs combine a small nuclear RNA with proteins. Sm proteins form a shared core, and the U1 particle also carries its own specific proteins (including a 70 kDa protein). Shared epitopes mean some anti-Sm and anti-U1 RNP reactivity overlaps. Autoantibodies to these particles are detected as extractable nuclear antigen antibodies.',
       'Anti-Sm is one of the most SLE-specific antibodies but is present in only a minority of patients. MCTD is defined by overlapping lupus, scleroderma and myositis features with anti-U1 RNP; some patients who meet SLE criteria also carry anti-U1 RNP and then tend to have Raynaud phenomenon and lung involvement.',
     ],
     takeaway: 'Spliceosome antigens: anti-Sm → SLE (specific); anti-U1 RNP → MCTD (required, not specific).',
@@ -1097,7 +1106,7 @@ const core = defineConcepts([
           ['e', 'The signal recognition particle', 'Anti-SRP antibodies are associated with a necrotizing myopathy.'],
         ],
         answer: 'a',
-        mini: 'Sm proteins form the core of spliceosomal snRNPs (U2–U6); anti-Sm is highly specific for SLE.',
+        mini: 'Sm proteins form the core of spliceosomal snRNPs; anti-Sm is highly specific for SLE.',
         reasoning: 'recall',
         difficulty: 2,
       },
@@ -1150,7 +1159,7 @@ const core = defineConcepts([
     outline: listed('Blood & Lymphoreticular System', 'Anemia, cytopenias, and polycythemia'),
     mcq: [
       {
-        stem: 'A child with transfusion-dependent anemia has a point mutation deep in intron 2 of the β-globin gene that creates a new AG…GU-like recognition site. Reticulocyte mRNA contains an extra 135-nucleotide segment with a premature stop codon. Which sequence of events explains the anemia?',
+        stem: 'A child with transfusion-dependent anemia has a point mutation deep in intron 2 of the β-globin gene that creates a new splice site. Reticulocyte mRNA contains an extra 135-nucleotide segment with a premature stop codon. Which sequence of events explains the anemia?',
         options: [
           ['a', 'Intronic sequence is spliced in, β chains fall and excess α chains precipitate'],
           ['b', 'Transcription of β-globin stops at the mutation, so α chains are not made', 'mRNA is made; and α-globin is encoded on a different chromosome and is unaffected.'],
@@ -1328,7 +1337,7 @@ const core = defineConcepts([
           ['e', 'Tetracyclines bind only the 50S subunit', 'Tetracyclines bind the 30S subunit.'],
         ],
         answer: 'a',
-        mini: 'Aminoglycoside-induced codon–anticodon mismatches produce faulty proteins that insert into and disrupt the membrane, killing the cell.',
+        mini: 'In the standard explanation, aminoglycoside-induced codon–anticodon mismatches produce faulty proteins that insert into and disrupt the membrane, killing the cell.',
         reasoning: 'mechanism',
         difficulty: 3,
       },
@@ -1356,15 +1365,15 @@ const core = defineConcepts([
       PM(6267047, 'Oppenheimer NJ, Bodley JW. Diphtheria toxin: site and configuration of ADP-ribosylation of diphthamide in elongation factor 2. J Biol Chem 1981'),
       RICIN_STX,
       PM(37484018, 'Masilamani AP et al. Enhanced cytotoxicity of a Pseudomonas exotoxin A based immunotoxin (ER route; ADP-ribosylation of eEF2). Front Pharmacol 2023'),
+      GENE(1938, 'EEF2 eukaryotic translation elongation factor 2'),
     ],
     facts: [
       'Diphtheria toxin and Pseudomonas exotoxin A ADP-ribosylate and inactivate elongation factor 2 at diphthamide, a modified histidine; the two toxins differ in structure but share the same reaction mechanism.',
       'Ricin and Shiga toxins are RNA N-glycosidases that irreversibly inactivate eukaryotic ribosomes by removing an adenine from the sarcin–ricin loop of 28S rRNA.',
       'Exotoxin A reaches the cytosol from the endoplasmic reticulum, where it ADP-ribosylates eukaryotic elongation factor 2, inhibiting ribosomes and causing apoptosis.',
-      'Elongation factor 2 drives translocation of the ribosome along the mRNA during elongation.',
+      'Elongation factor 2 is a GTP-binding protein essential for protein synthesis; it promotes GTP-dependent translocation of the nascent chain from the A site to the P site.',
     ],
-    factRefs: [[0, 1], [2], [3], [0]],
-    factPending: [3],
+    factRefs: [[0, 1], [2], [3], [4]],
     mechanism:
       'All four toxins stop protein synthesis catalytically, so a few molecules can kill a cell. Two attack the elongation factor: diphtheria toxin and exotoxin A transfer ADP-ribose from NAD to EF-2, which can then no longer translocate the ribosome. Two attack the ribosome itself: Shiga toxin and ricin remove one adenine from 28S rRNA in the large subunit, so elongation factors can no longer act.',
     associations: ['Diphtheria toxin', 'Pseudomonas exotoxin A', 'EF-2', 'Diphthamide', 'ADP-ribosylation', 'Shiga toxin', 'Ricin', '28S rRNA'],
@@ -1521,6 +1530,8 @@ const core = defineConcepts([
       A1AT_LIVER,
       PM(25311024, 'Bouchecareilh M. Alpha-1-antitrypsin deficiency (review). Med Sci (Paris) 2014'),
       PM(6189389, 'Qizilbash A, Young-Pong O. Alpha 1 antitrypsin liver disease: differential diagnosis of PAS-positive, diastase-resistant globules in liver cells. Am J Clin Pathol 1983'),
+      PM(41370566, 'Sokoloski CS et al. Prevalence of SERPINA1 mutations in a bronchiectasis cohort (panlobular, diffuse, lower-lobe predominant emphysema). J Bras Pneumol 2025'),
+      PM(41241741, 'Höger P et al. Quantitative analysis of chest CT in alpha-1-antitrypsin deficiency (basal-predominant emphysema, maxima in middle lobe and lingula). Respir Res 2025'),
     ],
     facts: [
       'α1-Antitrypsin deficiency is inherited in an autosomal codominant pattern; the Z allele produces very little α1-antitrypsin, and ZZ individuals have a high risk of emphysema and liver disease.',
@@ -1528,18 +1539,19 @@ const core = defineConcepts([
       'Z-α1AT polymers accumulate in the hepatocyte endoplasmic reticulum, causing cell death and a severe reduction of serum α1AT, so the lung loses its antiprotease protection.',
       'α1AT deficiency is the most common genetic cause of liver disease in children; liver disease is variable and not all ZZ individuals develop it.',
       'Hepatocytes in α1AT liver disease contain periportal PAS-positive, diastase-resistant globules that stain for α1AT; cirrhosis was present in most autopsy livers with such globules.',
+      'Emphysema in α1AT deficiency is typically panlobular (panacinar) and basal-predominant; quantitative CT in severe deficiency found it most marked in the middle lobe and lingula, challenging the classic “lower lobes” teaching.',
     ],
-    factRefs: [[0], [1, 0], [3], [3, 2], [4]],
+    factRefs: [[0], [1, 0], [3], [3, 2], [4], [5, 6]],
     mechanism:
       'The Z mutation makes α1-antitrypsin fold slowly and link into polymers in the hepatocyte ER. Two problems follow from one protein. In the liver, retained polymers injure hepatocytes (gain of toxic function), causing neonatal cholestasis, hepatitis and cirrhosis. In the lung, too little α1-antitrypsin reaches the alveoli, so neutrophil elastase destroys alveolar walls unopposed (loss of function), causing early emphysema, worse with smoking.',
     associations: ['SERPINA1', 'Z allele', 'PiZZ', 'Neutrophil elastase', 'Panacinar emphysema', 'PAS-positive globules', 'Neonatal cholestasis', 'Cirrhosis'],
     misconception:
-      'α1AT augmentation therapy can raise serum levels to protect the lung, but it does not remove the polymers that injure the liver: the two organs fail by different mechanisms.',
+      'Lung and liver disease do not always occur together: liver disease is variable and not all ZZ individuals develop it, because the liver is injured by retained protein while the lung is injured by the missing antiprotease, which smoking accelerates.',
     quick:
-      'SERPINA1 Z allele (codominant): misfolded protein polymerizes in hepatocyte ER → PAS+ diastase-resistant globules, neonatal cholestasis, cirrhosis (toxic gain). Low serum α1AT → unopposed neutrophil elastase → early panacinar emphysema (loss of function).',
+      'SERPINA1 Z allele (codominant): misfolded protein polymerizes in hepatocyte ER → PAS+ diastase-resistant globules, neonatal cholestasis, cirrhosis (toxic gain). Low serum α1AT → unopposed neutrophil elastase → early panacinar, usually basal-predominant emphysema (loss of function).',
     detailed: [
       'Normal α1-antitrypsin is made in the liver and circulates to the lungs, where it inhibits neutrophil elastase. The Z variant is largely retained in hepatocytes as polymers, so serum levels are very low. Each allele contributes to the serum level (codominant inheritance): MZ carriers have intermediate levels and a slightly increased risk.',
-      'Lung disease reflects missing antiprotease: emphysema develops at a young age, especially in smokers, and typically involves the whole acinus in the lower lobes. Liver disease reflects retained protein: infants may present with prolonged jaundice, and adults with chronic hepatitis or cirrhosis. Biopsy shows PAS-positive, diastase-resistant globules of α1-antitrypsin in periportal hepatocytes.',
+      'Lung disease reflects missing antiprotease: emphysema develops at a young age, especially in smokers, and typically involves the whole acinus (panlobular), predominantly in the lower zones; CT studies suggest the middle lobe and lingula can be most affected. Liver disease reflects retained protein: infants may present with prolonged jaundice, and adults with chronic hepatitis or cirrhosis. Biopsy shows PAS-positive, diastase-resistant globules of α1-antitrypsin in periportal hepatocytes.',
     ],
     takeaway: 'One misfolded protein, two mechanisms: retained in the liver (toxicity), missing in the lung (elastase unopposed).',
     related: ['mol-protein-folding'],
@@ -1581,7 +1593,7 @@ const core = defineConcepts([
     ],
     clues: [
       { answer: 'ELASTASE', clue: 'Neutrophil protease left unopposed in α1-antitrypsin deficiency', difficulty: 1 },
-      { answer: 'PANACINAR', clue: 'Pattern of lower-lobe emphysema typical of α1-antitrypsin deficiency', difficulty: 2 },
+      { answer: 'PANACINAR', clue: 'Whole-acinus pattern of emphysema typical of α1-antitrypsin deficiency', difficulty: 2 },
     ],
   },
   // ------------------------------------------------------------------------------------------------
@@ -1600,16 +1612,16 @@ const core = defineConcepts([
       COLL_SP,
       LOX,
       PM(12362985, 'Gajko-Galicka A. Mutations in type I collagen genes resulting in osteogenesis imperfecta in humans (glycine residues crucial to triple helix). Acta Biochim Pol 2002'),
+      PM(22708567, 'Yamauchi M, Sricholpech M. Lysine post-translational modifications of collagen. Essays Biochem 2012'),
     ],
     facts: [
       'Collagen consists of three polypeptide chains wound into a triple helix; glycine occupies every third position, allowing tight packing, and the chains are rich in proline, hydroxyproline and hydroxylysine.',
       'Pro-α chains are modified in the rough ER by glycosylation and vitamin C-dependent hydroxylation; the procollagen triple helix is secreted and its terminal propeptides are cleaved outside the cell to form tropocollagen.',
       'Scurvy results from impaired hydroxylation in vitamin C deficiency, producing weak connective tissue with bleeding gums and poor wound healing.',
       'Lysyl oxidases are copper-dependent enzymes required for covalent cross-linking of collagen and elastin in the extracellular matrix.',
-      'Glycosylation of collagen occurs on hydroxylysine residues, so lysine hydroxylation precedes glycosylation.',
+      'Inside the cell, specific lysines are first hydroxylated and then specific hydroxylysines in the helical domain are glycosylated (galactose or glucose–galactose); outside the cell, telopeptide lysines and hydroxylysines are converted to reactive aldehydes that form cross-links.',
     ],
-    factRefs: [[0, 2], [0], [0], [1], [0]],
-    factPending: [4],
+    factRefs: [[0, 2], [0], [0], [1], [3]],
     mechanism:
       'Collagen is built inside the fibroblast and assembled outside it. Inside: pre-pro-α chains with Gly-X-Y repeats enter the rough ER, proline and lysine are hydroxylated (prolyl and lysyl hydroxylases need vitamin C), hydroxylysines are glycosylated, and three chains zip into a procollagen triple helix that is secreted. Outside: propeptides are cleaved to tropocollagen, which self-assembles into fibrils that lysyl oxidase (copper) cross-links for tensile strength.',
     associations: ['Gly-X-Y', 'Prolyl hydroxylase', 'Vitamin C', 'Procollagen', 'Procollagen peptidase', 'Tropocollagen', 'Lysyl oxidase', 'Copper'],
@@ -1626,7 +1638,7 @@ const core = defineConcepts([
     outline: listed(MS, 'Nutrition'),
     mcq: [
       {
-        stem: 'A 58-year-old man who lives alone and eats almost no fruit or vegetables has swollen bleeding gums, perifollicular hemorrhages and a leg wound that will not heal. Which step of collagen synthesis is impaired first?',
+        stem: 'A 58-year-old man who lives alone and eats almost no fruit or vegetables has swollen bleeding gums, perifollicular hemorrhages and a leg wound that will not heal. Which step of collagen synthesis is impaired?',
         options: [
           ['a', 'Hydroxylation of proline and lysine in the rough ER'],
           ['b', 'Cleavage of propeptides outside the fibroblast', 'Propeptide cleavage defects cause some Ehlers–Danlos types and do not depend on vitamin C.'],
@@ -1683,44 +1695,46 @@ const core = defineConcepts([
       PM(26566591, 'Pepin MG, Byers PH. What every clinical geneticist should know about testing for osteogenesis imperfecta in suspected child abuse cases. Am J Med Genet C 2015'),
       PM(26492946, 'Pereira EM. Clinical perspectives on osteogenesis imperfecta versus non-accidental injury. Am J Med Genet C 2015'),
       COLL_SP,
+      PM(11001814, 'Forlino A, Marini JC. Osteogenesis imperfecta: prospects for molecular therapeutics. Mol Genet Metab 2000'),
     ],
     facts: [
       'Osteogenesis imperfecta causes bones that fracture easily, often from mild trauma; type I is the mildest form, with blue or grey sclerae and hearing loss in adulthood in about half of people.',
-      'Most cases are autosomal dominant mutations in COL1A1 or COL1A2. Mild forms usually come from inactivation of one COL1A1 allele (less normal collagen); severe and lethal forms come from dominant-negative structural defects, most often glycine substitutions.',
+      'Most cases are autosomal dominant mutations in COL1A1 or COL1A2. Mild forms are usually caused by inactivation of one COL1A1 allele (less normal collagen); severe and lethal forms usually result from dominant-negative structural defects, most often glycine substitutions.',
       'Among 832 structural mutations, 682 were glycine substitutions in the triple-helical domain and 150 altered splice sites.',
       'In mild OI, diagnostic features such as blue sclerae, dentinogenesis imperfecta, Wormian bones or a family history may be absent at the age of evaluation, so OI can be missed in infants with unexplained fractures.',
       'Non-accidental injury is more common than OI in unexplained fractures, but OI and other medical causes should always be considered; certain radiologic findings are seen more often in inflicted injury.',
       'Glycine occupies every third position of collagen chains, enabling tight packing of the triple helix; glycine substitutions are the most common OI mutations and are especially often lethal in α1(I) when the substituting residue is charged or branched.',
+      'Quantitative defects are generally associated with milder OI and structural defects with more severe OI, but the genotype–phenotype relationship is incompletely understood and exceptions occur; for example, only about one-third of α1(I) glycine substitutions are lethal.',
     ],
-    factRefs: [[0], [1], [2], [3], [4], [5, 2]],
+    factRefs: [[0], [1], [2], [3], [4], [5, 2], [6, 2]],
     mechanism:
-      'Type I collagen is the main structural protein of bone, sclera, dentin and the middle ear. A null COL1A1 allele halves normal collagen output (milder disease). A glycine substitution is worse: every triple helix needs three chains, so one abnormal chain can spoil most helices it joins (dominant-negative effect), causing severe or lethal disease.',
+      'Type I collagen is the main structural protein of bone, sclera, dentin and the middle ear. A null COL1A1 allele halves normal collagen output and generally causes milder disease. A glycine substitution is generally worse: every triple helix needs three chains, so one abnormal chain can spoil the helices it joins (dominant-negative effect). These are tendencies, not rules: severity also depends on the chain, the position of the substitution and the replacing residue.',
     associations: ['COL1A1', 'COL1A2', 'Type I collagen', 'Glycine substitution', 'Dominant negative', 'Blue sclerae', 'Dentinogenesis imperfecta', 'Wormian bones', 'Hearing loss'],
     misconception:
-      'A smaller amount of normal collagen is less harmful than a normal amount of abnormal collagen: null alleles cause mild OI, while glycine substitutions cause severe forms through a dominant-negative effect.',
+      'A smaller amount of normal collagen is generally less harmful than abnormal collagen: null alleles usually cause mild OI, while glycine substitutions more often cause severe forms through a dominant-negative effect. Exceptions occur, so genotype does not fully predict severity.',
     quick:
-      'OI: usually autosomal dominant COL1A1/COL1A2 → too little or abnormal type I collagen → fractures with minimal trauma, blue sclerae, hearing loss, dentinogenesis imperfecta. Null allele = mild (type I); glycine substitution = severe (dominant negative). Consider in unexplained infant fractures.',
+      'OI: usually autosomal dominant COL1A1/COL1A2 → too little or abnormal type I collagen → fractures with minimal trauma, blue sclerae, hearing loss, dentinogenesis imperfecta. Null allele: usually mild; glycine substitution: usually more severe (dominant negative); exceptions occur. Consider in unexplained infant fractures.',
     detailed: [
-      'OI ranges from mild (type I, few fractures, blue sclerae, normal height) to perinatally lethal (type II). The difference largely reflects whether the mutation reduces the amount of normal collagen or produces structurally abnormal chains that disrupt triple helix assembly.',
+      'OI ranges from mild (type I, few fractures, blue sclerae, normal height) to perinatally lethal (type II). The difference often reflects whether the mutation reduces the amount of normal collagen or produces structurally abnormal chains that disrupt triple helix assembly.',
       'Inflicted injury is far more common than OI in infants with unexplained fractures, but mild OI can lack the classic features at presentation. Family history, sclerae, teeth, Wormian bones and the fracture pattern are assessed, and type I collagen gene testing can be considered when the picture is unclear.',
     ],
-    takeaway: 'Less collagen → mild OI; abnormal collagen (glycine substitution) → severe OI. Keep OI in the differential for unexplained fractures.',
+    takeaway: 'Less collagen → usually milder OI; abnormal collagen (glycine substitution) → usually more severe OI, with exceptions. Keep OI in the differential for unexplained fractures.',
     related: ['mol-collagen-synthesis', 'mol-collagen-types'],
     outline: listed('Musculoskeletal System', 'Congenital disorders'),
     mcq: [
       {
-        stem: 'Two families have osteogenesis imperfecta. Family 1 carries a COL1A1 nonsense mutation whose mRNA is degraded; Family 2 carries a COL1A1 glycine-to-cysteine substitution in the triple-helical domain. Which family is expected to have more severe disease, and why?',
+        stem: 'Two families have osteogenesis imperfecta. Family 1 carries a COL1A1 nonsense mutation whose mRNA is degraded; Family 2 carries a COL1A1 glycine-to-cysteine substitution in the triple-helical domain. Which family is more likely to have severe disease, and why?',
         options: [
-          ['a', 'Family 2, because abnormal chains disrupt most helices'],
+          ['a', 'Family 2, because abnormal chains disrupt the helices they join'],
           ['b', 'Family 1, because no collagen is produced at all', 'The other COL1A1 allele still makes normal chains, so about half the normal collagen is produced.'],
           ['c', 'Family 1, because nonsense mutations are always lethal', 'A single null allele usually causes the mild form (type I).'],
           ['d', 'Both equally, because both affect COL1A1', 'The type of mutation, not just the gene, determines severity.'],
           ['e', 'Family 2, because cysteine prevents collagen secretion', 'The key problem is that the abnormal chain is built into helices and spoils them.'],
         ],
         answer: 'a',
-        mini: 'A null allele reduces the amount of normal collagen (mild OI). A glycine substitution puts abnormal chains into helices with normal ones, disrupting most of them (dominant negative, severe OI).',
+        mini: 'A null allele reduces the amount of normal collagen and usually causes mild OI. A glycine substitution puts abnormal chains into helices with normal ones (dominant negative) and more often causes severe OI. This is a tendency, not a rule: severity also depends on the position and the replacing residue.',
         reasoning: 'comparison',
-        steps: ['Family 1: mRNA degraded → half the normal collagen, all of it normal → mild OI.', 'Family 2: abnormal chain incorporated into trimers → most helices disrupted.', 'Dominant-negative structural defect → more severe disease.'],
+        steps: ['Family 1: mRNA degraded → about half the normal collagen, all of it normal → usually mild OI.', 'Family 2: abnormal chain incorporated into trimers → helices containing it are disrupted.', 'Dominant-negative structural defect → more likely to be severe, though not certain.'],
         difficulty: 4,
       },
       {
@@ -1878,7 +1892,7 @@ const sequences: SequenceItem[] = [
 const matches: MatchItem[] = [
   match({
     id: 'match:rna-polymerases',
-    title: 'Who makes which RNA?',
+    title: 'Polymerases and their products',
     prompt: 'Match each polymerase to what it makes or what blocks it.',
     pairs: [
       { left: 'RNA polymerase I', right: '28S, 18S and 5.8S rRNA in the nucleolus' },
@@ -2059,7 +2073,7 @@ const cases: CaseItem[] = [
       { label: 'History', text: 'He smoked 10 cigarettes a day for 15 years. As a newborn he had prolonged jaundice that resolved. His sister has “liver problems”.' },
       { label: 'Examination', text: 'Hyperinflated chest with reduced breath sounds at both bases. Liver edge palpable 2 cm below the costal margin.' },
       { label: 'Laboratory', text: 'Spirometry: FEV₁/FVC 0.52 with little bronchodilator response; reduced diffusing capacity. ALT mildly raised. The α1-globulin band on serum protein electrophoresis is almost absent.' },
-      { label: 'Imaging & tests', text: 'CT chest: emphysema throughout the acini, most marked in the lower lobes.' },
+      { label: 'Imaging & tests', text: 'CT chest: panlobular emphysema, most marked in the lower zones.' },
       { label: 'Further clue', text: 'Liver biopsy: periportal hepatocytes contain globules that remain PAS-positive after diastase.' },
     ],
     question: 'Which single molecular event best explains both his lung and his liver disease?',
@@ -2072,7 +2086,7 @@ const cases: CaseItem[] = [
     ],
     answerId: 'a',
     explanation:
-      'Panacinar lower-lobe emphysema in a young smoker, neonatal jaundice, an absent α1-globulin band and PAS-positive diastase-resistant hepatocyte globules point to α1-antitrypsin deficiency (PiZZ). The Z protein polymerizes in the hepatocyte ER, injuring the liver, while too little reaches the lung to restrain neutrophil elastase.',
+      'Panacinar, basal-predominant emphysema in a young smoker, neonatal jaundice, an absent α1-globulin band and PAS-positive diastase-resistant hepatocyte globules point to α1-antitrypsin deficiency (PiZZ). The Z protein polymerizes in the hepatocyte ER, injuring the liver, while too little reaches the lung to restrain neutrophil elastase.',
     mechanism: 'Z allele → misfolding → ER polymers (liver injury, globules) + low serum α1AT → unopposed neutrophil elastase → alveolar destruction.',
     takeaway: 'Young emphysema + liver disease = α1AT deficiency: one protein, retained in the liver, missing in the lung.',
     differentials: [
@@ -2099,7 +2113,7 @@ const cases: CaseItem[] = [
       { id: 'a', text: 'Inhibition of RNA polymerase II stops mRNA synthesis' },
       { id: 'b', text: 'ADP-ribosylation of elongation factor 2 stops translation', whyWrong: 'This is the action of diphtheria toxin and Pseudomonas exotoxin A, not of a mushroom toxin.' },
       { id: 'c', text: 'Depletion of glutathione by a reactive metabolite', whyWrong: 'Glutathione depletion is the mechanism of acetaminophen toxicity; the history is mushroom ingestion.' },
-      { id: 'd', text: 'Inhibition of acetylcholinesterase at muscarinic synapses', whyWrong: 'Some mushrooms cause cholinergic toxicity within minutes to hours, but not delayed liver failure.' },
+      { id: 'd', text: 'Stimulation of muscarinic receptors by a mushroom toxin', whyWrong: 'Muscarine-containing mushrooms cause rapid cholinergic symptoms such as sweating and salivation, not delayed liver failure.' },
       { id: 'e', text: 'Intercalation into DNA by an antitumor antibiotic', whyWrong: 'Intercalation describes dactinomycin, not a mushroom toxin.' },
     ],
     answerId: 'a',
