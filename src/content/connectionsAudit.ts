@@ -69,4 +69,18 @@ export const MANUAL_AUDIT: Record<string, AuditCategory[]> = {
     { label: 'Walls of hollow organs or vessels', members: ['Blood vessel wall', 'Intestinal wall'], note: 'Only 2 tiles.' },
     { label: 'Kidney-related', members: ['Glomerular basement membrane', 'Alport syndrome'], note: 'Only 2 tiles.' },
   ],
+  'cx:g-proteins': [
+    { label: 'Adrenergic receptors', members: ['Alpha-1 receptor', 'Alpha-2 receptor', 'Beta-1 receptor', 'Beta-2 receptor'], note: 'Exactly 4 tiles (one from each of Gq, Gi and two from Gs); the leftover tiles cannot then form three groups of 4 (Gs is left with 2), so no second solution.' },
+    { label: 'Dopamine receptors', members: ['D1 receptor', 'D2 receptor', 'D3 receptor'], note: '3 tiles.' },
+    { label: 'Muscarinic receptors', members: ['M2 receptor', 'M3 receptor'], note: 'Only 2 tiles.' },
+    { label: 'Vasopressin receptors', members: ['V1 receptor', 'V2 receptor'], note: 'Only 2 tiles.' },
+    { label: 'Histamine receptors', members: ['H1 receptor'], note: 'Only 1 tile.' },
+    { label: 'G-protein-coupled receptors (any)', members: ['Beta-1 receptor', 'Beta-2 receptor', 'D1 receptor', 'V2 receptor', 'Alpha-1 receptor', 'M3 receptor', 'V1 receptor', 'H1 receptor', 'Alpha-2 receptor', 'M2 receptor', 'D2 receptor', 'D3 receptor'], note: 'Superordinate (12 tiles).' },
+    { label: 'Receptors that raise cAMP or calcium (Gs or Gq)', members: ['Beta-1 receptor', 'Beta-2 receptor', 'D1 receptor', 'V2 receptor', 'Alpha-1 receptor', 'M3 receptor', 'V1 receptor', 'H1 receptor'], note: 'Superordinate (8 tiles).' },
+    { label: 'Tyrosine kinase activity (intrinsic or associated)', members: ['Insulin receptor', 'EGF receptor', 'FGFR3', 'Thrombopoietin receptor'], note: 'Coincides with the intended kinase-linked group.' },
+    { label: 'Receptor tyrosine kinases (intrinsic only)', members: ['Insulin receptor', 'EGF receptor', 'FGFR3'], note: '3 tiles; the thrombopoietin receptor uses associated JAK2.' },
+    { label: 'Receptors in the heart', members: ['Beta-1 receptor', 'M2 receptor'], note: '2 tiles (β2 and α1 are also present in vessels; never 4 that leave a valid remainder).' },
+    { label: 'Hormone receptors', members: ['Insulin receptor', 'Thrombopoietin receptor', 'V1 receptor', 'V2 receptor'], note: 'Exactly 4 tiles if thrombopoietin is counted as a hormone; the remainder then leaves Gs with 3 and the kinase group with 2, so no second solution.' },
+    { label: 'Neurotransmitter receptors', members: ['Alpha-1 receptor', 'Alpha-2 receptor', 'Beta-1 receptor', 'Beta-2 receptor', 'M2 receptor', 'M3 receptor', 'D1 receptor', 'D2 receptor', 'D3 receptor', 'H1 receptor'], note: '10 tiles: superordinate.' },
+  ],
 };

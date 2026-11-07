@@ -37,7 +37,13 @@ Large unstructured batches have stopped. Content is now developed subject by sub
   - Cellular batch 1 = `src/content/biochem/cellular1.ts`: 13 concepts, 21 objectives (cell cycle, organelles and trafficking, peroxisomes and proteasome, cytoskeleton, intermediate filaments, membranes and transport); 83 playable items (74 CORE, 9 APPLICATION) + 2 bank entries; 65 verified facts. Gameplay check 325/325.
   - Change log `BIOCHEM_CELLULAR1_CHANGELOG.md`, packet `BIOCHEM_CELLULAR1_REVIEW.md`.
 
-  **Next: Cellular batch 2 (cell signaling, 20 objectives), only after review.**
+- **Relevance/depth correction + Cellular batch 2, signalling (7 Nov 2026, draft):**
+  - Two independent classifications: Step 1 relevance (CORE / SUPPLEMENTARY / SPECIALIST / UNREVIEWED; never defaults to core) and cognitive depth (RECOGNITION / MECHANISM / APPLICATION, from the reasoning task). Games weight CORE 3, SUPPLEMENTARY/UNREVIEWED 1, SPECIALIST 0. Depth follows game format; no fixed application quota.
+  - Cellular batch 2 = `src/content/biochem/cellular2.ts`: 10 concepts, 19 signalling objectives (GPCRs and Gs/Gi/Gq, toxins, McCune–Albright, cAMP/PDEs, IP₃/DAG/Ca²⁺, NO/ANP–cGMP, RTK/RAS–MAPK, insulin, oncogenic kinases, JAK–STAT/JAK2/SCID, nuclear receptors and ligand-gated channels). 70 playable items, all CORE; 43 recognition / 15 mechanism / 12 application; 49 verified facts.
+  - Unverified facts were left unwritten; `src/content/curriculum/contentGaps.ts` marks those objectives partial (Cellular now 28 covered / 12 partial / 1 missing). TGF-β/SMAD (`bc-receptor-other.ser-thr`) not written. GHRH second-messenger source conflict flagged for the reviewer.
+  - Change log `BIOCHEM_CELLULAR2_CHANGELOG.md`, packet `BIOCHEM_CELLULAR2_REVIEW.md`.
+
+  **Stopped for review. Next (only after review): fill the Cellular content gaps once verified, then the next subdivision on the owner's request.**
 - Existing content (including the neuro/behavioral, MSK/skin and reproductive/endocrine batches drafted before the change) is preserved unchanged for its own subject audit.
 
 ## Knowledge tables (6 Nov 2026, in progress)

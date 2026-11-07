@@ -2,6 +2,7 @@ import type { Coverage, Depth, Objective, Subject, Subtopic } from './types';
 import type { Concept, GameItem, ReviewStatus } from '../schema';
 import { itemRelevance, type Relevance } from '../schema';
 import { OBJECTIVE_RELEVANCE } from './relevance';
+import { CONTENT_GAPS } from './contentGaps';
 
 export interface Located<T> {
   subdivision: string;
@@ -84,10 +85,15 @@ export function auditObjective(o: Objective, content: ContentIndex): ObjectiveAu
   const review: ObjectiveReview = statuses.length ? statuses.reduce((a, b) => (ORDER.indexOf(a) <= ORDER.indexOf(b) ? a : b)) : 'no content';
 
   if (linked.length) {
-    const coverage: Coverage = missingDepths.length ? 'partial' : 'covered';
+    const gap = CONTENT_GAPS[o.id];
+    const coverage: Coverage = missingDepths.length || gap ? 'partial' : 'covered';
+    const notes = [
+      missingDepths.length ? `Linked content does not yet assess: ${missingDepths.join(', ')}.` : '',
+      gap ? `Not yet taught (left unwritten until verified): ${gap}.` : '',
+    ].filter(Boolean);
     return {
       coverage, basis: 'linked content', concepts, linked, items, depthsAssessed, missingDepths, review,
-      note: missingDepths.length ? `Linked content does not yet assess: ${missingDepths.join(', ')}.` : undefined,
+      note: notes.length ? notes.join(' ') : undefined,
     };
   }
   return { coverage: o.coverage, basis: 'legacy judgement', concepts, linked, items, depthsAssessed, missingDepths, review, note: o.note };
