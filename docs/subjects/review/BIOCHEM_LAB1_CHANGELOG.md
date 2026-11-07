@@ -93,4 +93,11 @@ No Connections puzzle was written. Laboratory tests overlap too much to make a s
 
 ## 7. Browser validation
 
-BROWSER_PLACEHOLDER
+`npm run check:games` (headless Chromium, iPhone 13 emulation, reviewer-preview production build with `VITE_ALLOW_UNREVIEWED=true`, served by `vite preview`): **586 passed, 0 failed**. All 18 Mechanism Lab sequences were played both correctly and incorrectly, and all 19 Match Up sets were played. That includes `seq:pcr-gel`, `seq:western-blot`, `match:lab-targets` and `match:which-test` (64 checks on these four alone). No server was left running afterwards.
+
+Fixes found while running it:
+- A plain production build hides all draft content, so the check now builds a reviewer preview.
+- The check now starts Vite directly, so stopping it does not leave a server behind.
+- It refuses a busy port.
+
+These are technical checks of the games. They are not evidence of medical accuracy.
