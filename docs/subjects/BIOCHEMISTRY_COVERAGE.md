@@ -106,7 +106,7 @@ _Scope:_ Chromatin, nucleotide synthesis and salvage, DNA replication, mutation 
 
 <details><summary>Integration chains (blocked step → accumulates → decreased → physiology → findings)</summary>
 
-- **Explain hereditary orotic aciduria and its laboratory signature.** Block: UMP synthase (autosomal recessive). ↑ orotic acid (urinary orotic acid crystals). ↓ pyrimidine nucleotides for DNA synthesis. Physiology: impaired DNA synthesis in rapidly dividing erythroid precursors. Findings: megaloblastic anemia not corrected by vitamin B12 or folate; failure to thrive, developmental delay; no hyperammonemia; normal BUN.
+- **Explain hereditary orotic aciduria and its laboratory signature.** Block: UMP synthase (autosomal recessive). ↑ orotic acid (urinary orotic acid crystals). ↓ pyrimidine nucleotides for DNA synthesis. Physiology: impaired DNA synthesis in rapidly dividing erythroid precursors. Findings: megaloblastic anemia not corrected by vitamin B12 or folate; failure to thrive, developmental delay; normal ammonia, without the characteristic features of urea-cycle dysfunction.
 
 </details>
 

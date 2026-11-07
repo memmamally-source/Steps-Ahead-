@@ -1,4 +1,4 @@
-# Biochemistry Batch 2 — Molecular biochemistry (continued): medical review packet (revision 2)
+# Biochemistry Batch 2 — Molecular biochemistry (continued): medical review packet (revision 3)
 
 Status: **draft, AI-drafted, not medically reviewed.** Reviewer: mark each concept approved, needs changes or rejected, with notes. A citation alone is not approval.
 
@@ -872,10 +872,13 @@ Objectives: `bc-translation.trna`, `bc-translation.steps`
 2. Levinger L et al. Mitochondrial tRNA 3′ end metabolism and human disease (CCA added by CCA-adding enzyme; amino acid attached to CCA). Nucleic Acids Res 2004 — PMID 15477393 — <https://pubmed.ncbi.nlm.nih.gov/15477393/> — checked: summary
 3. Splan KE et al. In vitro assays for aminoacyl-tRNA synthetase editing activity (pre- and post-transfer editing). Methods 2008 — PMID 18241793 — <https://pubmed.ncbi.nlm.nih.gov/18241793/> — checked: summary
 4. Francklyn CS. DNA polymerases and aminoacyl-tRNA synthetases: shared mechanisms for ensuring the fidelity of gene expression. Biochemistry 2008 — PMID 18850722 — <https://pubmed.ncbi.nlm.nih.gov/18850722/> — checked: summary
+5. Rammelt C, Rossmanith W. Repairing tRNA termini: news from the 3′ end. RNA Biol 2016 — PMID 27661287 — <https://pubmed.ncbi.nlm.nih.gov/27661287/> — checked: summary
+6. Yamada Y et al. The nucleotide sequence of Bacillus subtilis tRNA genes (some genes encode the 3′ CCA, others do not). Nucleic Acids Res 1983 — PMID 6222284 — <https://pubmed.ncbi.nlm.nih.gov/6222284/> — checked: summary
+7. Sasarman F et al. CCA addition by TRNT1 in cytoplasm and mitochondria. Hum Mol Genet 2015 — PMID 25652405 — <https://pubmed.ncbi.nlm.nih.gov/25652405/> — checked: summary
 
 **Verified facts** [supporting citations]
 
-- The CCA at the 3′ end of tRNAs is not encoded in the gene but added by the CCA-adding enzyme; aminoacyl-tRNA synthetases attach the amino acid to this CCA end. [2]
+- Every mature tRNA ends in 3′ CCA, and aminoacyl-tRNA synthetases attach the amino acid to this end. In all eukaryotes (and many bacteria and archaea) the CCA is not encoded in the tRNA gene and is added after transcription by the CCA-adding enzyme (TRNT1 in human cytoplasm and mitochondria); some bacterial tRNA genes do encode it. [2, 5, 6, 7]
 - Many aminoacyl-tRNA synthetases have an editing (proofreading) activity that hydrolyzes a wrongly activated amino acid before or after transfer to the tRNA. [3, 4]
 - The tRNA anticodon pairs with the mRNA codon; each aminoacyl-tRNA enters the A site, the peptide is transferred, and tRNAs move from A to P to E, exiting from the E site. [1]
 - Peptide bonds are formed by peptidyl transferase, an RNA-based enzyme of the large ribosomal subunit. [1]
@@ -884,7 +887,7 @@ Objectives: `bc-translation.trna`, `bc-translation.steps`
 
 **Mechanism.** Accuracy is checked twice. The synthetase decides which amino acid goes on each tRNA (and edits mistakes); the ribosome checks only codon–anticodon pairing. A tRNA carrying the wrong amino acid therefore inserts it wherever its anticodon pairs. Elongation then cycles: aminoacyl-tRNA enters the A site, rRNA catalyzes the peptide bond, and translocation moves the chain to the P site until a release factor reads the stop codon.
 
-**Quick.** tRNA: 3′ CCA (added after transcription) carries the amino acid; anticodon reads the codon. Synthetases charge and proofread. Initiation at AUG (Met), elongation A → P → E (rRNA peptidyl transferase, GTP), termination by release factor at the A site.
+**Quick.** tRNA: 3′ CCA (added after transcription in eukaryotes) carries the amino acid; anticodon reads the codon. Synthetases charge and proofread. Initiation at AUG (Met), elongation A → P → E (rRNA peptidyl transferase, GTP), termination by release factor at the A site.
 
 **Detailed**
 
@@ -912,7 +915,7 @@ Objectives: `bc-translation.trna`, `bc-translation.steps`
   - ◻️ D. To the 50S rRNA until the stop codon is reached — _rRNA catalyzes the bond but does not hold the chain._
   - ◻️ E. To the tRNA in the E site, which then leaves — _The E site holds the empty tRNA that has given up the chain._
   - Explanation: Peptidyl transfer moves the chain onto the A-site tRNA; translocation then shifts it into the P site and the empty tRNA to the E site.
-- **True/false** `mol-translation:tf1` · recall → **recognition** · difficulty 2 · `bc-translation.trna`: The CCA sequence at the 3′ end of tRNA is encoded in every tRNA gene. → **False**. CCA is added after transcription by the CCA-adding enzyme; it is where the amino acid is attached.
+- **True/false** `mol-translation:tf1` · recall → **recognition** · difficulty 2 · `bc-translation.trna`: In human cells, the CCA sequence at the 3′ end of each tRNA is encoded in its tRNA gene. → **False**. In eukaryotes, including humans, CCA is added after transcription by the CCA-adding enzyme (TRNT1); only some bacterial tRNA genes encode it. It is where the amino acid is attached.
 - **True/false** `mol-translation:tf2` · recall → **recognition** · difficulty 1 · `bc-translation.steps`: Peptide bonds are formed by an RNA component of the large ribosomal subunit. → **True**. Correct: peptidyl transferase is an RNA-based enzyme (a ribozyme).
 - **Crossword** `mol-translation:clue1` · recall → **recognition** · difficulty 1 · `bc-translation.trna`: Three-base loop of tRNA that pairs with a codon → **ANTICODON**
 - **Mechanism Lab** `seq:elongation-cycle` · mechanism → **mechanism** · difficulty 2 · `bc-translation.steps`: One turn of the ribosome. Order the events of translation from start to finish.

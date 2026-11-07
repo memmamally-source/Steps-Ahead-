@@ -159,3 +159,14 @@ Targeted corrections only. Concept ids, item ids, curriculum links and review st
 - Connections category-bank entries cannot be played alone. They are now excluded from item counts and from coverage evidence (`isPlayable` in the coverage audit).
 - Batch 2 totals: **119 playable items** (45 MCQ, 28 true/false, 32 crossword clues, 5 Mechanism Lab, 6 Match Up, 1 complete Connections puzzle, 2 Mystery Patient cases) **plus 3 bank entries**.
 - Coverage is unchanged: all 51 Molecular objectives are still covered without bank entries. The Biochemistry coverage report now counts 326 playable items (previously 339, which included 13 bank entries).
+
+---
+
+# Biochemistry batch 2 — revision 3 (two minor owner corrections)
+
+Content stays draft. No ids or curriculum links changed.
+
+1. **tRNA 3′ CCA (`mol-translation`).** The fact no longer says CCA is never encoded. It now says that every mature tRNA ends in CCA; that in all eukaryotes (and many bacteria and archaea) the CCA is added after transcription by the CCA-adding enzyme (TRNT1 in human cytoplasm and mitochondria); and that some bacterial tRNA genes do encode it.
+   - Sources added, all read as abstracts: PMID 27661287 (Rammelt & Rossmanith 2016), PMID 6222284 (*B. subtilis* tRNA genes, some encoding CCA) and PMID 25652405 (TRNT1).
+   - `mol-translation:tf1` now refers to human cells (“…encoded in its tRNA gene” → false). The quick explanation now says “added after transcription in eukaryotes”.
+2. **Hereditary orotic aciduria integration chain** (curriculum checklist, `bc-nucleotide-synthesis.orotic-aciduria`). “No hyperammonemia; normal BUN” is replaced by “normal ammonia, without the characteristic features of urea-cycle dysfunction”. BUN is no longer presented as a required distinguishing finding. The `mol-otc-vs-orotic` learning objective was reworded the same way. No batch content used BUN as a discriminator.

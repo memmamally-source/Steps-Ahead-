@@ -28,7 +28,7 @@ export const molecular: Subdivision = {
           d('orotic-aciduria', 'Explain hereditary orotic aciduria and its laboratory signature.', RMA,
             ix('UMP synthase (autosomal recessive)', ['orotic acid (urinary orotic acid crystals)'], ['pyrimidine nucleotides for DNA synthesis'],
               ['impaired DNA synthesis in rapidly dividing erythroid precursors'],
-              ['megaloblastic anemia not corrected by vitamin B12 or folate', 'failure to thrive, developmental delay', 'no hyperammonemia; normal BUN']),
+              ['megaloblastic anemia not corrected by vitamin B12 or folate', 'failure to thrive, developmental delay', 'normal ammonia, without the characteristic features of urea-cycle dysfunction']),
             { existing: ['otc-deficiency'], coverage: 'partial', note: 'OTC concept contrasts orotic acid with and without hyperammonemia; inheritance, failure to respond to B12/folate and growth effects are absent.' }),
           o('otc-vs-orotic', 'Distinguish OTC deficiency (hyperammonemia, orotic aciduria, no megaloblastic anemia) from hereditary orotic aciduria.', ['application'], {
             existing: ['otc-deficiency'], coverage: 'covered',

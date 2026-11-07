@@ -280,7 +280,7 @@ const core = defineConcepts([
     topic: 'biochem-molecular',
     difficulty: 4,
     curriculum: [`${NS}.otc-vs-orotic`],
-    objectives: ['Use ammonia, BUN and the blood count to distinguish OTC deficiency from hereditary orotic aciduria'],
+    objectives: ['Use ammonia, other evidence of urea-cycle dysfunction and the blood count to distinguish OTC deficiency from hereditary orotic aciduria'],
     citations: [
       MP('condition/ornithine-transcarbamylase-deficiency', 'Ornithine transcarbamylase deficiency'),
       PM(1234064, 'Beaudry MA et al. Chronic hyperammonemia with orotic aciduria: evidence of pyrimidine pathway stimulation. Diabete Metab 1975'),
@@ -1210,23 +1210,26 @@ const core = defineConcepts([
       PM(15477393, 'Levinger L et al. Mitochondrial tRNA 3′ end metabolism and human disease (CCA added by CCA-adding enzyme; amino acid attached to CCA). Nucleic Acids Res 2004'),
       PM(18241793, 'Splan KE et al. In vitro assays for aminoacyl-tRNA synthetase editing activity (pre- and post-transfer editing). Methods 2008'),
       PM(18850722, 'Francklyn CS. DNA polymerases and aminoacyl-tRNA synthetases: shared mechanisms for ensuring the fidelity of gene expression. Biochemistry 2008'),
+      PM(27661287, 'Rammelt C, Rossmanith W. Repairing tRNA termini: news from the 3′ end. RNA Biol 2016'),
+      PM(6222284, 'Yamada Y et al. The nucleotide sequence of Bacillus subtilis tRNA genes (some genes encode the 3′ CCA, others do not). Nucleic Acids Res 1983'),
+      PM(25652405, 'Sasarman F et al. CCA addition by TRNT1 in cytoplasm and mitochondria. Hum Mol Genet 2015'),
     ],
     facts: [
-      'The CCA at the 3′ end of tRNAs is not encoded in the gene but added by the CCA-adding enzyme; aminoacyl-tRNA synthetases attach the amino acid to this CCA end.',
+      'Every mature tRNA ends in 3′ CCA, and aminoacyl-tRNA synthetases attach the amino acid to this end. In all eukaryotes (and many bacteria and archaea) the CCA is not encoded in the tRNA gene and is added after transcription by the CCA-adding enzyme (TRNT1 in human cytoplasm and mitochondria); some bacterial tRNA genes do encode it.',
       'Many aminoacyl-tRNA synthetases have an editing (proofreading) activity that hydrolyzes a wrongly activated amino acid before or after transfer to the tRNA.',
       'The tRNA anticodon pairs with the mRNA codon; each aminoacyl-tRNA enters the A site, the peptide is transferred, and tRNAs move from A to P to E, exiting from the E site.',
       'Peptide bonds are formed by peptidyl transferase, an RNA-based enzyme of the large ribosomal subunit.',
       'GTP energy is needed for binding of each new aminoacyl-tRNA to the A site and for its translocation to the P site.',
       'There are no tRNAs for stop codons; a release factor enters the A site and triggers hydrolysis of the bond between the last amino acid and its tRNA.',
     ],
-    factRefs: [[1], [2, 3], [0], [0], [0], [0]],
+    factRefs: [[1, 4, 5, 6], [2, 3], [0], [0], [0], [0]],
     mechanism:
       'Accuracy is checked twice. The synthetase decides which amino acid goes on each tRNA (and edits mistakes); the ribosome checks only codon–anticodon pairing. A tRNA carrying the wrong amino acid therefore inserts it wherever its anticodon pairs. Elongation then cycles: aminoacyl-tRNA enters the A site, rRNA catalyzes the peptide bond, and translocation moves the chain to the P site until a release factor reads the stop codon.',
     associations: ['Aminoacyl-tRNA synthetase', 'CCA tail', 'Anticodon', 'A site', 'P site', 'E site', 'Peptidyl transferase', 'Release factor', 'GTP'],
     misconception:
       'The ribosome does not check which amino acid a tRNA carries: it reads only the anticodon, so synthetase proofreading is the main safeguard for matching amino acid to codon.',
     quick:
-      'tRNA: 3′ CCA (added after transcription) carries the amino acid; anticodon reads the codon. Synthetases charge and proofread. Initiation at AUG (Met), elongation A → P → E (rRNA peptidyl transferase, GTP), termination by release factor at the A site.',
+      'tRNA: 3′ CCA (added after transcription in eukaryotes) carries the amino acid; anticodon reads the codon. Synthetases charge and proofread. Initiation at AUG (Met), elongation A → P → E (rRNA peptidyl transferase, GTP), termination by release factor at the A site.',
     detailed: [
       'Aminoacyl-tRNA synthetases first activate the amino acid with ATP and then transfer it to the 3′ CCA end of the matching tRNA. Editing domains hydrolyze misactivated amino acids or mischarged tRNAs, much as DNA polymerase exonucleases remove misincorporated bases.',
       'Translation begins at AUG with an initiator methionyl-tRNA and initiation factors. In elongation, each aminoacyl-tRNA enters the A site (GTP-dependent), peptidyl transferase in the large-subunit rRNA moves the chain onto it, and translocation (GTP-dependent) shifts the tRNAs to the P and E sites. A stop codon in the A site recruits a release factor, and the finished chain is released.',
@@ -1267,7 +1270,7 @@ const core = defineConcepts([
       },
     ],
     tf: [
-      { statement: 'The CCA sequence at the 3′ end of tRNA is encoded in every tRNA gene.', isTrue: false, correction: 'CCA is added after transcription by the CCA-adding enzyme; it is where the amino acid is attached.', objectives: [`${TL}.trna`], difficulty: 2 },
+      { statement: 'In human cells, the CCA sequence at the 3′ end of each tRNA is encoded in its tRNA gene.', isTrue: false, correction: 'In eukaryotes, including humans, CCA is added after transcription by the CCA-adding enzyme (TRNT1); only some bacterial tRNA genes encode it. It is where the amino acid is attached.', objectives: [`${TL}.trna`], difficulty: 2 },
       { statement: 'Peptide bonds are formed by an RNA component of the large ribosomal subunit.', isTrue: true, correction: 'Correct: peptidyl transferase is an RNA-based enzyme (a ribozyme).', objectives: [`${TL}.steps`], difficulty: 1 },
     ],
     clues: [
