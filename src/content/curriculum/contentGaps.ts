@@ -26,4 +26,10 @@ export const CONTENT_GAPS: Record<string, ContentGap> = {
   // Laboratory techniques batch 1.
   'bc-elisa-flow.flow': { deferred: 'leukemia and lymphoma immunophenotyping — taught with Hematology/Oncology' },
   'bc-gene-editing.crispr': { deferred: 'RNA interference, knock-in/knock-out and transgenic models, Cre-lox conditional systems — supplementary research tools' },
+  // Genetics batch 1.
+  'bc-ad-inheritance.mechanisms': { deferred: 'the generalization that dominant disorders often involve structural proteins or receptors — not stated in the sources read' },
+  'bc-gen-terms.dominant-negative': { deferred: 'mutant p53 as a named dominant negative example — taught with Hematology/Oncology' },
+  'bc-autosomal-trisomies.down': { deferred: 'epicanthal folds and sandal gap — minor features not in the sources read' },
+  'bc-autosomal-trisomies.down-associations': { deferred: 'atlantoaxial instability — its clinical significance is disputed in the sources read' },
+  'bc-autosomal-trisomies.edwards': { deferred: 'prominent occiput and rocker-bottom feet — not in the sources read' },
 };

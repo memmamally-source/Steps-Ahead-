@@ -97,6 +97,7 @@ export const TOPICS: Topic[] = [
   { id: 'biochem-vitamins', title: 'Vitamins & nutrition', system: 'gastrointestinal', discipline: 'nutrition' },
   { id: 'genetics-inheritance', title: 'Inheritance patterns', system: 'multisystem', discipline: 'genetics' },
   { id: 'genetics-trinucleotide', title: 'Trinucleotide repeat disorders', system: 'nervous-behavioral', discipline: 'genetics' },
+  { id: 'genetics-chromosomal', title: 'Chromosomal disorders: aneuploidy and structural rearrangements', system: 'multisystem', discipline: 'genetics' },
   // Microbiology
   { id: 'micro-gram-positive', title: 'Gram-positive bacteria', system: 'multisystem', discipline: 'microbiology' },
   { id: 'micro-gram-negative', title: 'Gram-negative bacteria', system: 'multisystem', discipline: 'microbiology' },
