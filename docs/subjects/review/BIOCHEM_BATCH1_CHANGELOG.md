@@ -125,3 +125,15 @@ Scope: the six quality-control requirements from the owner’s provisional accep
 ## Updates to the unresolved list above
 - Item 1 is now **partly resolved**: the 5-FU, leucovorin, thymidylate synthase and 10-formyl-THF claims were verified from PubMed abstracts. Existence-only StatPearls chapters (methotrexate, fluorouracil, folic acid, Lesch–Nyhan, Menkes, mutation, DNA repair, Marfan) and Med Lett PMID 27027693 remain. Any fact relying only on them is shown as pending.
 - Item 5 is **resolved for the checking method**: uniqueness is now proven against the global catalog. Reviewers should still suggest groupings the catalog lacks.
+
+---
+
+# Biochemistry batch 1 — revision 4 (Connections re-audit)
+
+Targeted corrections from the owner’s manual Connections recheck. Item ids, concept ids, curriculum links and review statuses are unchanged; all content remains draft.
+
+- **`cx:dna-repair-machinery` had a second defensible solution.** {XPA, XPC, ERCC2, MUTYH} are exactly the board’s autosomal recessive cancer-predisposition genes, and the leftover {Thymine dimer, Uracil-DNA glycosylase, AP endonuclease, 8-Oxoguanine} fits “single-strand excision repair”. Fix: the XPA tile was replaced by “Xeroderma pigmentosum” in the NER group. MUTYH and all objective links are unchanged.
+- **`cx:nucleotides-and-drugs` had a second defensible solution.** {Adenine, Guanine, Cytosine, Thymine} are exactly the bases found in DNA, and the leftover {Hypoxanthine, Xanthine, Uracil, Orotate} fits “not found in DNA”. Fix: the Adenine tile was replaced by IMP, and the group is relabelled “Purine rings”. IMP as the first purine nucleotide is already sourced in `mol-nucleotides`. Objective links are unchanged.
+- **`cx:collagen-types`:** no second solution. Its two exact-4 red herrings (“Inherited syndromes”, “Skeletal tissues”) cannot complete a second board and are kept as deliberate traps.
+- A test confirms that the new check finds both old second solutions, and that every current curated puzzle has exactly one. Details are in the batch 2 change log, revision 2 §7, and in `src/content/connectionsAudit.ts`.
+- Item counts in the batch 1 packet now separate playable items (105) from category-bank entries (3).

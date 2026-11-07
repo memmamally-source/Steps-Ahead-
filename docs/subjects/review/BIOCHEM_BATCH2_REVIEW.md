@@ -1,4 +1,4 @@
-# Biochemistry Batch 2 — Molecular biochemistry (continued): medical review packet
+# Biochemistry Batch 2 — Molecular biochemistry (continued): medical review packet (revision 2)
 
 Status: **draft, AI-drafted, not medically reviewed.** Reviewer: mark each concept approved, needs changes or rejected, with notes. A citation alone is not approval.
 
@@ -17,17 +17,19 @@ Status: **draft, AI-drafted, not medically reviewed.** Reviewer: mark each conce
 |---|---|
 | Concepts | 20 |
 | Objectives taught | 26 |
-| Facts verified / awaiting direct confirmation | 98 / 4 |
-| MCQs / true-false / crossword clues | 45 / 28 / 32 |
-| Mechanism Lab sequences / Match Up sets | 5 / 6 |
-| Complete Connections puzzles / category groups / Mystery Patient cases | 1 / 3 / 2 |
-| Items: recall | 72 |
-| Items: identification | 5 |
-| Items: mechanism | 21 |
-| Items: interpretation | 7 |
-| Items: prediction | 7 |
-| Items: comparison | 5 |
-| Items: multistep | 5 |
+| Facts verified / awaiting direct confirmation | 104 / 0 |
+| **Playable learning items (total)** | **119** |
+| — MCQs / true-false / crossword clues | 45 / 28 / 32 |
+| — Mechanism Lab sequences / Match Up sets | 5 / 6 |
+| — Complete Connections puzzles / Mystery Patient cases | 1 / 2 |
+| Connections category-bank entries (builder input, **not** playable alone; excluded from item counts and coverage) | 3 |
+| Playable items: recall | 72 |
+| Playable items: identification | 2 |
+| Playable items: mechanism | 21 |
+| Playable items: interpretation | 7 |
+| Playable items: prediction | 7 |
+| Playable items: comparison | 5 |
+| Playable items: multistep | 5 |
 
 ## Chromatin structure and epigenetic control (`mol-chromatin`)
 
@@ -102,7 +104,7 @@ Objectives: `bc-chromatin-structure.epigenetic-disease`
 **Verified facts** [supporting citations]
 
 - Early in female development, one X chromosome in each cell condenses into a quiescent Barr body; every X except one is inactivated, so individuals with extra X chromosomes have extra Barr bodies. [1]
-- In Prader–Willi syndrome the genes of the region are missing from the paternal chromosome 15 while the maternal copies are normally turned off: about 70% of cases are paternal deletions and about 25% are maternal uniparental disomy. [2]
+- In Prader–Willi syndrome the genes of the region are missing from the paternal chromosome 15 while the maternal copies are normally turned off: about 70% of cases are paternal deletions and about 25% are maternal uniparental disomy; rarely, a change abnormally turns off the genes on the paternal chromosome 15 (an imprinting defect). [2]
 - In neurons only the maternal copy of UBE3A is active; Angelman syndrome results when the maternal copy is lost (deletion, UBE3A variant) or, less often, from paternal uniparental disomy. [3]
 - Fragile X syndrome is caused by expansion of the CGG repeat in FMR1 to more than 200 copies, which silences the gene. [4]
 - The expanded CGG repeat is hypermethylated and the FMR1 promoter becomes heterochromatin; experimental demethylation reactivates the gene. [5]
@@ -116,7 +118,7 @@ Objectives: `bc-chromatin-structure.epigenetic-disease`
 
 > Dosage compensation inactivates all but one X chromosome per cell; the condensed X is visible as a Barr body. A cell from a person with 47,XXY therefore has one Barr body, and 47,XXX has two.
 
-> Imprinted genes are expressed from only one parental copy. Because the maternal Prader–Willi region is normally silent, losing the paternal copy by deletion or inheriting two maternal chromosomes 15 (uniparental disomy) gives the same result. The reverse logic applies to Angelman syndrome and maternal UBE3A. Methylation testing detects both mechanisms because it reads the parent-specific pattern.
+> Imprinted genes are expressed from only one parental copy. Because the maternal Prader–Willi region is normally silent, losing the paternal copy by deletion or inheriting two maternal chromosomes 15 (uniparental disomy) gives the same result. The reverse logic applies to Angelman syndrome and maternal UBE3A. A methylation test shows that the paternal pattern is missing but not why: a deletion, uniparental disomy and an imprinting defect all give the same result, so copy-number and parental-origin (SNP) studies are needed to tell them apart.
 
 > In fragile X, a full mutation (>200 CGG repeats) is hypermethylated and the promoter adopts a heterochromatin state, so FMR1 is not transcribed. The phenotype comes from loss of the gene product, not from a change in the protein sequence.
 
@@ -125,14 +127,14 @@ Objectives: `bc-chromatin-structure.epigenetic-disease`
 **Takeaway.** Silencing can cause disease as surely as deletion: ask which copy is active, and whether it has been lost or turned off.
 
 - **MCQ** `mol-epigenetic-disease:mcq1` · interpretation → **application** · difficulty 4 · `bc-chromatin-structure.epigenetic-disease`
-  - A hypotonic infant with poor feeding has a normal chromosome 15 copy number on microarray, but methylation testing of 15q11–q13 shows only the maternal pattern. Which mechanism best explains the result?
-  - ◻️ A. Expansion of a CGG repeat on the X chromosome — _CGG expansion silences FMR1 in fragile X and does not change chromosome 15 methylation._
+  - A hypotonic infant with poor feeding has a 15q11–q13 methylation test showing only the maternal pattern. Microarray shows normal chromosome 15 copy number. SNP genotyping of the infant and both parents shows that all informative chromosome 15 markers came from the mother, with no paternal alleles. Which mechanism best explains the results?
+  - ◻️ A. An imprinting defect on a paternal chromosome 15 — _An imprinting defect also gives a maternal-only pattern with normal copy number, but a paternal chromosome 15 would be present; here there are no paternal alleles._
   - ◻️ B. Deletion of the paternal 15q11–q13 region — _A deletion would reduce copy number on microarray; this result shows normal copy number._
   - ✅ C. Two maternal chromosome 15s, so no active paternal genes
   - ◻️ D. Two paternal chromosome 15s — _Paternal uniparental disomy would show only the paternal pattern and is a cause of Angelman syndrome._
   - ◻️ E. Loss of the maternal UBE3A copy — _Loss of maternal UBE3A causes Angelman syndrome and would leave a paternal pattern present._
-  - Steps: (1) Normal copy number rules out a deletion. (2) Only the maternal methylation pattern means both chromosome 15s came from the mother. (3) The maternal copies of the region are normally silent, so no active genes remain → Prader–Willi syndrome by maternal uniparental disomy.
-  - Explanation: Normal copy number excludes a deletion; an all-maternal methylation pattern means maternal uniparental disomy, so no active paternal genes (Prader–Willi).
+  - Steps: (1) A maternal-only methylation pattern shows that active paternal 15q11–q13 genes are missing, but not why. (2) Normal copy number rules out a paternal deletion. (3) No paternal alleles on parental SNP genotyping rules out an imprinting defect → maternal uniparental disomy.
+  - Explanation: A maternal-only methylation pattern can come from a paternal deletion, maternal uniparental disomy or an imprinting defect. Normal copy number excludes a deletion, and the absence of paternal alleles excludes an imprinting defect, leaving maternal uniparental disomy (Prader–Willi syndrome).
 - **MCQ** `mol-epigenetic-disease:mcq2` · mechanism → **mechanism** · difficulty 3 · `bc-chromatin-structure.epigenetic-disease`
   - Why does a full mutation (more than 200 CGG repeats) in FMR1 cause fragile X syndrome?
   - ◻️ A. The repeat adds a polyglutamine tract to the protein — _CGG repeats in fragile X lie in the 5′ untranslated region and are not translated into polyglutamine; that is the CAG mechanism of Huntington disease._
@@ -175,24 +177,22 @@ Objectives: `bc-nucleotide-synthesis.otc-vs-orotic`
 2. Beaudry MA et al. Chronic hyperammonemia with orotic aciduria: evidence of pyrimidine pathway stimulation. Diabete Metab 1975 — PMID 1234064 — <https://pubmed.ncbi.nlm.nih.gov/1234064/> — checked: summary
 3. Staretz-Chacham O et al. Hereditary orotic aciduria identified by newborn screening. Front Genet 2023 — PMID 36999056 — <https://pubmed.ncbi.nlm.nih.gov/36999056/> — checked: summary
 4. Al Absi HS et al. Hereditary orotic aciduria (HOA): a novel UMPS mutation. Mol Genet Metab Rep 2021 — PMID 33489760 — <https://pubmed.ncbi.nlm.nih.gov/33489760/> — checked: summary
+5. Ibrahim MS et al. Diagnostic and management issues in patients with late-onset ornithine transcarbamylase deficiency. Children (Basel) 2023 — PMID 37628367; PMC10453542 — <https://pmc.ncbi.nlm.nih.gov/articles/PMC10453542/> — checked: full-text
 
 **Verified facts** [supporting citations]
 
 - Ornithine transcarbamylase (OTC) deficiency is an X-linked urea cycle disorder that causes hyperammonemia; the severe neonatal form usually affects males. [1]
 - In hyperammonemia with orotic aciduria from a partial urea cycle block, orotic acid excretion rises with ammonia and reflects stimulation of the pyrimidine pathway; red cell orotate phosphoribosyltransferase and orotidine decarboxylase (UMP synthase) activities are normal. [2]
 - Hereditary orotic aciduria is a UMP synthase deficiency with megaloblastic anemia that does not respond to vitamin B12 or folate. [3, 4]
+- In OTC deficiency, orotic aciduria results from excess carbamoyl phosphate diverted into the pyrimidine pathway; plasma glutamine is high and citrulline low. [5, 2]
 
-**Awaiting direct source confirmation** (reasoned or existence-only; must be confirmed before approval)
+**Mechanism.** Orotic acid can accumulate for two opposite reasons. In OTC deficiency, mitochondrial carbamoyl phosphate cannot combine with ornithine and overflows into the cytosolic pyrimidine pathway, so orotate is overproduced while UMP synthase itself is intact: ammonia rises, but the megaloblastic anemia that characterizes hereditary orotic aciduria is not a feature. In hereditary orotic aciduria, UMP synthase itself is defective, so orotate cannot be converted to UMP: ammonia is normal and pyrimidine-starved marrow becomes megaloblastic.
 
-- In OTC deficiency, carbamoyl phosphate that cannot enter the urea cycle spills into pyrimidine synthesis, producing orotic acid without impairing UMP formation. [2]
-
-**Mechanism.** Orotic acid can accumulate for two opposite reasons. In OTC deficiency, mitochondrial carbamoyl phosphate cannot combine with ornithine and overflows into the cytosolic pyrimidine pathway, so orotate is overproduced while UMP synthase works normally: ammonia rises, blood count is normal. In hereditary orotic aciduria, UMP synthase itself is defective, so orotate cannot be converted to UMP: ammonia is normal and pyrimidine-starved marrow becomes megaloblastic.
-
-**Quick.** Orotic aciduria + hyperammonemia, normal blood count → OTC deficiency (urea cycle overflow; X-linked). Orotic aciduria + megaloblastic anemia unresponsive to B12/folate, no hyperammonemia → UMP synthase deficiency.
+**Quick.** Orotic aciduria + hyperammonemia, without the megaloblastic anemia of UMP synthase deficiency → OTC deficiency (urea cycle overflow; X-linked). Orotic aciduria + megaloblastic anemia unresponsive to B12/folate, no hyperammonemia → UMP synthase deficiency.
 
 **Detailed**
 
-> Carbamoyl phosphate made in the mitochondrion by carbamoyl phosphate synthetase I normally combines with ornithine via OTC. When OTC is deficient, carbamoyl phosphate leaks to the cytosol and enters pyrimidine synthesis beyond the usual control point, so orotate is overproduced. UMP synthase is intact, so nucleotide supply and the blood count are normal; the danger is ammonia toxicity, especially after protein loads.
+> Carbamoyl phosphate made in the mitochondrion by carbamoyl phosphate synthetase I normally combines with ornithine via OTC. When OTC is deficient, excess carbamoyl phosphate is diverted into pyrimidine synthesis, so orotate is overproduced. UMP synthase is intact, so OTC deficiency does not characteristically cause the megaloblastic anemia of hereditary orotic aciduria (other causes of anemia can still coexist); the danger is ammonia toxicity, especially after protein loads.
 
 > In hereditary orotic aciduria, orotate accumulates because it cannot be converted to UMP. The urea cycle is normal, so ammonia is not raised, but rapidly dividing erythroid precursors lack pyrimidine nucleotides and the anemia is megaloblastic despite normal B12 and folate.
 
@@ -207,7 +207,7 @@ Objectives: `bc-nucleotide-synthesis.otc-vs-orotic`
   - ◻️ C. A: carbamoyl phosphate synthetase I deficiency; B: OTC deficiency — _CPS I deficiency gives hyperammonemia with low orotic acid, because carbamoyl phosphate is not made._
   - ◻️ D. A: UMP synthase deficiency; B: OTC deficiency — _Reversed: hyperammonemia points to a urea cycle block, and megaloblastic anemia points to failed UMP synthesis._
   - ✅ E. A: OTC deficiency; B: UMP synthase deficiency
-  - Steps: (1) Infant A: hyperammonemia after protein = urea cycle block distal to carbamoyl phosphate. (2) Excess carbamoyl phosphate overflows into pyrimidine synthesis → orotic acid; marrow is spared → OTC deficiency. (3) Infant B: normal ammonia + megaloblastic anemia not due to B12/folate → orotate cannot become UMP → UMP synthase deficiency.
+  - Steps: (1) Infant A: hyperammonemia after protein = urea cycle block distal to carbamoyl phosphate. (2) Excess carbamoyl phosphate is diverted into pyrimidine synthesis → orotic acid; UMP synthase is intact, so megaloblastic anemia is not expected → OTC deficiency. (3) Infant B: normal ammonia + megaloblastic anemia not due to B12/folate → orotate cannot become UMP → UMP synthase deficiency.
   - Explanation: Orotic acid + hyperammonemia = urea cycle overflow (OTC). Orotic acid + megaloblastic anemia with normal B12/folate = UMP synthase deficiency.
 - **MCQ** `mol-otc-vs-orotic:mcq2` · multistep → **application** · difficulty 4 · `bc-nucleotide-synthesis.otc-vs-orotic`
   - A 3-year-old girl has episodes of vomiting and drowsiness after high-protein meals. Ammonia is high and urinary orotic acid is raised; red cell UMP synthase activity is normal. Why is orotic acid raised?
@@ -233,26 +233,24 @@ Objectives: `bc-purine-salvage.xo-inhibitors`
 2. Weiler S et al. Treatment of gout in a renal transplant patient leading to severe thrombocytopenia (allopurinol–azathioprine). J Clin Pharm Ther 2014 — PMID 25040676 — <https://pubmed.ncbi.nlm.nih.gov/25040676/> — checked: summary
 3. Xanthine calculi in a patient with Lesch-Nyhan syndrome treated with allopurinol. BMC Pediatr 2018 — PMID 30001695 — <https://pubmed.ncbi.nlm.nih.gov/30001695/> — checked: summary
 4. Recurrent xanthine stones in a young patient with Lesch-Nyhan syndrome. J Endourol Case Rep 2020 — PMID 33457651 — <https://pubmed.ncbi.nlm.nih.gov/33457651/> — checked: summary
+5. DailyMed: ULORIC (febuxostat) tablets, Takeda: prescribing information (sections 4, 7 and 12.3), Dec 2025 — SPL set id 54de10ef-fe5f-4930-b91d-6bbb04c664bd — <https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=54de10ef-fe5f-4930-b91d-6bbb04c664bd> — checked: full-text
 
 **Verified facts** [supporting citations]
 
 - Allopurinol inhibits xanthine oxidase; combined with azathioprine it can cause myelotoxicity, with raised myelotoxic 6-thioguanine nucleotide levels. [2]
 - Febuxostat is a non-purine, selective inhibitor of xanthine oxidase used to lower serum urate in gout. [1]
 - Blocking xanthine oxidase raises its substrates: in purine overproduction, xanthine can accumulate and form stones during allopurinol therapy. [3, 4]
+- Azathioprine and mercaptopurine are metabolized by xanthine oxidase; febuxostat increased exposure to 6-mercaptopurine (a metabolite of azathioprine), which may cause toxicity, and is contraindicated with either drug. [5, 2]
 
-**Awaiting direct source confirmation** (reasoned or existence-only; must be confirmed before approval)
+**Mechanism.** Xanthine oxidase converts hypoxanthine to xanthine and xanthine to uric acid. Inhibiting it lowers urate but raises the upstream oxypurines. 6-Mercaptopurine (the active metabolite of azathioprine) is also metabolized by xanthine oxidase, so when the enzyme is blocked, 6-mercaptopurine exposure rises, more is converted to cytotoxic thioguanine nucleotides, and the marrow is suppressed.
 
-- Xanthine oxidase normally inactivates 6-mercaptopurine (the active metabolite of azathioprine), so inhibiting it shunts more drug toward thioguanine nucleotides. [2]
-
-**Mechanism.** Xanthine oxidase converts hypoxanthine to xanthine and xanthine to uric acid. Inhibiting it lowers urate but raises the upstream oxypurines. 6-Mercaptopurine is a purine analog that the same enzyme inactivates, so when xanthine oxidase is blocked more of the drug is converted to cytotoxic thioguanine nucleotides, and the marrow is suppressed.
-
-**Quick.** Allopurinol (purine analog) and febuxostat (non-purine) inhibit xanthine oxidase → less urate, more hypoxanthine/xanthine. With azathioprine/6-MP: less inactivation → more thioguanine nucleotides → cytopenias.
+**Quick.** Allopurinol (purine analog) and febuxostat (non-purine) inhibit xanthine oxidase → less urate, more hypoxanthine/xanthine. With azathioprine/6-MP: less XO metabolism → more 6-MP and thioguanine nucleotides → cytopenias.
 
 **Detailed**
 
 > Xanthine oxidase catalyzes the last two steps of purine degradation. Inhibitors lower serum urate in gout and prevent urate overload during tumor lysis. Febuxostat is structurally unrelated to purines and inhibits the enzyme selectively.
 
-> Azathioprine is converted to 6-mercaptopurine, which has competing fates: activation to thioguanine nucleotides (the immunosuppressive and myelotoxic products) or inactivation, including by xanthine oxidase. Blocking the inactivating route shifts the balance toward thioguanine nucleotides, so the combination causes marrow suppression unless the thiopurine dose is greatly reduced or the combination is avoided.
+> Azathioprine is converted to 6-mercaptopurine, which is either converted to thioguanine nucleotides (the immunosuppressive and myelotoxic products) or metabolized by other routes, including xanthine oxidase. Blocking xanthine oxidase raises 6-mercaptopurine exposure and thioguanine nucleotide levels. The febuxostat label contraindicates combination with azathioprine or mercaptopurine; with allopurinol, severe myelotoxicity has been reported, so the combination needs specialist dose adjustment with close monitoring, or avoidance.
 
 **Misconception.** The allopurinol–azathioprine interaction is not an immune or allergic reaction: it is a predictable metabolic shunt of the thiopurine toward its myelotoxic nucleotides when xanthine oxidase is blocked.
 
@@ -260,13 +258,13 @@ Objectives: `bc-purine-salvage.xo-inhibitors`
 
 - **MCQ** `mol-xo-inhibitors:mcq1` · prediction → **application** · difficulty 4 · `bc-purine-salvage.xo-inhibitors`
   - A kidney transplant recipient on azathioprine develops gout and is started on allopurinol at the usual dose. Three weeks later platelets are 22,000/mm³ and neutrophils 600/mm³. What explains the cytopenias?
-  - ✅ A. Less 6-MP inactivation, so more thioguanine nucleotides
+  - ✅ A. Less 6-MP metabolism, so more thioguanine nucleotides
   - ◻️ B. Xanthine stones causing acute kidney injury — _Kidney injury would not explain neutropenia and thrombocytopenia._
   - ◻️ C. Uric acid crystals deposited in the bone marrow — _Allopurinol lowers urate; marrow crystal deposition is not the mechanism._
   - ◻️ D. Allopurinol inhibiting dihydrofolate reductase — _Allopurinol inhibits xanthine oxidase, not DHFR._
   - ◻️ E. Allopurinol hypersensitivity destroying marrow cells — _Allopurinol hypersensitivity causes rash and organ injury; isolated predictable cytopenias with a thiopurine point to a metabolic interaction._
-  - Steps: (1) Azathioprine → 6-mercaptopurine, which xanthine oxidase inactivates. (2) Allopurinol blocks xanthine oxidase, so more 6-MP is converted to thioguanine nucleotides. (3) Thioguanine nucleotides suppress rapidly dividing marrow → neutropenia and thrombocytopenia.
-  - Explanation: Xanthine oxidase inactivates 6-mercaptopurine; blocking it raises myelotoxic thioguanine nucleotides.
+  - Steps: (1) Azathioprine → 6-mercaptopurine, which xanthine oxidase metabolizes. (2) Allopurinol blocks xanthine oxidase, so 6-MP exposure rises and more is converted to thioguanine nucleotides. (3) Thioguanine nucleotides suppress rapidly dividing marrow → neutropenia and thrombocytopenia.
+  - Explanation: Xanthine oxidase metabolizes 6-mercaptopurine; blocking it raises 6-MP exposure and myelotoxic thioguanine nucleotides.
 - **MCQ** `mol-xo-inhibitors:mcq2` · prediction → **application** · difficulty 4 · `bc-purine-salvage.xo-inhibitors`
   - A boy with HGPRT deficiency treated with high-dose allopurinol develops new kidney stones that are radiolucent and not composed of uric acid. Which compound most likely forms them?
   - ◻️ A. Struvite — _Struvite stones are associated with urease-producing infections._
@@ -458,7 +456,7 @@ Objectives: `bc-replication.telomerase`
   - ◻️ E. It removes RNA primers from Okazaki fragments — _Primer removal is done by RNase H (eukaryotes) or DNA polymerase I (bacteria)._
   - Explanation: TERT reads the template in telomerase RNA and writes TTAGGG repeats in DNA: RNA → DNA is reverse transcription.
 - **MCQ** `mol-telomerase:mcq2` · comparison → **application** · difficulty 3 · `bc-replication.telomerase`
-  - Cultured adult skin fibroblasts stop dividing after a fixed number of passages, but cells from the same person’s malignant melanoma keep dividing. Which difference best explains this?
+  - Cultured adult skin fibroblasts stop dividing after a fixed number of passages, but cells from the same person’s malignant melanoma keep dividing while keeping their telomere length stable. Which difference best explains this?
   - ✅ A. The melanoma cells express high telomerase activity
   - ◻️ B. The fibroblasts have more replication origins — _More origins speed replication; they do not set a limit on the number of divisions._
   - ◻️ C. The fibroblasts cannot make RNA primers — _Without primase no cell could replicate at all._
@@ -511,7 +509,7 @@ Objectives: `bc-mutation-types.reading-frame`
   - ◻️ D. Both Becker, because neither deletes the whole gene — _An out-of-frame deletion abolishes functional dystrophin even if most of the gene remains._
   - ✅ E. Boy 1 Becker, Boy 2 Duchenne
   - Steps: (1) 360 ÷ 3 = 120 codons: frame preserved → internally shortened dystrophin → Becker. (2) 118 ÷ 3 leaves a remainder: frameshift → premature stop → no functional dystrophin → Duchenne.
-  - Explanation: 360 is divisible by 3 (in frame → Becker); 118 is not (frameshift → Duchenne).
+  - Explanation: 360 is divisible by 3 (in frame → Becker); 118 is not (frameshift → Duchenne). The rule predicts most phenotypes, but about 1 in 8 patients are exceptions, so the clinical course still matters.
 - **MCQ** `mol-reading-frame:mcq2` · prediction → **application** · difficulty 4 · `bc-mutation-types.reading-frame`
   - A boy with Duchenne muscular dystrophy has an out-of-frame deletion. An antisense drug makes the spliceosome skip one additional neighboring exon so that the combined deletion becomes a multiple of three. What is the expected molecular effect?
   - ✅ A. A shorter, partly functional dystrophin is made
@@ -600,7 +598,7 @@ Objectives: `bc-transcription.polymerases`, `bc-transcription.regulation`
 - **True/false** `mol-transcription:tf2` · recall → **recognition** · difficulty 2 · `bc-transcription.regulation`: Enhancers must lie immediately next to the TATA box to work. → **False**. Enhancers can act from far upstream or downstream of the promoter by binding transcription factors.
 - **Crossword** `mol-transcription:clue1` · recall → **recognition** · difficulty 2 · `bc-transcription.polymerases`: Nuclear site where RNA polymerase I makes ribosomal RNA → **NUCLEOLUS**
 - **Crossword** `mol-transcription:clue2` · recall → **recognition** · difficulty 2 · `bc-transcription.regulation`: Distant DNA element that boosts transcription when bound by activators → **ENHANCER**
-- **Match Up** `match:rna-polymerases` · recall → **recognition** · difficulty 2 · `bc-transcription.polymerases`: Who makes which RNA?. Match each polymerase to what it makes or what blocks it.
+- **Match Up** `match:rna-polymerases` · recall → **recognition** · difficulty 2 · `bc-transcription.polymerases`: Polymerases and their products. Match each polymerase to what it makes or what blocks it.
   - RNA polymerase I ↔ 28S, 18S and 5.8S rRNA in the nucleolus
   - RNA polymerase II ↔ Pre-mRNA; extremely sensitive to α-amanitin
   - RNA polymerase III ↔ tRNA, 5S rRNA and U6 snRNA
@@ -675,7 +673,7 @@ Objectives: `bc-transcription.inhibitors`
   - ◻️ B. ADP-ribosylation of elongation factor 2 stops translation — _This is the action of diphtheria toxin and Pseudomonas exotoxin A, not of a mushroom toxin._
   - ◻️ C. Intercalation into DNA by an antitumor antibiotic — _Intercalation describes dactinomycin, not a mushroom toxin._
   - ✅ D. Inhibition of RNA polymerase II stops mRNA synthesis
-  - ◻️ E. Inhibition of acetylcholinesterase at muscarinic synapses — _Some mushrooms cause cholinergic toxicity within minutes to hours, but not delayed liver failure._
+  - ◻️ E. Stimulation of muscarinic receptors by a mushroom toxin — _Muscarine-containing mushrooms cause rapid cholinergic symptoms such as sweating and salivation, not delayed liver failure._
   - A latent period, then severe gastroenteritis, an apparent improvement and rising transaminases with coagulopathy by day 2–3 are typical of amatoxin (death cap) poisoning. α-Amanitin inhibits RNA polymerase II; hepatocytes cannot make mRNA and undergo apoptosis or necrosis, producing fulminant hepatic failure.
   - Differentials: Acetaminophen overdose (Also causes delayed hepatotoxicity, but there is no ingestion history and the mechanism is glutathione depletion.); Muscarine-containing mushrooms (Rapid cholinergic symptoms (sweating, salivation, bradycardia) without liver failure.); Viral gastroenteritis (Does not cause transaminases in the thousands with coagulopathy.)
 
@@ -734,13 +732,13 @@ Objectives: `bc-rna-processing.processing`, `bc-rna-processing.mirna`
   - ◻️ E. Loading of the transcript into RISC — _RISC loading involves small RNAs, not the polyadenylation signal._
   - Explanation: AAUAAA is the polyadenylation signal: cleavage occurs downstream and poly-A polymerase adds the tail.
 - **MCQ** `mol-rna-processing:mcq3` · mechanism → **mechanism** · difficulty 3 · `bc-rna-processing.processing`
-  - A pre-mRNA carries a mutation that changes the GU at the start of intron 3 to AU. How does this disrupt production of the normal mRNA?
-  - ◻️ A. RNA polymerase II stops transcribing at the mutated base — _A single base change in an intron does not terminate transcription._
-  - ✅ B. The spliceosome cannot mark the intron start, so exon 3 is skipped or a cryptic site used
-  - ◻️ C. Poly-A polymerase adds the tail inside intron 3 instead of at the end — _Polyadenylation is directed by AAUAAA near the 3′ end, not by splice sites._
-  - ◻️ D. The intron is translated, adding amino acids to the middle of the protein — _Introns are removed or mis-spliced in the nucleus; the error arises during splicing, not translation._
-  - ◻️ E. The 5′ cap cannot be added, so the transcript is degraded at once — _Capping occurs at the 5′ end of the transcript and does not depend on intron sequences._
-  - Explanation: GU at the 5′ end of the intron is the donor site recognized by spliceosomal snRNPs; without it the exon is skipped or a nearby cryptic donor is used.
+  - A reporter mRNA is correctly spliced and polyadenylated but made without a 7-methylguanosine cap. When it is placed in a cell extract, which step is most directly impaired?
+  - ◻️ A. Pairing of tRNA anticodons with codons in the A site — _Codon–anticodon pairing happens after initiation and does not read the cap._
+  - ✅ B. Recognition of the mRNA by translation initiation factors
+  - ◻️ C. Addition of the poly-A tail after the AAUAAA signal — _The tail is already present and its addition depends on AAUAAA, not on the cap._
+  - ◻️ D. Charging of tRNAs by aminoacyl-tRNA synthetases — _tRNA charging happens independently of any mRNA and does not involve the cap._
+  - ◻️ E. Removal of introns by the spliceosome — _The mRNA is already spliced; the cap is not needed to define intron boundaries._
+  - Explanation: Factors involved in protein synthesis recognize the 5′ cap to help ribosomes initiate translation, so an uncapped message is translated poorly.
 - **True/false** `mol-rna-processing:tf1` · recall → **recognition** · difficulty 1 · `bc-rna-processing.mirna`: MicroRNAs usually silence genes by binding the 3′ untranslated region of target mRNAs. → **True**. Correct: seed pairing to the 3′ UTR represses translation or promotes decay.
 - **True/false** `mol-rna-processing:tf2` · recall → **recognition** · difficulty 2 · `bc-rna-processing.processing`: The 5′ cap is added only after the pre-mRNA has been completely transcribed and spliced. → **False**. The cap is added while the pre-mRNA is still being synthesized.
 - **Crossword** `mol-rna-processing:clue1` · recall → **recognition** · difficulty 1 · `bc-rna-processing.processing`: snRNP machine that removes introns → **SPLICEOSOME**
@@ -769,7 +767,7 @@ Objectives: `bc-rna-processing.snrnp-antibodies`
 
 **Verified facts** [supporting citations]
 
-- Smith (Sm) antigens are core proteins of the U2–U6 small nuclear ribonucleoproteins (snRNPs) of the spliceosome; anti-Sm antibodies are highly specific for SLE. [1]
+- Smith (Sm) antigens are core proteins of spliceosomal small nuclear ribonucleoproteins (snRNPs); anti-Sm antibodies are highly specific for SLE, and some Sm epitopes cross-react with U1-specific RNP proteins. [1]
 - Anti-Sm antibodies have low sensitivity for SLE: about a quarter of patients in one cohort at 99% specificity. [4]
 - Mixed connective tissue disease combines features of SLE, systemic sclerosis and inflammatory myositis with positive anti-U1 RNP antibodies; Raynaud phenomenon and pulmonary arterial hypertension are characteristic. [2]
 - Anti-U1 RNP positivity is mandatory for an MCTD diagnosis but also occurs in some patients with SLE (reported in roughly 13–30% of lupus cohorts). [3]
@@ -780,7 +778,7 @@ Objectives: `bc-rna-processing.snrnp-antibodies`
 
 **Detailed**
 
-> Spliceosomal snRNPs combine a small nuclear RNA with proteins. The seven Sm proteins form a shared core; U1 has its own additional proteins (70K, A and C). Autoantibodies to these particles are detected as extractable nuclear antigen antibodies.
+> Spliceosomal snRNPs combine a small nuclear RNA with proteins. Sm proteins form a shared core, and the U1 particle also carries its own specific proteins (including a 70 kDa protein). Shared epitopes mean some anti-Sm and anti-U1 RNP reactivity overlaps. Autoantibodies to these particles are detected as extractable nuclear antigen antibodies.
 
 > Anti-Sm is one of the most SLE-specific antibodies but is present in only a minority of patients. MCTD is defined by overlapping lupus, scleroderma and myositis features with anti-U1 RNP; some patients who meet SLE criteria also carry anti-U1 RNP and then tend to have Raynaud phenomenon and lung involvement.
 
@@ -804,7 +802,7 @@ Objectives: `bc-rna-processing.snrnp-antibodies`
   - ◻️ C. The nucleosome histone core — _Histones are the targets of anti-histone antibodies (drug-induced lupus)._
   - ◻️ D. The signal recognition particle — _Anti-SRP antibodies are associated with a necrotizing myopathy._
   - ✅ E. Spliceosomal snRNPs
-  - Explanation: Sm proteins form the core of spliceosomal snRNPs (U2–U6); anti-Sm is highly specific for SLE.
+  - Explanation: Sm proteins form the core of spliceosomal snRNPs; anti-Sm is highly specific for SLE.
 - **True/false** `mol-snrnp-autoantibodies:tf1` · recall → **recognition** · difficulty 2 · `bc-rna-processing.snrnp-antibodies`: A negative anti-Smith test makes SLE very unlikely. → **False**. Anti-Sm is highly specific but insensitive: most patients with SLE are anti-Sm negative.
 - **Crossword** `mol-snrnp-autoantibodies:clue1` · recall → **recognition** · difficulty 2 · `bc-rna-processing.snrnp-antibodies`: Lupus-specific antigen of the snRNP core → **SMITH**
 
@@ -843,7 +841,7 @@ Objectives: `bc-rna-processing.splice-disease`
 **Takeaway.** Lose a splice site or gain a new one → abnormal mRNA → less normal protein.
 
 - **MCQ** `mol-splice-disease:mcq1` · multistep → **application** · difficulty 5 · `bc-rna-processing.splice-disease`
-  - A child with transfusion-dependent anemia has a point mutation deep in intron 2 of the β-globin gene that creates a new AG…GU-like recognition site. Reticulocyte mRNA contains an extra 135-nucleotide segment with a premature stop codon. Which sequence of events explains the anemia?
+  - A child with transfusion-dependent anemia has a point mutation deep in intron 2 of the β-globin gene that creates a new splice site. Reticulocyte mRNA contains an extra 135-nucleotide segment with a premature stop codon. Which sequence of events explains the anemia?
   - ✅ A. Intronic sequence is spliced in, β chains fall and excess α chains precipitate
   - ◻️ B. The β chain gains a valine and polymerizes when deoxygenated — _That is the sickle missense mechanism, not a splicing defect._
   - ◻️ C. Transcription of β-globin stops at the mutation, so α chains are not made — _mRNA is made; and α-globin is encoded on a different chromosome and is unaffected._
@@ -975,7 +973,7 @@ Objectives: `bc-translation.ribosomes`
   - ✅ C. Aminoglycosides cause misreading, so faulty proteins damage the membrane
   - ◻️ D. Aminoglycosides inhibit DNA gyrase as well — _DNA gyrase is the fluoroquinolone target._
   - ◻️ E. Tetracyclines are inactivated inside bacteria — _Tetracyclines act inside bacteria; their effect is reversible blockade, not inactivation._
-  - Explanation: Aminoglycoside-induced codon–anticodon mismatches produce faulty proteins that insert into and disrupt the membrane, killing the cell.
+  - Explanation: In the standard explanation, aminoglycoside-induced codon–anticodon mismatches produce faulty proteins that insert into and disrupt the membrane, killing the cell.
 - **True/false** `mol-ribosome-antibiotics:tf1` · recall → **recognition** · difficulty 1 · `bc-translation.ribosomes`: Human cytoplasmic ribosomes are 70S, made of 30S and 50S subunits. → **False**. Human cytoplasmic ribosomes are 80S (40S + 60S); 70S ribosomes are prokaryotic.
 - **Crossword** `mol-ribosome-antibiotics:clue1` · recall → **recognition** · difficulty 2 · `bc-translation.ribosomes`: Oxazolidinone that stops the 50S–30S initiation complex from forming → **LINEZOLID**
 - **Match Up** `match:antibiotic-ribosome` · recall → **recognition** · difficulty 2 · `bc-translation.ribosomes`: Where antibiotics hit the ribosome. Match each antibiotic to its ribosomal site and action.
@@ -998,16 +996,14 @@ Objectives: `bc-translation.toxins`
 2. Oppenheimer NJ, Bodley JW. Diphtheria toxin: site and configuration of ADP-ribosylation of diphthamide in elongation factor 2. J Biol Chem 1981 — PMID 6267047 — <https://pubmed.ncbi.nlm.nih.gov/6267047/> — checked: summary
 3. Wahome PG et al. Small-molecule inhibitors of ricin and Shiga toxins (28S rRNA sarcin–ricin loop depurination). Curr Top Microbiol Immunol 2012 — PMID 22006183 — <https://pubmed.ncbi.nlm.nih.gov/22006183/> — checked: summary
 4. Masilamani AP et al. Enhanced cytotoxicity of a Pseudomonas exotoxin A based immunotoxin (ER route; ADP-ribosylation of eEF2). Front Pharmacol 2023 — PMID 37484018 — <https://pubmed.ncbi.nlm.nih.gov/37484018/> — checked: summary
+5. NCBI Gene: EEF2 eukaryotic translation elongation factor 2 (RefSeq summary) — Gene ID 1938 — <https://www.ncbi.nlm.nih.gov/gene/1938> — checked: summary
 
 **Verified facts** [supporting citations]
 
 - Diphtheria toxin and Pseudomonas exotoxin A ADP-ribosylate and inactivate elongation factor 2 at diphthamide, a modified histidine; the two toxins differ in structure but share the same reaction mechanism. [1, 2]
 - Ricin and Shiga toxins are RNA N-glycosidases that irreversibly inactivate eukaryotic ribosomes by removing an adenine from the sarcin–ricin loop of 28S rRNA. [3]
 - Exotoxin A reaches the cytosol from the endoplasmic reticulum, where it ADP-ribosylates eukaryotic elongation factor 2, inhibiting ribosomes and causing apoptosis. [4]
-
-**Awaiting direct source confirmation** (reasoned or existence-only; must be confirmed before approval)
-
-- Elongation factor 2 drives translocation of the ribosome along the mRNA during elongation. [1]
+- Elongation factor 2 is a GTP-binding protein essential for protein synthesis; it promotes GTP-dependent translocation of the nascent chain from the A site to the P site. [5]
 
 **Mechanism.** All four toxins stop protein synthesis catalytically, so a few molecules can kill a cell. Two attack the elongation factor: diphtheria toxin and exotoxin A transfer ADP-ribose from NAD to EF-2, which can then no longer translocate the ribosome. Two attack the ribosome itself: Shiga toxin and ricin remove one adenine from 28S rRNA in the large subunit, so elongation factors can no longer act.
 
@@ -1124,6 +1120,8 @@ Objectives: `bc-protein-processing.a1at`
 3. Patel D, Teckman JH. Alpha-1-antitrypsin deficiency liver disease. Clin Liver Dis 2018 — PMID 30266154 — <https://pubmed.ncbi.nlm.nih.gov/30266154/> — checked: summary
 4. Bouchecareilh M. Alpha-1-antitrypsin deficiency (review). Med Sci (Paris) 2014 — PMID 25311024 — <https://pubmed.ncbi.nlm.nih.gov/25311024/> — checked: summary
 5. Qizilbash A, Young-Pong O. Alpha 1 antitrypsin liver disease: differential diagnosis of PAS-positive, diastase-resistant globules in liver cells. Am J Clin Pathol 1983 — PMID 6189389 — <https://pubmed.ncbi.nlm.nih.gov/6189389/> — checked: summary
+6. Sokoloski CS et al. Prevalence of SERPINA1 mutations in a bronchiectasis cohort (panlobular, diffuse, lower-lobe predominant emphysema). J Bras Pneumol 2025 — PMID 41370566 — <https://pubmed.ncbi.nlm.nih.gov/41370566/> — checked: summary
+7. Höger P et al. Quantitative analysis of chest CT in alpha-1-antitrypsin deficiency (basal-predominant emphysema, maxima in middle lobe and lingula). Respir Res 2025 — PMID 41241741 — <https://pubmed.ncbi.nlm.nih.gov/41241741/> — checked: summary
 
 **Verified facts** [supporting citations]
 
@@ -1132,18 +1130,19 @@ Objectives: `bc-protein-processing.a1at`
 - Z-α1AT polymers accumulate in the hepatocyte endoplasmic reticulum, causing cell death and a severe reduction of serum α1AT, so the lung loses its antiprotease protection. [4]
 - α1AT deficiency is the most common genetic cause of liver disease in children; liver disease is variable and not all ZZ individuals develop it. [4, 3]
 - Hepatocytes in α1AT liver disease contain periportal PAS-positive, diastase-resistant globules that stain for α1AT; cirrhosis was present in most autopsy livers with such globules. [5]
+- Emphysema in α1AT deficiency is typically panlobular (panacinar) and basal-predominant; quantitative CT in severe deficiency found it most marked in the middle lobe and lingula, challenging the classic “lower lobes” teaching. [6, 7]
 
 **Mechanism.** The Z mutation makes α1-antitrypsin fold slowly and link into polymers in the hepatocyte ER. Two problems follow from one protein. In the liver, retained polymers injure hepatocytes (gain of toxic function), causing neonatal cholestasis, hepatitis and cirrhosis. In the lung, too little α1-antitrypsin reaches the alveoli, so neutrophil elastase destroys alveolar walls unopposed (loss of function), causing early emphysema, worse with smoking.
 
-**Quick.** SERPINA1 Z allele (codominant): misfolded protein polymerizes in hepatocyte ER → PAS+ diastase-resistant globules, neonatal cholestasis, cirrhosis (toxic gain). Low serum α1AT → unopposed neutrophil elastase → early panacinar emphysema (loss of function).
+**Quick.** SERPINA1 Z allele (codominant): misfolded protein polymerizes in hepatocyte ER → PAS+ diastase-resistant globules, neonatal cholestasis, cirrhosis (toxic gain). Low serum α1AT → unopposed neutrophil elastase → early panacinar, usually basal-predominant emphysema (loss of function).
 
 **Detailed**
 
 > Normal α1-antitrypsin is made in the liver and circulates to the lungs, where it inhibits neutrophil elastase. The Z variant is largely retained in hepatocytes as polymers, so serum levels are very low. Each allele contributes to the serum level (codominant inheritance): MZ carriers have intermediate levels and a slightly increased risk.
 
-> Lung disease reflects missing antiprotease: emphysema develops at a young age, especially in smokers, and typically involves the whole acinus in the lower lobes. Liver disease reflects retained protein: infants may present with prolonged jaundice, and adults with chronic hepatitis or cirrhosis. Biopsy shows PAS-positive, diastase-resistant globules of α1-antitrypsin in periportal hepatocytes.
+> Lung disease reflects missing antiprotease: emphysema develops at a young age, especially in smokers, and typically involves the whole acinus (panlobular), predominantly in the lower zones; CT studies suggest the middle lobe and lingula can be most affected. Liver disease reflects retained protein: infants may present with prolonged jaundice, and adults with chronic hepatitis or cirrhosis. Biopsy shows PAS-positive, diastase-resistant globules of α1-antitrypsin in periportal hepatocytes.
 
-**Misconception.** α1AT augmentation therapy can raise serum levels to protect the lung, but it does not remove the polymers that injure the liver: the two organs fail by different mechanisms.
+**Misconception.** Lung and liver disease do not always occur together: liver disease is variable and not all ZZ individuals develop it, because the liver is injured by retained protein while the lung is injured by the missing antiprotease, which smoking accelerates.
 
 **Takeaway.** One misfolded protein, two mechanisms: retained in the liver (toxicity), missing in the lung (elastase unopposed).
 
@@ -1167,7 +1166,7 @@ Objectives: `bc-protein-processing.a1at`
 - **True/false** `mol-a1at:tf1` · recall → **recognition** · difficulty 2 · `bc-protein-processing.a1at`: α1-Antitrypsin deficiency is the most common genetic cause of liver disease in children. → **True**. Correct: retained Z protein can cause neonatal cholestasis and later chronic liver disease.
 - **True/false** `mol-a1at:tf2` · recall → **recognition** · difficulty 2 · `bc-protein-processing.a1at`: In α1-antitrypsin deficiency the liver makes too little of the protein, so hepatocytes are spared. → **False**. The Z protein is made but retained as polymers in hepatocytes, which injures the liver.
 - **Crossword** `mol-a1at:clue1` · recall → **recognition** · difficulty 1 · `bc-protein-processing.a1at`: Neutrophil protease left unopposed in α1-antitrypsin deficiency → **ELASTASE**
-- **Crossword** `mol-a1at:clue2` · recall → **recognition** · difficulty 2 · `bc-protein-processing.a1at`: Pattern of lower-lobe emphysema typical of α1-antitrypsin deficiency → **PANACINAR**
+- **Crossword** `mol-a1at:clue2` · recall → **recognition** · difficulty 2 · `bc-protein-processing.a1at`: Whole-acinus pattern of emphysema typical of α1-antitrypsin deficiency → **PANACINAR**
 - **Mechanism Lab** `seq:a1at-emphysema` · mechanism → **mechanism** · difficulty 3 · `bc-protein-processing.a1at`, `bc-protein-processing.folding`: From Z allele to emphysema. Order the chain of events linking the Z allele of SERPINA1 to lung damage.
   1. The Z protein misfolds during synthesis in the hepatocyte ER
   2. Misfolded protein polymerizes and is retained in the liver
@@ -1181,7 +1180,7 @@ Objectives: `bc-protein-processing.a1at`
   - History: He smoked 10 cigarettes a day for 15 years. As a newborn he had prolonged jaundice that resolved. His sister has “liver problems”.
   - Examination: Hyperinflated chest with reduced breath sounds at both bases. Liver edge palpable 2 cm below the costal margin.
   - Laboratory: Spirometry: FEV₁/FVC 0.52 with little bronchodilator response; reduced diffusing capacity. ALT mildly raised. The α1-globulin band on serum protein electrophoresis is almost absent.
-  - Imaging & tests: CT chest: emphysema throughout the acini, most marked in the lower lobes.
+  - Imaging & tests: CT chest: panlobular emphysema, most marked in the lower zones.
   - Further clue: Liver biopsy: periportal hepatocytes contain globules that remain PAS-positive after diastase.
   - Q: Which single molecular event best explains both his lung and his liver disease?
   - ◻️ A. Excess iron deposits in liver and lung parenchyma — _Hemochromatosis affects liver, heart and pancreas, not the lungs, and iron is not PAS-positive diastase-resistant protein._
@@ -1189,7 +1188,7 @@ Objectives: `bc-protein-processing.a1at`
   - ◻️ C. Chloride channel misfolds and is degraded in the ER — _ΔF508 CFTR causes bronchiectasis and pancreatic insufficiency, not panacinar emphysema with PAS-positive hepatocyte globules._
   - ◻️ D. Smoking directly mutates the elastin gene in alveoli — _Smoking accelerates protease damage but does not mutate elastin; the absent α1-globulin band shows an inherited protein deficiency._
   - ✅ E. A misfolded protease inhibitor polymerizes in hepatocytes
-  - Panacinar lower-lobe emphysema in a young smoker, neonatal jaundice, an absent α1-globulin band and PAS-positive diastase-resistant hepatocyte globules point to α1-antitrypsin deficiency (PiZZ). The Z protein polymerizes in the hepatocyte ER, injuring the liver, while too little reaches the lung to restrain neutrophil elastase.
+  - Panacinar, basal-predominant emphysema in a young smoker, neonatal jaundice, an absent α1-globulin band and PAS-positive diastase-resistant hepatocyte globules point to α1-antitrypsin deficiency (PiZZ). The Z protein polymerizes in the hepatocyte ER, injuring the liver, while too little reaches the lung to restrain neutrophil elastase.
   - Differentials: Smoking-related centriacinar emphysema (Upper-lobe predominant, older patients, no liver disease.); Cystic fibrosis (Bronchiectasis, pancreatic insufficiency and biliary cirrhosis, with a positive sweat test.); Chronic viral hepatitis (Explains the liver but not early emphysema or the missing α1-globulin band.)
 
 ---
@@ -1203,6 +1202,7 @@ Objectives: `bc-collagen.synthesis`
 1. StatPearls: Biochemistry, Collagen Synthesis — PMID 29939531; NBK507709 — <https://www.ncbi.nlm.nih.gov/books/NBK507709/> — checked: summary
 2. Targeting the lysyl oxidases in tumour desmoplasia (copper-dependent cross-linking of collagen and elastin). Biochem Soc Trans 2019 — PMID 31754702 — <https://pubmed.ncbi.nlm.nih.gov/31754702/> — checked: summary
 3. Gajko-Galicka A. Mutations in type I collagen genes resulting in osteogenesis imperfecta in humans (glycine residues crucial to triple helix). Acta Biochim Pol 2002 — PMID 12362985 — <https://pubmed.ncbi.nlm.nih.gov/12362985/> — checked: summary
+4. Yamauchi M, Sricholpech M. Lysine post-translational modifications of collagen. Essays Biochem 2012 — PMID 22708567 — <https://pubmed.ncbi.nlm.nih.gov/22708567/> — checked: summary
 
 **Verified facts** [supporting citations]
 
@@ -1210,10 +1210,7 @@ Objectives: `bc-collagen.synthesis`
 - Pro-α chains are modified in the rough ER by glycosylation and vitamin C-dependent hydroxylation; the procollagen triple helix is secreted and its terminal propeptides are cleaved outside the cell to form tropocollagen. [1]
 - Scurvy results from impaired hydroxylation in vitamin C deficiency, producing weak connective tissue with bleeding gums and poor wound healing. [1]
 - Lysyl oxidases are copper-dependent enzymes required for covalent cross-linking of collagen and elastin in the extracellular matrix. [2]
-
-**Awaiting direct source confirmation** (reasoned or existence-only; must be confirmed before approval)
-
-- Glycosylation of collagen occurs on hydroxylysine residues, so lysine hydroxylation precedes glycosylation. [1]
+- Inside the cell, specific lysines are first hydroxylated and then specific hydroxylysines in the helical domain are glycosylated (galactose or glucose–galactose); outside the cell, telopeptide lysines and hydroxylysines are converted to reactive aldehydes that form cross-links. [4]
 
 **Mechanism.** Collagen is built inside the fibroblast and assembled outside it. Inside: pre-pro-α chains with Gly-X-Y repeats enter the rough ER, proline and lysine are hydroxylated (prolyl and lysyl hydroxylases need vitamin C), hydroxylysines are glycosylated, and three chains zip into a procollagen triple helix that is secreted. Outside: propeptides are cleaved to tropocollagen, which self-assembles into fibrils that lysyl oxidase (copper) cross-links for tensile strength.
 
@@ -1230,7 +1227,7 @@ Objectives: `bc-collagen.synthesis`
 **Takeaway.** Inside: hydroxylate (vitamin C), glycosylate, triple helix. Outside: cleave propeptides, cross-link (copper).
 
 - **MCQ** `mol-collagen-synthesis:mcq1` · multistep → **application** · difficulty 4 · `bc-collagen.synthesis`
-  - A 58-year-old man who lives alone and eats almost no fruit or vegetables has swollen bleeding gums, perifollicular hemorrhages and a leg wound that will not heal. Which step of collagen synthesis is impaired first?
+  - A 58-year-old man who lives alone and eats almost no fruit or vegetables has swollen bleeding gums, perifollicular hemorrhages and a leg wound that will not heal. Which step of collagen synthesis is impaired?
   - ◻️ A. Glycine substitution in the triple helix — _Glycine substitutions are inherited structural defects (osteogenesis imperfecta)._
   - ◻️ B. Translation of Gly-X-Y chains on ribosomes — _Translation of collagen chains does not require vitamin C._
   - ✅ C. Hydroxylation of proline and lysine in the rough ER
@@ -1275,39 +1272,41 @@ Objectives: `bc-collagen.oi`
 4. Pepin MG, Byers PH. What every clinical geneticist should know about testing for osteogenesis imperfecta in suspected child abuse cases. Am J Med Genet C 2015 — PMID 26566591 — <https://pubmed.ncbi.nlm.nih.gov/26566591/> — checked: summary
 5. Pereira EM. Clinical perspectives on osteogenesis imperfecta versus non-accidental injury. Am J Med Genet C 2015 — PMID 26492946 — <https://pubmed.ncbi.nlm.nih.gov/26492946/> — checked: summary
 6. StatPearls: Biochemistry, Collagen Synthesis — PMID 29939531; NBK507709 — <https://www.ncbi.nlm.nih.gov/books/NBK507709/> — checked: summary
+7. Forlino A, Marini JC. Osteogenesis imperfecta: prospects for molecular therapeutics. Mol Genet Metab 2000 — PMID 11001814 — <https://pubmed.ncbi.nlm.nih.gov/11001814/> — checked: summary
 
 **Verified facts** [supporting citations]
 
 - Osteogenesis imperfecta causes bones that fracture easily, often from mild trauma; type I is the mildest form, with blue or grey sclerae and hearing loss in adulthood in about half of people. [1]
-- Most cases are autosomal dominant mutations in COL1A1 or COL1A2. Mild forms usually come from inactivation of one COL1A1 allele (less normal collagen); severe and lethal forms come from dominant-negative structural defects, most often glycine substitutions. [2]
+- Most cases are autosomal dominant mutations in COL1A1 or COL1A2. Mild forms are usually caused by inactivation of one COL1A1 allele (less normal collagen); severe and lethal forms usually result from dominant-negative structural defects, most often glycine substitutions. [2]
 - Among 832 structural mutations, 682 were glycine substitutions in the triple-helical domain and 150 altered splice sites. [3]
 - In mild OI, diagnostic features such as blue sclerae, dentinogenesis imperfecta, Wormian bones or a family history may be absent at the age of evaluation, so OI can be missed in infants with unexplained fractures. [4]
 - Non-accidental injury is more common than OI in unexplained fractures, but OI and other medical causes should always be considered; certain radiologic findings are seen more often in inflicted injury. [5]
 - Glycine occupies every third position of collagen chains, enabling tight packing of the triple helix; glycine substitutions are the most common OI mutations and are especially often lethal in α1(I) when the substituting residue is charged or branched. [6, 3]
+- Quantitative defects are generally associated with milder OI and structural defects with more severe OI, but the genotype–phenotype relationship is incompletely understood and exceptions occur; for example, only about one-third of α1(I) glycine substitutions are lethal. [7, 3]
 
-**Mechanism.** Type I collagen is the main structural protein of bone, sclera, dentin and the middle ear. A null COL1A1 allele halves normal collagen output (milder disease). A glycine substitution is worse: every triple helix needs three chains, so one abnormal chain can spoil most helices it joins (dominant-negative effect), causing severe or lethal disease.
+**Mechanism.** Type I collagen is the main structural protein of bone, sclera, dentin and the middle ear. A null COL1A1 allele halves normal collagen output and generally causes milder disease. A glycine substitution is generally worse: every triple helix needs three chains, so one abnormal chain can spoil the helices it joins (dominant-negative effect). These are tendencies, not rules: severity also depends on the chain, the position of the substitution and the replacing residue.
 
-**Quick.** OI: usually autosomal dominant COL1A1/COL1A2 → too little or abnormal type I collagen → fractures with minimal trauma, blue sclerae, hearing loss, dentinogenesis imperfecta. Null allele = mild (type I); glycine substitution = severe (dominant negative). Consider in unexplained infant fractures.
+**Quick.** OI: usually autosomal dominant COL1A1/COL1A2 → too little or abnormal type I collagen → fractures with minimal trauma, blue sclerae, hearing loss, dentinogenesis imperfecta. Null allele: usually mild; glycine substitution: usually more severe (dominant negative); exceptions occur. Consider in unexplained infant fractures.
 
 **Detailed**
 
-> OI ranges from mild (type I, few fractures, blue sclerae, normal height) to perinatally lethal (type II). The difference largely reflects whether the mutation reduces the amount of normal collagen or produces structurally abnormal chains that disrupt triple helix assembly.
+> OI ranges from mild (type I, few fractures, blue sclerae, normal height) to perinatally lethal (type II). The difference often reflects whether the mutation reduces the amount of normal collagen or produces structurally abnormal chains that disrupt triple helix assembly.
 
 > Inflicted injury is far more common than OI in infants with unexplained fractures, but mild OI can lack the classic features at presentation. Family history, sclerae, teeth, Wormian bones and the fracture pattern are assessed, and type I collagen gene testing can be considered when the picture is unclear.
 
-**Misconception.** A smaller amount of normal collagen is less harmful than a normal amount of abnormal collagen: null alleles cause mild OI, while glycine substitutions cause severe forms through a dominant-negative effect.
+**Misconception.** A smaller amount of normal collagen is generally less harmful than abnormal collagen: null alleles usually cause mild OI, while glycine substitutions more often cause severe forms through a dominant-negative effect. Exceptions occur, so genotype does not fully predict severity.
 
-**Takeaway.** Less collagen → mild OI; abnormal collagen (glycine substitution) → severe OI. Keep OI in the differential for unexplained fractures.
+**Takeaway.** Less collagen → usually milder OI; abnormal collagen (glycine substitution) → usually more severe OI, with exceptions. Keep OI in the differential for unexplained fractures.
 
 - **MCQ** `mol-osteogenesis-imperfecta:mcq1` · comparison → **application** · difficulty 4 · `bc-collagen.oi`
-  - Two families have osteogenesis imperfecta. Family 1 carries a COL1A1 nonsense mutation whose mRNA is degraded; Family 2 carries a COL1A1 glycine-to-cysteine substitution in the triple-helical domain. Which family is expected to have more severe disease, and why?
+  - Two families have osteogenesis imperfecta. Family 1 carries a COL1A1 nonsense mutation whose mRNA is degraded; Family 2 carries a COL1A1 glycine-to-cysteine substitution in the triple-helical domain. Which family is more likely to have severe disease, and why?
   - ◻️ A. Both equally, because both affect COL1A1 — _The type of mutation, not just the gene, determines severity._
-  - ✅ B. Family 2, because abnormal chains disrupt most helices
+  - ✅ B. Family 2, because abnormal chains disrupt the helices they join
   - ◻️ C. Family 1, because nonsense mutations are always lethal — _A single null allele usually causes the mild form (type I)._
   - ◻️ D. Family 1, because no collagen is produced at all — _The other COL1A1 allele still makes normal chains, so about half the normal collagen is produced._
   - ◻️ E. Family 2, because cysteine prevents collagen secretion — _The key problem is that the abnormal chain is built into helices and spoils them._
-  - Steps: (1) Family 1: mRNA degraded → half the normal collagen, all of it normal → mild OI. (2) Family 2: abnormal chain incorporated into trimers → most helices disrupted. (3) Dominant-negative structural defect → more severe disease.
-  - Explanation: A null allele reduces the amount of normal collagen (mild OI). A glycine substitution puts abnormal chains into helices with normal ones, disrupting most of them (dominant negative, severe OI).
+  - Steps: (1) Family 1: mRNA degraded → about half the normal collagen, all of it normal → usually mild OI. (2) Family 2: abnormal chain incorporated into trimers → helices containing it are disrupted. (3) Dominant-negative structural defect → more likely to be severe, though not certain.
+  - Explanation: A null allele reduces the amount of normal collagen and usually causes mild OI. A glycine substitution puts abnormal chains into helices with normal ones (dominant negative) and more often causes severe OI. This is a tendency, not a rule: severity also depends on the position and the replacing residue.
 - **MCQ** `mol-osteogenesis-imperfecta:mcq2` · interpretation → **application** · difficulty 4 · `bc-collagen.oi`
   - A 4-month-old has a femoral fracture after his parent reports he rolled against a cot rail. There are no bruises. His sclerae are grey-blue, a skull radiograph shows Wormian bones, and his father had several childhood fractures. Which conclusion is best supported?
   - ◻️ A. Scurvy is the likely cause of the fracture — _Scurvy is rare in infants on formula or breast milk and does not cause blue sclerae or Wormian bones._
@@ -1332,15 +1331,34 @@ Objectives: `bc-collagen.oi`
 
 ## Medical Connections: complete puzzles (16 tiles, verified single solution against the global catalog)
 
-### Jamming the central dogma · `cx:gene-expression-blockers` · identification → **recognition** · difficulty 3 · `bc-translation.ribosomes`, `bc-translation.toxins`, `bc-replication.topo-drugs`, `bc-transcription.inhibitors`, `bc-transcription.regulation`
+### Gene expression: made and jammed · `cx:gene-expression-blockers` · identification → **recognition** · difficulty 3 · `bc-rna-processing.processing`, `bc-translation.toxins`, `bc-replication.topo-drugs`, `bc-transcription.inhibitors`, `bc-transcription.regulation`
 
-- **Bind the bacterial 30S subunit** (tier 1): Gentamicin, Streptomycin, Doxycycline, Tetracycline — Aminoglycosides (gentamicin, streptomycin) cause misreading; tetracyclines (doxycycline, tetracycline) block the A site.
+- **Pre-mRNA processing** (tier 1): 7-Methylguanosine cap, Poly-A tail, Spliceosome, AAUAAA signal — A pre-mRNA becomes mature mRNA by 5′ capping, cleavage after the AAUAAA signal with poly-A tail addition, and intron removal by the spliceosome.
 - **Toxins that halt eukaryotic translation** (tier 2): Diphtheria toxin, Pseudomonas exotoxin A, Shiga toxin, Ricin — EF-2 ADP-ribosylation (diphtheria toxin, exotoxin A) or 28S rRNA depurination (Shiga toxin, ricin).
 - **Inhibit human topoisomerases** (tier 3): Etoposide, Teniposide, Irinotecan, Topotecan — Etoposide and teniposide trap topoisomerase II; irinotecan and topotecan trap topoisomerase I.
 - **Reduce transcription** (tier 4): α-Amanitin, Rifampin, Dactinomycin, TATA box mutation — α-Amanitin (RNA polymerase II), rifampin (bacterial RNA polymerase), dactinomycin (intercalates the template) and a TATA box mutation (weaker promoter) all lower transcription.
 
-Solutions found against 89 catalog categories plus this puzzle's groups and decoys: **1**.
-Plausible alternative groupings present on the board (red herrings that cannot complete an alternative board): Antibiotics (any) (6 tiles); Toxins of any origin (5 tiles); Cancer chemotherapy drugs (5 tiles); Plant-derived compounds (5 tiles); Antibiotics (6 tiles); Made by bacteria (7 tiles).
+Strict check (any 4 tiles inside any of 90 catalog categories, the puzzle's groups or its decoys): **1** solution(s).
+Manual audit with broad categories (a group is defensible only if a category covers exactly its four tiles; the last four may share any category): **1** defensible solution(s).
+Red herrings on the board (cannot complete an alternative board): Toxins of any origin (5 tiles); Cancer chemotherapy drugs (5 tiles); Plant-derived compounds (5 tiles); Made by bacteria (5 tiles); Involve RNA polymerase II or its transcripts (6 tiles); Inhibitors of gene expression (any step) (12 tiles); Cytotoxic to human cells (10 tiles); Made by bacteria (natural or derived) (5 tiles); Plant or fungal products (6 tiles); Natural toxins (poisons) (5 tiles); Anticancer drugs (5 tiles); Bind DNA or a DNA–enzyme complex (5 tiles).
+
+<details><summary>Alternative groupings considered in the manual audit</summary>
+
+- **Inhibitors of gene expression (any step)** — Theme-level category (12 tiles); can justify at most one group.
+- **Cytotoxic to human cells** — Superordinate (10 tiles).
+- **Inhibit protein synthesis** — Coincides with the intended toxin group; no other translation inhibitor is on the board.
+- **Made by bacteria (natural or derived)** — 5 tiles; the leftover tiles cannot form a group.
+- **Plant or fungal products** — Topoisomerase drugs are plant-derived; α-amanitin is fungal.
+- **Natural toxins (poisons)** — 5 tiles.
+- **Anticancer drugs** — 5 tiles.
+- **Bind DNA or a DNA–enzyme complex** — 5 tiles.
+- **Hepatotoxic** — Rifampin hepatotoxicity is in OpenStax; dactinomycin listed conservatively.
+- **Involve RNA polymerase II or its transcripts** — 6 tiles; the leftover tiles cannot form a group.
+- **Sequence elements in DNA or RNA** — Only 2 tiles.
+- **Ends of a mature mRNA** — Only 2 tiles.
+- **ADP-ribosylating toxins** — Only 2 tiles.
+
+</details>
 
 ## Connections category bank (builder input, not complete games)
 

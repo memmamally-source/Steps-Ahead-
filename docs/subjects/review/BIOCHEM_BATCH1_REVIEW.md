@@ -1,4 +1,4 @@
-# Biochemistry Batch 1 — Molecular biochemistry: medical review packet (revision 3)
+# Biochemistry Batch 1 — Molecular biochemistry: medical review packet (revision 4)
 
 Status: **draft, AI-drafted, not medically reviewed.** Reviewer: mark each concept approved, needs changes or rejected, with notes. A citation alone is not approval.
 
@@ -18,16 +18,18 @@ Status: **draft, AI-drafted, not medically reviewed.** Reviewer: mark each conce
 | Concepts | 15 |
 | Objectives taught | 25 |
 | Facts verified / awaiting direct confirmation | 88 / 3 |
-| MCQs / true-false / crossword clues | 49 / 29 / 22 |
-| Mechanism Lab sequences / Match Up sets | 0 / 0 |
-| Complete Connections puzzles / category groups / Mystery Patient cases | 3 / 3 / 2 |
-| Items: recall | 52 |
-| Items: identification | 18 |
-| Items: mechanism | 18 |
-| Items: interpretation | 9 |
-| Items: prediction | 4 |
-| Items: comparison | 4 |
-| Items: multistep | 3 |
+| **Playable learning items (total)** | **105** |
+| — MCQs / true-false / crossword clues | 49 / 29 / 22 |
+| — Mechanism Lab sequences / Match Up sets | 0 / 0 |
+| — Complete Connections puzzles / Mystery Patient cases | 3 / 2 |
+| Connections category-bank entries (builder input, **not** playable alone; excluded from item counts and coverage) | 3 |
+| Playable items: recall | 52 |
+| Playable items: identification | 15 |
+| Playable items: mechanism | 18 |
+| Playable items: interpretation | 9 |
+| Playable items: prediction | 4 |
+| Playable items: comparison | 4 |
+| Playable items: multistep | 3 |
 
 ## Nucleotide structure and de novo synthesis (`mol-nucleotides`)
 
@@ -1119,23 +1121,51 @@ Objectives: `bc-collagen.marfan`, `bc-collagen.elastin`
 
 ### DNA repair machinery · `cx:dna-repair-machinery` · identification → **recognition** · difficulty 3 · `bc-dna-repair.ssb-pathways`, `bc-dna-repair.lynch`, `bc-dna-repair.dsb-pathways`, `bc-dna-repair.nhej-scid`, `bc-dna-repair.xp`, `bc-dna-repair.mutyh`
 
-- **Nucleotide excision repair** (tier 2): XPA, XPC, ERCC2, Thymine dimer — NER removes bulky UV lesions; XPA, XPC and ERCC2 are XP genes.
+- **Nucleotide excision repair** (tier 2): XPC, ERCC2, Thymine dimer, Xeroderma pigmentosum — NER removes bulky UV lesions such as thymine dimers; XPC and ERCC2 (and other XP genes) defects cause xeroderma pigmentosum.
 - **Base excision repair** (tier 3): Uracil-DNA glycosylase, MUTYH, AP endonuclease, 8-Oxoguanine — BER removes single damaged bases (uracil, 8-oxoguanine mispairs) via glycosylases and AP endonuclease.
 - **Mismatch repair** (tier 1): MLH1, MSH2, MSH6, PMS2 — Mismatch repair genes; germline variants cause Lynch syndrome.
 - **Nonhomologous end joining** (tier 4): Ku70, DNA-PKcs, Artemis, DNA ligase IV — NHEJ rejoins double-strand breaks and V(D)J segments; defects cause radiosensitive SCID.
 
-Solutions found against 89 catalog categories plus this puzzle's groups and decoys: **1**.
-Plausible alternative groupings present on the board (red herrings that cannot complete an alternative board): Autosomal recessive cancer predisposition genes (4 tiles).
+Strict check (any 4 tiles inside any of 90 catalog categories, the puzzle's groups or its decoys): **1** solution(s).
+Manual audit with broad categories (a group is defensible only if a category covers exactly its four tiles; the last four may share any category): **1** defensible solution(s).
+Red herrings on the board (cannot complete an alternative board): Single-strand excision repair (NER or BER) (8 tiles); Cancer predisposition (gene or syndrome) (8 tiles); Autosomal recessive disease genes (6 tiles); DNA repair (any pathway) (16 tiles).
+
+<details><summary>Alternative groupings considered in the manual audit</summary>
+
+- **Autosomal recessive cancer predisposition genes** — Before revision 4 the board held XPA, so these were exactly 4 tiles and the leftover {Thymine dimer, Uracil-DNA glycosylase, AP endonuclease, 8-Oxoguanine} fitted “single-strand excision repair”: a second solution. XPA was replaced by Xeroderma pigmentosum, leaving 3 such genes.
+- **Single-strand excision repair (NER or BER)** — Superordinate (8 tiles on the board).
+- **Cancer predisposition (gene or syndrome)** — Superordinate (8 tiles on the board).
+- **Autosomal recessive disease genes** — 6 tiles on the board.
+- **DNA lesions** — 2 tiles on the board.
+- **DNA repair (any pathway)** — Theme-level category (all 16 tiles).
+- **Double-strand break repair** — Coincides with the intended NHEJ group.
+- **Nucleases** — Only 2 tiles.
+- **Lynch syndrome genes** — Coincides with the intended MMR group.
+
+</details>
 
 ### Nucleotides and the drugs that target them · `cx:nucleotides-and-drugs` · identification → **recognition** · difficulty 2 · `bc-nucleotide-synthesis.structure`, `bc-nucleotide-synthesis.drug-targets`, `bc-purine-salvage.pathway`
 
-- **Purine bases** (tier 1): Adenine, Guanine, Hypoxanthine, Xanthine — Two-ring bases; hypoxanthine and xanthine are purine breakdown intermediates.
+- **Purine rings** (tier 1): IMP, Guanine, Hypoxanthine, Xanthine — Two-ring purines: IMP is the first purine nucleotide made de novo; hypoxanthine and xanthine are purine breakdown intermediates.
 - **Pyrimidine rings** (tier 2): Cytosine, Uracil, Thymine, Orotate — One-ring bases; orotate is the pyrimidine ring made before attachment to PRPP.
 - **Inhibit an enzyme of nucleotide synthesis** (tier 3): Methotrexate, Hydroxyurea, Leflunomide, Mycophenolate — DHFR, ribonucleotide reductase, dihydroorotate dehydrogenase and IMP dehydrogenase.
 - **Purine salvage or breakdown enzymes** (tier 4): HGPRT, Xanthine oxidase, Adenosine deaminase, Purine nucleoside phosphorylase — HGPRT salvages; ADA, PNP and xanthine oxidase break purines down toward uric acid.
 
-Solutions found against 89 catalog categories plus this puzzle's groups and decoys: **1**.
-Plausible alternative groupings present on the board (red herrings that cannot complete an alternative board): Bases found in DNA (4 tiles); Bases found in RNA (4 tiles).
+Strict check (any 4 tiles inside any of 90 catalog categories, the puzzle's groups or its decoys): **1** solution(s).
+Manual audit with broad categories (a group is defensible only if a category covers exactly its four tiles; the last four may share any category): **1** defensible solution(s).
+Red herrings on the board (cannot complete an alternative board): Purines or pyrimidines (any) (8 tiles); Not found in DNA (5 tiles).
+
+<details><summary>Alternative groupings considered in the manual audit</summary>
+
+- **Bases attached to PRPP by a phosphoribosyltransferase** — 3 tiles since Adenine was replaced by IMP.
+- **Purines or pyrimidines (any)** — Superordinate (8 tiles).
+- **Bases found in DNA** — Before revision 4 the board held Adenine, so {A, G, C, T} plus “not found in DNA” {Hypoxanthine, Xanthine, Uracil, Orotate} was a second complete solution. Adenine was replaced by IMP.
+- **Not found in DNA** — 5 tiles; with only 3 DNA bases on the board the leftover cannot form a group.
+- **Related to IMP dehydrogenase** — Only 2 tiles.
+- **Enzymes whose deficiency causes disease** — Coincides with the intended enzyme group.
+- **Drugs that raise MCV (macrocytosis)** — Only 2 tiles.
+
+</details>
 
 ### Where each collagen lives · `cx:collagen-types` · identification → **recognition** · difficulty 3 · `bc-collagen.types`, `bc-collagen.eds`
 
@@ -1144,8 +1174,19 @@ Plausible alternative groupings present on the board (red herrings that cannot c
 - **Type III collagen** (tier 3): Blood vessel wall, Intestinal wall, Vascular Ehlers–Danlos syndrome, COL3A1 — Type III is prominent in vessel and intestinal walls; COL3A1 defects cause vascular EDS.
 - **Type IV collagen** (tier 4): Glomerular basement membrane, Lens capsule, Alport syndrome, COL4A5 — Type IV forms basement membranes in kidney, eye and inner ear; COL4A5 causes X-linked Alport syndrome.
 
-Solutions found against 89 catalog categories plus this puzzle's groups and decoys: **1**.
-Plausible alternative groupings present on the board (red herrings that cannot complete an alternative board): Inherited syndromes (4 tiles); Skeletal tissues (4 tiles).
+Strict check (any 4 tiles inside any of 90 catalog categories, the puzzle's groups or its decoys): **1** solution(s).
+Manual audit with broad categories (a group is defensible only if a category covers exactly its four tiles; the last four may share any category): **1** defensible solution(s).
+Red herrings on the board (cannot complete an alternative board): Inherited syndromes (4 tiles); Skeletal tissues (4 tiles); Contain type I collagen (in addition to other types) (5 tiles); Tissues or structures (any) (10 tiles).
+
+<details><summary>Alternative groupings considered in the manual audit</summary>
+
+- **Contain type I collagen (in addition to other types)** — 5 tiles; the leftover type III tiles then lack a group.
+- **Tissues or structures (any)** — Superordinate (10 tiles).
+- **Basement membranes** — Only 2 tiles.
+- **Walls of hollow organs or vessels** — Only 2 tiles.
+- **Kidney-related** — Only 2 tiles.
+
+</details>
 
 ## Connections category bank (builder input, not complete games)
 

@@ -7,7 +7,8 @@ import { ALL_CONCEPTS, ALL_ITEMS } from '../src/content/index';
 import { molecularBatch1 } from '../src/content/biochem/molecular1';
 import { molecularBatch2 } from '../src/content/biochem/molecular2';
 import { globalCategories } from '../src/content/connectionsCatalog';
-import { redHerrings, solutions } from '../src/content/connectionsVerify';
+import { defensiblePartitions, redHerrings, solutions } from '../src/content/connectionsVerify';
+import { MANUAL_AUDIT } from '../src/content/connectionsAudit';
 import { factEvidence, type GameItem } from '../src/content/schema';
 import { isPlayable } from '../src/content/curriculum/audit';
 
@@ -90,8 +91,17 @@ for (const p of items) {
   const n = solutions(tiles, [...p.groups.map((g) => g.accepts), ...p.decoys.map((d) => d.accepts), ...catalog.map((c) => c.members)]).length;
   L(`### ${p.title} · ${tag(p)}`, '');
   for (const g of p.groups) L(`- **${g.label}** (tier ${g.tier}): ${g.members.join(', ')} — ${g.explanation}`);
-  L('', `Solutions found against ${catalog.length} catalog categories plus this puzzle's groups and decoys: **${n}**.`);
-  L(`Plausible alternative groupings present on the board (red herrings that cannot complete an alternative board): ${redHerrings(tiles, p.groups.map((g) => g.members), catalog).join('; ') || 'none'}.`, '');
+  const manual = MANUAL_AUDIT[p.id] ?? [];
+  const all = [...p.decoys.map((d) => ({ label: d.label, members: d.accepts })), ...catalog, ...manual];
+  const defensible = defensiblePartitions(tiles, p.groups.map((g) => g.members), all).length;
+  L('', `Strict check (any 4 tiles inside any of ${catalog.length} catalog categories, the puzzle's groups or its decoys): **${n}** solution(s).`);
+  L(`Manual audit with broad categories (a group is defensible only if a category covers exactly its four tiles; the last four may share any category): **${defensible}** defensible solution(s).`);
+  L(`Red herrings on the board (cannot complete an alternative board): ${redHerrings(tiles, p.groups.map((g) => g.members), [...catalog, ...manual]).join('; ') || 'none'}.`, '');
+  if (manual.length) {
+    L('<details><summary>Alternative groupings considered in the manual audit</summary>', '');
+    for (const m of manual) L(`- **${m.label}** — ${m.note}`);
+    L('', '</details>', '');
+  }
 }
 L('## Connections category bank (builder input, not complete games)', '');
 for (const g of items) if (g.kind === 'group') L(`- \`${g.id}\` **${g.label}**: ${g.members.join(', ')}. ${g.explanation}`);
