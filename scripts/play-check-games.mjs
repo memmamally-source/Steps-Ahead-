@@ -11,7 +11,7 @@
  * Usage: npx vite-node scripts/dump-game-items.ts -- /tmp/items.json && node scripts/play-check-games.mjs /tmp/items.json [shotsDir]
  */
 import { spawn } from 'node:child_process';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
@@ -25,7 +25,11 @@ const results = [];
 const check = (name, ok, extra = '') => results.push({ ok: !!ok, line: `${ok ? 'PASS' : 'FAIL'} ${name}${extra ? ` — ${extra}` : ''}` });
 const norm = (s) => s.toLowerCase().replace(/\s+/g, ' ').trim();
 
-const server = spawn('npx', ['vite', '--port', String(PORT), '--strictPort'], { stdio: 'ignore' });
+// Serve the production build, not the dev server: the dev server hot-reloads when a source file
+// changes, which can swap the item on screen mid-round and fail checks that have nothing to do with
+// the game. Run `npm run build` first (`npm run check:games` does).
+if (!existsSync('dist/index.html')) throw new Error('dist/ not found: run npm run build first');
+const server = spawn('npx', ['vite', 'preview', '--port', String(PORT), '--strictPort'], { stdio: 'ignore' });
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 // Items are drawn at random, weighted by Step 1 relevance (core 3, supplementary 1), so a rarely drawn
 // item can take many rounds to appear. Repeat draws are cheap (the board is skipped), so the cap scales
