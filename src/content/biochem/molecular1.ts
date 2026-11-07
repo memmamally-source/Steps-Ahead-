@@ -1585,9 +1585,9 @@ const puzzles: ConnectionsPuzzleItem[] = [
     conceptIds: ['mol-single-strand-repair', 'mol-lynch', 'mol-double-strand-repair'],
     objectiveIds: [`${DR}.ssb-pathways`, `${DR}.lynch`, `${DR}.dsb-pathways`, `${DR}.nhej-scid`, `${DR}.xp`, `${DR}.mutyh`],
     groups: [
-      { id: 'ner', label: 'Nucleotide excision repair', tier: 2, members: ['XPA', 'XPC', 'ERCC2', 'Thymine dimer'], explanation: 'NER removes bulky UV lesions; XPA, XPC and ERCC2 are XP genes.',
+      { id: 'ner', label: 'Nucleotide excision repair', tier: 2, members: ['XPC', 'ERCC2', 'Thymine dimer', 'Xeroderma pigmentosum'], explanation: 'NER removes bulky UV lesions such as thymine dimers; XPC and ERCC2 (and other XP genes) defects cause xeroderma pigmentosum.',
         conceptIds: ['mol-single-strand-repair'], objectiveIds: [`${DR}.ssb-pathways`, `${DR}.xp`],
-        accepts: ['XPA', 'XPC', 'ERCC2', 'ERCC3', 'ERCC4', 'ERCC5', 'DDB2', 'Thymine dimer', 'Pyrimidine dimer'] },
+        accepts: ['XPA', 'XPC', 'ERCC2', 'ERCC3', 'ERCC4', 'ERCC5', 'DDB2', 'Thymine dimer', 'Pyrimidine dimer', 'Xeroderma pigmentosum'] },
       { id: 'ber', label: 'Base excision repair', tier: 3, members: ['Uracil-DNA glycosylase', 'MUTYH', 'AP endonuclease', '8-Oxoguanine'], explanation: 'BER removes single damaged bases (uracil, 8-oxoguanine mispairs) via glycosylases and AP endonuclease.',
         conceptIds: ['mol-single-strand-repair'], objectiveIds: [`${DR}.ssb-pathways`, `${DR}.mutyh`],
         accepts: ['Uracil-DNA glycosylase', 'MUTYH', 'AP endonuclease', '8-Oxoguanine', 'OGG1', 'Abasic site'] },
@@ -1612,9 +1612,9 @@ const puzzles: ConnectionsPuzzleItem[] = [
     conceptIds: ['mol-nucleotides', 'mol-antimetabolites', 'mol-purine-salvage', 'mol-ada-deficiency'],
     objectiveIds: [`${NS}.structure`, `${NS}.drug-targets`, `${PS}.pathway`],
     groups: [
-      { id: 'purines', label: 'Purine bases', tier: 1, members: ['Adenine', 'Guanine', 'Hypoxanthine', 'Xanthine'], explanation: 'Two-ring bases; hypoxanthine and xanthine are purine breakdown intermediates.',
+      { id: 'purines', label: 'Purine rings', tier: 1, members: ['IMP', 'Guanine', 'Hypoxanthine', 'Xanthine'], explanation: 'Two-ring purines: IMP is the first purine nucleotide made de novo; hypoxanthine and xanthine are purine breakdown intermediates.',
         conceptIds: ['mol-nucleotides', 'mol-purine-salvage'], objectiveIds: [`${NS}.structure`, `${PS}.pathway`],
-        accepts: ['Adenine', 'Guanine', 'Hypoxanthine', 'Xanthine'] },
+        accepts: ['Adenine', 'Guanine', 'Hypoxanthine', 'Xanthine', 'IMP'] },
       { id: 'pyrimidines', label: 'Pyrimidine rings', tier: 2, members: ['Cytosine', 'Uracil', 'Thymine', 'Orotate'], explanation: 'One-ring bases; orotate is the pyrimidine ring made before attachment to PRPP.',
         conceptIds: ['mol-nucleotides'], objectiveIds: [`${NS}.structure`],
         accepts: ['Cytosine', 'Uracil', 'Thymine', 'Orotate', '5-Fluorouracil'] },

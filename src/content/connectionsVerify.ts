@@ -70,6 +70,40 @@ export function redHerrings(tiles: string[], intended: string[][], categories: {
 }
 
 /**
+ * Alternative solutions a player could defend, including broad (superordinate) categories.
+ * A group is defensible when some category covers EXACTLY those four tiles on the board (a broader
+ * category that also covers other tiles cannot tell the player which four belong together). Players
+ * solve three groups this way and the last four tiles fall out, so a partition counts when three of
+ * its groups are defensible and the remaining four tiles share ANY category. Returns every such
+ * partition (the intended one included), each as four sorted groups.
+ */
+export function defensiblePartitions(tiles: string[], intended: string[][], categories: { label: string; members: string[] }[]): string[][][] {
+  const T = tiles.map(normTile);
+  const onBoard = (c: { members: string[] }) => T.filter((t) => c.members.some((m) => normTile(m) === t));
+  const key = (xs: string[]) => [...xs].sort().join('|');
+  const exact = new Map<string, string[]>();
+  for (const g of intended) exact.set(key(g.map(normTile)), g.map(normTile));
+  for (const c of categories) {
+    const b = onBoard(c);
+    if (b.length === 4) exact.set(key(b), b);
+  }
+  const sets = [...exact.values()];
+  const anyCategory = (rest: string[]) => [...intended.map((g) => ({ members: g })), ...categories].some((c) => rest.every((t) => c.members.some((m) => normTile(m) === t)));
+  const found = new Map<string, string[][]>();
+  for (let a = 0; a < sets.length; a++)
+    for (let b = a + 1; b < sets.length; b++)
+      for (let c = b + 1; c < sets.length; c++) {
+        const used = [...sets[a]!, ...sets[b]!, ...sets[c]!];
+        if (new Set(used).size !== 12) continue;
+        const rest = T.filter((t) => !used.includes(t));
+        if (!anyCategory(rest)) continue;
+        const groups = [sets[a]!, sets[b]!, sets[c]!, rest].map((g) => g.map((t) => tiles[T.indexOf(t)]!).sort());
+        found.set(groups.map((g) => key(g)).sort().join(' / '), groups);
+      }
+  return [...found.values()];
+}
+
+/**
  * `extra`: additional categories (all bank categories and the plausible-category catalog) that must
  * not produce an alternative full solution.
  */

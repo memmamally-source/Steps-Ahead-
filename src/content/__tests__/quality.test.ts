@@ -2,7 +2,9 @@ import { describe, expect, it } from 'vitest';
 import { ALL_CONCEPTS, ALL_ITEMS } from '@/content/index';
 import { presentOptions } from '@/content/options';
 import { REASONING_DEPTH, type ConnectionsPuzzleItem, type GameItem, type McqItem, type Reasoning } from '@/content/schema';
-import { solutions, verifyPuzzle } from '@/content/connectionsVerify';
+import { defensiblePartitions, solutions, verifyPuzzle } from '@/content/connectionsVerify';
+import { globalCategories } from '@/content/connectionsCatalog';
+import { MANUAL_AUDIT } from '@/content/connectionsAudit';
 
 const mcqs = ALL_ITEMS.filter((i): i is McqItem => i.kind === 'mcq');
 const linked = ALL_ITEMS.filter((i) => i.objectiveIds?.length);
@@ -119,6 +121,27 @@ describe('Curated Medical Connections puzzles', () => {
     const decoyA = ['A', 'B', 'C', 'E'];
     const decoyB = ['D', 'F', 'G', 'H'];
     expect(solutions(tiles, [...intended, decoyA, decoyB]).length).toBeGreaterThan(1);
+  });
+
+  it('have a manual alternative-grouping audit and no other defensible solution', () => {
+    const catalog = globalCategories(ALL_ITEMS);
+    for (const p of puzzles) {
+      const manual = MANUAL_AUDIT[p.id];
+      expect(manual?.length, `${p.id} needs a manual audit`).toBeGreaterThan(0);
+      const tiles = p.groups.flatMap((g) => g.members);
+      const cats = [...p.decoys.map((d) => ({ label: d.label, members: d.accepts })), ...catalog, ...manual!];
+      expect(defensiblePartitions(tiles, p.groups.map((g) => g.members), cats), p.id).toHaveLength(1);
+    }
+  });
+
+  it('the defensibility check finds the second solutions of the pre-revision boards', () => {
+    const catalog = globalCategories(ALL_ITEMS);
+    const manual = (id: string) => MANUAL_AUDIT[id]!;
+    const oldRepair = [['XPA', 'XPC', 'ERCC2', 'Thymine dimer'], ['Uracil-DNA glycosylase', 'MUTYH', 'AP endonuclease', '8-Oxoguanine'], ['MLH1', 'MSH2', 'MSH6', 'PMS2'], ['Ku70', 'DNA-PKcs', 'Artemis', 'DNA ligase IV']];
+    expect(defensiblePartitions(oldRepair.flat(), oldRepair, [...catalog, ...manual('cx:dna-repair-machinery')]).length).toBeGreaterThan(1);
+    const oldNucleotides = [['Adenine', 'Guanine', 'Hypoxanthine', 'Xanthine'], ['Cytosine', 'Uracil', 'Thymine', 'Orotate'], ['Methotrexate', 'Hydroxyurea', 'Leflunomide', 'Mycophenolate'], ['HGPRT', 'Xanthine oxidase', 'Adenosine deaminase', 'Purine nucleoside phosphorylase']];
+    const dnaBases = { label: 'Bases found in DNA', members: ['Adenine', 'Guanine', 'Cytosine', 'Thymine'] };
+    expect(defensiblePartitions(oldNucleotides.flat(), oldNucleotides, [dnaBases, ...catalog, ...manual('cx:nucleotides-and-drugs')]).length).toBeGreaterThan(1);
   });
 
   it('keeps legacy category groups out of the "complete game" set', () => {

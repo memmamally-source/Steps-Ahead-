@@ -2029,15 +2029,15 @@ const groups: ConnectionGroup[] = [
 const puzzles: ConnectionsPuzzleItem[] = [
   puzzle({
     id: 'cx:gene-expression-blockers',
-    title: 'Jamming the central dogma',
+    title: 'Gene expression: made and jammed',
     difficulty: 3,
-    conceptIds: ['mol-ribosome-antibiotics', 'mol-translation-toxins', 'mol-topoisomerase-drugs', 'mol-transcription-inhibitors', 'mol-transcription'],
-    objectiveIds: [`${TL}.ribosomes`, `${TL}.toxins`, `${RP}.topo-drugs`, `${TX}.inhibitors`, `${TX}.regulation`],
+    conceptIds: ['mol-rna-processing', 'mol-translation-toxins', 'mol-topoisomerase-drugs', 'mol-transcription-inhibitors', 'mol-transcription'],
+    objectiveIds: [`${RN}.processing`, `${TL}.toxins`, `${RP}.topo-drugs`, `${TX}.inhibitors`, `${TX}.regulation`],
     groups: [
-      { id: '30s', label: 'Bind the bacterial 30S subunit', tier: 1, members: ['Gentamicin', 'Streptomycin', 'Doxycycline', 'Tetracycline'],
-        explanation: 'Aminoglycosides (gentamicin, streptomycin) cause misreading; tetracyclines (doxycycline, tetracycline) block the A site.',
-        conceptIds: ['mol-ribosome-antibiotics'], objectiveIds: [`${TL}.ribosomes`],
-        accepts: ['Gentamicin', 'Streptomycin', 'Tobramycin', 'Neomycin', 'Kanamycin', 'Doxycycline', 'Tetracycline', 'Tigecycline'] },
+      { id: 'processing', label: 'Pre-mRNA processing', tier: 1, members: ['7-Methylguanosine cap', 'Poly-A tail', 'Spliceosome', 'AAUAAA signal'],
+        explanation: 'A pre-mRNA becomes mature mRNA by 5′ capping, cleavage after the AAUAAA signal with poly-A tail addition, and intron removal by the spliceosome.',
+        conceptIds: ['mol-rna-processing'], objectiveIds: [`${RN}.processing`],
+        accepts: ['7-Methylguanosine cap', 'Poly-A tail', 'Spliceosome', 'AAUAAA signal', 'snRNP', 'Splicing'] },
       { id: 'toxins', label: 'Toxins that halt eukaryotic translation', tier: 2, members: ['Diphtheria toxin', 'Pseudomonas exotoxin A', 'Shiga toxin', 'Ricin'],
         explanation: 'EF-2 ADP-ribosylation (diphtheria toxin, exotoxin A) or 28S rRNA depurination (Shiga toxin, ricin).',
         conceptIds: ['mol-translation-toxins'], objectiveIds: [`${TL}.toxins`],
@@ -2052,11 +2052,12 @@ const puzzles: ConnectionsPuzzleItem[] = [
         accepts: ['α-Amanitin', 'Rifampin', 'Dactinomycin', 'TATA box mutation'] },
     ],
     decoys: [
-      { label: 'Antibiotics', accepts: ['Gentamicin', 'Streptomycin', 'Doxycycline', 'Tetracycline', 'Rifampin', 'Dactinomycin'] },
+      { label: 'Antibiotics', accepts: ['Rifampin', 'Dactinomycin'] },
       { label: 'Cancer chemotherapy drugs', accepts: ['Etoposide', 'Teniposide', 'Irinotecan', 'Topotecan', 'Dactinomycin'] },
       { label: 'Toxins of any origin', accepts: ['Diphtheria toxin', 'Pseudomonas exotoxin A', 'Shiga toxin', 'Ricin', 'α-Amanitin'] },
       { label: 'Plant-derived compounds', accepts: ['Ricin', 'Etoposide', 'Teniposide', 'Irinotecan', 'Topotecan'] },
-      { label: 'Made by bacteria', accepts: ['Diphtheria toxin', 'Pseudomonas exotoxin A', 'Shiga toxin', 'Streptomycin', 'Gentamicin', 'Tetracycline', 'Dactinomycin'] },
+      { label: 'Made by bacteria', accepts: ['Diphtheria toxin', 'Pseudomonas exotoxin A', 'Shiga toxin', 'Rifampin', 'Dactinomycin'] },
+      { label: 'Involve RNA polymerase II or its transcripts', accepts: ['α-Amanitin', 'TATA box mutation', '7-Methylguanosine cap', 'Poly-A tail', 'Spliceosome', 'AAUAAA signal'] },
     ],
   }),
 ];
