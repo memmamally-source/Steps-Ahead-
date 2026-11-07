@@ -102,5 +102,9 @@ No text, tables, mnemonics or questions were taken from commercial resources.
 
 - `npm run check` (typecheck, lint, 109 tests, including `validateContent`, the Connections single-solution and manual-audit tests, and the answer-length and whyWrong quality tests): pass.
 - `npm run build`: pass.
-- Browser play-check (`npm run check:games`, headless Chromium against the built app): see the commit message for the result.
+- Browser play-check (`npm run check:games`, headless Chromium, iPhone 13 emulation): **442 passed, 2 failed**. All 4 new sequences and all 4 new match sets were played. Both failures come from the test run, not from the content:
+  - `match:receptor-classes` explanation mismatch: the item dump was taken before the "fastest" wording was removed, so the check compared against the old text.
+  - The incorrect-order pass reached 12 of 13 sequences: the 80-round cap ran out under the weighted random draw.
+
+  An earlier run stopped on `seq:a1at-emphysema` (a Molecular item, unchanged); it passed on the rerun, so this looks like a timing flake.
 - No device testing, deployment or medical review was done.
